@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Force Workers AI text generation models to return valid JSON output using response_format or JSON schemas.
 title: JSON Mode
 image: https://developers.cloudflare.com/workers-ai/features/json-mode/og.png?v=7526f0fdc7cd915d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare Network Analytics v1 and v2 sampling and retention.
 title: Main differences
 image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/differences/og.png?v=909053f26bec7911

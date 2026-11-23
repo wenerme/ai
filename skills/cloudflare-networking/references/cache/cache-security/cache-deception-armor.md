@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prevent cache deception attacks that expose private content.
 title: Cache Deception Armor
 image: https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/og.png?v=b97e5521f9c0ed27

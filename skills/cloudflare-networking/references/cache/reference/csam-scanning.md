@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scan cached content for child sexual abuse material.
 title: CSAM Scanning Tool
 image: https://developers.cloudflare.com/cache/reference/csam-scanning/og.png?v=dd69b4feb6b4deb4

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Cloudflare's video delivery policies, resolve Terms of Service redirects, and choose the right paid product for streaming video.
 title: Delivering Videos with Cloudflare
 image: https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/og.png?v=9b0b3db2292079cb

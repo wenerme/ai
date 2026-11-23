@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for rtk-speaker-selector component (Web Components (HTML) Library)
 title: rtk-speaker-selector
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-speaker-selector/og.png?v=7e1f8ae6b2049061

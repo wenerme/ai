@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Microsoft Entra ID (formerly Azure Active Directory) calculates a user's risk level based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.
 title: Isolate risky Entra ID users
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/og.png?v=369f02318800a6b5
@@ -86,7 +89,7 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    	"$schema": "./node_modules/wrangler/config-schema.json",
    	"name": "risky-users",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"main": "src/index.js",
        "upload_source_maps": true,
    	"workers_dev": false,
@@ -105,7 +108,7 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    "$schema" = "./node_modules/wrangler/config-schema.json"
    name = "risky-users"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    main = "src/index.js"
    upload_source_maps = true
    workers_dev = false

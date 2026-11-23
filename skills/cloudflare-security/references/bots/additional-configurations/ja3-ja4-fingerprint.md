@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.
 title: JA3/JA4 fingerprint
 image: https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/og.png?v=74c933a10cb6c4e6

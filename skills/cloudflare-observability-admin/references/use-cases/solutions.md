@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cross-product guides that walk you through configuring Cloudflare products together to achieve a specific goal.
 title: Solution guides
 image: https://developers.cloudflare.com/use-cases/solutions/og.png?v=a0f43af9f5b46bbf
@@ -16,6 +19,7 @@ Each guide starts from your goal, identifies which Cloudflare products you need,
 
 - [Discover and secure your API endpoints (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/)
 - [Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/)
+- [Get your storefront ready for AI shopping agents](https://developers.cloudflare.com/use-cases/solutions/prepare-storefront-for-ai-agents/)
 - [Protect your forms from spam and abuse (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/)
 - [Stop account takeover attacks (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/)
 - [Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/)

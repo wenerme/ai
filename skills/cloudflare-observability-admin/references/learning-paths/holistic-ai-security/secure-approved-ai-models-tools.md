@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor and secure generative AI usage.
 title: Secure approved AI models and tools
 image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/og.png?v=bc2c6e22f78efbbe

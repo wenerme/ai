@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Durable Objects behave during Worker deployments, including code updates and gradual deployments.
 title: Deployments
 image: https://developers.cloudflare.com/durable-objects/deployments/og.png?v=e09aa00e83643cd4

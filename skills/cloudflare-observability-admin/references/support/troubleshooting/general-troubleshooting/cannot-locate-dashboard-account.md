@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve issues linking dashboard and support accounts.
 title: Cannot locate dashboard account
 image: https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/og.png?v=d451cb1550032e07

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: D1 encrypts data at rest and in transit, and is covered by Cloudflare's SOC 2 and ISO 27001 compliance certifications.
 title: Data security
 image: https://developers.cloudflare.com/d1/reference/data-security/og.png?v=7d90c5a43fb01b06

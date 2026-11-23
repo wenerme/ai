@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.
 title: Cloudflare's own MCP servers
 image: https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/og.png?v=2698c333db6912a5

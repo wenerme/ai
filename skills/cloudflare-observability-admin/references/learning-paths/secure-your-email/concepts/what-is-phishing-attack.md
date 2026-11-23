@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand email phishing attack methods.
 title: What is a phishing attack?
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/what-is-phishing-attack/og.png?v=a91eac3def5f7a1c

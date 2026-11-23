@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.
 title: Agentic patterns
 image: https://developers.cloudflare.com/agents/concepts/agentic-patterns/og.png?v=ea55b844a447c7f6

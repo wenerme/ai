@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet.
 title: Protect access to Amazon S3 buckets with Cloudflare Zero Trust
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/og.png?v=de1e7947eab69dc1

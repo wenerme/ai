@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allowed, platform-controlled, and custom email headers for Email Service with validation rules.
 title: Email headers
 image: https://developers.cloudflare.com/email-service/reference/headers/og.png?v=f7f5235f5e874a71

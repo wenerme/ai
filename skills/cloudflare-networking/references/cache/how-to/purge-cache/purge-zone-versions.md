@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Purge cache for specific zone versions using the API.
 title: Purge zone versions via API
 image: https://developers.cloudflare.com/cache/how-to/purge-cache/purge-zone-versions/og.png?v=0108fdce42b44635

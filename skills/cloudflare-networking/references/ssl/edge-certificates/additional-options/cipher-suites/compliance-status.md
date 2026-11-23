@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cipher suite compliance with FIPS 140-3, PCI DSS, and other standards.
 title: Compliance standards
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/og.png?v=43e226a9847a4052

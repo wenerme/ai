@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.
 title: List keys
 image: https://developers.cloudflare.com/kv/api/list-keys/og.png?v=04bfdd69729ab59f

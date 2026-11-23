@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Save a bounded copy of a Gateway-proxied attachment to a private R2 bucket in the background.
 title: Capture a downloaded file
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/download-capture/og.png?v=a1cb3c2208f07088

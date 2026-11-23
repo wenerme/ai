@@ -19,7 +19,7 @@ The usual browser flow is:
 
 Start a realtime voice session
 
-```javascript
+```typescript
 import { RealtimeAgent, RealtimeSession } from "@openai/agents/realtime";
 
 const ephemeralKey = process.env.OPENAI_REALTIME_EPHEMERAL_KEY;
@@ -53,7 +53,7 @@ Start with the transport docs when you need lower-level control:
 
 If your application identifies individual end users, include a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) with Realtime API requests. OpenAI recommends safety identifiers but doesn't require them. They help OpenAI detect harmful behavior and target enforcement to an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
 
-For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. When using ephemeral tokens, set the header on the server-side request that creates the client secret to associate the identifier with the session. When connecting from a trusted server with WebSocket or the unified WebRTC interface, set the header on the connection request.
+For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. Use an identifier of 128 characters or fewer. When using ephemeral tokens, set the header on the server-side request that creates the client secret to associate the identifier with the session. When connecting from a trusted server with WebSocket or the unified WebRTC interface, set the header on the connection request.
 
 Safety identifiers don't carry over from Responses API requests or other sessions. If you use the Responses API `safety_identifier` parameter elsewhere in your application, pass the same stable value when you create or connect each Realtime session.
 

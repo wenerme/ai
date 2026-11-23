@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Install and run cloudflared as a Windows service.
 title: Windows
 image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/as-a-service/windows/og.png?v=670a5f401668b36b

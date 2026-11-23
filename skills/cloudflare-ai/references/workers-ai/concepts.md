@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand the model types and key ideas behind building applications with Workers AI.
 title: Concepts
 image: https://developers.cloudflare.com/workers-ai/concepts/og.png?v=5c9dbce3f67c7e07

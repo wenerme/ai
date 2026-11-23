@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Supported literal types in Analytics Engine SQL.
 title: Literals
 image: https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/literals/og.png?v=369895b9c2ae900f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the Cloudflare OWASP Core Ruleset for your zone.
 title: Cloudflare OWASP Core Ruleset
 image: https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/og.png?v=a003dc7f8e93a1c1

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add a visible user watermark to HTML responses using the Gateway Forward action and HTMLRewriter.
 title: Watermark HTML pages
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/watermark/og.png?v=f537b3bf444ad2e7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Recommended API call sequence for firewall rules.
 title: Call sequence
 image: https://developers.cloudflare.com/firewall/api/call-sequence/og.png?v=e8eb9ef18f528a3a

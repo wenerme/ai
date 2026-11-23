@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review SSH commands a user ran on a target.
 title: SSH command logs
 image: https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/ssh-command-logs/og.png?v=98d1f1b63c35bfc8

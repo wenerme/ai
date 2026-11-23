@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Measure real-world internet quality metrics for your visitors.
 title: Aggregated Internet Measurement
 image: https://developers.cloudflare.com/speed/aim/og.png?v=a2e9effb49d900ce

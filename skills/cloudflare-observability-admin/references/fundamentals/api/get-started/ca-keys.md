@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Retrieve or change your Cloudflare Origin CA key used to authenticate Origin CA certificate API requests.
 title: Get Origin CA keys
 image: https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/og.png?v=31f0633f9509e2ea

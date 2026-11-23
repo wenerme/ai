@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example Compression Rules for Brotli, Gzip, and Zstandard configurations.
 title: Compression Rules examples
 image: https://developers.cloudflare.com/rules/compression-rules/examples/og.png?v=40799f09e764a792

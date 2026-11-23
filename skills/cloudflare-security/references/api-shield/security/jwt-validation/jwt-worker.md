@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use a Worker to keep your identity provider public keys updated for JWT validation.
 title: Configure the Worker
 image: https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/og.png?v=6411790a1866f55f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect personally identifiable information in AI request and response bodies.
 title: PII detection
 image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/og.png?v=64cef664ccd38e2f

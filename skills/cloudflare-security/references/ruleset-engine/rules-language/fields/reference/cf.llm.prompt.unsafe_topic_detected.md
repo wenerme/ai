@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Indicates whether the incoming request includes any unsafe topic category in the LLM prompt.
 title: cf.llm.prompt.unsafe_topic_detected
 image: https://developers.cloudflare.com/og-docs.png

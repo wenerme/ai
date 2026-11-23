@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand SQL API dataset types and discover available datasets and columns.
 title: Datasets
 image: https://developers.cloudflare.com/analytics/sql-api/datasets/og.png?v=4961a8dc07d46080

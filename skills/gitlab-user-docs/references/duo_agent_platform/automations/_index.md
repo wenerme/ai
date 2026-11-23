@@ -153,6 +153,7 @@ Foundational flows can start in the following ways:
 
 - Default automations that GitLab adds when you turn on the flow.
 - Automations that you create for events the flow supports.
+- Scheduled automations that you create for the [Developer Flow](../../project/merge_requests/developer.md).
 - Another way, such as when a security scan finishes.
   These flows don't use automations, so you don't see them listed in **AI** > **Automations**.
 
@@ -302,7 +303,8 @@ An automation with the **Work item** event type and the **Created** action also 
 > The availability of this feature is controlled by feature flags.
 > For more information, see the history.
 
-A scheduled automation runs a flow at a recurring time.
+A scheduled automation runs a flow at a recurring time: every 15 or 30 minutes, hourly, daily,
+on weekdays, weekly, or monthly.
 Use a scheduled automation for work that does not start from an event, such as a weekly
 summary of stale issues.
 The flow receives no merge request or work item, so use [instructions](#add-instructions)
@@ -313,53 +315,46 @@ Scheduled automations have these limits:
 - A scheduled automation has one schedule.
 - You can create scheduled automations only in projects, not in groups.
 - By default, a project can have up to 100 scheduled automations.
+- Only custom flows from the AI Catalog and the Developer Flow can run on a schedule.
+  Other foundational flows, external agents, and flows that use a configuration file cannot.
 
 ### Service account for scheduled automations
 
-When you create a scheduled automation, GitLab creates a service account for that automation only.
-The account name starts with `Duo Scheduled`, followed by the project path and the
-automation description.
-GitLab adds the account to the project with the same role as the service account of the flow.
-GitLab does not assign the Owner role to the account, and a run fails if the account has it.
+When you create a scheduled automation, GitLab creates a service account specifically for that automation:
+
+- The account name starts with `Duo Scheduled`, followed by the project path and the
+  automation name.
+- GitLab adds the account to the project where you create the automation, with the same role
+  as the flow's service account.
+- GitLab does not assign the Owner role to the account. If the account has the Owner role,
+  the run fails.
 
 A scheduled run does not use [composite identity](../composite_identity.md), so the role of
 the service account is the only limit on what the flow can do.
-GitLab adds the service account to the project where you create the automation.
-A scheduled run can access another project only if someone adds the service account to that project as well.
-For more information, see [security threats in GitLab Duo Agent Platform](../security_threats.md).
+A scheduled run can access another project only if you add the service account to that project.
+For more information, see [security threats in agentic systems](../security_threats.md).
 
-The role of the account follows the role of the service account of the flow:
+Before each run, GitLab compares the role of the automation's service account with the role
+of the flow's service account:
 
-- Before each run, if the flow account has a lower role, GitLab lowers the role of the
-  automation account to match. If GitLab cannot lower the role, the run fails.
-- If the flow account has a higher role, GitLab raises the role of the automation account only
-  when someone who can assign that role edits the automation.
+- If the flow's service account has a lower role, GitLab lowers the role of the automation's
+  service account to match. If GitLab cannot lower the role, the run fails.
+- If the flow's service account has a higher role, GitLab does not raise the role before the run.
+  GitLab only raises the role when a user who can assign that role edits the automation.
 
 ### Create a scheduled automation
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
-- Your role for the project must be equal to or higher than the role of the service account
-  of the flow.
-- You must have permission to [create service accounts](../../profile/service_accounts.md#create-a-service-account)
+- The Maintainer or Owner role for the project.
+- A role for the project that is equal to or higher than the role of the flow's service account.
+- Permission to [create service accounts](../../profile/service_accounts.md#create-a-service-account)
   and to add members to the project.
-- The project must belong to a group, and the group must not prevent adding members to projects.
 - [Experiment and beta features](../turn_on_off.md#turn-on-beta-and-experimental-features)
-  must be turned on.
-- Scheduled automations must be [turned on](#turn-scheduled-automations-on-or-off) for the project, group, or instance.
-- A custom flow from the AI Catalog or the [Developer Flow](../../project/merge_requests/developer.md)
-  must be enabled in the project.
-  Other foundational flows, external agents, and flows that use a configuration file
-  cannot run on a schedule.
-
-To change the flow of an existing scheduled automation:
-
-- Your role for the project must be equal to or higher than the role of the automation's service account.
-- You must have permission to add members to the project.
-- The new flow must be a custom flow from the AI Catalog or the Developer Flow.
-
-You do not need these permissions to change the schedule, name, or instructions.
+  turned on.
+- Scheduled automations [turned on](#turn-scheduled-automations-on-or-off) for the project, group, or instance.
+- A project in a group that does not prevent adding members to projects.
+- A custom flow from the AI Catalog or the Developer Flow turned on in the project.
 
 To create a scheduled automation:
 
@@ -370,30 +365,20 @@ To create a scheduled automation:
 1. From the **Runs with** dropdown list, select the flow.
 1. If the **Instructions** field is shown, enter what the flow must do on each run.
    For the Developer Flow, instructions are required.
-1. Under **Runs when**, a new automation starts with a weekly schedule, with a day and time
-   already selected. If no schedule is open, select **Add trigger** > **On a schedule**.
+1. Under **Runs when**, if no schedule is shown, select **Add trigger** > **On a schedule**.
+   The default is a weekly schedule on a random day and time.
 1. From the frequency dropdown list, select how often the flow runs.
-   Depending on the frequency, select when the flow runs:
-
-   | Frequency        | What you select |
-   |------------------|-----------------|
-   | Every 15 minutes | None |
-   | Every 30 minutes | None |
-   | Hourly           | The minute past the hour. |
-   | Daily            | The hour and minute. |
-   | Weekdays         | The hour and minute, Monday through Friday. |
-   | Weekly           | The day of the week, hour, and minute. |
-   | Monthly          | The day of the month, from 1 to 28, and the hour and minute. |
-
-   Hours use the 24-hour clock. Minutes are in 15-minute steps.
+1. Depending on the frequency, select the day and time for the flow to run.
+   Hours use the 24-hour clock, and minutes are in 15-minute steps.
+   For monthly schedules, you can select a day from 1 to 28, so that every month has the selected day.
 1. Optional. For frequencies other than every 15 or 30 minutes, to change the time zone,
    select **Change**, then select a time zone.
    The default is the time zone of your profile, or of your browser if your profile has none.
 1. Select **Add schedule**.
 1. Select **Create**.
 
-The flow might run a few minutes after the scheduled time, because GitLab spreads scheduled
-runs to distribute load.
+The flow might run a few minutes after the scheduled time, because GitLab spreads runs over
+time to reduce load.
 
 ### When a scheduled run fails
 
@@ -427,9 +412,8 @@ When you turn off scheduled automations, existing schedules stop running but Git
 Runs that are in progress continue.
 You cannot add a schedule to an automation while scheduled automations are turned off.
 When you turn scheduled automations back on, schedules resume at their next scheduled time.
-GitLab does not make up the runs that it skipped.
+GitLab does not start skipped runs later.
 
-To turn scheduled automations on or off, flow execution must be turned on.
 When scheduled automations are turned off for a group or the instance, subgroups and projects cannot turn them on.
 
 ### On GitLab.com
@@ -438,6 +422,7 @@ Prerequisites:
 
 - For a top-level group, the Owner role for the group.
 - For a project, the Maintainer or Owner role for the project.
+- Flow execution turned on.
 
 To turn scheduled automations on or off for a top-level group:
 
@@ -464,6 +449,7 @@ Prerequisites:
 - For the instance, administrator access.
 - For a group, the Owner role for the group.
 - For a project, the Maintainer or Owner role for the project.
+- Flow execution turned on.
 
 To turn scheduled automations on or off for the instance:
 
@@ -495,17 +481,23 @@ To turn scheduled automations on or off for a project:
 
 - Instructions for each condition [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627896) in GitLab 19.5 [with a flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_goals`. Disabled by default.
 - Generally available in GitLab 19.7. Feature flag `ai_flow_trigger_goals` removed.
+- Instructions for each event in the automation dialog [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637503) in GitLab 19.7.
 
 Instructions are text that tells the flow what to do when the automation runs.
-An automation has one set of instructions, which applies to every event and schedule
-in the automation. To run the same flow with different instructions, create another automation.
+By default, an automation has one set of instructions, which applies to every event and schedule
+in the automation. You can also [give an event its own instructions](#use-different-instructions-for-an-event).
 
 Prerequisites:
 
 - You must have the Maintainer or Owner role for the project.
 - The automation must run a custom flow, an external agent, the Developer Flow,
   or a configuration file. For other flows, the **Instructions** field does not appear.
-  For the Developer Flow, instructions are required.
+  For the Developer Flow, instructions are required. If every event has its own instructions
+  and the automation has no schedule, the default instructions are optional.
+- To add instructions to a scheduled automation:
+  - A role for the project that is equal to or higher than the role of the automation's
+    service account.
+  - Permission to add members to the project.
 
 To add instructions to an existing automation:
 
@@ -518,6 +510,24 @@ To add instructions to an existing automation:
 You can also add instructions when you [create an event-based automation](#create-an-event-based-automation),
 [create a scheduled automation](#create-a-scheduled-automation), or
 [turn on a flow](../flows/custom.md#turn-on-a-flow).
+
+### Use different instructions for an event
+
+An event can have its own instructions. The flow uses them instead of the default instructions
+when that event initiates the automation. Events without their own instructions, and schedules,
+use the default instructions.
+
+To give an event its own instructions:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **AI** > **Automations**.
+1. For the automation you want to change, select **More actions** () > **Edit automation**.
+1. Under **Runs when**, next to the event, select **Edit event** ().
+1. In the **Instructions** field, enter the instructions for that event.
+1. Select **Save**, then select **Save changes**.
+
+After an event has its own instructions, the shared field is called **Default instructions**.
+Events that use the default show **Uses default instructions**.
 
 ### Write instructions
 
@@ -556,7 +566,11 @@ The following table shows example instructions.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- The Maintainer or Owner role for the project.
+- To change the flow or instructions of a scheduled automation:
+  - A role for the project that is equal to or higher than the role of the automation's
+    service account.
+  - Permission to add members to the project.
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Automations**.

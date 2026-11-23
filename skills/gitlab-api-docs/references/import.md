@@ -71,10 +71,9 @@ The following keys are available for `optional_stages`:
 - `collaborators_import`, for importing direct repository collaborators who are not outside collaborators.
 - `continuous_sync`, to keep the project updated from GitHub after the import. Only available for GitHub.com,
   in a group with a Premium or Ultimate license. The request returns `422` if `github_hostname` is set to
-  another host, if the feature is not enabled for your account, or if the group is not licensed. If the token
-  cannot create a webhook, the webhook is not created and the project is updated from GitHub on a schedule
-  instead. Use a classic token with the `repo` or `admin:repo_hook` scope, or a fine-grained token with
-  read and write access to webhooks, to receive changes sooner.
+  another host, if the feature is not enabled for your account, or if the group is not licensed.
+  For the limits of a personal access token, see
+  [continuous sync with a personal access token](#continuous-sync-with-a-personal-access-token).
 - `single_endpoint_notes_import`, for an alternative and more thorough comments import method that is
   optional on GitLab 19.3 and earlier. On GitLab 19.4 and later, this method is mandatory for newly
   configured imports.
@@ -97,6 +96,40 @@ Example response:
     "relation_type": null
 }
 ```
+
+### Continuous sync with a personal access token
+
+`POST /import/github` reads from GitHub with the token in `personal_access_token`.
+When you set `continuous_sync`, GitLab keeps using this token after the import to update the project.
+The token then has limits that the GitHub OAuth flow does not have.
+
+Personal access tokens:
+
+- Cannot be refreshed. Updates stop when the token expires. Use a token with no expiration,
+  or a long one.
+- Must have permission to create a webhook on the GitHub repository, so that GitHub can send changes
+  to GitLab. Use one of the following:
+
+  - A classic token with the `repo` or `admin:repo_hook` scope.
+  - A fine-grained token with read and write access to webhooks.
+    The GitHub importer supports only classic tokens, so other import stages might fail
+    with a fine-grained token.
+    For a repository in an organization, set the organization as the resource owner of the token.
+    Otherwise, GitHub returns `404` for every request.
+
+If GitHub does not allow GitLab to create the webhook, the import still succeeds, and the project
+stays connected to GitHub without a webhook.
+The import response and the import status don't report the missing webhook.
+To check whether GitLab created the webhook, view the webhooks in the settings of the GitHub repository.
+Changes then reach GitLab when GitLab checks GitHub, about every 30 minutes, and in the final update
+when you stop updates.
+
+If GitHub keeps rejecting the token, for example because the token expired or was revoked,
+GitLab disconnects the project from GitHub.
+For more information, see [reconnect GitHub](../user/project/import/github_sync.md#reconnect-github).
+To reconnect a project imported with a personal access token, use the
+[restore endpoint](#restore-github-updates-with-a-new-personal-access-token) with a new token.
+The new token can belong to a different GitHub account, but it must read the same GitHub repository.
 
 ### Import a public project through the API using a group access token
 
@@ -194,8 +227,8 @@ curl --request POST \
 
 If the token can't manage repository webhooks, GitHub updates are restored without a webhook,
 and the response contains a `warning`. Changes are then checked on a schedule.
-Use a classic token with the `repo` or `admin:repo_hook` scope, or a fine-grained token with
-read and write access to webhooks, to receive changes sooner.
+For the token permissions that create a webhook, see
+[continuous sync with a personal access token](#continuous-sync-with-a-personal-access-token).
 
 If successful, returns `200` and the following response attributes:
 

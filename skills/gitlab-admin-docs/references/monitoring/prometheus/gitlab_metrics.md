@@ -478,14 +478,15 @@ The Apdex target for these metrics is `APDEX_THRESHOLD_S` in
 
 ### Zoekt rollout metrics (from Sidekiq)
 
-Sidekiq emits this metric when `Search::Zoekt::RolloutWorker` cannot plan a
-replica for a namespace because the Zoekt fleet lacks capacity. Each Sidekiq
-process starts the series at `0` when it boots, so `increase()` detects a first
-failure that happens after the next scrape.
+Sidekiq emits these metrics when `Search::Zoekt::RolloutWorker` cannot place a
+namespace because the Zoekt fleet lacks capacity. Each Sidekiq process starts
+the series at `0` when it boots, so `increase()` detects a first failure that
+happens after the next scrape.
 
 | Metric | Type | Since | Labels | Description |
 |:-------|:-----|------:|:-------|:------------|
 | `search_zoekt_rollout_planning_failures_total` | Counter | 19.6 | **None** | Total number of namespaces that Zoekt rollout could not plan a replica for because the fleet lacks capacity, counted once per namespace in each rollout run. A namespace counts when it needs more indices than one replica allows, or when no node has room for a project or every node with room already holds an index for the namespace. Adding Zoekt nodes resolves both. |
+| `search_zoekt_rollout_no_available_nodes_total` | Counter | 19.7 | **None** | Total number of Zoekt rollout runs that needed to add or remove a namespace replica but found no available node and planned no changes. A node is available when it is online and has unclaimed storage. Namespaces without a replica get no exact code search until a node is available. To resolve this issue, add Zoekt nodes. |
 
 ### Audit event streaming SLI metrics
 

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure link actions in Email Security.
 title: Configure link actions
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/og.png?v=e2e308da2171bdec

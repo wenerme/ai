@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configuration, connection, and query limits that apply to Hyperdrive.
 title: Limits
 image: https://developers.cloudflare.com/hyperdrive/platform/limits/og.png?v=843757406130c1e2

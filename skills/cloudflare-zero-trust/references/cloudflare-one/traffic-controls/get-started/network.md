@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Network filtering in Gateway.
 title: Network filtering
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/network/og.png?v=d7942ba3de3aa7ea

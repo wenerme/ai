@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create origin rules using the Rulesets API.
 title: Create an origin rule via API
 image: https://developers.cloudflare.com/rules/origin-rules/create-api/og.png?v=a67823ed4de098cc

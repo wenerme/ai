@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send requests through an AI Gateway dynamic route using the OpenAI SDK, a direct HTTP request, or the AI binding in a Worker.
 title: Using a dynamic route
 image: https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/usage/og.png?v=de61370a8a90a71e

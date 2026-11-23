@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: SLA and support details for the 1.1.1.1 resolver.
 title: SLA and technical support
 image: https://developers.cloudflare.com/1.1.1.1/infrastructure/sla-and-support/og.png?v=fdb9ec59cf466d12

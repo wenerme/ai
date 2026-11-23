@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a Durable Object that stores the last location it was accessed from in-memory.
 title: Durable Object in-memory state
 image: https://developers.cloudflare.com/durable-objects/examples/durable-object-in-memory-state/og.png?v=8e15bc935b81b2ab

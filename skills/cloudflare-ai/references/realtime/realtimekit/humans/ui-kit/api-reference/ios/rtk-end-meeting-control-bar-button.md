@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkEndMeetingControlBarButton component (iOS Library)
 title: RtkEndMeetingControlBarButton
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-end-meeting-control-bar-button/og.png?v=6357cfd87ff39575

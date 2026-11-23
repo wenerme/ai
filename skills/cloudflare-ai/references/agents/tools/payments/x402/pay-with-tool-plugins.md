@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add x402 payment handling to OpenCode and Claude Code.
 title: Pay from coding tools
 image: https://developers.cloudflare.com/agents/tools/payments/x402/pay-with-tool-plugins/og.png?v=00afef328aa9b66e

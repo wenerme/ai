@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video, you will learn all of the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 title: SASE - Connect and secure from any network to anywhere
 image: https://developers.cloudflare.com/og-docs.png

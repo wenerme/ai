@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.
 title: Start a live stream
 image: https://developers.cloudflare.com/stream/stream-live/start-stream-live/og.png?v=c239ac4960286e18

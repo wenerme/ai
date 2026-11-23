@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.
 title: Tutorials
 image: https://developers.cloudflare.com/workers/tutorials/og.png?v=5dfc402ec1d8cac0
@@ -16,11 +19,11 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 16 days ago | Beginner |
-| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 17 days ago | Beginner |
+| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 21 days ago | Beginner |
+| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 22 days ago | Beginner |
 | [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 2 months ago | Intermediate |
 | [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 2 months ago | Intermediate |
-| [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 5 months ago | Beginner |
+| [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 6 months ago | Beginner |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 8 months ago | Intermediate |
 | [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/) | last year | Advanced |
 | [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | last year | Beginner |

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The Agents SDK runtime is a Durable Object with the Lifecycle installed, a Worker that routes requests to it, and the capabilities you attach to it.
 title: Runtime
 image: https://developers.cloudflare.com/agents/runtime/og.png?v=c94301a4a54bcd9d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run D1 locally with Wrangler to test your Worker and database before deploying to production.
 title: Local development
 image: https://developers.cloudflare.com/d1/best-practices/local-development/og.png?v=a808926ac9513ee7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand anycast routing to non-local data centers.
 title: Cloudflare traffic not being sent to the geographically closest data center
 image: https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/og.png?v=f178434cc78d153f

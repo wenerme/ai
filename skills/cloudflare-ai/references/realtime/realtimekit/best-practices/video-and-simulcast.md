@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose the right video resolution, simulcast settings, and frame rate for your RealtimeKit use case to optimize quality and bandwidth.
 title: Video resolution and simulcast
 image: https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/og.png?v=d9409c583942598e

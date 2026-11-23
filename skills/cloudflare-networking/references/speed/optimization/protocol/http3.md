@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve content over HTTP/3 with QUIC for faster connections.
 title: HTTP/3 (with QUIC)
 image: https://developers.cloudflare.com/speed/optimization/protocol/http3/og.png?v=58e45c661f41da85

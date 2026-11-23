@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GitHub in Zero Trust integrations.
 title: GitHub
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/github/og.png?v=e539e2dccfe20d65

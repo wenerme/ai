@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to use Cloudflare Workers AI to interact with KV storage, enabling persistent data handling with embedded function calling in a few lines of code.
 title: Use KV API
 image: https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/kv/og.png?v=39ed64a561ba3ea0

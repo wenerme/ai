@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a request header transform rule (part of Transform Rules) to remove the `cf-connecting-ip` HTTP header from the request.
 title: Remove a request header
 image: https://developers.cloudflare.com/rules/transform/examples/remove-request-header/og.png?v=5622d2bee2f22c2f

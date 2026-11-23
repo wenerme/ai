@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy the Cloudflare One Client with Hexnode MDM - Step-by-step guide for Windows, macOS, iOS, and Android.
 title: Hexnode
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/hexnode/og.png?v=6a123aed73e3e84b

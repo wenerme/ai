@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Challenge requests from bad bots with a managed challenge.
 title: Challenge bad bots
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/og.png?v=4016d7089931c80b

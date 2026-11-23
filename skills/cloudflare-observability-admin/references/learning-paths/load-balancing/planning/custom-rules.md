@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about custom load balancing rules in this guide.
 title: Custom load balancing rules
 image: https://developers.cloudflare.com/learning-paths/load-balancing/planning/custom-rules/og.png?v=fb1b2b7d39f5c45e

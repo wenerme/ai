@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This reference architecture explains how Microsoft and Cloudflare can be integrated together. By leveraging Cloudflare's secure network access, risky user isolation, and application and data visibility, organizations can consolidate management.
 title: Reference Architecture using Cloudflare SASE with Microsoft
 image: https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/og.png?v=51095c30789403cd

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find out how R2 works.
 title: How R2 works
 image: https://developers.cloudflare.com/r2/how-r2-works/og.png?v=780a17982623cb3c

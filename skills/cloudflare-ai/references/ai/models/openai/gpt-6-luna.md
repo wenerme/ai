@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-6 Luna is OpenAI's most efficient GPT-6 model, built for focused, high-volume tasks.
 title: GPT-6 Luna
 image: https://developers.cloudflare.com/og-docs.png

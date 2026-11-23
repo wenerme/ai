@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Advanced caching features including Cache Reserve, Early Hints, and Vary.
 title: Advanced configuration
 image: https://developers.cloudflare.com/cache/advanced-configuration/og.png?v=4d1b247e7561512f

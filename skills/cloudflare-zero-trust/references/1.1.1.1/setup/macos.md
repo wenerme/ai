@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure 1.1.1.1 on macOS.
 title: macOS
 image: https://developers.cloudflare.com/1.1.1.1/setup/macos/og.png?v=eecc84a6a6fd944f

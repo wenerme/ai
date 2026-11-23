@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect and secure your network locations with Cloudflare WAN.
 title: Cloudflare WAN
 image: https://developers.cloudflare.com/cloudflare-wan/og.png?v=bcaa40d02612ec48

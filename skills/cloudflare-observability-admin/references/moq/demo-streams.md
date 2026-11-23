@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Subscribe to long-running MoQ demo streams using draft-14 or draft-16.
 title: Demo streams
 image: https://developers.cloudflare.com/moq/demo-streams/og.png?v=0984ff2423dcf4e1

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use lists to reference groups of items in rule expressions.
 title: Lists
 image: https://developers.cloudflare.com/waf/tools/lists/og.png?v=7c5d16c901e8aacd

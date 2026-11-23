@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Account, bucket, and object limits for Cloudflare R2 storage.
 title: Limits
 image: https://developers.cloudflare.com/r2/platform/limits/og.png?v=9931fea88af8d800

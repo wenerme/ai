@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add a blur effect to Cloudflare Images variants using the dashboard or flexible variants API.
 title: Apply blur
 image: https://developers.cloudflare.com/images/optimization/hosted-images/blur-variants/og.png?v=bf22f95eb4454758

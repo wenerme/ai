@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route DNS record traffic to private origins through tunnels.
 title: Private network routing
 image: https://developers.cloudflare.com/dns/private-origins/private-network-routing/og.png?v=ac5f8d787e9afea5

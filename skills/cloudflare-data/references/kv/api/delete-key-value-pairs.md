@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove keys and their associated values from a Workers KV namespace using the delete() method.
 title: Delete key-value pairs
 image: https://developers.cloudflare.com/kv/api/delete-key-value-pairs/og.png?v=d1c3c8ec4cfb1d93

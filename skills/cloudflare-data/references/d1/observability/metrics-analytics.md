@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.
 title: Metrics and analytics
 image: https://developers.cloudflare.com/d1/observability/metrics-analytics/og.png?v=ebbea2eb8fd63786

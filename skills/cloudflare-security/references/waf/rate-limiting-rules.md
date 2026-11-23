@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Define rate limits for requests matching an expression and the action when limits are reached.
 title: Rate limiting rules
 image: https://developers.cloudflare.com/waf/rate-limiting-rules/og.png?v=55b209a0deb92182

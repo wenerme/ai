@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about the distributed key generation phase.
 title: Setup Phase
 image: https://developers.cloudflare.com/randomness-beacon/cryptographic-background/setup-phase/og.png?v=6ec80bb9e2d039a7

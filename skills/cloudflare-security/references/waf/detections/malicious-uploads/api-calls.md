@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage malicious upload detection using the Cloudflare API.
 title: Common API calls
 image: https://developers.cloudflare.com/waf/detections/malicious-uploads/api-calls/og.png?v=373bc972a7710738

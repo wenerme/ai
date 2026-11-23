@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: MiniMax Speech 2.6 Turbo is a fast, lower-cost multilingual text-to-speech model with emotion control (including fluent and whisper styles) and support for cloned and designed voices.
 title: MiniMax Speech 2.6 Turbo
 image: https://developers.cloudflare.com/og-docs.png

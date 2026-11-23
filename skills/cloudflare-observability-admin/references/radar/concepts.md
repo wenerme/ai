@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand key Cloudflare Radar concepts such as aggregation intervals, bot classes, confidence levels, and normalization methods.
 title: Concepts
 image: https://developers.cloudflare.com/radar/concepts/og.png?v=a8c96a0e191d3f20

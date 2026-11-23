@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Map IP prefixes to zones and accounts with address maps.
 title: About address maps
 image: https://developers.cloudflare.com/byoip/address-maps/og.png?v=254e8d979ef2b452

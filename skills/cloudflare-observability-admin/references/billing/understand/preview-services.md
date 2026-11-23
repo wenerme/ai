@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Try contracted products for 30 days before purchasing.
 title: Preview services
 image: https://developers.cloudflare.com/billing/understand/preview-services/og.png?v=f9074a4a1c09ab2c

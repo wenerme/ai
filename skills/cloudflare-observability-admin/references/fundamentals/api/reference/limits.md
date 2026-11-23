@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Cloudflare API rate limits, rate-limiting headers, and how to handle throttled requests.
 title: Rate limits
 image: https://developers.cloudflare.com/fundamentals/api/reference/limits/og.png?v=59449a1fef851e76

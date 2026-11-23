@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure custom RTMPS ingest domains for Cloudflare Stream live inputs instead of using the default URL.
 title: Add custom ingest domains
 image: https://developers.cloudflare.com/stream/stream-live/custom-domains/og.png?v=1cd641892aa0ba91

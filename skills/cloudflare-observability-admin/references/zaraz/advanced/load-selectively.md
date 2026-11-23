@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Load Zaraz only on specific pages or for specific visitors.
 title: Load Zaraz selectively
 image: https://developers.cloudflare.com/zaraz/advanced/load-selectively/og.png?v=17c654590662707f

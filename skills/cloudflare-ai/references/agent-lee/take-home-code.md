@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Take the source code Agent Lee generates with you by exporting it to a temporary, Git-cloneable repository.
 title: Export generated code
 image: https://developers.cloudflare.com/agent-lee/take-home-code/og.png?v=dffe0d316c08cc67

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare Waiting Room queues visitors during traffic surges.
 title: About
 image: https://developers.cloudflare.com/waiting-room/about/og.png?v=3f3ba7ed090e9a44

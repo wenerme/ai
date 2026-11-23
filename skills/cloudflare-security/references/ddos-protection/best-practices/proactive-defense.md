@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Strengthen your application against DDoS attacks before they happen.
 title: Proactive DDoS defense
 image: https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/og.png?v=a3448502d9c41e40

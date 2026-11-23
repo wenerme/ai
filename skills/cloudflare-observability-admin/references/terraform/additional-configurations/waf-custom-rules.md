@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.
 title: WAF custom rules configuration using Terraform
 image: https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/og.png?v=ed8f4ccb87f12b24

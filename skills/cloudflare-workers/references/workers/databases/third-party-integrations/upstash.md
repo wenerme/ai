@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Cloudflare Workers to Upstash for serverless Redis and Kafka integrations.
 title: Upstash
 image: https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/og.png?v=6743cffc86568ec9

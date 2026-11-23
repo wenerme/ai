@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Save the filesystem of a Linux sandbox in a Container snapshot before it stops for inactivity, and restore the files on the next request.
 title: Save a sandbox automatically
 image: https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/og.png?v=ba8daeb134e1d9cc

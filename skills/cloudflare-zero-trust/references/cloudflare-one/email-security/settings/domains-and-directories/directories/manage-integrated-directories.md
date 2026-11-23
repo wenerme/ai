@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage integrated directories in Email Security.
 title: Manage integrated directories
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-integrated-directories/og.png?v=b3576b52fffc5ceb

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to connect a Worker to a Git repository, manage build settings and Previews, and monitor builds using the Workers Builds API.
 title: Builds API reference
 image: https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/og.png?v=953239305931e5fe

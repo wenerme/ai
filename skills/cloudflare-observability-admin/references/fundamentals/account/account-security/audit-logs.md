@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.
 title: Audit Logs - version 2
 image: https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff
@@ -11,8 +14,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/a
 > Use this file to discover all available pages before exploring further.
 
 # Audit Logs - version 2
-
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -394,6 +395,8 @@ The actor represents who or what performed the action. Its identity attributes d
 - `oauth`: The action was authenticated with an OAuth token.
 - `origin_ca_key`: The action was authenticated with an Origin CA key.
 
+Context is recorded only for actions performed through the Cloudflare dashboard or API. [System-initiated actions](#system-initiated-audit-logs) are performed internally by Cloudflare, so they do not include a context.
+
 ### Action
 
 The action field captures the nature of the event and whether it was successful. It includes a high-level type (e.g., `create`, `update`, `delete`), a specific description (such as `SSO_LOGIN`), the timestamp of when the action occurred, and the result (`success` or `failure`).
@@ -421,5 +424,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

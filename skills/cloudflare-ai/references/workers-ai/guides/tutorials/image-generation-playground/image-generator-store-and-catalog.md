@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: In the final part of the AI Image Playground series, Kristian teaches how to utilize Cloudflare's R2 object storage.
 title: Store and Catalog AI Generated Images with R2 (Part 3)
 image: https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/og.png?v=2f3dfb2506755584

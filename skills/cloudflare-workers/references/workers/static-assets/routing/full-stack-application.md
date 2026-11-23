@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How to configure and use a full-stack application with Workers.
 title: Full-stack application
 image: https://developers.cloudflare.com/workers/static-assets/routing/full-stack-application/og.png?v=63f40fec1b0257c9

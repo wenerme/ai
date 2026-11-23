@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View the list of pre-installed fonts available in the Browser Run Chromium environment for screenshots and PDFs.
 title: Supported fonts
 image: https://developers.cloudflare.com/browser-run/reference/supported-fonts/og.png?v=70fdd90cf35674f7

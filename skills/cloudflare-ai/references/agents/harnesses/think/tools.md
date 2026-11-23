@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.
 title: Tools
 image: https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc

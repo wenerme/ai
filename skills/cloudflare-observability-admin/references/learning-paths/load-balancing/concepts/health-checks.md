@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor server health with periodic health checks.
 title: Monitors and health checks
 image: https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/og.png?v=531f6daff7e99a0e

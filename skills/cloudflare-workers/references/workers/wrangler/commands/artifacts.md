@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage Artifacts namespaces, repositories, and repo-scoped tokens using Wrangler.
 title: Artifacts
 image: https://developers.cloudflare.com/workers/wrangler/commands/artifacts/og.png?v=6748fe79cedf9f1b
@@ -120,15 +123,15 @@ Create an Artifacts repository
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos create <NAME>
+npx wrangler artifacts repos create <NAME> --namespace <NAMESPACE>
 ```
 
 ```
-yarn wrangler artifacts repos create <NAME>
+yarn wrangler artifacts repos create <NAME> --namespace <NAMESPACE>
 ```
 
 ```
-pnpm wrangler artifacts repos create <NAME>
+pnpm wrangler artifacts repos create <NAME> --namespace <NAMESPACE>
 ```
 
 - `<NAME>` `string` required
@@ -177,15 +180,15 @@ List Artifacts repositories in a namespace
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos list
+npx wrangler artifacts repos list --namespace <NAMESPACE>
 ```
 
 ```
-yarn wrangler artifacts repos list
+yarn wrangler artifacts repos list --namespace <NAMESPACE>
 ```
 
 ```
-pnpm wrangler artifacts repos list
+pnpm wrangler artifacts repos list --namespace <NAMESPACE>
 ```
 
 - `--namespace` `string` required
@@ -228,15 +231,15 @@ Get an Artifacts repository
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos get <NAME>
+npx wrangler artifacts repos get <NAME> --namespace <NAMESPACE>
 ```
 
 ```
-yarn wrangler artifacts repos get <NAME>
+yarn wrangler artifacts repos get <NAME> --namespace <NAMESPACE>
 ```
 
 ```
-pnpm wrangler artifacts repos get <NAME>
+pnpm wrangler artifacts repos get <NAME> --namespace <NAMESPACE>
 ```
 
 - `<NAME>` `string` required
@@ -282,15 +285,15 @@ Delete an Artifacts repository
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos delete <NAME>
+npx wrangler artifacts repos delete <NAME> --namespace <NAMESPACE>
 ```
 
 ```
-yarn wrangler artifacts repos delete <NAME>
+yarn wrangler artifacts repos delete <NAME> --namespace <NAMESPACE>
 ```
 
 ```
-pnpm wrangler artifacts repos delete <NAME>
+pnpm wrangler artifacts repos delete <NAME> --namespace <NAMESPACE>
 ```
 
 - `<NAME>` `string` required
@@ -339,15 +342,15 @@ Issue a repo-scoped Artifacts token
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos issue-token <REPO>
+npx wrangler artifacts repos issue-token <REPO> --namespace <NAMESPACE>
 ```
 
 ```
-yarn wrangler artifacts repos issue-token <REPO>
+yarn wrangler artifacts repos issue-token <REPO> --namespace <NAMESPACE>
 ```
 
 ```
-pnpm wrangler artifacts repos issue-token <REPO>
+pnpm wrangler artifacts repos issue-token <REPO> --namespace <NAMESPACE>
 ```
 
 - `<REPO>` `string` required

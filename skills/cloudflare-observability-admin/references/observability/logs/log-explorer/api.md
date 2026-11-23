@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query and configure Log Explorer via the API.
 title: Log Explorer API
 image: https://developers.cloudflare.com/observability/logs/log-explorer/api/og.png?v=8c4c19f1b2404d62

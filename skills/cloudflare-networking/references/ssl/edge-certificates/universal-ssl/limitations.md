@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the limitations of Universal certificates, such as hostname coverage, certificate authority  choice, and compatibility with other products.
 title: Limitations
 image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/og.png?v=0e573c1fef41f364

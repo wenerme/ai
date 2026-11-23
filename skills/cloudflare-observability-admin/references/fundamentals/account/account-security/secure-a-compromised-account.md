@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: If you observe suspicious activity within your Cloudflare account, secure your account with these steps.
 title: Secure compromised account
 image: https://developers.cloudflare.com/fundamentals/account/account-security/secure-a-compromised-account/og.png?v=7acd703147ab66b0

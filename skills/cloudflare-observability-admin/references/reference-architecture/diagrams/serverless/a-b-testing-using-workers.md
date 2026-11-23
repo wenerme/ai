@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.
 title: A/B-testing using Workers
 image: https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/og.png?v=e8bce6c27f7b792e

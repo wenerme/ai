@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.
 title: Profiling Memory
 image: https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/og.png?v=b76ebddb61701c5a

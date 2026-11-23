@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route API requests to different back-end services using API Shield Routing.
 title: API Routing
 image: https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/og.png?v=2b93b8249ae8d0f5

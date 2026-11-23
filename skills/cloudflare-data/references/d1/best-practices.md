@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Recommended patterns and techniques for building with D1 databases.
 title: Best practices
 image: https://developers.cloudflare.com/d1/best-practices/og.png?v=90f85fb98fe1fe73

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build stateful serverless applications with Durable Objects, including AI agents, real-time chat, and collaborative apps.
 title: Cloudflare Durable Objects
 image: https://developers.cloudflare.com/durable-objects/og.png?v=42dcc327de648b4d

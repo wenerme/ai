@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Browser Run to render JavaScript-heavy pages and return crawler-ready HTML from a Worker.
 title: Pre-render pages for crawlers
 image: https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/og.png?v=2db9d4ab2fe1dd31
@@ -44,7 +47,7 @@ Add a Browser Run binding to your Wrangler configuration:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "browser": {
     "binding": "BROWSER"
   }
@@ -56,7 +59,7 @@ name = "my-prerender-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [browser]
 binding = "BROWSER"

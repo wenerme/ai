@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Accept hibernating WebSocket connections on a Durable Object, serve methods to useAgent clients, and tag, broadcast to, and restrict connections with the WebSockets capability.
 title: WebSockets
 image: https://developers.cloudflare.com/agents/runtime/capabilities/websockets/og.png?v=b59d4260b0dd4fe9

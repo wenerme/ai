@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.
 title: Cloudflare Radar
 image: https://developers.cloudflare.com/radar/og.png?v=a6f37f928412b4e3

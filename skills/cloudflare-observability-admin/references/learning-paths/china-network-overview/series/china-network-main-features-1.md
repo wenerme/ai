@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Speed up web traffic inside mainland China.
 title: How to speed up your web traffic inside mainland China
 image: https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-network-main-features-1/og.png?v=1292c44c63ea6c09

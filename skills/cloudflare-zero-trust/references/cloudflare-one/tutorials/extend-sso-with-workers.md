@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial will walk you through extending the single-sign-on (SSO) capabilities of Cloudflare Access with our serverless computing platform, Cloudflare Workers.
 title: Send SSO attributes to Access-protected origins with Workers
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/og.png?v=311ab6fe42dab3d9

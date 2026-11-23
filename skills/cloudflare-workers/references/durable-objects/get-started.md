@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and deploy your first Durable Object with SQLite storage and a companion Worker.
 title: Getting started
 image: https://developers.cloudflare.com/durable-objects/get-started/og.png?v=aba317241260533b

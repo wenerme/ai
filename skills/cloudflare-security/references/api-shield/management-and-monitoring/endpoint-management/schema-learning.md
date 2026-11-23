@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn Schema Profiles from qualifying operation traffic.
 title: Learn request schemas
 image: https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/og.png?v=d7101eeb6d9bbce0

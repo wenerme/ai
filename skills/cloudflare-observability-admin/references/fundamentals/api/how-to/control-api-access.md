@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict Cloudflare API access at the account or member level using Enterprise account controls.
 title: Control API Access
 image: https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/og.png?v=b23fece225210429

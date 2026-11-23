@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How route filtering and RPKI protect against route hijacking.
 title: Route filtering and RPKI
 image: https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/og.png?v=b413c76cacd35f5f

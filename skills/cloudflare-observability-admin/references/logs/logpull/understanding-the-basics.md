@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn Logpull API access patterns and data retention.
 title: Understanding the basics
 image: https://developers.cloudflare.com/logs/logpull/understanding-the-basics/og.png?v=fdb737651718ba55

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create, edit, and delete firewall rules.
 title: Create, edit, and delete rules
 image: https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/og.png?v=13c052f8960367e7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the deprecated classic Schema validation feature in API Shield.
 title: Classic Schema validation (deprecated)
 image: https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/og.png?v=eafc4d0ec6990979

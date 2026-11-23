@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route requests to a different origin, prepend a directory to the URL path, and remove specific segments.
 title: Change origin and modify paths
 image: https://developers.cloudflare.com/rules/snippets/examples/route-and-rewrite/og.png?v=3bf17cb4a16992d4

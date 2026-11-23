@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create rate limiting rulesets at the account level for multiple Enterprise zones.
 title: Rate limiting rulesets
 image: https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/og.png?v=90f8f9f013a20834

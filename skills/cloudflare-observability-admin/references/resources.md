@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore our resources to learn more about Cloudflare products and services
 title: Resources
 image: https://developers.cloudflare.com/og-docs.png
@@ -12,7 +15,7 @@ Design guideLearning pathReference architectureReference architecture diagramSol
 
 Products
 
-1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBasin CatalogBasin PipelinesBasin SQLBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPulumiQueuesR2Rate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
+1.1.1.1AccessAgentsAI Crawl ControlAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBasin CatalogBasin PipelinesBasin SQLBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPulumiQueuesR2Rate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
 
 [**Conditionally enforce Turnstile** Learn two ways to show Turnstile only for certain requests using a Transform Rule or HTMLRewriter.](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/)
 
@@ -543,6 +546,8 @@ Products
 [**Discover and secure your API endpoints (Free, Pro, and Business)** Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/)
 
 [**Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)** Configure SSL/TLS encryption from edge to origin, redirect HTTP to HTTPS, and harden your HTTPS setup with HSTS and minimum TLS versions.](https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/)
+
+[**Get your storefront ready for AI shopping agents** Find out which AI agents shop your store, let the right ones in, publish product facts agents can read, and test a full purchase with an agent.](https://developers.cloudflare.com/use-cases/solutions/prepare-storefront-for-ai-agents/)
 
 [**Protect your forms from spam and abuse (Free, Pro, and Business)** Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/)
 

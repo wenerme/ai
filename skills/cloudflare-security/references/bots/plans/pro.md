@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bot protection features included in the Cloudflare Pro plan.
 title: Pro
 image: https://developers.cloudflare.com/bots/plans/pro/og.png?v=53d424420e6ac8fb

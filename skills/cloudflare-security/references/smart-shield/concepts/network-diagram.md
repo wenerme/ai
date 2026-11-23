@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Visual overview of Smart Shield features and their role in origin protection.
 title: Network diagram
 image: https://developers.cloudflare.com/smart-shield/concepts/network-diagram/og.png?v=f94b2984ede06d82

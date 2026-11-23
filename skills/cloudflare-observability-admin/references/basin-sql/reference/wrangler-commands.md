@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for querying data with Basin SQL.
 title: Wrangler commands
 image: https://developers.cloudflare.com/basin-sql/reference/wrangler-commands/og.png?v=04f1cc0e595fd0ce

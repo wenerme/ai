@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Look up DNS records directly inside Google Sheets using Cloudflare's 1.1.1.1 DNS resolver and a custom Google Apps Script function.
 title: DNS in Google Sheets
 image: https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/og.png?v=5b7768ba01799aa5

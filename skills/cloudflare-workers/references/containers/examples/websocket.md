@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Forwarding a Websocket request to a Container
 title: WebSocket to container
 image: https://developers.cloudflare.com/containers/examples/websocket/og.png?v=36e3c2a1b57f3066
@@ -25,7 +28,7 @@ Forward WebSocket upgrade requests through a Durable Object to a Container. This
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "observability": {
     "enabled": true
   },
@@ -62,7 +65,7 @@ name = "websocket-container"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [observability]
 enabled = true

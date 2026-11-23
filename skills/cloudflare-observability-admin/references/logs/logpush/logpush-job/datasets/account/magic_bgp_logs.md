@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The descriptions below detail the fields available for magic_bgp_logs.
 title: Magic BGP Logs
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic_bgp_logs/og.png?v=a6e2ee5b4d3333fa

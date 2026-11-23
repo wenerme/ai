@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Load balance Cloudflare One Client traffic to private origins via Tunnel.
 title: Set up Private Network Load Balancing with Client-to-Tunnel
 image: https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/og.png?v=7b107ba788165184

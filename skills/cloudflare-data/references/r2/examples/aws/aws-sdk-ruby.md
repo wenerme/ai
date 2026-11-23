@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the AWS SDK for Ruby to work with Cloudflare R2 object storage.
 title: aws-sdk-ruby
 image: https://developers.cloudflare.com/r2/examples/aws/aws-sdk-ruby/og.png?v=fc124408e83e0453

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Load third-party tools in the cloud for speed, privacy, and security.
 title: Cloudflare Zaraz
 image: https://developers.cloudflare.com/zaraz/og.png?v=7c3fc7bbb49ac09c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure SSL/TLS encryption options for domains.
 title: SSL / TLS
 image: https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ssl/og.png?v=40d282688b6370ee

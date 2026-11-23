@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Private network applications (legacy) in Access.
 title: Private network applications (legacy)
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/og.png?v=f2242eeb5c5c5981

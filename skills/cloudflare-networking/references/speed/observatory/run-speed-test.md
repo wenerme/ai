@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to use Cloudflare's Observatory to assess the performance of your website.
 title: Run test
 image: https://developers.cloudflare.com/speed/observatory/run-speed-test/og.png?v=1c51ecfd02d42046

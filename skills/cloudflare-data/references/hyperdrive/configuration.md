@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Hyperdrive connections, credentials, caching, and networking for your databases.
 title: Configuration
 image: https://developers.cloudflare.com/hyperdrive/configuration/og.png?v=3a2dbabeee7b6047

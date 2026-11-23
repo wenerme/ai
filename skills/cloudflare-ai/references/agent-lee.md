@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.
 title: Agent Lee
 image: https://developers.cloudflare.com/agent-lee/og.png?v=e0b0bf7f4daf92bd

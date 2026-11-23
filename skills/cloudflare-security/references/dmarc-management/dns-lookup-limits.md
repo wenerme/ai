@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review number of DNS lookups on your SPF records
 title: DNS lookup limit
 image: https://developers.cloudflare.com/dmarc-management/dns-lookup-limits/og.png?v=b1f774077ac21adc

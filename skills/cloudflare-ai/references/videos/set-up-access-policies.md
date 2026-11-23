@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to set up access policies using Cloudflare Access to verify the identity of every user.
 title: Set up Cloudflare Access policies for your tunnel
 image: https://developers.cloudflare.com/og-docs.png

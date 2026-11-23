@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve conflicts with existing NS records.
 title: NS records already exist
 image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/existing-ns-record/og.png?v=c884db1c94aee9b5

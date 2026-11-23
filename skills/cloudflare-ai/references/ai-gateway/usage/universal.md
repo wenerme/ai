@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.
 title: Universal Endpoint (Deprecated)
 image: https://developers.cloudflare.com/ai-gateway/usage/universal/og.png?v=75ddb4ecf424b803

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Additional WAF security tools including IP rules, lists, and Scrape Shield.
 title: Additional tools
 image: https://developers.cloudflare.com/waf/tools/og.png?v=eae13500a17bb4d2

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure two-factor authentication for account security.
 title: Set-up 2FA
 image: https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/og.png?v=1614100606f58e40

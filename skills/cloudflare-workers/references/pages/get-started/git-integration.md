@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect your Git provider to Pages.
 title: Git integration
 image: https://developers.cloudflare.com/pages/get-started/git-integration/og.png?v=3810f30cf057aa14

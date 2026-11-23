@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Google Workspace to Cloudflare One with SAML authentication and SCIM user provisioning.
 title: Google Workspace (SAML/SCIM)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace-saml/og.png?v=12ef42e0d93df431

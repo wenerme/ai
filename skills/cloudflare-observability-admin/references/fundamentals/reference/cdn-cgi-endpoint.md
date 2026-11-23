@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.
 title: /cdn-cgi/ endpoint
 image: https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/og.png?v=6580e7700cc99bf3

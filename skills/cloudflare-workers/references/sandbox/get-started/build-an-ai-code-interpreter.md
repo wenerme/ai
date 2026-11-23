@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Let a Workers AI model write JavaScript and run it in a Dynamic Worker sandbox.
 title: Build an AI code interpreter
 image: https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/og.png?v=7b150c445b3ba3bc
@@ -101,7 +104,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-code-interpreter",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"observability": {
    		"enabled": true,
    	},
@@ -122,7 +125,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-code-interpreter"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    upload_source_maps = true
 
    [observability]
@@ -161,7 +164,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env, code) {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-11-18",
+		compatibilityDate: "2026-11-23",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -222,7 +225,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env: Env, code: string): Promise<Output> {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-11-18",
+		compatibilityDate: "2026-11-23",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `

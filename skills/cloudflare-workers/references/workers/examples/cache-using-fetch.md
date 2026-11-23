@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.
 title: Cache using fetch
 image: https://developers.cloudflare.com/workers/examples/cache-using-fetch/og.png?v=7d6169fe1dc8b2ed

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trigger and manage Workflows from Python Workers using FFI bindings to Cloudflare resources.
 title: Interact with a Workflow
 image: https://developers.cloudflare.com/workflows/python/bindings/og.png?v=6cff989783879f23
@@ -28,7 +31,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 	"name": "workflows-starter",
 	"main": "src/index.py",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["python_workflows", "python_workers"],
 	"workflows": [
 		{
@@ -48,7 +51,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 name = "workflows-starter"
 main = "src/index.py"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "python_workflows", "python_workers" ]
 
 [[workflows]]

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to enable interactive recording with RealtimeKit's capabilities. Follow our guide for effective configuration and management.
 title: Interactive Recordings with Timed Metadata
 image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/og.png?v=f73aef7c211250b6

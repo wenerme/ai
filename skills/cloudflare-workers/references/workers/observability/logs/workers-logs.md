@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store, filter, and analyze log data emitted from Cloudflare Workers.
 title: Workers Logs
 image: https://developers.cloudflare.com/workers/observability/logs/workers-logs/og.png?v=e1cc88de13f81f13

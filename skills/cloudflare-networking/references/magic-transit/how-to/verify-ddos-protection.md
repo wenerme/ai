@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Confirm Magic Transit DDoS protection layers are active and configured.
 title: Verify DDoS protection
 image: https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/og.png?v=107829bae11fe90b

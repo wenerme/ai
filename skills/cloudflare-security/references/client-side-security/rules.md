@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use content security rules to define the resources (scripts) allowed on your applications.
 title: Content security rules
 image: https://developers.cloudflare.com/client-side-security/rules/og.png?v=fcf7f34d8d658d79

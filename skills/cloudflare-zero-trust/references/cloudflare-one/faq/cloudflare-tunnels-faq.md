@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review frequently asked questions about tunnels in Cloudflare Zero Trust.
 title: Tunnels FAQ
 image: https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/og.png?v=3fe49a31feec9a5b

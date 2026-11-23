@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Workers VPC to fetch data from a private REST API behind Cloudflare Tunnel.
 title: Access a private API or website
 image: https://developers.cloudflare.com/workers-vpc/examples/private-api/og.png?v=ba3288e5c7e0e7a4
@@ -66,7 +69,7 @@ Update your Wrangler configuration file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"vpc_services": [
 		{
 			"binding": "INTERNAL_API",
@@ -83,7 +86,7 @@ name = "private-api-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[vpc_services]]
 binding = "INTERNAL_API"

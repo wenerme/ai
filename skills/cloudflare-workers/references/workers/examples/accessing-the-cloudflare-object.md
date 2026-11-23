@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access custom Cloudflare properties and control how Cloudflare features are applied to every request.
 title: Accessing the Cloudflare Object
 image: https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/og.png?v=dac3928a0cc946ff

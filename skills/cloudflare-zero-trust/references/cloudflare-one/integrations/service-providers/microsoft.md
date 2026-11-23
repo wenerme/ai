@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Microsoft Endpoint Manager in Zero Trust integrations.
 title: Microsoft Endpoint Manager
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/microsoft/og.png?v=a897d2f489d31193

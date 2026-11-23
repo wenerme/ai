@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Information about Cloudflare One Appliance's default password.
 title: Default password
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/default-password/og.png?v=8f8bf3fd9f93595b

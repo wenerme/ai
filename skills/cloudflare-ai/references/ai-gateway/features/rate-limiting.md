@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.
 title: Rate limiting
 image: https://developers.cloudflare.com/ai-gateway/features/rate-limiting/og.png?v=5f4fcbdbf15a0170

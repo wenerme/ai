@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: AWS IAM (SAML) in Zero Trust integrations.
 title: AWS IAM (SAML)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/aws-saml/og.png?v=a3c09db246250dd1

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Page Rules let you override zone settings for specific URL patterns. Redirects old URLs with a 301 permanent redirect.
 title: 5 – Add exceptions with Page Rules
 image: https://developers.cloudflare.com/terraform/tutorial/add-page-rules/og.png?v=999dfb6ea7145eae

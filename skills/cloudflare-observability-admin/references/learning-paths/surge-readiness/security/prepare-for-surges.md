@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reduce server strain during traffic surges.
 title: Prepare for surges and mitigate DDoS attacks
 image: https://developers.cloudflare.com/learning-paths/surge-readiness/security/prepare-for-surges/og.png?v=74acaf422ce82363

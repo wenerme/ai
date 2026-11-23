@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Display source citations alongside AI-generated answers.
 title: Show source citations in responses
 image: https://developers.cloudflare.com/ai-search/how-to/chunk-citations/og.png?v=9c6da9684828a4cb
@@ -74,7 +77,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -89,7 +92,7 @@ name = "ai-search-citations"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"

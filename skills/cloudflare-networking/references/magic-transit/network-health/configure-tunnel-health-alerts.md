@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up and configure tunnel health alerts
 title: Configure tunnel health alerts
 image: https://developers.cloudflare.com/magic-transit/network-health/configure-tunnel-health-alerts/og.png?v=15a867c020d25daa

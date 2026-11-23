@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare's Multi-Factor Email Authentication prevents unauthorized access by sending one-time codes to your email.
 title: Multi-Factor Email Authentication
 image: https://developers.cloudflare.com/fundamentals/user-profiles/multi-factor-email-authentication/og.png?v=5283018420be447c

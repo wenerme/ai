@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Extended DNS error codes returned by 1.1.1.1.
 title: Extended DNS error codes
 image: https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/og.png?v=d5ce2dfff20c2497

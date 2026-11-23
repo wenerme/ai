@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Examples of the impact of different URL normalization settings in the URLs of incoming requests.
 title: URL normalization examples
 image: https://developers.cloudflare.com/rules/normalization/examples/og.png?v=f3179b19dc20a4c7

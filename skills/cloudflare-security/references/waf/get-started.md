@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up the Cloudflare WAF to protect your applications from attacks.
 title: Get started
 image: https://developers.cloudflare.com/waf/get-started/og.png?v=c1fc951010425434

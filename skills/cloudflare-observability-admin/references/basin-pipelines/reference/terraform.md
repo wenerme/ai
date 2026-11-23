@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Basin Pipelines and Basin Catalog with Terraform using the Cloudflare provider.
 title: Terraform
 image: https://developers.cloudflare.com/basin-pipelines/reference/terraform/og.png?v=0fa71271ab3b77ff

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send Workers Trace Event Logs to a supported third party, such as a storage or logging provider.
 title: Workers Logpush
 image: https://developers.cloudflare.com/workers/observability/logs/logpush/og.png?v=1cdbbdc32684b17a
@@ -86,7 +89,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-22",
+	"compatibility_date": "2026-11-23",
 	"workers_dev": false,
 	"logpush": true,
 	"route": {
@@ -102,7 +105,7 @@ name = "my-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-22"
+compatibility_date = "2026-11-23"
 workers_dev = false
 logpush = true
 

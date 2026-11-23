@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Snippets execute JavaScript at the edge for matching requests.
 title: How Snippets work
 image: https://developers.cloudflare.com/rules/snippets/how-it-works/og.png?v=f018bf2c62451e77

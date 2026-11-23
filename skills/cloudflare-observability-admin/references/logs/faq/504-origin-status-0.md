@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Why internal subrequests appear as 504 with origin status 0 in Logpush.
 title: 504 responses with origin status 0 in Logpush
 image: https://developers.cloudflare.com/logs/faq/504-origin-status-0/og.png?v=896a514c1201d2e9

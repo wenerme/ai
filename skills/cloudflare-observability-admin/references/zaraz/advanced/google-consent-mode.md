@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate Google Consent Mode with Zaraz consent management.
 title: Google Consent Mode
 image: https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/og.png?v=d9aa64ce229284ee

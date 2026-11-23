@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: KV bindings connect a Cloudflare Worker to a KV namespace for reading and writing data.
 title: KV bindings
 image: https://developers.cloudflare.com/kv/concepts/kv-bindings/og.png?v=3bf30562d4405876

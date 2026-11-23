@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: End a RealtimeKit session for all participants and stop active recordings.
 title: End a session
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/end-a-session/og.png?v=893bca79b6b5d26c

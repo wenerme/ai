@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Delegate IP prefixes to other Cloudflare accounts.
 title: Prefix delegations
 image: https://developers.cloudflare.com/byoip/concepts/prefix-delegations/og.png?v=81e3d6b8d95daaa8

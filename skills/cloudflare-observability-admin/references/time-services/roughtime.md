@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Authenticated time synchronization with Roughtime protocol.
 title: Roughtime
 image: https://developers.cloudflare.com/time-services/roughtime/og.png?v=ce09ce25e23de820

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.
 title: Testing your Agents
 image: https://developers.cloudflare.com/agents/getting-started/testing-your-agent/og.png?v=22c31dc1c24ff508

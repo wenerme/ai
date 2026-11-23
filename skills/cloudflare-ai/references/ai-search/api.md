@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Interact with AI Search programmatically using Workers bindings, the REST API, or MCP.
 title: API
 image: https://developers.cloudflare.com/ai-search/api/og.png?v=5c4015c1c473b5b9

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the scalar functions supported in Basin SQL, organized by category.
 title: Scalar functions
 image: https://developers.cloudflare.com/basin-sql/sql-reference/scalar-functions/og.png?v=943b375a0e807737

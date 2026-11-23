@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Client-side JavaScript challenges that run on every request to identify automated traffic.
 title: JavaScript Detections
 image: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/og.png?v=be19eed936053d4e

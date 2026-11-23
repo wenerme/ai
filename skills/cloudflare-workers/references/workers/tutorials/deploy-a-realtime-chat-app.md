@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial shows how to deploy a serverless, real-time chat application. The chat application uses a Durable Object to control each chat room.
 title: Deploy a real-time chat application
 image: https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/og.png?v=3d73c2fd070551d7

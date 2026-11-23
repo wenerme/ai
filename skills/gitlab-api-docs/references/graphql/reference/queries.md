@@ -1059,7 +1059,7 @@ List the workflows owned by the current user. This field is a [connection](objec
 | `mergeRequestIid` | [`String`](scalars.md#string) | IID of a merge request to filter flows by. Requires `projectId` or `projectPath` outside a project. |  |
 | `projectId` | [`ProjectID`](scalars.md#projectid) | Global ID of the project that contains the flows. |  |
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project that contains the flows. |  |
-| `search` | [`String`](scalars.md#string) | Flow title or goal to search for. When the `duo_workflow_project_search_guard` feature flag is enabled, words shorter than 3 characters are ignored and at most 10 words are matched. If every word is shorter than 3 characters, the whole term must match the title or goal exactly. Searches also only match sessions created in the last 30 days, unless the search is only session IDs. When disabled, every word is matched against all sessions. |  |
+| `search` | [`String`](scalars.md#string) | Flow title or goal to search for. Words shorter than 3 characters are ignored and at most 10 words are matched. If every word is shorter than 3 characters, the whole term must match the title or goal exactly. Searches also only match sessions created in the last 30 days, unless the search is only session IDs. |  |
 | `sort` | [`DuoWorkflowsWorkflowSort`](enums.md#duoworkflowsworkflowsort) | Sort flows by the criteria. | `created_desc` |
 | `statusGroup` | [`DuoWorkflowStatusGroup`](enums.md#duoworkflowstatusgroup) | Status group to filter flow sessions by. |  |
 | `statuses` | [`[DuoWorkflowStatus!]`](enums.md#duoworkflowstatus) | Exact statuses to filter flow sessions by. Cannot be combined with statusGroup. |  |

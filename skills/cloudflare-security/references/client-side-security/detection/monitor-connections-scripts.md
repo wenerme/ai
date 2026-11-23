@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View and filter scripts, connections, and cookies detected on your domain.
 title: Monitor resources and cookies
 image: https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/og.png?v=cd386eb10acfc0a1

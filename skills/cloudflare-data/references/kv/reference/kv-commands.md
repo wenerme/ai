@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage Workers KV namespaces, keys, and bulk operations using Wrangler CLI commands.
 title: Wrangler KV commands
 image: https://developers.cloudflare.com/kv/reference/kv-commands/og.png?v=e0da05e24254e44b
@@ -209,15 +212,15 @@ Rename a KV namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv namespace rename [OLD-NAME]
+npx wrangler kv namespace rename [OLD-NAME] --new-name <NEW-NAME>
 ```
 
 ```
-yarn wrangler kv namespace rename [OLD-NAME]
+yarn wrangler kv namespace rename [OLD-NAME] --new-name <NEW-NAME>
 ```
 
 ```
-pnpm wrangler kv namespace rename [OLD-NAME]
+pnpm wrangler kv namespace rename [OLD-NAME] --new-name <NEW-NAME>
 ```
 
 - `[OLD-NAME]` `string` The current name of the namespace to rename

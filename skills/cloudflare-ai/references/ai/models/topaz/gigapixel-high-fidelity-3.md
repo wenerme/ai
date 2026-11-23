@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Topaz Labs Gigapixel High Fidelity 3 is a precision image upscaler tuned for high-resolution sources and professional photography, preserving fine texture and detail with minimal alteration. It adds recovery-strength and opacity controls over High Fidelity 2.
 title: Gigapixel High Fidelity 3
 image: https://developers.cloudflare.com/og-docs.png

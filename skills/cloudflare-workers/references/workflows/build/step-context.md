@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access runtime information in Workflows steps using the WorkflowStepContext object, including step name and retry attempt.
 title: Step context
 image: https://developers.cloudflare.com/workflows/build/step-context/og.png?v=8864fcf3d40e0d2f

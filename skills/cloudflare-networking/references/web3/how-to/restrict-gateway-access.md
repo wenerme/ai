@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict access to your Web3 gateway with WAF custom rules.
 title: Restrict gateway access
 image: https://developers.cloudflare.com/web3/how-to/restrict-gateway-access/og.png?v=5ca0e1e6b831371c

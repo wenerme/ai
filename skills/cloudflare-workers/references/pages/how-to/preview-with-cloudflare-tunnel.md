@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare Tunnel to share locally running Pages projects over a public URL.
 title: Preview Local Projects with Cloudflare Tunnel
 image: https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/og.png?v=b38e5d0472176c08

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add, edit, and manage Cloudflare account members.
 title: Add and manage other members
 image: https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/og.png?v=00f2c1479706414a

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "When APO is working, three headers are present:  CF-Cache-Status, cf-apo-via,cf-edge-cache. APO works correctly when the headers exactly match the headers below."
 title: Verify APO works
 image: https://developers.cloudflare.com/automatic-platform-optimization/get-started/verify-apo-works/og.png?v=31bd6f57ab641a49

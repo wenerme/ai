@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: IP list types available for Network Firewall policies.
 title: List types
 image: https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/og.png?v=5cc79898337a681f

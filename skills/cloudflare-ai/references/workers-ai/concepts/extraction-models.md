@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how extraction models extract, compute, estimate, and forecast typed values, and how to interpret their results.
 title: Extraction models
 image: https://developers.cloudflare.com/workers-ai/concepts/extraction-models/og.png?v=ab83122be737302a

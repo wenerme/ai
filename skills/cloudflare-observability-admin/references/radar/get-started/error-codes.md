@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference table of Cloudflare Radar API error codes and their corresponding HTTP status codes.
 title: Radar API error codes
 image: https://developers.cloudflare.com/radar/get-started/error-codes/og.png?v=1d1e4fb786d412d7

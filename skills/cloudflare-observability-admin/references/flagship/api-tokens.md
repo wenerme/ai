@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create account-wide or app-scoped API tokens for Flagship. App-scoped tokens can access only the Flagship apps you select.
 title: API tokens
 image: https://developers.cloudflare.com/flagship/api-tokens/og.png?v=ac6d8e2d9f9399d8

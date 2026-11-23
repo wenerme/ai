@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pause message delivery or purge all messages from a Cloudflare Queue.
 title: Pause and Purge
 image: https://developers.cloudflare.com/queues/configuration/pause-purge/og.png?v=e84732012ea6589f

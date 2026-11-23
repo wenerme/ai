@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare retries failed payments using additional payment methods on file.
 title: Additional payment method auto-retry
 image: https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/og.png?v=c9ae5f497e628ca3

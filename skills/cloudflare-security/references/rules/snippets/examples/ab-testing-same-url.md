@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up an A/B test by controlling what response is served based on cookies.
 title: A/B testing with same-URL direct access
 image: https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/og.png?v=52e357d84acb1e79

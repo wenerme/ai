@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: DNS over HTTPS (DoH) in Zero Trust networking.
 title: DNS over HTTPS (DoH)
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/og.png?v=d8562a17c66bcd58

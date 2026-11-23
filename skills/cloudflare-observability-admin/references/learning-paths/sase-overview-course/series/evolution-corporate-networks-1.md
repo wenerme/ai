@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore how corporate networks have evolved.
 title: The evolution of corporate networks
 image: https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/og.png?v=357c35fdd599151b

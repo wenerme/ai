@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: DDoS attack types covered by Cloudflare managed rulesets at layers 3, 4, and 7.
 title: Attack coverage
 image: https://developers.cloudflare.com/ddos-protection/about/attack-coverage/og.png?v=8fa610a3763d0bcc

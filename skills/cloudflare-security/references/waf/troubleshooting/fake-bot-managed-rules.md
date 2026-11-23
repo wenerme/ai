@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: WAF managed rules that detect fake bots may block legitimate services that share infrastructure with known bots.
 title: Fake bot detection blocking legitimate requests
 image: https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/og.png?v=5600d0db40842e73

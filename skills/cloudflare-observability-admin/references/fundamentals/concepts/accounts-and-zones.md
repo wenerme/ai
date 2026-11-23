@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.
 title: Accounts, zones, and profiles
 image: https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/og.png?v=3d896acc11c7630f

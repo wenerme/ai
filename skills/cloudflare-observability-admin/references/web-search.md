@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Ground AI agents and applications with real-time web search results from Ceramic.ai, Exa, and Linkup through AI Gateway.
 title: Cloudflare Web Search API
 image: https://developers.cloudflare.com/web-search/og.png?v=698c83104f2059c1

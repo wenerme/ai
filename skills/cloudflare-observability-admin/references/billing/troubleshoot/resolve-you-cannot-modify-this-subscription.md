@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fix errors when modifying a canceled subscription.
 title: Resolve "you cannot modify this subscription"
 image: https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/og.png?v=fb077fb25567a217

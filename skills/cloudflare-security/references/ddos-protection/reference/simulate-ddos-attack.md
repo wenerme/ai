@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Guidelines for simulating DDoS attacks to test protection, reporting, and alerting.
 title: Simulating test DDoS attacks
 image: https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/og.png?v=ecedbb37435654ed

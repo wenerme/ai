@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Who can view and manage billing on your Cloudflare account.
 title: Billing permissions
 image: https://developers.cloudflare.com/billing/understand/billing-permissions/og.png?v=ca9e28d9126be91e

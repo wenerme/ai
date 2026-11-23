@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Submit domain miscategorization reports using the Cloudflare API.
 title: Manage miscategorization reports
 image: https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/og.png?v=839d9394de6fa10e

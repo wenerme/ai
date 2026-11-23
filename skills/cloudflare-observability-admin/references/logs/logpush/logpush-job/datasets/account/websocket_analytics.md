@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The descriptions below detail the fields available for websocket_analytics.
 title: WebSocket Analytics
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/websocket_analytics/og.png?v=03f2626e7f9a69c9

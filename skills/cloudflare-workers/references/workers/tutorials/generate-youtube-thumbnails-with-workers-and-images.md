@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers. You may want to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 title: Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 image: https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/og.png?v=de5ab2985a819cd9

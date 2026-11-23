@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up reverse DNS zones and PTR records.
 title: Reverse zones and PTR records
 image: https://developers.cloudflare.com/dns/additional-options/reverse-zones/og.png?v=78527b91083833d7

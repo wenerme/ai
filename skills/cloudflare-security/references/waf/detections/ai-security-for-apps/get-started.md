@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable AI Security for Apps to scan requests to AI-powered endpoints.
 title: Get started with AI Security for Apps
 image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/og.png?v=1f217acadbe63f59

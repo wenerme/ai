@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "Ad Delayer turns a finished, flat ad image into an editable JSON layer document: a background plate, product and logo cutouts, live text with typography, and vector shapes, with each image layer hosted as its own file. It is designed for flat ads; results for ordinary photographs are not guaranteed. Bria trains it exclusively on licensed data."
 title: Ad Delayer
 image: https://developers.cloudflare.com/og-docs.png

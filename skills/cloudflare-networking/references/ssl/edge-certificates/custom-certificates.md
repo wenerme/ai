@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload and manage your own TLS certificates on Cloudflare.
 title: Custom certificates
 image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/og.png?v=ef57ffd1232d1946

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare Containers and Dynamic Workers for code that needs Linux or only calls methods that your Worker provides.
 title: Choose a sandbox environment
 image: https://developers.cloudflare.com/sandbox/concepts/og.png?v=c938c077dd21d345

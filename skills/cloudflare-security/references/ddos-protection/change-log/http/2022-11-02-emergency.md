@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: HTTP DDoS managed ruleset rule changes for this release.
 title: 2022-11-02 - Emergency
 image: https://developers.cloudflare.com/ddos-protection/change-log/http/2022-11-02-emergency/og.png?v=56c3ed16bb94ed77

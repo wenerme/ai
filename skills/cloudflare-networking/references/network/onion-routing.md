@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve content directly through the Tor network with Onion Routing.
 title: Onion Routing and Tor support
 image: https://developers.cloudflare.com/network/onion-routing/og.png?v=62d71faf0fac63be

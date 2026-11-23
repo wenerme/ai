@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Supported header name and value formats for request header modifications.
 title: Format of HTTP request header names and values
 image: https://developers.cloudflare.com/rules/transform/request-header-modification/reference/header-format/og.png?v=483f9a8a3c2ef47e

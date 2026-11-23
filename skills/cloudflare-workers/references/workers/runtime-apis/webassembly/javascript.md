@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.
 title: Wasm in JavaScript
 image: https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/og.png?v=e80cf430b59d9bb1

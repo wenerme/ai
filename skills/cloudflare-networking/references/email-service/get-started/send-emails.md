@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.
 title: Send emails
 image: https://developers.cloudflare.com/email-service/get-started/send-emails/og.png?v=18bd192866585844

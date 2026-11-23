@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The descriptions below detail the fields available for dns_firewall_logs.
 title: DNS Firewall Logs
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dns_firewall_logs/og.png?v=c1b7c7cdc99991f5

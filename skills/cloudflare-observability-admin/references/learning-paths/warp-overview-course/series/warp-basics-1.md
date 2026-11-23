@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn WARP client modes and configuration.
 title: Understand Cloudflare WARP basics
 image: https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/og.png?v=4b300477025cf1ff

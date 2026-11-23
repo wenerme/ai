@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a Workers project with cf init, develop it locally, and deploy it with the Cloudflare CLI.
 title: Deploy your first Worker
 image: https://developers.cloudflare.com/cf/get-started/first-worker/og.png?v=77bcce5f2775c97f

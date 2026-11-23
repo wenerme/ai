@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add an IP prefix to Advanced DDoS Protection for monitoring and mitigation.
 title: Add a prefix
 image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix/og.png?v=1def90251de3f213

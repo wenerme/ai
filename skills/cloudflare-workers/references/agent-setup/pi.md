@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Minimal, extensible agent harness that you can make your own. Made by Earendil.
 title: Pi + Cloudflare
 image: https://developers.cloudflare.com/agent-setup/pi/og.png?v=3206b9bcc264176d

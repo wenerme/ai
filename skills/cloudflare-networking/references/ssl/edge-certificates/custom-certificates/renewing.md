@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how renewal and expiration work when using Cloudflare Custom SSL certificates.
 title: Renewal and expiration
 image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/og.png?v=7c07ead0aff11db4

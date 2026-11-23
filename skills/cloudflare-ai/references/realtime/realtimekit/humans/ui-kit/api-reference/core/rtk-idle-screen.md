@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for rtk-idle-screen component (Web Components (HTML) Library)
 title: rtk-idle-screen
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-idle-screen/og.png?v=9ae3eabfabc2faf5

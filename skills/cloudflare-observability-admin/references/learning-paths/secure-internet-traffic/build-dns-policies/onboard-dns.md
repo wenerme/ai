@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure DNS filtering for a network.
 title: Onboard DNS for a network
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/onboard-dns/og.png?v=3c2d4fafeb27f25e

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Record RealtimeKit meetings as composite recordings or separate participant audio tracks.
 title: Recording
 image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/og.png?v=8f2d64dfb9724862

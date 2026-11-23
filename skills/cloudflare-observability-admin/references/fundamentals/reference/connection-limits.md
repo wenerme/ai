@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.
 title: Connection limits
 image: https://developers.cloudflare.com/fundamentals/reference/connection-limits/og.png?v=1342db86bc378fe9

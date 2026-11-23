@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace the Sandbox class from @cloudflare/sandbox 0.12, or your subclass of it, with a Durable Object class that starts its own container.
 title: Replace the Sandbox class
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/og.png?v=5defa52ddfaf0224

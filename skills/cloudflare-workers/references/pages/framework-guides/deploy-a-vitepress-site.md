@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a VitePress static site to Cloudflare Pages.
 title: VitePress
 image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepress-site/og.png?v=ab5f07b13063d1f9

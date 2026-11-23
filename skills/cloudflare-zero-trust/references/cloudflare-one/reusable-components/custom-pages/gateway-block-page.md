@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block page in Zero Trust.
 title: Block page
 image: https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/og.png?v=23dcd515acfc76b7

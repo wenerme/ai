@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build agents that persist for days, weeks, or months — surviving restarts, waking on demand, and managing work that spans far longer than any single request.
 title: Long-running agents
 image: https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/og.png?v=276b7d8e629b5bd0

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Commonly used Cloudflare Access policies for securing applications.
 title: Common policies
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/og.png?v=db862f7c011c0758

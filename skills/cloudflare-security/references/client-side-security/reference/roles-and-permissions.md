@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: User roles and API token permissions required to access and configure client-side security.
 title: Roles and permissions
 image: https://developers.cloudflare.com/client-side-security/reference/roles-and-permissions/og.png?v=59a610dca693d753

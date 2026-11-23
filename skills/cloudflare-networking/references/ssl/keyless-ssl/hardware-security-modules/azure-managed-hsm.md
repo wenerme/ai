@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial uses Microsoft Azure's Managed HSM to deploy a VM with the Keyless SSL daemon. Follow these instructions to deploy your keyless server.
 title: Azure Managed HSM
 image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-managed-hsm/og.png?v=8299631a51db1c38

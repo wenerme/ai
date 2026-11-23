@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for rtk-information-tooltip component (Web Components (HTML) Library)
 title: rtk-information-tooltip
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-information-tooltip/og.png?v=3b74d39cea9aec23

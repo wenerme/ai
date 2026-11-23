@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View aggregated metrics across all account domains.
 title: Account analytics (beta)
 image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/og.png?v=09c868a48cbc7b05

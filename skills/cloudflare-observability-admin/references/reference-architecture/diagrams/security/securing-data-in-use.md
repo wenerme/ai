@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.
 title: Securing data in use
 image: https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/og.png?v=138ad62c5732b042

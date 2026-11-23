@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.
 title: Cloudflare HTTP headers
 image: https://developers.cloudflare.com/fundamentals/reference/http-headers/og.png?v=a04ff165f044fa3a

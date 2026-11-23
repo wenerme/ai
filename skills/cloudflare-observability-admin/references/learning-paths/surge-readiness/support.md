@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prepare your site for traffic surges.
 title: Support
 image: https://developers.cloudflare.com/learning-paths/surge-readiness/support/og.png?v=4ee01495040702c2

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy an existing static site project to Cloudflare using Workers Sites.
 title: Start from existing
 image: https://developers.cloudflare.com/workers/configuration/sites/start-from-existing/og.png?v=04d6cd6f62df986c

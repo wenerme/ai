@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How gradual deployments work with Durable Objects, including version assignment, migrations, and guarantees.
 title: With Durable Objects
 image: https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/og.png?v=931e3fb5a42121c6

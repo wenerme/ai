@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Customize Network-layer DDoS Attack Protection rule actions and sensitivity levels.
 title: Overrides
 image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/og.png?v=48cd58b0f270c1c8

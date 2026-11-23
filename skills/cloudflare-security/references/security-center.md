@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review security insights, investigate threats, and protect your brand from impersonation.
 title: Cloudflare Security Center
 image: https://developers.cloudflare.com/security-center/og.png?v=e590e55f0a5b9cfd

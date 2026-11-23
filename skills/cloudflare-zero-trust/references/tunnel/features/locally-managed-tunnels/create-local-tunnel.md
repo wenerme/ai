@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and configure a locally-managed Cloudflare Tunnel.
 title: Create a locally-managed tunnel
 image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/create-local-tunnel/og.png?v=bf0f0817a42e8382

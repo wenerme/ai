@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare offers a few public LoRA adapters that are immediately ready for use.
 title: Public LoRA adapters
 image: https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/og.png?v=814cbee783f5a721

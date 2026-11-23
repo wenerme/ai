@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scan GraphQL traffic and block queries that could overload your origin.
 title: GraphQL malicious query protection
 image: https://developers.cloudflare.com/api-shield/security/graphql-protection/og.png?v=28a2d411af4a980b

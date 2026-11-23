@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to send transactional emails from Workers using Postmark.
 title: Send Emails With Postmark
 image: https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/og.png?v=12a7e914a925f115

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Legal information for Cloudflare WAN.
 title: Legal
 image: https://developers.cloudflare.com/cloudflare-wan/legal/og.png?v=418ced3107d2449a

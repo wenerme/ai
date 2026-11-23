@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write custom analytics events to Workers Analytics Engine for high-cardinality, time-series data.
 title: Write to Analytics Engine
 image: https://developers.cloudflare.com/workers/examples/analytics-engine/og.png?v=8fd937142a4547eb

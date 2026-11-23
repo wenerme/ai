@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: xAI's Grok 4.20 reasoning model. Uses extended thinking to work through complex problems, returning a reasoning trace alongside the final answer.
 title: Grok 4.20 Reasoning
 image: https://developers.cloudflare.com/og-docs.png

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers Cache lets you cache Worker responses to reduce latency and Workers usage.
 title: Workers Cache
 image: https://developers.cloudflare.com/workers/cache/og.png?v=3615f4ac12f103bd
@@ -134,7 +137,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "main": "src/index.ts",
  "upload_source_maps": true,
  // Set this to today's date
- "compatibility_date": "2026-11-18",
+ "compatibility_date": "2026-11-23",
  "cache": {
   "enabled": true,
  },
@@ -146,7 +149,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = true
@@ -342,7 +345,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -356,7 +359,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = true

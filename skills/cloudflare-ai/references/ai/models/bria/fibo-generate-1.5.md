@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: FIBO Generate creates images from a text prompt, a reference image, or both. Each result includes the seed and the structured JSON (VGL) prompt used to render it; send them back to recreate the image exactly or to refine it with a new prompt. Outputs are 1MP or 4MP in nine aspect ratios.
 title: FIBO Generate 1.5
 image: https://developers.cloudflare.com/og-docs.png

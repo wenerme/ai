@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Rules and categories in the Cloudflare Managed Ruleset.
 title: Cloudflare Managed Ruleset
 image: https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/og.png?v=696098f08fdf279a

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn more about what it means to authorize a third-party application on Cloudflare
 title: Authorizing an application
 image: https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/og.png?v=ab7b16e734631940

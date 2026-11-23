@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build and deploy serverless applications with Workers.
 title: Concepts
 image: https://developers.cloudflare.com/learning-paths/workers/concepts/og.png?v=7bc7bd59b1702974

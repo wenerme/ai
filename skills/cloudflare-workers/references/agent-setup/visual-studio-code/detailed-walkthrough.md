@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A screenshot-by-screenshot guide to connecting Visual Studio Code to the Cloudflare API through the Cloudflare MCP server, then creating, verifying, and deleting a DNS record with natural language.
 title: Visual Studio Code detailed walkthrough
 image: https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed-walkthrough/og.png?v=9bc737509ef11abe

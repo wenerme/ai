@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Web3 gateway status values and their meanings.
 title: Gateway status
 image: https://developers.cloudflare.com/web3/reference/gateway-status/og.png?v=9ad0a81ab6a43b15

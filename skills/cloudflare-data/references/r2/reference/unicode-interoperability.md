@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: R2 NFC-normalizes object key names by default to ensure cross-platform Unicode consistency.
 title: Unicode interoperability
 image: https://developers.cloudflare.com/r2/reference/unicode-interoperability/og.png?v=24e532505331ff5b

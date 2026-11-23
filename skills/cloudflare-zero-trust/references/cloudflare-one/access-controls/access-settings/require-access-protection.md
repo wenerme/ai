@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Require Access protection in Access.
 title: Require Access protection
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/og.png?v=dd39deb2498007ca

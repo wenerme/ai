@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resource types that support tagging and their required fields.
 title: Supported resource types
 image: https://developers.cloudflare.com/resource-tagging/reference/resource-types/og.png?v=8340f678af15be7e

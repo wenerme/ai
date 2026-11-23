@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route device traffic through Cloudflare Gateway.
 title: Proxy traffic through Gateway
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/enable-proxy/og.png?v=0b812e5e6ea5b5ac

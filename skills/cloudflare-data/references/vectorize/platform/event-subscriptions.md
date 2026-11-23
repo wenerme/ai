@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Subscribe to Vectorize events such as index inserts and deletes using Queues.
 title: Event subscriptions
 image: https://developers.cloudflare.com/vectorize/platform/event-subscriptions/og.png?v=6f1c110edd5434da

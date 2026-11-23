@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a redirect rule to redirect visitors from `/contact-us/` to the page's new path `/contacts/`.
 title: Redirect visitors to a new page URL
 image: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-new-url/og.png?v=dc5be0e05cb23d87

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Wrangler CLI commands to create, manage, and query D1 databases.
 title: Wrangler commands
 image: https://developers.cloudflare.com/d1/wrangler-commands/og.png?v=b088110ac526a410
@@ -296,15 +299,15 @@ Export the contents or schema of your database as a .sql file
 npmyarnpnpm
 
 ```
-npx wrangler d1 export <NAME>
+npx wrangler d1 export <NAME> --output <OUTPUT>
 ```
 
 ```
-yarn wrangler d1 export <NAME>
+yarn wrangler d1 export <NAME> --output <OUTPUT>
 ```
 
 ```
-pnpm wrangler d1 export <NAME>
+pnpm wrangler d1 export <NAME> --output <OUTPUT>
 ```
 
 - `<NAME>` `string` required

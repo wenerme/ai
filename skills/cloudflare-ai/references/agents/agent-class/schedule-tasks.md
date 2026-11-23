@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Schedule delayed, dated, cron, and interval callbacks on an Agent with this.schedule(), and keep an Agent alive during long work.
 title: Schedule tasks
 image: https://developers.cloudflare.com/agents/agent-class/schedule-tasks/og.png?v=dc9be7068b6b2c24

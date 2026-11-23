@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: File and directory permissions required by cloudflared.
 title: Tunnel permissions
 image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/tunnel-permissions/og.png?v=c2a61cd9ca4a344e

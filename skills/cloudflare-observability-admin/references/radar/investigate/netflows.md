@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.
 title: NetFlows
 image: https://developers.cloudflare.com/radar/investigate/netflows/og.png?v=c08377a84490b172

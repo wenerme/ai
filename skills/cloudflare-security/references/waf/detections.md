@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Traffic detection signals including attack scores, bot scores, and leaked credentials.
 title: Traffic detections
 image: https://developers.cloudflare.com/waf/detections/og.png?v=7ad8af66e54bc440

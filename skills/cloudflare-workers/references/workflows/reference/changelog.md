@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Latest release notes and changes for Cloudflare Workflows.
 title: Release notes
 image: https://developers.cloudflare.com/workflows/reference/changelog/og.png?v=9850378e184ecd02

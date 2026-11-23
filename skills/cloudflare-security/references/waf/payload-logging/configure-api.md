@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure payload logging for managed rules and custom rules using the API.
 title: Configure payload logging via API
 image: https://developers.cloudflare.com/waf/payload-logging/configure-api/og.png?v=0abab03ab64e167a

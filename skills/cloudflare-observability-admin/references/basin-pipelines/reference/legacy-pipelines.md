@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migration guide for pipelines created before September 2025 to the new Basin Pipelines architecture.
 title: Legacy pipelines
 image: https://developers.cloudflare.com/basin-pipelines/reference/legacy-pipelines/og.png?v=dca9a67a548c1471

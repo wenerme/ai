@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Look up public Realtime SFU API errors and find the next action for request, session, media, DataChannel, or adapter failures.
 title: Error codes
 image: https://developers.cloudflare.com/realtime/sfu/observability/error-codes/og.png?v=fc4833b6a85814e6

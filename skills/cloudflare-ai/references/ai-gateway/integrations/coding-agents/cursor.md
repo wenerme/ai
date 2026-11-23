@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Cursor chat and agent requests through AI Gateway using a custom OpenAI base URL.
 title: Cursor
 image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/cursor/og.png?v=fcc31784012b2f01

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage a robots.txt file to direct AI bot operators on content scraping permissions.
 title: robots.txt setting
 image: https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/og.png?v=4d922f618f245c06

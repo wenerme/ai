@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore embedded devices, cloud gaming, AI audio, and browser video rooms built with Realtime SFU.
 title: Examples
 image: https://developers.cloudflare.com/realtime/sfu/examples/og.png?v=9f9a3ed1c2dd9ddd

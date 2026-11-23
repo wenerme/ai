@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkImageViewer component (React Library)
 title: RtkImageViewer
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkimageviewer/og.png?v=4aa4d9a6eb8410b0

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Guide on upgrading rate limiting rules from the previous version to the new version.
 title: Rate limiting (previous version) upgrade
 image: https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/og.png?v=cccfe52c2c659055

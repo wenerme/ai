@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor AI application usage via Shadow IT.
 title: Review inline AI use
 image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/review-inline-ai-use/og.png?v=3e2e02d4829f06d8

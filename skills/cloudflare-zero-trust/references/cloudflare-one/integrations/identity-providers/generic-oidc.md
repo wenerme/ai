@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generic OIDC in Zero Trust integrations.
 title: Generic OIDC
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/og.png?v=d92fd754c60f23ec

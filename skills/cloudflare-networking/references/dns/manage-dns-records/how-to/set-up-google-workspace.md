@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add the DNS records required to verify and use your domain with Google Workspace.
 title: Set up Google Workspace DNS records
 image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/set-up-google-workspace/og.png?v=79fae9eaf7f1d23b

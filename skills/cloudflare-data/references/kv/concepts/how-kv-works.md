@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers KV stores data centrally and caches it globally, optimizing for high-read, low-latency workloads.
 title: How KV works
 image: https://developers.cloudflare.com/kv/concepts/how-kv-works/og.png?v=06773f4643397f1a

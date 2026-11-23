@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the types of abuse complaints you can submit to Cloudflare, including DMCA, phishing, trademark, malware, and child exploitation reports.
 title: Complaint types
 image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/og.png?v=fbd1d3a9a15c3afb

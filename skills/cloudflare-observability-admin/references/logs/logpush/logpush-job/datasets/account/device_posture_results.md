@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The descriptions below detail the fields available for device_posture_results.
 title: Device Posture Results
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/device_posture_results/og.png?v=0397d682abb96eb4

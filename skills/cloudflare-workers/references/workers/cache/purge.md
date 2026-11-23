@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.
 title: Purge and invalidate the cache
 image: https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903
@@ -329,7 +332,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-21",
+	"compatibility_date": "2026-11-23",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -340,7 +343,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-21"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = true

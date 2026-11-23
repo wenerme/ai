@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Cloudflare Firewall Rules work.
 title: About
 image: https://developers.cloudflare.com/firewall/cf-firewall-rules/og.png?v=c16c8887cf07d116

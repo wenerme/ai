@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from SCIM v1 Virtual Groups to Cloudflare's GA SCIM User Groups
 title: SCIM v1 to v2 Migration
 image: https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/og.png?v=d98536bcdf26c045

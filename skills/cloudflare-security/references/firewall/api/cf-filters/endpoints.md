@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API endpoints for managing filters and firewall rules.
 title: Endpoints
 image: https://developers.cloudflare.com/firewall/api/cf-filters/endpoints/og.png?v=0541b9f27e384b4a

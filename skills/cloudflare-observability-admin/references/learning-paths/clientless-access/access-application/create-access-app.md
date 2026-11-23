@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add an application to Cloudflare Access.
 title: Create an Access application
 image: https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/og.png?v=de18fae57f7e02b9

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Analyze WARP diagnostic log files.
 title: WARP diagnostic logs
 image: https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/og.png?v=19231e44ab605386

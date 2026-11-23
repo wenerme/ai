@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js tls module in Cloudflare Workers to create secure TLS connections to external services.
 title: tls
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/og.png?v=d881aeefb62b1d6d

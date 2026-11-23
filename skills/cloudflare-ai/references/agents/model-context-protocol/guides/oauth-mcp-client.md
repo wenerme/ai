@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.
 title: Handle OAuth with MCP servers
 image: https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/og.png?v=0c93b7fceb3b8d12

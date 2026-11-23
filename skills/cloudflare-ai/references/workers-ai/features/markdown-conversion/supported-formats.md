@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View the list of file formats supported by Workers AI Markdown Conversion.
 title: Supported Formats
 image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion/supported-formats/og.png?v=d32b965c8f4bc10e

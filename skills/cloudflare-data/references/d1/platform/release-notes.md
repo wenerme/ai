@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track D1 feature updates, bug fixes, and breaking changes over time.
 title: Release notes
 image: https://developers.cloudflare.com/d1/platform/release-notes/og.png?v=08d17bdd2ca16277

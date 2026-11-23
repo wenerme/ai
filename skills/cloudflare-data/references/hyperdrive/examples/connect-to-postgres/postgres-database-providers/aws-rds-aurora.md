@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Hyperdrive to an AWS RDS or Aurora Postgres database instance.
 title: AWS RDS and Aurora
 image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/aws-rds-aurora/og.png?v=6e74cc61de396fea
@@ -135,7 +138,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"main": "src/index.ts",
    	"upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -155,7 +158,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -222,7 +225,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -235,7 +238,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

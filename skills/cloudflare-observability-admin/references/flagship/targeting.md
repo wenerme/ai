@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve different Flagship flag values to different users based on attributes, conditions, and logical grouping.
 title: Targeting rules
 image: https://developers.cloudflare.com/flagship/targeting/og.png?v=3091e56ea674733c

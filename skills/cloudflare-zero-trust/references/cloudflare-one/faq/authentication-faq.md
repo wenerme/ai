@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review frequently asked questions about identity and identity providers in Cloudflare Zero Trust.
 title: Identity FAQ
 image: https://developers.cloudflare.com/cloudflare-one/faq/authentication-faq/og.png?v=65fc61226e586c46

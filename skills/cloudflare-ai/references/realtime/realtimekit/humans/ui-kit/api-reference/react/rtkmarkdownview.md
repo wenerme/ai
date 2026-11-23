@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkMarkdownView component (React Library)
 title: RtkMarkdownView
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkmarkdownview/og.png?v=f9a1bd9b43e39373

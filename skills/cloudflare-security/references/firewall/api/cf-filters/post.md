@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create filters or rules with a POST API request.
 title: POST example
 image: https://developers.cloudflare.com/firewall/api/cf-filters/post/og.png?v=047b064eb6adf018

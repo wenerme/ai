@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.
 title: Get started
 image: https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc11168d06b

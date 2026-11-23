@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up notifications for spikes in bot traffic on your domain.
 title: Bot Detection Alerts
 image: https://developers.cloudflare.com/bots/reference/alerts/og.png?v=670d79cfe8784cc8

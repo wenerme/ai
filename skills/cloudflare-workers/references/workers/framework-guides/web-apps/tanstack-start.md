@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a TanStack Start application to Cloudflare Workers.
 title: TanStack Start
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/og.png?v=7e028d16354c90aa
@@ -161,7 +164,7 @@ Cloudflare does not support TanStack Start projects that use Rsbuild. If your ap
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"main": "@tanstack/react-start/server-entry",
    	"observability": {
    		"enabled": true,
@@ -173,7 +176,7 @@ Cloudflare does not support TanStack Start projects that use Rsbuild. If your ap
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    main = "@tanstack/react-start/server-entry"
 
    [observability]

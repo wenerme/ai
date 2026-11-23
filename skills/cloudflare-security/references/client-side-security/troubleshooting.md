@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common issues with client-side resource monitoring and script detection.
 title: Troubleshooting
 image: https://developers.cloudflare.com/client-side-security/troubleshooting/og.png?v=c6e44b43ee29a7f0

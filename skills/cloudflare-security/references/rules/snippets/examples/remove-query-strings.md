@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove certain query strings from a request before passing to the origin.
 title: Remove query strings before sending request to origin
 image: https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/og.png?v=86547b76a32b7b9a

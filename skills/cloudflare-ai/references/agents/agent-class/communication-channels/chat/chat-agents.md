@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.
 title: Chat agents
 image: https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/og.png?v=7e7ad14729f7160e

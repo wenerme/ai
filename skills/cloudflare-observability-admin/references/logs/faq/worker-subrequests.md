@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Why origin fields appear on Worker subrequest log entries and how to correlate them with the initial request.
 title: Worker subrequests
 image: https://developers.cloudflare.com/logs/faq/worker-subrequests/og.png?v=f97fbf1084942b82

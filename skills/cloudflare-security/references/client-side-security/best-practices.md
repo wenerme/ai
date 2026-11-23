@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Best practices for using and configuring client-side security.
 title: Best practices
 image: https://developers.cloudflare.com/client-side-security/best-practices/og.png?v=57aa33f61eed0569

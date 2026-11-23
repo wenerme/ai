@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Programmable Flow Protection programs, rules, and parameter maps using the Cloudflare API.
 title: Programmable Flow Protection
 image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/og.png?v=e687811cd6054974

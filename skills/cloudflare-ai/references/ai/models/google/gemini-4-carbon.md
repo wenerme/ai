@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Google's most capable Gemini 4 reasoning model, built for complex software engineering, math and science problems, autonomous multi-step agents, and long outputs up to 1M tokens.
 title: Gemini 4 Carbon
 image: https://developers.cloudflare.com/og-docs.png

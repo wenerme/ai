@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Workers VPC to read objects from a private S3-compatible bucket behind Cloudflare Tunnel.
 title: Access a private S3 bucket
 image: https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/og.png?v=9aad1aead63f1047
@@ -105,7 +108,7 @@ Update your Wrangler configuration file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"vpc_services": [
 		{
 			"binding": "S3_STORAGE",
@@ -121,7 +124,7 @@ name = "private-s3-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[vpc_services]]
 binding = "S3_STORAGE"

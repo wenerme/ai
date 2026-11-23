@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Give each sandbox preview its own hostname, so code in one preview cannot use your application cookies or the storage of another preview.
 title: Serve previews on their own hostnames
 image: https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/og.png?v=052e5363148687ab

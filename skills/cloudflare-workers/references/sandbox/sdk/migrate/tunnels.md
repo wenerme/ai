@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 tunnels with cloudflared processes that your Durable Object starts, and keep the named tunnels that 0.12 created.
 title: Move tunnels
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/og.png?v=7090dedac7c21422

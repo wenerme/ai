@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare AI Search vector, keyword, and hybrid search modes to choose the right retrieval strategy.
 title: Search modes
 image: https://developers.cloudflare.com/ai-search/concepts/search-modes/og.png?v=64c49a380e4de034

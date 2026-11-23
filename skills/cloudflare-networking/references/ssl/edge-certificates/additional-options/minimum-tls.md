@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set the minimum TLS version for connections to your domain.
 title: Minimum TLS Version
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/og.png?v=6c60d1f1e67136e7

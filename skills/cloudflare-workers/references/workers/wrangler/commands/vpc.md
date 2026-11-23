@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing Workers VPC services.
 title: VPC
 image: https://developers.cloudflare.com/workers/wrangler/commands/vpc/og.png?v=a86b6fb220e62154
@@ -21,15 +24,15 @@ Create a new VPC service
 npmyarnpnpm
 
 ```
-npx wrangler vpc service create <NAME>
+npx wrangler vpc service create <NAME> --type <TYPE> --tunnel-id <TUNNEL-ID>
 ```
 
 ```
-yarn wrangler vpc service create <NAME>
+yarn wrangler vpc service create <NAME> --type <TYPE> --tunnel-id <TUNNEL-ID>
 ```
 
 ```
-pnpm wrangler vpc service create <NAME>
+pnpm wrangler vpc service create <NAME> --type <TYPE> --tunnel-id <TUNNEL-ID>
 ```
 
 - `<NAME>` `string` required
@@ -224,15 +227,15 @@ Update a VPC service
 npmyarnpnpm
 
 ```
-npx wrangler vpc service update <SERVICE-ID>
+npx wrangler vpc service update <SERVICE-ID> --name <NAME> --type <TYPE> --tunnel-id <TUNNEL-ID>
 ```
 
 ```
-yarn wrangler vpc service update <SERVICE-ID>
+yarn wrangler vpc service update <SERVICE-ID> --name <NAME> --type <TYPE> --tunnel-id <TUNNEL-ID>
 ```
 
 ```
-pnpm wrangler vpc service update <SERVICE-ID>
+pnpm wrangler vpc service update <SERVICE-ID> --name <NAME> --type <TYPE> --tunnel-id <TUNNEL-ID>
 ```
 
 - `<SERVICE-ID>` `string` required

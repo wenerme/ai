@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Verify pool and server health status.
 title: Check pool health
 image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/og.png?v=63db819557021f64

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing Basin Pipelines resources.
 title: Wrangler commands
 image: https://developers.cloudflare.com/basin-pipelines/reference/wrangler-commands/og.png?v=56104d764447ca64

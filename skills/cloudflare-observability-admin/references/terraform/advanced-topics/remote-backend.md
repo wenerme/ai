@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.
 title: Remote R2 backend
 image: https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/og.png?v=0142625ae602a8ae
@@ -56,7 +59,7 @@ Update your [`cloudflare.tf`](https://developers.cloudflare.com/terraform/tutori
 
 Note
 
-Terraform code snippets below refer to the v4 SDK only.
+Terraform code snippets below refer to the v5 SDK only.
 
 ```tf
 terraform {
@@ -77,7 +80,7 @@ terraform {
   required_providers {
     cloudflare = {
       source = "cloudflare/cloudflare"
-      version = "~> 4"
+      version = "~> 5"
     }
   }
 }
@@ -100,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/#page","headline":"Remote R2 backend","description":"Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.","url":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/","inLanguage":"en","image":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/og.png?v=0142625ae602a8ae","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/#page","headline":"Remote R2 backend","description":"Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.","url":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/","inLanguage":"en","image":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/og.png?v=0142625ae602a8ae","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

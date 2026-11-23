@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Provision and manage Cloudflare resources using Pulumi infrastructure as code in TypeScript, Python, Go, and other languages.
 title: Pulumi
 image: https://developers.cloudflare.com/pulumi/og.png?v=9153487a968aa81e

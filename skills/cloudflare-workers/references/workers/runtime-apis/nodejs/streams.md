@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js streams API in Cloudflare Workers for readable, writable, and transform stream operations.
 title: Streams
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/og.png?v=da3d8f46582115ef

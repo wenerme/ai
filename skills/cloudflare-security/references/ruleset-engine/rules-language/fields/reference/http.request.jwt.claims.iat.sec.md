@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The `iat` (issued at) claim identifies the time (number of seconds) at which the JWT was issued.
 title: http.request.jwt.claims.iat.sec
 image: https://developers.cloudflare.com/og-docs.png

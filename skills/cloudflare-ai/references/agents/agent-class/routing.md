@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route requests to an Agent with routeAgentRequest(), call it from a Worker with getAgentByName(), and pass props to onStart().
 title: Routing
 image: https://developers.cloudflare.com/agents/agent-class/routing/og.png?v=4f8fb7776b8e581c

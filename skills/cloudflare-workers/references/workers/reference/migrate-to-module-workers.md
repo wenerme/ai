@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write your Worker code in ES modules syntax for an optimized experience.
 title: Migrate from Service Workers to ES Modules
 image: https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/og.png?v=e0c95c09e4885419

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Move TanStack Start off Vercel by replacing the Nitro Vite plugin with the Cloudflare Vite plugin. Server functions and server routes run on Workers unchanged.
 title: Migrate TanStack Start from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/og.png?v=46dc508f186a6873
@@ -120,7 +123,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "@tanstack/react-start/server-entry",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"observability": {
    		"enabled": true,
    	},
@@ -132,7 +135,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    name = "<YOUR_PROJECT_NAME>"
    main = "@tanstack/react-start/server-entry"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
 
    [observability]
    enabled = true

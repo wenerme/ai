@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set and use creator IDs to associate Cloudflare Stream videos with internal user accounts.
 title: Manage creators
 image: https://developers.cloudflare.com/stream/manage-video-library/creator-id/og.png?v=b12fe1251ba8b8c2

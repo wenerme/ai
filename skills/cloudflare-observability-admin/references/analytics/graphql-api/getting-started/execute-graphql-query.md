@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about execute a graphql query with curl in Cloudflare analytics.
 title: Execute a GraphQL query with curl
 image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/og.png?v=fc778c5f38caf70e

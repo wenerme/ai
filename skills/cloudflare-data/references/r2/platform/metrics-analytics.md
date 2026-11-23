@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View R2 storage, operations, and bandwidth usage metrics.
 title: Metrics and analytics
 image: https://developers.cloudflare.com/r2/platform/metrics-analytics/og.png?v=90986384f3b9366a

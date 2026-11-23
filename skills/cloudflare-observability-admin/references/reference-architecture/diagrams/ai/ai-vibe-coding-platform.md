@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.
 title: AI Vibe Coding Platform
 image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/og.png?v=ea3717cba5ef7981

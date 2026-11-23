@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example Cloud Connector rules for routing traffic to cloud storage providers.
 title: Cloud Connector examples
 image: https://developers.cloudflare.com/rules/cloud-connector/examples/og.png?v=1f0950bab459e17e

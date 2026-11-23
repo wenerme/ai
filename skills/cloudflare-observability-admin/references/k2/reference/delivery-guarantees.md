@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: K2 delivers every record to every subscription at least once. Learn how subscriptions, leases, and retention affect delivery.
 title: Delivery guarantees
 image: https://developers.cloudflare.com/k2/reference/delivery-guarantees/og.png?v=5aea977318879343

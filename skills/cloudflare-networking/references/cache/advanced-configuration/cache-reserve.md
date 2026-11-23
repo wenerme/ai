@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Persist cached content in R2 storage to eliminate cache evictions.
 title: Cache Reserve
 image: https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/og.png?v=70fed5b99bd7359c

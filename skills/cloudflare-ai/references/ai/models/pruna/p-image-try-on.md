@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pruna's P-Image Try-On virtually fits one or more garments onto a person's photo. Provide a photo of a person plus garment reference images and the model realistically dresses the person in the provided garments.
 title: P-Image Try-On
 image: https://developers.cloudflare.com/og-docs.png

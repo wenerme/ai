@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create static threshold rules for traffic limits.
 title: Static threshold rule
 image: https://developers.cloudflare.com/network-flow/rules/static-threshold/og.png?v=7ab4ff050e7ca7c1

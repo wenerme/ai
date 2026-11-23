@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare what a human participant using the RealtimeKit SDKs and an agent participant using the Agent WebSocket can do in a meeting.
 title: Capability matrix
 image: https://developers.cloudflare.com/realtime/realtimekit/agents/capabilities/og.png?v=69cb3f3a8d594a57

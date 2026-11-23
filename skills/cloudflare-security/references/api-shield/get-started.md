@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up API Shield to identify and address API security best practices.
 title: Get started with API Shield
 image: https://developers.cloudflare.com/api-shield/get-started/og.png?v=35fb7f680c1d55f0

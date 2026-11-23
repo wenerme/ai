@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up the FlagshipServerProvider to evaluate Flagship feature flags from Python server applications using OpenFeature.
 title: Python SDK
 image: https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96f39f9e

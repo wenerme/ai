@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Register the Cloudflare One Client with minimal user interaction in Zero Trust.
 title: Register the Cloudflare One Client with minimal user interaction
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/og.png?v=161d4922eee46b32

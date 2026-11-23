@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Conceptual and technical reference material for Cloudflare Workers architecture and behavior.
 title: Reference
 image: https://developers.cloudflare.com/workers/reference/og.png?v=1a7b572cf13eab26

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve content over HTTP/2 for multiplexed, lower-latency connections.
 title: HTTP/2
 image: https://developers.cloudflare.com/speed/optimization/protocol/http2/og.png?v=9dd891e62c377a76

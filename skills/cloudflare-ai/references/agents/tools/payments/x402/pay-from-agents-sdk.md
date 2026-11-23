@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use withX402Client to pay for resources from a Cloudflare Agent.
 title: Pay from Agents SDK
 image: https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/og.png?v=f5ec664c407240c0

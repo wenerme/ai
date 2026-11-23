@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand what data Cloudflare sees, stores, and shares when operating the Cloudflare OHTTP Relay service.
 title: Legal
 image: https://developers.cloudflare.com/ohttp-relay/reference/legal/og.png?v=806401343c0bdefa

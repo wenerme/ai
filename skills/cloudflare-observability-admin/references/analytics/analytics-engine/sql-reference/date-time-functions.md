@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Date and time SQL functions for Analytics Engine.
 title: Date and Time functions
 image: https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/og.png?v=17f4625cdb31a326

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate end customers from another CDN to Cloudflare for SaaS without any downtime by pre-validating custom hostnames before cutting over DNS.
 title: Zero-downtime migration
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/og.png?v=56d76fd4faf46749

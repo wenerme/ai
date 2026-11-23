@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This reference architecture describes how a multi-vendor approach for application security and performance can be accomplished.
 title: Multi-vendor Application Security and Performance Reference Architecture
 image: https://developers.cloudflare.com/reference-architecture/architectures/multi-vendor/og.png?v=673059ca8d9cdf7e

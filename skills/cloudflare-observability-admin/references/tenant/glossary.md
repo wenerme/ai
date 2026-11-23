@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Key terms and definitions used throughout the Cloudflare Tenant API documentation.
 title: Glossary
 image: https://developers.cloudflare.com/tenant/glossary/og.png?v=42e693fb1cc4e97b

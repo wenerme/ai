@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Claude to generate Python code from natural language and run it in Sandbox SDK 0.x sandboxes.
 title: Build an AI code executor
 image: https://developers.cloudflare.com/sandbox/sdk/tutorials/ai-code-executor/og.png?v=2376b752f8ce3735

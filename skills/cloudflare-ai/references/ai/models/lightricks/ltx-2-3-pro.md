@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Lightricks LTX-2.3 Pro is a high-fidelity video generation model for text-to-video and image-to-video, with synchronized audio, first-to-last frame control, and portrait and landscape output up to 4K, in 6, 8 or 10 second clips.
 title: LTX-2.3 Pro
 image: https://developers.cloudflare.com/og-docs.png

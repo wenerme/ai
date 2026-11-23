@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Network Firewall for Magic Transit egress traffic.
 title: Magic Transit egress
 image: https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/og.png?v=b97e9fcd90d28e59

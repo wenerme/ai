@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Workers AI models with Pi AI through createAI from agents/models/pi-ai.
 title: Pi AI
 image: https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v=927ed23e0b5e5a1a
@@ -16,7 +19,7 @@ To use Workers AI with [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/
 
 ## Setup
 
-Install the Agents SDK and Pi AI. `createAI` needs `@earendil-works/pi-ai@~1.5.0`:
+Install the Agents SDK and Pi AI. `createAI` needs `@earendil-works/pi-ai@~1.6.0`:
 
 npmyarnpnpmbun
 
@@ -166,5 +169,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/#page","headline":"Pi AI","description":"Use Workers AI models with Pi AI through createAI from agents/models/pi-ai.","url":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v=927ed23e0b5e5a1a","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/#page","headline":"Pi AI","description":"Use Workers AI models with Pi AI through createAI from agents/models/pi-ai.","url":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v=927ed23e0b5e5a1a","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

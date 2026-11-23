@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set cost-based budgets on your AI Gateway to control spending by model, provider, or custom metadata dimensions like user or team.
 title: Spend limits
 image: https://developers.cloudflare.com/ai-gateway/features/spend-limits/og.png?v=25eca101a2e75de2

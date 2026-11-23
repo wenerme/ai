@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use R2 from Cloudflare Workers with the Workers API.
 title: Workers API
 image: https://developers.cloudflare.com/r2/get-started/workers-api/og.png?v=5497e0b0b68f0765

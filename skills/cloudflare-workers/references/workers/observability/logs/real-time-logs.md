@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Debug your Worker application by accessing logs and exceptions through the Cloudflare dashboard or `wrangler tail`.
 title: Real-time logs
 image: https://developers.cloudflare.com/workers/observability/logs/real-time-logs/og.png?v=03dfa2a10c5c353e

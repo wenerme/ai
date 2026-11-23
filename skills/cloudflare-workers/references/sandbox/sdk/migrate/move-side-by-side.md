@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run a Sandbox SDK 1.0 class next to the 0.12 class in one Worker, move each sandbox with its files, and delete the 0.12 class when none remain.
 title: Move sandboxes side by side
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/og.png?v=3df9cb914e5d6b93

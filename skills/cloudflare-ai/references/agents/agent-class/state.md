@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Persist Agent state with initialState and setState(), validate client changes, react to updates, and sync state to useAgent clients.
 title: Store and sync state
 image: https://developers.cloudflare.com/agents/agent-class/state/og.png?v=886569493f00f3d5

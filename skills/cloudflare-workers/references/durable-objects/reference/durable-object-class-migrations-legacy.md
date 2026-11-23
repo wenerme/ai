@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the legacy Wrangler `migrations` array to create, rename, delete, or transfer Durable Object classes.
 title: Durable Object class migrations (legacy)
 image: https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/og.png?v=f4b76bf073281c62

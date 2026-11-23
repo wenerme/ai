@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common issues when integrating Cloudflare with Microsoft Sentinel.
 title: Troubleshooting
 image: https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/og.png?v=a82f5705220ea820

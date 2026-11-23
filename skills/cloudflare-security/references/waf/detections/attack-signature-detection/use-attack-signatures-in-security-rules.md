@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create scoped Security Rules from reviewed attack signature confidence, category, and Ref metadata.
 title: Use attack signatures in Security Rules
 image: https://developers.cloudflare.com/waf/detections/attack-signature-detection/use-attack-signatures-in-security-rules/og.png?v=4cca1b45d8ab86b7

@@ -79,6 +79,7 @@ attributes:
 | `pre_approved_agent_privileges` | integer array | Privilege IDs the agent can use without asking for approval. |
 | `pre_approved_agent_privileges_names` | string array | Names corresponding to `pre_approved_agent_privileges`. |
 | `project_id` | integer | ID of the associated project. `null` if not set. |
+| `service_account_id` | integer | ID of the service account the flow runs as. `null` if not set. |
 | `status` | string | Current flow status. One of `created`, `running`, `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`, `tool_call_approval_required`, or `idle`. GitLab might add new values. |
 | `summary` | string | Short text summary of the workflow. |
 | `title` | string | Title of the session. |
@@ -183,6 +184,7 @@ Example response:
   "web_url": "https://gitlab.example.com/group/project/-/automate/agent-sessions/1",
   "project_id": 5,
   "namespace_id": null,
+  "service_account_id": 42,
   "agent_privileges": [1, 2, 3, 4, 5, 6],
   "agent_privileges_names": [
     "read_write_files",

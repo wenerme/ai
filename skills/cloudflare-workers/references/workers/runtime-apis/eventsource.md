@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: EventSource is a server-sent event API that allows a server to push events to a client.
 title: EventSource
 image: https://developers.cloudflare.com/workers/runtime-apis/eventsource/og.png?v=afd460dee7b0c619

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Durable, buffered queues that receive and store events for processing in Basin Pipelines.
 title: Streams
 image: https://developers.cloudflare.com/basin-pipelines/streams/og.png?v=7bd7ec4f3c7fcbfd

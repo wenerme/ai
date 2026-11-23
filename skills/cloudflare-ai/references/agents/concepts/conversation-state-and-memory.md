@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.
 title: Conversation state and memory
 image: https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/og.png?v=52ce156c479b4e08

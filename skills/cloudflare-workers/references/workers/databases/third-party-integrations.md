@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect to third-party databases such as Supabase, Turso and PlanetScale)
 title: 3rd Party Integrations
 image: https://developers.cloudflare.com/workers/databases/third-party-integrations/og.png?v=d2f09c2fa0fcf394

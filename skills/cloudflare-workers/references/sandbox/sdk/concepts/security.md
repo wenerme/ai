@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sandbox SDK 0.x uses VM-level isolation, input validation, and network controls to run untrusted code safely.
 title: Security model
 image: https://developers.cloudflare.com/sandbox/sdk/concepts/security/og.png?v=d159f91c3f5a4956

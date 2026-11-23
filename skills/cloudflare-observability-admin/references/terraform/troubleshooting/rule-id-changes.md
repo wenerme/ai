@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prevent rule ID changes in Cloudflare rulesets managed by Terraform by using the ref field.
 title: Rule IDs change when I modify a ruleset
 image: https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/og.png?v=ebb1a641e578d0a7

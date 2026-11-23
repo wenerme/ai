@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Cloudflare Mesh and connect your first server, laptop, or phone to your private network.
 title: Get started
 image: https://developers.cloudflare.com/mesh/get-started/og.png?v=e83d28b009fffd35

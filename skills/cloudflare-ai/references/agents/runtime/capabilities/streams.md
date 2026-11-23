@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store incremental output, such as model tokens, in a durable chunk log with the Streams capability. Readers replay from a cursor, then follow live appends, and SSE resume works without client code.
 title: Streams
 image: https://developers.cloudflare.com/agents/runtime/capabilities/streams/og.png?v=924b38fec56a56de

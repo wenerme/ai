@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate Cloudflare Workers with third-party APIs using the Fetch API.
 title: APIs
 image: https://developers.cloudflare.com/workers/configuration/integrations/apis/og.png?v=6eb9bc28efe90072

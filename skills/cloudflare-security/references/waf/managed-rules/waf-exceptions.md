@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Skip WAF managed rules for specific requests with exceptions.
 title: Create exceptions
 image: https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/og.png?v=84a1a25f44c05650

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create request header modification rules in the dashboard.
 title: Create a request header transform rule in the dashboard
 image: https://developers.cloudflare.com/rules/transform/request-header-modification/create-dashboard/og.png?v=45271630a84984c9

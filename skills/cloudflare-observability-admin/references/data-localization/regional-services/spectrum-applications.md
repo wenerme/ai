@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Regionalize Spectrum HTTP/S applications, with support for Static IPs and BYOIP.
 title: Regionalized Spectrum Applications
 image: https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/og.png?v=83e2b212c9cc85b2

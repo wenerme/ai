@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resource limits for Sandbox SDK 0.x including vCPU, memory, disk, and container constraints.
 title: Limits
 image: https://developers.cloudflare.com/sandbox/sdk/platform/limits/og.png?v=d3296e5bb1502f78

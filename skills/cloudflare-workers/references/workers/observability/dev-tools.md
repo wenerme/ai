@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Chrome DevTools to debug, profile, and inspect Cloudflare Workers locally.
 title: DevTools
 image: https://developers.cloudflare.com/workers/observability/dev-tools/og.png?v=159773ecea58bf99

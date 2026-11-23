@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Ideogram image generation requests through AI Gateway for observability and control.
 title: Ideogram
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/ideogram/og.png?v=5449d89c78d1e0d6

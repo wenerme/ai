@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create virtual networks to segment WAN traffic.
 title: Virtual networks
 image: https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/og.png?v=70f4d22487c1f08a

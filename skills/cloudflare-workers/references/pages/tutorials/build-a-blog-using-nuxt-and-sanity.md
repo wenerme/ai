@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.
 title: Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 image: https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/og.png?v=3333215720300f3e

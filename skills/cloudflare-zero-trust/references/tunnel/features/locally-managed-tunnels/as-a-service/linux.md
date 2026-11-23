@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Install and run cloudflared as a systemd service on Linux.
 title: Linux
 image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/as-a-service/linux/og.png?v=c41267ce284180cc

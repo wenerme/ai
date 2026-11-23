@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block R-U-Dead-Yet slow POST attacks with custom rules.
 title: Stop R-U-Dead-Yet? (R.U.D.Y.) attacks
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/stop-rudy-attacks/og.png?v=86a5524fe87c675f

@@ -6158,6 +6158,7 @@ Updates GitLab Duo settings.
 | `aiGatewayUrl` | [`String`](scalars.md#string) | URL for the local AI Gateway server. |
 | `allowAllUnixSockets` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Whether to allow all Unix sockets for network access. |
 | `allowProjectExtension` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Whether to allow projects to extend the network access domain allowlist. |
+| `autoModelRoutingEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates whether Auto model routing is turned on for Duo Developer. |
 | `duoAgentPlatformServiceUrl` | [`String`](scalars.md#string) | URL for the local Duo Agent Platform service. |
 | `duoCliEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Indicates whether GitLab Duo CLI access is enabled. |
 | `duoCoreFeaturesEnabled` | [`Boolean`](scalars.md#boolean) | Indicates whether GitLab Duo Core features are enabled. |

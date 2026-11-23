@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace a Container application that uses the default scheduling policy with a Durable Object-managed application.
 title: Migrate to the Durable Object scheduling policy
 image: https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/og.png?v=c4a9b833bc8d835b

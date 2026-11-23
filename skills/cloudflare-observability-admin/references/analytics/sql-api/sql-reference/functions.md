@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: SQL aggregate, scalar, and time functions supported by the SQL API.
 title: Functions
 image: https://developers.cloudflare.com/analytics/sql-api/sql-reference/functions/og.png?v=16c84c1bc000dc43

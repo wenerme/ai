@@ -375,7 +375,12 @@ Prerequisites:
 
 To configure your own runner for flows:
 
-1. Create an [instance runner](../../../../ci/runners/runners_scope.md) or a group runner assigned to the top-level group. If you want flows to use project runners or group runners assigned to a subgroup, turn off the `duo_runner_restrictions` feature flag (GitLab Self-Managed only).
+1. Create an [instance runner](../../../../ci/runners/runners_scope.md) or a group runner assigned to the top-level group.
+   With the `duo_runner_restrictions` feature flag on (the default), a project or subgroup runner
+   with the `gitlab--duo` tag can take the flow job, and GitLab then fails the job.
+   For more information, see [a flow's job or session fails to start](../../troubleshooting.md#a-flows-job-or-session-fails-to-start).
+   On GitLab Self-Managed, if you want flows to use project runners or group runners assigned
+   to a subgroup, turn off the flag.
 1. Add the `gitlab--duo` tag to the runner so that it picks up jobs for flows. If the runner does not have this tag, jobs with flows remain queued indefinitely.
    Use any of the following methods:
    - When you create the runner, in the **Tags** field, enter `gitlab--duo`.

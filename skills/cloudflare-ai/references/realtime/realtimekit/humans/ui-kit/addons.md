@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Extend RealtimeKit UI Kit with addon components for host controls, reactions, and more.
 title: UI Kit Addons
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/addons/og.png?v=d71272fad64cafad

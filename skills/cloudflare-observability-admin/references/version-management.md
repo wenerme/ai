@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test, deploy, and roll back zone configuration changes safely.
 title: Cloudflare Version Management
 image: https://developers.cloudflare.com/version-management/og.png?v=f6fa5904d5a7a3a0

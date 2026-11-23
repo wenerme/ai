@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Sandbox SDK 0.x deployments with Wrangler, Dockerfiles, environment variables, and transport modes.
 title: Configuration
 image: https://developers.cloudflare.com/sandbox/sdk/configuration/og.png?v=e954ba36141524b7

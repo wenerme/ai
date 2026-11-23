@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Available WARP connection modes and their behavior.
 title: WARP modes
 image: https://developers.cloudflare.com/warp-client/warp-modes/og.png?v=7dc736a04c4bc94e

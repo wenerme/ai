@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial builds a full-stack Pages application using the React framework.
 title: Build an API for your front end using Pages Functions
 image: https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/og.png?v=98d224ba12097429

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkUiProvider component (React Library)
 title: RtkUiProvider
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkuiprovider/og.png?v=c085a7e932ae725a

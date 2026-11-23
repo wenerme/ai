@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Customize your Cloudflare dashboard language, appearance, timezone, and notification preferences.
 title: Profile settings
 image: https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/og.png?v=ac21230bb378d78b

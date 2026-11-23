@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Require purpose justification in Access.
 title: Require purpose justification
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/og.png?v=7a079ecf0b2e356c

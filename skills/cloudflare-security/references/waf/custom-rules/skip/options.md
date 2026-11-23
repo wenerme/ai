@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Available skip options for WAF custom rules.
 title: Available skip options
 image: https://developers.cloudflare.com/waf/custom-rules/skip/options/og.png?v=8884b927a724d371

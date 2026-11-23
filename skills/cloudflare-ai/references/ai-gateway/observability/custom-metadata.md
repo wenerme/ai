@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Tag AI Gateway requests with custom metadata such as user IDs to improve log filtering and analysis.
 title: Custom metadata
 image: https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/og.png?v=1fece9f019d046a4

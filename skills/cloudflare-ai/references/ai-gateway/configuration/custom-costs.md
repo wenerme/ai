@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Override default or public model costs on a per-request basis.
 title: Custom costs
 image: https://developers.cloudflare.com/ai-gateway/configuration/custom-costs/og.png?v=8e1a5e29d6511a54

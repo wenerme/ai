@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Django on Python Workers
 title: Django
 image: https://developers.cloudflare.com/workers/languages/python/packages/django/og.png?v=e734e3def61aadd0

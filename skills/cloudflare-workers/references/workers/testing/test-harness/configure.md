@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Workers, test values, and lifecycle options for createTestHarness.
 title: Configure the test harness
 image: https://developers.cloudflare.com/workers/testing/test-harness/configure/og.png?v=402b3cbc702b26b0

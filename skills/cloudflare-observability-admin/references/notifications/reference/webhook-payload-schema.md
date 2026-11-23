@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the JSON payload structure for webhooks.
 title: Webhook payload schema
 image: https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/og.png?v=36e37c65f1119970

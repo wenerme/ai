@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Playwright to Browser Run sessions from any Node.js environment to automate browser tasks using the Chrome DevTools Protocol.
 title: Using with Playwright (CDP)
 image: https://developers.cloudflare.com/browser-run/cdp/playwright/og.png?v=34c97f4c4e02fe63

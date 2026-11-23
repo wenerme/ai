@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View audit log entries for AI Gateway configuration changes such as gateway creation, deletion, and updates.
 title: Audit logs
 image: https://developers.cloudflare.com/ai-gateway/reference/audit-logs/og.png?v=c7edc2591cebb580

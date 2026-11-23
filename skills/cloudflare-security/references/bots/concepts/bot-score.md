@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scores from 1 to 99 indicating the likelihood a request came from a bot.
 title: Bot scores
 image: https://developers.cloudflare.com/bots/concepts/bot-score/og.png?v=9d963a4a1c972135

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.
 title: Set up a primary zone (Full setup)
 image: https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/og.png?v=2e6c144916e45278

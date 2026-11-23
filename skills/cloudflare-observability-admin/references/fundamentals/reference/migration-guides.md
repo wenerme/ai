@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find guides for migrating between versions of Cloudflare features and integrations.
 title: Migration guides
 image: https://developers.cloudflare.com/fundamentals/reference/migration-guides/og.png?v=7aa40ae0089e426b

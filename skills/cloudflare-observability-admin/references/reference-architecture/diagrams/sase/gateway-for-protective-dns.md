@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to use Cloudflare Gateway as a Protective DNS service for governments.
 title: Protective DNS for governments
 image: https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/og.png?v=c1fa9c8c66530b72

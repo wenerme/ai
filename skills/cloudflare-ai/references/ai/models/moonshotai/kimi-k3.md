@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.
 title: Kimi K3
 image: https://developers.cloudflare.com/og-docs.png

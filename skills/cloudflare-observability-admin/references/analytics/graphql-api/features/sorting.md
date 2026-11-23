@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sort GraphQL Analytics API query results.
 title: Sorting
 image: https://developers.cloudflare.com/analytics/graphql-api/features/sorting/og.png?v=e06e125bef11f500

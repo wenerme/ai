@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable Zaraz debug mode to inspect events in the browser console.
 title: Debug mode
 image: https://developers.cloudflare.com/zaraz/web-api/debug-mode/og.png?v=42f7f1c2f0aed2de

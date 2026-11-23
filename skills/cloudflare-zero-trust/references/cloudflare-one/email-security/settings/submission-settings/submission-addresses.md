@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Submission addresses in Email Security.
 title: Submission addresses
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/submission-addresses/og.png?v=04be9cd2bbcd2090

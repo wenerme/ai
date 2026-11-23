@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure and update Container images with the durable_object and default scheduling policies.
 title: Image Management
 image: https://developers.cloudflare.com/containers/guides/image-management/og.png?v=3fd9a8c2d3fb3253

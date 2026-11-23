@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How DNS resolution works for partial CNAME setups.
 title: DNS resolution
 image: https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/og.png?v=1b18896005c95d4a

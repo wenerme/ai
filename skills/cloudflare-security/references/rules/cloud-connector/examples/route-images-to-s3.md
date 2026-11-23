@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route requests with a URI path starting with `/images` to a specific AWS S3 bucket using Cloud Connector.
 title: Route /images to an S3 Bucket
 image: https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/og.png?v=82c5ed9bb104d08d

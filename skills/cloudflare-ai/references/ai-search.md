@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.
 title: Overview
 image: https://developers.cloudflare.com/ai-search/og.png?v=174c444ef16de8d7

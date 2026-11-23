@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Cloudflare's developer platform products.
 title: Cloudflare Developer Platform
 image: https://developers.cloudflare.com/learning-paths/workers/devplat/intro-to-devplat/og.png?v=6eefd398f63353ce

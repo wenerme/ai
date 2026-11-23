@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to turn off Auto Minify via API in Cloudflare.
 title: Turn off Auto Minify via API
 image: https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/og.png?v=e60421213bf59174

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Improve R2 upload performance by writing object data to a nearby location before async copy.
 title: Local uploads
 image: https://developers.cloudflare.com/r2/buckets/local-uploads/og.png?v=0e29dfbfe70dab1d

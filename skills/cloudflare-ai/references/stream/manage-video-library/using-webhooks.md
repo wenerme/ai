@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Receive webhook notifications when Cloudflare Stream videos finish processing or encounter errors.
 title: Use webhooks
 image: https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/og.png?v=e2ef3f7943c41b47

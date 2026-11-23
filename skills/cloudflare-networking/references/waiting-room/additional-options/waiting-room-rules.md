@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create rules to customize waiting room behavior.
 title: Waiting Room Rules
 image: https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/og.png?v=898abcb5b1f7af95

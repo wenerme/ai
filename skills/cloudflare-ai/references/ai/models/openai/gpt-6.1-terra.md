@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-6.1 Terra is OpenAI's fast, efficient model for visual reasoning, precise computer use, and clear, natural writing. Use it to match product photos to catalog entries, interpret technical drawings, act on application screens, or draft and revise text. Tool calling requires the Responses API.
 title: GPT-6.1 Terra
 image: https://developers.cloudflare.com/og-docs.png

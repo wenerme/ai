@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Key components of Cloudflare DDoS protection, including managed rulesets and advanced systems.
 title: Main components
 image: https://developers.cloudflare.com/ddos-protection/about/components/og.png?v=51d59085f0d19299

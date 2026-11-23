@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure APIs against abuse and injection attacks with schema validation, rate limiting, mTLS, and WAF rules.
 title: Protect your APIs
 image: https://developers.cloudflare.com/use-cases/apis/protect-apis/og.png?v=34ab2d2d83c2cf3f

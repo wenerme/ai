@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review AI Search limits, included monthly usage, and usage-based pricing.
 title: Limits & pricing
 image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b

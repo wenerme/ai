@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query D1 using SQL statements through the Workers Binding API, REST API, or Wrangler commands.
 title: Query a database
 image: https://developers.cloudflare.com/d1/best-practices/query-d1/og.png?v=67e4ddfcb5c96c26

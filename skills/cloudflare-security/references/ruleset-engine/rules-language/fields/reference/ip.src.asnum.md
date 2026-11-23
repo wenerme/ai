@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The 16-bit or 32-bit integer representing the Autonomous System (AS) number associated with the client IP address.
 title: ip.src.asnum
 image: https://developers.cloudflare.com/og-docs.png

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Record object operations with response status codes below 400 and inspect per-request events in Workers Observability.
 title: Data Access Logs
 image: https://developers.cloudflare.com/r2/buckets/data-access-logs/og.png?v=70a32107872a3c8f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how Cloudflare's proxy interacts with Google Analytics tracking and how to use GA with Zaraz.
 title: Cloudflare and Google Analytics
 image: https://developers.cloudflare.com/fundamentals/reference/google-analytics/og.png?v=1a309ded02052d18

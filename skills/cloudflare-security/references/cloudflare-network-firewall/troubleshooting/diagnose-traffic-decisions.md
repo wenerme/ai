@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose why the Network Firewall allowed or blocked traffic.
 title: Diagnose traffic decisions
 image: https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/og.png?v=4b2594d9bf2c1aa0

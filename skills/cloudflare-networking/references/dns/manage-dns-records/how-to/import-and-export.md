@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Import and export DNS records using zone files.
 title: Import and export records
 image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/og.png?v=6f581e20bbf5eb8d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Flows let you automatically apply image optimization to requests on your zone.
 title: Create transformation flows
 image: https://developers.cloudflare.com/images/optimization/transformations/flows/og.png?v=d80b41cd25fd7422

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the AWS SDK for .NET to work with Cloudflare R2 object storage.
 title: aws-sdk-net
 image: https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/og.png?v=87e06256dc9dbb96

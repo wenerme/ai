@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Call AI Gateway from the AI SDK with createAI from agents/models/ai-sdk.
 title: Vercel AI SDK
 image: https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/og.png?v=e856be29d04805cb

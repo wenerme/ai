@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resources for customers whose domains are managed by a SaaS provider using Cloudflare.
 title: SaaS customers
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/og.png?v=ddd425401e3b1146

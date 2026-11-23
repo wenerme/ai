@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.
 title: Migrating from Version 2
 image: https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/og.png?v=ec034876a0a58153

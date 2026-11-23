@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.
 title: Set up and use a Prisma Postgres database
 image: https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/og.png?v=cfdfeb90600f9f4e

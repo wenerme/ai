@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Security Analytics shows information about all incoming HTTP requests or mitigated requests (rule matches).
 title: Security Analytics (new dashboard)
 image: https://developers.cloudflare.com/security/analytics/og.png?v=924fed89af91d333

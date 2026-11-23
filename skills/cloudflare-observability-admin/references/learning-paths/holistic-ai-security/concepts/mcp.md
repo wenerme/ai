@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how MCP connects AI agents to data.
 title: What is Model Context Protocol (MCP)?
 image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/mcp/og.png?v=a1526b492ecb8e2c

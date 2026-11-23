@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure OpenTelemetry export for Workers logs and traces.
 title: OpenTelemetry export
 image: https://developers.cloudflare.com/workers/observability/opentelemetry-export/og.png?v=e18175bd867c1f83

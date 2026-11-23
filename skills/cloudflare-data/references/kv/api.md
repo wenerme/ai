@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Workers KV binding API to read, write, delete, and list key-value pairs from your Worker code.
 title: Workers Binding API
 image: https://developers.cloudflare.com/kv/api/og.png?v=c86d40b0ebbbb444

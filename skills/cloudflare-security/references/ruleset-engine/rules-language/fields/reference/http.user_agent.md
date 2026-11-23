@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The HTTP `User-Agent` request header, which contains a characteristic string to identify the client operating system and web browser.
 title: http.user_agent
 image: https://developers.cloudflare.com/og-docs.png

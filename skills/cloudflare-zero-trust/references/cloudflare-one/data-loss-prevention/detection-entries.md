@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage reusable detection logic for Cloudflare DLP.
 title: Detection entries
 image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/og.png?v=97f7717530be55a2

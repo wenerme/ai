@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How SameSite cookie attributes interact with Cloudflare challenges.
 title: SameSite cookie interaction with Cloudflare
 image: https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/og.png?v=32d9afd5ac264592

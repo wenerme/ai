@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Opt into a specific features of the Workers runtime for your Workers project.
 title: Compatibility flags
 image: https://developers.cloudflare.com/workers/configuration/compatibility-flags/og.png?v=50d3a56287b2d518

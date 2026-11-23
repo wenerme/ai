@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.
 title: Custom spans
 image: https://developers.cloudflare.com/workers/observability/traces/custom-spans/og.png?v=72e1fb08b62a6c1f

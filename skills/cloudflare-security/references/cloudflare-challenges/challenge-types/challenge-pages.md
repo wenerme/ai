@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Full-page challenge screens that verify visitors before they reach your website.
 title: Interstitial Challenge Pages
 image: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/og.png?v=d5dcaf0731e80c95

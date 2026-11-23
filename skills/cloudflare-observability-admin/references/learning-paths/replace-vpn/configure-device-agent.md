@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace your VPN with Cloudflare Zero Trust.
 title: Configure the device agent
 image: https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/og.png?v=89d9c0b81ceaace5

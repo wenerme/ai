@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js test module MockTracker API in Cloudflare Workers for tracking and managing mock objects.
 title: test
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/test/og.png?v=c0557f64e0da05a0

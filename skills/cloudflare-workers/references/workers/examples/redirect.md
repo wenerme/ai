@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Redirect requests from one URL to another or from one set of URLs to another set.
 title: Redirect
 image: https://developers.cloudflare.com/workers/examples/redirect/og.png?v=2ce278a2e0b29354

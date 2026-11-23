@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Additional edge certificate options including HTTPS, HSTS, and TLS settings.
 title: Additional options
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/og.png?v=92336a81f4d9ccd4

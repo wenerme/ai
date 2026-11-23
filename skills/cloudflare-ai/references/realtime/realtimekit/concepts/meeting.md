@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: RealtimeKit meetings are reusable virtual rooms for real-time audio and video interaction.
 title: Meeting
 image: https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/og.png?v=fc62aa2b87b8cc74

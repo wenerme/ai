@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to resolve issues with MP4 videos not playing on iOS and Safari.
 title: Issues with MP4 videos on iOS and Safari
 image: https://developers.cloudflare.com/cache/troubleshooting/mp4-videos-on-ios-and-safari/og.png?v=dfe5aecfe7016cd9

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.
 title: Ultra-low Latency with WebRTC
 image: https://developers.cloudflare.com/stream/webrtc/og.png?v=2a826ff3607a8dd8

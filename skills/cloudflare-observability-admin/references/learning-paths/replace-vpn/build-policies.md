@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace your VPN with Cloudflare Zero Trust.
 title: Build secure access policies
 image: https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/og.png?v=3efc4871144e5b03

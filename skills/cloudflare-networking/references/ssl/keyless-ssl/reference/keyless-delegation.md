@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Delegate certificate signing to downstream key servers.
 title: Keyless delegation
 image: https://developers.cloudflare.com/ssl/keyless-ssl/reference/keyless-delegation/og.png?v=a7a8b2d8571e0654

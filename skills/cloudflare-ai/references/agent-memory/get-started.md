@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add durable memory recall and ingestion to an agent.
 title: Get started
 image: https://developers.cloudflare.com/agent-memory/get-started/og.png?v=2a514aad211b708c
@@ -127,7 +130,7 @@ Add an `agent_memory` binding to your Wrangler configuration, and register your 
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -164,7 +167,7 @@ name = "memory-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

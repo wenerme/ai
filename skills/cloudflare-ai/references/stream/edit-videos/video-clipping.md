@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trim Cloudflare Stream videos by setting start and end times to create new clips via the API.
 title: Clip videos
 image: https://developers.cloudflare.com/stream/edit-videos/video-clipping/og.png?v=a3ac113d63380145

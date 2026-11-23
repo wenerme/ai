@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 title: Block on TLS
 image: https://developers.cloudflare.com/workers/examples/block-on-tls/og.png?v=1af3a1402201f962

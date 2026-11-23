@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.
 title: Cloudflare Cookies
 image: https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/og.png?v=9f9de4e97caa2f13

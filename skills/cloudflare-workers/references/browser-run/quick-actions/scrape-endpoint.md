@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Extract structured data from specific webpage elements using the Browser Run /scrape endpoint.
 title: /scrape - Scrape HTML elements
 image: https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/og.png?v=728b950fbb815553

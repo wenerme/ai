@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bridge Realtime SFU tracks and external media services using WebSocket audio and JPEG frame delivery.
 title: Media transport adapters
 image: https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/og.png?v=d0bd7f1a594fd65b

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload and use LoRA adapters to get fine-tuned inference on Workers AI.
 title: Using LoRA adapters
 image: https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/og.png?v=5ab5aeb1f6d4d456

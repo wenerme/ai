@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Returns `true` when an mTLS client presents a certificate (valid or not).
 title: cf.tls_client_auth.cert_presented
 image: https://developers.cloudflare.com/og-docs.png

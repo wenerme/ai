@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.
 title: Auth with headers
 image: https://developers.cloudflare.com/workers/examples/auth-with-headers/og.png?v=dcc8da3a70f88cd5

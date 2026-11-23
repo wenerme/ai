@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for interacting with Vectorize vector databases.
 title: Vectorize
 image: https://developers.cloudflare.com/workers/wrangler/commands/vectorize/og.png?v=b763fced6e617312
@@ -355,15 +358,15 @@ Insert vectors into a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize insert <NAME>
+npx wrangler vectorize insert <NAME> --file <FILE>
 ```
 
 ```
-yarn wrangler vectorize insert <NAME>
+yarn wrangler vectorize insert <NAME> --file <FILE>
 ```
 
 ```
-pnpm wrangler vectorize insert <NAME>
+pnpm wrangler vectorize insert <NAME> --file <FILE>
 ```
 
 - `<NAME>` `string` required
@@ -415,15 +418,15 @@ Upsert vectors into a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize upsert <NAME>
+npx wrangler vectorize upsert <NAME> --file <FILE>
 ```
 
 ```
-yarn wrangler vectorize upsert <NAME>
+yarn wrangler vectorize upsert <NAME> --file <FILE>
 ```
 
 ```
-pnpm wrangler vectorize upsert <NAME>
+pnpm wrangler vectorize upsert <NAME> --file <FILE>
 ```
 
 - `<NAME>` `string` required
@@ -472,15 +475,15 @@ Get vectors from a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize get-vectors <NAME>
+npx wrangler vectorize get-vectors <NAME> --ids <IDS>
 ```
 
 ```
-yarn wrangler vectorize get-vectors <NAME>
+yarn wrangler vectorize get-vectors <NAME> --ids <IDS>
 ```
 
 ```
-pnpm wrangler vectorize get-vectors <NAME>
+pnpm wrangler vectorize get-vectors <NAME> --ids <IDS>
 ```
 
 - `<NAME>` `string` required
@@ -523,15 +526,15 @@ Delete vectors in a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize delete-vectors <NAME>
+npx wrangler vectorize delete-vectors <NAME> --ids <IDS>
 ```
 
 ```
-yarn wrangler vectorize delete-vectors <NAME>
+yarn wrangler vectorize delete-vectors <NAME> --ids <IDS>
 ```
 
 ```
-pnpm wrangler vectorize delete-vectors <NAME>
+pnpm wrangler vectorize delete-vectors <NAME> --ids <IDS>
 ```
 
 - `<NAME>` `string` required
@@ -625,21 +628,21 @@ Enable metadata filtering on the specified property
 npmyarnpnpm
 
 ```
-npx wrangler vectorize create-metadata-index <NAME>
+npx wrangler vectorize create-metadata-index <NAME> --property-name <PROPERTY-NAME> --type <TYPE>
 ```
 
 ```
-yarn wrangler vectorize create-metadata-index <NAME>
+yarn wrangler vectorize create-metadata-index <NAME> --property-name <PROPERTY-NAME> --type <TYPE>
 ```
 
 ```
-pnpm wrangler vectorize create-metadata-index <NAME>
+pnpm wrangler vectorize create-metadata-index <NAME> --property-name <PROPERTY-NAME> --type <TYPE>
 ```
 
 - `<NAME>` `string` required
 
   The name of the Vectorize index.
-- `--propertyName` `string` required
+- `--property-name` `string` required
 
   The name of the metadata property to index.
 - `--type` `string` required
@@ -730,21 +733,21 @@ Delete metadata indexes
 npmyarnpnpm
 
 ```
-npx wrangler vectorize delete-metadata-index <NAME>
+npx wrangler vectorize delete-metadata-index <NAME> --property-name <PROPERTY-NAME>
 ```
 
 ```
-yarn wrangler vectorize delete-metadata-index <NAME>
+yarn wrangler vectorize delete-metadata-index <NAME> --property-name <PROPERTY-NAME>
 ```
 
 ```
-pnpm wrangler vectorize delete-metadata-index <NAME>
+pnpm wrangler vectorize delete-metadata-index <NAME> --property-name <PROPERTY-NAME>
 ```
 
 - `<NAME>` `string` required
 
   The name of the Vectorize index.
-- `--propertyName` `string` required
+- `--property-name` `string` required
 
   The name of the metadata property to index.
 

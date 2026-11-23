@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of how to use Workers KV to build a distributed application configuration store.
 title: Cache data with Workers KV
 image: https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/og.png?v=d034fb8d76bfb54c

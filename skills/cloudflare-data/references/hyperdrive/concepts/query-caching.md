@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Hyperdrive automatically caches read queries to reduce database load and improve performance.
 title: Query caching
 image: https://developers.cloudflare.com/hyperdrive/concepts/query-caching/og.png?v=fbfc928bfbbffc0f

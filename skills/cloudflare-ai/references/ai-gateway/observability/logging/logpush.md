@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Export encrypted AI Gateway logs to external storage using Logpush.
 title: Logpush
 image: https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=766096e7fe00e132

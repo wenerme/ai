@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Turn log retention on or off for Logpull.
 title: Enabling log retention
 image: https://developers.cloudflare.com/logs/logpull/enabling-log-retention/og.png?v=61825fc82e518220

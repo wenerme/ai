@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connecting to Cloudflare's network using kubectl. Create a Zero Trust policy for your machine. Create an outbound-only connection between your machine and Cloudflared's network.
 title: Connect through Cloudflare Access using kubectl
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/og.png?v=a5ffc517a4ffc269

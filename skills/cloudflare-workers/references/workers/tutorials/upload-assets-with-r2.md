@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a CloudFlare R2 bucket.
 title: Securely access and upload assets with Cloudflare R2
 image: https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/og.png?v=b0a2cb6b5ba5abf2

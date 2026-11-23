@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pre-configured DDoS rulesets that protect against attacks at layers 3, 4, and 7.
 title: Managed rulesets
 image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/og.png?v=3836888c05574354

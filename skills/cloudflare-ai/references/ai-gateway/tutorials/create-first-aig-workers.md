@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard.
 title: Create your first AI Gateway using Workers AI
 image: https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/og.png?v=7326b3d08c4c1dcc

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step guides for common Cloudflare Pages tasks and configurations.
 title: How to
 image: https://developers.cloudflare.com/pages/how-to/og.png?v=cfc12b4557de0c9f

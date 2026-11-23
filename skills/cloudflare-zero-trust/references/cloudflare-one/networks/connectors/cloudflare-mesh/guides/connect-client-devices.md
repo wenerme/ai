@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect two laptops, phones, or desktops privately with Cloudflare Mesh and verify connectivity between them.
 title: Connect two devices privately with Cloudflare Mesh
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/guides/connect-client-devices/og.png?v=071fb9cf83081f19

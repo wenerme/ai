@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate 3 - Junk email and administrative quarantine with Email Security.
 title: 3 - Junk email and administrative quarantine
 image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/m365-email-security-mx/use-cases/three-junk-admin-quarantine/og.png?v=e1af68e37b8798bc

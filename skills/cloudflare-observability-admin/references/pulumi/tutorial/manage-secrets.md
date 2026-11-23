@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pulumi ESC (Environments, Secrets, and Configuration) is a secure and robust secrets management solution. The tutorial will walk you through how to develop with Wrangler while following security best practices.
 title: Manage secrets with Pulumi ESC
 image: https://developers.cloudflare.com/pulumi/tutorial/manage-secrets/og.png?v=9faca02d9fb9255b

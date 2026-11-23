@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create Snippets using the Terraform Cloudflare provider.
 title: Configure Snippets using Terraform
 image: https://developers.cloudflare.com/rules/snippets/create-terraform/og.png?v=fd1da57a60a8b725

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Install the Lifecycle from agents/lifecycle on a Durable Object to get startup, request dispatch, a durable job queue that owns the alarm, object names, and teardown.
 title: Lifecycle
 image: https://developers.cloudflare.com/agents/runtime/lifecycle/og.png?v=844b4a9e739ea52f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: List the sandboxes that belong to a user, and record when and why each one stops.
 title: Manage sandboxes
 image: https://developers.cloudflare.com/sandbox/manage/og.png?v=a318273d37327390

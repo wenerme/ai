@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Amazon Web Services (AWS) S3 in Zero Trust integrations.
 title: Amazon Web Services (AWS) S3
 image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/aws-s3/og.png?v=38c4307843cd1034

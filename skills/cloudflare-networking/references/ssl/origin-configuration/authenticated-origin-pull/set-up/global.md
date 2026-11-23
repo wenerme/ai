@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up global Authenticated Origin Pulls for all hostnames.
 title: Global
 image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/og.png?v=72c36de418cb06b0

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Pages with Regional Services and Customer Metadata Boundary.
 title: Pages
 image: https://developers.cloudflare.com/data-localization/how-to/pages/og.png?v=628908dd438424db

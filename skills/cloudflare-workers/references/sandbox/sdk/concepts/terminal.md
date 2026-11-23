@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sandbox SDK 0.x terminal connections stream bidirectional data between browser UIs and container shells.
 title: Terminal connections
 image: https://developers.cloudflare.com/sandbox/sdk/concepts/terminal/og.png?v=4947ea78da02787b

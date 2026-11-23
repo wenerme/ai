@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy backend code globally with automatic scaling, fast startup times, and scheduled tasks.
 title: Build serverless backends
 image: https://developers.cloudflare.com/use-cases/web-apps/serverless-backends/og.png?v=ace9768b9b4dc311

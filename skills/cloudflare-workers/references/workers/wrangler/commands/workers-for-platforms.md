@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing Workers for Platforms dispatch namespaces.
 title: Workers for Platforms
 image: https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/og.png?v=71d2e50bea2db143

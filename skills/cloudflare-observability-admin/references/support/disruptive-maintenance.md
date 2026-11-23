@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Cloudflare scheduled maintenance windows.
 title: Disruptive Maintenance
 image: https://developers.cloudflare.com/support/disruptive-maintenance/og.png?v=74f488d8c480b30c

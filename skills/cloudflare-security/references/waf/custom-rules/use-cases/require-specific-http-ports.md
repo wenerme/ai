@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict traffic to specific HTTP ports.
 title: Require specific HTTP ports
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/require-specific-http-ports/og.png?v=954d004f0c893fdc

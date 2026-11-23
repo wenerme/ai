@@ -19,7 +19,7 @@ For more information, see
 <https://docs.gitlab.com/policy/development_stages_support/>.
 
 ```plaintext
-glab mr note draft delete [<id> | <branch>] <draft-note-id> [flags]
+glab mr note draft delete [<id> | <branch>] <draft-note-id> [-R <repo>] [flags]
 ```
 
 ## Examples

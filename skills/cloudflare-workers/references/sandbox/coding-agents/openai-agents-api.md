@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a self-hosted OpenAI Agents API environment that runs each Codex session in its own Linux sandbox on Containers.
 title: Run Codex with the OpenAI Agents API in a sandbox
 image: https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/og.png?v=ade466bed145a5e4

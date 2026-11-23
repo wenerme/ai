@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.
 title: Single Page App (SPA) shell with bootstrap data
 image: https://developers.cloudflare.com/workers/examples/spa-shell/og.png?v=f911d2fce983ffa2
@@ -41,7 +44,7 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 	"main": "src/worker.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"directory": "./dist",
@@ -57,7 +60,7 @@ name = "my-spa"
 main = "src/worker.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -209,7 +212,7 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 	"main": "src/worker.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"vars": {
 		"SPA_ORIGIN": "https://my-spa.example-hosting.com",
@@ -223,7 +226,7 @@ name = "my-spa-proxy"
 main = "src/worker.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]

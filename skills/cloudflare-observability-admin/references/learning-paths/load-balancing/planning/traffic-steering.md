@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set traffic steering policies for load balancers.
 title: Traffic steering
 image: https://developers.cloudflare.com/learning-paths/load-balancing/planning/traffic-steering/og.png?v=bfff59b93b623ab1

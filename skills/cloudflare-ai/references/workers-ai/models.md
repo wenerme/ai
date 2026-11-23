@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Browse the catalog of machine learning models available on Workers AI.
 title: Workers AI Models
 image: https://developers.cloudflare.com/workers-ai/models/og.png?v=40351c4db9a31785

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.
 title: How it works
 image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/og.png?v=54dd4472fb6acd18

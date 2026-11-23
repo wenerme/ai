@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build and deploy remote MCP servers on Cloudflare to connect AI agents with external tools and services.
 title: Model Context Protocol (MCP)
 image: https://developers.cloudflare.com/agents/model-context-protocol/og.png?v=ee9b25aede7ab8f7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.
 title: Turnstile Spin
 image: https://developers.cloudflare.com/turnstile/spin/og.png?v=73d0422760495ee5

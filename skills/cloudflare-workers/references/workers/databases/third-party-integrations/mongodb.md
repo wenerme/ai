@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Cloudflare Workers to MongoDB using the native Node.js driver or Mongoose.
 title: MongoDB
 image: https://developers.cloudflare.com/workers/databases/third-party-integrations/mongodb/og.png?v=456970d4b9f269d4
@@ -297,7 +300,7 @@ To connect to MongoDB using a Durable Object:
      "name": "workers-mongodb-demo",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-11-18",
+     "compatibility_date": "2026-11-23",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -324,7 +327,7 @@ To connect to MongoDB using a Durable Object:
    name = "workers-mongodb-demo"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    compatibility_flags = ["nodejs_compat"]
 
    [[durable_objects.bindings]]

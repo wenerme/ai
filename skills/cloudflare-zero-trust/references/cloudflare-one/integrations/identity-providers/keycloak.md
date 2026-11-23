@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Keycloak (SAML) in Zero Trust integrations.
 title: Keycloak (SAML)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/keycloak/og.png?v=9219082dc0d54c87

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate to new GraphQL analytics nodes.
 title: Migrate to new GraphQL nodes
 image: https://developers.cloudflare.com/load-balancing/reference/migration-guides/load-balancing-graphql-nodes/og.png?v=b9aa58eaf342218a

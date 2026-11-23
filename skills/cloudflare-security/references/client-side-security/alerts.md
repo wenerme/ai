@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare client-side resource alerts notify you when new scripts are detected on your domain or when Cloudflare detects resources that are likely malicious.
 title: Alerts
 image: https://developers.cloudflare.com/client-side-security/alerts/og.png?v=915e6c11030ef240

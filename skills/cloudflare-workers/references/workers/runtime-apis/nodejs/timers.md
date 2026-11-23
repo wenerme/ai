@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js timers API in Cloudflare Workers to schedule functions with setTimeout, setInterval, and setImmediate.
 title: timers
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/timers/og.png?v=5e5ce8c0dd1a75c9

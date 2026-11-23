@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Hyperdrive maintains a pool of database connections optimally placed to minimize latency for your applications.
 title: Connection pooling
 image: https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/og.png?v=2c83cb01ea372008

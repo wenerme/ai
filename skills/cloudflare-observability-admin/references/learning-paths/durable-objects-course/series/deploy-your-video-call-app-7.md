@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy the completed video call application.
 title: Deploy your video call app
 image: https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/og.png?v=1059487ba72f0ad6

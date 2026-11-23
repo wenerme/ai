@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: App Launcher customization in Zero Trust.
 title: App Launcher customization
 image: https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/og.png?v=d8fb1e86eec0566d

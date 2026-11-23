@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Terms of use for the 1.1.1.1 DNS resolver.
 title: Terms of use
 image: https://developers.cloudflare.com/1.1.1.1/terms-of-use/og.png?v=7772fe692e288d6d

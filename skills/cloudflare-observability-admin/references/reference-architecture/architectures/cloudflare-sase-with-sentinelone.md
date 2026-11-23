@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This reference architecture outlines how Cloudflare and SentinelOne integrate to create an AI-driven security ecosystem combining autonomous endpoint protection with Zero Trust network access, shared risk intelligence, and automated remediation and recovery workflows.
 title: SentinelOne and Cloudflare — An AI-driven security ecosystem for autonomous, risk-based protection
 image: https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/og.png?v=036785894b14db31

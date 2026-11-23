@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Account-level limits for VPC Services and applicable Workers request limits.
 title: Limits
 image: https://developers.cloudflare.com/workers-vpc/platform/limits/og.png?v=145421d34853498f

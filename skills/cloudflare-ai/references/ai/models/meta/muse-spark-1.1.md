@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Muse Spark 1.1 is Meta's agentic and coding model for multi-step tool loops, software engineering assistants, and long-context reasoning.
 title: Muse Spark 1.1
 image: https://developers.cloudflare.com/og-docs.png

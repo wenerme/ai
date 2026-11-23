@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send a GET request and read in JSON from the response. Use to fetch external data.
 title: Fetch JSON
 image: https://developers.cloudflare.com/workers/examples/fetch-json/og.png?v=d251b4d33dd2d427

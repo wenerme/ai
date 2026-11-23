@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.
 title: Metrics and analytics
 image: https://developers.cloudflare.com/workers/observability/metrics-and-analytics/og.png?v=6188b7fba9d96e7a

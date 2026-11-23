@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Retro Scan in Email Security.
 title: Retro Scan
 image: https://developers.cloudflare.com/cloudflare-one/email-security/retro-scan/og.png?v=d28b45eae9a6edb2

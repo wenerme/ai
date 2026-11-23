@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automate moving suspicious emails to folders.
 title: Configure auto-moves
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/og.png?v=6fa06860260bceff

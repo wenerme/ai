@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send Cloudflare logs to PostHog with OpenTelemetry.
 title: Export to PostHog
 image: https://developers.cloudflare.com/observability/export/opentelemetry/posthog/og.png?v=b04f19c37d80595b

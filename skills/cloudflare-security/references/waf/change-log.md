@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Overview of WAF changelog, scheduled changes, and historical updates.
 title: WAF changelog overview
 image: https://developers.cloudflare.com/waf/change-log/og.png?v=a77cdb457d776809

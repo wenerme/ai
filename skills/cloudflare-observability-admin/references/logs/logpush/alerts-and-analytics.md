@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor Logpush job health with alerts and analytics.
 title: Logpush alerts and analytics
 image: https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/og.png?v=4093031202e6deb3

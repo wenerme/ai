@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure R2 buckets and objects with Terraform using the AWS provider.
 title: Terraform (AWS)
 image: https://developers.cloudflare.com/r2/examples/terraform-aws/og.png?v=e454387d741c923e

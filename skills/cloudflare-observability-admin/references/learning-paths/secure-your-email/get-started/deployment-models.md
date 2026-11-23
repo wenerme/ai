@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare API, BCC, and inline email deployments.
 title: Deployment models
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/deployment-models/og.png?v=d9c3a069fe142b50

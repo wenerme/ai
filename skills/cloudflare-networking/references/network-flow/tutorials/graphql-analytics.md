@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the GraphQL Analytics API to retrieve Network Flow data.
 title: GraphQL Analytics
 image: https://developers.cloudflare.com/network-flow/tutorials/graphql-analytics/og.png?v=854747f00e0067f4

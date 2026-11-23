@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automatically scale out Queues consumer Workers horizontally to process messages faster.
 title: Consumer concurrency
 image: https://developers.cloudflare.com/queues/configuration/consumer-concurrency/og.png?v=3985ddf23aae1e97

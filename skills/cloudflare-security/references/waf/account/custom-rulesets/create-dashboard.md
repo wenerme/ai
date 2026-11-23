@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and manage account-level custom rulesets in the dashboard.
 title: Work with custom rulesets in the dashboard
 image: https://developers.cloudflare.com/waf/account/custom-rulesets/create-dashboard/og.png?v=5a62cfe5159cd803

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: SQL queries for traffic, security, and performance analysis.
 title: Example SQL queries
 image: https://developers.cloudflare.com/observability/logs/log-explorer/example-queries/og.png?v=d3e9aa9397950f66

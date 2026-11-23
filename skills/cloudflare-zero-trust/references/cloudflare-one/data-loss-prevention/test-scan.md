@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test sample content against DLP profiles and inspect match details without sending traffic through Cloudflare Gateway.
 title: Test scan
 image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/test-scan/og.png?v=5e74ef74ea315ae4

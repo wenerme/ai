@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build and deploy your first Worker.
 title: First Worker
 image: https://developers.cloudflare.com/learning-paths/workers/get-started/first-worker/og.png?v=6f53355733435d53

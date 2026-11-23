@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Apply filters to Logpush job log output.
 title: Filters
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/filters/og.png?v=06a920e5fc95ffd2

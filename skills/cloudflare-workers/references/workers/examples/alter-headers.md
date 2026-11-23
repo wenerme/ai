@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of how to add, change, or delete headers sent in a request or returned in a response.
 title: Alter headers
 image: https://developers.cloudflare.com/workers/examples/alter-headers/og.png?v=d39783579ea7a60c

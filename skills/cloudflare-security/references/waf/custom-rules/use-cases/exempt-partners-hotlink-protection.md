@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Exempt partners from Hotlink Protection using custom rules.
 title: Exempt partners from Hotlink Protection
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/exempt-partners-hotlink-protection/og.png?v=5bf9638b7fb82b74

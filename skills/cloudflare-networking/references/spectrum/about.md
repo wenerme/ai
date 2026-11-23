@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Core concepts for Spectrum, including BYOIP, DDoS, load balancing, and static IPs.
 title: About
 image: https://developers.cloudflare.com/spectrum/about/og.png?v=a9bb0c08c62c0b81

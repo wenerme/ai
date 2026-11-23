@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Override the origin server, host header, SNI, and DNS resolution for matching requests.
 title: Origin Rules
 image: https://developers.cloudflare.com/rules/origin-rules/og.png?v=20b56e6c0bb669f9

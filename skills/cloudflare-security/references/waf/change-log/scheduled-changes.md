@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upcoming scheduled changes to WAF managed rulesets.
 title: Scheduled changes
 image: https://developers.cloudflare.com/waf/change-log/scheduled-changes/og.png?v=87678e60f8535e43

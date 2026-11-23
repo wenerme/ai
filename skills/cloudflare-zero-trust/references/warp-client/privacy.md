@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Privacy commitments for the Cloudflare WARP client.
 title: Privacy
 image: https://developers.cloudflare.com/warp-client/privacy/og.png?v=f07f94ca6c6ab8f2

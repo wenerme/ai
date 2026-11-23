@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.
 title: http
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/og.png?v=be2389684797b458

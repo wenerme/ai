@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find troubleshooting guides for Cloudflare One products and learn how to collect information for Cloudflare Support.
 title: Troubleshooting
 image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/og.png?v=c6fad8bb279af90e

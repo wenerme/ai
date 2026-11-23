@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Give your agent a web search tool backed by the Cloudflare Web Search API. Use Pi Durable, AI SDK, TanStack AI, or your own harness.
 title: Web search
 image: https://developers.cloudflare.com/agents/tools/web-search/og.png?v=d32bfef30de0079d

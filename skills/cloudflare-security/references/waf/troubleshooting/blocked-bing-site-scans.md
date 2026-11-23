@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A WAF managed rule may block site scans performed by Bing Webmaster Tools.
 title: Bing's Site Scan blocked by a managed rule
 image: https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/og.png?v=2cb1602a5ba85ba4

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and manage firewall rules in the dashboard.
 title: Manage rules in the dashboard
 image: https://developers.cloudflare.com/firewall/cf-dashboard/og.png?v=a8bf8e92b4017a71

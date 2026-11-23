@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restore a D1 database within your plan's retention window.
 title: Time Travel and backups
 image: https://developers.cloudflare.com/d1/reference/time-travel/og.png?v=ffc54a7087c55964

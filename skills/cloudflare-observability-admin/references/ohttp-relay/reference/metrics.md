@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Cloudflare OHTTP Relay traffic and performance data using the GraphQL Analytics API.
 title: Cloudflare OHTTP Relay metrics
 image: https://developers.cloudflare.com/ohttp-relay/reference/metrics/og.png?v=1943aafa1283e9fb

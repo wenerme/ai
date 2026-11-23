@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing Workers Queues configurations.
 title: Queues
 image: https://developers.cloudflare.com/workers/wrangler/commands/queues/og.png?v=9d24ffbf8d359acc
@@ -879,15 +882,15 @@ Create a new event subscription for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription create <QUEUE>
+npx wrangler queues subscription create <QUEUE> --source <SOURCE> --events <EVENTS>
 ```
 
 ```
-yarn wrangler queues subscription create <QUEUE>
+yarn wrangler queues subscription create <QUEUE> --source <SOURCE> --events <EVENTS>
 ```
 
 ```
-pnpm wrangler queues subscription create <QUEUE>
+pnpm wrangler queues subscription create <QUEUE> --source <SOURCE> --events <EVENTS>
 ```
 
 - `<QUEUE>` `string` required
@@ -1001,15 +1004,15 @@ Get details about a specific event subscription
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription get <QUEUE>
+npx wrangler queues subscription get <QUEUE> --id <ID>
 ```
 
 ```
-yarn wrangler queues subscription get <QUEUE>
+yarn wrangler queues subscription get <QUEUE> --id <ID>
 ```
 
 ```
-pnpm wrangler queues subscription get <QUEUE>
+pnpm wrangler queues subscription get <QUEUE> --id <ID>
 ```
 
 - `<QUEUE>` `string` required
@@ -1055,15 +1058,15 @@ Delete an event subscription from a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription delete <QUEUE>
+npx wrangler queues subscription delete <QUEUE> --id <ID>
 ```
 
 ```
-yarn wrangler queues subscription delete <QUEUE>
+yarn wrangler queues subscription delete <QUEUE> --id <ID>
 ```
 
 ```
-pnpm wrangler queues subscription delete <QUEUE>
+pnpm wrangler queues subscription delete <QUEUE> --id <ID>
 ```
 
 - `<QUEUE>` `string` required
@@ -1109,15 +1112,15 @@ Update an existing event subscription
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription update <QUEUE>
+npx wrangler queues subscription update <QUEUE> --id <ID>
 ```
 
 ```
-yarn wrangler queues subscription update <QUEUE>
+yarn wrangler queues subscription update <QUEUE> --id <ID>
 ```
 
 ```
-pnpm wrangler queues subscription update <QUEUE>
+pnpm wrangler queues subscription update <QUEUE> --id <ID>
 ```
 
 - `<QUEUE>` `string` required

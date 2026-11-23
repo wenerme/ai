@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create interactive API documentation portals from saved endpoints or schemas.
 title: Build developer portals
 image: https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/og.png?v=7ea2dd055dfcc6a3

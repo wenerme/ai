@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View AI Gateway metrics for requests, tokens, caching, errors, and costs in the dashboard or via GraphQL.
 title: Analytics
 image: https://developers.cloudflare.com/ai-gateway/observability/analytics/og.png?v=56a3992db64aea6f

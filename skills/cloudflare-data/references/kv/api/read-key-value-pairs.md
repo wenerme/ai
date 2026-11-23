@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.
 title: Read key-value pairs
 image: https://developers.cloudflare.com/kv/api/read-key-value-pairs/og.png?v=b086afde979d0276

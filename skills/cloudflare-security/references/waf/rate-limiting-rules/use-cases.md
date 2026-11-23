@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sample rate limiting rule configurations for login pages, APIs, and geographic restrictions.
 title: Rate limiting rule examples
 image: https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/og.png?v=9930273613c435fd

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write tests for Durable Objects using the Workers Vitest integration.
 title: Testing Durable Objects
 image: https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/og.png?v=1e1b96c330a686da
@@ -217,7 +220,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "durable_objects": {
     "bindings": [
       { "name": "COUNTER", "class_name": "Counter" }
@@ -234,7 +237,7 @@ name = "counter-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[durable_objects.bindings]]
 name = "COUNTER"

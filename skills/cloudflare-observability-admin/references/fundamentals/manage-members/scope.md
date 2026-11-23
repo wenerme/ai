@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose account, domain, or resource-level scopes to control where Cloudflare member permissions apply.
 title: Role scopes
 image: https://developers.cloudflare.com/fundamentals/manage-members/scope/og.png?v=3c9acd6cb466b195

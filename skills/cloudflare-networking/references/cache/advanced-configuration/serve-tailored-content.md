@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve different cached content based on device type, location, or language.
 title: Serving tailored content with Cloudflare
 image: https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/og.png?v=810144497bf320a6

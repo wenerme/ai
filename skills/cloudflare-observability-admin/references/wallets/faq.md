@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Answers to common questions about reserving a Cloudflare Wallets handle.
 title: FAQ
 image: https://developers.cloudflare.com/wallets/faq/og.png?v=44c60228988bad0e

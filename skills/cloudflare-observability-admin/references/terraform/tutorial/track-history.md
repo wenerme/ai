@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to track history with Cloudflare Terraform.
 title: 2 – Track your history
 image: https://developers.cloudflare.com/terraform/tutorial/track-history/og.png?v=54a1959c39053da8

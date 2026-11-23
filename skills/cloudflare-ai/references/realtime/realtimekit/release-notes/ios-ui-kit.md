@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Release notes and changelog for the RealtimeKit iOS UI Kit SDK.
 title: iOS UI Kit SDK
 image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/og.png?v=40dbb8e880771336

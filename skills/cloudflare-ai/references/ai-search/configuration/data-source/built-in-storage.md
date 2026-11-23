@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.
 title: Built-in storage
 image: https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/og.png?v=8152804138aeb1b5

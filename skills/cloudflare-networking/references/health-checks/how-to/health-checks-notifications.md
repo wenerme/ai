@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up notifications for Health Checks status changes.
 title: Health Checks notifications
 image: https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/og.png?v=d4f9846a3b360d95

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: After your request hits Cloudflare's secure network at the nearest data center where it's checked for security threats with a clean bill of health, it's time to get it to its destination at lightning speed.
 title: "Life of a Request: The Fast Lane - Caching and Smart Routing"
 image: https://developers.cloudflare.com/og-docs.png

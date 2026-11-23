@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Frequently asked questions about Workers KV, including consistency, rate limits, and access methods.
 title: FAQ
 image: https://developers.cloudflare.com/kv/reference/faq/og.png?v=5a01407e5f4108bf

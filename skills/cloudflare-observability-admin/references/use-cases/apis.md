@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build, protect, and monitor APIs with Cloudflare Workers, API Shield, rate limiting, mTLS, and Logpush.
 title: APIs and microservices
 image: https://developers.cloudflare.com/use-cases/apis/og.png?v=94d9da93d006ac85

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 startProcess(), Process objects, process logs, waits, and kills with Durable Object methods that take a process ID.
 title: Move background processes
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/og.png?v=05e666288fe97895

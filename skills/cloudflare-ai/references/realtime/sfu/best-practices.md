@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Preserve credential boundaries, resource authorization, negotiation ordering, and cleanup when adapting Realtime SFU applications.
 title: Best practices
 image: https://developers.cloudflare.com/realtime/sfu/best-practices/og.png?v=9982b9e7b9639db8

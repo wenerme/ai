@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Indicates whether the request contains at least one malicious content object.
 title: cf.waf.content_scan.has_malicious_obj
 image: https://developers.cloudflare.com/og-docs.png

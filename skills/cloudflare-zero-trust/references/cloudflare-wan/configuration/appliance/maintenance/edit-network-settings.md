@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Edit Appliance network settings.
 title: Edit network settings
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/edit-network-settings/og.png?v=ffcbfb0b563ec78b

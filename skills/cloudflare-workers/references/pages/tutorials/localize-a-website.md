@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.
 title: Localize a website with HTMLRewriter
 image: https://developers.cloudflare.com/pages/tutorials/localize-a-website/og.png?v=1314db6121d96aa3
@@ -284,7 +287,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18"
+	"compatibility_date": "2026-11-23"
 }
 ```
 
@@ -293,7 +296,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:

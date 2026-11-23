@@ -404,6 +404,8 @@ When you use headless mode, the GitLab Duo CLI:
 - [Introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.27.0) in GitLab Duo CLI 9.27.0, during the GitLab 19.5 release, [with a feature flag](../../administration/feature_flags/_index.md) named `dap_tool_image_input`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/2806) in GitLab 19.6.
 - Support for self-hosted models [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.
+- Support for attachments outside the current project [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3281) in GitLab 19.6.
+  - [Added](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v10.2.0) in GitLab Duo CLI 10.2.0.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -420,7 +422,7 @@ GitLab Duo can read images and use them as context.
 The CLI can read:
 
 - Image files in the repository.
-- Images attached to an issue, merge request, or comment in the same project.
+- Images attached to an issue, merge request, epic, or comment.
 
 You cannot upload an image directly in your prompt.
 Instead, name an image that already exists:
@@ -428,6 +430,9 @@ Instead, name an image that already exists:
 - For a file in the repository, give the file path. For example, `docs/architecture.png`.
 - For an attachment, give the upload reference as it appears in the Markdown.
   For example, `/uploads/<secret>/screenshot.png`.
+- For an attachment outside the current project, such as on an epic, give its full URL.
+  For example, `https://gitlab.example.com/-/group/<id>/uploads/<secret>/screenshot.png`.
+  This requires GitLab Duo CLI 10.2.0 or later.
 
 ### Image requirements
 

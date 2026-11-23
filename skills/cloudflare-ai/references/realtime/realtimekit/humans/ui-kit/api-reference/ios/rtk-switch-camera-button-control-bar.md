@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkSwitchCameraButtonControlBar component (iOS Library)
 title: RtkSwitchCameraButtonControlBar
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-switch-camera-button-control-bar/og.png?v=026891c5411ccc10

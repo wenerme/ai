@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.
 title: Configure Cloudflare source IPs
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/og.png?v=1373535c2aaec12a

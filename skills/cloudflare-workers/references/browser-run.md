@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control headless browsers with Cloudflare's Workers Browser Run API. Automate tasks, take screenshots, convert pages to PDFs, and test web apps.
 title: Browser Run
 image: https://developers.cloudflare.com/browser-run/og.png?v=3bbb9fb2640f1748

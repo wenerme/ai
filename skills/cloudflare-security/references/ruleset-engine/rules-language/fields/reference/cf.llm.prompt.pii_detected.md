@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Indicates whether any personally identifiable information (PII) has been detected in the LLM prompt included in the request.
 title: cf.llm.prompt.pii_detected
 image: https://developers.cloudflare.com/og-docs.png

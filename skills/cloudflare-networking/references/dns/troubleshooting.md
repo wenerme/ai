@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot common Cloudflare DNS issues.
 title: Troubleshooting
 image: https://developers.cloudflare.com/dns/troubleshooting/og.png?v=21a55a939107386a

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy and manage WAF managed rulesets at the account level.
 title: Managed rulesets
 image: https://developers.cloudflare.com/waf/account/managed-rulesets/og.png?v=5ff9473f5fbb3fb3

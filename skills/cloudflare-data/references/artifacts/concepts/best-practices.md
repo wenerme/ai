@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use repo, token, metadata, and namespace patterns.
 title: Best practices for Artifacts
 image: https://developers.cloudflare.com/artifacts/concepts/best-practices/og.png?v=9fa23281ae4f2483

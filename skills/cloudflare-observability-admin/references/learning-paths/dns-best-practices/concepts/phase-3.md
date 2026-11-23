@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Execute the DNS nameserver cutover.
 title: "Phase 3: Execution (Migration window)"
 image: https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-3/og.png?v=7d780ceccad4b104

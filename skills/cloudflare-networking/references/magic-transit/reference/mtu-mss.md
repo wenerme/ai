@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: MTU and MSS values for Magic Transit tunnels.
 title: Maximum transmission unit and maximum segment size
 image: https://developers.cloudflare.com/magic-transit/reference/mtu-mss/og.png?v=a9b10d1b80e3b64a

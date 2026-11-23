@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 title: RTKPlugins
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkplugins/og.png?v=f954e6c4554a10c8
 ---

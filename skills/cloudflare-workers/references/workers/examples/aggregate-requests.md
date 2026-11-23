@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send two GET request to two urls and aggregates the responses into one response.
 title: Aggregate requests
 image: https://developers.cloudflare.com/workers/examples/aggregate-requests/og.png?v=4310735eb0ce216b

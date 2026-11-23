@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Load Balancing with Spectrum for TCP and UDP traffic.
 title: Spectrum
 image: https://developers.cloudflare.com/load-balancing/additional-options/spectrum/og.png?v=719ccce2345bf2a4

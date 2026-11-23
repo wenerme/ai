@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate Cloudflare API tokens with pre-configured permissions using template URLs. Learn how to create and customize template URLs for any use case.
 title: API token template URLs
 image: https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/og.png?v=23273125a22cf721

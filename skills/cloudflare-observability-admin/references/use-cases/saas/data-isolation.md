@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Isolate customer data in a multi-tenant SaaS platform using per-tenant databases, object storage, and key-value stores.
 title: Store and isolate customer data
 image: https://developers.cloudflare.com/use-cases/saas/data-isolation/og.png?v=decd57af734af71a

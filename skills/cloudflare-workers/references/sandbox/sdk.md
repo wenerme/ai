@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Documentation for existing applications on Sandbox SDK 0.x, the Sandbox class in @cloudflare/sandbox that runs commands, files, and services in a container.
 title: Sandbox SDK 0.x
 image: https://developers.cloudflare.com/sandbox/sdk/og.png?v=6d27845d4289e552

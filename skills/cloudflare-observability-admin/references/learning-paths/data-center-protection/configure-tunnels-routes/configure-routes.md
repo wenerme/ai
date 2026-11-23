@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Magic Transit static routes.
 title: Configure routes
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/og.png?v=34c013cf79952bfd

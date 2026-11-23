@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about customize cloudflare security in this guide.
 title: Customize Cloudflare security
 image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/customize-security/og.png?v=e70a057dc95ad778

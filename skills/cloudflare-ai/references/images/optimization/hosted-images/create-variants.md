@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Define named variants in Cloudflare Images to control how hosted images are resized and served.
 title: Create predefined variants
 image: https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/og.png?v=cad73a7c74a01c59

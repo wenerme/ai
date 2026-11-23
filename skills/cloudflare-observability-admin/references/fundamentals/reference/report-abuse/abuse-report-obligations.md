@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand your obligations when Cloudflare forwards an abuse report for a domain associated with your account.
 title: Customer abuse report obligations
 image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/og.png?v=bcc99aa2cc5fd700

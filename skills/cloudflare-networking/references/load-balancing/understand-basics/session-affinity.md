@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route repeat visitors to the same origin server.
 title: Session affinity
 image: https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/og.png?v=80985e8cd7aca60e

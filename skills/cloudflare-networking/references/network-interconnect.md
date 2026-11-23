@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect to Cloudflare with private network interconnects.
 title: Cloudflare Network Interconnect
 image: https://developers.cloudflare.com/network-interconnect/og.png?v=1819c79e66290684

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure how Cloudflare selects TLS 1.3 key agreement algorithms for connections to your origin servers.
 title: Automatic key exchange to origins
 image: https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/og.png?v=ef78dd3fb33e0c07
@@ -87,6 +90,16 @@ The available selections are:
 
 Cloudflare rejects a combination if the selected requirements have no key agreement in common. Changing a compliance requirement stops any active rollout. A later scan selects from the new allowed set.
 
+Caution
+
+When a compliance requirement is set, Cloudflare restricts outbound TLS 1.3 connections to only the key agreements permitted by that requirement. Destination servers that do not support the required key exchange algorithm will fail the TLS handshake and return a [`525` error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/).
+
+For example, **Post-quantum hybrid** causes Cloudflare to advertise only `X25519MLKEM768`. **FIPS** causes Cloudflare to advertise only FIPS-approved curves. In both cases, destinations that do not support the required algorithm will return `525`.
+
+This restriction applies to all TLS 1.3 connections made in the context of the zone, including outbound `fetch()` calls from [Workers](https://developers.cloudflare.com/workers/) running under that zone.
+
+If any service your origin or Workers connect to does not support the required key exchange algorithm, do not set a compliance requirement. Use **Automatic key exchange** (the default) to negotiate the best mutually supported key agreement.
+
 ## Origin Post-Quantum Encryption API
 
 The [Origin Post-Quantum Encryption API](https://developers.cloudflare.com/api/resources/origin_post_quantum_encryption/methods/update/) remains available. Requests to this API are no-ops and do not change a zone's post-quantum key agreement behavior. Cloudflare plans to deprecate this API, but a deprecation date has not been established.
@@ -102,5 +115,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/#page","headline":"Automatic key exchange to origins","description":"Configure how Cloudflare selects TLS 1.3 key agreement algorithms for connections to your origin servers.","url":"https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/og.png?v=ef78dd3fb33e0c07","dateModified":"2026-07-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/#page","headline":"Automatic key exchange to origins","description":"Configure how Cloudflare selects TLS 1.3 key agreement algorithms for connections to your origin servers.","url":"https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/og.png?v=ef78dd3fb33e0c07","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

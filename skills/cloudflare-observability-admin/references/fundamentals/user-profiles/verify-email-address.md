@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Confirm the email address on your Cloudflare account to unlock dashboard features like adding members and updating preferences.
 title: Verify email address
 image: https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/og.png?v=aecafcb01e8438ac

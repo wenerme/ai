@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A fast multimodal video generation model supporting text-to-video and image-to-video generation at 480P and 768P.
 title: MiniMax H3 Max
 image: https://developers.cloudflare.com/og-docs.png

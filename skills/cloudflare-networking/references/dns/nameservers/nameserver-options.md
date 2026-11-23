@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Available nameserver configuration options.
 title: Nameserver options
 image: https://developers.cloudflare.com/dns/nameservers/nameserver-options/og.png?v=d8945a3864038af2

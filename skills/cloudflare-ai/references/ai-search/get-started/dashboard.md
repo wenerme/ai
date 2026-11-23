@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and configure AI Search using the Cloudflare dashboard.
 title: Dashboard
 image: https://developers.cloudflare.com/ai-search/get-started/dashboard/og.png?v=da4569b3265ddbb6

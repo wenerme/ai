@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Keep @cloudflare/sandbox 0.12 preview URLs working on 1.0 by replacing exposePort(), proxyToSandbox(), and wsConnect() with code that reads the stored tokens.
 title: Move preview URLs
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/og.png?v=f4b14ee66de35e77

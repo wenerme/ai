@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Paginate through GraphQL Analytics API results.
 title: Pagination
 image: https://developers.cloudflare.com/analytics/graphql-api/features/pagination/og.png?v=c9b4527ede6b18ca

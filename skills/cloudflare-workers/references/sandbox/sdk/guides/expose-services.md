@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create preview URLs and expose ports for web services with the Sandbox SDK 0.x.
 title: Expose services
 image: https://developers.cloudflare.com/sandbox/sdk/guides/expose-services/og.png?v=be6c05fa066c6b60

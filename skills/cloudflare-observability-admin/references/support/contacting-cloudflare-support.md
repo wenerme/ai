@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to contact Cloudflare Support via community, chat, or phone. Get help with issues, verify identity, and understand SLAs for different plans.
 title: Contacting Cloudflare Support
 image: https://developers.cloudflare.com/support/contacting-cloudflare-support/og.png?v=ffa00cf097157b23

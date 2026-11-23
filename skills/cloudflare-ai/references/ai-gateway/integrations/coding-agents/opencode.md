@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route OpenCode model requests through AI Gateway using a gateway token or an Access-protected custom domain.
 title: OpenCode
 image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/opencode/og.png?v=8d17aba721345c21

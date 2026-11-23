@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Read records from a K2 stream through a subscription, and acknowledge them after processing.
 title: Consume records
 image: https://developers.cloudflare.com/k2/features/consume/og.png?v=347ebe1831d9d50f

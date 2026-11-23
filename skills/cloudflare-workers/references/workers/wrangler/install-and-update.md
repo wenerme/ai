@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Get started by installing Wrangler, and update to newer versions by following this guide.
 title: Install/Update Wrangler
 image: https://developers.cloudflare.com/workers/wrangler/install-and-update/og.png?v=fbf1ae1973fa242d

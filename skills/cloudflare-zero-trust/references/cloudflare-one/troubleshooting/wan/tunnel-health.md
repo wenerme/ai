@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Tunnel health for Zero Trust.
 title: Tunnel health
 image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/tunnel-health/og.png?v=bf6404f6e3cde2b2

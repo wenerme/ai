@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of how to use Queues to batch data and store it in an R2 bucket.
 title: Use Queues to store data in R2
 image: https://developers.cloudflare.com/queues/examples/send-errors-to-r2/og.png?v=98a9a079242979ec

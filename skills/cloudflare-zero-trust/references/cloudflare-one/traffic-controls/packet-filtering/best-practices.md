@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Best practices works in Gateway.
 title: Best practices
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/og.png?v=7cc188f2cbe2feef

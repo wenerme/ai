@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare Logpush to send logs from Cloudflare products to a Basin Pipelines stream.
 title: Logpush as a source
 image: https://developers.cloudflare.com/basin-pipelines/streams/logpush/og.png?v=2804eca69c482ac3

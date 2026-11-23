@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 mountBucket() and unmountBucket() with S3Mount, which mounts the same prefix without bucket credentials in the container.
 title: Move bucket mounts
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/bucket-mounts/og.png?v=0e403e8d48727f35

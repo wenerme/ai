@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.
 title: Getting started
 image: https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984

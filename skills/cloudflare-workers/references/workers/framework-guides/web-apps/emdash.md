@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy EmDash, an open-source CMS built on Astro, to Cloudflare Workers with D1 for content and R2 for media.
 title: EmDash
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/emdash/og.png?v=09a15875378900ba
@@ -85,7 +88,7 @@ The template configures the D1, R2, and Cron Trigger bindings in `wrangler.jsonc
   "name": "my-emdash-site",
   "main": "./src/worker.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "d1_databases": [
     {
       "binding": "DB",
@@ -110,7 +113,7 @@ The template configures the D1, R2, and Cron Trigger bindings in `wrangler.jsonc
 name = "my-emdash-site"
 main = "./src/worker.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[d1_databases]]
 binding = "DB"

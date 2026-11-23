@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Workers for Platforms, including limits, pricing, isolation modes, and API examples.
 title: Reference
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/og.png?v=75b5be53a3b0cc7b

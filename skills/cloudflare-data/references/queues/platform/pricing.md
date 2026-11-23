@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Queues pricing for standard operations with included free usage.
 title: Pricing
 image: https://developers.cloudflare.com/queues/platform/pricing/og.png?v=f8e8dd0441bcf01e

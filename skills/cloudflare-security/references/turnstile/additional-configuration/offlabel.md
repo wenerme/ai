@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove Cloudflare branding from Turnstile widgets with Offlabel mode.
 title: Remove Cloudflare branding with Offlabel
 image: https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/og.png?v=359a0e5f64276899

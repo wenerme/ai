@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore how to set up custom cloud storage for RealtimeKit's recording. Follow our guide for effective configuration and integration.
 title: Upload Recording to Your Cloud
 image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/og.png?v=fe2f6a24583805f7

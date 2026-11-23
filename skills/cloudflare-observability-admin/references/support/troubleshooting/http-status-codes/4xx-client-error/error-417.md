@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot HTTP 417 error responses.
 title: Error 417
 image: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-417/og.png?v=f6f4378f7c5335dc

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for rtk-dialog component (Web Components (HTML) Library)
 title: rtk-dialog
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-dialog/og.png?v=d746ef60a6c81ef9

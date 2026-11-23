@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reduce page load times by compressing, resizing, and converting images to WebP and AVIF automatically.
 title: Optimize images
 image: https://developers.cloudflare.com/use-cases/performance/image-optimization/og.png?v=15db2b082a7a0102

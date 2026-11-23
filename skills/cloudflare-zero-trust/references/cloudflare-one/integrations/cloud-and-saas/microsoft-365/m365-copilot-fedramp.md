@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Microsoft 365 Copilot (FedRAMP) in Zero Trust integrations.
 title: Microsoft 365 Copilot (FedRAMP)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot-fedramp/og.png?v=c466ae32c32c4496

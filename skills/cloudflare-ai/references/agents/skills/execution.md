@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Agent Skills scripts with a Computer Workspace backend, or with the experimental skill script runner.
 title: Execution
 image: https://developers.cloudflare.com/agents/skills/execution/og.png?v=cea2cab4f9233616

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up iCloud custom email domains via Cloudflare.
 title: iCloud Custom Email Domains
 image: https://developers.cloudflare.com/registrar/account-options/icloud-domains/og.png?v=ffc392a89a21ca4b

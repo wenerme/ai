@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor CNI status and configure maintenance alerts
 title: Monitoring and alerts
 image: https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/og.png?v=e47086e31d241285

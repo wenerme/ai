@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose why Workers Caching is not behaving the way you expect.
 title: Debugging
 image: https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb85e9cced0d1

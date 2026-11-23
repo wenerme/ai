@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Before driving traffic to your store, establish security controls to protect against attacks and fraud.
 title: Protect your store
 image: https://developers.cloudflare.com/use-cases/e-commerce/protect/og.png?v=fcf30f465a743c6e

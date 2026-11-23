@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Record and replay Browser Run sessions to visually debug browser automation scripts.
 title: Session recording
 image: https://developers.cloudflare.com/browser-run/features/session-recording/og.png?v=e0b4f537b14e70ba

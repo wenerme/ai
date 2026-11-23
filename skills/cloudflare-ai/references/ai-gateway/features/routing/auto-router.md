@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automatically select a model for each request that balances response quality and cost.
 title: Auto Router
 image: https://developers.cloudflare.com/ai-gateway/features/routing/auto-router/og.png?v=2485574d63144221

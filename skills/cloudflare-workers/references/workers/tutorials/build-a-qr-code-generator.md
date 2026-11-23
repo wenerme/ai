@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.
 title: Build a QR code generator
 image: https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/og.png?v=2a13fae053e97eb0

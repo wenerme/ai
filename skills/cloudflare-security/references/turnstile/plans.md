@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare Turnstile feature availability and widget limits across plans.
 title: Plans
 image: https://developers.cloudflare.com/turnstile/plans/og.png?v=e352dcd51569d53d

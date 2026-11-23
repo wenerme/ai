@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Inspect users, groups, and resource details provisioned through an identity provider in Cloudflare One.
 title: View SCIM users and groups
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim-population-viewer/og.png?v=f7ccff3b4663ad0c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How 1.1.1.1 works as the trusted resolver for Firefox.
 title: Cloudflare Resolver for Firefox
 image: https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/og.png?v=81a0ed204ecd1802

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Waiting Room.
 title: Reference
 image: https://developers.cloudflare.com/waiting-room/reference/og.png?v=165f61289f14527d

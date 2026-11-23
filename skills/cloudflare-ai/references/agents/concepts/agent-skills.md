@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: What Agent Skills are, how agents load them through progressive disclosure, what the open SKILL.md format specifies, and what you can build with them.
 title: Agent Skills
 image: https://developers.cloudflare.com/agents/concepts/agent-skills/og.png?v=737c4b720e609086

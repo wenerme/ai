@@ -427,7 +427,7 @@ server.mount_proc("/webhook") do |request, response|
 
   headers = request.header.transform_values(&:first)
   event = client.webhooks.unwrap(request.body, headers)
-  puts "Verified webhook event: #{event.type}"
+  puts "Verified webhook event: #{event[:type]}"
 
   response.status = 200
   response.body = "ok"

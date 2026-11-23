@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up your first Workers AI project using the dashboard, CLI, or REST API.
 title: Getting started
 image: https://developers.cloudflare.com/workers-ai/get-started/og.png?v=7e846a5a03484ca2

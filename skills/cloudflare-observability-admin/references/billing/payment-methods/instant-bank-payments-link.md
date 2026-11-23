@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Instant Bank Payments via Link for Cloudflare services.
 title: Instant Bank Payments via Link
 image: https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/og.png?v=85d1af0b50be89ae

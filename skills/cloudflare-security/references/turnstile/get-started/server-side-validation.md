@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Validate Turnstile tokens on your server with the siteverify API.
 title: Validate the token
 image: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/og.png?v=58220cfac6c19059

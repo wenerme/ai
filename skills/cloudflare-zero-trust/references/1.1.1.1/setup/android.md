@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to set up Cloudflare's 1.1.1.1 DNS resolver on Android devices. Encrypt DNS queries with DoT or DoH, and enable 1.1.1.1 for Families.
 title: Android
 image: https://developers.cloudflare.com/1.1.1.1/setup/android/og.png?v=e430cb1e454bb9d3

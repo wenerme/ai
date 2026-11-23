@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure how Cloudflare handles AI crawlers, agents, and training bots.
 title: AI Crawler and Agent access policies
 image: https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/og.png?v=c23d1a043bf313ee

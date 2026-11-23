@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect SaaS misconfigurations with CASB scans.
 title: Scan SaaS applications with Cloudflare CASB
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/og.png?v=92b89ce8186d5a52

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fireworks' Ember-1 is a specialized long-context multimodal reasoning model built on Kimi K3. It produces shorter reasoning traces using approximately 40% fewer tokens while maintaining comparable quality across Fireworks' evaluations.
 title: Ember-1
 image: https://developers.cloudflare.com/og-docs.png

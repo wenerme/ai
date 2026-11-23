@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.
 title: Magic Transit Reference Architecture
 image: https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/og.png?v=6d840ee66761d72c

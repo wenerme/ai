@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose offline Mesh participants, unreachable Mesh IPs, one-way site traffic, private subnet routes, and service failures.
 title: Troubleshoot Cloudflare Mesh connectivity
 image: https://developers.cloudflare.com/mesh/troubleshooting/og.png?v=8ef8f04ed37b667a

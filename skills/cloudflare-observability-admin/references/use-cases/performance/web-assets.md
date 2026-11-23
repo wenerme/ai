@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Speed up page rendering by minifying HTML, CSS, and JavaScript and loading third-party scripts server-side.
 title: Optimize web assets
 image: https://developers.cloudflare.com/use-cases/performance/web-assets/og.png?v=0d8ec5f170d00dd9

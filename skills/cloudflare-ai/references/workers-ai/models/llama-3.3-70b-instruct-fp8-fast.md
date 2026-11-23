@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 title: llama-3.3-70b-instruct-fp8-fast
 image: https://developers.cloudflare.com/og-docs.png

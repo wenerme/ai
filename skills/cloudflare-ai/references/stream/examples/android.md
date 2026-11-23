@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of video playback on Android using ExoPlayer
 title: Android (ExoPlayer)
 image: https://developers.cloudflare.com/stream/examples/android/og.png?v=b537c6780305c48c

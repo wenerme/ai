@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure your Worker to present a client certificate to services that enforce an mTLS connection.
 title: mTLS
 image: https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/og.png?v=c37a4c63f17261cd

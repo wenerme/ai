@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Authenticate requests to the GraphQL Analytics API.
 title: Authentication
 image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/og.png?v=e7e60ae9a0f67286

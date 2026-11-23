@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View tutorials for Cloudflare Zero Trust.
 title: Tutorials
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/og.png?v=fa397082f5ea3eb4
@@ -14,7 +17,7 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/og.png?v=fa397
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Detect MCP traffic in Gateway logs](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/) | 7 months ago | Advanced |
+| [Detect MCP traffic in Gateway logs](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/) | 8 months ago | Advanced |
 | [Implement regional private DNS servers with Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/) | last year | Advanced |
 | [Deploy the Cloudflare One Client on headless Linux machines](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/) | last year | Beginner |
 | [Create and secure an AI agent wrapper using AI Gateway and Zero Trust](https://developers.cloudflare.com/cloudflare-one/tutorials/ai-wrapper-tenant-control/) | 2 years ago | Advanced |

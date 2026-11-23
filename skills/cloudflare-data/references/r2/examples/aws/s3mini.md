@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure s3mini, a lightweight TypeScript S3 client, to work with Cloudflare R2.
 title: s3mini
 image: https://developers.cloudflare.com/r2/examples/aws/s3mini/og.png?v=3f76ec3166510ff7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Fal AI generative media requests through AI Gateway for observability and control.
 title: Fal AI
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/fal/og.png?v=ca54c09770b62ad8

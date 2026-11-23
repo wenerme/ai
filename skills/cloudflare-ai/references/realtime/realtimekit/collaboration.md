@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Share state and send custom messages between participants in a RealtimeKit meeting.
 title: Collaboration
 image: https://developers.cloudflare.com/realtime/realtimekit/collaboration/og.png?v=85f4589894857805

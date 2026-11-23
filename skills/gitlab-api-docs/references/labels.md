@@ -27,7 +27,7 @@ GET /projects/:id/labels
 | `id`          | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths)                                                              |
 | `with_counts` | boolean        | no       | Whether or not to include issue and merge request counts. Defaults to `false`. |
 | `include_ancestor_groups` | boolean | no | Include ancestor groups. Defaults to `true`. |
-| `search` | string | no | Keyword to filter labels by. |
+| `search` | string | no | Keyword to filter labels by. Returns labels with an exact, case-insensitive name match first. |
 | `archived` | boolean | no | If `true`, returns only archived labels. If unset, returns all labels. |
 {.sortable}
 

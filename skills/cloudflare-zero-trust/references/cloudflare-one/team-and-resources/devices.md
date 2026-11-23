@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Devices resources and guides for Zero Trust.
 title: Devices
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/og.png?v=1f20c67d1f0b1d31

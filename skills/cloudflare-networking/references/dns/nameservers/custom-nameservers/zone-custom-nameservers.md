@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: With zone-level custom nameservers, each custom nameserver name must be a subdomain of the zone where the custom nameservers are configured. These custom nameservers can only be used within the respective zone.
 title: Set up zone custom nameservers
 image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone-custom-nameservers/og.png?v=61dfa0e8ac56b7a7

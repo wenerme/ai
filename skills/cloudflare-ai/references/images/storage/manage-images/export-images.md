@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Download the original version of images stored in Cloudflare Images via the dashboard or API.
 title: Export images
 image: https://developers.cloudflare.com/images/storage/manage-images/export-images/og.png?v=2a27eb152a3ed374

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common error messages and unexpected behavior when setting up your Cloudflare account and domain.
 title: Troubleshooting
 image: https://developers.cloudflare.com/fundamentals/reference/troubleshooting/og.png?v=950d5df516e7dcb8

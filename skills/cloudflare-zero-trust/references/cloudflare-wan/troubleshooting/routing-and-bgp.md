@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot WAN routing and BGP issues.
 title: Troubleshoot routing and BGP
 image: https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/og.png?v=43fb0b13da4d4423

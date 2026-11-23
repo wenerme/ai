@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create your first D1 database, define a schema, and query it from a Cloudflare Worker.
 title: Getting started
 image: https://developers.cloudflare.com/d1/get-started/og.png?v=f4bd290d0b828d3b

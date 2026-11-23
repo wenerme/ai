@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: 50 layers deep image classification CNN trained on more than 1M images from ImageNet
 title: resnet-50
 image: https://developers.cloudflare.com/og-docs.png

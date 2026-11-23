@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Magic Transit DDoS protection for networks.
 title: What is Magic Transit?
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/og.png?v=7b342d4db0c6474f

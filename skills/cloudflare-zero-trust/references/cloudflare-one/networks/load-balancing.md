@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Distribute and fail over private network traffic across servers and sites connected with Cloudflare Tunnel, Cloudflare Mesh, or Cloudflare WAN.
 title: Load balance private network traffic
 image: https://developers.cloudflare.com/cloudflare-one/networks/load-balancing/og.png?v=2c4b4692de8ea329

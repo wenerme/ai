@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "Specify KV namespaces to add to your environment as follows:"
 title: KV
 image: https://developers.cloudflare.com/workers/testing/miniflare/storage/kv/og.png?v=4876bc91e9008329

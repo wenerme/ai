@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage Access policies in Access.
 title: Manage Access policies
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/og.png?v=f6cd40ff6b33ae0f

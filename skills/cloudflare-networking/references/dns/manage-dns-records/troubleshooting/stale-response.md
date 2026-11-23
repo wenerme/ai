@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fix stale DNS responses from upstream resolvers.
 title: Stale response for upstream DNS resolution
 image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/stale-response/og.png?v=f444505062721a20

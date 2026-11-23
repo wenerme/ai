@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Empty all objects from an R2 bucket and permanently delete it.
 title: Delete buckets
 image: https://developers.cloudflare.com/r2/buckets/delete-buckets/og.png?v=8521b26ac883fa76

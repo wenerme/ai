@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure DDoS attack notifications via email, webhook, or PagerDuty.
 title: Alerts
 image: https://developers.cloudflare.com/ddos-protection/reference/alerts/og.png?v=41c6f1b124bd92b0

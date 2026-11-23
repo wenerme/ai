@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkParticipantsViewerList component (React Library)
 title: RtkParticipantsViewerList
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkparticipantsviewerlist/og.png?v=907f96eb49be35ad

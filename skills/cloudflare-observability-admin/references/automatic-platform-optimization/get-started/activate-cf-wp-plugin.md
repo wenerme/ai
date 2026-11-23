@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The easiest way to begin using APO is directly from Cloudflare's WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.
 title: Activate the Cloudflare WordPress plugin
 image: https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/og.png?v=a6f628d6907b81fc

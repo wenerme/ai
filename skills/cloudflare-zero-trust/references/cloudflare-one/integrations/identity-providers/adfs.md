@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate Active Directory with Cloudflare One for secure identity management.
 title: Active Directory (SAML)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/og.png?v=520cf8a7b7fc6d73

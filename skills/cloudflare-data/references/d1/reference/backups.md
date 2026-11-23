@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create, list, download, and restore legacy snapshot-based backups for D1 alpha databases using Wrangler.
 title: Backups (Legacy)
 image: https://developers.cloudflare.com/d1/reference/backups/og.png?v=933af3ced0f3e385

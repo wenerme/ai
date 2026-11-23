@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from the legacy AutoRAG REST API endpoints to the new AI Search API endpoints.
 title: REST API migration
 image: https://developers.cloudflare.com/ai-search/api/migration/rest-api/og.png?v=7b78382ff0fa7c57

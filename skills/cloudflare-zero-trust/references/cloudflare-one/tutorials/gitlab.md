@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.
 title: Zero Trust GitLab SSH & HTTP
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/og.png?v=a44249b886b3ab0f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve asynchronous indexing, sync, and crawl error codes.
 title: Indexing error codes
 image: https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/og.png?v=656b5c81e6d85cf6

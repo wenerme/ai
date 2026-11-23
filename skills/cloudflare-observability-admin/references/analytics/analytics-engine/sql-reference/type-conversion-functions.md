@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Type conversion SQL functions for Analytics Engine.
 title: Type conversion functions
 image: https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/type-conversion-functions/og.png?v=8ed8bd1cc8f9eacf

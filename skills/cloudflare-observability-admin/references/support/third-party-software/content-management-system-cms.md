@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot Cloudflare with content management systems.
 title: Content Management System (CMS)
 image: https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/og.png?v=99845b90bff010f9

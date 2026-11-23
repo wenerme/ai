@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send traces from Pages Functions to Honeycomb for observability using this Plugin.
 title: Honeycomb
 image: https://developers.cloudflare.com/pages/functions/plugins/honeycomb/og.png?v=42a7240aab81f0b2

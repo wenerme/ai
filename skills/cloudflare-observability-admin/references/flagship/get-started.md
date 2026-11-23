@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.
 title: Get started
 image: https://developers.cloudflare.com/flagship/get-started/og.png?v=bfc8e4310aa95632

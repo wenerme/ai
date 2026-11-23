@@ -562,6 +562,10 @@ In this example, the agent processed 5,000 input tokens and generated 900 output
 
 Cached tokens are included in `input_tokens`, and reasoning tokens are included in `output_tokens`.
 
+### Control session spending
+
+To set a best-effort spending limit and learn how to continue after a session reaches it, see [Set a session budget](https://developers.openai.com/api/docs/guides/agents-api/sessions/manage#set-a-session-budget).
+
 ### Inspect subagent token usage
 
 List or retrieve [session turns](https://developers.openai.com/api/docs/guides/agents-api/sessions/manage#inspect-session-turns) and inspect each turn's `usage`. The `subagent_id` identifies the subagent; it is `null` for root-agent turns. When `has_more` is `true`, pass `last_id` as `after` with the same `order` to read the remaining turns.

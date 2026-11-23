@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build AI applications with serverless compute, edge inference, multi-provider gateways, and stateful coordination.
 title: Build and run AI applications
 image: https://developers.cloudflare.com/use-cases/ai/build-and-run/og.png?v=59f8db8e404fea96

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track the latest updates and changes to Cloudflare Turnstile.
 title: Changelog
 image: https://developers.cloudflare.com/turnstile/changelog/og.png?v=51a6aaf0a2ebc19c

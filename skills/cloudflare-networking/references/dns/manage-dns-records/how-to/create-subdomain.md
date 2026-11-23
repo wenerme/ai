@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add DNS records for subdomains.
 title: Create subdomain records
 image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/og.png?v=6fc6b4ef98cdb057

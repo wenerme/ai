@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Revoke a client certificate to block its use.
 title: Revoke a client certificate
 image: https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/og.png?v=c59c7d83f6cf79f5

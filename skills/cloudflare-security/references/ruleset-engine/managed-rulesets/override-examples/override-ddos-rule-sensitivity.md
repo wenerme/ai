@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Adjust the sensitivity of an HTTP DDoS rule to Low.
 title: Adjust the sensitivity of an HTTP DDoS rule to Low
 image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ddos-rule-sensitivity/og.png?v=3b47df5112a9990c

@@ -530,6 +530,29 @@ Be aware of the following limitations for the GitLab Security Policy Bot:
 - Project-bound: Each bot instance is tied to a specific project and you cannot shared an instance across projects.
 - Policy-dependent: The bot's functionality is entirely dependent on the security policies configured for the project.
 
+### Remove bot after subscription change
+
+The Security Policy Bot is removed automatically when it is no longer needed:
+
+- When the associated project is deleted, a background worker removes the orphaned bot.
+- When your license or subscription expires or is downgraded to a tier that does not
+  support security policies, a scheduled worker unassigns the security policy project
+  and removes the bot from affected projects.
+
+Namespaces that were downgraded before this automated cleanup was introduced might
+still have the bot as a project member. A leftover bot:
+
+- Is not a billable user and does not count toward seat limits.
+- Runs pipelines and enforces policies only when the namespace has an eligible
+  subscription and active security policies.
+- Is created again only if the namespace has both an eligible subscription and
+  active security policies.
+
+A cleanup for these leftover bots is proposed in
+[issue 619403](https://gitlab.com/gitlab-org/gitlab/-/work_items/619403).
+You cannot remove the bot in the UI, even as an administrator. To remove a
+leftover bot, contact [GitLab Support](https://about.gitlab.com/support/).
+
 ### Security troubleshooting
 
 > [!warning]

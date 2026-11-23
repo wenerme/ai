@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy the Sandbox SDK 0.x bridge Worker to control sandboxes over HTTP from any language or platform.
 title: Sandbox bridge
 image: https://developers.cloudflare.com/sandbox/sdk/bridge/og.png?v=5eeb7f4b8d274a6a

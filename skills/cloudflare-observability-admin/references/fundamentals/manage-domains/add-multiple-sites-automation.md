@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
 title: Add multiple sites via automation
 image: https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/og.png?v=ab586b664ff8e083

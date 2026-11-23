@@ -27,7 +27,7 @@ GET /groups/:id/labels
 | `include_ancestor_groups` | boolean | no | Include ancestor groups. Defaults to `true`. |
 | `include_descendant_groups` | boolean | no | Include descendant groups. Defaults to `false`. |
 | `only_group_labels` | boolean | no | Toggle to include only group labels or also project labels. Defaults to `true`. |
-| `search` | string | no | Keyword to filter labels by. |
+| `search` | string | no | Keyword to filter labels by. Returns labels with an exact, case-insensitive name match first. |
 | `archived` | boolean | no | If `true`, returns only archived labels. If unset, returns all labels. |
 {.sortable}
 

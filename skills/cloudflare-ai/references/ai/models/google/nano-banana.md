@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Google's fast image generation model producing high-quality images from text prompts.
 title: Nano Banana
 image: https://developers.cloudflare.com/og-docs.png

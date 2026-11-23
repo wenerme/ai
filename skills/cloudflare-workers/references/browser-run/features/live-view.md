@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Watch and control active Browser Run sessions from the dashboard, a generated Live View URL, or Chrome DevTools.
 title: Live View
 image: https://developers.cloudflare.com/browser-run/features/live-view/og.png?v=a778f8311ca6b7eb

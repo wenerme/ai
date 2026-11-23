@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Spin up isolated Workers on demand to execute code.
 title: Dynamic Workers
 image: https://developers.cloudflare.com/dynamic-workers/og.png?v=51a25a49ca35a178

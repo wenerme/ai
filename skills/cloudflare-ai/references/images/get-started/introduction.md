@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Images provides a platform for optimizing, storing, and serving images at scale.
 title: Introduction
 image: https://developers.cloudflare.com/images/get-started/introduction/og.png?v=971d82530a2f932c

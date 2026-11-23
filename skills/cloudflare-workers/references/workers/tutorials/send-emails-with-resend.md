@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to send emails from Cloudflare Workers using Resend.
 title: Send Emails With Resend
 image: https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/og.png?v=3d9ced646937e487

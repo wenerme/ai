@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Data security analytics in Zero Trust analytics.
 title: Data security analytics
 image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/og.png?v=85ade364a3dda191

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block or challenge traffic from the Tor network.
 title: Block Tor traffic
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/block-tor-traffic/og.png?v=2fead4a3cefd896c

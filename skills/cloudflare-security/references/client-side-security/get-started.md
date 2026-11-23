@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to get started with Cloudflare's client-side security.
 title: Get started with client-side security
 image: https://developers.cloudflare.com/client-side-security/get-started/og.png?v=0d619fe2448f9897

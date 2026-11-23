@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.
 title: Write key-value pairs
 image: https://developers.cloudflare.com/kv/api/write-key-value-pairs/og.png?v=37eee9e0019c75d1

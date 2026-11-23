@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View metrics on AI crawler interactions with your site.
 title: Analyze AI traffic
 image: https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/og.png?v=9ebf5a8c17c79d1e

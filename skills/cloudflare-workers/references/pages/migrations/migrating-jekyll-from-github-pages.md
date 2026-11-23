@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to migrate a Jekyll-based site from GitHub Pages to Cloudflare Pages.
 title: Migrating a Jekyll-based site from GitHub Pages
 image: https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/og.png?v=e55ec76393d76536

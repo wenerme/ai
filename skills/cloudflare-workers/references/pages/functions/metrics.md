@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View request and performance metrics for your Pages Functions.
 title: Metrics
 image: https://developers.cloudflare.com/pages/functions/metrics/og.png?v=870914debf5e9033

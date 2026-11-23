@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Mount R2 buckets as local filesystem paths with the Sandbox SDK 0.x to persist data across sandbox lifecycles.
 title: Data persistence with R2
 image: https://developers.cloudflare.com/sandbox/sdk/tutorials/persistent-storage/og.png?v=42d5bb0a0353b54c

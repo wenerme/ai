@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Claude Haiku 5.5 is a fast, cost-efficient model for high-volume, latency-sensitive tasks such as classification, extraction, routing, and subagent work.
 title: Claude Haiku 5.5
 image: https://developers.cloudflare.com/og-docs.png

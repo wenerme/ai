@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Transcode an image from Workers AI before uploading to R2
 title: Transcode images
 image: https://developers.cloudflare.com/images/examples/transcode-from-workers-ai/og.png?v=fe0232bbfa16400d

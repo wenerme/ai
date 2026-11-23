@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Stream a Container's audio and video to browsers and return authorized keyboard and pointer input through Realtime SFU.
 title: Cloud gaming
 image: https://developers.cloudflare.com/realtime/sfu/examples/cloud-gaming/og.png?v=469bafc757092260

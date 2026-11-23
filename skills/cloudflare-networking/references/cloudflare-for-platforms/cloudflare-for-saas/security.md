@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage certificates, TLS settings, WAF rules, and access controls for custom hostnames.
 title: Security
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/og.png?v=8052729dc93a0cb4

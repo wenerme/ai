@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Safely withdraw a BYOIP prefix from Magic Transit.
 title: Safely withdraw a BYOIP prefix
 image: https://developers.cloudflare.com/magic-transit/how-to/safely-withdraw-byoip-prefix/og.png?v=bb4d6cf68e858029

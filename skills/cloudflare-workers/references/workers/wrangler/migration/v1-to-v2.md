@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step guide to migrate your Workers project from Wrangler v1 to v2, including webpack changes.
 title: Migrate from Wrangler v1 to v2
 image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/og.png?v=9018b754560c19e3

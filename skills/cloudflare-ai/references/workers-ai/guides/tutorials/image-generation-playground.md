@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to build an image generator using Workers AI.
 title: How to Build an Image Generator using Workers AI
 image: https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/og.png?v=395a08a7c8a0280d

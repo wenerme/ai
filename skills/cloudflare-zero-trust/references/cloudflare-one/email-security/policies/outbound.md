@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Outbound policy resources and guides for Email Security.
 title: Outbound
 image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/og.png?v=f728f561c2dc6e9a

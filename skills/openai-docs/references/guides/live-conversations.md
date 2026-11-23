@@ -29,29 +29,36 @@ Choose the model, voice, and delegation mode when you create the session. Give t
 
 Choose a voice when you create the session. Set `audio.output.voice` to the API name, such as `"quartz"`. GPT-Live includes these additional voice options:
 
-| Voice    | API name   | Language   | Regional influence | Presentation | Source    |
-| -------- | ---------- | ---------- | ------------------ | ------------ | --------- |
-| Quartz   | `quartz`   | English    | Australian         | Feminine     | Generated |
-| Ripple   | `ripple`   | English    | Australian         | Masculine    | Natural   |
-| Vesper   | `vesper`   | English    | British            | Masculine    | Natural   |
-| Willow   | `willow`   | English    | Irish              | Feminine     | Natural   |
-| Stone    | `stone`    | English    | Irish              | Masculine    | Natural   |
-| Gleam    | `gleam`    | English    | North American     | Feminine     | Natural   |
-| Meridian | `meridian` | English    | North American     | Masculine    | Natural   |
-| Bossa    | `bossa`    | Portuguese | Brazilian          | Feminine     | Natural   |
-| Tempo    | `tempo`    | Portuguese | Brazilian          | Masculine    | Natural   |
-| Beacon   | `beacon`   | English    | Filipino           | Masculine    | Generated |
-| Delta    | `delta`    | English    | Southern U.S.      | Feminine     | Generated |
-| Cinder   | `cinder`   | English    | Southern U.S.      | Masculine    | Generated |
-| Nuri     | `nuri`     | German     | —                  | Feminine     | Natural   |
-| Juni     | `juni`     | German     | —                  | Feminine     | Natural   |
-| Flitz    | `flitz`    | German     | —                  | Masculine    | Natural   |
-| Brise    | `brise`    | French     | —                  | Feminine     | Natural   |
-| Sillage  | `sillage`  | French     | —                  | Masculine    | Natural   |
-| Nira     | `nira`     | Hindi      | —                  | Feminine     | Natural   |
-| Harema   | `harema`   | Japanese   | —                  | Feminine     | Natural   |
-| Shida    | `shida`    | Japanese   | —                  | Masculine    | Natural   |
-| Noeul    | `noeul`    | Korean     | —                  | Feminine     | Natural   |
+| Voice      | API name     | Language   | Regional influence | Presentation | Source    |
+| ---------- | ------------ | ---------- | ------------------ | ------------ | --------- |
+| Pearl      | `pearl`      | English    | Australian         | Feminine     | Natural   |
+| Quartz     | `quartz`     | English    | Australian         | Feminine     | Generated |
+| Ripple     | `ripple`     | English    | Australian         | Masculine    | Natural   |
+| Halo       | `halo`       | English    | British            | Feminine     | Natural   |
+| Vesper     | `vesper`     | English    | British            | Masculine    | Natural   |
+| Willow     | `willow`     | English    | Irish              | Feminine     | Natural   |
+| Stone      | `stone`      | English    | Irish              | Masculine    | Natural   |
+| Gleam      | `gleam`      | English    | North American     | Feminine     | Natural   |
+| Meridian   | `meridian`   | English    | North American     | Masculine    | Natural   |
+| Bossa      | `bossa`      | Portuguese | Brazilian          | Feminine     | Natural   |
+| Tempo      | `tempo`      | Portuguese | Brazilian          | Masculine    | Natural   |
+| Beacon     | `beacon`     | English    | Filipino           | Masculine    | Generated |
+| Delta      | `delta`      | English    | Southern U.S.      | Feminine     | Generated |
+| Cinder     | `cinder`     | English    | Southern U.S.      | Masculine    | Generated |
+| Calandria  | `calandria`  | Spanish    | Argentine          | Feminine     | Natural   |
+| Compás     | `compas`     | Spanish    | Argentine          | Masculine    | Natural   |
+| Hornero    | `hornero`    | Spanish    | Argentine          | Masculine    | Natural   |
+| Luciérnaga | `luciernaga` | Spanish    | Mexican            | Feminine     | Natural   |
+| Destello   | `destello`   | Spanish    | Mexican            | Masculine    | Natural   |
+| Nuri       | `nuri`       | German     | —                  | Feminine     | Natural   |
+| Juni       | `juni`       | German     | —                  | Feminine     | Natural   |
+| Flitz      | `flitz`      | German     | —                  | Masculine    | Natural   |
+| Brise      | `brise`      | French     | —                  | Feminine     | Natural   |
+| Sillage    | `sillage`    | French     | —                  | Masculine    | Natural   |
+| Nira       | `nira`       | Hindi      | —                  | Feminine     | Natural   |
+| Harema     | `harema`     | Japanese   | —                  | Feminine     | Natural   |
+| Shida      | `shida`      | Japanese   | —                  | Masculine    | Natural   |
+| Noeul      | `noeul`      | Korean     | —                  | Feminine     | Natural   |
 
 Regional influence describes a voice’s speaking style. Test the voice with the languages and pronunciation your application needs. To create a voice from a text description or an approved recording, see [Custom voices](https://developers.openai.com/api/docs/guides/custom-voices).
 

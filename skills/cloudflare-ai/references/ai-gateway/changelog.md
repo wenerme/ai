@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track the latest updates, new features, and fixes for AI Gateway.
 title: Changelog
 image: https://developers.cloudflare.com/ai-gateway/changelog/og.png?v=9c3aed7c656f5118

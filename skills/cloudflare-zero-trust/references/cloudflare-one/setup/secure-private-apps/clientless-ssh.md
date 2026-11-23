@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Provide in-browser SSH access to an internal server through Cloudflare Access.
 title: Clientless SSH
 image: https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/clientless-ssh/og.png?v=95f00f4bcff7f126

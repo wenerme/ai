@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Categories of rules in the Network-layer DDoS Attack Protection managed ruleset.
 title: Rule categories
 image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/rule-categories/og.png?v=f523352a78064e41

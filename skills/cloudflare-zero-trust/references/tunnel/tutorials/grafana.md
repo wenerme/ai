@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial covers how to create the metrics endpoint and set up the Prometheus server.
 title: Monitor Cloudflare Tunnel with Grafana
 image: https://developers.cloudflare.com/tunnel/tutorials/grafana/og.png?v=b97ccaec7a53283b

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Network Firewall packet samples via GraphQL.
 title: Querying Cloudflare Network Firewall Samples with GraphQL
 image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-network-firewall-samples/og.png?v=a6e67bf3ae0aaeda

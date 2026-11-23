@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Service tokens in Access.
 title: Service tokens
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/og.png?v=319d41b15b504397

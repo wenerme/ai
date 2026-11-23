@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare for SaaS allows you to generate a Certificate Signing Request (CSR) A CSR contains information about your domain, common name, and Subject Alternative Names.
 title: Certificate signing requests (CSRs)
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/certificate-signing-requests/og.png?v=ba7dcd729dc293f0

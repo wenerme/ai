@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.
 title: Improve SEO
 image: https://developers.cloudflare.com/fundamentals/performance/improve-seo/og.png?v=f06c189a932eb134

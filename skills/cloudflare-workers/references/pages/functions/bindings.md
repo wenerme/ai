@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.
 title: Bindings
 image: https://developers.cloudflare.com/pages/functions/bindings/og.png?v=3a2a66ac42cf54e8
@@ -584,14 +587,14 @@ PostgreSQL drivers like [`Postgres.js` ↗︎](https://github.com/porsager/postg
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-18"
+	"compatibility_date": "2026-11-23"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.

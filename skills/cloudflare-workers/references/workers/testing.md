@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose testing tools for Cloudflare Workers, including createTestHarness and the Vitest integration.
 title: Testing
 image: https://developers.cloudflare.com/workers/testing/og.png?v=15a28c7def4c6221

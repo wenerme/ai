@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Specify model or provider fallbacks in AI Gateway to handle request failures and ensure reliability.
 title: Fallbacks
 image: https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/og.png?v=893e5e6d4d3ec48b

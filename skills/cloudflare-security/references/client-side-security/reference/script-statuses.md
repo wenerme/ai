@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Status classifications for scripts and connections detected by client-side security.
 title: Script and connection statuses
 image: https://developers.cloudflare.com/client-side-security/reference/script-statuses/og.png?v=0baa84e08069fbd5

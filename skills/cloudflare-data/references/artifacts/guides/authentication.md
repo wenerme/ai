@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose auth for bindings, API calls, and Git.
 title: Authentication
 image: https://developers.cloudflare.com/artifacts/guides/authentication/og.png?v=5e103971d5cf365b
@@ -39,7 +42,7 @@ Add the binding in your Wrangler config:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -54,7 +57,7 @@ name = "artifacts-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[artifacts]]
 binding = "ARTIFACTS"

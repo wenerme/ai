@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Answers to common questions about DDoS attack events, billing, and mitigation behavior.
 title: FAQ
 image: https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/og.png?v=f027a4ab6d65b7fa

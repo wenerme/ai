@@ -32,8 +32,14 @@ specification-driven development workflow.
 
 You can add a workplan to issues and tasks.
 
-After you turn on planning for a work item, the
-widget appears and shows the workplan status:
+After you turn on planning for a work item, the Implementation widget appears.
+The widget has the following sections:
+
+- : The status of the workplan.
+- : The readiness level of the work item.
+  It appears after GitLab Duo evaluates the work item.
+
+The workplan status is one of the following:
 
 - : The work item has no workplan, and you can create one.
 - : The work item has no workplan, and you do not have permission to create one.
@@ -98,8 +104,8 @@ You do not need a workplan for small or well-understood changes, where planning 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250010) in GitLab 19.4.
 -  option [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/632233) in GitLab 19.6.
 
-By default, the  widget and the readiness level are hidden on a work item.
-To show them, turn on planning for that work item.
+By default, the Implementation widget is hidden on a work item.
+To show the widget, turn on planning for that work item.
 
 Prerequisites:
 
@@ -114,7 +120,7 @@ To turn on planning, on the work item, in the upper-right corner, use one of the
   select the down arrow () > .
   The workplan editor opens.
 
-The  widget appears on the work item, and the  button no longer appears.
+The Implementation widget appears on the work item, and the  button no longer appears.
 After you turn on planning for a work item, you cannot turn it off.
 
 ## Create a workplan
@@ -132,7 +138,7 @@ You can generate a workplan with GitLab Duo or write one manually.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248543) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workplan_async_flow`. Disabled by default.
 - Generating a workplan in GitLab Duo Chat [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260695) in GitLab 19.6. Feature flag `duo_workplan_async_flow` removed.
-- Session icon in the  widget [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/631233) in GitLab 19.7.
+- Session icon in the Implementation widget [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/631233) in GitLab 19.7.
 
 GitLab Duo generates the workplan with the  flow, which runs in the background.
 When you select  to [turn on planning](#turn-on-planning-for-a-work-item) for a work item,
@@ -144,11 +150,11 @@ Prerequisites:
 
 To generate a workplan with GitLab Duo:
 
-1. On the work item, in the  widget, select .
+1. On the work item, in the Implementation widget, select .
 1. If GitLab Duo asks questions, answer them in the comment threads on the work item.
-   Then, in the  widget, select .
+   Then, in the Implementation widget, select .
 
-GitLab Duo writes the workplan to the  widget, and the status changes to
+GitLab Duo writes the workplan to the Implementation widget, and the status changes to
 .
 
 The flow runs in the background, so you can leave the page while GitLab Duo works.
@@ -156,19 +162,19 @@ When GitLab Duo needs your input, you receive a to-do item and an email.
 
 To follow the progress of a run, or to find out why the generation failed,
 open the [session](../duo_agent_platform/sessions/_index.md) for the latest run.
-In the  widget, next to the status,
+In the Implementation widget, next to the status,
 select  ().
 The icon appears when the status is ,
 , or .
 To close the GitLab Duo sidebar, select  () again.
 
-If the generation fails, in the  widget, select .
+If the generation fails, in the Implementation widget, select .
 
 ### Create a workplan manually
 
 To create a workplan manually:
 
-1. On the work item, in the  widget, select  > .
+1. On the work item, in the Implementation widget, select  > .
 1. Optional. From the template dropdown list, select a workplan template.
 1. Enter the workplan content. To switch between editors, select
    or .
@@ -182,7 +188,7 @@ that end in `.plan`.
 To view a workplan:
 
 1. Go to the work item.
-1. In the  widget, select .
+1. In the Implementation widget, select .
 
 The workplan opens in a panel and shows the rendered content.
 
@@ -194,7 +200,7 @@ Prerequisites:
 
 To edit a workplan:
 
-1. On the work item, in the  widget, select .
+1. On the work item, in the Implementation widget, select .
 1. In the panel, select .
 1. Make your changes.
 1. Select .
@@ -203,7 +209,7 @@ To discard your changes, select .
 
 ## Regenerate a workplan
 
-- Regenerating from the  widget [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268677) in GitLab 19.7.
+- Regenerating from the Implementation widget [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268677) in GitLab 19.7.
 
 Regenerate a workplan to replace its content with a new version from GitLab Duo.
 
@@ -214,12 +220,12 @@ Prerequisites:
 
 To regenerate a workplan:
 
-1. On the work item, in the  widget, use one of the following methods:
+1. On the work item, in the Implementation widget, use one of the following methods:
    - Next to , select the down arrow () > .
    - Select .
      Then, in the panel, select  () > .
 1. If GitLab Duo asks questions, answer them in the comment threads on the work item.
-   Then, in the  widget, select .
+   Then, in the Implementation widget, select .
 
 GitLab Duo replaces the existing workplan with the new version.
 
@@ -231,7 +237,7 @@ Prerequisites:
 
 To delete a workplan:
 
-1. On the work item, in the  widget, select .
+1. On the work item, in the Implementation widget, select .
 1. In the panel, select  () > .
 1. In the confirmation dialog, select .
 
@@ -258,7 +264,7 @@ Prerequisites:
 
 - Planning turned on for the work item.
 
-In the  widget on the work item, the readiness level appears as
+In the Implementation widget, the readiness level appears as
 , , or .
 The readiness level appears only after GitLab Duo generates a workplan and
 evaluates the work item.
@@ -336,9 +342,9 @@ Prerequisites:
 
 To implement a workplan with GitLab Duo, use one of the following methods:
 
-- On the work item, in the  widget, select .
+- On the work item, in the Implementation widget, select .
 - Open the workplan, then implement it from the panel:
-  1. On the work item, in the  widget, select .
+  1. On the work item, in the Implementation widget, select .
   1. In the panel, select .
 
 ### Implement a work item without a workplan

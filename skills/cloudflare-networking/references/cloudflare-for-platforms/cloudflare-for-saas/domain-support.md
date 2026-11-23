@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add customer vanity domains and subdomains to your SaaS zone as custom hostnames.
 title: Custom hostnames
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/og.png?v=bdf1469ee1a798d6

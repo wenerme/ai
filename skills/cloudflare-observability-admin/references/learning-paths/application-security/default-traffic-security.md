@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect web applications with Cloudflare security products.
 title: Default traffic security
 image: https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/og.png?v=89c9f71c338216bf

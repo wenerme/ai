@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Cloudflare Technology Partner integrations for analytics, networking, Zero Trust, and logging.
 title: Partners
 image: https://developers.cloudflare.com/fundamentals/reference/partners/og.png?v=0fa3cb50ea32ef6c

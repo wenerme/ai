@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Best practices for deploying Cloudflare Gateway traffic policies in phases.
 title: Get started
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/og.png?v=a03497584ce80063

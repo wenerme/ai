@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Queues provides at-least-once message delivery by default.
 title: Delivery guarantees
 image: https://developers.cloudflare.com/queues/reference/delivery-guarantees/og.png?v=8540616bc6797117

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review WAF action and rule field values in logs.
 title: WAF fields
 image: https://developers.cloudflare.com/logs/reference/waf-fields/og.png?v=3eb7c5408f18026f

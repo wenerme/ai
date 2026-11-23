@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Browse account-scoped Logpush dataset fields.
 title: Account-scoped datasets
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/og.png?v=de88a0363e6bc2f8

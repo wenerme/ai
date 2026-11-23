@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.
 title: Add a React form with Formspree
 image: https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/og.png?v=371fd0e5da5f905f

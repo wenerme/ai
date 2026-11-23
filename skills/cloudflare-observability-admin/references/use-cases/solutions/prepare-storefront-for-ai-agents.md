@@ -1,0 +1,128 @@
+---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+description: Find out which AI agents shop your store, let the right ones in, publish product facts agents can read, and test a full purchase with an agent.
+title: Get your storefront ready for AI shopping agents
+image: https://developers.cloudflare.com/use-cases/solutions/prepare-storefront-for-ai-agents/og.png?v=57b9d1c41e5d1d21
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Get your storefront ready for AI shopping agents
+
+Personal AI agents can now browse, add to cart, and check out on a shopper's behalf. An agent comparing stores looks for the same facts at each one: price, stock, delivery date, shipping cost, and return policy. If it cannot reach your store, or cannot find those facts, it recommends another store.
+
+This guide walks through five steps that build on each other: see which agents already visit, decide which ones to allow, publish the facts agents need, check your Agent Readiness score, and test a purchase end to end. Most steps are settings changes or content updates, so they fit inside a code freeze.
+
+## 1. Review which agents visit your store
+
+Before you change any settings, find out which agents already visit, which pages they request, and where they stop.
+
+1. In [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/), go to **Bot analysis** and select a personal agent. The view filters to that agent's requests, including the pages it requests and the errors it receives.
+2. Look for agents that reach product pages but fail at the cart. Those are shoppers who were ready to buy, so fix those paths first.
+3. In [Business Insights](https://developers.cloudflare.com/bots/business-insights/), review the agent crawl-to-referral ratio for pages built for people, such as pages that depend on advertising. A ratio of 12:1 means twelve agent visits for every human visit.
+
+## 2. Decide which agents to allow
+
+An agent can only recommend a store it can reach. Configure access in the Cloudflare dashboard under **Security settings** > **AI Crawler and Agent access policies**.
+
+Use three questions to decide on each agent:
+
+- **Is the agent who it says it is?** Personal agents listed in the policy come from Cloudflare's directory of [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/). Cloudflare recommends **Allow** for these. Traffic that only claims to be an agent is still subject to your bot protections.
+- **Do your customers use it?** The analytics from step 1 show which agents visit and how many requests each one sends.
+- **What does it do on your site?** An agent that reads product pages and reaches checkout behaves like a shopper. If it mostly visits pages that depend on ads, select **Block on pages with ads** instead of **Block**.
+
+To help agents find your products, allow agents to search so AI search indexes can read your catalog. For finer control, create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that lets personal agents browse your catalog while restricting areas such as account settings.
+
+If you are unsure about an agent, allow it and watch its activity in Security Analytics before you change the policy.
+
+### Check protections that an Allow policy does not override
+
+- **Turnstile:** Personal agents are automated clients, so they fail Turnstile validation. On pages where you want agents to get through, do not render Turnstile for them. Refer to [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/).
+- **Custom rules:** A rule that blocks or challenges automated traffic, for example one based on bot score, still applies to an allowed agent. Review matching rules in **Security** > **Security rules** > **Custom rules**, and add an exception for agents where appropriate.
+
+## 3. Publish product facts as text
+
+An agent can only pass along what it can read. Put each fact a shopper asks about in text on the product page, one per line:
+
+- Price
+- Stock status
+- Delivery date
+- Shipping cost
+- Return window
+- Whether the promo code applies
+
+A shipping cutoff that only appears in a banner image may be missed. Also check that the price on the page matches the price in the cart, because a mismatch can stop a purchase.
+
+Then repeat the same facts in [Schema.org Product ↗︎](https://schema.org/Product) JSON-LD inside a `<script>` tag. Shoppers never see it, so it complements the visible text instead of replacing it.
+
+```html
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Product",
+		"name": "Navy Wool Scarf",
+		"sku": "SCARF-NVY-01",
+		"offers": {
+			"@type": "Offer",
+			"priceCurrency": "USD",
+			"price": "48.00",
+			"availability": "https://schema.org/InStock"
+		}
+	}
+</script>
+```
+
+When price or stock changes on the page, update the JSON-LD at the same time so an agent never sees two different answers. To include shipping and return details, add the `shippingDetails` and `hasMerchantReturnPolicy` properties to the same `offers` block.
+
+## 4. Check your Agent Readiness score
+
+In the Cloudflare dashboard, go to **Agent Readiness** and run diagnostics on your store's hostname. The scan reads your site the way an agent does and returns a readiness level.
+
+Checks are grouped by effort. Quick wins include a sitemap, AI crawler rules in `robots.txt`, and [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/), which is a single toggle. With Markdown for Agents on, agents that request Markdown receive a clean text version of your pages.
+
+## 5. Test a purchase with an agent
+
+Analytics show where agents stop. Testing yourself shows why. Ask a personal agent to buy something from your store the way a customer would, for example:
+
+```txt
+Buy two navy wool scarves from example.com as gifts. Use the code HOLIDAY20 and add gift wrap. Before you pay, check that they will arrive by December 20 and that they can be returned in January.
+```
+
+Then follow along:
+
+- Does the agent pick the right color and quantity?
+- Can it find the gift wrap option?
+- Does the promo code apply?
+- Can it confirm the delivery date and return window before it pays?
+- Does it get stuck on a pop-up it cannot close?
+
+Fix what you can now, and note the rest for after your peak season.
+
+## Identify the shopper behind the agent
+
+A personal agent is on your site because a person asked it to shop. With [Account Abuse Protection](https://developers.cloudflare.com/bots/account-abuse-protection/), you can see which personal agents act on behalf of a specific user and check whether that activity is consistent with how the account normally behaves. If one user's activity looks suspicious, you can act on that account while still allowing the same agent for everyone else.
+
+## Related resources
+
+- [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
+- [Bot analytics](https://developers.cloudflare.com/bots/bot-analytics/)
+- [Verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/)
+- [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/prepare-storefront-for-ai-agents/#page","headline":"Get your storefront ready for AI shopping agents","description":"Find out which AI agents shop your store, let the right ones in, publish product facts agents can read, and test a full purchase with an agent.","url":"https://developers.cloudflare.com/use-cases/solutions/prepare-storefront-for-ai-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/use-cases/solutions/prepare-storefront-for-ai-agents/og.png?v=57b9d1c41e5d1d21","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow, block, or configure actions for AI crawlers.
 title: Manage AI crawlers
 image: https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/og.png?v=d35392973f811299

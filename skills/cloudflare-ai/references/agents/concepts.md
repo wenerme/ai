@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand the core concepts behind Cloudflare Agents, including state, tools, workflows, and memory.
 title: Concepts
 image: https://developers.cloudflare.com/agents/concepts/og.png?v=eb9eb2c6ec56bd09

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: PAC file best practices in Zero Trust networking.
 title: PAC file best practices
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/best-practices/og.png?v=3fa540dbd3c893f9

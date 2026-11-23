@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Simulate and test Cloudflare Workers locally with Miniflare, a fully-local development simulator.
 title: Miniflare
 image: https://developers.cloudflare.com/workers/testing/miniflare/og.png?v=0e9fdd4cd87b0c90

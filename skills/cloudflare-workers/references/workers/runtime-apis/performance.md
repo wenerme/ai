@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Measure timing, performance, and timing of subrequests and other operations.
 title: Performance and timers
 image: https://developers.cloudflare.com/workers/runtime-apis/performance/og.png?v=6a3c5d8a6a2b52bf

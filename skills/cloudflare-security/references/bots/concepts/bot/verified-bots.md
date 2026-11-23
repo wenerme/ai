@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.
 title: Verified bots
 image: https://developers.cloudflare.com/bots/concepts/bot/verified-bots/og.png?v=afbcc2c06cbb5bd0

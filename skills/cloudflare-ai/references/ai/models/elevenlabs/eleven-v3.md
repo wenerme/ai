@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: ElevenLabs' latest text-to-speech model for highly expressive, natural speech generation with advanced voice control.
 title: Eleven v3
 image: https://developers.cloudflare.com/og-docs.png

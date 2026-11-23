@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run callbacks on a Durable Object after a delay, at a date, from a cron expression, or on an interval with the Scheduler capability.
 title: Scheduler
 image: https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/og.png?v=fbed24b7d2760191

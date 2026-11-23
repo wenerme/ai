@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.
 title: Define foreign keys
 image: https://developers.cloudflare.com/d1/sql-api/foreign-keys/og.png?v=5be40dbf13d7aade

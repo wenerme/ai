@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Examine the contents of a Headers object by logging to console with a Map.
 title: Logging headers to console
 image: https://developers.cloudflare.com/workers/examples/logging-headers/og.png?v=51aab717b224e2cb

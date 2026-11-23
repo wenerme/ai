@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing account secrets within a Secrets Store.
 title: Secrets Store
 image: https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/og.png?v=38356ae9c1b92267
@@ -29,15 +32,15 @@ Create a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret create <STORE-ID>
+npx wrangler secrets-store secret create <STORE-ID> --name <NAME> --scopes <SCOPES>
 ```
 
 ```
-yarn wrangler secrets-store secret create <STORE-ID>
+yarn wrangler secrets-store secret create <STORE-ID> --name <NAME> --scopes <SCOPES>
 ```
 
 ```
-pnpm wrangler secrets-store secret create <STORE-ID>
+pnpm wrangler secrets-store secret create <STORE-ID> --name <NAME> --scopes <SCOPES>
 ```
 
 - `<STORE-ID>` `string` required
@@ -103,15 +106,15 @@ Update a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret update <STORE-ID>
+npx wrangler secrets-store secret update <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret update <STORE-ID>
+yarn wrangler secrets-store secret update <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret update <STORE-ID>
+pnpm wrangler secrets-store secret update <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 - `<STORE-ID>` `string` required
@@ -161,15 +164,15 @@ Duplicate a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret duplicate <STORE-ID>
+npx wrangler secrets-store secret duplicate <STORE-ID> --secret-id <SECRET-ID> --name <NAME> --scopes <SCOPES>
 ```
 
 ```
-yarn wrangler secrets-store secret duplicate <STORE-ID>
+yarn wrangler secrets-store secret duplicate <STORE-ID> --secret-id <SECRET-ID> --name <NAME> --scopes <SCOPES>
 ```
 
 ```
-pnpm wrangler secrets-store secret duplicate <STORE-ID>
+pnpm wrangler secrets-store secret duplicate <STORE-ID> --secret-id <SECRET-ID> --name <NAME> --scopes <SCOPES>
 ```
 
 - `<STORE-ID>` `string` required
@@ -223,15 +226,15 @@ Get a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret get <STORE-ID>
+npx wrangler secrets-store secret get <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret get <STORE-ID>
+yarn wrangler secrets-store secret get <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret get <STORE-ID>
+pnpm wrangler secrets-store secret get <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 - `<STORE-ID>` `string` required
@@ -292,15 +295,15 @@ Delete a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret delete <STORE-ID>
+npx wrangler secrets-store secret delete <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret delete <STORE-ID>
+yarn wrangler secrets-store secret delete <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret delete <STORE-ID>
+pnpm wrangler secrets-store secret delete <STORE-ID> --secret-id <SECRET-ID>
 ```
 
 - `<STORE-ID>` `string` required

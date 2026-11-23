@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 createBackup() and restoreBackup() with DirectoryBackup, and convert the backups that 0.12 created.
 title: Move backups
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/backups/og.png?v=96498efa0ea2a459

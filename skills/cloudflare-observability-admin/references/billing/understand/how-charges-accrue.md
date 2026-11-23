@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How a request generates billable usage across Cloudflare products.
 title: How charges accrue
 image: https://developers.cloudflare.com/billing/understand/how-charges-accrue/og.png?v=29273dcb2c2e4838

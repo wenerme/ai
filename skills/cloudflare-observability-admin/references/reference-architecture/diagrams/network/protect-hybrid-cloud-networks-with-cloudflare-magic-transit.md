@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Magic Transit provides cloud-native, in-line DDoS protection, and traffic acceleration for all Internet-facing networks.
 title: Protect hybrid cloud networks with Cloudflare Magic Transit
 image: https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/og.png?v=0562349a653e6bfa

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure a Container, its Durable Object binding, and its class export in Wrangler.
 title: Wrangler configuration
 image: https://developers.cloudflare.com/containers/configuration/wrangler/og.png?v=2a187101b50ae69b
@@ -25,7 +28,7 @@ A new Container application requires a Container definition, a Durable Object bi
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -56,7 +59,7 @@ name = "my-container-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[containers]]
 class_name = "MyContainer"

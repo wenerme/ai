@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review recent changes to Cloudflare Zero Trust user risk scoring.
 title: Risk score
 image: https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/og.png?v=5ce941479089b6d8

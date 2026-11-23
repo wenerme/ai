@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create, edit, and delete AI Gateway instances using the dashboard or API.
 title: Manage gateways
 image: https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/og.png?v=b71ac78f74104783

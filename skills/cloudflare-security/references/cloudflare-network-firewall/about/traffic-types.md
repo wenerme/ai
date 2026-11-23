@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Traffic types inspected by the Network Firewall.
 title: Traffic types
 image: https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/og.png?v=2943a69dae547c03

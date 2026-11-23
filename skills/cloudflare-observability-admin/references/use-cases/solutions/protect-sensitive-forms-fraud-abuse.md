@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.
 title: Protect your forms from spam and abuse (Free, Pro, and Business)
 image: https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/og.png?v=79d35783c9ccd7f5

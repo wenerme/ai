@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create URL rewrite rules in the Cloudflare dashboard.
 title: Create a URL rewrite rule in the dashboard
 image: https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/og.png?v=6e8470437d4a0a76

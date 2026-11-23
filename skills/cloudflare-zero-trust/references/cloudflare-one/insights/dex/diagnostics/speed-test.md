@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run speed tests from the Cloudflare One client to measure network throughput, latency, and quality scores for end user devices.
 title: Speed test
 image: https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/og.png?v=ddc6667a6bafaac6

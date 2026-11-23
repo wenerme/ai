@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Improve cache hit rates by sorting query string parameters.
 title: Query String Sort
 image: https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/og.png?v=792561961e356eb1

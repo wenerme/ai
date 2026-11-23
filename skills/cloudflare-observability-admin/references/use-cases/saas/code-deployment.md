@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Let your customers deploy their own code on your platform with isolated execution environments.
 title: Enable customer code deployment
 image: https://developers.cloudflare.com/use-cases/saas/code-deployment/og.png?v=805a9f87eba9d616

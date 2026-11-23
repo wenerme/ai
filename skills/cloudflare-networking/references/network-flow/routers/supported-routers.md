@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A list of open source, NetFlow, and sFlow routers.
 title: Supported routers
 image: https://developers.cloudflare.com/network-flow/routers/supported-routers/og.png?v=de18f0b4b0c87b64

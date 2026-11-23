@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Skip action to bypass security features for matching requests.
 title: Configure a rule with the Skip action
 image: https://developers.cloudflare.com/waf/custom-rules/skip/og.png?v=718777228b5c20f8

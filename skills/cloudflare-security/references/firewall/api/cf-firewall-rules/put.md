@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Update filters or rules with PUT API requests.
 title: PUT examples
 image: https://developers.cloudflare.com/firewall/api/cf-firewall-rules/put/og.png?v=f719bf015b6a6f4c

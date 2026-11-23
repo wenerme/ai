@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Play Cloudflare Stream videos on the web using HLS and DASH-compatible players.
 title: Web
 image: https://developers.cloudflare.com/stream/viewing-videos/using-own-player/web/og.png?v=e876a0cd1a48e336

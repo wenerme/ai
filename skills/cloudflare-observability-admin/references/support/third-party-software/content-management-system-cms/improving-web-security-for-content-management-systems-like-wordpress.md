@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Improve WordPress security with Cloudflare features.
 title: Improving web security for content management systems like WordPress
 image: https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/improving-web-security-for-content-management-systems-like-wordpress/og.png?v=8ceea60e12c9be97

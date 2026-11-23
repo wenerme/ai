@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: OpenAI's go-to model for everyday work, from coding to powering agents at scale. GPT-6.2 Sol offers capable reasoning and tool use across common workflows.
 title: GPT-6.2 Sol
 image: https://developers.cloudflare.com/og-docs.png

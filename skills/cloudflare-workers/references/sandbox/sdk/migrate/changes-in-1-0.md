@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sandbox SDK 1.0 moves the work of the 0.x Sandbox class into a Durable Object that you write, which decides lifetime, network access, and state.
 title: Changes in Sandbox SDK 1.0
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/changes-in-1-0/og.png?v=bd924d25697c0b99

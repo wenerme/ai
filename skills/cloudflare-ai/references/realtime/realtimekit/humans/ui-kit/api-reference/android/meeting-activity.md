@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkMeetingActivity component (Android Library)
 title: RtkMeetingActivity
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/meeting-activity/og.png?v=1f726049b13f7d68

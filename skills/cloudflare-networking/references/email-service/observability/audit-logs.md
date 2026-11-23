@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track Email Service configuration changes such as rule edits and address additions in Cloudflare audit logs.
 title: Audit logs
 image: https://developers.cloudflare.com/email-service/observability/audit-logs/og.png?v=ade317ef1db125b8

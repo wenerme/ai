@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test your website speed and Internet connection using Cloudflare dashboard tools and third-party services.
 title: Test speed
 image: https://developers.cloudflare.com/fundamentals/performance/test-speed/og.png?v=96f4b2dbfb0d6ea0

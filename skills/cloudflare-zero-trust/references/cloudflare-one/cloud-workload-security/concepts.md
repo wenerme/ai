@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how Cloud Workload Security combines workloads, policy sets, and Rego checks to validate API requests.
 title: Concepts
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/concepts/og.png?v=5116b7637acf0d30

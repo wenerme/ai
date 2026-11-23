@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Cloudflare Cache.
 title: Reference
 image: https://developers.cloudflare.com/cache/reference/og.png?v=ea06f8c4c6dd1ec8

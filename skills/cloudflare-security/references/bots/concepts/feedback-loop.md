@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Submit feedback to improve bot detection accuracy for your domain.
 title: Bot Feedback Loop
 image: https://developers.cloudflare.com/bots/concepts/feedback-loop/og.png?v=ddd0cd3976230d8c

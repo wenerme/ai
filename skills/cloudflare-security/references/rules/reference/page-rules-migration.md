@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from Page Rules to modern Cloudflare Rules alternatives.
 title: Page Rules migration guide
 image: https://developers.cloudflare.com/rules/reference/page-rules-migration/og.png?v=222e17aa1267d01c

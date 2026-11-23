@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How the presence of a Worker script influences static asset routing and the related configuration options.
 title: Worker script
 image: https://developers.cloudflare.com/workers/static-assets/routing/worker-script/og.png?v=ace0e6d8be5260df
@@ -44,7 +47,7 @@ If you need to always run your Worker script before serving static assets (for e
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -58,7 +61,7 @@ If you need to always run your Worker script before serving static assets (for e
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -134,7 +137,7 @@ You can also configure selective Worker-first routing using an array of route pa
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -149,7 +152,7 @@ You can also configure selective Worker-first routing using an array of route pa
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 main = "./worker/index.ts"
 upload_source_maps = true
 

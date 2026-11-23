@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand bounce handling and reputation management for optimal email delivery with Email Service.
 title: Email deliverability
 image: https://developers.cloudflare.com/email-service/concepts/deliverability/og.png?v=6445422fd87b5279

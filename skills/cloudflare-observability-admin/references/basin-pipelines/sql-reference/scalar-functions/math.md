@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scalar functions for mathematical operations
 title: Math functions
 image: https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/math/og.png?v=04dce89fc23381f8

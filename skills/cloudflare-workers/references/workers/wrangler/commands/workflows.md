@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing and configuring Cloudflare Workflows.
 title: Workflows
 image: https://developers.cloudflare.com/workers/wrangler/commands/workflows/og.png?v=5f128d6707007100
@@ -387,15 +390,15 @@ Send an event to a workflow instance
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances send-event <NAME> <ID>
+npx wrangler workflows instances send-event <NAME> <ID> --type <TYPE>
 ```
 
 ```
-yarn wrangler workflows instances send-event <NAME> <ID>
+yarn wrangler workflows instances send-event <NAME> <ID> --type <TYPE>
 ```
 
 ```
-pnpm wrangler workflows instances send-event <NAME> <ID>
+pnpm wrangler workflows instances send-event <NAME> <ID> --type <TYPE>
 ```
 
 - `--local` `boolean` Interact with local dev session

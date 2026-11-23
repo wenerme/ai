@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloud and SaaS integrations resources and guides for Zero Trust integrations.
 title: Cloud and SaaS integrations
 image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/og.png?v=4c0bebb8f8ca984e

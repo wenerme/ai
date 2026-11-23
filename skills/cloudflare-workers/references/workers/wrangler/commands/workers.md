@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for creating, developing, deploying, and managing Workers.
 title: Workers
 image: https://developers.cloudflare.com/workers/wrangler/commands/workers/og.png?v=23e946081c972e5c

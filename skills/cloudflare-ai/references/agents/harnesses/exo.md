@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Exo's Cloudflare adapter, with Rust and WebAssembly orchestration, per-thread Durable Objects, and Linux sandboxes.
 title: Exo
 image: https://developers.cloudflare.com/agents/harnesses/exo/og.png?v=eaec0d5574f1d15d

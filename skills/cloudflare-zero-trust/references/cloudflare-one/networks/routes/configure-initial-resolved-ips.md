@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the IPv4 range Gateway uses to assign initial resolved IPs for hostname-based traffic.
 title: Configure initial resolved IPs
 image: https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/og.png?v=de7c46f1a9411f84

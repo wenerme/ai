@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference documentation for Flagship, including platform limits, evaluation reasons, and error codes.
 title: Reference
 image: https://developers.cloudflare.com/flagship/reference/og.png?v=4e2666d554e3a2c1

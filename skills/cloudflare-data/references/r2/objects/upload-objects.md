@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.
 title: Upload objects
 image: https://developers.cloudflare.com/r2/objects/upload-objects/og.png?v=fca7840785e7dbcc

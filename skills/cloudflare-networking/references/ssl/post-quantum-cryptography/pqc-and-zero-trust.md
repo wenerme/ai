@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.
 title: Post-quantum cryptography in Cloudflare One
 image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/og.png?v=b8e5f308bb6efe9f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure AI coding agents to control Browser Run sessions through the Model Context Protocol (MCP) using the chrome-devtools-mcp package.
 title: Using with MCP clients (CDP)
 image: https://developers.cloudflare.com/browser-run/cdp/mcp-clients/og.png?v=1f81202e0024194b

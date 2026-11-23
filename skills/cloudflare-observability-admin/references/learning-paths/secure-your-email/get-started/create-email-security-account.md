@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up a Cloudflare Email security account.
 title: Create an Email security account
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/create-email-security-account/og.png?v=f1610cd11dfd712a

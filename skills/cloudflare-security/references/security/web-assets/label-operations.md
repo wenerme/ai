@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use labels to describe the application use case for Web Assets operations.
 title: Label operations
 image: https://developers.cloudflare.com/security/web-assets/label-operations/og.png?v=2ebd620750e42057

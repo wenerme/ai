@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sandbox SDK 0.x restores a directory backup as a copy-on-write overlay in production and by extracting the archive in local development.
 title: Directory backups
 image: https://developers.cloudflare.com/sandbox/sdk/concepts/backup-restore/og.png?v=8c9073e99248bf35

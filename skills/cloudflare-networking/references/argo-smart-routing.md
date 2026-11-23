@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route traffic across the fastest network paths to reduce latency and packet loss.
 title: Argo Smart Routing
 image: https://developers.cloudflare.com/argo-smart-routing/og.png?v=af13db92b736f112

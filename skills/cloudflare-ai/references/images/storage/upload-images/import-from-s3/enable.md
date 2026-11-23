@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create import jobs for images stored in Amazon S3.
 title: Import images from S3
 image: https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/enable/og.png?v=f1bfb12b057bfbf2

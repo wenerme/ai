@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the `connect()` API to create outbound TCP connections from Workers.
 title: TCP sockets
 image: https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/og.png?v=892691d0262c72f7

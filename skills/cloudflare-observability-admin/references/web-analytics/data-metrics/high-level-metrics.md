@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Page views, visits, and other high-level metrics in Web Analytics.
 title: High-level metrics
 image: https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/og.png?v=328643e32dc1cc0b

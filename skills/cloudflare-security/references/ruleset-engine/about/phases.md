@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How phases organize rule execution in the Ruleset Engine request lifecycle.
 title: Phases
 image: https://developers.cloudflare.com/ruleset-engine/about/phases/og.png?v=cb35372b3c8e5581

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run fine-tuned inference on Workers AI using LoRA adapters.
 title: Fine-tunes
 image: https://developers.cloudflare.com/workers-ai/features/fine-tunes/og.png?v=4894bcc654d8841f

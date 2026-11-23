@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Optimize and transform remote images stored outside of Cloudflare Images.
 title: Remote images (transformations)
 image: https://developers.cloudflare.com/images/optimization/transformations/og.png?v=c2f9342d1e71e9ce
@@ -19,7 +22,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/og.
 - [Control origin access](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/)
 - [Integrate with frameworks](https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/)
 - [Set up rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/)
-- [Preserve Content Credentials](https://developers.cloudflare.com/images/optimization/transformations/preserve-content-credentials/)
 
 Was this helpful?
 

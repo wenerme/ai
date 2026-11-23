@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up APO for your WordPress site with Cloudflare DNS and the WordPress plugin.
 title: Get started
 image: https://developers.cloudflare.com/automatic-platform-optimization/get-started/og.png?v=7f99ce9692a0d265

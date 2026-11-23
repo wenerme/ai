@@ -105,11 +105,13 @@ To configure push rules for a project:
    1. In **Commit author's email**, add a regular expression that allows the email address you just copied.
    1. Select **Save push rules**.
 
-1. Allow the `duo/` branch prefixes:
+1. Allow the `duo/` and `duo-developer-backup/` branch prefixes:
    1. In the **Push rules** section, find **Branch name**.
    1. Add a regular expression that allows branches starting with `duo/fix/`, `duo/feature/`,
-      `duo/refactor/`, or `duo/docs/`.
-      For example: `^duo/(fix|feature|refactor|docs)/.*`
+      `duo/update/`, `duo/refactor/`, or `duo/docs/`.
+      The Developer Flow also pushes a `duo-developer-backup/` branch before it force-pushes,
+      so allow that prefix too.
+      For example: `^(duo/(fix|feature|update|refactor|docs)/.*|duo-developer-backup/.*)`
    1. Select **Save push rules**.
 
 To create push rules for the instance:
@@ -122,8 +124,13 @@ To create push rules for the instance:
 ## A flow's job or session fails to start
 
 If a job for a flow never starts, or the job is stuck at `Starting job`, no runner is available to
-pick up the job. On the session page (**AI** > **Sessions**), the `Session failed to start` alert
-appears.
+pick up the job. While the job waits for a runner, the session page (**AI** > **Sessions**) shows
+`Starting job` and no alert. The session fails when the job fails. GitLab fails the job when it
+drops a job that no runner picks up (`stuck_or_timeout_failure`), or when a project or subgroup
+runner with the `gitlab--duo` tag takes the job (`Duo Workflow cannot run on this runner`).
+In both cases, the `Session failed to start` alert appears.
+
+If the job fails right away with no job log, check the runner scope requirement in the following list.
 
 Flows run on runners that meet the following requirements:
 
@@ -131,8 +138,13 @@ Flows run on runners that meet the following requirements:
 - The runner uses an executor that supports Docker images, like `docker`,
   `docker-autoscaler`, or `kubernetes`. The `shell` executor is not supported.
 - The runner is an instance runner or a group runner assigned to the top-level group.
-  Runners scoped to a subgroup or project do not pick up flow jobs unless the
-  `duo_runner_restrictions` feature flag is turned off.
+
+The `duo_runner_restrictions` feature flag is on by default.
+With the flag on, a project or subgroup runner that has the `gitlab--duo` tag
+can take the flow job.
+GitLab then fails the job with the status `Duo Workflow cannot run on this runner`,
+shows `Duo Agent Platform cannot run on this runner` on the job page, and writes no job log.
+GitLab does not offer the job to another runner.
 
 To resolve this issue:
 
@@ -144,6 +156,9 @@ To resolve this issue:
    1. Confirm that a runner with the `gitlab--duo` tag is online.
 1. Optional. [Verify the runner configuration](flows/execution/_index.md#verify-the-runner-configuration)
    from project settings, which checks the tag, executor, and scope together.
+1. If a project runner or a subgroup runner has the `gitlab--duo` tag, remove the tag.
+   On GitLab Self-Managed, you can also turn off the `duo_runner_restrictions` feature flag.
+   A job that already failed stays failed, so run the flow again.
 1. If no runner meets the requirements, [configure a runner to execute flows](flows/execution/_index.md#configure-runners-to-execute-flows).
 
 If a runner meets all of the requirements but jobs still do not start, check the following:
@@ -251,17 +266,20 @@ Before you delete the service account, collect any data you need.
 
 ## Error: `SSL certificate OpenSSL verify result: unable to get local issuer certificate (20)`
 
-On GitLab Self-Managed instances that use custom or self-signed CA certificates, this message might display when GitLab Duo Agent Platform jobs fail during
-the initial `git clone` (the `get_sources` phase).
+On GitLab Self-Managed instances that use custom or self-signed CA certificates, this message might display
+when a `git` command in a CI/CD job script runs without your CA, because the job image does not trust the CA
+and `GIT_SSL_CAINFO` is not set.
 
-This happens because GitLab Duo Agent Platform jobs set `GIT_CONFIG_GLOBAL=/dev/null` and `GIT_CONFIG_NOSYSTEM=1`
-to harden the agent sandbox. These variables prevent Git from reading system and global configuration files.
-This breaks the runner's mechanism for injecting CA certificate paths during `get_sources`.
+If the runner trusts your CA through its `tls-ca-file` setting or its host certificate store,
+`get_sources` succeeds.
+In a flow, the job script hides this message,
+and GitLab Duo CLI reports `UNABLE_TO_VERIFY_LEAF_SIGNATURE` instead.
 
-CI/CD jobs that do not execute flows are not affected. This issue is specific to workload pipelines for the GitLab Duo Agent Platform.
-
-To resolve this issue, in the [`config.toml`](https://docs.gitlab.com/runner/configuration/advanced-configuration/) file, set the `GIT_SSL_CAINFO` environment variable at the runner level,
-and mount the CA certificate into the container:
+To resolve this issue when the
+[sandbox is not applied](environment_sandbox.md#when-the-sandbox-is-applied),
+set the `GIT_SSL_CAINFO` environment variable at the runner level
+in the [`config.toml`](https://docs.gitlab.com/runner/configuration/advanced-configuration/) file.
+Then mount the CA certificate into the container:
 
 ```toml
 [[runners]]
@@ -302,6 +320,9 @@ they are forwarded into the sandbox:
 Set these variables in the runner's `environment` directive, or export them in the
 `setup_script` of your `agent-config.yml` file. Other variables are not forwarded.
 
+In GitLab 19.4 and earlier, the sandbox does not forward these variables, so neither route reaches it.
+In GitLab 19.5 and later, the sandbox forwards them.
+
 These variables apply to all Node.js network traffic in the sandbox, not only to
 connections to your GitLab instance. `NODE_EXTRA_CA_CERTS` points to a file, so mount the
 CA certificate into the container as shown earlier.
@@ -309,7 +330,31 @@ CA certificate into the container as shown earlier.
 `NODE_TLS_REJECT_UNAUTHORIZED` is not forwarded, because setting it to `0` turns off TLS
 verification. Use `NODE_EXTRA_CA_CERTS` instead.
 
-The `GIT_SSL_CAINFO` variable addresses Git operations that occur before the GitLab Duo CLI starts. For GitLab Duo CLI certificate configuration, see [certificate errors](../gitlab_duo_cli/use.md#certificate-errors).
+When the sandbox is not applied, the runner's `environment` also reaches the tools the flow runs:
+
+- `git` reads `GIT_SSL_CAINFO`.
+- `glab` reads `SSL_CERT_FILE` or `CA_CERT`.
+- `curl` reads `SSL_CERT_FILE` or `CURL_CA_BUNDLE`.
+
+When the sandbox is applied, the job log shows `SRT sandbox test successful`.
+`GIT_SSL_CAINFO` and `SSL_CERT_FILE` are not forwarded into it, so `git`, `glab`, and `curl`
+fail with certificate errors even when GitLab Duo CLI connects.
+
+To fix these errors, add your CA to the image's system trust store:
+
+- Mount a read-only PEM bundle with the image's root certificates and your CA at the image's
+  bundle path. The default image uses `/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem`.
+- Build an image with your CA in its trust store.
+- If the job runs as root, as the default image does, mount your CA file into the container.
+  Then, in the `setup_script` of your `agent-config.yml` file, copy it to
+  `/etc/pki/ca-trust/source/anchors/` and run `update-ca-trust`.
+
+With the sandbox applied, also use a DNS name for the GitLab `external_url`, not an IP address.
+With an IP address, GitLab Duo CLI fails to connect over WebSocket with a hostname mismatch error,
+even when the certificate's subject alternative name covers the IP address.
+
+For GitLab Duo CLI certificate configuration,
+see [certificate errors](../gitlab_duo_cli/use.md#certificate-errors).
 
 ## Connection fails with WebSocket error `1006` or `404`
 

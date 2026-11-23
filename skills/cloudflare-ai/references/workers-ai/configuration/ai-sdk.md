@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Workers AI models with the AI SDK through createAI from agents/models/ai-sdk.
 title: Vercel AI SDK
 image: https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/og.png?v=6e60b4e5c89fbf07

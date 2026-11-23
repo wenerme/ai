@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect your organization from email phishing attacks.
 title: Get started with Email security
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/og.png?v=df551e23e354e723

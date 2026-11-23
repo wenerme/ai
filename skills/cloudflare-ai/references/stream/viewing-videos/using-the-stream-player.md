@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Embed and customize the Cloudflare Stream Player for on-demand and live video playback.
 title: Use the Stream Player
 image: https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/og.png?v=0dcee57e88e5cbcd

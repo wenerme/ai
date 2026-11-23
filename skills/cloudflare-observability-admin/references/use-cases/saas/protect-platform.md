@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure your SaaS platform and your customers' data.
 title: Protect your platform
 image: https://developers.cloudflare.com/use-cases/saas/protect-platform/og.png?v=acc428006b2241c5

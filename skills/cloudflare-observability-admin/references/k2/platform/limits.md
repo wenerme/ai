@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Account, stream, record, and consumer limits for Cloudflare K2.
 title: Limits
 image: https://developers.cloudflare.com/k2/platform/limits/og.png?v=ac2d822337ad8e50

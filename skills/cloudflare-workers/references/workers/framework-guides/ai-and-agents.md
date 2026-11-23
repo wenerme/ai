@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy AI and agent framework applications on Cloudflare Workers.
 title: AI & agents
 image: https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/og.png?v=0f1ef4a7b2080bcd

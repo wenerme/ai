@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Install and configure WARP on Linux.
 title: Linux
 image: https://developers.cloudflare.com/warp-client/get-started/linux/og.png?v=1d3012e86958e0dc

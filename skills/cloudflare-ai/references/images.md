@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Images is a platform for creating scalable and reliable image pipelines, designed to help developers deploy media-rich applications faster.
 title: Images
 image: https://developers.cloudflare.com/images/og.png?v=1e5f8c8a77bf6ad0

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review Beta service terms and third-party license notices for the Cloud Workload Security proxy.
 title: Legal
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/legal/og.png?v=25344445da47b802

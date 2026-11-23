@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Returns `true` when the RFC 9440 encoded client certificate chain exceeds the 16 KiB size limit.
 title: cf.tls_client_auth.cert_chain_rfc9440_too_large
 image: https://developers.cloudflare.com/og-docs.png

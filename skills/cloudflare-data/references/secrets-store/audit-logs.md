@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Actions logged for Secrets Store operations, including create, update, and delete.
 title: Audit logs
 image: https://developers.cloudflare.com/secrets-store/audit-logs/og.png?v=9aff9bcece2ce636

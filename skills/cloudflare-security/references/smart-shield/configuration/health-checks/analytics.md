@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Health Checks analytics to debug origin availability issues.
 title: Health Checks analytics
 image: https://developers.cloudflare.com/smart-shield/configuration/health-checks/analytics/og.png?v=fa89c01be84b3eda

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Other ways to use 1.1.1.1 including Discord, Tor, and Google Sheets.
 title: Other ways to use 1.1.1.1
 image: https://developers.cloudflare.com/1.1.1.1/additional-options/og.png?v=34863a7bc86c7fba

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enforce MFA in Access.
 title: Enforce MFA
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/og.png?v=61e0d7bebea2f7d2

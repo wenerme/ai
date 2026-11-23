@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose coordination boundaries, separate control and data planes, and scale Durable Objects with other Cloudflare services.
 title: Architecture guidance
 image: https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/og.png?v=e7983ddddd2ca9ad
@@ -1205,7 +1208,7 @@ The diagram illustrates immediate updates. The default `deferred` [code update s
   "name": "api",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-21",
+  "compatibility_date": "2026-11-23",
   "durable_objects": {
     "bindings": [
       {
@@ -1222,7 +1225,7 @@ The diagram illustrates immediate updates. The default `deferred` [code update s
 name = "api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-21"
+compatibility_date = "2026-11-23"
 
 [[durable_objects.bindings]]
 name = "ENGINE"

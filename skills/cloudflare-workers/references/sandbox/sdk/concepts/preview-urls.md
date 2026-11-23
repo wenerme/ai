@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sandbox SDK 0.x preview URLs provide public HTTPS access to services running inside sandboxes.
 title: Preview URLs
 image: https://developers.cloudflare.com/sandbox/sdk/concepts/preview-urls/og.png?v=65026b2cf6796ba8

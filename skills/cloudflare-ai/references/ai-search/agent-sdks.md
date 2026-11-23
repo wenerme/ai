@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use AI Search from agent and application frameworks, including the Vercel AI SDK, the Cloudflare Agents SDK, and LangChain.
 title: Agents
 image: https://developers.cloudflare.com/ai-search/agent-sdks/og.png?v=5531aefcf41e2b65

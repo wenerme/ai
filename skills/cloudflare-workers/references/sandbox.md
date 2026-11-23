@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Execute untrusted or generated code in Linux virtual machines or isolated Workers.
 title: Sandboxes on Cloudflare
 image: https://developers.cloudflare.com/sandbox/og.png?v=a45996aa42e663ad

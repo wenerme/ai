@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Web Assets operations and labels with Cloudflare detections, then create rules to act on risky traffic.
 title: Define security protections
 image: https://developers.cloudflare.com/security/web-assets/define-security-protections/og.png?v=29f83253e5848238

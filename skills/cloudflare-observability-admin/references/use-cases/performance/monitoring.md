@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track real user metrics and identify performance issues.
 title: Monitor performance
 image: https://developers.cloudflare.com/use-cases/performance/monitoring/og.png?v=7b83f83b18ca8507

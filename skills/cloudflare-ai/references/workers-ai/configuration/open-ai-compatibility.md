@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the OpenAI SDK with Workers AI Chat Completions, embeddings, and supported GPT-OSS Responses requests.
 title: OpenAI compatible API endpoints
 image: https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/og.png?v=43d7808c7c4959b5

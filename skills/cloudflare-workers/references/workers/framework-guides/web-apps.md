@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create full-stack web applications deployed to Cloudflare Workers.
 title: Web applications
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/og.png?v=5588a897d50b48a1

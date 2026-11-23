@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Stream ReadableStream from Durable Objects.
 title: Use ReadableStream with Durable Object and Workers
 image: https://developers.cloudflare.com/durable-objects/examples/readable-stream/og.png?v=45f9ab05c42f2e38

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control a container from its Durable Object with the Durable Object Container API.
 title: API
 image: https://developers.cloudflare.com/containers/api/og.png?v=b5325a11e1e8cc4d

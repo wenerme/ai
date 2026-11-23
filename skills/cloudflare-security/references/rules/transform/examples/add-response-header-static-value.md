@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a response header transform rule to add a `set-cookie` HTTP header to the response with a static value (`cookiename=value`).
 title: Add a response header with a static value
 image: https://developers.cloudflare.com/rules/transform/examples/add-response-header-static-value/og.png?v=021f56fd42af3527

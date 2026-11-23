@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: AI systems combine text-generation and text-to-image models to create visual content from text. They generate prompts, moderate content, and produce images for various applications.
 title: Content-based asset creation
 image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/og.png?v=6f1e36d1dc1725da

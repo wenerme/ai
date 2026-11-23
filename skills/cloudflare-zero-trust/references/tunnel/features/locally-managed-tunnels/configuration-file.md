@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure locally-managed tunnels with a YAML configuration file.
 title: Configuration file
 image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/og.png?v=c8817e9723a6d5f8

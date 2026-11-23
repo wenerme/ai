@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: SQL statements and clauses supported by the SQL API.
 title: Statements and clauses
 image: https://developers.cloudflare.com/analytics/sql-api/sql-reference/statements/og.png?v=c0195f3b9cab1c15

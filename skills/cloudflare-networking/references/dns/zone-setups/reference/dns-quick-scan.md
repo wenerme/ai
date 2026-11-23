@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare scans and imports DNS records automatically.
 title: Records quick scan
 image: https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/og.png?v=3e5ff0a82b2cfd01

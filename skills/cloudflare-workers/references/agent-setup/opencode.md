@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.
 title: OpenCode + Cloudflare
 image: https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580

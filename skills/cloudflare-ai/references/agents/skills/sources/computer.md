@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store Agent Skills as files in a Computer Workspace, so skills the agent or a user writes are available on the next turn.
 title: Computer
 image: https://developers.cloudflare.com/agents/skills/sources/computer/og.png?v=2291c049b14437f6

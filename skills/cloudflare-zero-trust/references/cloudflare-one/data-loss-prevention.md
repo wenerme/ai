@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Data loss prevention works in Cloudflare One.
 title: Data loss prevention
 image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/og.png?v=56076e451eff2f98

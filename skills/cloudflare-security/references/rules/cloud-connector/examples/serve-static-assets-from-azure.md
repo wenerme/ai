@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route requests with a URI path starting with `/static-assets` to an Azure Blob Storage container using Cloud Connector.
 title: Serve /static-assets from Azure Blob Storage
 image: https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/og.png?v=87cd770ccb7c8eb6

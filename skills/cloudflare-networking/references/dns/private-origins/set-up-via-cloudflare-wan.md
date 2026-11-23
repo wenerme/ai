@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Proxy public hostnames to private origins through Cloudflare WAN (IPsec, GRE, or CNI).
 title: Set up a private origin via Cloudflare WAN
 image: https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/og.png?v=ce9e8902ea9e1211

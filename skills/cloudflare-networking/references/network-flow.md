@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Analyze network traffic with NetFlow, sFlow, and IPFIX data.
 title: Network Flow
 image: https://developers.cloudflare.com/network-flow/og.png?v=5592f94a3e6cac43

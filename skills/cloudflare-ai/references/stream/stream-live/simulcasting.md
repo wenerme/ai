@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Forward Cloudflare Stream live broadcasts to third-party platforms like YouTube, Twitch, and Facebook.
 title: Simulcast (restream) videos
 image: https://developers.cloudflare.com/stream/stream-live/simulcasting/og.png?v=90bdc74f6a0336db

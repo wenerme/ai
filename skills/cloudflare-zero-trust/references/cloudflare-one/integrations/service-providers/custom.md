@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure custom device posture checks in Cloudflare One using a service-to-service integration.
 title: Custom device posture integration
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/custom/og.png?v=d0be19807fed83b3

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Debug Workers VPC connection errors, tunnel issues, and common configuration problems.
 title: Troubleshoot and debug
 image: https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/og.png?v=111917df6d5cc9cf

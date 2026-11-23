@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Heuristics, machine learning, and behavioral analysis engines used to detect bots.
 title: Bot detection engines
 image: https://developers.cloudflare.com/bots/concepts/bot-detection-engines/og.png?v=9c9fae9edf429751

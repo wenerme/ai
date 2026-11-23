@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to use Cloudflare to extend performance, security, and data localization to your end users.
 title: Extend Cloudflare's benefits to SaaS providers' end-customers
 image: https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/og.png?v=a61dddf8204fd8ff

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.
 title: Organizations for MSSP and Distributors
 image: https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/og.png?v=ca38b4f0cf4bc47e

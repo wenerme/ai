@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Zaraz on your Cloudflare Pages project using a custom domain.
 title: Enable Zaraz
 image: https://developers.cloudflare.com/pages/how-to/enable-zaraz/og.png?v=86eb551f4d5ab84f

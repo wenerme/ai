@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure SSL/TLS encryption from edge to origin, redirect HTTP to HTTPS, and harden your HTTPS setup with HSTS and minimum TLS versions.
 title: Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)
 image: https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/og.png?v=46949290e9a93ea3

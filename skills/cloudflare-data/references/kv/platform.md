@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers KV platform details including limits, pricing, and storage options.
 title: Platform
 image: https://developers.cloudflare.com/kv/platform/og.png?v=65c0e2de627f123c

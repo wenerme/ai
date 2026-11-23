@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.
 title: Authentication
 image: https://developers.cloudflare.com/r2/api/tokens/og.png?v=f9b82e479240edce

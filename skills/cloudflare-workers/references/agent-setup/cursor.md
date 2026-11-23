@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.
 title: Cursor + Cloudflare
 image: https://developers.cloudflare.com/agent-setup/cursor/og.png?v=cd111722160e6c8a

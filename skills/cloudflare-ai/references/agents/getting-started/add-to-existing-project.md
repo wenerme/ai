@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add the Agents SDK Lifecycle to a Durable Object in an existing Cloudflare Workers project, then add capabilities such as state, WebSockets, and scheduling.
 title: Add to an existing project
 image: https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/og.png?v=46e7c109e35a2d45

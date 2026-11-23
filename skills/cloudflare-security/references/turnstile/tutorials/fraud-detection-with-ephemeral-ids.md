@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to implement fraud detection using Turnstile's Ephemeral IDs to identify and block bad actors who rotate IP addresses.
 title: Fraud detection with Ephemeral IDs
 image: https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/og.png?v=d738688bf75c4afd

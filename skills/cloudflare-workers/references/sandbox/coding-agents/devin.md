@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a Devin Outpost that runs each Devin session in its own Linux sandbox on Containers.
 title: Run Devin in a sandbox
 image: https://developers.cloudflare.com/sandbox/coding-agents/devin/og.png?v=cb54f4efb94168a8

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a request header transform rule to add an `X-Source` HTTP header to the request with a static value (`Cloudflare`).
 title: Add request header with a static value
 image: https://developers.cloudflare.com/rules/transform/examples/add-request-header-static-value/og.png?v=cbeb9976e96fb9d7

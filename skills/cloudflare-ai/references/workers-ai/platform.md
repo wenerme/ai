@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers AI platform details including pricing, limits, errors, and data usage policies.
 title: Platform
 image: https://developers.cloudflare.com/workers-ai/platform/og.png?v=d0b466c6538524c4

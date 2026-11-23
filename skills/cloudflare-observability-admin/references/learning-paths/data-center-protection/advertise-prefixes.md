@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Advertise IP prefixes via Magic Transit.
 title: Advertise prefixes
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/advertise-prefixes/og.png?v=76f47ba39b118eab

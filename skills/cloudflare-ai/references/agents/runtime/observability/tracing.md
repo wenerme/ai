@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trace model calls, tool runs, and approvals with Workers traces.
 title: Tracing
 image: https://developers.cloudflare.com/agents/runtime/observability/tracing/og.png?v=227a76068403c203

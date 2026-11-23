@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.
 title: Custom Indicator Feeds
 image: https://developers.cloudflare.com/security-center/indicator-feeds/og.png?v=4ca00675e1a7b924

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.
 title: Debugging and logging
 image: https://developers.cloudflare.com/pages/functions/debugging-and-logging/og.png?v=05eb47ae72ab1995

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand the core concepts behind AI Search, including namespaces, indexing, querying, and search modes.
 title: Concepts
 image: https://developers.cloudflare.com/ai-search/concepts/og.png?v=538723a34554c5e0

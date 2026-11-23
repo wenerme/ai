@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Handle HTTP requests in onRequest() and stream responses with Server-Sent Events from a Durable Object with the Lifecycle.
 title: HTTP and Server-Sent Events
 image: https://developers.cloudflare.com/agents/runtime/routing/http-sse/og.png?v=6a7d7c17114b80c8

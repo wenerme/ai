@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Legacy documentation for Wrangler v1, the deprecated Workers CLI. Migrate to the latest version of Wrangler.
 title: Wrangler v1 (legacy)
 image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/og.png?v=f560c739f6551d9d

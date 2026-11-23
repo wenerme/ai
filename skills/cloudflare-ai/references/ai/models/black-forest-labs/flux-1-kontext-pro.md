@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: FLUX.1 Kontext [pro] creates and edits images from text prompts with strong character and style consistency.
 title: FLUX.1 Kontext [pro]
 image: https://developers.cloudflare.com/og-docs.png

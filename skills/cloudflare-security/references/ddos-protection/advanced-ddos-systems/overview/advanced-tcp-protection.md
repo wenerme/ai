@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect against sophisticated TCP-based DDoS attacks with traffic profiling and adaptive mitigation.
 title: Advanced TCP Protection
 image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/og.png?v=6b9b9919796bb8ef

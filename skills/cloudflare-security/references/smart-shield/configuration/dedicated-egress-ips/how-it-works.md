@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Dedicated CDN Egress IPs are allocated and route traffic to your origin.
 title: How it works
 image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/og.png?v=567a5d7623f067f1

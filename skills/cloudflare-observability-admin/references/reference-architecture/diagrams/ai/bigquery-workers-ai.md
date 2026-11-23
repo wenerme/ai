@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs.
 title: Ingesting BigQuery Data into Workers AI
 image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/og.png?v=682c2aa044067a87

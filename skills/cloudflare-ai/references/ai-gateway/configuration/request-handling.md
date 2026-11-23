@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure AI Gateway request timeouts and retries for reliable AI provider interactions.
 title: Request handling
 image: https://developers.cloudflare.com/ai-gateway/configuration/request-handling/og.png?v=9828213cd051ec1f
@@ -16,7 +19,7 @@ Note
 
 [Dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) also offer timeouts and retries per model, along with conditional routing, rate limiting, and budget limiting through a visual interface. This page documents request-handling configuration available through per-request `cf-aig-*` headers that work with any provider endpoint. You can also configure retries at the [gateway level](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#retry-requests).
 
-Your AI gateway supports different strategies for handling requests to providers, which allows you to manage AI interactions effectively and ensure your applications remain responsive and reliable.
+Your AI Gateway supports different strategies for handling requests to providers, which allows you to manage AI interactions effectively and ensure your applications remain responsive and reliable.
 
 ## Request timeouts
 
@@ -81,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#page","headline":"Request handling","description":"Configure AI Gateway request timeouts and retries for reliable AI provider interactions.","url":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/og.png?v=9828213cd051ec1f","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#page","headline":"Request handling","description":"Configure AI Gateway request timeouts and retries for reliable AI provider interactions.","url":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/og.png?v=9828213cd051ec1f","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

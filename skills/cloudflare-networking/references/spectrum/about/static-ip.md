@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Assign persistent IP addresses to your Spectrum applications.
 title: Static IP
 image: https://developers.cloudflare.com/spectrum/about/static-ip/og.png?v=2cba881b64406ed0

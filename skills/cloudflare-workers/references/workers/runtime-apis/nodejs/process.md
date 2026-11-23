@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js process module in Cloudflare Workers for environment variables, event handling, and runtime information.
 title: process
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/og.png?v=801421f550861084

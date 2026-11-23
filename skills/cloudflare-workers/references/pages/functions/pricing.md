@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pages Functions requests are billed as Cloudflare Workers requests across free and paid plans.
 title: Pricing
 image: https://developers.cloudflare.com/pages/functions/pricing/og.png?v=f75981d2b60d6a88

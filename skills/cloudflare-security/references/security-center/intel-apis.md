@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.
 title: Threat Intelligence APIs
 image: https://developers.cloudflare.com/security-center/intel-apis/og.png?v=f550253da52bdc86

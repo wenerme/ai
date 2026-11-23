@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step Basin SQL tutorials for querying data stored in R2.
 title: Tutorials
 image: https://developers.cloudflare.com/basin-sql/tutorials/og.png?v=7ae619c5e0612636

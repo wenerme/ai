@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose how to switch live Sandbox SDK 0.12 sandboxes to 1.0, prepare your code for the deploy that cannot be undone, and remove what 0.12 leaves behind.
 title: Plan the move to Sandbox SDK 1.0
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/og.png?v=3758c9f5660c5104

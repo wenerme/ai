@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Code patterns and configuration guidance for building fast, reliable, observable, and secure Workers.
 title: Workers Best Practices
 image: https://developers.cloudflare.com/workers/best-practices/workers-best-practices/og.png?v=d435c8b7aebe8dd9
@@ -26,7 +29,7 @@ The [`compatibility_date`](https://developers.cloudflare.com/workers/configurati
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -36,7 +39,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -52,7 +55,7 @@ The [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nod
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -62,7 +65,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -147,7 +150,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// ✅ Good: non-secret configuration lives in version control
@@ -165,7 +168,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -211,7 +214,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// This binding only applies to the root Worker
@@ -241,7 +244,7 @@ name = "my-api"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -298,7 +301,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Option 1: Custom domain — Worker is the origin, DNS is managed automatically
@@ -317,7 +320,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[routes]]
@@ -763,7 +766,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<YOUR_HYPERDRIVE_ID>" }],
@@ -775,7 +778,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -991,7 +994,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 	// Static site — no Worker script needed
 	"name": "my-static-site",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"assets": {
@@ -1003,7 +1006,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 ```toml
 name = "my-static-site"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -1028,7 +1031,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"observability": {
@@ -1050,7 +1053,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [observability]

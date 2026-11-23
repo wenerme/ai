@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Cloudflare WAN to connect your network locations.
 title: Get started
 image: https://developers.cloudflare.com/cloudflare-wan/get-started/og.png?v=e1c0940f3fed2cc5

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build and configure sequence mitigation rules using the Cloudflare API.
 title: Configure sequence mitigation via the API
 image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/og.png?v=0ee1fd9dfb8f0f70

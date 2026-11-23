@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.
 title: Reuse sessions
 image: https://developers.cloudflare.com/browser-run/features/reuse-sessions/og.png?v=bfde937836ca8543
@@ -89,7 +92,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER",
@@ -103,7 +106,7 @@ name = "browser-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

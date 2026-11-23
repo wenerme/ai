@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Stream Think turns through a child agent with chat(), and trigger turns programmatically with saveMessages(), continueLastTurn(), and abort.
 title: Sub-agent RPC and programmatic turns
 image: https://developers.cloudflare.com/agents/harnesses/think/sub-agents/og.png?v=d9b646afd26a0bb7

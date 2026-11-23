@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to eliminate the trade-off between security and performance by using Cloudflare's global network.
 title: Using a zero trust framework to secure SaaS applications
 image: https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/og.png?v=2d8f52eac931da3c

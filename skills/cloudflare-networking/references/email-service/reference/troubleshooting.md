@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.
 title: Troubleshooting
 image: https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448

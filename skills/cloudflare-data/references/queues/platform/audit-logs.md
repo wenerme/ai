@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review audit log events for configuration changes made to Cloudflare Queues.
 title: Audit Logs
 image: https://developers.cloudflare.com/queues/platform/audit-logs/og.png?v=307faf26b153363b

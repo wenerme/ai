@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Cloudflare analytics data using GraphQL.
 title: GraphQL Analytics API
 image: https://developers.cloudflare.com/analytics/graphql-api/og.png?v=d0a231757d66f4b6

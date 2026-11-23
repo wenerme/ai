@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare as a secondary DNS provider.
 title: Cloudflare as Secondary
 image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/og.png?v=8c4a0b046aff07a4

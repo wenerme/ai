@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "scheduled events are automatically dispatched according to the specified cron\ntriggers:"
 title: Scheduled Events
 image: https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/og.png?v=832cc50000e85d43

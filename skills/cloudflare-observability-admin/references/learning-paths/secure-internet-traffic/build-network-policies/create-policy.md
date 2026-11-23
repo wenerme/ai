@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build your first Gateway network policy.
 title: Create your first network policy
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/create-policy/og.png?v=787a6f98574bb97d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Plan and inventory your DNS migration.
 title: "Phase 1: Planning & Inventory"
 image: https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-1/og.png?v=32423184ecdb6819

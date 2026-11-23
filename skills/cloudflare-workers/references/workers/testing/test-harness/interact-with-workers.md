@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test routes, dispatch events, control Workflows, and assert logged behavior with createTestHarness.
 title: Interact with Workers
 image: https://developers.cloudflare.com/workers/testing/test-harness/interact-with-workers/og.png?v=844c9e592ff561a9

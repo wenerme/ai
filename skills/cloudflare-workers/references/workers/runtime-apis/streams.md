@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A web standard API that allows JavaScript to programmatically access and process streams of data.
 title: Streams
 image: https://developers.cloudflare.com/workers/runtime-apis/streams/og.png?v=da3d8f46582115ef

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Key concepts behind Privacy Pass — the protocol's roles, the issuance and redemption flow, and how deployments are structured.
 title: Concepts
 image: https://developers.cloudflare.com/privacy-pass/concepts/og.png?v=cef5551849a1406d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scalar functions for hashing values
 title: Hashing functions
 image: https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/hashing/og.png?v=f250318a6f9fc64c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace self-hosted VPNs with ZTNA.
 title: Stop hosting your own VPN service
 image: https://developers.cloudflare.com/learning-paths/sase-overview-course/series/stop-hosting-own-vpn-service-2/og.png?v=d9a39aee5ceff665

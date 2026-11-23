@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.
 title: Post-quantum between Cloudflare and origin servers
 image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/og.png?v=3b646a235d97569b
@@ -39,6 +42,10 @@ Cloudflare continues to advertise other allowed key agreements. If an origin req
 Use **Automatic key exchange** to control scanning and preferred key share selection. Compliance requirements apply only to TLS 1.3 connections.
 
 The [Origin Post-Quantum Encryption API](https://developers.cloudflare.com/api/resources/origin_post_quantum_encryption/methods/update/) remains available. Requests to this API are no-ops and do not change a zone's post-quantum key agreement behavior. Cloudflare plans to deprecate this API, but a deprecation date has not been established.
+
+Note
+
+If you set the **Post-quantum hybrid** compliance requirement and a destination server does not support post-quantum key exchange, Cloudflare returns a [`525` error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/). This also applies to outbound `fetch()` calls from [Workers](https://developers.cloudflare.com/workers/) running under that zone. Use **Automatic key exchange** (the default) to retain compatibility with servers that do not yet support post-quantum key exchange.
 
 #### Origin server
 
@@ -175,5 +182,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#page","headline":"Post-quantum between Cloudflare and origin servers","description":"Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/og.png?v=3b646a235d97569b","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#page","headline":"Post-quantum between Cloudflare and origin servers","description":"Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/og.png?v=3b646a235d97569b","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

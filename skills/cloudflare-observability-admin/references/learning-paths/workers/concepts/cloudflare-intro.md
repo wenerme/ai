@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about Cloudflare's network and products.
 title: Introduction to Cloudflare
 image: https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/og.png?v=cfaa323d8c92e43a

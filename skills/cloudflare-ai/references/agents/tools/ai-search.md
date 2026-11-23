@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Give agents retrieval capabilities with Cloudflare AI Search.
 title: AI Search
 image: https://developers.cloudflare.com/agents/tools/ai-search/og.png?v=ed66c8171bd035e2

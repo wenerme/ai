@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and agentic workflows.
 title: GPT-6 Sol
 image: https://developers.cloudflare.com/og-docs.png

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fix mixed content errors caused by HTTP resources on HTTPS pages.
 title: Mixed content errors
 image: https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/og.png?v=ab85e22947c0b827

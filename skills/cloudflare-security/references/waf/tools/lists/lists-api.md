@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage lists programmatically with the Lists API.
 title: Lists API
 image: https://developers.cloudflare.com/waf/tools/lists/lists-api/og.png?v=cded6b3469bab526

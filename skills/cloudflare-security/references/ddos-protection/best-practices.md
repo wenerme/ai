@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about best practices for configuring Cloudflare's DDoS protection.
 title: Best practices
 image: https://developers.cloudflare.com/ddos-protection/best-practices/og.png?v=9cd4f220ac6dead6

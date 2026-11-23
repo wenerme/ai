@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Python standard library availability and limitations in Cloudflare Workers.
 title: Standard Library
 image: https://developers.cloudflare.com/workers/languages/python/stdlib/og.png?v=cca0ac72f6c99b94

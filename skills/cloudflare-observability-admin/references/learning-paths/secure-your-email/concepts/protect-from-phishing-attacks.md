@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy modern email security beyond SEGs.
 title: Protect your organization from phishing attacks
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/protect-from-phishing-attacks/og.png?v=75f5f481a7b28f85

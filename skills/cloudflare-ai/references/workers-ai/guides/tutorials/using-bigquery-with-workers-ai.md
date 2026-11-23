@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to ingest data stored outside of Cloudflare as an input to Workers AI models.
 title: Using BigQuery with Workers AI
 image: https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/og.png?v=3ee0e03210117266

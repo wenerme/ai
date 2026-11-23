@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find detailed configuration options for each supported sink type.
 title: Available sinks
 image: https://developers.cloudflare.com/basin-pipelines/sinks/available-sinks/og.png?v=a91382018bc3d5ac

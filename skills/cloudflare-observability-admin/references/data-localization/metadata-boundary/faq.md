@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Commonly asked questions about Cloudflare's Customer Metadata Boundary.
 title: FAQs
 image: https://developers.cloudflare.com/data-localization/metadata-boundary/faq/og.png?v=507ba3c47fd0f683

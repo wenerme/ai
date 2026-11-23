@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use persistent WebSocket connections through AI Gateway for real-time and non-realtime AI interactions.
 title: WebSockets API
 image: https://developers.cloudflare.com/ai-gateway/usage/websockets-api/og.png?v=0a3734246385e936

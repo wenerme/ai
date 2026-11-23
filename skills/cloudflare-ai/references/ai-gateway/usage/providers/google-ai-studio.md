@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Google AI Studio and Gemini requests through AI Gateway for observability and control.
 title: Google AI Studio
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/og.png?v=3cc8a49846d345ce

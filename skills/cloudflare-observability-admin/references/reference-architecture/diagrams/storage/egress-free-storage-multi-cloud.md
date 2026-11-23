@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to use R2 to get egress-free object storage in multi-cloud setups.
 title: Egress-free object storage in multi-cloud setups
 image: https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/og.png?v=5d50d8010b3b9aa9

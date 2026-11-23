@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Durable Objects provide stateful serverless.
 title: What are Durable Objects?
 image: https://developers.cloudflare.com/learning-paths/durable-objects-course/series/what-are-durable-objects-2/og.png?v=86b44c6ec0a28ad5

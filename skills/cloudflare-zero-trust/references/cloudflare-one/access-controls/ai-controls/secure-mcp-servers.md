@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure MCP servers with Cloudflare Access.
 title: Secure MCP servers
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/og.png?v=c1144e27be33fe5f

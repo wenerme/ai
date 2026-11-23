@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure HTTP policies in Gateway.
 title: HTTP policies
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/og.png?v=09272ecf64fa8fc1

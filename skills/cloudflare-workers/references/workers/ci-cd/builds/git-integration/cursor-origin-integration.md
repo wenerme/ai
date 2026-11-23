@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to manage your Cursor Origin integration for Workers Builds
 title: Cursor Origin integration
 image: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/og.png?v=e9fa876b7cd7ed86

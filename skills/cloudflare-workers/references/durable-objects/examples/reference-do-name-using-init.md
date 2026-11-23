@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pass metadata to a Durable Object using RpcTarget.
 title: Use RpcTarget class to handle Durable Object metadata
 image: https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/og.png?v=7abae1644e934869

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common issues with Transform Rules.
 title: Troubleshoot Transform Rules
 image: https://developers.cloudflare.com/rules/transform/troubleshooting/og.png?v=f8cbf9423d6c8e2a

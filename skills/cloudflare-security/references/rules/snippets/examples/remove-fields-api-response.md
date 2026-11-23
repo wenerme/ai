@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: If origin responds with `JSON`, parse the response and delete fields to return a modified response.
 title: Remove fields from API response
 image: https://developers.cloudflare.com/rules/snippets/examples/remove-fields-api-response/og.png?v=47f9e15ef09e05dc

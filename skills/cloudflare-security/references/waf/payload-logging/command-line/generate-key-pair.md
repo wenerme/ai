@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate a public/private key pair for payload logging encryption.
 title: Generate a key pair
 image: https://developers.cloudflare.com/waf/payload-logging/command-line/generate-key-pair/og.png?v=3f1401e71d0b68f6

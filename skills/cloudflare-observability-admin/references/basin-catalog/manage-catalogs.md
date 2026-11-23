@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how to manage Iceberg REST catalogs associated with R2 buckets
 title: Manage catalogs
 image: https://developers.cloudflare.com/basin-catalog/manage-catalogs/og.png?v=b56be5e9a67ac7cf

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run a Keyless SSL key server as a container using environment variables.
 title: Run with Docker
 image: https://developers.cloudflare.com/ssl/keyless-ssl/configuration/run-with-docker/og.png?v=b1a90ba86bd4daac

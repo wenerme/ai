@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How multiple image optimizations interact with each other.
 title: Image optimization on optimized images
 image: https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/og.png?v=0ca2a7a922fa8ae4

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Data types, literals, arrays, and JSON values supported by the SQL API.
 title: Data types and literals
 image: https://developers.cloudflare.com/analytics/sql-api/sql-reference/data-types/og.png?v=e0a6da4814b37cd9

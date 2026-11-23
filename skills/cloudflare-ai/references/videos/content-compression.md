@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: In this video, learn how Cloudflare compresses content between Cloudflare and your website visitors and between Cloudflare and your origin server.
 title: Content compression
 image: https://developers.cloudflare.com/og-docs.png

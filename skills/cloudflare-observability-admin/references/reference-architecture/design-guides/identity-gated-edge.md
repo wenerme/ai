@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose Cloudflare products and settings for an identity-gated edge, close origin bypasses, and verify enforcement with repeatable tests.
 title: Design an identity-gated edge
 image: https://developers.cloudflare.com/reference-architecture/design-guides/identity-gated-edge/og.png?v=d949f9da7c6f6717

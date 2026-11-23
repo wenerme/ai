@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.
 title: Lifecycle of a Container
 image: https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961

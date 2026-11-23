@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Authenticated Origin Pulls helps ensure requests to your origin server come from the Cloudflare network.
 title: Authenticated Origin Pulls (mTLS)
 image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/og.png?v=ff27e67c5c00c750

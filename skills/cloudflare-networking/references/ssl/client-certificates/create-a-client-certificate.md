@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate a client certificate using the dashboard or API.
 title: Create a client certificate
 image: https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/og.png?v=7f88f95d50f701fe

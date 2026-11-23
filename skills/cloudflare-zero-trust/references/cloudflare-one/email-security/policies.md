@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Policies resources and guides for Email Security.
 title: Policies
 image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/og.png?v=a88226e7c0356f58

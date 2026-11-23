@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Customize the Cloudflare Terraform provider settings using configuration parameters or environment variables.
 title: Provider customization
 image: https://developers.cloudflare.com/terraform/advanced-topics/provider-customization/og.png?v=c83f0bea774e18f7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Distribute traffic across origin servers for availability and performance.
 title: Cloudflare Load Balancing
 image: https://developers.cloudflare.com/load-balancing/og.png?v=07d4b5a5ae45d7a3

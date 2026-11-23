@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Limit Cloudflare API token usage by client IP address filtering and time-to-live (TTL) constraints.
 title: Restrict tokens
 image: https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/og.png?v=e2bc463bb1a2ce53

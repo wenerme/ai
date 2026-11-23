@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect HPE Juniper SRX to Cloudflare WAN.
 title: HPE Juniper Networking SRX Series Firewalls
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/og.png?v=0c37195c3d52a33b

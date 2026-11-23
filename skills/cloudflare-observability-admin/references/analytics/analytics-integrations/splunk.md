@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to analyze Cloudflare Logs using the Cloudflare App for Splunk.
 title: Splunk
 image: https://developers.cloudflare.com/analytics/analytics-integrations/splunk/og.png?v=7bfa5b3e4285a22b

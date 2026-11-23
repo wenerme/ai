@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Common scenarios for proxied and DNS-only records.
 title: Use cases
 image: https://developers.cloudflare.com/dns/proxy-status/use-cases/og.png?v=aa834b62decdd484

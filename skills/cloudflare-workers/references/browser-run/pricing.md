@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Browser Run pricing for Quick Actions and Browser Sessions, including browser hours and concurrent browser costs.
 title: Pricing
 image: https://developers.cloudflare.com/browser-run/pricing/og.png?v=20d0624221665f85

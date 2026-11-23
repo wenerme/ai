@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.
 title: Use cf with coding agents
 image: https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803
@@ -125,6 +128,10 @@ You and your agent can use `cf docs search` to find guides, tutorials, and examp
 
 Use `cf cli search` to find commands and `cf docs search` to find documentation. Keep both kinds of search generic: do not include account IDs, domains, email addresses, tokens, or other identifying information.
 
+## Send agent feedback
+
+Use `cf feedback` to report CLI problems your agent encounters. For JSON report examples and context settings, refer to [Agent feedback](https://developers.cloudflare.com/cf/agent-feedback/).
+
 ## Read command output
 
 Results go to standard output as JSON. Messages, such as the selected zone, and errors go to standard error. When standard output is not a terminal, it contains only the result, so an agent can parse it or filter it with `jq` without extra flags.
@@ -199,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/agents/#page","headline":"Use cf with coding agents","description":"Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.","url":"https://developers.cloudflare.com/cf/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/agents/#page","headline":"Use cf with coding agents","description":"Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.","url":"https://developers.cloudflare.com/cf/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

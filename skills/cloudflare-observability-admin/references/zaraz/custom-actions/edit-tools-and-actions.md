@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Edit existing Zaraz tools and actions.
 title: Edit tools and actions
 image: https://developers.cloudflare.com/zaraz/custom-actions/edit-tools-and-actions/og.png?v=3ddb4eebdaf224d7

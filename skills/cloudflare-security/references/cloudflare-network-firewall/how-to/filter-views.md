@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Filter analytics views in the Network Firewall dashboard.
 title: Filter different views
 image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/og.png?v=e23fc8e466784518

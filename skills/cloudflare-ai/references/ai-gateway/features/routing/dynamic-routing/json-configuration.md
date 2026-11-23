@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Define AI Gateway dynamic routing flows using the REST API and JSON element structure.
 title: JSON Configuration
 image: https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/og.png?v=d0ecbe9d1009423a

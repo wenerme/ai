@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.
 title: D1 Database
 image: https://developers.cloudflare.com/d1/worker-api/d1-database/og.png?v=7da9be65777a1f22

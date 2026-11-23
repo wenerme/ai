@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query tunnel health check results with the GraphQL API.
 title: Querying Cloudflare WAN IPsec/GRE tunnel health check results with GraphQL
 image: https://developers.cloudflare.com/cloudflare-wan/analytics/query-tunnel-health/og.png?v=d3d6212701a8a899

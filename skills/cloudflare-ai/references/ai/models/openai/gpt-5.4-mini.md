@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
 title: GPT-5.4 mini
 image: https://developers.cloudflare.com/og-docs.png

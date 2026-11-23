@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow your customers to use their own domains with your platform, complete with automatic SSL certificates.
 title: Customer domains with SSL for SaaS
 image: https://developers.cloudflare.com/use-cases/saas/custom-domains/og.png?v=cfc9c12391c91b60

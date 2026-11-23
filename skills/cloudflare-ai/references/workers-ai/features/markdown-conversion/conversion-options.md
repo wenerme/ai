@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure per-format options for Workers AI Markdown Conversion, including HTML and image settings.
 title: Conversion Options
 image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/og.png?v=3a136bcaa6901b43

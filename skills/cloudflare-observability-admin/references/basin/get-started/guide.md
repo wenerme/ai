@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Record Worker requests with Basin Pipelines, store them in Basin Catalog, and count requests by path with Basin SQL.
 title: CLI
 image: https://developers.cloudflare.com/basin/get-started/guide/og.png?v=fc90943fcbbb8163

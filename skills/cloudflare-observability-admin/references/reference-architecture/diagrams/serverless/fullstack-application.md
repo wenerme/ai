@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A practical example of how these services come together in a real fullstack application architecture.
 title: Fullstack applications
 image: https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/og.png?v=30207eb8fb9f5181

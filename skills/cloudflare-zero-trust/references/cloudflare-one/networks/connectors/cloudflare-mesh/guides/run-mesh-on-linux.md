@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Install a Cloudflare Mesh node on Debian, Ubuntu, or RHEL, and learn what each install command does.
 title: Run Mesh on Linux
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/guides/run-mesh-on-linux/og.png?v=aa5e141d146530cb

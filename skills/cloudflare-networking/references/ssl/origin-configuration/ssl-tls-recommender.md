@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Get recommendations for the optimal SSL/TLS encryption mode.
 title: SSL/TLS Recommender
 image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender/og.png?v=f340240c2b6497cc

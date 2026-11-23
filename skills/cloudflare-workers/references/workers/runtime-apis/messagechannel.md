@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Channel messaging with MessageChannel and MessagePort
 title: MessageChannel
 image: https://developers.cloudflare.com/workers/runtime-apis/messagechannel/og.png?v=fc9ad57d9cc5f17b

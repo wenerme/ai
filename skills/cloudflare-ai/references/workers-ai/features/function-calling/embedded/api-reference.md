@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the runWithTools and autoTrimTools methods in embedded function calling.
 title: API Reference
 image: https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/api-reference/og.png?v=b717d7f8d4ddf28e

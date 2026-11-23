@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add CAA DNS records to control which CAs can issue certificates.
 title: Add CAA records
 image: https://developers.cloudflare.com/ssl/edge-certificates/caa-records/og.png?v=d00fbdfca977cc8b

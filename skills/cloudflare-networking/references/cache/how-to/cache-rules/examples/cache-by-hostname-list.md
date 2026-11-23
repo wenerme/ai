@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cache everything for hostnames in a list
 title: Cache everything for hostnames in a list
 image: https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-by-hostname-list/og.png?v=54e644179aae6ace

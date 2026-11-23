@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing mTLS and CA certificates, for use standalone or with Hyperdrive.
 title: Certificates
 image: https://developers.cloudflare.com/workers/wrangler/commands/certificates/og.png?v=f09033db104c632d
@@ -31,15 +34,15 @@ Upload an mTLS certificate
 npmyarnpnpm
 
 ```
-npx wrangler mtls-certificate upload
+npx wrangler mtls-certificate upload --cert <CERT> --key <KEY>
 ```
 
 ```
-yarn wrangler mtls-certificate upload
+yarn wrangler mtls-certificate upload --cert <CERT> --key <KEY>
 ```
 
 ```
-pnpm wrangler mtls-certificate upload
+pnpm wrangler mtls-certificate upload --cert <CERT> --key <KEY>
 ```
 
 - `--cert` `string` required
@@ -249,15 +252,15 @@ Upload an mTLS certificate
 npmyarnpnpm
 
 ```
-npx wrangler cert upload mtls-certificate
+npx wrangler cert upload mtls-certificate --cert <CERT> --key <KEY>
 ```
 
 ```
-yarn wrangler cert upload mtls-certificate
+yarn wrangler cert upload mtls-certificate --cert <CERT> --key <KEY>
 ```
 
 ```
-pnpm wrangler cert upload mtls-certificate
+pnpm wrangler cert upload mtls-certificate --cert <CERT> --key <KEY>
 ```
 
 - `--cert` `string` required
@@ -317,15 +320,15 @@ Upload a CA certificate chain
 npmyarnpnpm
 
 ```
-npx wrangler cert upload certificate-authority
+npx wrangler cert upload certificate-authority --ca-cert <CA-CERT>
 ```
 
 ```
-yarn wrangler cert upload certificate-authority
+yarn wrangler cert upload certificate-authority --ca-cert <CA-CERT>
 ```
 
 ```
-pnpm wrangler cert upload certificate-authority
+pnpm wrangler cert upload certificate-authority --ca-cert <CA-CERT>
 ```
 
 - `--name` `string` The name for the certificate

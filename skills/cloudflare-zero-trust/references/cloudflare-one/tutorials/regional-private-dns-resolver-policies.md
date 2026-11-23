@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Gateway resolver policies to route DNS queries to region-specific private DNS servers, enabling geo-steering for internal resources across multiple locations.
 title: Implement regional private DNS servers with Gateway resolver policies
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/og.png?v=8a057daf93357048

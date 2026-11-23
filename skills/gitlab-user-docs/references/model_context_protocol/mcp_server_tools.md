@@ -27,7 +27,7 @@ check whether its toolset is enabled.
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
 | `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`save_pipeline_job`](#save_pipeline_job), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
 | `duo_agent_platform` | [`list_duo_agents_and_flows`](#list_duo_agents_and_flows), [`start_duo_session`](#start_duo_session), [`list_duo_sessions`](#list_duo_sessions), [`get_duo_session`](#get_duo_session), [`send_duo_session_input`](#send_duo_session_input) |
-| `wikis` | [`list_wiki_pages`](#list_wiki_pages) |
+| `wikis` | [`list_wiki_pages`](#list_wiki_pages), [`get_wiki_page`](#get_wiki_page) |
 | `code_security` | [`list_vulnerabilities`](#list_vulnerabilities), [`get_vulnerability`](#get_vulnerability), [`save_vulnerability`](#save_vulnerability), [`attach_scan_profile`](#attach_scan_profile) |
 | `orbit` | [Orbit tools](#orbit-tools) |
 
@@ -298,8 +298,11 @@ The `commits` and `pipelines` facets return up to 100 entries per call. Each res
 `pipelines_after` to read the next page.
 
 The `notes` facet also pages backward with `notes_last` and `notes_before`. To read the newest
-notes, pass `notes_last` without `notes_first` or `notes_after`. Mixing both directions in one
-call returns an error. Each note returns its `position` (the file and line of a diff comment) and
+notes, pass `notes_last` without `notes_first` or `notes_after`. If you pass `notes_first`, the
+call pages forward and ignores `notes_last` and `notes_before`. If you pass `notes_last` without
+`notes_first`, the call pages backward and ignores `notes_after`. If you pass only cursors,
+`notes_after` takes precedence over `notes_before`.
+Each note returns its `position` (the file and line of a diff comment) and
 its `discussion` (the thread it belongs to, and whether the thread is resolved). The response also
 includes `resolvedDiscussionsCount` and `resolvableDiscussionsCount`.
 
@@ -1178,7 +1181,7 @@ The response contains a `metadata` object with `total_lines`, `returned_lines`, 
 When the response covers only part of the file, `system_instruction` states the `offset` to use in the next call.
 
 Each response returns at most 32 KiB of file content.
-When a line is longer than that, the response ends partway through the line,
+When a line is longer than 32 KiB, the response ends partway through the line,
 and `system_instruction` states the `offset` and `line_byte_offset` to use for the rest of the line.
 
 This tool returns text only.
@@ -2384,6 +2387,38 @@ Example:
 
 ```plaintext
 List the wiki pages in gitlab-org/gitlab
+```
+
+## `get_wiki_page`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/586956) in GitLab 19.7.
+
+This tool is part of the [`wikis`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Gets a wiki page, including its content, from a GitLab project or group.
+
+| Parameter          | Type    | Required | Description |
+|--------------------|---------|----------|-------------|
+| `slug`             | string  | Yes      | URL slug of the wiki page. |
+| `project_id`       | string  | No       | Full path or numeric ID of the project (for example, `gitlab-org/gitlab` or `278964`). |
+| `group_id`         | string  | No       | Full path or numeric ID of the group (for example, `gitlab-org` or `9970`). |
+| `offset`           | integer | No       | Zero-indexed line to start reading from. Default is `0`. |
+| `limit`            | integer | No       | Maximum number of lines to return. Default is `500`. Maximum is `2000`. |
+| `line_byte_offset` | integer | No       | Byte position in the line at `offset` where the response starts. Use the value from `system_instruction` after a long line is cut. |
+
+Provide only one `project_id` or `group_id`.
+
+The response contains a `metadata` object with `total_lines`, `returned_lines`, `truncated`, and `size_bytes`.
+When the response covers only part of the page, `system_instruction` states the `offset` to use in the next call.
+
+Each response returns at most 32 KiB of page content.
+When a line is longer than 32 KiB, the response ends partway through the line,
+and `system_instruction` states the `offset` and `line_byte_offset` to use for the rest of the line.
+
+Example:
+
+```plaintext
+Get the home wiki page in gitlab-org/gitlab
 ```
 
 ## `semantic_search`

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 runCode(), code contexts, and runCodeStream() with an IPython kernel for Python and a Dynamic Worker for JavaScript.
 title: Replace the code interpreter
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/og.png?v=93bda7a31bc337fe

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Exclude a prefix or prefix subset from Advanced DDoS Protection monitoring.
 title: Exclude a prefix
 image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/exclude-prefix/og.png?v=5905699c6d7e1ada

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Mitigate high-risk traffic using threat intelligence fields in WAF rules.
 title: Example rules
 image: https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/og.png?v=4b3ad8e9c93eb313

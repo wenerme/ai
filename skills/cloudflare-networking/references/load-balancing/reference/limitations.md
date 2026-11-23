@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Load Balancing limitations and quotas.
 title: Limitations
 image: https://developers.cloudflare.com/load-balancing/reference/limitations/og.png?v=9eff6ab1a5a19aea

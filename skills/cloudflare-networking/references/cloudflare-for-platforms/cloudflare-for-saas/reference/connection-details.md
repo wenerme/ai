@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare sets Host headers and SNI when forwarding connections to your origin.
 title: Connection request details
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/connection-details/og.png?v=d72a5f7abe38a2c6

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage auto-updates for Bot Management machine learning models.
 title: Machine Learning models
 image: https://developers.cloudflare.com/bots/reference/machine-learning-models/og.png?v=2c5a51dacee49773

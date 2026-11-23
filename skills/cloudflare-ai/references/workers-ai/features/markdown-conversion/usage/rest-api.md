@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Convert documents to Markdown using the Workers AI REST API endpoint.
 title: REST API
 image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/og.png?v=5b1fb19ca805e26f

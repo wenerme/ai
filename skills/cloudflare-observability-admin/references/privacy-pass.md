@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Overview of entire document – what's in the docs, why Privacy Pass matters, high-level use case descriptions, and why customers can trust Cloudflare to run Privacy Pass infrastructure.
 title: Privacy Pass
 image: https://developers.cloudflare.com/privacy-pass/og.png?v=f0d3547dd70434d4

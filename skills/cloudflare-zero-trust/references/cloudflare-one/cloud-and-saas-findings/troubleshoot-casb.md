@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot Troubleshoot CASB issues in Cloudflare One.
 title: Troubleshoot CASB
 image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/troubleshoot-casb/og.png?v=43ee8029b528fd46

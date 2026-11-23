@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up domain redirects in Cloudflare to forward traffic from an alias domain to your primary domain using DNS records and redirect rules.
 title: Redirect one domain to another
 image: https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/og.png?v=ab465ae4609bb24b

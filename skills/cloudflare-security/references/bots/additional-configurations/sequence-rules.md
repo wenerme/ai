@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect and mitigate bot traffic based on cookie-based request sequences.
 title: Sequence rules
 image: https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/og.png?v=5ba91bc067a9a56d

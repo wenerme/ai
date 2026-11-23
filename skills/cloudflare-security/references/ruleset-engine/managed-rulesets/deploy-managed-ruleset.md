@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a managed ruleset to a phase entry point using the API.
 title: Deploy a managed ruleset
 image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/og.png?v=529ee127a5c56f63

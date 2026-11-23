@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for rtk-spinner component (Web Components (HTML) Library)
 title: rtk-spinner
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-spinner/og.png?v=977e9012a6f44ae4

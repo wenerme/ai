@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a load balancer with pools and monitors in a few steps.
 title: Quickstart
 image: https://developers.cloudflare.com/load-balancing/get-started/quickstart/og.png?v=ccd74bffedbc3498

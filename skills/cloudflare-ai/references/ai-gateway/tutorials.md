@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step AI Gateway tutorials for deploying Workers, connecting providers, and building AI applications.
 title: Tutorials
 image: https://developers.cloudflare.com/ai-gateway/tutorials/og.png?v=ccbb4d88e46e00f4

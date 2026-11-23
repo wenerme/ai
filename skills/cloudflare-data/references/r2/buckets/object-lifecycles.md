@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure retention and storage class transition rules for objects in R2 buckets.
 title: Object lifecycles
 image: https://developers.cloudflare.com/r2/buckets/object-lifecycles/og.png?v=886267790e9d9fab

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The descriptions below detail the fields available for biso_user_actions.
 title: Browser Isolation User Actions
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/biso_user_actions/og.png?v=35aa7932f341c7cf

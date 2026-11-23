@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Claude Code on a GitHub repository in a Linux sandbox and read its changes as a diff.
 title: Run Claude Code in a sandbox
 image: https://developers.cloudflare.com/sandbox/coding-agents/claude-code/og.png?v=5d1ddb61effd08f2

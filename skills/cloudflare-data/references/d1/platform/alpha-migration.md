@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate D1 alpha databases to the production-ready storage backend.
 title: Alpha database migration guide
 image: https://developers.cloudflare.com/d1/platform/alpha-migration/og.png?v=b4badb67c3741641

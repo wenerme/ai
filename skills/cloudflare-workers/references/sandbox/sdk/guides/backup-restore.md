@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Snapshot a sandbox directory to R2 and restore it later with the Sandbox SDK 0.x.
 title: Backup and restore
 image: https://developers.cloudflare.com/sandbox/sdk/guides/backup-restore/og.png?v=cdde19a33693cf6d
@@ -38,7 +41,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    	"main": "src/index.ts",
        "upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"compatibility_flags": ["nodejs_compat"],
    	"containers": [
    		{
@@ -78,7 +81,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[containers]]

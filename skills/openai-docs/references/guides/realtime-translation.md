@@ -142,7 +142,7 @@ Before running this example, install `websocket-client` and `sounddevice` for Py
 
 
 
-Before running this example, install `openai` version 0.121.0 and `async-websocket` for Ruby (`gem install openai -v 0.121.0` and `gem install async-websocket`).
+Before running this example, install `openai` and `async-websocket` for Ruby (`gem install openai` and `gem install async-websocket`).
 
 
 

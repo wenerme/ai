@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.
 title: REST API
 image: https://developers.cloudflare.com/ai-gateway/usage/rest-api/og.png?v=e050eec91759e20e

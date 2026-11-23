@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This document explains how Cloudflare Magic Transit, Cloudflare Network Firewall, and Gateway work. The products offer in-line, automatic, scalable network protection for all Internet-facing networks. The architecture is designed to protect public networks across multiple clouds and on-premises.
 title: Protect public networks with Cloudflare
 image: https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/og.png?v=d47d6027c6a2d87f

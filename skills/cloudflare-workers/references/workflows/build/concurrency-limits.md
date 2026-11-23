@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cap how many instances of a single Workflow run at the same time, and learn how per-Workflow limits interact with your account's concurrency limit.
 title: Concurrency limits
 image: https://developers.cloudflare.com/workflows/build/concurrency-limits/og.png?v=12eb5d7570954de1

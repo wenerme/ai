@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to enable the Basin Catalog on your bucket, load sample data, and run your first query.
 title: Getting started
 image: https://developers.cloudflare.com/basin-catalog/get-started/og.png?v=59ca79981771be63

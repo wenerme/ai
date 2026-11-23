@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use conditional headers on R2 S3 API writes, including create-only PutObject and CompleteMultipartUpload requests.
 title: Conditional operations
 image: https://developers.cloudflare.com/r2/api/s3/conditional-operations/og.png?v=69145090976dca11

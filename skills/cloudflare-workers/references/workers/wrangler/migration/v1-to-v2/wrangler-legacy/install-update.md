@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Install or update Wrangler v1 using npm or Cargo. Now deprecated in favor of the latest Wrangler release.
 title: Install / Update
 image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/install-update/og.png?v=1e1d3ae0f48926f6

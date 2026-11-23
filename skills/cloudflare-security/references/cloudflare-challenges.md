@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Verify visitors are human using challenge pages, Turnstile, and JavaScript detections.
 title: Challenges
 image: https://developers.cloudflare.com/cloudflare-challenges/og.png?v=4be146b874f79992

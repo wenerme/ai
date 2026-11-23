@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review recent changes to Artifacts.
 title: Changelog
 image: https://developers.cloudflare.com/artifacts/platform/changelog/og.png?v=e190861fe23451a0
@@ -31,7 +34,7 @@ To use local repos when you run your Worker locally, add an Artifacts binding to
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -45,7 +48,7 @@ To use local repos when you run your Worker locally, add an Artifacts binding to
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[artifacts]]
 binding = "ARTIFACTS"

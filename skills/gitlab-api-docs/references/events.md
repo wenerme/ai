@@ -297,7 +297,8 @@ Example response:
       "created_at": "2015-12-04T10:33:56.698Z",
       "system": false,
       "noteable_id": 377,
-      "noteable_type": "Issue"
+      "noteable_type": "Issue",
+      "internal": false
     },
     "author": {
       "name": "Dmitriy Zaporozhets",
@@ -423,7 +424,8 @@ Example response:
       "system": false,
       "noteable_id": 377,
       "noteable_type": "Issue",
-      "noteable_iid": 377
+      "noteable_iid": 377,
+      "internal": false
     },
     "author": {
       "name": "Dmitriy Zaporozhets",

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from the legacy AutoRAG APIs to the current AI Search APIs.
 title: API Migration
 image: https://developers.cloudflare.com/ai-search/api/migration/og.png?v=1613216577453321

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.
 title: Region support
 image: https://developers.cloudflare.com/data-localization/region-support/og.png?v=71aa7f8656f36217

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create Bulk Redirects in the Cloudflare dashboard.
 title: Create Bulk Redirects in the dashboard
 image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/og.png?v=c6b0c1ead5054e2e

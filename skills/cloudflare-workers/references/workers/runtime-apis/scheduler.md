@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the scheduler.wait() API to delay execution in Workers.
 title: Scheduler
 image: https://developers.cloudflare.com/workers/runtime-apis/scheduler/og.png?v=6b64a7b0df804932

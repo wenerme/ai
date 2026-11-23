@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage Browser Run sessions from the command line using Wrangler.
 title: Wrangler commands
 image: https://developers.cloudflare.com/browser-run/reference/wrangler-commands/og.png?v=15281df5b45b166f
@@ -35,7 +38,7 @@ pnpm wrangler browser create
 - `--lab` `boolean` default: false
 
   Enable lab browser session with experimental Chrome features (e.g., WebMCP)
-- `--keepAlive` `number` alias: --k
+- `--keep-alive` `number` alias: --k
 
   Keep-alive duration in seconds (60-600)
 - `--json` `boolean` default: false

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review a list of cipher suites that Cloudflare presents to origins during an SSL/TLS handshake.
 title: Cipher suites
 image: https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/og.png?v=fe58c9d8c0a984ce

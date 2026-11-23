@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: xAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual work. Accepts text and image inputs, and supports function calling and structured outputs.
 title: Grok 4.6
 image: https://developers.cloudflare.com/og-docs.png

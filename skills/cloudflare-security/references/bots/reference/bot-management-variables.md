@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Ruleset Engine fields and Workers variables available for bot detection rules.
 title: Bot Management variables
 image: https://developers.cloudflare.com/bots/reference/bot-management-variables/og.png?v=8f44e958a298177d
