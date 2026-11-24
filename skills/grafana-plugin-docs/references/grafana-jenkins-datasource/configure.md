@@ -1,5 +1,5 @@
 ---
-title: "Configure the Jenkins data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Jenkins data source | Grafana Plugins documentation"
 description: "Configure the Jenkins data source in Grafana"
 ---
 

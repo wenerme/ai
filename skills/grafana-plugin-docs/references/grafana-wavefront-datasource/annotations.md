@@ -1,5 +1,5 @@
 ---
-title: "Wavefront annotations | Grafana Enterprise Plugins documentation"
+title: "Wavefront annotations | Grafana Plugins documentation"
 description: "Use Wavefront events as annotations on Grafana dashboards."
 ---
 

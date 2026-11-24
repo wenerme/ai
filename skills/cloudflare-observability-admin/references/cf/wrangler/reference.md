@@ -550,7 +550,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>text</code>Builder<a href="#orders-api-config-bindings-text-default">Link to text</a>
 
-<code>text&lt;T$1 extends string&gt;(value: T$1): TextBinding&lt;T$1&gt;;</code>
+<code>text&lt;T extends string&gt;(value: T): TextBinding&lt;T&gt;;</code>
 
 Inline string value made available to the Worker on <code>env</code> under the binding name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables">https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables</a>
 
@@ -570,7 +570,7 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <details>
 
-<summary>Options (3)</summary>
+<summary>Options (4)</summary>
 
 
 
@@ -581,6 +581,9 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <dt><code>name?: string</code></dt>
 <dd>The name of this D1 database.</dd>
+
+<dt><code>jurisdiction?: string</code></dt>
+<dd>The jurisdiction where an automatically provisioned D1 database will be created.</dd>
 
 <dt><code>dev?: BindingDevOptions</code></dt>
 <dd>Options that only apply during local development.</dd></dl></details>
@@ -666,7 +669,7 @@ The name of this Queue.
 
 <code>durableObject</code>Builder<a href="#orders-api-config-bindings-durableobject-all">Link to durableObject</a>
 
-<code>durableObject&lt;TWorker$1 extends WorkerReference, TExportName$1 extends DurableObjectExportName&lt;TWorker$1&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker$1, TExportName$1&gt;): DurableObjectBinding&lt;TWorker$1, TExportName$1&gt;;</code>
+<code>durableObject&lt;TWorker extends WorkerReference, TExportName extends DurableObjectExportName&lt;TWorker&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker, TExportName&gt;): DurableObjectBinding&lt;TWorker, TExportName&gt;;</code>
 
 Binding to a Durable Object class. <code>worker</code> is the name or config of the Worker that defines the class; <code>exportName</code> is the exported class name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects">https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects</a>
 
@@ -678,10 +681,10 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <dl>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the Worker that defines the Durable Object class.</dd>
 
-<dt><code>exportName: TExportName$1</code></dt>
+<dt><code>exportName: TExportName</code></dt>
 <dd>The exported class name of the Durable Object.</dd></dl></details>
 
 
@@ -696,7 +699,7 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <code>worker</code>Required<a href="#orders-api-config-bindings-durableobject-all-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the Worker that defines the Durable Object class.
 
@@ -710,7 +713,7 @@ The name or config of the Worker that defines the Durable Object class.
 
 <code>exportName</code>Required<a href="#orders-api-config-bindings-durableobject-all-exportname">Link to exportName</a>
 
-<code>exportName: TExportName$1</code>
+<code>exportName: TExportName</code>
 
 The exported class name of the Durable Object.
 
@@ -884,7 +887,7 @@ Queue consumer trigger — invokes this Worker when messages arrive on the named
 <dt><code>maxBatchTimeout?: number</code></dt>
 <dd>The maximum number of seconds to wait to fill a batch with messages.</dd>
 
-<dt><code>maxConcurrency?: number | null</code></dt>
+<dt><code>maxConcurrency?: number</code></dt>
 <dd>The maximum number of concurrent consumer Worker invocations. Leaving this unset will allow your consumer to scale to the maximum concurrency needed to keep up with the message backlog.</dd>
 
 <dt><code>maxRetries?: number</code></dt>

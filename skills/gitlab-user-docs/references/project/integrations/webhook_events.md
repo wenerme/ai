@@ -1004,7 +1004,7 @@ It includes the following fields:
 | `merge_when_pipeline_succeeds`  | Boolean | Whether auto-merge is enabled. |
 | `milestone_id`                  | Integer | The ID of the milestone. |
 | `oldrev`                        | String  | The old commit SHA (only present for push-related events). |
-| `prepared_at`                   | String  | Timestamp of when the merge request was prepared. This field populates one time, only after all the [preparation steps](../../../api/merge_requests.md#preparation-steps) complete, and is not updated if more changes are added. |
+| `prepared_at`                   | String  | Timestamp of when the merge request was prepared. This field populates one time, after the [preparation steps](../../../api/merge_requests.md#preparation-steps) are complete or scheduled, and is not updated if more changes are added. |
 | `reviewer_ids`                  | Array   | Array of reviewer IDs. |
 | `source_branch`                 | String  | The source branch name. |
 | `source`                        | Object  | Source project details. For example, name and description. |

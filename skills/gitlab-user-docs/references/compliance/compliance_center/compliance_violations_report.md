@@ -173,45 +173,11 @@ A report is compiled and delivered to your email inbox as an attachment.
 
 > [!warning]
 > This feature was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/551236) in GitLab 18.2
-> and is planned for removal in 18.8.
+> and is planned for removal in 19.7.
 
-The static compliance violations report provides a high-level view of merge request activity for all projects in the group.
-
-When you select a row in the static compliance violations report, a drawer appears that provides:
-
-- The project name and [compliance framework label](../../project/working_with_projects.md#add-a-compliance-framework-to-a-project),
-  if the project has one assigned.
-- A link to the merge request that introduced the violation.
-- The merge request's branch path in the format `[source] into [target]`.
-- A list of users that committed changes to the merge request.
-- A list of users that commented on the merge request.
-- A list of users that approved the merge request.
-- The user that merged the merge request.
-
-### View the static compliance violations report
-
-Prerequisites:
-
-- You must be an administrator or have the Security Manager or Owner role for the project or group.
-
-To view the static compliance violations report:
-
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Secure** > **Compliance center**.
-
-You can sort the compliance report on:
-
-- Severity level.
-- Type of violation.
-- Merge request title.
-
-You can filter the compliance violations report on:
-
-- The project that the violation was found on.
-- The date range of violation.
-- The target branch of the violation.
-
-Select a row to see details of the compliance violation.
+The static compliance violations report tracked merge request violations for all projects in the group.
+Its view in the compliance center was removed in GitLab 19.7.
+You can still export its data.
 
 ### Severity levels
 

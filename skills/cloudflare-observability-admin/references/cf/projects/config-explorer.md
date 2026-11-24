@@ -23,9 +23,9 @@ To learn how to structure a project's configuration, refer to [Programmatic conf
 
 Select a highlighted line to show its type and description below it.
 
-Generated from `@cloudflare/config`0.30.0
+Generated from `@cloudflare/config`1.0.0-rc.4
 
-defineConfig6 optionsWorker19 optionsBindings37 optionsTriggers5 optionsExports7 options
+defineConfig6 optionsWorker21 optionsBindings37 optionsTriggers5 optionsExports7 options
 
 Expand allCopy
 
@@ -362,9 +362,9 @@ A "cron" definition to trigger a Worker's "scheduled" function. Lets you call Wo
 
 <code>tailConsumers</code>Optional<a href="#config-reference-worker-workerconfig-tailconsumers">Link to tailConsumers</a>
 
-<code>tailConsumers?: Array&lt;{ /** The name of the service tail events will be forwarded to. */ worker: string; /** Whether to stream tail events in real time. */ streaming?: boolean; }&gt;</code>
+<code>tailConsumers?: Array&lt;{ /** The name of the service tail events will be forwarded to. */ worker: string; }&gt;</code>
 
-A list of Tail Workers that are bound to this Worker. <code>@cloudflare/config</code> unifies regular and streaming tail consumers under a single field; pass <code>streaming: true</code> to forward streaming tail events.
+A list of Tail Workers that are bound to this Worker. Each consumer receives this Worker's tail events through its <code>tail()</code> handler. For reference, see <a href="https://developers.cloudflare.com/workers/observability/logs/tail-workers/">https://developers.cloudflare.com/workers/observability/logs/tail-workers/</a>
 
 Default: <code>[]</code>
 
@@ -383,20 +383,6 @@ Default: <code>[]</code>
 <code>worker: string</code>
 
 The name of the service tail events will be forwarded to.
-
-</details>
-
-<details>
-
-<summary>streaming: true, (streaming reference)</summary>
-
-
-
-<code>streaming</code>Optional<a href="#config-reference-worker-workerconfig-tailconsumers-streaming">Link to streaming</a>
-
-<code>streaming?: boolean</code>
-
-Whether to stream tail events in real time.
 
 </details>
 
@@ -632,7 +618,7 @@ Default: <code>true</code>
 
 <details>
 
-<summary>access: undefined, (access reference)</summary>
+<summary>access: { (access reference)</summary>
 
 
 
@@ -643,6 +629,98 @@ Default: <code>true</code>
 Cloudflare Access configuration for this Worker.
 
 </details>
+
+<details>
+
+<summary>dev: { (dev reference)</summary>
+
+
+
+<code>dev</code>Optional<a href="#config-reference-worker-workerconfig-access-dev">Link to dev</a>
+
+<code>dev?: { /** The Access application audience tag (`aud`). */ aud: string; /** Mock identity returned by `ctx.access.getIdentity()`. */ identity?: Record&lt;string, unknown&gt;; }</code>
+
+Local development simulation of Cloudflare Access authentication.
+
+</details>
+
+<details>
+
+<summary>aud: "&lt;ACCESS_AUD&gt;", (aud reference)</summary>
+
+
+
+<code>aud</code>Required<a href="#config-reference-worker-workerconfig-access-dev-aud">Link to aud</a>
+
+<code>aud: string</code>
+
+The Access application audience tag (<code>aud</code>).
+
+</details>
+
+},
+
+},
+
+<details>
+
+<summary>images: { (images reference)</summary>
+
+
+
+<code>images</code>Optional<a href="#config-reference-worker-workerconfig-images">Link to images</a>
+
+<code>images?: { /** Configures `/cdn-cgi/image/...` URL transformations for this Worker. */ urlTransformations?: { /** * Whether URL transformations are enabled. Set to `false` to disable * them, overriding any zone-level setting. */ enabled: boolean; /** * Hostnames that images may be fetched from, in addition to the * Worker's own zone, without a protocol (e.g. `"images.example.com"` * or `"*.example.com"`). Use `["*"]` to allow any origin. At most 10 * entries. */ allowedOrigins?: string[]; }; }</code>
+
+Cloudflare Images configuration for this Worker. The Images binding itself is declared in <code>env</code>.
+
+</details>
+
+<details>
+
+<summary>urlTransformations: { (urlTransformations reference)</summary>
+
+
+
+<code>urlTransformations</code>Optional<a href="#config-reference-worker-workerconfig-images-urltransformations">Link to urlTransformations</a>
+
+<code>urlTransformations?: { /** * Whether URL transformations are enabled. Set to `false` to disable * them, overriding any zone-level setting. */ enabled: boolean; /** * Hostnames that images may be fetched from, in addition to the * Worker's own zone, without a protocol (e.g. `"images.example.com"` * or `"*.example.com"`). Use `["*"]` to allow any origin. At most 10 * entries. */ allowedOrigins?: string[]; }</code>
+
+Configures <code>/cdn-cgi/image/...</code> URL transformations for this Worker.
+
+</details>
+
+<details>
+
+<summary>enabled: true, (enabled reference)</summary>
+
+
+
+<code>enabled</code>Required<a href="#config-reference-worker-workerconfig-images-urltransformations-enabled">Link to enabled</a>
+
+<code>enabled: boolean</code>
+
+Whether URL transformations are enabled. Set to <code>false</code> to disable them, overriding any zone-level setting.
+
+</details>
+
+<details>
+
+<summary>allowedOrigins: ["images.example.com"], (allowedOrigins reference)</summary>
+
+
+
+<code>allowedOrigins</code>Optional<a href="#config-reference-worker-workerconfig-images-urltransformations-allowedorigins">Link to allowedOrigins</a>
+
+<code>allowedOrigins?: string[]</code>
+
+Hostnames that images may be fetched from, in addition to the Worker's own zone, without a protocol (e.g. <code>"images.example.com"</code> or <code>"*.example.com"</code>). Use <code>["*"]</code> to allow any origin. At most 10 entries.
+
+</details>
+
+},
+
+},
 
 <details>
 
@@ -675,6 +753,60 @@ Whether we use <code>&lt;version&gt;-&lt;name&gt;.&lt;subdomain&gt;.workers.dev<
 Default: <code>false</code>
 
 </details>
+
+<details>
+
+<summary>experimental: { (experimental reference)</summary>
+
+
+
+<code>experimental</code>Optional<a href="#config-reference-worker-workerconfig-experimental">Link to experimental</a>
+
+<code>experimental?: { /** * A list of Streaming Tail Workers that are bound to this Worker. Each * consumer receives this Worker's tail events through its * `tailStream()` handler. * * @default [] */ streamingTailConsumers?: Array&lt;{ /** The name of the service streaming tail events will be forwarded to. */ worker: string; }&gt;; /** * Designates this Worker as an internal-only "first-party" Worker. * * @internal */ firstPartyWorker?: boolean; }</code>
+
+Experimental features. Fields here may change or be removed without a major version bump.
+
+Default: <code>{}</code>
+
+</details>
+
+<details>
+
+<summary>streamingTailConsumers: [ (streamingTailConsumers reference)</summary>
+
+
+
+<code>streamingTailConsumers</code>Optional<a href="#config-reference-worker-workerconfig-experimental-streamingtailconsumers">Link to streamingTailConsumers</a>
+
+<code>streamingTailConsumers?: Array&lt;{ /** The name of the service streaming tail events will be forwarded to. */ worker: string; }&gt;</code>
+
+A list of Streaming Tail Workers that are bound to this Worker. Each consumer receives this Worker's tail events through its <code>tailStream()</code> handler.
+
+Default: <code>[]</code>
+
+</details>
+
+{
+
+<details>
+
+<summary>worker: "streaming-log-sink", (worker reference)</summary>
+
+
+
+<code>worker</code>Required<a href="#config-reference-worker-workerconfig-experimental-streamingtailconsumers-worker">Link to worker</a>
+
+<code>worker: string</code>
+
+The name of the service streaming tail events will be forwarded to.
+
+</details>
+
+},
+
+],
+
+},
 
 <details>
 
@@ -730,7 +862,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>text</code>Builder<a href="#config-reference-worker-bindings-text-default">Link to text</a>
 
-<code>text&lt;T$1 extends string&gt;(value: T$1): TextBinding&lt;T$1&gt;;</code>
+<code>text&lt;T extends string&gt;(value: T): TextBinding&lt;T&gt;;</code>
 
 Inline string value made available to the Worker on <code>env</code> under the binding name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables">https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables</a>
 
@@ -750,7 +882,7 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <details>
 
-<summary>Options (3)</summary>
+<summary>Options (4)</summary>
 
 
 
@@ -761,6 +893,9 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <dt><code>name?: string</code></dt>
 <dd>The name of this D1 database.</dd>
+
+<dt><code>jurisdiction?: string</code></dt>
+<dd>The jurisdiction where an automatically provisioned D1 database will be created.</dd>
 
 <dt><code>dev?: BindingDevOptions</code></dt>
 <dd>Options that only apply during local development.</dd></dl></details>
@@ -1331,15 +1466,15 @@ Binding to a headless browser usable from the Worker. For reference, see <a href
 
 <details>
 
-<summary>MY_ANALYTICS: bindings.analytics(), (analytics reference)</summary>
+<summary>MY_ANALYTICS_SQL: bindings.analyticsSql(), (analyticsSql reference)</summary>
 
 
 
-<code>analytics</code>Builder<a href="#config-reference-bindings-bindings-analytics-default">Link to analytics</a>
+<code>analyticsSql</code>Builder<a href="#config-reference-bindings-bindings-analyticssql-default">Link to analyticsSql</a>
 
-<code>analytics(options?: AnalyticsSQLBindingOptions): AnalyticsSQLBinding$1;</code>
+<code>analyticsSql(options?: AnalyticsSqlBindingOptions): AnalyticsSqlBinding;</code>
 
-An Analytics binding.
+Binding to Analytics SQL. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#analytics-sql">https://developers.cloudflare.com/workers/wrangler/configuration/#analytics-sql</a>
 
 <details>
 
@@ -1370,7 +1505,7 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <details>
 
-<summary>Options (3)</summary>
+<summary>Options (4)</summary>
 
 
 
@@ -1381,6 +1516,9 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <dt><code>name?: string</code></dt>
 <dd>The name of this D1 database.</dd>
+
+<dt><code>jurisdiction?: string</code></dt>
+<dd>The jurisdiction where an automatically provisioned D1 database will be created.</dd>
 
 <dt><code>dev?: BindingDevOptions</code></dt>
 <dd>Options that only apply during local development.</dd></dl></details>
@@ -1430,7 +1568,7 @@ Binding to a Workers for Platforms dispatch namespace. For reference, see <a hre
 
 <code>durableObject</code>Builder<a href="#config-reference-bindings-bindings-durableobject-all">Link to durableObject</a>
 
-<code>durableObject&lt;TWorker$1 extends WorkerReference, TExportName$1 extends DurableObjectExportName&lt;TWorker$1&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker$1, TExportName$1&gt;): DurableObjectBinding&lt;TWorker$1, TExportName$1&gt;;</code>
+<code>durableObject&lt;TWorker extends WorkerReference, TExportName extends DurableObjectExportName&lt;TWorker&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker, TExportName&gt;): DurableObjectBinding&lt;TWorker, TExportName&gt;;</code>
 
 Binding to a Durable Object class. <code>worker</code> is the name or config of the Worker that defines the class; <code>exportName</code> is the exported class name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects">https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects</a>
 
@@ -1442,10 +1580,10 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <dl>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the Worker that defines the Durable Object class.</dd>
 
-<dt><code>exportName: TExportName$1</code></dt>
+<dt><code>exportName: TExportName</code></dt>
 <dd>The exported class name of the Durable Object.</dd></dl></details>
 
 
@@ -1460,7 +1598,7 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <code>worker</code>Required<a href="#config-reference-bindings-bindings-durableobject-all-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the Worker that defines the Durable Object class.
 
@@ -1474,7 +1612,7 @@ The name or config of the Worker that defines the Durable Object class.
 
 <code>exportName</code>Required<a href="#config-reference-bindings-bindings-durableobject-all-exportname">Link to exportName</a>
 
-<code>exportName: TExportName$1</code>
+<code>exportName: TExportName</code>
 
 The exported class name of the Durable Object.
 
@@ -1593,7 +1731,7 @@ Binding to Cloudflare Images. For reference, see <a href="https://developers.clo
 
 <code>json</code>Builder<a href="#config-reference-bindings-bindings-json-default">Link to json</a>
 
-<code>json&lt;T$1 extends Json&gt;(value: T$1): JsonBinding&lt;T$1&gt;;</code>
+<code>json&lt;T extends Json&gt;(value: T): JsonBinding&lt;T&gt;;</code>
 
 Inline JSON value made available to the Worker on <code>env</code> under the binding name.
 
@@ -1759,14 +1897,17 @@ Binding to a Cloudflare Pipeline.
 
 <details>
 
-<summary>Options (2)</summary>
+<summary>Options (3)</summary>
 
 
 
 <dl>
 
-<dt><code>name: string</code></dt>
-<dd>Name of the Pipeline to bind.</dd>
+<dt><code>streamId: string</code></dt>
+<dd>The ID of the Pipelines stream to write to</dd>
+
+<dt><code>name?: never</code></dt>
+<dd></dd>
 
 <dt><code>dev?: BindingDevOptions</code></dt>
 <dd>Options that only apply during local development.</dd></dl></details>
@@ -1777,15 +1918,15 @@ Binding to a Cloudflare Pipeline.
 
 <details>
 
-<summary>name: "my-resource", (name reference)</summary>
+<summary>streamId: "value", (streamId reference)</summary>
 
 
 
-<code>name</code>Required<a href="#config-reference-bindings-bindings-pipeline-default-name">Link to name</a>
+<code>streamId</code>Required<a href="#config-reference-bindings-bindings-pipeline-default-streamid">Link to streamId</a>
 
-<code>name: string</code>
+<code>streamId: string</code>
 
-Name of the Pipeline to bind.
+The ID of the Pipelines stream to write to
 
 </details>
 
@@ -1805,14 +1946,17 @@ A producer binding to a K2 stream created using the Dashboard or API.
 
 <details>
 
-<summary>Options (2)</summary>
+<summary>Options (3)</summary>
 
 
 
 <dl>
 
-<dt><code>stream: string</code></dt>
-<dd>The ID of the K2 stream.</dd>
+<dt><code>id: string</code></dt>
+<dd>The ID of the K2 stream to write to</dd>
+
+<dt><code>stream?: never</code></dt>
+<dd></dd>
 
 <dt><code>dev?: BindingDevOptions</code></dt>
 <dd>Always uses the real stream in development. Set remote to true to suppress the usage warning; false is unsupported.</dd></dl></details>
@@ -1823,15 +1967,15 @@ A producer binding to a K2 stream created using the Dashboard or API.
 
 <details>
 
-<summary>stream: "value", (stream reference)</summary>
+<summary>id: "resource-id", (id reference)</summary>
 
 
 
-<code>stream</code>Required<a href="#config-reference-bindings-bindings-k2-default-stream">Link to stream</a>
+<code>id</code>Required<a href="#config-reference-bindings-bindings-k2-default-id">Link to id</a>
 
-<code>stream: string</code>
+<code>id: string</code>
 
-The ID of the K2 stream.
+The ID of the K2 stream to write to
 
 </details>
 
@@ -2160,7 +2304,7 @@ Binding to Cloudflare Stream.
 
 <code>text</code>Builder<a href="#config-reference-bindings-bindings-text-default">Link to text</a>
 
-<code>text&lt;T$1 extends string&gt;(value: T$1): TextBinding&lt;T$1&gt;;</code>
+<code>text&lt;T extends string&gt;(value: T): TextBinding&lt;T&gt;;</code>
 
 Inline string value made available to the Worker on <code>env</code> under the binding name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables">https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables</a>
 
@@ -2337,7 +2481,7 @@ The service ID of the VPC connectivity service.
 
 <code>worker</code>Builder<a href="#config-reference-bindings-bindings-worker-default">Link to worker</a>
 
-<code>worker&lt;TWorker$1 extends WorkerReference, TExportName$1 extends WorkerEntrypointExportName&lt;TWorker$1&gt; | undefined = undefined&gt;(options: WorkerBindingOptions&lt;TWorker$1, TExportName$1&gt;): WorkerBinding&lt;TWorker$1, NoInfer&lt;TExportName$1&gt;&gt;;</code>
+<code>worker&lt;TWorker extends WorkerReference, TExportName extends WorkerEntrypointExportName&lt;TWorker&gt; | undefined = undefined&gt;(options: WorkerBindingOptions&lt;TWorker, TExportName&gt;): WorkerBinding&lt;TWorker, NoInfer&lt;TExportName&gt;&gt;;</code>
 
 Service binding (Worker-to-Worker). <code>worker</code> is the name or config of the bound Worker; <code>exportName</code> selects a named <code>WorkerEntrypoint</code> export (defaults to the default export). For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings">https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings</a>
 
@@ -2349,10 +2493,10 @@ Service binding (Worker-to-Worker). <code>worker</code> is the name or config of
 
 <dl>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the bound Worker.</dd>
 
-<dt><code>exportName?: TExportName$1</code></dt>
+<dt><code>exportName?: TExportName</code></dt>
 <dd>The named export to bind to (defaults to the default export).</dd>
 
 <dt><code>props?: Record&lt;string, unknown&gt;</code></dt>
@@ -2373,7 +2517,7 @@ Service binding (Worker-to-Worker). <code>worker</code> is the name or config of
 
 <code>worker</code>Required<a href="#config-reference-bindings-bindings-worker-default-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the bound Worker.
 
@@ -2403,7 +2547,7 @@ Binding to a Worker Loader.
 
 <code>workflow</code>Builder<a href="#config-reference-bindings-bindings-workflow-default">Link to workflow</a>
 
-<code>workflow&lt;TWorker$1 extends WorkerReference, TExportName$1 extends WorkflowExportName&lt;TWorker$1&gt;&gt;(options: WorkflowBindingOptions&lt;TWorker$1, TExportName$1&gt;): WorkflowBinding&lt;TWorker$1, NoInfer&lt;TExportName$1&gt;&gt;;</code>
+<code>workflow&lt;TWorker extends WorkerReference, TExportName extends WorkflowExportName&lt;TWorker&gt;&gt;(options: WorkflowBindingOptions&lt;TWorker, TExportName&gt;): WorkflowBinding&lt;TWorker, NoInfer&lt;TExportName&gt;&gt;;</code>
 
 Create a Workflow binding. <code>worker</code> may be a Worker config reference or a Worker name. <code>exportName</code> must be a valid <code>WorkflowEntrypoint</code> export for the given Worker.
 
@@ -2418,10 +2562,10 @@ Create a Workflow binding. <code>worker</code> may be a Worker config reference 
 <dt><code>name: string</code></dt>
 <dd>The name of the Workflow.</dd>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the Worker that defines the Workflow.</dd>
 
-<dt><code>exportName: TExportName$1</code></dt>
+<dt><code>exportName: TExportName</code></dt>
 <dd>The exported class name of the Workflow.</dd></dl></details>
 
 
@@ -2450,7 +2594,7 @@ The name of the Workflow.
 
 <code>worker</code>Required<a href="#config-reference-bindings-bindings-workflow-default-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the Worker that defines the Workflow.
 
@@ -2464,7 +2608,7 @@ The name or config of the Worker that defines the Workflow.
 
 <code>exportName</code>Required<a href="#config-reference-bindings-bindings-workflow-default-exportname">Link to exportName</a>
 
-<code>exportName: TExportName$1</code>
+<code>exportName: TExportName</code>
 
 The exported class name of the Workflow.
 
@@ -2648,7 +2792,7 @@ Queue consumer trigger — invokes this Worker when messages arrive on the named
 <dt><code>maxBatchTimeout?: number</code></dt>
 <dd>The maximum number of seconds to wait to fill a batch with messages.</dd>
 
-<dt><code>maxConcurrency?: number | null</code></dt>
+<dt><code>maxConcurrency?: number</code></dt>
 <dd>The maximum number of concurrent consumer Worker invocations. Leaving this unset will allow your consumer to scale to the maximum concurrency needed to keep up with the message backlog.</dd>
 
 <dt><code>maxRetries?: number</code></dt>
@@ -3315,11 +3459,14 @@ Declares a Workflow defined by this Worker. The export's key must name a class t
 
 <details>
 
-<summary>Options (6)</summary>
+<summary>Options (7)</summary>
 
 
 
 <dl>
+
+<dt><code>events?: ArtifactsEventSubscription[]</code></dt>
+<dd>Events that automatically start this Workflow. Only Artifacts events are currently supported.</dd>
 
 <dt><code>name: string</code></dt>
 <dd>The name of the Workflow. It identifies the Workflow's instances and must be unique within the account.</dd>

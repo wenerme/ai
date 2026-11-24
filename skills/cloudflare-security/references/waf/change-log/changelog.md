@@ -2,7 +2,7 @@
 agent:
   instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
   search: "https://developers.cloudflare.com/.well-known/search?q={query}"
-description: "This release introduces updates to an existing PHP Remote Code Execution rule to improve detection accuracy, as well as a few new generic, PHP and Ruby CVE specific rules. The new PHP rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden after evaluating requests matching the rules. Supplementary information around the CVEs are available through Zero Wire phpAfterShell and six other PHP critical flaws and ruby2shell: heap overflow in Ruby string case conversion."
+description: To log prompt content for AI Security for Apps, configure payload logging and use a WAF custom rule that references a field with the cf.llm.prompt prefix.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,6 +12,34 @@ image: https://developers.cloudflare.com/og-docs.png
 # Changelog
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-11-24
+
+
+**Updated prompt logging for AI Security for Apps**
+
+To log prompt content for AI Security for Apps, configure [payload logging](https://developers.cloudflare.com/waf/payload-logging/configure-api/) and use a WAF custom rule that references a field with the `cf.llm.prompt` prefix.
+
+When a custom rule matches, payload logging stores the extracted prompt. If no prompt is extracted and analysis falls back to the full request body, payload logging stores the full request body.
+
+This workflow replaces the previous AI Security Log Mode Ruleset procedure. For more information, refer to [Log prompts for matching rules](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#7-optional-log-prompts-for-matching-rules).
+
+## 2026-11-20
+
+
+**WAF Emergency Release - 2026-11-20**
+
+This release introduces new Ruby and WordPress security advisory mapped rules. Supplementary information around the security advisories covered are available through Zero Wire [ruby2shell: heap overflow in Ruby string case conversion ↗︎](https://radar.cloudflare.com/zero-wire/ruby2shell) and [WordPress 7.1.5: Template Part flaw can turn an administrator's click into code execution ↗︎](https://radar.cloudflare.com/zero-wire/wordpress-7-1-5-template-part-privilege-escalation).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Free Ruleset | ...b01ffb6b | N/A | Ruby - Regexp Character Class Intersection - GHSA-7x2q-68qv-6p8x | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...d5ec80f7 | N/A | Ruby - Regexp Compiled Program Size - GHSA-3p8q-wmhx-vm2w | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...aa981883 | N/A | Ruby - Regexp Character Class Intersection - GHSA-7x2q-68qv-6p8x | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1bd84008 | N/A | Ruby - Regexp Compiled Program Size - GHSA-3p8q-wmhx-vm2w | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e12fd7b1 | N/A | WordPress - DoS - GHSA-56j2-5mp6-wr3x | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a8ad193f | N/A | WordPress - Broken Access Control - GHSA-pmp8-6cv8-q323 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4755597d | N/A | WordPress - Stored XSS - GHSA-cr2m-2j4r-3v3x | N/A | Block | This is a new detection. |
 
 ## 2026-11-19
 
@@ -426,52 +454,8 @@ Detailed Rule Changes
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...827ab216 | N/A | Citrix Netscaler ADC and Gateway - Improper input validation - CVE: [CVE-2026-88771 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-88771) | N/A | Block | This is a new detection. |
 
-## 2026-09-30
-
-
-**WAF Release - 2026-09-30**
-
-This release introduces new detections to enhance protection against a specific GitLab path traversal vulnerability, alongside advanced generic rules targeting HTTP request smuggling, directory traversal, and command injection attempts.
-
-**Key Findings**
-
-- [CVE-2026-85706 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-85706): A path traversal vulnerability affecting GitLab.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...cb14ded8 | N/A | Broken Access Control - Directory Traversal | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...0364bd7e | N/A | HTTP Request Smuggling - Request Body Anomaly - Beta | Log | Block | This rule is merged into the original rule "HTTP/2 Request Smuggling - Request Body Anomaly" (ID: ...1489d892). |
-| Cloudflare Managed Ruleset | ...d498a69a | N/A | Command Injection - Generic 8 - body - Beta | Disabled | Disabled | This rule is merged into the original rule "Command Injection - Generic 8 - body" (ID: ...413592e2). |
-| Cloudflare Managed Ruleset | ...87ae8cfc | N/A | GitLab - Path Traversal- CVE: [CVE-2026-85706 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-85706) | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...549f7356 | N/A | Generic - Request routing cache inconsistency | N/A | Block | This is a new detection. |
-
-## 2026-09-25
-
-
-**WAF Release - 2026-09-25 - Emergency**
-
-This update provides immediate defense against critical vulnerabilities affecting WordPress and JFrog Artifactory, including path traversal, local file inclusion (LFI), cross-site scripting (XSS), and authentication bypass exploits.
-
-**Key Findings**
-
-- [CVE-2026-87902 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-87902): A high-severity Path Traversal and Local File Inclusion (LFI) vulnerability affecting WordPress. Unauthenticated attackers can exploit this flaw to read arbitrary files on the host server, potentially exposing sensitive configuration data or system files.
-- [CVE-2026-42018 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-42018) & [CVE-2026-82329 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-82329): Critical authentication bypass vulnerabilities affecting JFrog Artifactory. Successful exploitation allows unauthenticated attackers to bypass security controls and achieve unauthorized access to the Artifactory instance.
-
-**Impact**
-
-We strongly recommend that administrators apply the latest vendor patches for WordPress and JFrog Artifactory to fully secure origin servers.
-
-Detailed Rule Changes
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...70a43f96 | N/A | Wordpress - Path Traversal, Local File Inclusion - CVE: [CVE-2026-87902 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-87902) | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...909a4db4 | N/A | Wordpress - XSS - Comment | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...c797ef03 | N/A | JFrog Artifactory - Authentication Bypass - CVE: [CVE-2026-42018 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-42018) | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a813ac74 | N/A | JFrog Artifactory - Authentication Bypass - CVE: [CVE-2026-82329 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-82329) | N/A | Block | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces updates to an existing PHP Remote Code Execution rule to improve detection accuracy, as well as a few new generic, PHP and Ruby CVE specific rules. The new PHP rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden after evaluating requests matching the rules. Supplementary information around the CVEs are available through Zero Wire phpAfterShell and six other PHP critical flaws and ruby2shell: heap overflow in Ruby string case conversion.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"To log prompt content for AI Security for Apps, configure payload logging and use a WAF custom rule that references a field with the cf.llm.prompt prefix.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

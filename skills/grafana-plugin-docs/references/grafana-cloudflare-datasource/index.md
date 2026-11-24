@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare data source | Grafana Enterprise Plugins documentation"
+title: "Cloudflare data source | Grafana Plugins documentation"
 description: "Use the Cloudflare data source to query and visualize Cloudflare data in Grafana."
 ---
 

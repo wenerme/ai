@@ -1,5 +1,5 @@
 ---
-title: "Datadog template variables | Grafana Enterprise Plugins documentation"
+title: "Datadog template variables | Grafana Plugins documentation"
 description: "This document describes using templates and variables with Datadog"
 ---
 

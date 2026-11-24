@@ -1,5 +1,5 @@
 ---
-title: "Snowflake query editor | Grafana Enterprise Plugins documentation"
+title: "Snowflake query editor | Grafana Plugins documentation"
 description: "Learn how to use the Snowflake query editor in Grafana."
 ---
 

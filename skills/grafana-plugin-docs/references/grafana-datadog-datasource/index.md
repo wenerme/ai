@@ -1,5 +1,5 @@
 ---
-title: "Datadog data source | Grafana Enterprise Plugins documentation"
+title: "Datadog data source | Grafana Plugins documentation"
 description: "Introduction to the Datadog data source plugin for Grafana."
 ---
 

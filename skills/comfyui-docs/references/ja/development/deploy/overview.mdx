@@ -1,11 +1,11 @@
 ---
 title: "ComfyUI のデプロイ"
 description: "Comfy Cloud、マネージド Comfy API デプロイ、セルフホストを比較して、ComfyUI の実行方法を選択します。"
-translationSourceHash: c83524f1
+translationSourceHash: 472b4415
 translationFrom: development/deploy/overview.mdx
 translationBlockHashes:
-  "_intro": 44e94954
-  "Deploy from the ComfyUI app": 53163f19
+  "_intro": 42fa61ba
+  "Deploy from the ComfyUI app": 8914d993
   "Run a deployment from the Cloud editor": 1c75cbed
   "Run Workflows from your application": f95d4434
 ---
@@ -13,13 +13,13 @@ translationBlockHashes:
 ComfyUI ワークフローは、Comfy Cloud、自身の Comfy API デプロイ、または自身で管理するサーバー上で実行できます。Comfy Cloud と Comfy API は Comfy GPU 上で動作するため、お使いのパソコンに GPU は不要です。ワークフローに合う選択肢を選び、そのカードから始めてください。
 
   
-    カスタムノードとモデルがすでに Comfy Cloud にあるワークフローを、ビルドやデプロイなしで実行します。
+    Comfy Cloud のスタンダードビルド、またはカスタムビルドで、自身のコードからワークフローを実行します。
   
   
     独自のカスタムノードとモデルを必要とするワークフローを、ブラウザで作成したビルドとともに Comfy Cloud エディタで実行します。
   
   
-    カスタムノード、モデル、Python 依存関係をビルドにパッケージ化し、自動スケーリングするエンドポイントとして実行します。
+    ビルドのバージョンをリリースし、GPU とワーカーを変更し、アプリケーションからデプロイを呼び出します。
   
   
     自身で管理するマシン上で ComfyUI を実行し、`--listen` でネットワークに公開します。
@@ -29,7 +29,7 @@ ComfyUI ワークフローは、Comfy Cloud、自身の Comfy API デプロイ�
 
 ## ComfyUI アプリからのデプロイ
 
-パソコン上の ComfyUI または Comfy Desktop では、**Deploy to Comfy API** カードが開いているワークフローから Comfy API ビルドを開始します。
+パソコン上の ComfyUI または Comfyデスクトップでは、**Deploy to Comfy API** カードが、開いているワークフローからビルドを開始します。
 
   バージョンの公開は無料です。ビルドが完了すると、**Serverless build** 行に **Deploy** ボタンが表示されます。デプロイすると、デプロイした時点からストレージ料金が発生し、ワーカーが稼働している間は GPU 時間も課金されます。確認前に、デプロイダイアログに見積もり料金が表示されます。
 
@@ -41,13 +41,13 @@ ComfyUI ワークフローは、Comfy Cloud、自身の Comfy API デプロイ�
   
     **Deploy to Comfy API** を選択します。エントリには **NEW** と表示されます。**Deploy to Comfy API** カードが開き、ワークフローが使うノードパック、モデル、ノードクラスを集計します。
 
-    [製品動画、ノードパック／モデル／ノードクラスの件数、Deploy on Platform ボタンがある Deploy to Comfy API カード]
+    [製品ビデオ、ノードパック／モデル／ノードクラスの件数、Deploy on Platform ボタンがある Deploy to Comfy API カード]
   
   
     **Deploy on Platform** をクリックします。Developer Platform（[platform.comfy.org](https://platform.comfy.org)）が新しいタブで開きます。
   
 
-Developer Platform では、ワークフローからビルドを作成し、バージョンを公開してデプロイします。[ビルドソース](/ja/development/serverless/build-sources)ではワークフローファイルからビルドを開始する方法を、[Comfy API クイックスタート](/ja/development/serverless/quickstart)では comfy-cli による同じ流れを扱います。
+Developer Platform では、ワークフローからビルドを作成し、バージョンを公開してデプロイします。[ビルドを開始する](/ja/development/serverless/overview#comfy-desktop、ワークフローファイル、またはcomfyuiからビルドを開始する)ではワークフローファイルからビルドを開始する方法を、[Comfy Cloud へのデプロイ](/ja/development/deploy/cloud#カスタムbuildでワークフローを実行する)ではコードからデプロイを呼び出す方法を扱います。
 
 ## Cloud エディターからデプロイを実行する
 

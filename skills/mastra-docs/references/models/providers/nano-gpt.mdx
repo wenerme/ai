@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 604 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 606 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -726,7 +726,7 @@ for await (const chunk of stream) {
   {
     "model": "nano-gpt/bytedance-seed/seed-2.0-lite",
     "imageInput": true,
-    "audioInput": false,
+    "audioInput": true,
     "videoInput": true,
     "toolUsage": false,
     "reasoning": false,
@@ -1020,8 +1020,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.044,
-    "outputCost": 0.132
+    "inputCost": 0.05,
+    "outputCost": 0.16
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4-flash-0731:thinking",
@@ -1032,8 +1032,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.044,
-    "outputCost": 0.132
+    "inputCost": 0.05,
+    "outputCost": 0.16
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4-flash-latest",
@@ -2678,6 +2678,30 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.1625,
     "outputCost": 0.5
+  },
+  {
+    "model": "nano-gpt/kitani/clover-2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 8192,
+    "inputCost": 0.75,
+    "outputCost": 1.5
+  },
+  {
+    "model": "nano-gpt/kitani/clover-2:thinking",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 8192,
+    "inputCost": 0.75,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/LatitudeGames/Wayfarer-Large-70B-Llama-3.3",
@@ -6359,7 +6383,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 64000,
+    "maxOutput": 65536,
     "inputCost": 0.834,
     "outputCost": 2.501
   },

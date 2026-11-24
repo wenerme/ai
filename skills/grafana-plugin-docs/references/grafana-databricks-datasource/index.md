@@ -1,5 +1,5 @@
 ---
-title: "Databricks data source for Grafana | Grafana Enterprise Plugins documentation"
+title: "Databricks data source for Grafana | Grafana Plugins documentation"
 description: "This document introduces the Databricks data source in Grafana."
 ---
 

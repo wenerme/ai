@@ -13,13 +13,52 @@ enabling you to see statistics about the resources that OpenTofu creates,
 modifies, or destroys.
 
 > [!warning]
-> Like any other job artifact, OpenTofu plan data is viewable by anyone with the Guest role on the repository.
-> Neither OpenTofu nor GitLab encrypts the plan file by default. If your OpenTofu `plan.json` or `plan.cache`
-> files include sensitive data like passwords, access tokens, or certificates, you should
-> encrypt the plan output or modify the project visibility settings. You should also disable
-> [public pipelines](../../../ci/pipelines/settings.md#change-pipeline-visibility-for-non-project-members-in-public-projects)
-> and set the [artifact's public flag to false](../../../ci/yaml/_index.md#artifactspublic) (`public: false`).
-> This setting ensures artifacts are accessible only to GitLab administrators and project members with the Reporter, Developer, Maintainer, or Owner role.
+> OpenTofu plan data is a job artifact.
+> Who can view it depends on the
+> [`artifacts:access`](../../../ci/yaml/_index.md#artifactsaccess) setting of the job that creates it.
+> Neither OpenTofu nor GitLab encrypts the plan file by default.
+> If your OpenTofu `plan.json` or `plan.cache` files include sensitive data like passwords,
+> access tokens, or certificates, you should encrypt the plan output or restrict access
+> to the artifacts with `artifacts:access`.
+> You should also disable
+> [public pipelines](../../../ci/pipelines/settings.md#change-pipeline-visibility-for-non-project-members-in-public-projects).
+
+### Permissions to view OpenTofu plan information
+
+- [Changed](https://about.gitlab.com/releases/2026/10/12/patch-release-gitlab-19-4-2-released/) in GitLab 19.5, 19.4.2, 19.3.5, and 19.2.8 to show only the reports you can download.
+
+The merge request widget shows plan information only from OpenTofu report artifacts
+that you can download.
+The `artifacts:access` setting of the plan job controls who can download them.
+If the job doesn't set `artifacts:access`, the default is `all`.
+
+| `artifacts:access` | Who can see the artifacts                           |
+|--------------------|-----------------------------------------------------|
+| `all`              | Users who can view the pipeline                     |
+| `developer`        | Users with the Developer, Maintainer, or Owner role |
+| `maintainer`       | Users with the Maintainer or Owner role             |
+| `none`             | No users                                            |
+
+If you can't download any of the OpenTofu report artifacts in the pipeline,
+the widget shows `0 Terraform reports failed to generate` and no plan information.
+
+The OpenTofu CI/CD component sets `artifacts:access` to `none` for plan jobs by default.
+To show plan information in merge requests, set the access input of the component
+to `developer` or `maintainer`.
+For example, with the `validate-plan-apply` template:
+
+```yaml
+include:
+  - component: $CI_SERVER_FQDN/components/opentofu/validate-plan-apply@<VERSION>
+    inputs:
+      opentofu_version: <OPENTOFU_VERSION>
+      plan_artifacts_access: developer
+```
+
+The input name depends on the template.
+For example, `validate-plan-apply` and `job-templates` use `plan_artifacts_access`,
+and `plan` and `validate-plan` use `artifacts_access`.
+The access setting also applies to the `plan.cache` file, which can contain sensitive data.
 
 ## Configure OpenTofu report artifacts
 

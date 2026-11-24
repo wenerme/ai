@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Amazon Aurora data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Amazon Aurora data source issues | Grafana Plugins documentation"
 description: "Solutions to common issues with the Amazon Aurora data source, including authentication, connection, and query errors."
 ---
 

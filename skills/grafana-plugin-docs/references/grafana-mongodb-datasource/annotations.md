@@ -1,5 +1,5 @@
 ---
-title: "MongoDB annotations | Grafana Enterprise Plugins documentation"
+title: "MongoDB annotations | Grafana Plugins documentation"
 description: "Learn how to use annotations with the MongoDB data source in Grafana."
 ---
 

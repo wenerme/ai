@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Cloudflare data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Cloudflare data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the Cloudflare data source in Grafana."
 ---
 

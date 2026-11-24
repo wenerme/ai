@@ -38,6 +38,7 @@ Expand table
 - **Database** and **Table**: Select the database and table to query from the drop-downs.
 - **Query type**: Select **Table**, **Logs**, **Time series**, or **Traces**. The builder shows options that match the type (for example, time column and value columns for time series; columns, filters, group by, and order by for tables).
 - **Type-specific options**: Configure columns, filters, grouping, sorting, limit (max rows), and (for traces) trace ID. The builder generates the SQL for you.
+- **Filter values**: For a string column with `=`, `!=`, `IN` or `NOT IN`, the value field suggests values as you type, narrowed by the other filters of the query. If the table’s partition key or sorting key uses a date or time column, suggestions come from the dashboard time range on that column, preferring the query’s time column. Otherwise they come from a sample of up to 100,000 rows. Values with quotes, parentheses, `$`, backslashes or leading or trailing spaces are not suggested. Paths inside `JSON` columns have no value suggestions. You can also type any value.
 - **SQL preview**: At the bottom of the builder, you can see the generated SQL. You can switch to SQL mode to edit it manually.
 
 If the data source is configured in **Single source** mode, the query builder uses the configured logs or traces source as its default database, table, and column mapping.
@@ -213,6 +214,8 @@ FROM mgbench.logs1
 GROUP BY machine_group, log_time
 ORDER BY log_time
 ```
+
+The plugin converts this result into one series for each group. The converted result has one cell for each distinct timestamp in each series, and its size has no limit by default. An administrator can set a limit in cells with `long_to_wide_cell_limit` in the `[plugin.grafana-clickhouse-datasource]` section of the Grafana configuration. A value of 0 removes the limit. When a converted result passes the limit, the query fails with an error that asks you to add filters or aggregation. To stay under the limit, bucket the time column with `$__timeInterval` or reduce the number of groups.
 
 ## Tables
 

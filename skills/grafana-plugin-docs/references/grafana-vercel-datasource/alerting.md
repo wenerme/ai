@@ -1,5 +1,5 @@
 ---
-title: "Vercel alerting | Grafana Enterprise Plugins documentation"
+title: "Vercel alerting | Grafana Plugins documentation"
 description: "Create Grafana alert rules on Vercel data with the Vercel data source."
 ---
 

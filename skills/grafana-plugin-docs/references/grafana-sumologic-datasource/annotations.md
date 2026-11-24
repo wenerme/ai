@@ -1,5 +1,5 @@
 ---
-title: "Sumo Logic annotations | Grafana Enterprise Plugins documentation"
+title: "Sumo Logic annotations | Grafana Plugins documentation"
 description: "Use annotations with the Sumo Logic data source to mark events on dashboard panels."
 ---
 

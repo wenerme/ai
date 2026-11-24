@@ -1,5 +1,5 @@
 ---
-title: "Jenkins data source for Grafana | Grafana Enterprise Plugins documentation"
+title: "Jenkins data source for Grafana | Grafana Plugins documentation"
 description: "Guide for using the Jenkins data source in Grafana"
 ---
 

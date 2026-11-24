@@ -1,5 +1,5 @@
 ---
-title: "Sumo Logic template variables | Grafana Enterprise Plugins documentation"
+title: "Sumo Logic template variables | Grafana Plugins documentation"
 description: "Use template variables with the Sumo Logic data source to create dynamic, reusable dashboards."
 ---
 

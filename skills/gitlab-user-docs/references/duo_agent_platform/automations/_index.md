@@ -40,6 +40,7 @@ To view the automations for a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Automations**.
+1. Select **Scheduled** or **Event**.
 
 ## Event-based automations
 
@@ -65,6 +66,7 @@ To create an automation:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Automations**.
+1. If **Scheduled** and **Event** are shown, select **Event**.
 1. Select **New automation**.
 1. In **Name**, enter a name for the automation.
 1. From the **Runs with** dropdown list, select one of the following:
@@ -80,7 +82,7 @@ To create an automation:
 1. Under **Runs when**, if a schedule is open, select **Cancel**.
    A new automation starts with a schedule when the flow can run on a schedule.
 1. For each event that should start the automation:
-   1. Select **Add trigger** > **On an event**.
+   1. If no event is open, select **Add condition** > **On an event**.
    1. From the **Select an event** dropdown list, select an [event type](#event-types).
    1. If the event type has actions, from the **Run when** dropdown list, select one or
       more actions.
@@ -360,12 +362,13 @@ To create a scheduled automation:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Automations**.
+1. If **Scheduled** and **Event** are shown, select **Scheduled**.
 1. Select **New automation**.
 1. In **Name**, enter a name for the automation.
 1. From the **Runs with** dropdown list, select the flow.
 1. If the **Instructions** field is shown, enter what the flow must do on each run.
    For the Developer Flow, instructions are required.
-1. Under **Runs when**, if no schedule is shown, select **Add trigger** > **On a schedule**.
+1. Under **Runs when**, if no schedule is shown, select **Add condition** > **On a schedule**.
    The default is a weekly schedule on a random day and time.
 1. From the frequency dropdown list, select how often the flow runs.
 1. Depending on the frequency, select the day and time for the flow to run.
@@ -577,7 +580,7 @@ Prerequisites:
 1. For the automation you want to change, select **More actions** () > **Edit automation**.
 1. Make the changes and select **Save changes**.
 
-You can also edit a custom flow's automation on its configuration page, under **Trigger conditions**.
+You can also edit a custom flow's automation on its configuration page, under **Automations**.
 
 ## Turn an automation on or off
 
@@ -594,7 +597,7 @@ Prerequisites:
 1. In the left sidebar, select **AI** > **Automations**.
 1. For the automation you want to turn on or off, on the right side, select the toggle.
 
-You can also turn a custom flow's automation on or off on its configuration page, under **Trigger conditions**.
+You can also turn a custom flow's automation on or off on its configuration page, under **Automations**.
 
 ## Delete an automation
 
@@ -607,7 +610,7 @@ Prerequisites:
 1. For the automation you want to delete, select **More actions** () > **Delete automation**.
 1. On the confirmation dialog, select **OK**.
 
-You can also delete a custom flow's automation on its configuration page, under **Trigger conditions**.
+You can also delete a custom flow's automation on its configuration page, under **Automations**.
 
 ## GitLab Credits consumption for triggered flows
 
@@ -643,10 +646,10 @@ To resolve this error, check the flow's documentation for the events it supports
   For example, [SAST False Positive Detection](../../application_security/vulnerabilities/false_positive_detection.md)
   runs after a security scan.
 
-### Service account shows `No triggers for this event`
+### Service account shows `No automations for this event`
 
 When you assign a service account to a merge request or request a review from it,
-the service account might be disabled with the message `No triggers for this event`.
+the service account might be disabled with the message `No automations for this event`.
 In mention autocomplete, a service account without an automation for the **Mention** event doesn't appear.
 In each case, the project has no automation for that service account and event:
 

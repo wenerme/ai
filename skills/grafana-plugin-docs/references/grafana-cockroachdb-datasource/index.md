@@ -1,5 +1,5 @@
 ---
-title: "CockroachDB data source | Grafana Enterprise Plugins documentation"
+title: "CockroachDB data source | Grafana Plugins documentation"
 description: "The CockroachDB data source plugin lets you query and visualize CockroachDB data in Grafana"
 ---
 

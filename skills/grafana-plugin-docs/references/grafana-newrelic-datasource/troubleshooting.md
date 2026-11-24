@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot New Relic data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot New Relic data source issues | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the New Relic data source in Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Splunk data source | Grafana Enterprise Plugins documentation"
+title: "Splunk data source | Grafana Plugins documentation"
 description: "Use the Splunk data source to query and visualize Splunk data in Grafana using SPL or a visual query builder."
 ---
 

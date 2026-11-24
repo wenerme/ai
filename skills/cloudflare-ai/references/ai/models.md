@@ -21,7 +21,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 315 modelsClear filters
+We found 317 modelsClear filters
 
 ## Compare models
 
@@ -313,6 +313,12 @@ Compare
 Compare
 
 [b<h3>remove-background</h3>briaImage-to-Image Bria's RMBG 2.0 model removes the background from an image and returns a PNG cutout with a transparent background. Partial transparency from the input's alpha channel is kept by default.](https://developers.cloudflare.com/ai/models/bria/remove-background/)
+
+- Third-party
+
+Compare
+
+[b<h3>rmbg-3.0</h3>briaImage-to-Image Bria's RMBG 3.0 removes the background from an image and returns a PNG cutout with a transparent background, with cleaner edges than RMBG 2.0 on hair, fur, glass, smoke and other fine or see-through detail. In Bria's blind test on 234 hard images it gave the best or tied-best cutout on 185, more than Photoroom, remove.bg, Ideogram, BiRefNet or RMBG 2.0. It is trained only on licensed data and takes a few seconds per image; for speed and high volume use bria/remove-background (RMBG 2.0).](https://developers.cloudflare.com/ai/models/bria/rmbg-3.0/)
 
 - Third-party
 
@@ -1289,6 +1295,12 @@ Compare
 Compare
 
 [![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.Bv7D31UF.svg)<h3>p-video-replace</h3>Pruna AIImage-to-Video Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio.](https://developers.cloudflare.com/ai/models/pruna/p-video-replace/)
+
+- Third-party
+
+Compare
+
+[![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.Bv7D31UF.svg)<h3>z-image-turbo</h3>Pruna AIText-to-Image Z-Image Turbo is Tongyi-MAI's 6B-parameter distilled text-to-image model, served by Pruna. It generates photorealistic images in about 8 steps, renders English and Chinese text well, and supports custom sizes up to 2048×2048.](https://developers.cloudflare.com/ai/models/pruna/z-image-turbo/)
 
 - Third-party
 

@@ -1,5 +1,5 @@
 ---
-title: "Install the Catchpoint data source | Grafana Enterprise Plugins documentation"
+title: "Install the Catchpoint data source | Grafana Plugins documentation"
 description: "Install the Catchpoint data source plugin in Grafana Cloud or self-managed Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "New Relic annotations | Grafana Enterprise Plugins documentation"
+title: "New Relic annotations | Grafana Plugins documentation"
 description: "Add annotations to Grafana dashboards using New Relic data."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Salesforce template variables | Grafana Enterprise Plugins documentation"
+title: "Salesforce template variables | Grafana Plugins documentation"
 description: "Use template variables with the Salesforce data source in Grafana."
 ---
 

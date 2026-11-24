@@ -120,9 +120,17 @@ Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/securit
 
    The displayed logs now refer to incoming requests where personally identifiable information (PII) was detected in an LLM prompt.
 
-Alternatively, you can also create a custom rule with a *Log* action (only available on Enterprise plans) to check for potentially harmful traffic related to LLM prompts. This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your AI Security for Apps configuration.
+## 7. (Optional) Log prompts for matching rules
 
-## 7. Mitigate harmful requests
+To store prompt content for matching requests, configure [payload logging via API](https://developers.cloudflare.com/waf/payload-logging/configure-api/) at the account or zone level. Payload logging applies to any matching custom rule that uses a field with the `cf.llm.prompt` prefix.
+
+When AI Security for Apps extracts a prompt, payload logging stores the extracted prompt. If no prompt is extracted and analysis falls back to the full request body, payload logging stores the full request body.
+
+The stored content is encrypted with your public key. You need the corresponding private key to [view the payload content](https://developers.cloudflare.com/waf/payload-logging/view/).
+
+You can use the *Log* action to validate your AI Security for Apps configuration without mitigating requests. The *Log* action is only available on Enterprise plans.
+
+## 8. Mitigate harmful requests
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that blocks requests where Cloudflare detected personally identifiable information (PII) in the incoming request (as part of an LLM prompt), returning a custom JSON body:
 
@@ -178,5 +186,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/og.png?v=1f217acadbe63f59","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/og.png?v=1f217acadbe63f59","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

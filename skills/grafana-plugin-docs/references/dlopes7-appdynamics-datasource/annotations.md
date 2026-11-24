@@ -1,5 +1,5 @@
 ---
-title: "AppDynamics annotations | Grafana Enterprise Plugins documentation"
+title: "AppDynamics annotations | Grafana Plugins documentation"
 description: "Use AppDynamics events as annotations in Grafana."
 ---
 

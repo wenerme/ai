@@ -1,5 +1,5 @@
 ---
-title: "Install and upgrade the Azure Cosmos DB data source | Grafana Enterprise Plugins documentation"
+title: "Install and upgrade the Azure Cosmos DB data source | Grafana Plugins documentation"
 description: "Install and upgrade the Azure Cosmos DB data source plugin across Grafana deployment environments."
 ---
 

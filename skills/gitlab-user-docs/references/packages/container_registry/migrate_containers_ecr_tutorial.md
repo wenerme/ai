@@ -146,7 +146,7 @@ After setting up the pipeline:
 1. Commit and push the `.gitlab-ci.yml` file to your repository.
 1. Go to **CI/CD** > **Pipelines** to monitor the migration progress.
 1. After completion, verify the migration:
-   - Go to **Packages and registries** > **Container Registry**.
+   - Go to **Packages and registries** > **Container registry**.
    - Verify all repositories and tags are present.
    - Test pulling some migrated images.
 

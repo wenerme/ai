@@ -209,7 +209,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>text</code>Builder<a href="#first-worker-config-bindings-text-default">Link to text</a>
 
-<code>text&lt;T$1 extends string&gt;(value: T$1): TextBinding&lt;T$1&gt;;</code>
+<code>text&lt;T extends string&gt;(value: T): TextBinding&lt;T&gt;;</code>
 
 Inline string value made available to the Worker on <code>env</code> under the binding name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables">https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables</a>
 

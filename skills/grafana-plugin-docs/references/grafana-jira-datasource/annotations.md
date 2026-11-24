@@ -1,5 +1,5 @@
 ---
-title: "Create annotations from Jira data | Grafana Enterprise Plugins documentation"
+title: "Create annotations from Jira data | Grafana Plugins documentation"
 description: "Learn how to create annotations from Jira issue data"
 ---
 

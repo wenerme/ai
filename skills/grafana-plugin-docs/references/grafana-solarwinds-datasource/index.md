@@ -1,5 +1,5 @@
 ---
-title: "SolarWinds data source | Grafana Enterprise Plugins documentation"
+title: "SolarWinds data source | Grafana Plugins documentation"
 description: "Use the SolarWinds data source to query and visualize SolarWinds infrastructure and network monitoring data in Grafana."
 ---
 

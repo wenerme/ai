@@ -1,5 +1,5 @@
 ---
-title: "Configure the Cloudflare data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Cloudflare data source | Grafana Plugins documentation"
 description: "Learn how to configure the Cloudflare data source in Grafana."
 ---
 

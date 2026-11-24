@@ -1,5 +1,5 @@
 ---
-title: "Oracle Kerberos integration | Grafana Enterprise Plugins documentation"
+title: "Oracle Kerberos integration | Grafana Plugins documentation"
 description: "Configure Kerberos authentication for the Oracle data source in Grafana."
 ---
 

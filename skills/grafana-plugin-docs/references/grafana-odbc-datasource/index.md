@@ -1,5 +1,5 @@
 ---
-title: "Sqlyze data source for Grafana | Grafana Enterprise Plugins documentation"
+title: "Sqlyze data source for Grafana | Grafana Plugins documentation"
 description: "Grafana Sqlyze Data source This plugin is not yet supported in Grafana Cloud. The Grafana Sqlyze Data Source plugin is a versatile plugin that allows you to connect to hundreds of data sources using a single query language: SQL. Whether your data resides in traditional SQL databases, NoSQL databases, or other non-SQL data sources, this plugin enables you to query them all with SQL."
 ---
 

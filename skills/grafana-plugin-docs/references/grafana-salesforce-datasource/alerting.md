@@ -1,5 +1,5 @@
 ---
-title: "Salesforce alerting | Grafana Enterprise Plugins documentation"
+title: "Salesforce alerting | Grafana Plugins documentation"
 description: "Set up alerts using Salesforce data in Grafana."
 ---
 

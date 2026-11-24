@@ -1,5 +1,5 @@
 ---
-title: "ServiceNow data source | Grafana Enterprise Plugins documentation"
+title: "ServiceNow data source | Grafana Plugins documentation"
 description: "Use the ServiceNow data source to query and visualize ServiceNow data in Grafana."
 ---
 

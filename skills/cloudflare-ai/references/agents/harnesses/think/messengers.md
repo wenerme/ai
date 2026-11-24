@@ -31,46 +31,40 @@ Provider adapters are exported from provider-specific subpaths so unused adapter
 
 ```js
 import { Think } from "@cloudflare/think";
-import {
-	defineMessengers,
-	ThinkMessengerStateAgent,
-} from "@cloudflare/think/messengers";
+import { ThinkMessengerStateAgent } from "@cloudflare/think/messengers";
 import telegramMessenger from "@cloudflare/think/messengers/telegram";
 
 export { ThinkMessengerStateAgent };
 
 export class SupportAgent extends Think {
 	getMessengers() {
-		return defineMessengers({
+		return {
 			telegram: telegramMessenger({
 				token: this.env.TELEGRAM_BOT_TOKEN,
 				userName: "support_bot",
 				secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
 			}),
-		});
+		};
 	}
 }
 ```
 
 ```ts
 import { Think } from "@cloudflare/think";
-import {
-	defineMessengers,
-	ThinkMessengerStateAgent,
-} from "@cloudflare/think/messengers";
+import { ThinkMessengerStateAgent } from "@cloudflare/think/messengers";
 import telegramMessenger from "@cloudflare/think/messengers/telegram";
 
 export { ThinkMessengerStateAgent };
 
 export class SupportAgent extends Think<Env> {
 	getMessengers() {
-		return defineMessengers({
+		return {
 			telegram: telegramMessenger({
 				token: this.env.TELEGRAM_BOT_TOKEN,
 				userName: "support_bot",
 				secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
 			}),
-		});
+		};
 	}
 }
 ```
@@ -86,37 +80,45 @@ https://<your-worker>/messengers/telegram/webhook
 If one Think agent owns multiple Telegram bots, give each provider a distinct Chat SDK adapter name:
 
 ```js
-defineMessengers({
-	support: telegramMessenger({
-		adapterName: "support-telegram",
-		token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
-		userName: "support_bot",
-		secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-	}),
-	sales: telegramMessenger({
-		adapterName: "sales-telegram",
-		token: this.env.SALES_TELEGRAM_BOT_TOKEN,
-		userName: "sales_bot",
-		secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-	}),
-});
+export class SupportAgent extends Think {
+	getMessengers() {
+		return {
+			support: telegramMessenger({
+				adapterName: "support-telegram",
+				token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
+				userName: "support_bot",
+				secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+			}),
+			sales: telegramMessenger({
+				adapterName: "sales-telegram",
+				token: this.env.SALES_TELEGRAM_BOT_TOKEN,
+				userName: "sales_bot",
+				secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+			}),
+		};
+	}
+}
 ```
 
 ```ts
-defineMessengers({
-	support: telegramMessenger({
-		adapterName: "support-telegram",
-		token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
-		userName: "support_bot",
-		secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-	}),
-	sales: telegramMessenger({
-		adapterName: "sales-telegram",
-		token: this.env.SALES_TELEGRAM_BOT_TOKEN,
-		userName: "sales_bot",
-		secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-	}),
-});
+export class SupportAgent extends Think<Env> {
+	getMessengers() {
+		return {
+			support: telegramMessenger({
+				adapterName: "support-telegram",
+				token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
+				userName: "support_bot",
+				secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+			}),
+			sales: telegramMessenger({
+				adapterName: "sales-telegram",
+				token: this.env.SALES_TELEGRAM_BOT_TOKEN,
+				userName: "sales_bot",
+				secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+			}),
+		};
+	}
+}
 ```
 
 Duplicate adapter names fail during startup so providers cannot overwrite each other in the shared Chat SDK runtime.
@@ -274,5 +276,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/messengers/#page","headline":"Messengers","description":"Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.","url":"https://developers.cloudflare.com/agents/harnesses/think/messengers/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/messengers/og.png?v=28caf5d55bd3f181","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/messengers/#page","headline":"Messengers","description":"Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.","url":"https://developers.cloudflare.com/agents/harnesses/think/messengers/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/messengers/og.png?v=28caf5d55bd3f181","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -62,3 +62,28 @@ Example response:
   }
 }
 ```
+
+## Delete certificate-based clusters
+
+You can delete a certificate-based cluster you found with the discovery API by
+using the group or project clusters API.
+
+Prerequisites:
+
+- Maintainer or Owner role for the group or project.
+
+To delete a cluster:
+
+1. From the discovery API response, get the cluster `id` and the group or project
+   path. The path is the key the cluster is listed under, for example,
+   `my-clusters-group/project1-with-cluster`.
+1. Call the API for your cluster type, using the cluster `id` as the `cluster_id`
+   attribute and the [URL-encoded path](rest/_index.md#namespaced-paths) as the
+   `id` attribute:
+   - For clusters in groups, use the
+     [group clusters API](group_clusters.md#delete-a-group-cluster).
+   - For clusters in projects, use the
+     [project clusters API](project_clusters.md#delete-cluster-from-a-project).
+
+To remove a cluster in the UI, or to remove an instance cluster, see
+[remove a cluster](../user/project/clusters/add_remove_clusters.md#remove-a-cluster).

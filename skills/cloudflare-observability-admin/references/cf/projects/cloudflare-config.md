@@ -338,7 +338,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>text</code>Builder<a href="#config-default-export-bindings-text-default">Link to text</a>
 
-<code>text&lt;T$1 extends string&gt;(value: T$1): TextBinding&lt;T$1&gt;;</code>
+<code>text&lt;T extends string&gt;(value: T): TextBinding&lt;T&gt;;</code>
 
 Inline string value made available to the Worker on <code>env</code> under the binding name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables">https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables</a>
 
@@ -587,7 +587,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>text</code>Builder<a href="#config-bindings-bindings-text-default">Link to text</a>
 
-<code>text&lt;T$1 extends string&gt;(value: T$1): TextBinding&lt;T$1&gt;;</code>
+<code>text&lt;T extends string&gt;(value: T): TextBinding&lt;T&gt;;</code>
 
 Inline string value made available to the Worker on <code>env</code> under the binding name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables">https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables</a>
 
@@ -601,7 +601,7 @@ Inline string value made available to the Worker on <code>env</code> under the b
 
 <code>json</code>Builder<a href="#config-bindings-bindings-json-default">Link to json</a>
 
-<code>json&lt;T$1 extends Json&gt;(value: T$1): JsonBinding&lt;T$1&gt;;</code>
+<code>json&lt;T extends Json&gt;(value: T): JsonBinding&lt;T&gt;;</code>
 
 Inline JSON value made available to the Worker on <code>env</code> under the binding name.
 
@@ -621,7 +621,7 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <details>
 
-<summary>Options (3)</summary>
+<summary>Options (4)</summary>
 
 
 
@@ -632,6 +632,9 @@ Binding to a D1 database. For reference, see <a href="https://developers.cloudfl
 
 <dt><code>name?: string</code></dt>
 <dd>The name of this D1 database.</dd>
+
+<dt><code>jurisdiction?: string</code></dt>
+<dd>The jurisdiction where an automatically provisioned D1 database will be created.</dd>
 
 <dt><code>dev?: BindingDevOptions</code></dt>
 <dd>Options that only apply during local development.</dd></dl></details>
@@ -817,7 +820,7 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 
 <details>
 
-<summary>Options (19)</summary>
+<summary>Options (21)</summary>
 
 
 
@@ -844,8 +847,8 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 <dt><code>triggers?: Trigger[]</code></dt>
 <dd>Event triggers — fetch routes, queue consumers, cron schedules, Email Routing addresses, and raw sockets — that invoke this Worker. Construct entries with <code>triggers.fetch(...)</code>, <code>triggers.queue(...)</code>, <code>triggers.scheduled(...)</code>, <code>triggers.email(...)</code>, or <code>triggers.connect(...)</code>. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#triggers">https://developers.cloudflare.com/workers/wrangler/configuration/#triggers</a></dd>
 
-<dt><code>tailConsumers?: Array&lt;{ /** The name of the service tail events will be forwarded to. */ worker: string; /** Whether to stream tail events in real time. */ streaming?: boolean; }&gt;</code></dt>
-<dd>A list of Tail Workers that are bound to this Worker. <code>@cloudflare/config</code> unifies regular and streaming tail consumers under a single field; pass <code>streaming: true</code> to forward streaming tail events.</dd>
+<dt><code>tailConsumers?: Array&lt;{ /** The name of the service tail events will be forwarded to. */ worker: string; }&gt;</code></dt>
+<dd>A list of Tail Workers that are bound to this Worker. Each consumer receives this Worker's tail events through its <code>tail()</code> handler. For reference, see <a href="https://developers.cloudflare.com/workers/observability/logs/tail-workers/">https://developers.cloudflare.com/workers/observability/logs/tail-workers/</a></dd>
 
 <dt><code>cache?: { /** If cache is enabled for this Worker. */ enabled: boolean; /** Whether cached assets may be reused across Worker versions. */ crossVersionCache?: boolean; }</code></dt>
 <dd>Specify the cache behavior of the Worker.</dd>
@@ -865,11 +868,17 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 <dt><code>access?: { /** Local development simulation of Cloudflare Access authentication. */ dev?: { /** The Access application audience tag (`aud`). */ aud: string; /** Mock identity returned by `ctx.access.getIdentity()`. */ identity?: Record&lt;string, unknown&gt;; }; }</code></dt>
 <dd>Cloudflare Access configuration for this Worker.</dd>
 
+<dt><code>images?: { /** Configures `/cdn-cgi/image/...` URL transformations for this Worker. */ urlTransformations?: { /** * Whether URL transformations are enabled. Set to `false` to disable * them, overriding any zone-level setting. */ enabled: boolean; /** * Hostnames that images may be fetched from, in addition to the * Worker's own zone, without a protocol (e.g. `"images.example.com"` * or `"*.example.com"`). Use `["*"]` to allow any origin. At most 10 * entries. */ allowedOrigins?: string[]; }; }</code></dt>
+<dd>Cloudflare Images configuration for this Worker. The Images binding itself is declared in <code>env</code>.</dd>
+
 <dt><code>workersDev?: boolean</code></dt>
 <dd>Whether we use <code>&lt;name&gt;.&lt;subdomain&gt;.workers.dev</code> to test and deploy your Worker. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#workersdev">https://developers.cloudflare.com/workers/wrangler/configuration/#workersdev</a></dd>
 
 <dt><code>previewUrls?: boolean</code></dt>
 <dd>Whether we use <code>&lt;version&gt;-&lt;name&gt;.&lt;subdomain&gt;.workers.dev</code> to serve Preview URLs for your Worker.</dd>
+
+<dt><code>experimental?: { /** * A list of Streaming Tail Workers that are bound to this Worker. Each * consumer receives this Worker's tail events through its * `tailStream()` handler. * * @default [] */ streamingTailConsumers?: Array&lt;{ /** The name of the service streaming tail events will be forwarded to. */ worker: string; }&gt;; /** * Designates this Worker as an internal-only "first-party" Worker. * * @internal */ firstPartyWorker?: boolean; }</code></dt>
+<dd>Experimental features. Fields here may change or be removed without a major version bump.</dd>
 
 <dt><code>unsafe?: { /** * Arbitrary key/value pairs that will be included in the uploaded metadata. Values specified * here will always be applied to metadata last, so can add new or override existing fields. */ metadata?: Record&lt;string, unknown&gt;; /** * Used for internal capnp uploads for the Workers runtime. */ capnp?: { basePath: string; sourceSchemas: string[]; compiledSchema?: never; } | { basePath?: never; sourceSchemas?: never; compiledSchema: string; }; }</code></dt>
 <dd>"Unsafe" tables for runtime features that aren't directly supported by this configuration. Values are forwarded verbatim in the Worker's upload metadata.</dd>
@@ -1187,7 +1196,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>worker</code>Builder<a href="#config-cross-worker-web-bindings-worker-default">Link to worker</a>
 
-<code>worker&lt;TWorker$1 extends WorkerReference, TExportName$1 extends WorkerEntrypointExportName&lt;TWorker$1&gt; | undefined = undefined&gt;(options: WorkerBindingOptions&lt;TWorker$1, TExportName$1&gt;): WorkerBinding&lt;TWorker$1, NoInfer&lt;TExportName$1&gt;&gt;;</code>
+<code>worker&lt;TWorker extends WorkerReference, TExportName extends WorkerEntrypointExportName&lt;TWorker&gt; | undefined = undefined&gt;(options: WorkerBindingOptions&lt;TWorker, TExportName&gt;): WorkerBinding&lt;TWorker, NoInfer&lt;TExportName&gt;&gt;;</code>
 
 Service binding (Worker-to-Worker). <code>worker</code> is the name or config of the bound Worker; <code>exportName</code> selects a named <code>WorkerEntrypoint</code> export (defaults to the default export). For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings">https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings</a>
 
@@ -1199,10 +1208,10 @@ Service binding (Worker-to-Worker). <code>worker</code> is the name or config of
 
 <dl>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the bound Worker.</dd>
 
-<dt><code>exportName?: TExportName$1</code></dt>
+<dt><code>exportName?: TExportName</code></dt>
 <dd>The named export to bind to (defaults to the default export).</dd>
 
 <dt><code>props?: Record&lt;string, unknown&gt;</code></dt>
@@ -1223,7 +1232,7 @@ Service binding (Worker-to-Worker). <code>worker</code> is the name or config of
 
 <code>worker</code>Required<a href="#config-cross-worker-web-bindings-worker-default-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the bound Worker.
 
@@ -1237,7 +1246,7 @@ The name or config of the bound Worker.
 
 <code>exportName</code>Optional<a href="#config-cross-worker-web-bindings-worker-default-exportname">Link to exportName</a>
 
-<code>exportName?: TExportName$1</code>
+<code>exportName?: TExportName</code>
 
 The named export to bind to (defaults to the default export).
 
@@ -1253,7 +1262,7 @@ The named export to bind to (defaults to the default export).
 
 <code>durableObject</code>Builder<a href="#config-cross-worker-web-bindings-durableobject-all">Link to durableObject</a>
 
-<code>durableObject&lt;TWorker$1 extends WorkerReference, TExportName$1 extends DurableObjectExportName&lt;TWorker$1&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker$1, TExportName$1&gt;): DurableObjectBinding&lt;TWorker$1, TExportName$1&gt;;</code>
+<code>durableObject&lt;TWorker extends WorkerReference, TExportName extends DurableObjectExportName&lt;TWorker&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker, TExportName&gt;): DurableObjectBinding&lt;TWorker, TExportName&gt;;</code>
 
 Binding to a Durable Object class. <code>worker</code> is the name or config of the Worker that defines the class; <code>exportName</code> is the exported class name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects">https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects</a>
 
@@ -1265,10 +1274,10 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <dl>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the Worker that defines the Durable Object class.</dd>
 
-<dt><code>exportName: TExportName$1</code></dt>
+<dt><code>exportName: TExportName</code></dt>
 <dd>The exported class name of the Durable Object.</dd></dl></details>
 
 
@@ -1283,7 +1292,7 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <code>worker</code>Required<a href="#config-cross-worker-web-bindings-durableobject-all-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the Worker that defines the Durable Object class.
 
@@ -1297,7 +1306,7 @@ The name or config of the Worker that defines the Durable Object class.
 
 <code>exportName</code>Required<a href="#config-cross-worker-web-bindings-durableobject-all-exportname">Link to exportName</a>
 
-<code>exportName: TExportName$1</code>
+<code>exportName: TExportName</code>
 
 The exported class name of the Durable Object.
 
@@ -1529,7 +1538,7 @@ Queue consumer trigger — invokes this Worker when messages arrive on the named
 <dt><code>maxBatchTimeout?: number</code></dt>
 <dd>The maximum number of seconds to wait to fill a batch with messages.</dd>
 
-<dt><code>maxConcurrency?: number | null</code></dt>
+<dt><code>maxConcurrency?: number</code></dt>
 <dd>The maximum number of concurrent consumer Worker invocations. Leaving this unset will allow your consumer to scale to the maximum concurrency needed to keep up with the message backlog.</dd>
 
 <dt><code>maxRetries?: number</code></dt>
@@ -1993,11 +2002,14 @@ Declares a Workflow defined by this Worker. The export's key must name a class t
 
 <details>
 
-<summary>Options (6)</summary>
+<summary>Options (7)</summary>
 
 
 
 <dl>
+
+<dt><code>events?: ArtifactsEventSubscription[]</code></dt>
+<dd>Events that automatically start this Workflow. Only Artifacts events are currently supported.</dd>
 
 <dt><code>name: string</code></dt>
 <dd>The name of the Workflow. It identifies the Workflow's instances and must be unique within the account.</dd>
@@ -3281,7 +3293,7 @@ Bindings exposed on the Worker's <code>env</code> object. Construct entries with
 
 <code>durableObject</code>Builder<a href="#config-container-bindings-durableobject-all">Link to durableObject</a>
 
-<code>durableObject&lt;TWorker$1 extends WorkerReference, TExportName$1 extends DurableObjectExportName&lt;TWorker$1&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker$1, TExportName$1&gt;): DurableObjectBinding&lt;TWorker$1, TExportName$1&gt;;</code>
+<code>durableObject&lt;TWorker extends WorkerReference, TExportName extends DurableObjectExportName&lt;TWorker&gt;&gt;(options: DurableObjectBindingOptions&lt;TWorker, TExportName&gt;): DurableObjectBinding&lt;TWorker, TExportName&gt;;</code>
 
 Binding to a Durable Object class. <code>worker</code> is the name or config of the Worker that defines the class; <code>exportName</code> is the exported class name. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects">https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects</a>
 
@@ -3293,10 +3305,10 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <dl>
 
-<dt><code>worker: TWorker$1</code></dt>
+<dt><code>worker: TWorker</code></dt>
 <dd>The name or config of the Worker that defines the Durable Object class.</dd>
 
-<dt><code>exportName: TExportName$1</code></dt>
+<dt><code>exportName: TExportName</code></dt>
 <dd>The exported class name of the Durable Object.</dd></dl></details>
 
 
@@ -3311,7 +3323,7 @@ Binding to a Durable Object class. <code>worker</code> is the name or config of 
 
 <code>worker</code>Required<a href="#config-container-bindings-durableobject-all-worker">Link to worker</a>
 
-<code>worker: TWorker$1</code>
+<code>worker: TWorker</code>
 
 The name or config of the Worker that defines the Durable Object class.
 
@@ -3325,7 +3337,7 @@ The name or config of the Worker that defines the Durable Object class.
 
 <code>exportName</code>Required<a href="#config-container-bindings-durableobject-all-exportname">Link to exportName</a>
 
-<code>exportName: TExportName$1</code>
+<code>exportName: TExportName</code>
 
 The exported class name of the Durable Object.
 

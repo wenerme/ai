@@ -38,13 +38,13 @@ For the first step here, you create a demo application from a project template.
 Use a GitLab project template to get started. As the name suggests, these projects provide a
 bare-bones application built on some well-known frameworks.
 
-1. In the upper-right corner, select **Create new** () and **New project/repository**.
-1. Select **Create from template**, where you can choose from a Ruby on Rails, Spring, or
+1. In the upper-right corner, select  () and .
+1. Select , where you can choose from a Ruby on Rails, Spring, or
    NodeJS Express project. For this guide, use the Ruby on Rails template.
 1. Give your project a name. In this example, it's named `ecs-demo`. Make it public so that you can
    take advantage of the features available in the
    [GitLab Ultimate plan](https://about.gitlab.com/pricing/).
-1. Select **Create project**.
+1. Select .
 
 Now that you created a demo project, you must containerize the application and push it to the
 container registry.
@@ -56,8 +56,8 @@ provide a containerized application image during the infrastructure build. To do
 GitLab [Auto Build](../../../topics/autodevops/stages.md#auto-build)
 and [Container Registry](../../../user/packages/container_registry/_index.md).
 
-1. In the top bar, select **Search or go to** and find your `ecs-demo` project.
-1. Select **Set up CI/CD**. It brings you to a `.gitlab-ci.yml`
+1. In the top bar, select  and find your `ecs-demo` project.
+1. Select . It brings you to a `.gitlab-ci.yml`
    creation form.
 1. Copy and paste the following content into the empty `.gitlab-ci.yml`. This defines
    a pipeline for continuous deployment to ECS.
@@ -67,10 +67,10 @@ and [Container Registry](../../../user/packages/container_registry/_index.md).
      - template: AWS/Deploy-ECS.gitlab-ci.yml
    ```
 
-1. Select **Commit Changes**. It automatically triggers a new pipeline. In this pipeline, the `build`
+1. Select . It automatically triggers a new pipeline. In this pipeline, the `build`
    job containerizes the application and pushes the image to [GitLab container registry](../../../user/packages/container_registry/_index.md).
 
-1. Visit **Deploy** > **Container Registry**. Make sure the application image has been
+1. Visit  > . Make sure the application image has been
    pushed.
 
    [A containerized application image in the GitLab container registry.]
@@ -86,26 +86,26 @@ later.
 An [ECS task definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 specifies how an [ECS service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html) starts the application image.
 
-1. Go to **ECS** > **Task Definitions** on [AWS console](https://aws.amazon.com/).
-1. Select **Create new Task Definition**.
+1. Go to  >  on [AWS console](https://aws.amazon.com/).
+1. Select .
 
    [Task definitions page with a 'Create new task definition' button.]
 
-1. Choose **EC2** as the launch type. Select **Next Step**.
-1. Set `ecs_demo` to **Task Definition Name**.
-1. Set `512` to **Task Size** > **Task memory** and **Task CPU**.
-1. Select **Container Definitions** > **Add container**. This opens a container registration form.
-1. Set `web` to **Container name**.
-1. Set `registry.gitlab.com/<your-namespace>/ecs-demo/master:latest` to **Image**.
+1. Choose  as the launch type. Select .
+1. Set `ecs_demo` to .
+1. Set `512` to  >  and .
+1. Select  > . This opens a container registration form.
+1. Set `web` to .
+1. Set `registry.gitlab.com/<your-namespace>/ecs-demo/master:latest` to .
    Alternatively, you can copy and paste the image path from the [GitLab container registry page](#push-a-containerized-application-image-to-gitlab-container-registry).
 
    [Container name and image fields completed.]
 
-1. Add a port mapping. Set `80` to **Host Port** and `5000` to **Container port**.
+1. Add a port mapping. Set `80` to  and `5000` to .
 
    [Port mappings fields completed.]
 
-1. Select **Create**.
+1. Select .
 
 Now you have the initial task definition. Next, you create an actual infrastructure to run the
 application image.
@@ -116,14 +116,14 @@ An [ECS cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clu
 is a virtual group of [ECS services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 It's also associated with EC2 or Fargate as the computation resource.
 
-1. Go to **ECS** > **Clusters** on [AWS console](https://aws.amazon.com/).
-1. Select **Create Cluster**.
-1. Select **EC2 Linux + Networking** as the cluster template. Select **Next Step**.
-1. Set `ecs-demo` to **Cluster Name**.
+1. Go to  >  on [AWS console](https://aws.amazon.com/).
+1. Select .
+1. Select  as the cluster template. Select .
+1. Set `ecs-demo` to .
 1. Choose the default [VPC](https://aws.amazon.com/vpc/?vpc-blogs.sort-by=item.additionalFields.createdDate&vpc-blogs.sort-order=desc)
-   in **Networking**. If there are no existing VPCs, you can leave it as-is to create a new one.
-1. Set all available subnets of the VPC to **Subnets**.
-1. Select **Create**.
+   in . If there are no existing VPCs, you can leave it as-is to create a new one.
+1. Set all available subnets of the VPC to .
+1. Select .
 1. Make sure that the ECS cluster has been successfully created.
 
    [ECS cluster created successfully with all instances running.]
@@ -143,16 +143,16 @@ Note the following:
 [ECS service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
 is a daemon to create an application container based on the [ECS task definition](#create-an-ecs-task-definition).
 
-1. Go to **ECS** > **Clusters** > **ecs-demo** > **Services** on the [AWS console](https://aws.amazon.com/)
-1. Select **Deploy**. This opens a service creation form.
-1. Select `EC2` in **Launch Type**.
-1. Set `ecs_demo` to **Task definition**. This corresponds to [the task definition you created previously](#create-an-ecs-task-definition).
-1. Set `ecs_demo` to **Service name**.
-1. Set `1` to **Desired tasks**.
+1. Go to  >  >  >  on the [AWS console](https://aws.amazon.com/)
+1. Select . This opens a service creation form.
+1. Select `EC2` in .
+1. Set `ecs_demo` to . This corresponds to [the task definition you created previously](#create-an-ecs-task-definition).
+1. Set `ecs_demo` to .
+1. Set `1` to .
 
    [Services page with all inputs completed.]
 
-1. Select **Deploy**.
+1. Select .
 1. Make sure that the created service is active.
 
    [An active service running with tasks.]
@@ -164,10 +164,10 @@ instructions, select the closest one.
 
 Now, the demo application is accessible from the internet.
 
-1. Go to **EC2** > **Instances** on the [AWS console](https://aws.amazon.com/)
+1. Go to  >  on the [AWS console](https://aws.amazon.com/)
 1. Search by `ECS Instance` to find the corresponding EC2 instance that [the ECS cluster created](#create-an-ecs-cluster).
 1. Select the ID of the EC2 instance. This brings you to the instance detail page.
-1. Copy **Public IPv4 address** and paste it in the browser. Now you can see the demo application
+1. Copy  and paste it in the browser. Now you can see the demo application
    running.
 
    [The demo application running in a browser.]
@@ -184,17 +184,17 @@ Now that you have an application running on ECS, you can set up continuous deplo
 For GitLab to access the ECS cluster, service, and task definition that you previously created, you must
 create a deployer user on AWS:
 
-1. Go to **IAM** > **Users** on [AWS console](https://aws.amazon.com/).
-1. Select **Add user**.
-1. Set `ecs_demo` to **User name**.
-1. Enable **Programmatic access** checkbox. Select **Next: Permissions**.
-1. Select `Attach existing policies directly` in **Set permissions**.
-1. Select `AmazonECS_FullAccess` from the policy list. Select **Next: Tags** and **Next: Review**.
+1. Go to  >  on [AWS console](https://aws.amazon.com/).
+1. Select .
+1. Set `ecs_demo` to .
+1. Enable  checkbox. Select .
+1. Select `Attach existing policies directly` in .
+1. Select `AmazonECS_FullAccess` from the policy list. Select  and .
 
    [A selected `AmazonECS_FullAccess` policy.]
 
-1. Select **Create user**.
-1. Take note of the **Access key ID** and **Secret access key** of the created user.
+1. Select .
+1. Take note of the  and  of the created user.
 
 > [!note]
 > Do not share the secret access key in a public place. You must save it in a secure place.
@@ -204,9 +204,9 @@ create a deployer user on AWS:
 You can register the access information in [GitLab CI/CD Variables](../../variables/_index.md).
 These variables are injected into the pipeline jobs and can access the ECS API.
 
-1. In the top bar, select **Search or go to** and find your `ecs-demo` project.
-1. Go to **Settings** > **CI/CD** > **Variables**.
-1. Select **Add Variable** and set the following key-value pairs.
+1. In the top bar, select  and find your `ecs-demo` project.
+1. Go to  >  > .
+1. Select  and set the following key-value pairs.
 
    | Key                          | Value                                 | Note |
    |------------------------------|---------------------------------------|------|
@@ -221,11 +221,11 @@ These variables are injected into the pipeline jobs and can access the ECS API.
 
 Change a file in the project and see if it's reflected in the demo application on ECS:
 
-1. In the top bar, select **Search or go to** and find your `ecs-demo` project.
+1. In the top bar, select  and find your `ecs-demo` project.
 1. Open the `app/views/welcome/index.html.erb` file.
-1. Select **Edit**.
+1. Select .
 1. Change the text to `You're on ECS!`.
-1. Select **Commit Changes**. This automatically triggers a new pipeline. Wait until it finishes.
+1. Select . This automatically triggers a new pipeline. Wait until it finishes.
 1. [Access the running application on the ECS cluster](#view-the-demo-application). You should see
    this:
 

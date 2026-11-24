@@ -1,5 +1,5 @@
 ---
-title: "Datadog query editor | Grafana Enterprise Plugins documentation"
+title: "Datadog query editor | Grafana Plugins documentation"
 description: "This document describes the Datadog query editor"
 ---
 

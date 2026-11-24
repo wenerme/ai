@@ -1,5 +1,5 @@
 ---
-title: "New Relic query editor | Grafana Enterprise Plugins documentation"
+title: "New Relic query editor | Grafana Plugins documentation"
 description: "Use the New Relic query editor to query metrics, logs, traces, and NRQL data in Grafana."
 ---
 

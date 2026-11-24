@@ -1,5 +1,5 @@
 ---
-title: "Atlassian Statuspage data source | Grafana Enterprise Plugins documentation"
+title: "Atlassian Statuspage data source | Grafana Plugins documentation"
 description: "Query the operational status, incidents, and scheduled maintenances of your Atlassian Statuspage in Grafana"
 ---
 

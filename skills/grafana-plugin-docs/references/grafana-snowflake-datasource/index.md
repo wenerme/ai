@@ -1,5 +1,5 @@
 ---
-title: "Snowflake data source | Grafana Enterprise Plugins documentation"
+title: "Snowflake data source | Grafana Plugins documentation"
 description: "Learn how to configure and use the Grafana Snowflake data source plugin."
 ---
 

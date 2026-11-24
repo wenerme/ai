@@ -1,5 +1,5 @@
 ---
-title: "CockroachDB template variables | Grafana Enterprise Plugins documentation"
+title: "CockroachDB template variables | Grafana Plugins documentation"
 description: "Use template variables with the CockroachDB data source in Grafana"
 ---
 

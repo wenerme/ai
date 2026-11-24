@@ -1,5 +1,5 @@
 ---
-title: "Looker query editor | Grafana Enterprise Plugins documentation"
+title: "Looker query editor | Grafana Plugins documentation"
 description: "Use the Looker query editor in Grafana"
 ---
 

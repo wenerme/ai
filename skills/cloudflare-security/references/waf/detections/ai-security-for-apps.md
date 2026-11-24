@@ -25,9 +25,10 @@ AI Security for Apps (formerly Firewall for AI) complements your existing WAF ru
 
 When enabled, AI Security for Apps scans incoming requests to [endpoints labeled `cf-llm`](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) for LLM prompts that may contain threats. Currently, the detection only handles requests with a JSON content type (`application/json`).
 
-Based on scan results, Cloudflare populates [AI detection fields](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/) — fields you can use in WAF rule expressions. You can use these fields in two ways:
+Based on scan results, Cloudflare populates [AI detection fields](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/) — fields you can use in WAF rule expressions. You can use these fields in the following ways:
 
 - **Monitor:** Filter by the `cf-llm` label in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to review detection results across your traffic.
+- **Log prompt content:** Use the fields in custom rules and [configure payload logging](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#7-optional-log-prompts-for-matching-rules) to store prompt content for matching requests.
 - **Mitigate:** Use the fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to block or challenge requests based on detection results.
 
 ## Availability
@@ -37,10 +38,9 @@ AI Security for Apps capabilities vary by Cloudflare plan:
 | Capability | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
 | **LLM endpoint discovery** — Automatically identify AI-powered endpoints across your web properties | Yes | Yes | Yes | Yes |
-| **AI Security Log Mode Ruleset** — Pre-built ruleset that logs the full request body alongside detection results | No | No | No | Paid add-on |
 | **AI detection fields** — PII detection, prompt injection scoring, unsafe topic detection, custom topics | No | No | No | Paid add-on |
 
-To get access to the [AI Security Log Mode Ruleset](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#log-mode) and enable [AI detection fields](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/), contact your account team.
+To enable [AI detection fields](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/), contact your account team. [Payload logging](https://developers.cloudflare.com/waf/payload-logging/) is only available to Enterprise customers.
 
 AI Security for Apps is built into the Cloudflare [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/) — the WAF must be enabled on your zone before detection fields can be populated and used in rule expressions.
 
@@ -58,5 +58,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/#page","headline":"AI Security for Apps","description":"Detect prompt injection, PII, and unsafe topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/og.png?v=386afb887bec9a78","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/#page","headline":"AI Security for Apps","description":"Detect prompt injection, PII, and unsafe topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/og.png?v=386afb887bec9a78","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

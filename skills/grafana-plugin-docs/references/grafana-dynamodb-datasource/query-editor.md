@@ -1,5 +1,5 @@
 ---
-title: "DynamoDB query editor | Grafana Enterprise Plugins documentation"
+title: "DynamoDB query editor | Grafana Plugins documentation"
 description: "Use the DynamoDB query editor to write PartiQL queries in Grafana"
 ---
 

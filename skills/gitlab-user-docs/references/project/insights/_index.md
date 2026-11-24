@@ -351,7 +351,10 @@ weeklyBugsBySeverity:
 ###### `query.group_by`
 
 - 180-day limit for charts without `query.group_by` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267465) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `insights_query_limits`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272041) in GitLab 19.7. Feature flag `insights_query_limits` removed.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 Use `query.group_by` to define the X-axis of the chart.
 
@@ -367,7 +370,10 @@ This limit applies to every `query.params.issuable_state`, including `closed` an
 ###### `query.period_limit`
 
 - Maximum values [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267465) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `insights_query_limits`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272041) in GitLab 19.7. Feature flag `insights_query_limits` removed.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 Use `query.period_limit` to define how far back in time to query issuables (using the `query.period_field`).
 
@@ -485,7 +491,10 @@ Use `projects` to limit where issuables are queried from:
 ##### `projects.only`
 
 - Limit of 100 projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267465) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `insights_query_limits`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272041) in GitLab 19.7. Feature flag `insights_query_limits` removed.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 Use `projects.only` to specify the projects from which issuables
 are queried.

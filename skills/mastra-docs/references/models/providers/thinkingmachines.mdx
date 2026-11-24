@@ -5,7 +5,7 @@ description: "Browse Thinking Machines model IDs, capabilities, context windows,
 
 # [Thinking Machines logo]Thinking Machines
 
-Access 38 Thinking Machines models through Mastra's model router. Authentication is handled automatically using the `TINKER_API_KEY` environment variable.
+Access 40 Thinking Machines models through Mastra's model router. Authentication is handled automatically using the `TINKER_API_KEY` environment variable.
 
 Learn more in the [Thinking Machines documentation](https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/anthropic/).
 
@@ -40,18 +40,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "thinkingmachines/deepseek-ai/DeepSeek-V3.1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 32768,
-    "maxOutput": 32768,
-    "inputCost": 1.695,
-    "outputCost": 4.215
-  },
-  {
     "model": "thinkingmachines/deepseek-ai/DeepSeek-V4.1-Flash-1017:peft:262144",
     "imageInput": false,
     "audioInput": false,
@@ -77,7 +65,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/moonshotai/Kimi-K2.6",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -89,7 +77,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/moonshotai/Kimi-K2.6:peft:131072",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -100,16 +88,16 @@ for await (const chunk of stream) {
     "outputCost": 5.49
   },
   {
-    "model": "thinkingmachines/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+    "model": "thinkingmachines/moonshotai/Kimi-K3.1-Pro:peft:262144",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 65536,
-    "maxOutput": 65536,
-    "inputCost": 0.195,
-    "outputCost": 0.495
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 6,
+    "outputCost": 25
   },
   {
     "model": "thinkingmachines/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
@@ -185,7 +173,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -197,7 +185,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16:peft:262144",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -269,7 +257,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.5-397B-A17B",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -281,7 +269,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.5-397B-A17B:peft:262144",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -293,7 +281,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.5-4B",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -305,7 +293,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.5-4B:peft:262144",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -317,7 +305,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.5-9B",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -340,20 +328,8 @@ for await (const chunk of stream) {
     "outputCost": 0.807
   },
   {
-    "model": "thinkingmachines/Qwen/Qwen3.6-27B",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 65536,
-    "maxOutput": 65536,
-    "inputCost": 1.86,
-    "outputCost": 5.595
-  },
-  {
     "model": "thinkingmachines/Qwen/Qwen3.6-35B-A3B",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -365,7 +341,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.6-35B-A3B:peft:262144",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -377,7 +353,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.8-27B",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -389,7 +365,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "thinkingmachines/Qwen/Qwen3.8-27B:peft:262144",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -410,6 +386,54 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.87,
     "outputCost": 4.68
+  },
+  {
+    "model": "thinkingmachines/thinkingmachines/Inkling-2-Mini",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.15,
+    "outputCost": 0.5
+  },
+  {
+    "model": "thinkingmachines/thinkingmachines/Inkling-2-Mini:peft:262144",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.15,
+    "outputCost": 0.5
+  },
+  {
+    "model": "thinkingmachines/thinkingmachines/Inkling-2-Small",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1
+  },
+  {
+    "model": "thinkingmachines/thinkingmachines/Inkling-2-Small:peft:262144",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1
   },
   {
     "model": "thinkingmachines/thinkingmachines/Inkling-Small",

@@ -1,5 +1,5 @@
 ---
-title: "Dynatrace alerting | Grafana Enterprise Plugins documentation"
+title: "Dynatrace alerting | Grafana Plugins documentation"
 description: "Set up alerts using Dynatrace data in Grafana."
 ---
 

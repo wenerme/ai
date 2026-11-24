@@ -1,5 +1,5 @@
 ---
-title: "Catchpoint template variables | Grafana Enterprise Plugins documentation"
+title: "Catchpoint template variables | Grafana Plugins documentation"
 description: "Use template variables with the Catchpoint data source to build dynamic, reusable Grafana dashboards."
 ---
 

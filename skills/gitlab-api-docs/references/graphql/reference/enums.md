@@ -2475,7 +2475,7 @@ Type of a dependency firewall policy rule.
 | ----- | ----------- |
 | `LICENSE` | Rule matching on package licenses. |
 | `MALICIOUS` | Rule matching on packages flagged as malicious. |
-| `PACKAGE_VERSION` | Rule matching on an exact package name and version. |
+| `PACKAGE_VERSION` | Rule matching on a package name and an exact version or version range. |
 | `RISK_SEVERITY` | Rule matching on vulnerability counts per severity level. |
 
 ## `DependencyProxyManifestStatus`
@@ -2748,6 +2748,7 @@ Where a Duo Workflow session was initiated from.
 | `MOBILE_CHAT` | Session initiated from GitLab Duo Chat in the GitLab Mobile app. |
 | `SLACK` | Session initiated from Slack. |
 | `VULNERABILITY_LEAKED_TOKEN_ROTATION` | Session initiated from rotating a leaked token found by a vulnerability. |
+| `VULNERABILITY_MANAGEMENT` | Session initiated from a vulnerability management flow. |
 | `WEB_CHAT` | Session initiated from GitLab Duo Chat in the web UI. |
 | `WORK_ITEM_PLAN_TO_MERGE_REQUEST` | Session initiated from creating a merge request from an existing workplan for a work item. |
 | `WORK_ITEM_TO_MERGE_REQUEST` | Session initiated from creating a merge request from a work item. |

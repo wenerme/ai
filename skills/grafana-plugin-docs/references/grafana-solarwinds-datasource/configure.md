@@ -1,5 +1,5 @@
 ---
-title: "Configure the SolarWinds data source | Grafana Enterprise Plugins documentation"
+title: "Configure the SolarWinds data source | Grafana Plugins documentation"
 description: "Learn how to configure the SolarWinds data source in Grafana, including authentication and TLS settings."
 ---
 

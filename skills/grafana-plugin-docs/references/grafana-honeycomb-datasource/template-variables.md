@@ -1,5 +1,5 @@
 ---
-title: "Honeycomb template variables | Grafana Enterprise Plugins documentation"
+title: "Honeycomb template variables | Grafana Plugins documentation"
 description: "Create dynamic dashboards with Honeycomb template variables in Grafana."
 ---
 

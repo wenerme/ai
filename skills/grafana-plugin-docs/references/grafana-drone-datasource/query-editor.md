@@ -1,5 +1,5 @@
 ---
-title: "Drone query editor | Grafana Enterprise Plugins documentation"
+title: "Drone query editor | Grafana Plugins documentation"
 description: "Use the Drone query editor to retrieve repository and build data in Grafana."
 ---
 

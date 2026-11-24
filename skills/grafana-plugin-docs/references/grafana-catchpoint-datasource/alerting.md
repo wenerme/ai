@@ -1,5 +1,5 @@
 ---
-title: "Catchpoint alerting | Grafana Enterprise Plugins documentation"
+title: "Catchpoint alerting | Grafana Plugins documentation"
 description: "Set up Grafana alert rules on Catchpoint Tests, RUM, and SLO data."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Drone CI data source | Grafana Enterprise Plugins documentation"
+title: "Drone CI data source | Grafana Plugins documentation"
 description: "Use the Drone data source to query repositories and builds from your Drone CI instance in Grafana."
 ---
 

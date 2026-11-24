@@ -5,7 +5,7 @@ description: "Browse Tencent Token Plan model IDs, capabilities, context windows
 
 # [Tencent Token Plan logo]Tencent Token Plan
 
-Access 15 Tencent Token Plan models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKEN_PLAN_API_KEY` environment variable.
+Access 19 Tencent Token Plan models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKEN_PLAN_API_KEY` environment variable.
 
 Learn more in the [Tencent Token Plan documentation](https://cloud.tencent.com/document/product/1823/130060).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "tencent-token-plan/deepseek/deepseek-flash"
+  model: "tencent-token-plan/deepseek-v4-pro-0813"
 });
 
 // Generate a response
@@ -39,6 +39,30 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "tencent-token-plan/deepseek-v4-pro-0813",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.673723,
+    "outputCost": 2.02117
+  },
+  {
+    "model": "tencent-token-plan/deepseek-v4.1-flash-1017",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.149716,
+    "outputCost": 0.598865
+  },
   {
     "model": "tencent-token-plan/deepseek/deepseek-flash",
     "imageInput": true,
@@ -136,6 +160,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "tencent-token-plan/hy3-202608",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 128000,
+    "inputCost": 0.149716,
+    "outputCost": 0.598865
+  },
+  {
     "model": "tencent-token-plan/hy4",
     "imageInput": true,
     "audioInput": false,
@@ -144,20 +180,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.834,
-    "outputCost": 2.501
+    "inputCost": 0.898298,
+    "outputCost": 2.694894
   },
   {
-    "model": "tencent-token-plan/hy4-preview",
-    "imageInput": false,
+    "model": "tencent-token-plan/hy4-flash",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1024000,
-    "maxOutput": 64000,
-    "inputCost": 0.90078512,
-    "outputCost": 2.70235537
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.074858,
+    "outputCost": 0.299433
   },
   {
     "model": "tencent-token-plan/kimi-k2.7-code",
@@ -180,8 +216,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 1048576,
-    "inputCost": 3.00261708,
-    "outputCost": 15.01308541
+    "inputCost": 2.994326,
+    "outputCost": 14.971631
   },
   {
     "model": "tencent-token-plan/mimo-v2.6-flash",
@@ -236,7 +272,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://tokenhub.tencentmaas.com/plan/v3",
-    id: "tencent-token-plan/deepseek/deepseek-flash",
+    id: "tencent-token-plan/deepseek-v4-pro-0813",
     apiKey: process.env.TENCENT_TOKEN_PLAN_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -257,7 +293,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "tencent-token-plan/minimax-m3"
-      : "tencent-token-plan/deepseek/deepseek-flash";
+      : "tencent-token-plan/deepseek-v4-pro-0813";
   }
 });
 ```

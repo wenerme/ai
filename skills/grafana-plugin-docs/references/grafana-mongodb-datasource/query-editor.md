@@ -1,5 +1,5 @@
 ---
-title: "MongoDB query editor | Grafana Enterprise Plugins documentation"
+title: "MongoDB query editor | Grafana Plugins documentation"
 description: "This document describes the MongoDB data query editor."
 ---
 

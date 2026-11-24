@@ -1,5 +1,5 @@
 ---
-title: "Dynatrace template variables | Grafana Enterprise Plugins documentation"
+title: "Dynatrace template variables | Grafana Plugins documentation"
 description: "Create template variables for Dynatrace in Grafana."
 ---
 

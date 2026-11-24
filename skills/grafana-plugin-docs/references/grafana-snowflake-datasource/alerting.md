@@ -1,5 +1,5 @@
 ---
-title: "Snowflake alerting | Grafana Enterprise Plugins documentation"
+title: "Snowflake alerting | Grafana Plugins documentation"
 description: "Set up alerts using Snowflake data in Grafana."
 ---
 

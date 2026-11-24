@@ -315,6 +315,65 @@ To turn off uninstall protection, turn off **Device Management Protection** in t
 
 Devices turn off uninstall protection after they receive the updated profile. Devices that are offline stay protected until they reconnect. To remove the client from an offline device, use an uninstall code.
 
+## View uninstall code attempts
+
+When uninstall protection is on, the client reports every attempt to use an uninstall code or token, whether accepted or rejected. Reporting is best-effort: it never blocks the uninstall, and attempts made while the device is offline may not be recorded.
+
+Uninstall code attempts are recorded in the `warpClientLogEventsGroups` dataset of the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) and kept for 90 days. The dataset contains a variety of events with common fields, such as `deviceName` and `userEmail`. Uninstall code attempts have `event` set to `uninstall_authorization`, and include these additional fields:
+
+| Field | Description |
+| --- | --- |
+| `authorized` | `1` if the code was accepted, `0` if it was rejected. |
+| `authorizationType` | `device` for an attempt using a device-specific uninstall code, `account` for an attempt using an account-wide uninstall token. |
+
+To explore the schema, you can use a GraphQL client such as [GraphiQL ↗︎](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) or [Altair ↗︎](https://altairgraphql.dev/).
+
+1. [Create an API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) with the following permissions:
+
+   | Type | Item | Permission |
+   | --- | --- | --- |
+   | Account | Account Analytics | Read |
+   | Account | Zero Trust | Read |
+
+   Without the Zero Trust Read permission, `deviceName`, `serialNumber`, and `userEmail` are returned as `REDACTED`.
+2. In your GraphQL client, [add your API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/) as an Authorization header.
+3. Compose a query to view the `uninstall_authorization` events. For example, this query shows the 50 most recent `uninstall_authorization` events across all devices.
+
+   ```graphql
+   query UninstallCodeAttempts($accountTag: string!, $start: Time, $end: Time) {
+     viewer {
+       accounts(filter: {accountTag: $accountTag}) {
+         warpClientLogEventsGroups(
+           limit: 50
+           orderBy: [datetime_DESC]
+           filter: {datetime_geq: $start, datetime_leq: $end, event: "uninstall_authorization"}
+         ) {
+           count
+           dimensions {
+             datetime
+             occurredAt
+             level
+             registrationId
+             deviceId
+             deviceName
+             serialNumber
+             userId
+             userEmail
+             clientVersion
+             os
+             osVersion
+             sessionId
+             authorized
+             authorizationType
+           }
+         }
+       }
+     }
+   }
+   ```
+
+For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
+
 ## Troubleshooting
 
 ### Code is not accepted
@@ -327,6 +386,8 @@ Check the following:
 - You entered a device-specific uninstall code in the installer prompt. The prompt does not accept account-wide uninstall tokens.
 
 ### Review logs
+
+To review uninstall code attempts across all devices, refer to [View uninstall code attempts](#view-uninstall-code-attempts).
 
 The installer writes lines that start with `Uninstall authorization:` to the [Windows Installer log ↗︎](https://learn.microsoft.com/en-us/troubleshoot/windows-client/application-management/enable-windows-installer-logging). To create a log, add `/l*v <PATH_TO_LOG_FILE>` to your `msiexec` command.
 
@@ -341,5 +402,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/#page","headline":"Uninstall protection","description":"Require an administrator code to uninstall the client on Windows.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/og.png?v=a27a0988970691ec","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/#page","headline":"Uninstall protection","description":"Require an administrator code to uninstall the client on Windows.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/og.png?v=a27a0988970691ec","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
 ```

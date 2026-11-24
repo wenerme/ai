@@ -1,5 +1,5 @@
 ---
-title: "Amazon Aurora template variables | Grafana Enterprise Plugins documentation"
+title: "Amazon Aurora template variables | Grafana Plugins documentation"
 description: "Learn how to use template variables with the Amazon Aurora data source to create dynamic, reusable dashboards."
 ---
 

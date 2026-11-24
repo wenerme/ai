@@ -1,5 +1,5 @@
 ---
-title: "Snowflake template variables | Grafana Enterprise Plugins documentation"
+title: "Snowflake template variables | Grafana Plugins documentation"
 description: "Learn how to use template variables with the Snowflake data source in Grafana."
 ---
 

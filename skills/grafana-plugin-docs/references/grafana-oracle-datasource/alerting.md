@@ -1,5 +1,5 @@
 ---
-title: "Oracle alerting | Grafana Enterprise Plugins documentation"
+title: "Oracle alerting | Grafana Plugins documentation"
 description: "Set up Grafana Alerting with Oracle data source queries."
 ---
 

@@ -78,6 +78,41 @@ After cancellation:
 - The session status changes to **Stopped**.
 - The session cannot be resumed or restarted.
 
+## Agent attribution on comments and work items
+
+- Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22957) in GitLab 19.7 as a
+  [beta](../../../policy/development_stages_support.md#beta) feature
+  [with a feature flag](../../../administration/feature_flags/_index.md) named
+  `agent_presence_consolidation`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+When a session creates a work item or posts a comment, GitLab shows which agent ran the session
+and who it ran for.
+
+- On a work item, a line next to the creation details names the agent and the user.
+  For example, `Session by <agent_name> on behalf of @<username>`.
+- On a comment, the agent is the comment author.
+  The comment header shows `Session on behalf of @<username>`.
+  Comment headers show this text on issues, epics, other work items, and merge requests.
+
+When a schedule, another session, a verification check, or GitLab triggered the session,
+the text names the trigger instead of a user.
+For example, `Session by <agent_name> triggered by a schedule`.
+
+Anyone who can view the work item or comment can see this text.
+
+When the feature flag is on, a work item that a session creates on behalf of a user
+lists that user as its author.
+When the flag is off, work items that a session creates through the REST API list the agent's
+service account as the author.
+Turning off the flag doesn't change the author of existing work items.
+
 ## Review and control agent actions
 
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated

@@ -1,5 +1,5 @@
 ---
-title: "SAP HANA alerting | Grafana Enterprise Plugins documentation"
+title: "SAP HANA alerting | Grafana Plugins documentation"
 description: "Set up alerts using SAP HANA data in Grafana."
 ---
 

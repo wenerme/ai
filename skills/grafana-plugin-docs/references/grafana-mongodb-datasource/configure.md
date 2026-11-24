@@ -1,5 +1,5 @@
 ---
-title: "Configure the MongoDB data source | Grafana Enterprise Plugins documentation"
+title: "Configure the MongoDB data source | Grafana Plugins documentation"
 description: "This document outlines configuration instructions and options for the MongoDB data source."
 ---
 

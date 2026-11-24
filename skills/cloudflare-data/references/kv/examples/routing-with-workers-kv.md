@@ -33,9 +33,90 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where `https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-*index.tsjs*
+*src/index.jsjs*
 
 ```js
+// Example routing data stored in Workers KV:
+// Key: "storefrontA" | Value: {"origin": "https://storefrontA-server.example.com"}
+// Key: "storefrontB" | Value: {"origin": "https://storefrontB-server.example.com"}
+
+export default {
+	async fetch(request, env, ctx) {
+		// Parse the URL to extract the storefront ID from the path
+		const url = new URL(request.url);
+		const pathParts = url.pathname.split("/").filter((part) => part !== "");
+
+		// Check if a storefront ID is provided in the path, otherwise return 400
+		if (pathParts.length === 0) {
+			return new Response(
+				"Welcome to our multi-tenant platform. Please specify a storefront ID in the URL path.",
+				{
+					status: 400,
+					headers: { "Content-Type": "text/plain" },
+				},
+			);
+		}
+
+		// Extract the storefront ID from the first path segment
+		const storefrontId = pathParts[0];
+
+		try {
+			// Look up the storefront configuration in KV using env.ROUTING_CONFIG
+			const storefrontConfig = await env.ROUTING_CONFIG.get(storefrontId, {
+				type: "json",
+			});
+
+			// If no configuration is found, return a 404
+			if (!storefrontConfig) {
+				return new Response(`Storefront "${storefrontId}" not found.`, {
+					status: 404,
+					headers: { "Content-Type": "text/plain" },
+				});
+			}
+
+			// Construct the new URL for the origin server
+			// Remove the storefront ID from the path when forwarding
+			const newPathname = "/" + pathParts.slice(1).join("/");
+			const originUrl = new URL(newPathname, storefrontConfig.origin);
+			originUrl.search = url.search;
+
+			// Create a new request to the origin server
+			const originRequest = new Request(originUrl, {
+				method: request.method,
+				headers: request.headers,
+				body: request.body,
+				redirect: "follow",
+			});
+
+			// Send the request to the origin server
+			const response = await fetch(originRequest);
+
+			console.log(response.status);
+
+			// Clone the response and add a custom header
+			const modifiedResponse = new Response(response.body, response);
+			modifiedResponse.headers.set("X-Served-By", "Cloudflare Worker");
+			modifiedResponse.headers.set("X-Storefront-ID", storefrontId);
+
+			return modifiedResponse;
+		} catch (error) {
+			// Handle any errors
+			console.error(
+				`Error processing request for storefront ${storefrontId}:`,
+				error,
+			);
+			return new Response("An error occurred while processing your request.", {
+				status: 500,
+				headers: { "Content-Type": "text/plain" },
+			});
+		}
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
 // Example routing data stored in Workers KV:
 // Key: "storefrontA" | Value: {"origin": "https://storefrontA-server.example.com"}
 // Key: "storefrontB" | Value: {"origin": "https://storefrontB-server.example.com"}
@@ -115,13 +196,42 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-```json
+The following content appears twice: first for the Cloudflare CLI (`cf`), then for Wrangler. Use `cf` for new projects. In an existing project, use the CLI that the project already uses.
+
+Cloudflare CLI
+
+*cloudflare.config.tsts*
+
+```ts
+import { bindings, defineConfig } from "cf/config";
+import * as entrypoint from "./src/index.ts" with { type: "cf-worker" };
+
+export default defineConfig({
+worker: {
+	name: "<ENTER_WORKER_NAME>",
+	entrypoint,
+	// Set this to today's date
+	compatibilityDate: "2026-11-24",
+	observability: {
+		enabled: true,
+	},
+	env: {
+		ROUTING_CONFIG: bindings.kv({ id: "<YOUR_BINDING_ID>" }),
+	},
+},
+});
+```
+
+Wrangler
+
+```jsonc
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "<ENTER_WORKER_NAME>",
 	"main": "src/index.ts",
 	"upload_source_maps": true,
-	"compatibility_date": "2025-03-03",
+	// Set this to today's date
+	"compatibility_date": "2026-11-24",
 	"observability": {
 		"enabled": true
 	},
@@ -132,6 +242,22 @@ export default {
 		}
 	]
 }
+```
+
+```toml
+"$schema" = "node_modules/wrangler/config-schema.json"
+name = "<ENTER_WORKER_NAME>"
+main = "src/index.ts"
+upload_source_maps = true
+# Set this to today's date
+compatibility_date = "2026-11-24"
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "ROUTING_CONFIG"
+id = "<YOUR_BINDING_ID>"
 ```
 
 In this example, the Cloudflare Worker receives a request and extracts the storefront ID from the URL path. The storefront ID is used to look up the origin server URL from Workers KV using the `get()` method. The request is then forwarded to the origin server, and the response is modified to include custom headers before being returned to the client.
@@ -150,5 +276,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/#page","headline":"Route requests across various web servers","description":"Example of how to use Workers KV to build a distributed application configuration store.","url":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/og.png?v=5aa24cdd69440bb1","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/#page","headline":"Route requests across various web servers","description":"Example of how to use Workers KV to build a distributed application configuration store.","url":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/og.png?v=5aa24cdd69440bb1","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

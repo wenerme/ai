@@ -1,5 +1,5 @@
 ---
-title: "Splunk Infrastructure Monitoring data source | Grafana Enterprise Plugins documentation"
+title: "Splunk Infrastructure Monitoring data source | Grafana Plugins documentation"
 description: "Learn how to configure and use the Splunk Infrastructure Monitoring data source plugin for Grafana to query and visualize your Splunk metrics."
 ---
 

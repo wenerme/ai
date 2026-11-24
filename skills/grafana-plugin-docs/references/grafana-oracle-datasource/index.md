@@ -1,5 +1,5 @@
 ---
-title: "Oracle data source | Grafana Enterprise Plugins documentation"
+title: "Oracle data source | Grafana Plugins documentation"
 description: "Use the Oracle data source plugin to query and visualize Oracle Database data in Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "SolarWinds alerting | Grafana Enterprise Plugins documentation"
+title: "SolarWinds alerting | Grafana Plugins documentation"
 description: "Learn how to create Grafana alert rules based on SolarWinds data using SWQL queries."
 ---
 

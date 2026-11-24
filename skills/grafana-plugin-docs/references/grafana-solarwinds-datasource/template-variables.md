@@ -1,5 +1,5 @@
 ---
-title: "SolarWinds template variables | Grafana Enterprise Plugins documentation"
+title: "SolarWinds template variables | Grafana Plugins documentation"
 description: "Learn how to use template variables with the SolarWinds data source to build dynamic, reusable dashboards."
 ---
 

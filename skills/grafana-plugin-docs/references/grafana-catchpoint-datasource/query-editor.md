@@ -1,5 +1,5 @@
 ---
-title: "Catchpoint query editor | Grafana Enterprise Plugins documentation"
+title: "Catchpoint query editor | Grafana Plugins documentation"
 description: "Use the Catchpoint query editor to build Tests, RUM, and SLO queries in Grafana."
 ---
 

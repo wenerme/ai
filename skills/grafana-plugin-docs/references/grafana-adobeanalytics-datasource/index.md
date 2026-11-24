@@ -1,5 +1,5 @@
 ---
-title: "Adobe Analytics data source | Grafana Enterprise Plugins documentation"
+title: "Adobe Analytics data source | Grafana Plugins documentation"
 description: "Use the Adobe Analytics data source to query and visualize Adobe Analytics reports data in Grafana."
 ---
 

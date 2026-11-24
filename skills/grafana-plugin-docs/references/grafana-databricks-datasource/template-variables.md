@@ -1,5 +1,5 @@
 ---
-title: "Template variables and the Databricks data source | Grafana Enterprise Plugins documentation"
+title: "Template variables and the Databricks data source | Grafana Plugins documentation"
 description: "This document describes the templates and variables for the Databricks data source."
 ---
 

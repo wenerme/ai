@@ -1,5 +1,5 @@
 ---
-title: "Azure DevOps template variables | Grafana Enterprise Plugins documentation"
+title: "Azure DevOps template variables | Grafana Plugins documentation"
 description: "Use template variables with the Azure DevOps data source to create dynamic, reusable dashboards."
 ---
 

@@ -203,20 +203,17 @@ Origin health check
 	"alert_event": "ALERT_STATE_EVENT_START",
 	"alert_type": "health_check_status_notification",
 	"data": {
-		"account_name": "string",
-		"account_tag": "string",
-		"failing_regions": "string",
+		"actual_code": 0,
+		"expected_codes": "string",
 		"health_check_id": "string",
-		"health_check_name": "string",
-		"new_health_status": "string",
-		"new_status": "string",
-		"old_status": "string",
-		"origin_ip": "string",
+		"name": "string",
+		"preview": false,
 		"reason": "string",
-		"status_change_time": "2006-01-02T15:04:05Z",
-		"time_since_last_failure": "string",
-		"zone_name": "string",
-		"zone_tag": "string"
+		"severity": "string",
+		"state_correlation_id": "string",
+		"state_event": "string",
+		"status": "string",
+		"time": "string"
 	},
 	"name": "Example Cloudflare Notification",
 	"policy_id": "749b911ea5d04344a58e45edd099b328",
@@ -382,5 +379,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/og.png?v=36e37c65f1119970","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/og.png?v=36e37c65f1119970","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,5 +1,5 @@
 ---
-title: "Splunk alerting | Grafana Enterprise Plugins documentation"
+title: "Splunk alerting | Grafana Plugins documentation"
 description: "Set up Grafana Alerting with the Splunk data source to get notified when query results meet defined conditions."
 ---
 

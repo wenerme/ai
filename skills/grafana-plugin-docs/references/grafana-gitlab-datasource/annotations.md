@@ -1,5 +1,5 @@
 ---
-title: "GitLab annotations | Grafana Enterprise Plugins documentation"
+title: "GitLab annotations | Grafana Plugins documentation"
 description: "Use annotations with the GitLab data source in Grafana"
 ---
 

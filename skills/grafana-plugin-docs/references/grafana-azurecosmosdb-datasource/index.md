@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB data source | Grafana Enterprise Plugins documentation"
+title: "Azure Cosmos DB data source | Grafana Plugins documentation"
 description: "Query and visualize Azure Cosmos DB for NoSQL data in Grafana."
 ---
 

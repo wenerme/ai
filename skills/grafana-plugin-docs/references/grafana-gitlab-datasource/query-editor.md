@@ -1,5 +1,5 @@
 ---
-title: "GitLab query editor | Grafana Enterprise Plugins documentation"
+title: "GitLab query editor | Grafana Plugins documentation"
 description: "Use the GitLab query editor to query commits, merge requests, pipelines, and more"
 ---
 

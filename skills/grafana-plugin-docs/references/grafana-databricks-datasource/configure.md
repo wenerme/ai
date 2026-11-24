@@ -1,5 +1,5 @@
 ---
-title: "Configure the Databricks data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Databricks data source | Grafana Plugins documentation"
 description: "This document describes configuration options for the Databricks data source in Grafana."
 ---
 

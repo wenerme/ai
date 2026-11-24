@@ -1,5 +1,5 @@
 ---
-title: "Looker annotations | Grafana Enterprise Plugins documentation"
+title: "Looker annotations | Grafana Plugins documentation"
 description: "Use annotations with the Looker data source in Grafana"
 ---
 

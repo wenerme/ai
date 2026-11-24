@@ -30,6 +30,10 @@ You can use Docker commands to build and push container images to your container
 
 Use [GitLab CI/CD](../../../ci/_index.md) to build, push, test, and deploy container images from the container registry.
 
+The CI/CD examples on this page use Docker-in-Docker, which requires `privileged` mode on the runner.
+If you cannot enable `privileged` mode, use a
+[Docker alternative](../../../ci/docker/using_docker_build.md#docker-alternatives).
+
 ### Configure your `.gitlab-ci.yml` file
 
 You can configure your `.gitlab-ci.yml` file to build and push container images to the container registry.
@@ -124,9 +128,11 @@ build:
     - docker:24.0.5-dind
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
-    - docker build -t $CI_REGISTRY/group/project/image:latest .
-    - docker push $CI_REGISTRY/group/project/image:latest
+    - docker build -t $CI_REGISTRY/group/project/image:$CI_COMMIT_SHA .
+    - docker push $CI_REGISTRY/group/project/image:$CI_COMMIT_SHA
 ```
+
+Tagging the image with `$CI_COMMIT_SHA` gives each commit's image its own tag.
 
 You can use [CI/CD variables](../../../ci/variables/_index.md) in your `.gitlab-ci.yml` file. For example:
 

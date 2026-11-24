@@ -56,6 +56,11 @@ Let Claude Code set up your agent for you
 
 ## Before you begin
 
+The examples use the Claude API. If you use one of the following cloud platforms, follow its setup steps instead and adapt this page’s examples:
+
+* **Claude Models on Google Cloud (Anthropic managed):** Follow the [setup steps on Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed#before-making-api-calls), then see [Making requests on Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed#making-requests).
+* **Claude Platform on AWS:** Follow the [setup steps on Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws#before-making-api-calls), then see [Making requests on Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws#making-requests).
+
 <Steps continues>
   <Step title="Create a Claude Console account">
     [Sign up](https://platform.claude.com/) for a Claude Console account, or sign in to the one you have.
@@ -83,7 +88,7 @@ Let Claude Code set up your agent for you
         For Linux environments, download the release binary directly.
 
         ```bash
-        VERSION=2.12.1
+        VERSION=2.13.0
         OS=$(uname -s | tr '[:upper:]' '[:lower:]')
         case $(uname -m) in
           x86_64) ARCH=amd64 ;;
@@ -152,7 +157,7 @@ To run the CLI examples, install the CLI:
     For Linux environments, download the release binary directly.
 
     ```bash
-    VERSION=2.12.1
+    VERSION=2.13.0
     OS=$(uname -s | tr '[:upper:]' '[:lower:]')
     case $(uname -m) in
       x86_64) ARCH=amd64 ;;
@@ -199,7 +204,7 @@ To run the CLI examples, install the CLI:
     <Tabs>
       <Tab title="Gradle">
         ```kotlin
-        implementation("com.anthropic:anthropic-java:3.12.0")
+        implementation("com.anthropic:anthropic-java:3.13.0")
         ```
       </Tab>
 
@@ -208,7 +213,7 @@ To run the CLI examples, install the CLI:
         <dependency>
             <groupId>com.anthropic</groupId>
             <artifactId>anthropic-java</artifactId>
-            <version>3.12.0</version>
+            <version>3.13.0</version>
         </dependency>
         ```
       </Tab>

@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Oracle data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Oracle data source issues | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the Oracle data source plugin in Grafana."
 ---
 

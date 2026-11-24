@@ -1,5 +1,5 @@
 ---
-title: "Wavefront data source | Grafana Enterprise Plugins documentation"
+title: "Wavefront data source | Grafana Plugins documentation"
 description: "Query and visualize VMware Aria Operations for Applications (Wavefront) metrics in Grafana."
 ---
 

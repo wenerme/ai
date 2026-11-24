@@ -1,5 +1,5 @@
 ---
-title: "Sumo Logic query editor | Grafana Enterprise Plugins documentation"
+title: "Sumo Logic query editor | Grafana Plugins documentation"
 description: "Use the Sumo Logic query editor to build metrics and logs queries in Grafana."
 ---
 

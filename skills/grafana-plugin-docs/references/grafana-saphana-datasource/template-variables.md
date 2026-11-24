@@ -1,5 +1,5 @@
 ---
-title: "SAP HANA template variables | Grafana Enterprise Plugins documentation"
+title: "SAP HANA template variables | Grafana Plugins documentation"
 description: "Create template variables for SAP HANA in Grafana."
 ---
 

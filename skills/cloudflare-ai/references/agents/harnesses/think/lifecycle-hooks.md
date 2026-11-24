@@ -2,7 +2,7 @@
 agent:
   instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
   search: "https://developers.cloudflare.com/.well-known/search?q={query}"
-description: Hooks at each stage of a Think chat turn — beforeTurn, beforeStep, beforeToolCall, afterToolCall, onStepFinish, onChunk, onChatResponse, and onChatError.
+description: Hooks at each stage of a Think chat turn — beforeTurn, beforeStep, beforeToolCall, afterToolCall, onStepEnd, onChunk, onChatResponse, and onChatError.
 title: Lifecycle hooks
 image: https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/og.png?v=851af5168e3aa9ab
 ---
@@ -22,11 +22,12 @@ Think owns the `streamText` call and provides hooks at each stage of the chat tu
 | Hook | When it fires | Return | Async |
 | --- | --- | --- | --- |
 | `configureSession(session)` | Once during `onStart` | `Session` | yes |
+| `configureContext()` | Once during `onStart` | `ContextConfig[]` | yes |
 | `beforeTurn(ctx)` | Before `streamText` | `TurnConfig` or void | yes |
 | `beforeStep(ctx)` | Before each model step | `StepConfig` or void | yes |
 | `beforeToolCall(ctx)` | Before a server-side tool executes | `ToolCallDecision` or void | yes |
 | `afterToolCall(ctx)` | After a tool outcome is known | void | yes |
-| `onStepFinish(ctx)` | After each step completes | void | yes |
+| `onStepEnd(ctx)` | After each step completes | void | yes |
 | `onChunk(ctx)` | Per streaming chunk | void | yes |
 | `onChatResponse(result)` | After turn completes and message is persisted | void | yes |
 | `onChatError(error, ctx?)` | On error during a turn | error to propagate | no |
@@ -46,7 +47,7 @@ flowchart TD
         chunk --> btc["beforeToolCall()"]
         btc --> exec["tool executes"]
         exec --> atc["afterToolCall()"]
-        atc --> sf["onStepFinish()"]
+        atc --> sf["onStepEnd()"]
         sf -->|"more steps"| bs
     end
 
@@ -231,12 +232,12 @@ afterToolCall(ctx: ToolCallResultContext) {
 
 For blocked and substituted tool calls, `success` is `true` because the model receives a valid tool result. Only thrown errors from the original tool execution surface as `success: false`.
 
-## onStepFinish
+## onStepEnd
 
-Called after each step completes in the agentic loop. `StepContext` is the AI SDK's step-finish event, so it includes the full step record: generated text, reasoning, files, sources, typed tool calls and results, usage, warnings, request and response metadata, and provider metadata.
+Called after each step completes in the agentic loop. It replaces `onStepFinish`, which still works but is deprecated. `StepContext` is the AI SDK's step-finish event, so it includes the full step record: generated text, reasoning, files, sources, typed tool calls and results, usage, warnings, request and response metadata, and provider metadata.
 
 ```ts
-onStepFinish(ctx: StepContext) {
+onStepEnd(ctx: StepContext) {
 	console.log(
 		`Step ${ctx.stepNumber} (${ctx.finishReason}): ` +
 			`${ctx.usage.inputTokens}in/${ctx.usage.outputTokens}out`,
@@ -388,5 +389,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#page","headline":"Lifecycle hooks","description":"Hooks at each stage of a Think chat turn — beforeTurn, beforeStep, beforeToolCall, afterToolCall, onStepFinish, onChunk, onChatResponse, and onChatError.","url":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/og.png?v=851af5168e3aa9ab","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#page","headline":"Lifecycle hooks","description":"Hooks at each stage of a Think chat turn — beforeTurn, beforeStep, beforeToolCall, afterToolCall, onStepEnd, onChunk, onChatResponse, and onChatError.","url":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/og.png?v=851af5168e3aa9ab","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

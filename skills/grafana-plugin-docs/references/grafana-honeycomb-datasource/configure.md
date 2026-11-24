@@ -1,5 +1,5 @@
 ---
-title: "Configure the Honeycomb data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Honeycomb data source | Grafana Plugins documentation"
 description: "Configure the Honeycomb data source for Grafana, including API key, team, environment, and provisioning."
 ---
 

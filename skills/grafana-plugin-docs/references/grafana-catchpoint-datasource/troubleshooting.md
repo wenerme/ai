@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Catchpoint data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Catchpoint data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the Catchpoint data source in Grafana, covering authentication, connection, and query errors."
 ---
 

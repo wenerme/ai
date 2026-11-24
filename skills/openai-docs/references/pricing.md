@@ -486,6 +486,14 @@ Standard
 | Legal model configurations | gpt-6.2-astra-law (long context) | $16.00 | $60.00 | $0.80 | $20.00 | $40.00 |
 | Legal model configurations | gpt-6-astra-law (short context) | $10.00 | $50.00 | $1.00 | - | - |
 | Legal model configurations | gpt-6-astra-law (long context) | $20.00 | $75.00 | $2.00 | - | - |
+| <a id="healthcare-model-configurations"></a>Healthcare model configurations | gpt-6.2-astra-healthcare (short context) | $8.00 | $40.00 | $0.40 | $10.00 | $20.00 |
+| Healthcare model configurations | gpt-6.2-astra-healthcare (long context) | $16.00 | $60.00 | $0.80 | $20.00 | $40.00 |
+| Healthcare model configurations | gpt-6.2-sol-healthcare (short context) | $2.00 | $10.00 | $0.10 | $2.50 | $5.00 |
+| Healthcare model configurations | gpt-6.2-sol-healthcare (long context) | $4.00 | $15.00 | $0.20 | $5.00 | $10.00 |
+| Healthcare model configurations | gpt-6-astra-healthcare (short context) | $10.00 | $50.00 | $1.00 | - | - |
+| Healthcare model configurations | gpt-6-astra-healthcare (long context) | $20.00 | $75.00 | $2.00 | - | - |
+| Healthcare model configurations | gpt-6.1-sol-healthcare (short context) | $2.00 | $10.00 | $0.10 | - | - |
+| Healthcare model configurations | gpt-6.1-sol-healthcare (long context) | $4.00 | $15.00 | $0.20 | - | - |
 | ChatGPT | chat-latest | $5.00 | $30.00 | $0.50 | - | - |
 | Codex | gpt-5.3-codex | $1.75 | $14.00 | $0.175 | - | - |
 | Search | gpt-5-search-api | $1.25 | $10.00 | $0.125 | - | - |
@@ -494,7 +502,7 @@ Standard
 | Embedding | text-embedding-ada-002 | $0.10 | - | - | - | - |
 | Moderation | omni-moderation-latest | Free | - | - | - | - |
 
-GPT-6 Astra for Law, GPT-6.2 Astra for Law, and GPT-6 Rosalind promotional pricing is available at least through December 31, 2026. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. For standalone FedRAMP endpoints, GPT-6 Rosalind rates are 10% above the corresponding global rates.
+GPT-6 Astra for Law, GPT-6.2 Astra for Law, GPT-6 Rosalind, GPT-6.2 Astra Healthcare, GPT-6.2 Sol Healthcare, GPT-6 Astra Healthcare, and GPT-6.1 Sol Healthcare promotional pricing is available at least through December 31, 2026. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. For standalone FedRAMP endpoints, GPT-6 Rosalind rates are 10% above the corresponding global rates.
 
     
 
@@ -509,6 +517,14 @@ Fast
 
 | Category | Model | Input | Output | Cached input |
 | --- | --- | --- | --- | --- |
+| Healthcare model configurations | gpt-6.2-astra-healthcare (short context) | $16.00 | $80.00 | $0.80 |
+| Healthcare model configurations | gpt-6.2-astra-healthcare (long context) | $32.00 | $120.00 | $1.60 |
+| Healthcare model configurations | gpt-6.2-sol-healthcare (short context) | $4.00 | $20.00 | $0.20 |
+| Healthcare model configurations | gpt-6.2-sol-healthcare (long context) | $8.00 | $30.00 | $0.40 |
+| Healthcare model configurations | gpt-6-astra-healthcare (short context) | $20.00 | $100.00 | $2.00 |
+| Healthcare model configurations | gpt-6-astra-healthcare (long context) | $40.00 | $150.00 | $4.00 |
+| Healthcare model configurations | gpt-6.1-sol-healthcare (short context) | $4.00 | $20.00 | $0.20 |
+| Healthcare model configurations | gpt-6.1-sol-healthcare (long context) | $8.00 | $30.00 | $0.40 |
 | Codex | gpt-5.3-codex | $3.50 | $28.00 | $0.35 |
 
 Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026.

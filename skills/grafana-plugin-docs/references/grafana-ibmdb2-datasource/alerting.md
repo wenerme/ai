@@ -1,5 +1,5 @@
 ---
-title: "IBM Db2 alerting | Grafana Enterprise Plugins documentation"
+title: "IBM Db2 alerting | Grafana Plugins documentation"
 description: "Create Grafana alert rules based on IBM Db2 queries"
 ---
 

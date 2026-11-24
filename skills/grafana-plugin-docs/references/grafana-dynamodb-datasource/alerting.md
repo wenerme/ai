@@ -1,5 +1,5 @@
 ---
-title: "DynamoDB alerting | Grafana Enterprise Plugins documentation"
+title: "DynamoDB alerting | Grafana Plugins documentation"
 description: "Set up Grafana Alerting with the DynamoDB data source"
 ---
 

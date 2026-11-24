@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot ServiceNow data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot ServiceNow data source issues | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the ServiceNow data source plugin for Grafana."
 ---
 

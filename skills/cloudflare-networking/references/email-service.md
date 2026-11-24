@@ -2,7 +2,7 @@
 agent:
   instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
   search: "https://developers.cloudflare.com/.well-known/search?q={query}"
-description: Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.
+description: Send transactional email and route incoming email with Cloudflare Email Service. Both are available on the Workers Free and Workers Paid plans.
 title: Cloudflare Email Service
 image: https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b
 ---
@@ -15,16 +15,16 @@ image: https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b
 
 # Cloudflare Email Service
 
-Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.
+Send transactional email and route incoming email with Cloudflare Email Service. Both are available on the Workers Free and Workers Paid plans.
 
 Cloudflare Email Service sends transactional email and handles incoming email.
 
-- **Email Sending** Beta sends outbound transactional emails. Available on Workers Paid plan
+- **Email Sending** Beta sends outbound transactional emails. Available on Free and Paid plans
 - **Email Routing** processes incoming emails with Workers or forwards them to destination addresses. Available on Free and Paid plans
 
 Note
 
-Sending to [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) in your account is free on Workers Free and Paid plans, even when only Email Routing is configured.
+On the Workers Free plan, Email Sending sends only to [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/destination-addresses/) in your account. Sending to any other recipient requires the Workers Paid plan. Sends to verified destination addresses are free on both plans, even when only Email Routing is configured.
 
 Use Email Sending for account emails, order confirmations, and alerts. Use Email Routing to process or forward incoming messages.
 
@@ -115,5 +115,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/#page","headline":"Cloudflare Email Service","description":"Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.","url":"https://developers.cloudflare.com/email-service/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/#page","headline":"Cloudflare Email Service","description":"Send transactional email and route incoming email with Cloudflare Email Service. Both are available on the Workers Free and Workers Paid plans.","url":"https://developers.cloudflare.com/email-service/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

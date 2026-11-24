@@ -1,5 +1,5 @@
 ---
-title: "MongoDB templates and variables | Grafana Enterprise Plugins documentation"
+title: "MongoDB templates and variables | Grafana Plugins documentation"
 description: "This document describes MongoDB templates and variables for Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Honeycomb annotations | Grafana Enterprise Plugins documentation"
+title: "Honeycomb annotations | Grafana Plugins documentation"
 description: "Use Honeycomb queries to add annotations that overlay event markers on Grafana dashboards."
 ---
 

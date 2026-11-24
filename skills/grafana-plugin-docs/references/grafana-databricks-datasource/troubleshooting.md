@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Databricks data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Databricks data source issues | Grafana Plugins documentation"
 description: "This document describes troubleshooting guidance for the Databricks data source in Grafana."
 ---
 

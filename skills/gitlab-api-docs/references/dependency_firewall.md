@@ -169,7 +169,7 @@ attributes:
 | Attribute | Type   | Description |
 |-----------|--------|-------------|
 | `outcome` | string | Evaluation outcome. One of `allowed`, `warned`, or `blocked`. |
-| `reason`  | string | Message describing why the package was warned or blocked. Names the matching policy. `null` when `outcome` is `allowed`. |
+| `reason`  | string | Message describing why the package was warned or blocked. Names the matching policy and the type of rule that matched. `null` when `outcome` is `allowed`. |
 
 The `outcome` attribute has one of the following values:
 
@@ -207,7 +207,7 @@ Example response:
 ```json
 {
   "outcome": "blocked",
-  "reason": "Package 'lodash' violates 'deny-mit' policy"
+  "reason": "Package 'lodash' violates 'deny-mit' policy (license rule)"
 }
 ```
 

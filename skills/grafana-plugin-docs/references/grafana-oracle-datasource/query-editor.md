@@ -1,5 +1,5 @@
 ---
-title: "Oracle query editor | Grafana Enterprise Plugins documentation"
+title: "Oracle query editor | Grafana Plugins documentation"
 description: "Use the Oracle query editor to write SQL queries and visualize data in Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure DevOps annotations | Grafana Enterprise Plugins documentation"
+title: "Azure DevOps annotations | Grafana Plugins documentation"
 description: "Use annotations with the Azure DevOps data source to overlay build, release, and deployment events on Grafana dashboard panels."
 ---
 

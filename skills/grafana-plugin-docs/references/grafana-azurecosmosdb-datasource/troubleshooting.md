@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot the Azure Cosmos DB data source | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot the Azure Cosmos DB data source | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the Azure Cosmos DB data source in Grafana."
 ---
 

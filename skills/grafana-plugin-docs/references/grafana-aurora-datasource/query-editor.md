@@ -1,5 +1,5 @@
 ---
-title: "Amazon Aurora query editor | Grafana Enterprise Plugins documentation"
+title: "Amazon Aurora query editor | Grafana Plugins documentation"
 description: "Learn how to use the Amazon Aurora query editor, including data frame formats, macros, and alerting support."
 ---
 

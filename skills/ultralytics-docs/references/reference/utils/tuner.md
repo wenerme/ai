@@ -10,10 +10,6 @@ keywords: Ultralytics, tuner, hyperparameter tuning, Ray Tune, YOLO, machine lea
 
     This page is sourced from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/utils/tuner.py](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/utils/tuner.py). Have an improvement or example to add? Open a [Pull Request](https://docs.ultralytics.com/help/contributing) — thank you! 🙏
 
-## ::: ultralytics.utils.tuner._sanitize_tune_value
-
-<hr>
-
 ## ::: ultralytics.utils.tuner._get_ray_search_alg_kind
 
 <hr>

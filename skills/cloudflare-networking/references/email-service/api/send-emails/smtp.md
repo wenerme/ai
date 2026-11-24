@@ -157,9 +157,9 @@ Cloudflare's SMTP server returns standard [RFC 5321 ↗︎](https://datatracker.
 | `503` | Bad sequence of commands (for example, `MAIL FROM` before `AUTH`). |
 | `530 5.7.0` | Authentication required. |
 | `535 5.7.8` | Authentication failed. Refer to [Troubleshooting](#troubleshooting). |
-| `550 5.7.1` | Sender or relay denied — usually the `MAIL FROM` domain is not onboarded. |
+| `550 5.7.1` | Sender or recipient denied. Refer to [Troubleshooting](#troubleshooting). |
 | `552 5.3.4` | Message exceeds the 25 MiB `SIZE` limit. |
-| `554` | Transaction failed — content rejected by policy. |
+| `554` | Transaction failed — content rejected by policy, or `DATA` sent after a refused recipient. |
 
 ## Suppressed recipients
 
@@ -190,6 +190,12 @@ Possible causes:
 
 The address in `MAIL FROM` is on a domain that is not onboarded for Email Sending under the account that owns the API token. Onboard the domain under **Email Service > Email Sending** in the dashboard, or change the sender address.
 
+### `550 5.7.1` at `RCPT TO`
+
+On the Workers Free plan, SMTP accepts only [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/destination-addresses/) in your account as recipients. It refuses any other `RCPT TO` address with `550 5.7.1`. If the client sends `DATA` after a refused recipient, SMTP refuses the whole message with `554 5.7.1` before it reads the body. No recipient receives the message.
+
+To send to that recipient, [add and verify](https://developers.cloudflare.com/email-service/configuration/destination-addresses/#add-a-destination-address) it as a destination address, or upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/).
+
 ### `552 5.3.4 Message too big`
 
 The message body (including attachments after MIME encoding) is larger than 25 MiB. Reduce the attachment size or split the message.
@@ -219,5 +225,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP","description":"Email Service SMTP endpoint, authentication, limits, responses, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.png?v=13757de7404f5225","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP","description":"Email Service SMTP endpoint, authentication, limits, responses, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.png?v=13757de7404f5225","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

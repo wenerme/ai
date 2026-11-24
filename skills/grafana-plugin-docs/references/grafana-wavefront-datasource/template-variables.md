@@ -1,5 +1,5 @@
 ---
-title: "Wavefront template variables | Grafana Enterprise Plugins documentation"
+title: "Wavefront template variables | Grafana Plugins documentation"
 description: "Use template variables to build dynamic dashboards with the Wavefront data source."
 ---
 

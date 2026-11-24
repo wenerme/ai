@@ -17,8 +17,9 @@ image: https://developers.cloudflare.com/agents/concepts/og.png?v=eb9eb2c6ec56bd
 
 - [What are agents?](https://developers.cloudflare.com/agents/concepts/what-are-agents/)
 - [Harness](https://developers.cloudflare.com/agents/concepts/harness/)
-- [Conversation state and memory](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/)
 - [Tools](https://developers.cloudflare.com/agents/concepts/tools/)
+- [Sessions](https://developers.cloudflare.com/agents/concepts/sessions/)
+- [Context](https://developers.cloudflare.com/agents/concepts/context/)
 - [Agent Skills](https://developers.cloudflare.com/agents/concepts/agent-skills/)
 - [Calling LLMs](https://developers.cloudflare.com/agents/concepts/calling-llms/)
 - [Using Agents with Workflows](https://developers.cloudflare.com/agents/concepts/workflows/)

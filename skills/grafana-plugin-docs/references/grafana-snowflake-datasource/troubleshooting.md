@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Snowflake data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Snowflake data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the Snowflake data source in Grafana."
 ---
 

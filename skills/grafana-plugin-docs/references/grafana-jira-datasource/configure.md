@@ -1,5 +1,5 @@
 ---
-title: "Configure the Jira data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Jira data source | Grafana Plugins documentation"
 description: "This document describes configuration options for the Jira data source"
 ---
 

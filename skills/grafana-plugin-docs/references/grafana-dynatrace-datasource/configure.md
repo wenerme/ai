@@ -1,5 +1,5 @@
 ---
-title: "Configure the Dynatrace data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Dynatrace data source | Grafana Plugins documentation"
 description: "Configure the Dynatrace data source in Grafana."
 ---
 

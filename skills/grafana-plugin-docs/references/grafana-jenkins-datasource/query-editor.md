@@ -1,5 +1,5 @@
 ---
-title: "Jenkins query editor | Grafana Enterprise Plugins documentation"
+title: "Jenkins query editor | Grafana Plugins documentation"
 description: "Use the Jenkins query editor in Grafana"
 ---
 

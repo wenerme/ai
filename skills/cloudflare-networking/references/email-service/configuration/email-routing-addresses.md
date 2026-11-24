@@ -2,9 +2,9 @@
 agent:
   instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
   search: "https://developers.cloudflare.com/.well-known/search?q={query}"
-description: Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.
-title: Email routing rules and addresses
-image: https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=63b8f54a38ce8f37
+description: Create and manage routing rules and the catch-all rule in Email Service.
+title: Email routing rules
+image: https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=86a53e43e2c2e9b7
 ---
 
 [Skip to content](#main-content)
@@ -13,7 +13,7 @@ image: https://developers.cloudflare.com/email-service/configuration/email-routi
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Email routing rules and addresses
+# Email routing rules
 
 In Email Routing, a routing rule pairs an email pattern with a destination — either a verified email address or a Worker. You can route emails to either:
 
@@ -24,28 +24,7 @@ This allows you to route emails to your preferred inbox, or apply logic with Wor
 
 ## Destination addresses
 
-A destination address is the verified email address that Email Routing forwards messages to. Before you can create a routing rule, you must add and verify at least one destination address.
-
-Destination addresses are shared at the account level and can be reused with any other domain in your account.
-
-You can also send to verified destination addresses directly through the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) or the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), free of charge on any plan — including when only Email Routing is configured. Sends to verified destination addresses do not count toward your monthly quota or daily sending limits. Refer to [Pricing](https://developers.cloudflare.com/email-service/platform/pricing/) for details.
-
-### Add a destination address
-
-1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
-2. Go to **Compute** > **Email Service** > **Email Routing** > **Destination Addresses**. [Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
-3. Under **Destination addresses**, enter the email address you want to use as a destination in the inline form and submit it.
-4. Cloudflare sends a verification email to that address. Open the email and select **Verify email address** to activate it.
-
-Until a destination address is verified, any routing rule that points to it stays disabled.
-
-### Manage destination addresses
-
-The **Destination Addresses** page lists every address on your account, including those pending verification. From this page you can resend a verification email or delete a destination address.
-
-Note
-
-Deleting a destination address automatically disables all routing rules that use that address as a destination.
+Routing rules forward email to verified destination addresses. Before you create a routing rule, add and verify at least one destination address. Refer to [Destination addresses](https://developers.cloudflare.com/email-service/configuration/destination-addresses/).
 
 ## Routing rules
 
@@ -137,7 +116,7 @@ This feature requires Wrangler 4.113.0 or later.
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-24",
   "addresses": [
     "support@example.com",
     "*@example.com"
@@ -150,7 +129,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-24"
 addresses = ["support@example.com", "*@example.com"]
 ```
 
@@ -186,5 +165,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=63b8f54a38ce8f37","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules","description":"Create and manage routing rules and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=86a53e43e2c2e9b7","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

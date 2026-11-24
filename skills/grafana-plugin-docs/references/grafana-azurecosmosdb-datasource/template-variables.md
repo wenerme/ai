@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB template variables | Grafana Enterprise Plugins documentation"
+title: "Azure Cosmos DB template variables | Grafana Plugins documentation"
 description: "Use template variables to build dynamic Azure Cosmos DB dashboards in Grafana."
 ---
 

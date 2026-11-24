@@ -1,5 +1,5 @@
 ---
-title: "Dynatrace query editor | Grafana Enterprise Plugins documentation"
+title: "Dynatrace query editor | Grafana Plugins documentation"
 description: "Use the Dynatrace query editor in Grafana to query Dynatrace."
 ---
 

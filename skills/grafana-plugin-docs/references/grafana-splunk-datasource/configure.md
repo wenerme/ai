@@ -1,5 +1,5 @@
 ---
-title: "Configure the Splunk data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Splunk data source | Grafana Plugins documentation"
 description: "Configure the Splunk data source to connect Grafana to your Splunk instance."
 ---
 

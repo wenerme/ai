@@ -1,5 +1,5 @@
 ---
-title: "IBM Db2 annotations | Grafana Enterprise Plugins documentation"
+title: "IBM Db2 annotations | Grafana Plugins documentation"
 description: "Use IBM Db2 queries to add annotations to your Grafana dashboards"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "New Relic alerting | Grafana Enterprise Plugins documentation"
+title: "New Relic alerting | Grafana Plugins documentation"
 description: "Set up Grafana Alerting with the New Relic data source."
 ---
 

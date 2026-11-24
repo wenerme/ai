@@ -1,5 +1,5 @@
 ---
-title: "AppDynamics query editor | Grafana Enterprise Plugins documentation"
+title: "AppDynamics query editor | Grafana Plugins documentation"
 description: "Learn how to use the AppDynamics query editor in Grafana."
 ---
 

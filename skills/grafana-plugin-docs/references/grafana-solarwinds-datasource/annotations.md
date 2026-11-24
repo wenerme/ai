@@ -1,5 +1,5 @@
 ---
-title: "SolarWinds annotations | Grafana Enterprise Plugins documentation"
+title: "SolarWinds annotations | Grafana Plugins documentation"
 description: "Learn how to use annotations with the SolarWinds data source to overlay SolarWinds events on your Grafana graphs."
 ---
 

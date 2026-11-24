@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot SAP HANA data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot SAP HANA data source issues | Grafana Plugins documentation"
 description: "Troubleshooting common issues with the SAP HANA data source in Grafana."
 ---
 

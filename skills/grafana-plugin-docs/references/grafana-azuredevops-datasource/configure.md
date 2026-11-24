@@ -1,5 +1,5 @@
 ---
-title: "Configure the Azure DevOps data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Azure DevOps data source | Grafana Plugins documentation"
 description: "Configure the Azure DevOps data source plugin for Grafana, including authentication, settings, and provisioning."
 ---
 

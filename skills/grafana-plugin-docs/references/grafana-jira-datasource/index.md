@@ -1,5 +1,5 @@
 ---
-title: "Jira data source | Grafana Enterprise Plugins documentation"
+title: "Jira data source | Grafana Plugins documentation"
 description: "Learn about the Jira data source plugin for Grafana"
 ---
 

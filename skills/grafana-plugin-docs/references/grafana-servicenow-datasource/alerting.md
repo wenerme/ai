@@ -1,5 +1,5 @@
 ---
-title: "ServiceNow alerting | Grafana Enterprise Plugins documentation"
+title: "ServiceNow alerting | Grafana Plugins documentation"
 description: "Set up Grafana alert rules using ServiceNow data source queries."
 ---
 

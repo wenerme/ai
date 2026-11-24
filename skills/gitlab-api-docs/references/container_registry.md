@@ -379,41 +379,41 @@ Examples:
 
   ```shell
   curl --request DELETE \
+    --header "PRIVATE-TOKEN: <your_access_token>" \
+    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags" \
     --data 'name_regex_delete=[0-9a-z]{40}' \
     --data 'keep_n=5' \
-    --data 'older_than=2d' \
-    --header "PRIVATE-TOKEN: <your_access_token>" \
-    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags"
+    --data 'older_than=2d'
   ```
 
 - Remove all tags, but keep always the latest 5:
 
   ```shell
   curl --request DELETE \
-    --data 'name_regex_delete=.*' \
-    --data 'keep_n=5' \
     --header "PRIVATE-TOKEN: <your_access_token>" \
-    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags"
+    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags" \
+    --data 'name_regex_delete=.*' \
+    --data 'keep_n=5'
   ```
 
 - Remove all tags, but keep always tags beginning with `stable`:
 
   ```shell
   curl --request DELETE \
-    --data 'name_regex_delete=.*' \
-    --data 'name_regex_keep=stable.*' \
     --header "PRIVATE-TOKEN: <your_access_token>" \
-    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags"
+    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags" \
+    --data 'name_regex_delete=.*' \
+    --data 'name_regex_keep=stable.*'
   ```
 
 - Remove all tags that are older than 1 month:
 
   ```shell
   curl --request DELETE \
-    --data 'name_regex_delete=.*' \
-    --data 'older_than=1month' \
     --header "PRIVATE-TOKEN: <your_access_token>" \
-    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags"
+    --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags" \
+    --data 'name_regex_delete=.*' \
+    --data 'older_than=1month'
   ```
 
 ### Use cURL with a regular expression that contains `+`
@@ -424,9 +424,9 @@ to be processed correctly by the GitLab Rails backend. For example:
 
 ```shell
 curl --request DELETE \
-  --data-urlencode 'name_regex_delete=dev-.+' \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags"
+  --url "https://gitlab.example.com/api/v4/projects/5/registry/repositories/2/tags" \
+  --data-urlencode 'name_regex_delete=dev-.+'
 ```
 
 ## Instance-wide endpoints

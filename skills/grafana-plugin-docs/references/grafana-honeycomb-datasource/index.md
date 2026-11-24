@@ -1,5 +1,5 @@
 ---
-title: "Honeycomb data source | Grafana Enterprise Plugins documentation"
+title: "Honeycomb data source | Grafana Plugins documentation"
 description: "Query and visualize Honeycomb metrics and link to Honeycomb traces from Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot CockroachDB data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot CockroachDB data source issues | Grafana Plugins documentation"
 description: "Troubleshoot common CockroachDB data source issues in Grafana"
 ---
 

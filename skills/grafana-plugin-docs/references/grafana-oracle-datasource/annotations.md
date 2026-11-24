@@ -1,5 +1,5 @@
 ---
-title: "Oracle annotations | Grafana Enterprise Plugins documentation"
+title: "Oracle annotations | Grafana Plugins documentation"
 description: "Add Oracle data source annotations to Grafana dashboards to mark events on graphs."
 ---
 

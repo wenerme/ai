@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot DynamoDB data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot DynamoDB data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the DynamoDB data source in Grafana"
 ---
 

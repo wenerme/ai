@@ -32,8 +32,8 @@ To view storage usage for a project:
 1. In the top bar, select **Search or go to** and find your project.
 1. Do one of the following:
    - To view total storage usage, select **Settings** > **Usage quotas**.
-     Under **Namespace entities**, select **Container Registry** to view individual repositories.
-   - To view storage usage by repository directly, select **Deploy** > **Container Registry**.
+     Under **Namespace entities**, select **Container registry** to view individual repositories.
+   - To view storage usage by repository directly, select **Deploy** > **Container registry**.
 
 You can also use:
 
@@ -313,7 +313,7 @@ To change these settings in the **Admin** area:
 
 1. In the upper-right corner, select **Admin**.
 1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Container Registry**.
+1. Expand **Container registry**.
 
 ### Use the cleanup policy API
 
