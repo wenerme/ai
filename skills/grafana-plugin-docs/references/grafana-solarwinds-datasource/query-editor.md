@@ -1,5 +1,5 @@
 ---
-title: "SolarWinds query editor | Grafana Enterprise Plugins documentation"
+title: "SolarWinds query editor | Grafana Plugins documentation"
 description: "Learn how to use the SolarWinds query editor to query data with SolarWinds Query Language (SWQL)."
 ---
 

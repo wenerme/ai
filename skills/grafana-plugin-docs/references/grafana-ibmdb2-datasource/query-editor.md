@@ -1,5 +1,5 @@
 ---
-title: "IBM Db2 query editor | Grafana Enterprise Plugins documentation"
+title: "IBM Db2 query editor | Grafana Plugins documentation"
 description: "Use the IBM Db2 query editor to run SQL queries against your database"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB query editor | Grafana Enterprise Plugins documentation"
+title: "Azure Cosmos DB query editor | Grafana Plugins documentation"
 description: "Use the Azure Cosmos DB query editor to build and run NoSQL queries in Grafana."
 ---
 

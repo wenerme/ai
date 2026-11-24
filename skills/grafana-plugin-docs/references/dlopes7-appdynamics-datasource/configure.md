@@ -1,5 +1,5 @@
 ---
-title: "Configure the AppDynamics data source | Grafana Enterprise Plugins documentation"
+title: "Configure the AppDynamics data source | Grafana Plugins documentation"
 description: "Learn how to configure the AppDynamics data source for Grafana."
 ---
 

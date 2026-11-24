@@ -1,5 +1,5 @@
 ---
-title: "Vercel template variables | Grafana Enterprise Plugins documentation"
+title: "Vercel template variables | Grafana Plugins documentation"
 description: "Use template variables with the Vercel data source to build dynamic, reusable dashboards."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "ServiceNow query editor | Grafana Enterprise Plugins documentation"
+title: "ServiceNow query editor | Grafana Plugins documentation"
 description: "Use the ServiceNow query editor to build Table and Stats queries in Grafana."
 ---
 

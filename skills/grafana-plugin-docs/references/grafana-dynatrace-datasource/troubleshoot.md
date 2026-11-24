@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Dynatrace data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Dynatrace data source issues | Grafana Plugins documentation"
 description: "Troubleshooting common issues with the Dynatrace data source in Grafana."
 ---
 

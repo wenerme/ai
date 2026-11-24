@@ -1,5 +1,5 @@
 ---
-title: "Zendesk annotations | Grafana Enterprise Plugins documentation"
+title: "Zendesk annotations | Grafana Plugins documentation"
 description: "Use the Zendesk data source to add annotations to Grafana dashboards."
 ---
 

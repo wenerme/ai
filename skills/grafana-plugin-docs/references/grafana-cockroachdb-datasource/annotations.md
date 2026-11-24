@@ -1,5 +1,5 @@
 ---
-title: "CockroachDB annotations | Grafana Enterprise Plugins documentation"
+title: "CockroachDB annotations | Grafana Plugins documentation"
 description: "Add CockroachDB annotation queries to Grafana dashboards"
 ---
 

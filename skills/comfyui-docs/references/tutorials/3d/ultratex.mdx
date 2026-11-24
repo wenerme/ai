@@ -1,0 +1,88 @@
+---
+title: "UltraTex in ComfyUI: Texture a 3D Model From One Image"
+description: "Texture an untextured 3D mesh in ComfyUI with UltraTex on FLUX.2 Klein 9B: render six normal views, paint albedo and metallic/roughness, and bake a PBR GLB."
+---
+
+**UltraTex** textures a 3D mesh from a single reference image. It is a 2K multi-view texturing framework from SIGGRAPH Asia 2026, and in ComfyUI it runs on the FLUX.2 Klein base 9B backbone: the UltraTex LoRAs repaint that model into a texture generator, and the UltraTex VAE keeps the rendered views clean.
+
+Point it at an untextured mesh plus one picture of how the object should look. The workflow renders the mesh from six world-normal views, paints albedo in one pass and metallic/roughness in another, bakes both onto the mesh UVs, and saves a PBR GLB with the PNG maps. It needs ComfyUI **0.46.0+** and template pack **0.11.115+**.
+
+## Texture a 3D model {#ultratex}
+
+Load your mesh in **Load 3D (Advanced)** and the reference image in **Load Image**, then run the workflow. The template ships with a frog statuette mesh and its painted version, so it runs as downloaded.
+
+[UltraTex texturing a frog statuette mesh from one reference image]
+
+  
+    Download JSON or search "UltraTex: Texture a 3D Model" in Template Library
+  
+
+**Input materials**
+
+  
+    The mesh to texture, opened in Load 3D (Advanced)
+  
+  
+    The reference: how the object should look
+  
+
+## What to change
+
+- **Load 3D (Advanced)**: your mesh and the camera the front view is taken from. The bake reuses that same camera rig.
+- **Load Image**: the reference seen from the front camera's side, because it lands on the front view. Keep one object in one orientation.
+- **Rendered Mesh Resolution** (1024) sizes the renders and the latent. **Texture Resolution** (4096) sizes the baked maps.
+- **Albedo pass** runs 4 steps at seed 1. **Metallic/roughness pass** runs 8 steps at seed 4.
+- **Camera orbit** is pinned to four side views plus top and bottom, six views in total. UltraTex Conditioning accepts only that six-view set or the four side views alone, so a reduced orbit needs a matching latent batch size of 4.
+
+## Before you run
+
+- The mesh must already have UVs. The bake and the apply step reuse them, and there is no unwrap step.
+- Seeds change surface detail only. The silhouette always comes from the mesh.
+- `fill_unseen` grows colour into texels no view saw. Turn it off to keep the mesh's own texture in those areas.
+
+## Model downloads
+
+Seven files go under `ComfyUI/models`. The shipped graph needs 13.16 GB; swapping the checkpoint to the full-precision build brings it to 21.87 GB.
+
+  
+    FLUX.2 Klein base 9B, INT8, 9.44 GB. Place in <code>ComfyUI/models/diffusion_models/</code>
+  
+  
+    Loaded at strength 0.5, 1.96 GB. Place in <code>ComfyUI/models/loras/</code>
+  
+  
+    Albedo pass, 478 MB. Place in <code>ComfyUI/models/loras/</code>
+  
+  
+    Metallic/roughness pass, 478 MB. Place in <code>ComfyUI/models/loras/</code>
+  
+  
+    Pre-encoded empty prompt, 25 MB. Place in <code>ComfyUI/models/embeddings/</code>
+  
+  
+    UltraTex VAE, FP32, 336 MB. Place in <code>ComfyUI/models/vae/</code>
+  
+  
+    Masks the reference image, 444 MB. Place in <code>ComfyUI/models/background_removal/</code>
+  
+
+**Model Storage Location**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── flux-2-klein-base-9b_int8_convrot.safetensors
+│   ├── 📂 loras/
+│   │   ├── flux-2-klein-9b_distill_lora_avg_rank_345_bf16.safetensors
+│   │   ├── ultratex_flux2_klein_9b_albedo_lora_bf16.safetensors
+│   │   └── ultratex_flux2_klein_9b_metallic_roughness_lora_bf16.safetensors
+│   ├── 📂 embeddings/
+│   │   └── flux-2-klein-9b_empty_prompt.safetensors
+│   ├── 📂 vae/
+│   │   └── ultratex_flux2_vae_fp32.safetensors
+│   └── 📂 background_removal/
+│       └── birefnet.safetensors
+```
+
+The graph loads no text encoder: `Load Conditioning` reads the pre-encoded empty prompt instead. Model weights carry the [FLUX Non-Commercial License](https://huggingface.co/black-forest-labs/FLUX.2-klein-9B/blob/main/LICENSE.md). Paper and code: [UltraTex on arXiv](https://arxiv.org/abs/2609.23169), [yiboz2001/UltraTex](https://github.com/yiboz2001/UltraTex).

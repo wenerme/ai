@@ -1,5 +1,5 @@
 ---
-title: "Configure the Zendesk data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Zendesk data source | Grafana Plugins documentation"
 description: "Configure the Zendesk data source in Grafana, including authentication and provisioning."
 ---
 

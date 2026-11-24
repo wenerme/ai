@@ -1,5 +1,5 @@
 ---
-title: "ServiceNow annotations | Grafana Enterprise Plugins documentation"
+title: "ServiceNow annotations | Grafana Plugins documentation"
 description: "Use ServiceNow queries as annotation sources to overlay events on Grafana panels."
 ---
 

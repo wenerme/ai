@@ -1,5 +1,5 @@
 ---
-title: "DynamoDB annotations | Grafana Enterprise Plugins documentation"
+title: "DynamoDB annotations | Grafana Plugins documentation"
 description: "Add annotations from DynamoDB data to Grafana dashboards"
 ---
 

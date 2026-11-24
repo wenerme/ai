@@ -1,5 +1,5 @@
 ---
-title: "MongoDB data source | Grafana Enterprise Plugins documentation"
+title: "MongoDB data source | Grafana Plugins documentation"
 description: "This document introduces the MongoDB data source for Grafana."
 ---
 

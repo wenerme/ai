@@ -1,5 +1,5 @@
 ---
-title: "Amazon Aurora data source | Grafana Enterprise Plugins documentation"
+title: "Amazon Aurora data source | Grafana Plugins documentation"
 description: "Introduction to the Amazon Aurora data source for Grafana, including requirements, supported features, and links to configuration and query documentation."
 ---
 

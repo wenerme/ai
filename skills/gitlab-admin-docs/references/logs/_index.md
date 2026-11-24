@@ -518,6 +518,27 @@ and project deletion. For example:
 }
 ```
 
+## `redacted_search_results.log`
+
+The `redacted_search_results.log` file records search results that GitLab
+removes because the searching user cannot read them.
+When GitLab filters out at least one result, it writes an `ERROR` entry.
+Use this log to investigate
+results excluded from a search.
+
+This log is located:
+
+- In the `/var/log/gitlab/gitlab-rails/redacted_search_results.log` file on Linux package installations.
+- In the `/home/git/gitlab/log/redacted_search_results.log` file on self-compiled installations.
+- On the Webservice pods under the `subcomponent="redacted_search_results"` key on Helm chart installations.
+
+Each JSON entry includes a `filtered` array that identifies excluded results
+by object class, ID, and the permission checked.
+It also includes the search `query` and search context, such as the search
+type, level, scope, group ID, and project ID.
+Because queries can contain sensitive information, restrict access to this
+log and review its contents before sharing it.
+
 ## `integrations_json.log`
 
 This log is located:
@@ -927,8 +948,8 @@ This file contains the JSON version of the logs in `auth.log`, for example:
 
 ### `Rate_Limit_Block` messages
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258338) in GitLab 19.5.
-- `remote_ip`, `path`, and `method` fields [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265941) in GitLab 19.6.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258338) in GitLab 19.5 and backported to GitLab 19.4.8.
+- `remote_ip`, `path`, and `method` fields [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265941) in GitLab 19.6 and backported to GitLab 19.5.6 and 19.4.8.
 
 When the LabKit rate limiter blocks a request, GitLab returns a `429` status code
 before the request reaches a controller or an API endpoint.

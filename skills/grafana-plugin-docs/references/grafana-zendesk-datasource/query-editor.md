@@ -1,5 +1,5 @@
 ---
-title: "Zendesk query editor | Grafana Enterprise Plugins documentation"
+title: "Zendesk query editor | Grafana Plugins documentation"
 description: "Use the Zendesk query editor to query tickets, users, and organizations."
 ---
 

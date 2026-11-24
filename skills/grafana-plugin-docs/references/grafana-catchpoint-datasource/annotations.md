@@ -1,5 +1,5 @@
 ---
-title: "Catchpoint annotations | Grafana Enterprise Plugins documentation"
+title: "Catchpoint annotations | Grafana Plugins documentation"
 description: "Use the Catchpoint data source to add annotations to Grafana dashboards."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Oracle template variables | Grafana Enterprise Plugins documentation"
+title: "Oracle template variables | Grafana Plugins documentation"
 description: "Use template variables with the Oracle data source to create dynamic, reusable dashboards in Grafana."
 ---
 

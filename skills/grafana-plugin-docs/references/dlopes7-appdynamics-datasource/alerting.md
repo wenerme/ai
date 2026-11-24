@@ -1,5 +1,5 @@
 ---
-title: "AppDynamics alerting | Grafana Enterprise Plugins documentation"
+title: "AppDynamics alerting | Grafana Plugins documentation"
 description: "Set up alerts using AppDynamics data in Grafana."
 ---
 

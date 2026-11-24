@@ -21,12 +21,12 @@ the new variable is not created.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of Instance-level CI/CD variables that can be defined**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
    The default is `25`.
-1. Select **Save changes**.
+1. Select **Save Default limits**.
 
 ## Limit dotenv file size
 
@@ -37,11 +37,11 @@ every time a dotenv file is exported as an artifact.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum size of a dotenv artifact in bytes**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 Set the limit to `0` to disable it. Defaults to 5 KB.
 
@@ -54,11 +54,11 @@ This limit is checked every time a dotenv file is exported as an artifact.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of variables in a dotenv artifact**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 Set the limit to `0` to disable it. Defaults to `20`.
 
@@ -75,11 +75,11 @@ The size of each value is limited by [Limit CI/CD variable values](#limit-cicd-v
 
 To configure the count limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of pipeline variables in a single pipeline**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 This limit is not set by default. Set it to `0` to disable it.
 
@@ -95,13 +95,13 @@ File type values are written to a file instead of the environment, so they have 
 
 To configure these limits:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for either of:
-   - **Maximum size of a CI/CD variable value in bytes**.
-   - **Maximum size of a file type CI/CD variable value in bytes**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for either of:
+   - .
+   - .
+1. Select **Save Default limits**.
 
 These limits are not set by default. Set a limit to `0` to disable it.
 
@@ -117,11 +117,11 @@ This limit is checked every time a CycloneDX report is uploaded as an artifact.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum size of a CycloneDX artifact in MB**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 Set the limit to `0` to use the [maximum artifacts size](#maximum-artifacts-size) instead.
 Defaults to `1` MB.
@@ -136,11 +136,11 @@ Pipelines that have too many jobs fail with a `size_limit_exceeded` error.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of jobs in a single pipeline**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 Set the limit to `0` to disable it. Disabled by default.
 
@@ -158,11 +158,11 @@ fails with a `job_activity_limit_exceeded` error.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Total number of jobs in currently active pipelines**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 Set the limit to `0` to disable it. Disabled by default.
 
@@ -176,11 +176,11 @@ limit, the subscription is considered invalid.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of pipeline subscriptions to and from a project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 By default, there is a limit of `2` subscriptions. Set the limit to `0` to disable it.
 
@@ -193,11 +193,11 @@ pipeline schedule is not created.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of pipeline schedules**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 By default, there is a limit of `10` pipeline schedules.
 
@@ -209,11 +209,11 @@ You can set a maximum number of needs dependencies that a single job can have.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of needs dependencies that a job can have**
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 This limit cannot be disabled. Defaults to `50`.
 
@@ -231,11 +231,11 @@ The size of each value is limited by [Limit CI/CD variable values](#limit-cicd-v
 
 To configure the count limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of job variables in a single job**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 This limit is not set by default. Set it to `0` to disable it.
 
@@ -251,13 +251,13 @@ A runner's registration fails if it exceeds the limit for the scope determined b
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for either:
-   - **Maximum number of runners created or active in a group during the past seven days**
-   - **Maximum number of runners created or active in a project during the past seven days**
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for either:
+   -
+   -
+1. Select **Save Default limits**.
 
 Set the limit to `0` to disable it.
 
@@ -275,11 +275,11 @@ When this limit is exceeded, pipeline creation fails with the error `downstream 
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum number of downstream pipelines in a pipeline's hierarchy tree**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
+1. Select **Save Default limits**.
 
 You can also use the [Plan Limits API](../../api/plan_limits.md).
 
@@ -293,12 +293,12 @@ additional merge requests are queued until a pipeline slot is available.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for **Maximum parallel pipelines per merge train**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , set a value for .
    The minimum value is `1`. A value of `1` processes merge requests sequentially with no parallelism.
-1. Select **Save changes**.
+1. Select **Save Default limits**.
 
 You can also use the [Plan Limits API](../../api/plan_limits.md).
 
@@ -365,11 +365,11 @@ The default value is `4` for GitLab Self-Managed and GitLab.com.
 
 To change this limit on your GitLab Self-Managed instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Change the value of **Pipeline limit per Git push**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Change the value of .
+1. Select .
 
 ## Pipeline creation rate limits
 
@@ -417,16 +417,16 @@ Prerequisites:
 
 To limit the number of pipeline requests:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **Network**.
-1. Expand **Pipeline creation rate limits**.
-   - Under **Max requests per minute per project, user, and commit**, enter a value greater than `0` to limit pipelines
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+   - Under , enter a value greater than `0` to limit pipelines
      for the same project, commit, and user combination. Set to `0` for unlimited requests per minute.
-   - Under **Max requests per minute per user**, enter a value greater than `0` to limit total pipelines created by each user.
+   - Under , enter a value greater than `0` to limit total pipelines created by each user.
      Set to `0` for unlimited requests per minute.
-   - Under **Maximum number of CI Lint requests for a user**, enter a value greater than `0` to limit CI lint requests
-     made by each user. Set to `0` for unlimited requests per minute.
-1. Select **Save changes**.
+   - Under , enter a value greater than `0` to limit CI lint requests
+     made by each user.
+1. Select .
 
 The rate limits are evaluated independently:
 
@@ -446,11 +446,11 @@ The default value is `0`, which means there is no restriction.
 
 To configure this limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum downstream pipeline trigger rate**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Pipeline cancellation rate limits
 
@@ -476,11 +476,11 @@ If either limit is exceeded, the cancellation request is blocked.
 
 To configure the per user and project limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum pipeline cancellations per project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Pipeline retry rate limits
 
@@ -507,11 +507,11 @@ If either limit is exceeded, the retry request is blocked.
 
 To configure the per user and project limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum pipeline retries per project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Pipeline schedule management rate limits
 
@@ -537,11 +537,11 @@ When a user exceeds the limit, GitLab blocks the change.
 
 To configure the limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum pipeline schedule changes per user**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Pipeline trigger token management rate limits
 
@@ -568,11 +568,11 @@ When a user exceeds the limit, GitLab blocks the change.
 
 To configure the limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum pipeline trigger token changes per user**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Job retry and manual job run rate limits
 
@@ -600,11 +600,11 @@ If a limit is exceeded, the request is blocked.
 
 To configure the per user and project limits:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set values for **Maximum job retries per project** and **Maximum manual job runs per project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set values for  and .
+1. Select .
 
 ## Pipeline deletion rate limits
 
@@ -632,11 +632,11 @@ If either limit is exceeded, the delete request is blocked.
 
 To configure the per user and project limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum pipeline deletions per project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Job erasure rate limits
 
@@ -661,11 +661,11 @@ If either limit is exceeded, the erase request is blocked.
 
 To configure the per user and project limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum job erasures per project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Job cancellation rate limits
 
@@ -691,11 +691,11 @@ If either limit is exceeded, the cancellation request is blocked.
 
 To configure the per user and project limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum job cancellations per project**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Runner job list rate limits
 
@@ -729,11 +729,11 @@ error for the `jobs` field.
 
 To configure the limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum runner job lists filtered by completed status per user**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Runner job list rate limits for user projects
 
@@ -757,11 +757,11 @@ Set the limit to `0` to disable it. If the limit is exceeded, the REST API retur
 
 To configure the limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum runner job lists filtered to user projects per user**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Runner manager list rate limits
 
@@ -788,11 +788,11 @@ If the limit is exceeded, the REST API returns `429 Too Many Requests`.
 
 To configure the limit:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a value for **Maximum runner managers listed per user**.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set a value for .
+1. Select .
 
 ## Maximum artifacts size
 
@@ -815,11 +815,11 @@ For GitLab.com limits, see [Artifacts maximum size](../../user/gitlab_com/_index
 
 To change the maximum artifact size for an instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Enter a value in the **Maximum artifacts size (MB)** text box.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Enter a value in the  text box.
+1. Select .
 
 ## Maximum number of includes
 
@@ -831,11 +831,11 @@ When a pipeline exceeds this limit, it fails with an error.
 
 To set the maximum number of included files per pipeline:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Enter a value in the **Maximum includes** text box.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Enter a value in the  text box.
+1. Select .
 
 ## Maximum size of the CI artifacts archive
 
@@ -845,11 +845,11 @@ The default maximum size of the CI artifacts archive is 5 megabytes.
 
 To change this limit in the Admin area:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Enter a value in the **Maximum artifact size for dynamic child pipelines (bytes)** text box.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Enter a value in the  text box.
+1. Select .
 
 To change this limit using the [GitLab Rails console](../operations/rails_console.md#starting-a-rails-console-session),
 update `max_artifacts_content_include_size` with the new value. For example, to set it to 20 MB:
@@ -873,11 +873,11 @@ The value must be at least 1. Raising the limit above the default can impact pip
 
 To change the maximum number of caches per job:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Enter a value in the **Maximum caches per job** text box.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Enter a value in the  text box.
+1. Select .
 
 ## CI/CD limits instance configuration
 
@@ -1068,7 +1068,7 @@ GitLab Self-Managed, run the following in the [GitLab Rails console](../operatio
 Plan.default.actual_limits.update!(ci_max_artifact_size_junit: 10)
 ```
 
-You can also set `ci_max_artifact_size_cyclonedx` in the **Admin** area. For more information, see
+You can also set `ci_max_artifact_size_cyclonedx` in the  area. For more information, see
 [Limit CycloneDX artifact size](#limit-cyclonedx-artifact-size).
 
 ### Maximum file size for job logs

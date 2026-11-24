@@ -1,5 +1,5 @@
 ---
-title: "Set up alerting for Jira data | Grafana Enterprise Plugins documentation"
+title: "Set up alerting for Jira data | Grafana Plugins documentation"
 description: "Learn how to create alerts based on Jira issue data"
 ---
 

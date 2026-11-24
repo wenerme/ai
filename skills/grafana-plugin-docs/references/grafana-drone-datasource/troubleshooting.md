@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Drone data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Drone data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the Drone data source in Grafana, covering installation, authentication, connection, and query errors."
 ---
 

@@ -12,6 +12,25 @@ This error occurs when an `enforced` policy matches the package. The run summary
 matched. You can also find the matching rule in the project's `dependency_firewall_blocked`
 audit event, or on the dependency firewall dashboard.
 
+In GitLab CLI 1.131.0 and later, the firewall's `403` status line includes the block reason when
+the registry uses HTTPS. The reason names the policy. In GitLab 19.7 and later, it also names the
+type of rule that matched. The exact wording depends on the package manager:
+
+```plaintext
+403 Blocked by GitLab Dependency Firewall: Package 'left-pad' violates 'Deny copyleft licenses' policy (license rule)
+```
+
+For every package manager except `go`, `glab df` also prints a line like this to standard error
+when it blocks the package:
+
+```plaintext
+dependency firewall blocked left-pad 1.3.0: Package 'left-pad' violates 'Deny copyleft licenses' policy (license rule). The summary at the end of this command lists every blocked package.
+```
+
+For `go`, the status line stays `403 Forbidden` and the reason is in the response body.
+Earlier versions of the GitLab CLI returned `403 Forbidden` and put the reason in the response
+body and the run summary.
+
 A `403` from the firewall carries the header `X-Gitlab-Dependency-Firewall: blocked`. Use it to
 tell a firewall block apart from a `403` returned by the registry itself.
 

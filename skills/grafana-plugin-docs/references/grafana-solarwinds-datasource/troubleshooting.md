@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot the SolarWinds data source | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot the SolarWinds data source | Grafana Plugins documentation"
 description: "Troubleshooting guide for the SolarWinds data source in Grafana."
 ---
 

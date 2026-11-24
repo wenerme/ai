@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare template variables | Grafana Enterprise Plugins documentation"
+title: "Cloudflare template variables | Grafana Plugins documentation"
 description: "Use template variables with the Cloudflare data source to build dynamic, reusable Grafana dashboards."
 ---
 

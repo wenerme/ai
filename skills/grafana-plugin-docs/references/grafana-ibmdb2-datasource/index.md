@@ -1,5 +1,5 @@
 ---
-title: "IBM Db2 data source | Grafana Enterprise Plugins documentation"
+title: "IBM Db2 data source | Grafana Plugins documentation"
 description: "Guide for using IBM Db2 in Grafana"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Wavefront query editor | Grafana Enterprise Plugins documentation"
+title: "Wavefront query editor | Grafana Plugins documentation"
 description: "Build queries with the Wavefront data source query editor in Grafana."
 ---
 

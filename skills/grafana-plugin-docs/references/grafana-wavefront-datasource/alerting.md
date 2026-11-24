@@ -1,5 +1,5 @@
 ---
-title: "Alerting with the Wavefront data source | Grafana Enterprise Plugins documentation"
+title: "Alerting with the Wavefront data source | Grafana Plugins documentation"
 description: "Create Grafana-managed alert rules from Wavefront data source queries."
 ---
 

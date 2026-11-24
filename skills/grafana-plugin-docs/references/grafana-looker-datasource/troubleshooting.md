@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Looker data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Looker data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the Looker data source in Grafana"
 ---
 

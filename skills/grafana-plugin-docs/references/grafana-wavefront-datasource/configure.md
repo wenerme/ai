@@ -1,5 +1,5 @@
 ---
-title: "Configure the Wavefront data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Wavefront data source | Grafana Plugins documentation"
 description: "Configure the Wavefront data source in Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Salesforce data source | Grafana Enterprise Plugins documentation"
+title: "Salesforce data source | Grafana Plugins documentation"
 description: "Get started with the Salesforce data source for Grafana."
 ---
 

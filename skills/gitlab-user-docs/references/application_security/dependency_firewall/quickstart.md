@@ -151,8 +151,9 @@ When the warnings match what you expect to block, change the policy to enforce t
    `enforced`.
 1. Select **Configure with a merge request**, then review and merge it.
 
-Matching packages are now refused. The package manager receives a `403 Forbidden` response and
-the install fails, which stops the package from reaching the machine or the pipeline.
+Matching packages are now refused. The package manager receives a `403` response and the
+install fails, which stops the package from reaching the machine or the pipeline. To find out why
+a package was blocked, see [troubleshooting the dependency firewall](troubleshooting.md#error-403-forbidden).
 
 Roll out enforcement gradually. Use [`policy_scope`](_index.md#policy-scope) to apply a policy
 to a few projects first, and [bypass settings](_index.md#bypass-settings) to exempt a service

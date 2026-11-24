@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot MongoDB data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot MongoDB data source issues | Grafana Plugins documentation"
 description: "This document provides troubleshooting guidance for the MongoDB data source."
 ---
 

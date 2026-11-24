@@ -1306,6 +1306,7 @@ Configuration for a dependency scanning scan profile.
 | `pipManifestFileNamePattern` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Custom pip manifest file name pattern to use for dependency resolution and manifest scanning. The pattern matches file names only, not directory paths. |
 | `pipcompileLockfileFileNamePattern` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Custom pipcompile lockfile file name pattern to use when analyzing. The pattern matches file names only, not directory paths. |
 | `pythonResolutionImage` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Image used by the Python dependency resolution job. |
+| `runnerTags` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Runner tags to set on the jobs the profile injects. Maximum of 20 tags, up to 255 characters each. Commas and CI/CD variable references are not allowed. |
 | `searchIgnoreHiddenDirs` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Ignore hidden directories when searching for supported files. |
 | `secureAnalyzersPrefix` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Prefix for the container registry from which the analyzer image is pulled. |
 | `secureLogLevel` | [`SecurityScanProfileSecureLogLevel`](enums.md#securityscanprofilesecureloglevel) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Logging level used by the analyzer. |
@@ -1335,6 +1336,7 @@ Configuration for a SAST scan profile.
 | `excludedPaths` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Glob paths excluded from the scan. |
 | `gitlabAdvSastIncrScan` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Whether GitLab Advanced SAST incremental scanning is enabled. |
 | `imageSuffix` | [`SecurityScanProfileImageSuffix`](enums.md#securityscanprofileimagesuffix) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Suffix appended to the analyzer image name. |
+| `runnerTags` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Runner tags to set on the jobs the profile injects. Maximum of 20 tags, up to 255 characters each. Commas and CI/CD variable references are not allowed. |
 | `secureAnalyzersPrefix` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Prefix for the container registry from which the analyzer image is pulled. |
 
 ## `SecurityScanProfileSastFalsePositiveInput`
@@ -1376,6 +1378,7 @@ Configuration for a secret detection scan profile.
 | `imageSuffix` | [`SecurityScanProfileImageSuffix`](enums.md#securityscanprofileimagesuffix) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Suffix appended to the analyzer image name. |
 | `logOptions` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Options passed to git log to control the commit range scanned. |
 | `rulesetGitReference` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Git reference of the remote ruleset configuration to use. |
+| `runnerTags` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Runner tags to set on the jobs the profile injects. Maximum of 20 tags, up to 255 characters each. Commas and CI/CD variable references are not allowed. |
 | `secureAnalyzersPrefix` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Prefix for the container registry from which the analyzer image is pulled. |
 
 ## `SecurityScanProfileSecretDetectionFalsePositiveInput`

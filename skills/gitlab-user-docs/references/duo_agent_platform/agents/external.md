@@ -358,7 +358,7 @@ To enable an external agent:
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Under **Runs when**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
    By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
-   - To add an event, select **Add trigger** > **On an event**.
+   - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 
@@ -403,7 +403,7 @@ To enable an external agent in a project:
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Under **Runs when**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
    By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
-   - To add an event, select **Add trigger** > **On an event**.
+   - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 

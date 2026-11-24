@@ -123,6 +123,7 @@ GitLab shows the key's fingerprint, email address, and creation date.
 If you revoke a user ID in your GPG key, GitLab does not show its email address.
 Commits that use that address as the committer email are marked as unverified when
 GitLab checks them.
+Commits with that address that are already verified keep their status when you update the key.
 
 To change a key after you add it, [update the key](#update-a-gpg-key).
 
@@ -299,20 +300,20 @@ If the new version adds nothing to the key, GitLab shows
 
 After the update, GitLab checks these commits again in the background:
 
-- Commits signed with the primary key that are not verified.
-- Every commit signed with a subkey of the key.
+- Commits signed with the key or one of its subkeys that are not verified.
+- Commits signed with a subkey that the update added.
 
-Commits signed with the primary key that are already verified keep their status.
-Commits signed with a subkey that expired after they were signed are marked as unverified,
-even when they were verified before.
+Commits that are already verified keep their status, even when the subkey that signed them
+expired after they were signed.
 Commits signed with a subkey that you revoked are marked as unverified.
 GitLab shows that they were signed with a revoked key, or with an expired key if that
 subkey has also expired.
 
-When you revoke a user ID, commits signed with the primary key that are already verified
-with that user ID's email address keep their status.
+When you revoke a user ID, commits that are already verified with that user ID's email
+address keep their status.
 To check them again, remove the key and add it again.
 GitLab then checks every commit signed with the key again.
+Commits signed with a subkey that has expired are then marked as unverified.
 
 ## Revoke a GPG key
 

@@ -1,5 +1,5 @@
 ---
-title: "GitLab alerting | Grafana Enterprise Plugins documentation"
+title: "GitLab alerting | Grafana Plugins documentation"
 description: "Set up alerting with the GitLab data source in Grafana"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Get started with Splunk on Grafana Cloud | Grafana Enterprise Plugins documentation"
+title: "Get started with Splunk on Grafana Cloud | Grafana Plugins documentation"
 description: "Connect your Splunk instance to Grafana Cloud and build your first dashboard in minutes."
 ---
 

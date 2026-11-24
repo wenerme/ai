@@ -1,5 +1,5 @@
 ---
-title: "Configure the Vercel data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Vercel data source | Grafana Plugins documentation"
 description: "Configure the Vercel data source in Grafana, including access token authentication, Team ID, and provisioning."
 ---
 

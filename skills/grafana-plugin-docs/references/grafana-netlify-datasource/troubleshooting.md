@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Netlify data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Netlify data source issues | Grafana Plugins documentation"
 description: "Troubleshooting guide for the Netlify data source in Grafana."
 ---
 

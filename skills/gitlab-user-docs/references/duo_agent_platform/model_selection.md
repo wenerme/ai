@@ -55,6 +55,7 @@ For information about model availability during trials, see
 - Separate model settings for Lite and Standard reviews [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598)
   as a [beta](../../policy/development_stages_support.md#beta) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md)
   named `duo_code_review_standard_flow`. Enabled by default.
+- Claude Opus 5.5 Gemini Enterprise Agent Platform [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8303) as a supported model for Standard reviews on November 24, 2026.
 
 > [!flag]
 > The availability of separate model settings for Lite and Standard reviews is controlled by a feature flag.
@@ -68,6 +69,7 @@ For Code Review Flow, different models are available for each [review level](flo
 
 | Model                                              | Lite (default)[^supported-models-earlier-code-review] | Standard (beta) |
 |----------------------------------------------------|-------------------------------------------------------|-----------------|
+| Claude Opus 5.5 Gemini Enterprise Agent Platform   | No                                            | Yes     |
 | Claude Sonnet 4.6                                  | Yes                                           | No      |
 | Claude Sonnet 5                                    | Yes                                           | No      |
 | Claude Sonnet 5.5                                  | Yes                                           | No      |

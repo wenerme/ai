@@ -1,5 +1,5 @@
 ---
-title: "Drone annotations | Grafana Enterprise Plugins documentation"
+title: "Drone annotations | Grafana Plugins documentation"
 description: "Use the Drone data source to add annotations to Grafana dashboards."
 ---
 

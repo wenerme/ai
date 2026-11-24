@@ -152,7 +152,9 @@ To resolve this issue:
    are turned on for the project. Hosted runners meet all of the requirements by default.
 1. If you use your own runners, confirm that at least one runner meets the requirements:
    1. In the top bar, select **Search or go to** and find your project or top-level group.
-   1. In the left sidebar, select **Build** > **Runners**.
+   1. In the left sidebar:
+      - For a group, select **Build** > **Runners**.
+      - For a project, select **Settings** > **CI/CD**, then expand **Runners**.
    1. Confirm that a runner with the `gitlab--duo` tag is online.
 1. Optional. [Verify the runner configuration](flows/execution/_index.md#verify-the-runner-configuration)
    from project settings, which checks the tag, executor, and scope together.

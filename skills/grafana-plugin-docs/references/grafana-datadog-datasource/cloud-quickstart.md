@@ -1,5 +1,5 @@
 ---
-title: "Get started with Datadog on Grafana Cloud | Grafana Enterprise Plugins documentation"
+title: "Get started with Datadog on Grafana Cloud | Grafana Plugins documentation"
 description: "Connect Datadog to Grafana Cloud and build your first dashboard in minutes."
 ---
 

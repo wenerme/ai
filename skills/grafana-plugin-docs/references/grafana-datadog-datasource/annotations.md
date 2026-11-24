@@ -1,5 +1,5 @@
 ---
-title: "Datadog annotations | Grafana Enterprise Plugins documentation"
+title: "Datadog annotations | Grafana Plugins documentation"
 description: "This document describes how to use annotations with the Datadog data source"
 ---
 

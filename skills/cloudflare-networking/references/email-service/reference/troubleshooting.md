@@ -247,6 +247,16 @@ To reduce bounce rates:
 3. Monitor feedback loops: Subscribe to ISP feedback loops
 4. Gradual warm-up: For new domains, start with small volumes
 
+### Recipient is not a verified destination address
+
+On the Workers Free plan, Email Sending sends only to [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/destination-addresses/) in your account. If any recipient in `to`, `cc`, or `bcc` is not verified, Email Service rejects the whole message:
+
+- The Workers binding throws `E_RECIPIENT_PLAN_RESTRICTED`.
+- The REST API returns `403` with code `10208`.
+- SMTP refuses the recipient with `550 5.7.1`.
+
+To send to that recipient, [add and verify](https://developers.cloudflare.com/email-service/configuration/destination-addresses/#add-a-destination-address) it as a destination address, or upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/).
+
 ### Suppressed recipient
 
 Each sending domain has a [**Drop suppressed recipients** setting](https://developers.cloudflare.com/email-service/configuration/domains/#drop-suppressed-recipients). The setting is off by default.
@@ -350,5 +360,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

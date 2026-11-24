@@ -1,5 +1,5 @@
 ---
-title: "PagerDuty data source | Grafana Enterprise Plugins documentation"
+title: "PagerDuty data source | Grafana Plugins documentation"
 description: "Use the PagerDuty data source to query and visualize PagerDuty incident data in Grafana."
 ---
 

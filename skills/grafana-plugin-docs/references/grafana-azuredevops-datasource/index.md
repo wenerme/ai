@@ -1,5 +1,5 @@
 ---
-title: "Azure DevOps data source | Grafana Enterprise Plugins documentation"
+title: "Azure DevOps data source | Grafana Plugins documentation"
 description: "Use the Azure DevOps data source to query and visualize Azure DevOps projects, repositories, builds, pipelines, and releases in Grafana."
 ---
 

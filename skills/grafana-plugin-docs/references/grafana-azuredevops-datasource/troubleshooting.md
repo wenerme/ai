@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Azure DevOps data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Azure DevOps data source issues | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the Azure DevOps data source plugin for Grafana."
 ---
 

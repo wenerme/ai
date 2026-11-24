@@ -1,5 +1,5 @@
 ---
-title: "Configure the Oracle data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Oracle data source | Grafana Plugins documentation"
 description: "Configure connection, authentication, and performance settings for the Oracle data source in Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "LogicMonitor Devices data source | Grafana Enterprise Plugins documentation"
+title: "LogicMonitor Devices data source | Grafana Plugins documentation"
 description: "Query and visualize LogicMonitor device metrics in Grafana"
 ---
 

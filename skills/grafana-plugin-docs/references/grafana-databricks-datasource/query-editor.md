@@ -1,5 +1,5 @@
 ---
-title: "Databricks query editor | Grafana Enterprise Plugins documentation"
+title: "Databricks query editor | Grafana Plugins documentation"
 description: "This document describes the query editor for the Databricks data source."
 ---
 

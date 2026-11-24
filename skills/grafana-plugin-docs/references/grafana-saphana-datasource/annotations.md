@@ -1,5 +1,5 @@
 ---
-title: "SAP HANA annotations | Grafana Enterprise Plugins documentation"
+title: "SAP HANA annotations | Grafana Plugins documentation"
 description: "Use SAP HANA data as annotations in Grafana."
 ---
 

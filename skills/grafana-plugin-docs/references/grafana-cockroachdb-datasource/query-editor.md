@@ -1,5 +1,5 @@
 ---
-title: "CockroachDB query editor | Grafana Enterprise Plugins documentation"
+title: "CockroachDB query editor | Grafana Plugins documentation"
 description: "Use the CockroachDB query editor to build and run queries in Grafana"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Looker alerting | Grafana Enterprise Plugins documentation"
+title: "Looker alerting | Grafana Plugins documentation"
 description: "Set up alerts using Looker data in Grafana"
 ---
 

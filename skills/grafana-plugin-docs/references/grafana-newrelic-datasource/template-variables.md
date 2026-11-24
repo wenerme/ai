@@ -1,5 +1,5 @@
 ---
-title: "New Relic template variables | Grafana Enterprise Plugins documentation"
+title: "New Relic template variables | Grafana Plugins documentation"
 description: "Use template variables with the New Relic data source in Grafana."
 ---
 

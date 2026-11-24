@@ -49,6 +49,7 @@ To migrate generic deployments:
 1. In the left sidebar, select **Operate** > **Kubernetes clusters**.
 1. From the certificate-based clusters section, open the cluster that serves the same environment scope.
 1. Select the **Details** tab and turn off the cluster.
+1. After you verify your deployments work with the agent, remove the certificate-based cluster.
 
 ## Migrate from GitLab-managed clusters to Kubernetes resources
 
@@ -148,6 +149,7 @@ To migrate from GitLab-managed clusters to GitLab-managed Kubernetes resources:
 1. In the left sidebar, select **Operate** > **Kubernetes clusters**.
 1. From the certificate-based clusters section, open the cluster that serves the same environment scope.
 1. Select the **Details** tab and turn off the cluster.
+1. After you verify your deployments work with the agent, remove the certificate-based cluster.
 
 ## Migrate from Auto DevOps
 
@@ -204,6 +206,7 @@ To migrate from Auto DevOps:
    ```
 
 1. To test your pipeline, in the left sidebar, select **Build** > **Pipelines** and then **New pipeline**.
+1. After you verify your deployments work with the agent, remove the certificate-based cluster.
 
 For an example, [view this project](https://gitlab.com/gitlab-examples/ops/gitops-demo/hello-world-service).
 
@@ -219,6 +222,21 @@ agent, go through the following steps:
 ## Migrate a cluster management project
 
 See [how to use a cluster management project with the GitLab agent for Kubernetes](../../clusters/management_project_template.md).
+
+## Remove certificate-based clusters
+
+After you migrate and verify your deployments, remove the certificate-based cluster
+integration from GitLab:
+
+- To remove a cluster by using the UI, see [remove a cluster](../../project/clusters/add_remove_clusters.md#remove-a-cluster).
+  If you select , GitLab deletes
+  the namespaces, roles, and bindings it created in your cluster, which might include namespaces
+  that your deployments still use. To keep these resources, select
+   instead.
+- To remove clusters by using the API, find them with the cluster discovery API,
+  then [delete each cluster](../../../api/cluster_discovery.md#delete-certificate-based-clusters).
+
+Removing the integration does not delete the Kubernetes cluster itself.
 
 ## Migrate cluster monitoring features
 

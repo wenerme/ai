@@ -719,6 +719,8 @@ spec:
 ##### Use external input files in configuration from another project
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/590532) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_spec_include_own_context`. Disabled by default.
+- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/624232) in GitLab 19.4.
+- [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/624232) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

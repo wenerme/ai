@@ -1,5 +1,5 @@
 ---
-title: "Netlify data source | Grafana Enterprise Plugins documentation"
+title: "Netlify data source | Grafana Plugins documentation"
 description: "Query and visualize sites, builds, deploys, forms, and SSL certificate data from Netlify in Grafana."
 ---
 

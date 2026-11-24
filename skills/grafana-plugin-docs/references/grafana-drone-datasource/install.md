@@ -1,5 +1,5 @@
 ---
-title: "Install the Drone data source | Grafana Enterprise Plugins documentation"
+title: "Install the Drone data source | Grafana Plugins documentation"
 description: "Install the Drone data source plugin in Grafana Cloud or self-managed Grafana."
 ---
 

@@ -99,7 +99,7 @@ then create an automation:
 1. In **Name**, enter a name for the automation.
 1. From the **Runs with** dropdown list, select **Recommend Reviewers**.
 1. Under **Runs when**, if a schedule is open, select **Cancel**.
-1. Select **Add trigger** > **On an event**, then:
+1. Select **Add condition** > **On an event**, then:
    1. From the **Select an event** dropdown list, select **Merge request**.
    1. From the **Run when** dropdown list, select **Marked ready**.
    1. Select **Add event**.

@@ -1,5 +1,5 @@
 ---
-title: "AppDynamics data source | Grafana Enterprise Plugins documentation"
+title: "AppDynamics data source | Grafana Plugins documentation"
 description: "Get started with the AppDynamics data source for Grafana."
 ---
 

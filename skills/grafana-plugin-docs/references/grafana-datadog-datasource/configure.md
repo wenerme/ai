@@ -1,5 +1,5 @@
 ---
-title: "Configure the Datadog data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Datadog data source | Grafana Plugins documentation"
 description: "This document outlines configuration options for the Datadog data source"
 ---
 

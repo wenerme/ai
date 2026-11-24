@@ -1,5 +1,5 @@
 ---
-title: "Databricks annotations | Grafana Enterprise Plugins documentation"
+title: "Databricks annotations | Grafana Plugins documentation"
 description: "This document describes Databricks annotations."
 ---
 

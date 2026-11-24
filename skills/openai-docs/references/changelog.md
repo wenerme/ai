@@ -8,6 +8,18 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## November, 2026
 
+### Nov 24
+
+Update · Model: chat-latest
+
+Updated the **chat-latest** snapshot, which points to the latest model available in ChatGPT for Plus, Pro, Business and Enterprise users. We recommend leveraging the [GPT-6.2 model family](https://developers.openai.com/api/docs/guides/latest-model) for production API usage, but feel free to use this model to test the latest improvements for chat use cases. The underlying model snapshot will be regularly updated. Read more [here](https://developers.openai.com/api/docs/models/chat-latest).
+
+### Nov 24
+
+Feature · Model: gpt-6.2-astra-healthcare · Model: gpt-6.2-sol-healthcare · Model: gpt-6-astra-healthcare · Model: gpt-6.1-sol-healthcare · API: v1/responses
+
+Released [Healthcare model configurations](https://developers.openai.com/api/docs/pricing#healthcare-model-configurations) for the Responses API, pairing select OpenAI models with a harness tailored to clinical questions. When the model uses [web search](https://developers.openai.com/api/docs/guides/tools-web-search), it searches a dedicated index of medical sources.
+
 ### Nov 19
 
 Feature · Model: gpt-live-1.1 · API: v1/live/sessions

@@ -1,5 +1,5 @@
 ---
-title: "Vercel query editor | Grafana Enterprise Plugins documentation"
+title: "Vercel query editor | Grafana Plugins documentation"
 description: "Use the Vercel query editor to query deployments, projects, domains, and other Vercel resources in Grafana."
 ---
 

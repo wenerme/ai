@@ -1,5 +1,5 @@
 ---
-title: "SAP HANA query editor | Grafana Enterprise Plugins documentation"
+title: "SAP HANA query editor | Grafana Plugins documentation"
 description: "Use the SAP HANA query editor in Grafana to query your SAP HANA database."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Databricks data source logs | Grafana Enterprise Plugins documentation"
+title: "Databricks data source logs | Grafana Plugins documentation"
 description: "This document describes how to visualize Databricks query results as logs in Grafana."
 ---
 

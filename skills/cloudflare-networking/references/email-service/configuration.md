@@ -18,7 +18,8 @@ image: https://developers.cloudflare.com/email-service/configuration/og.png?v=5a
 Configure domains, routing rules, subdomains, suppressions, and MTA-STS for Cloudflare Email Service.
 
 - [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/)
-- [Email routing rules and addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/)
+- [Destination addresses](https://developers.cloudflare.com/email-service/configuration/destination-addresses/)
+- [Email routing rules](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/)
 - [Configure subdomains](https://developers.cloudflare.com/email-service/configuration/subdomains/)
 - [Configure MTA-STS](https://developers.cloudflare.com/email-service/configuration/mta-sts/)
 - [Send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/)

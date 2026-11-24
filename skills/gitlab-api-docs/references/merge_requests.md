@@ -182,7 +182,7 @@ returns a subset of fields. Otherwise, response attributes include:
 | `milestone.title`                        | string   | Name of the milestone. |
 | `milestone.updated_at`                   | dateTime | Timestamp when the milestone was last updated. |
 | `milestone.web_url`                      | string   | Full web URL to view the milestone. |
-| `prepared_at`                            | dateTime | Timestamp of when the merge request was prepared. This field populates one time, only after all the [preparation steps](#preparation-steps) complete, and is not updated if more changes are added. |
+| `prepared_at`                            | dateTime | Timestamp of when the merge request was prepared. This field populates one time, after the [preparation steps](#preparation-steps) are complete or scheduled, and is not updated if more changes are added. |
 | `project_id`                             | integer  | The ID of the project containing the merge request. |
 | `reference`                              | string   | Deprecated. Use `references` instead. |
 | `references[]`                           | object   | Object with all internal references of the merge request. |
@@ -455,7 +455,7 @@ response attributes:
 | `[].merged_at`                     | datetime | Timestamp of when the merge request was merged. |
 | `[].merged_by`                     | object   | User who merged this merge request or set it to auto-merge. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/350534) in GitLab 14.7, and scheduled for removal in [API version 5](https://gitlab.com/groups/gitlab-org/-/work_items/8115). Use `merge_user` instead.  |
 | `[].milestone`                     | object   | Milestone of the merge request. |
-| `[].prepared_at`                   | datetime | Timestamp of when the merge request was prepared. This field is populated one time, only after all the [preparation steps](#preparation-steps) are completed, and is not updated if more changes are added. |
+| `[].prepared_at`                   | datetime | Timestamp of when the merge request was prepared. This field populates one time, after the [preparation steps](#preparation-steps) are complete or scheduled, and is not updated if more changes are added. |
 | `[].project_id`                    | integer  | ID of the project where the merge request resides. Always equal to `target_project_id`. |
 | `[].reference`                     | string   | Internal reference of the merge request. Returned in shortened format by default. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/20354) in GitLab 12.7, and scheduled for removal in [API version 5](https://gitlab.com/groups/gitlab-org/-/work_items/8115). Use `references` instead.  |
 | `[].references`                    | object   | Internal references of the merge request. Includes `short`, `relative`, and `full` references. `references.relative` is relative to the merge request's group or project. When fetched from the merge request's project, `relative` and `short` formats are identical. When requested across groups or projects, `relative` and `full` formats are identical. |
@@ -763,7 +763,7 @@ returns a subset of fields. Otherwise, response attributes include:
 | `milestone.title`                        | string   | Name of the milestone. |
 | `milestone.updated_at`                   | dateTime | Timestamp when the milestone was last updated. |
 | `milestone.web_url`                      | string   | Full web URL to view the milestone. |
-| `prepared_at`                            | dateTime | Timestamp of when the merge request was prepared. This field populates one time, only after all the [preparation steps](#preparation-steps) complete, and is not updated if more changes are added. |
+| `prepared_at`                            | dateTime | Timestamp of when the merge request was prepared. This field populates one time, after the [preparation steps](#preparation-steps) are complete or scheduled, and is not updated if more changes are added. |
 | `project_id`                             | integer  | The ID of the project containing the merge request. |
 | `reference`                              | string   | Deprecated. Use `references` instead. |
 | `references[]`                           | object   | Object with all internal references of the merge request. |
@@ -1108,7 +1108,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes). Other p
 | `milestone.updated_at`                                      | dateTime | Timestamp when the milestone was last updated. |
 | `milestone.web_url`                                         | string   | Full web URL to view the milestone. |
 | `pipeline[]`                                                | object   | Pipeline running on the branch HEAD of the merge request. Consider using `head_pipeline` instead, as it contains more information. |
-| `prepared_at`                                               | dateTime | Timestamp of when the merge request was prepared. This field populates one time, only after all the [preparation steps](#preparation-steps) complete, and is not updated if more changes are added. |
+| `prepared_at`                                               | dateTime | Timestamp of when the merge request was prepared. This field populates one time, after the [preparation steps](#preparation-steps) are complete or scheduled, and is not updated if more changes are added. |
 | `project_id`                                                | integer  | The ID of the project containing the merge request. |
 | `rebase_in_progress`                                        | boolean  | If `true`, Sidekiq is running a rebase operation on this branch. |
 | `reference`                                                 | string   | Deprecated. Use `references` instead. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/20354) in GitLab 12.7, and scheduled for removal in [API version 5](https://gitlab.com/groups/gitlab-org/-/work_items/8115). Use `references` instead.  |
@@ -1343,13 +1343,21 @@ Use `detailed_merge_status` instead of `merge_status` to account for all potenti
 
 ### Preparation steps
 
-The `prepared_at` field populates one time, only after these steps complete:
+The `prepared_at` field populates one time, after these steps complete:
 
 - Create the diff.
+- Link all Git LFS objects.
+
+The `prepared_at` field might populate before these steps complete in the background:
+
 - Create the pipelines.
 - Check mergeability.
-- Link all Git LFS objects.
 - Send notifications.
+
+To check the status of pipeline creation and the mergeability check:
+
+- In the response for [a single merge request](#retrieve-a-merge-request), use the `head_pipeline` and `detailed_merge_status` attributes.
+- In merge request webhook payloads, use the `head_pipeline_id` and `detailed_merge_status` attributes.
 
 The `prepared_at` field does not update if more changes are added to the merge request.
 

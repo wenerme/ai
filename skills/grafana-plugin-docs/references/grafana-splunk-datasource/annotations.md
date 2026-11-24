@@ -1,5 +1,5 @@
 ---
-title: "Splunk annotations | Grafana Enterprise Plugins documentation"
+title: "Splunk annotations | Grafana Plugins documentation"
 description: "Use annotations with the Splunk data source to overlay events and alerts on Grafana graphs."
 ---
 

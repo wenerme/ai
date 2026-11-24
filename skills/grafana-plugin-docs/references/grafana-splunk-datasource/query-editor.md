@@ -1,5 +1,5 @@
 ---
-title: "Splunk query editor | Grafana Enterprise Plugins documentation"
+title: "Splunk query editor | Grafana Plugins documentation"
 description: "Use the Splunk query editor to create and run SPL queries in Grafana."
 ---
 

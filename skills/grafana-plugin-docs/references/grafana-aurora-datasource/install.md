@@ -1,5 +1,5 @@
 ---
-title: "Install the Amazon Aurora data source plugin | Grafana Enterprise Plugins documentation"
+title: "Install the Amazon Aurora data source plugin | Grafana Plugins documentation"
 description: "Install, upgrade, and verify the Amazon Aurora data source plugin, including network requirements for restricted and air-gapped environments."
 ---
 

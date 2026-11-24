@@ -99,7 +99,7 @@ The put() method returns a Promise that you should `await` on to verify a succes
 
 ### Concurrent writes to the same key
 
-Due to the eventually consistent nature of KV, concurrent writes to the same key can end up overwriting one another. It is a common pattern to write data from a single process with Wrangler, Durable Objects, or the API. This avoids competing concurrent writes because of the single stream. All data is still readily available within all Workers bound to the namespace.
+Due to the eventually consistent nature of KV, concurrent writes to the same key can end up overwriting one another. It is a common pattern to write data from a single process with the Cloudflare CLI (`cf`), Wrangler, Durable Objects, or the API. This avoids competing concurrent writes because of the single stream. All data is still readily available within all Workers bound to the namespace.
 
 If concurrent writes are made to the same key, the last write will take precedence.
 
@@ -109,7 +109,7 @@ Refer to [How KV works](https://developers.cloudflare.com/kv/concepts/how-kv-wor
 
 ### Write data in bulk
 
-Write more than one key-value pair at a time with Wrangler or [via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk_update/).
+Write more than one key-value pair at a time with the [Cloudflare CLI (`cf`) or Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-bulk), or [via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk_update/).
 
 The bulk API can accept up to 10,000 KV pairs at once.
 
@@ -387,7 +387,7 @@ async def retry_with_backoff(fn, success_result, max_attempts=5, initial_delay=1
 
 ## Other methods to access KV
 
-You can also [write key-value pairs from the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-namespace-create) and [write data via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/update/).
+You can also [write key-value pairs from the command line with the Cloudflare CLI (`cf`) or Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-key-put) and [write data via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/update/).
 
 Was this helpful?
 
@@ -398,5 +398,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/#page","headline":"Write key-value pairs","description":"Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.","url":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/og.png?v=37eee9e0019c75d1","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/#page","headline":"Write key-value pairs","description":"Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.","url":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/og.png?v=37eee9e0019c75d1","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

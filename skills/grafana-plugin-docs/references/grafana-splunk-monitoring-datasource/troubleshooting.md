@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Splunk Infrastructure Monitoring data source issues | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Splunk Infrastructure Monitoring data source issues | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the Splunk Infrastructure Monitoring data source"
 ---
 

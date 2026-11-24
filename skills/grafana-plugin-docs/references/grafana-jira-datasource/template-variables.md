@@ -1,5 +1,5 @@
 ---
-title: "Template variables | Grafana Enterprise Plugins documentation"
+title: "Template variables | Grafana Plugins documentation"
 description: "Learn how to use template variables with the Jira data source"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Jenkins template variables | Grafana Enterprise Plugins documentation"
+title: "Jenkins template variables | Grafana Plugins documentation"
 description: "Using template variables with the Jenkins data source in Grafana"
 ---
 

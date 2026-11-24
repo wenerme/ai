@@ -1,5 +1,5 @@
 ---
-title: "SAP HANA data source | Grafana Enterprise Plugins documentation"
+title: "SAP HANA data source | Grafana Plugins documentation"
 description: "Introduction to the SAP HANA data source plugin for Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Zendesk data source alerting | Grafana Enterprise Plugins documentation"
+title: "Zendesk data source alerting | Grafana Plugins documentation"
 description: "Set up Grafana alert rules that use the Zendesk data source."
 ---
 

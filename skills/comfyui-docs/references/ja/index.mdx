@@ -1,8 +1,8 @@
 ---
 title: "ComfyUI 公式ドキュメント"
-description: "ComfyUI の公式ドキュメント。オープンソースのノードベース生成 AI アプリケーションで、画像・動画・音声・3D 生成のためのワークフローを構築する方法を学べます。"
+description: "ComfyUI の公式ドキュメント。オープンソースのノードベース生成 AI アプリケーションで、画像・動画・オーディオ・3D 生成のためのワークフローを構築する方法を学べます。"
 mode: "frame"
-translationSourceHash: ee7b0862
+translationSourceHash: 7a250ea8
 translationFrom: index.mdx
 ---
 
@@ -48,7 +48,7 @@ translationFrom: index.mdx
 <div className="px-4 max-w-5xl mx-auto">
 
 <p className="max-w-xl mx-auto px-4 mb-12 text-lg text-center text-gray-500 dark:text-zinc-500">
-生成 AI 向けの、最も強力なオープンソースのノードベースアプリケーション
+ビジュアル AI のための、最も強力なオープンソースアプリケーション
 </p>
 
 <div className="mb-12">
@@ -70,13 +70,28 @@ translationFrom: index.mdx
 </div>
 
 <div className="mb-12">
-  <h2 className="text-2xl font-bold mb-6 text-center">AI エージェントと MCP</h2>
+  <h2 className="text-2xl font-bold mb-6 text-center">Comfy Router で、あらゆるフロンティアモデルを単一の API で</h2>
+  
+    
+      1 つのキーで単一の API エンドポイントを通じてパートナーモデルを呼び出す
+    
+    
+      Comfy Router で利用できるモデルをブラウズする
+    
+    
+      Router のエンドポイント、ヘッダー、制限の完全なリファレンス
+    
+  
+</div>
+
+<div className="mb-12">
+  <h2 className="text-2xl font-bold mb-6 text-center">エージェントと MCP で Comfy をセットアップ</h2>
   
     
       画像・動画・オーディオ・3D 生成のために MCP 経由で AI エージェントを接続する
     
     
-      cloud.comfy.org のホスト型 MCP。Cloud GPU でワークフローを実行
+      Comfy Cloud とローカル向けのホスト型 MCP
     
     
       ターミナルから comfy generate（ベータ）でパートナーモデルを呼び出す
@@ -85,16 +100,16 @@ translationFrom: index.mdx
 </div>
 
 <div className="mb-12">
-  <h2 className="text-2xl font-bold mb-6 text-center">Comfy Router</h2>
+  <h2 className="text-2xl font-bold mb-6 text-center">Comfy をお使いのインフラにデプロイ</h2>
   
     
-      1 つのキーで単一の API エンドポイントを通じてパートナーモデルを呼び出す
+      ComfyUI をローカル、サーバー、またはクラウドで実行する
     
     
-      アプリケーションから ComfyUI のデプロイメントに対してワークフローを実行する
+      アプリケーションからデプロイメントに対してワークフローを実行する
     
     
-      Router のエンドポイント、ヘッダー、制限の完全なリファレンス
+      ComfyUI の開発に貢献する
     
   
 </div>
@@ -110,21 +125,6 @@ translationFrom: index.mdx
     
     
       ComfyUI の各ノードについて学ぶ
-    
-  
-</div>
-
-<div className="mb-12">
-  <h2 className="text-2xl font-bold mb-6 text-center">開発者</h2>
-  
-    
-      ComfyUI をローカル、サーバー、またはクラウドで実行する
-    
-    
-      アプリケーションからデプロイメントに対してワークフローを実行する
-    
-    
-      ComfyUI の開発に貢献する
     
   
 </div>
@@ -168,10 +168,18 @@ translationFrom: index.mdx
     <a href="https://github.com/comfyanonymous" className="text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">comfyanonymous</a> および他の<a href="https://github.com/Comfy-Org/ComfyUI/graphs/contributors" className="text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">コントリビューター</a>によって執筆。
   </p>
 
-  <ul className="list-none space-y-2 max-w-2xl mx-auto">
-    <li><strong>ComfyUI</strong> は生成 AI 向けのノードベースインターフェースおよび推論エンジンです</li>
-    <li>ユーザーはノードを介してさまざまな AI モデルと操作を組み合わせ、高度にカスタマイズ可能で制御可能なコンテンツ生成を実現できます</li>
-    <li>ComfyUI は完全にオープンソースであり、ローカルデバイスで実行できます</li>
+  <p className="max-w-2xl mx-auto mb-6">
+    <strong>ComfyUI</strong> は、ビジュアル AI 向けのオープンソースのノードベースインターフェース兼推論エンジンです。モデルと操作をワークフロー内のノードとして接続し、画像・動画・オーディオ・3D 生成のあらゆるステップを制御できます。Comfy はこれを中心に以下の製品を展開しています。
+  </p>
+
+  <ul className="list-none space-y-3 max-w-2xl mx-auto text-left">
+    <li><a href="https://github.com/Comfy-Org/ComfyUI" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">ComfyUI</a>：オープンソースのエンジンとインターフェース。自分のコンピューターまたはサーバーで無料で実行できます。</li>
+    <li><a href="/ja/installation/desktop/overview" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Desktop</a>：Windows、macOS、Linux 向けのアプリで、ComfyUI をインストールし、お使いのコンピューターまたは Comfy Cloud で開けます。</li>
+    <li><a href="/ja/get_started/cloud" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Cloud</a>：クラウド GPU 上で動作する ComfyUI。インストールは不要です。</li>
+    <li><a href="/ja/development/comfy-router/quickstart" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Router</a>：フロンティアの画像・動画・オーディオモデルを、1 つの API と 1 つのキーで利用できます。</li>
+    <li><a href="/ja/development/deploy/overview" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy API</a>：ワークフローをデプロイし、自分のアプリケーションから実行できます。</li>
+    <li><a href="/ja/agent-tools" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy MCP と Comfy CLI</a>：AI エージェントやスクリプトを、ローカルまたは Comfy Cloud 上の ComfyUI に接続します。</li>
+    <li><a href="/ja/registry/overview" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Registry</a>：ComfyUI を拡張するカスタムノードの公開インデックス。</li>
   </ul>
 </div>
 

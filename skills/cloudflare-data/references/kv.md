@@ -29,6 +29,8 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
+*src/index.tsts*
+
 ```ts
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
@@ -52,21 +54,48 @@ export default {
 			}),
 		);
 	},
-
 } satisfies ExportedHandler<{ KV: KVNamespace }>;
 ```
 
-```json
+The following content appears twice: first for the Cloudflare CLI (`cf`), then for Wrangler. Use `cf` for new projects. In an existing project, use the CLI that the project already uses.
+
+Cloudflare CLI
+
+*cloudflare.config.tsts*
+
+```ts
+import { bindings, defineConfig } from "cf/config";
+import * as entrypoint from "./src/index.ts" with { type: "cf-worker" };
+
+export default defineConfig({
+	worker: {
+		name: "<ENTER_WORKER_NAME>",
+		entrypoint,
+		compatibilityDate: "<COMPATIBILITY_DATE>",
+		observability: {
+			enabled: true,
+		},
+		env: {
+			KV: bindings.kv({ id: "<YOUR_BINDING_ID>" }),
+		},
+	},
+});
+```
+
+Wrangler
+
+*wrangler.jsoncjsonc*
+
+```jsonc
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "<ENTER_WORKER_NAME>",
 	"main": "src/index.ts",
 	"upload_source_maps": true,
-	"compatibility_date": "2025-02-04",
+	"compatibility_date": "<COMPATIBILITY_DATE>",
 	"observability": {
 		"enabled": true
 	},
-
 	"kv_namespaces": [
 		{
 			"binding": "KV",
@@ -76,7 +105,7 @@ export default {
 }
 ```
 
-See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
+For the full binding reference, refer to [Workers KV binding API](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
 ```plaintext
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
@@ -132,9 +161,21 @@ Learn how Workers KV stores and retrieves data.
 
 Use Key-value storage
 
+The following content appears twice: first for the Cloudflare CLI (`cf`), then for Wrangler. Use `cf` for new projects. In an existing project, use the CLI that the project already uses.
+
+Cloudflare CLI
+
+[Cloudflare CLI (cf)](https://developers.cloudflare.com/cf/)
+
+The Cloudflare CLI (`cf`) allows you to [create](https://developers.cloudflare.com/cf/get-started/first-worker/), develop, and deploy your Workers projects and manage KV namespaces from the terminal.
+
+Use Cloudflare CLI (cf)
+
+Wrangler
+
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
 
-The Workers command-line interface, Wrangler, allows you to [create](https://developers.cloudflare.com/workers/wrangler/commands/general/#init), [test](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), and [deploy](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deploy) your Workers projects.
+The Workers command-line interface, Wrangler, allows you to [create](https://developers.cloudflare.com/workers/wrangler/commands/general/#init), [test](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), and [deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) your Workers projects.
 
 Use Wrangler
 
@@ -195,5 +236,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/kv/#page","headline":"Cloudflare Workers KV","description":"Workers KV is a global, low-latency, key-value data store for building dynamic and performant APIs and websites.","url":"https://developers.cloudflare.com/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/og.png?v=7e14ea89b3414981","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/kv/#page","headline":"Cloudflare Workers KV","description":"Workers KV is a global, low-latency, key-value data store for building dynamic and performant APIs and websites.","url":"https://developers.cloudflare.com/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/og.png?v=7e14ea89b3414981","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

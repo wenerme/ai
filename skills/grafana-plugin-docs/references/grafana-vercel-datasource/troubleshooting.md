@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot the Vercel data source | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot the Vercel data source | Grafana Plugins documentation"
 description: "Troubleshoot common issues with the Vercel data source in Grafana."
 ---
 

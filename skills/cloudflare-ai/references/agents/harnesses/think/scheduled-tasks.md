@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/
 Use `getScheduledTasks()` when code should create recurring Think turns or deterministic scheduled handlers. Think reconciles the declarations on startup, stores a durable one-shot schedule for the next occurrence, and re-arms the next occurrence after each run.
 
 ```js
-import { Think, defineScheduledTasks } from "@cloudflare/think";
+import { Think } from "@cloudflare/think";
 
 export class DigestAgent extends Think {
 	getDefaultTimezone() {
@@ -26,7 +26,7 @@ export class DigestAgent extends Think {
 	}
 
 	getScheduledTasks() {
-		return defineScheduledTasks({
+		return {
 			weeklyCommitReport: {
 				schedule: "every week on monday at 09:00",
 				prompt:
@@ -53,21 +53,21 @@ export class DigestAgent extends Think {
 					});
 				},
 			},
-		});
+		};
 	}
 }
 ```
 
 ```ts
-import { Think, defineScheduledTasks } from "@cloudflare/think";
+import { Think, type ThinkScheduledTasks } from "@cloudflare/think";
 
 export class DigestAgent extends Think<Env> {
 	getDefaultTimezone() {
 		return "Europe/London";
 	}
 
-	getScheduledTasks() {
-		return defineScheduledTasks({
+	getScheduledTasks(): ThinkScheduledTasks {
+		return {
 			weeklyCommitReport: {
 				schedule: "every week on monday at 09:00",
 				prompt:
@@ -94,7 +94,7 @@ export class DigestAgent extends Think<Env> {
 					});
 				},
 			},
-		});
+		};
 	}
 }
 ```
@@ -118,5 +118,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/#page","headline":"Scheduled tasks","description":"Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.","url":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/og.png?v=4fbd04c27070ed65","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/#page","headline":"Scheduled tasks","description":"Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.","url":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/og.png?v=4fbd04c27070ed65","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

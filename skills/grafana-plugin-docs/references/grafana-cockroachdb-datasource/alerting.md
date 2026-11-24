@@ -1,5 +1,5 @@
 ---
-title: "CockroachDB alerting | Grafana Enterprise Plugins documentation"
+title: "CockroachDB alerting | Grafana Plugins documentation"
 description: "Set up Grafana alerting with the CockroachDB data source"
 ---
 

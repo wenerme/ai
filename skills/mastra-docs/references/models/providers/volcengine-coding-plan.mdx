@@ -5,7 +5,7 @@ description: "Browse Volcengine Ark Coding Plan model IDs, capabilities, and con
 
 # [Volcengine Ark Coding Plan logo]Volcengine Ark Coding Plan
 
-Access 17 Volcengine Ark Coding Plan models through Mastra's model router. Authentication is handled automatically using the `ARK_CODING_PLAN_API_KEY` environment variable.
+Access 13 Volcengine Ark Coding Plan models through Mastra's model router. Authentication is handled automatically using the `ARK_CODING_PLAN_API_KEY` environment variable.
 
 Learn more in the [Volcengine Ark Coding Plan documentation](https://www.volcengine.com/docs/82379/1928261).
 
@@ -90,7 +90,7 @@ for await (const chunk of stream) {
   {
     "model": "volcengine-coding-plan/doubao-seed-2.0-mini",
     "imageInput": true,
-    "audioInput": false,
+    "audioInput": true,
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
@@ -172,18 +172,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "volcengine-coding-plan/kimi-k3",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 1048576,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "volcengine-coding-plan/kimi-k3.1-pro",
     "imageInput": true,
     "audioInput": false,
@@ -232,7 +220,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "volcengine-coding-plan/minimax-m3"
+      ? "volcengine-coding-plan/kimi-k3.1-pro"
       : "volcengine-coding-plan/deepseek-v4-flash";
   }
 });

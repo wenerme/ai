@@ -1,5 +1,5 @@
 ---
-title: "Honeycomb query editor | Grafana Enterprise Plugins documentation"
+title: "Honeycomb query editor | Grafana Plugins documentation"
 description: "Use the Honeycomb query editor in Grafana to build Metrics, SLO, and Raw queries."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Install the Zendesk data source | Grafana Enterprise Plugins documentation"
+title: "Install the Zendesk data source | Grafana Plugins documentation"
 description: "Install the Zendesk data source plugin in Grafana Cloud or self-managed Grafana."
 ---
 

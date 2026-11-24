@@ -327,6 +327,11 @@ Example response:
 
 ## List all billable group members
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269334) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `enforce_billed_users_scan_rate_limits`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Lists all billable members of a specified group. The list includes members in subgroups and projects.
 
 Prerequisites:
@@ -337,6 +342,15 @@ Prerequisites:
 This function takes [pagination](rest/_index.md#pagination) parameters `page` and `per_page` to restrict the list of users.
 
 Use the `search` parameter to search for billable group members by name, and `sort` to sort the results.
+
+By default, this endpoint is rate-limited to 500 requests every minute, 2,500 every hour,
+and 20,000 every day for each user in each top-level group.
+The limit is shared with other [requests that calculate billable users](../rate_limits/_index.md#api-and-rails-console).
+Administrators can change the limits with the `billed_users_scan_per_minute_limit`,
+`billed_users_scan_per_hour_limit`, and `billed_users_scan_per_day_limit`
+[application settings](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 GET /groups/:id/billable_members

@@ -1,5 +1,5 @@
 ---
-title: "Sumo Logic alerting | Grafana Enterprise Plugins documentation"
+title: "Sumo Logic alerting | Grafana Plugins documentation"
 description: "Set up Grafana alerting with the Sumo Logic data source."
 ---
 

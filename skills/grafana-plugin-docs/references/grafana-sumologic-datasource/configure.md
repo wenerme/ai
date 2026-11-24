@@ -1,5 +1,5 @@
 ---
-title: "Configure the Sumo Logic data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Sumo Logic data source | Grafana Plugins documentation"
 description: "Configure the Sumo Logic data source in Grafana to connect to your Sumo Logic account."
 ---
 

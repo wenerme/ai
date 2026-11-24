@@ -1,5 +1,5 @@
 ---
-title: "Install the SolarWinds data source | Grafana Enterprise Plugins documentation"
+title: "Install the SolarWinds data source | Grafana Plugins documentation"
 description: "Learn how to install the SolarWinds Enterprise data source plugin in Grafana Cloud and self-managed Grafana Enterprise."
 ---
 

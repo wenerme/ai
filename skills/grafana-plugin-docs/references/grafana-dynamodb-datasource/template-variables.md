@@ -1,5 +1,5 @@
 ---
-title: "DynamoDB template variables | Grafana Enterprise Plugins documentation"
+title: "DynamoDB template variables | Grafana Plugins documentation"
 description: "Use template variables with the DynamoDB data source in Grafana"
 ---
 

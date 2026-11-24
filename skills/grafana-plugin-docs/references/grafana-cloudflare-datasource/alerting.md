@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare alerting | Grafana Enterprise Plugins documentation"
+title: "Cloudflare alerting | Grafana Plugins documentation"
 description: "Learn how to configure alerts with the Cloudflare data source in Grafana."
 ---
 

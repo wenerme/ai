@@ -1,5 +1,5 @@
 ---
-title: "Install and upgrade the Databricks data source plugin | Grafana Enterprise Plugins documentation"
+title: "Install and upgrade the Databricks data source plugin | Grafana Plugins documentation"
 description: "Install and upgrade the Databricks data source plugin for Grafana."
 ---
 

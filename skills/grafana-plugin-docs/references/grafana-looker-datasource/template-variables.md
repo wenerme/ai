@@ -1,5 +1,5 @@
 ---
-title: "Looker template variables | Grafana Enterprise Plugins documentation"
+title: "Looker template variables | Grafana Plugins documentation"
 description: "Use template variables with the Looker data source in Grafana"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "GitLab data source | Grafana Enterprise Plugins documentation"
+title: "GitLab data source | Grafana Plugins documentation"
 description: "Guide for using the GitLab data source plugin in Grafana"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Vercel data source | Grafana Enterprise Plugins documentation"
+title: "Vercel data source | Grafana Plugins documentation"
 description: "Query and visualize Vercel data in Grafana with the Vercel data source plugin."
 ---
 

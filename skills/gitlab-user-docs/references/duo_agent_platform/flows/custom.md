@@ -210,7 +210,7 @@ To turn on a flow:
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Under **Runs when**, review the [events](../automations/_index.md#event-types) that trigger the flow.
    By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
-   - To add an event, select **Add trigger** > **On an event**.
+   - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 
@@ -304,7 +304,7 @@ Prerequisites:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to manage.
-1. In the **Trigger conditions** section, for the automation you want to turn on or off,
+1. In the **Automations** section, for the automation you want to turn on or off,
    select the toggle.
 
 ### Edit an automation
@@ -312,8 +312,8 @@ Prerequisites:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to manage.
-1. In the **Trigger conditions** section, for the automation you want to change,
-   select **Trigger actions** () > **Edit**.
+1. In the **Automations** section, for the automation you want to change,
+   select **More actions** () > **Edit**.
 1. Make the changes and select **Save changes**.
 
 ### Delete an automation
@@ -321,8 +321,8 @@ Prerequisites:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to manage.
-1. In the **Trigger conditions** section, for the automation you want to delete,
-   select **Trigger actions** () > **Delete**.
+1. In the **Automations** section, for the automation you want to delete,
+   select **More actions** () > **Delete**.
 1. On the confirmation dialog, select **Delete**.
 
 ## Turn off a flow

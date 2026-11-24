@@ -1,5 +1,5 @@
 ---
-title: "Amazon Aurora alerting | Grafana Enterprise Plugins documentation"
+title: "Amazon Aurora alerting | Grafana Plugins documentation"
 description: "Create Grafana alert rules using the Amazon Aurora data source, including query requirements, examples, and considerations."
 ---
 

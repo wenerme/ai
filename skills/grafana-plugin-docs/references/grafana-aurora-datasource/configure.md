@@ -1,5 +1,5 @@
 ---
-title: "Configure the Amazon Aurora data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Amazon Aurora data source | Grafana Plugins documentation"
 description: "Learn how to configure the Amazon Aurora data source, including authentication, database settings, private data source connect, and provisioning with YAML or Terraform."
 ---
 

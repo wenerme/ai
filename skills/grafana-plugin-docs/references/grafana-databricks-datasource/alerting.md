@@ -1,5 +1,5 @@
 ---
-title: "Databricks data source alerting | Grafana Enterprise Plugins documentation"
+title: "Databricks data source alerting | Grafana Plugins documentation"
 description: "This document describes how to use the Databricks data source with Grafana alerting."
 ---
 

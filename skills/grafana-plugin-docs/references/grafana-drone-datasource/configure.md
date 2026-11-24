@@ -1,5 +1,5 @@
 ---
-title: "Configure the Drone data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Drone data source | Grafana Plugins documentation"
 description: "Learn how to configure the Drone data source in Grafana, including the connection URL and API token authentication."
 ---
 

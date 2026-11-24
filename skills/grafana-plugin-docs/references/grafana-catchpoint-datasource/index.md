@@ -1,5 +1,5 @@
 ---
-title: "Catchpoint data source | Grafana Enterprise Plugins documentation"
+title: "Catchpoint data source | Grafana Plugins documentation"
 description: "Query and visualize Catchpoint Tests, RUM, and SLO data in Grafana with the Catchpoint data source plugin."
 ---
 

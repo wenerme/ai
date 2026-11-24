@@ -112,6 +112,12 @@ Type: `string`
 
 Value of the Message-ID header provided by the sender.
 
+## MessageSize
+
+Type: `int`
+
+Size of the message in bytes.
+
 ## Origin
 
 Type: `string`
@@ -215,6 +221,12 @@ Email address portions of the To header provided by the sender (for example, ' [
 Type: `array[string]`
 
 Name portions of the To header provided by the sender (for example, 'First Last').
+
+## WrappedLinks
+
+Type: `array[string]`
+
+Links in this message that Email Security rewrote for link protection or browser isolation. Values match entries in Links. Limited to 100 in total.
 
 Was this helpful?
 

@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare query editor | Grafana Enterprise Plugins documentation"
+title: "Cloudflare query editor | Grafana Plugins documentation"
 description: "Learn how to use the Cloudflare query editor to query DNS analytics and Radar data."
 ---
 

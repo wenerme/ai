@@ -1,5 +1,5 @@
 ---
-title: "Honeycomb alerting | Grafana Enterprise Plugins documentation"
+title: "Honeycomb alerting | Grafana Plugins documentation"
 description: "Set up Grafana alert rules using Honeycomb queries."
 ---
 

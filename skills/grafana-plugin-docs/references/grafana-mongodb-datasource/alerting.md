@@ -1,5 +1,5 @@
 ---
-title: "MongoDB alerting | Grafana Enterprise Plugins documentation"
+title: "MongoDB alerting | Grafana Plugins documentation"
 description: "Set up alerts using MongoDB data in Grafana."
 ---
 

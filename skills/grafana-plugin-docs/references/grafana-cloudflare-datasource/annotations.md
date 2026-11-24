@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare annotations | Grafana Enterprise Plugins documentation"
+title: "Cloudflare annotations | Grafana Plugins documentation"
 description: "Learn how to use annotations with the Cloudflare data source in Grafana."
 ---
 

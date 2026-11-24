@@ -1,5 +1,5 @@
 ---
-title: "Jira query editor | Grafana Enterprise Plugins documentation"
+title: "Jira query editor | Grafana Plugins documentation"
 description: "Learn how to use the Jira query editor to build queries and visualize issue data"
 ---
 

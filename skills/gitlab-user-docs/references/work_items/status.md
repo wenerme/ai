@@ -8,9 +8,9 @@ A specific step in a work item's workflow ('In progress', 'Done', 'Won't do') th
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/543862) in GitLab 18.2 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_status_feature_flag`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/521286) in GitLab 18.4. Feature flag `work_item_status_feature_flag` removed.
 - Status for epics [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17709) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_status_for_epics`. Disabled by default.
-- Status for epics [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/632788) in GitLab 19.7.
 - Status for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580398) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named
   `work_item_ticket_migration`. Enabled by default.
+- Status for epics [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/632788) in GitLab 19.7.
 
 > [!flag]
 > The availability of status for epics and tickets is controlled by a feature flag.
@@ -170,8 +170,12 @@ When you edit a lifecycle, custom statuses replace the default statuses for all 
 
 Custom statuses have the following limits:
 
-- A maximum of 70 statuses for each top-level group
+- A maximum of 70 statuses for each top-level group. Statuses removed from a lifecycle but still used
+  by work items don't count toward this limit.
+- A maximum of 110 statuses for each top-level group, including statuses removed from a lifecycle
+  but still used by work items.
 - A maximum of 30 statuses for each lifecycle
+- A maximum of 50 lifecycles for each top-level group
 
 ### Status category changes
 

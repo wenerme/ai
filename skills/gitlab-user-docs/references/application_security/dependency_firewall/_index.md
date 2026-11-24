@@ -33,8 +33,7 @@ For each package, the firewall returns one of these outcomes:
 
 - Allowed: The package manager fetches the package as usual.
 - Warned: The package manager fetches the package, and the CLI reports it.
-- Blocked: The firewall refuses the package, and the package manager receives a
-  `403 Forbidden` response.
+- Blocked: The firewall refuses the package, and the package manager receives a `403` response.
 
 GitLab records each decision as an [audit event](#view-audit-events).
 
@@ -218,8 +217,8 @@ A dependency firewall policy has the following top-level fields.
 
 The `enforcement_type` field controls what happens when a rule matches:
 
-- `enforced`: The firewall refuses the package. The package manager receives a `403 Forbidden`
-  response and the package is not installed.
+- `enforced`: The firewall refuses the package. The package manager receives a `403` response
+  and the package is not installed.
 - `warn`: The firewall fetches the package and reports it in the run summary. Use this mode to
   test a policy before you enforce it.
 

@@ -1,5 +1,5 @@
 ---
-title: "Salesforce annotations | Grafana Enterprise Plugins documentation"
+title: "Salesforce annotations | Grafana Plugins documentation"
 description: "Use Salesforce data as annotations in Grafana."
 ---
 

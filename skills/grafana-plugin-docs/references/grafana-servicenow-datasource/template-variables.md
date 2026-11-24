@@ -1,5 +1,5 @@
 ---
-title: "ServiceNow template variables | Grafana Enterprise Plugins documentation"
+title: "ServiceNow template variables | Grafana Plugins documentation"
 description: "Use template variables with the ServiceNow data source to create dynamic dashboards."
 ---
 

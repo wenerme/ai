@@ -1,5 +1,5 @@
 ---
-title: "New Relic data source | Grafana Enterprise Plugins documentation"
+title: "New Relic data source | Grafana Plugins documentation"
 description: "Use the New Relic data source to query and visualize APM, Infrastructure, and Insights data in Grafana."
 ---
 

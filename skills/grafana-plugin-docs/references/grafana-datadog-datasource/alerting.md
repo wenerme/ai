@@ -1,5 +1,5 @@
 ---
-title: "Datadog alerting | Grafana Enterprise Plugins documentation"
+title: "Datadog alerting | Grafana Plugins documentation"
 description: "This document describes how to use Grafana alerting with the Datadog data source"
 ---
 

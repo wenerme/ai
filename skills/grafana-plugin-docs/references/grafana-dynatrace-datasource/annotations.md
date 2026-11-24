@@ -1,5 +1,5 @@
 ---
-title: "Dynatrace annotations | Grafana Enterprise Plugins documentation"
+title: "Dynatrace annotations | Grafana Plugins documentation"
 description: "Use Dynatrace data as annotations in Grafana."
 ---
 

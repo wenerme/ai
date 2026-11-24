@@ -2,7 +2,7 @@
 agent:
   instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
   search: "https://developers.cloudflare.com/.well-known/search?q={query}"
-description: Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.
+description: Connect a workspace, and use built-in workspace tools, custom tools, approvals, MCP tools, the fetch tool, code execution, and extensions in Think agents.
 title: Tools
 image: https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc
 ---
@@ -15,7 +15,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=9
 
 # Tools
 
-Think provides built-in workspace file tools on every turn, plus integration points for custom tools, code execution, and dynamic extensions.
+Think provides built-in workspace file tools on every turn, plus integration points for custom tools, web fetches, code execution, and dynamic extensions.
 
 ## Tool merge order
 
@@ -24,16 +24,25 @@ On every turn, Think merges tools from multiple sources. Later sources override 
 1. **Workspace tools** — `read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, plus `exec` and `publish` when configured (built-in)
 2. **`getTools()`** — your custom server-side tools
 3. **Extension tools** — tools from loaded extensions (prefixed by extension name)
-4. **Session tools** — `set_context`, `load_context`, `search_context` (from `configureSession`)
+4. **Context tools** — `set_context`, `search_context` (from `configureContext()` and `configureSession()`, refer to [Context](https://developers.cloudflare.com/agents/harnesses/think/context/))
 5. **Skill tools** — `activate_skill`, `read_skill_resource`, `run_skill_script` (from `getSkills()`, refer to [Agent Skills](https://developers.cloudflare.com/agents/skills/))
 6. **MCP tools** — from connected MCP servers when `includeMcpTools` is `true`
 7. **Client tools** — from the browser (refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/))
 
 Tools belong to the agent running the turn. For parent-child orchestration, use [Agents as tools](https://developers.cloudflare.com/agents/agent-class/agent-tools/) instead of passing one-off tools through `chat()`.
 
+## Connect a workspace
+
+Every Think agent is connected to a workspace. `this.workspace` is a `Workspace` from [Cloudflare Computer](https://developers.cloudflare.com/agents/tools/filesystem/) (`@cloudflare/computer`), stored in the Durable Object's SQLite database. The default workspace is a filesystem with no execution backend. Override `workspace` to add a backend for `exec`, git, or read-only mounts.
+
+What Think does with the workspace:
+
+- It gives the model the [built-in workspace tools](#built-in-workspace-tools) on every turn.
+- It stores media that has aged out of the conversation under `/workspace/attachments/evicted/`, and large responses from the [fetch tool](#fetch-tool) under `/workspace/fetched/`.
+
 ## Built-in workspace tools
 
-Every Think agent gets `this.workspace`, a `Workspace` from [`@cloudflare/computer` ↗︎](https://github.com/cloudflare/computer) stored in the Durable Object's SQLite. Think adds Computer's AI SDK tools to every turn with no configuration.
+Think adds Computer's AI SDK tools for `this.workspace` to every turn with no configuration.
 
 | Tool | Description |
 | --- | --- |
@@ -65,6 +74,7 @@ import { Workspace } from "@cloudflare/computer";
 import { CodemodeBackend } from "@cloudflare/computer/backends/codemode";
 import { createGitClient } from "@cloudflare/computer/git";
 import { createGitModule } from "@cloudflare/computer/modules/git";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think {
 	workspace = new Workspace({
@@ -80,7 +90,9 @@ export class MyAgent extends Think {
 	});
 
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 }
 ```
@@ -91,6 +103,7 @@ import { Workspace } from "@cloudflare/computer";
 import { CodemodeBackend } from "@cloudflare/computer/backends/codemode";
 import { createGitClient } from "@cloudflare/computer/git";
 import { createGitModule } from "@cloudflare/computer/modules/git";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think<Env> {
 	override workspace = new Workspace({
@@ -106,7 +119,9 @@ export class MyAgent extends Think<Env> {
 	});
 
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 }
 ```
@@ -129,7 +144,7 @@ The codemode backend runs JavaScript in a [Dynamic Worker](https://developers.cl
 binding = "LOADER"
 ```
 
-Computer also ships a `just-bash` shell backend that runs in Dynamic Workers, and a container backend with a full Linux userland. Refer to the [Computer README ↗︎](https://github.com/cloudflare/computer/tree/main/packages/computer#choosing-a-backend) for each backend's bindings.
+Computer also ships two experimental backends: a `just-bash` shell backend that runs in Dynamic Workers, and a container backend with a full Linux userland. Refer to the [Computer README ↗︎](https://github.com/cloudflare/computer/tree/main/packages/computer#choosing-a-backend) for each backend's bindings.
 
 ### Call the agent's tools from code
 
@@ -179,6 +194,10 @@ export default async function () {
 
 `exec` offers every backend the Workspace has, and each backend describes itself to the model. To change a built-in tool, return a tool with the same name from `getTools()`. It replaces the built-in. To hide tools for a turn, return `activeTools` from `beforeTurn`.
 
+### Upgrade to Computer 0.10
+
+Think 0.24 and later need `@cloudflare/computer` 0.10. Upgrade both together. In Computer 0.10, the JavaScript backend is `CodemodeBackend` from `@cloudflare/computer/backends/codemode`, replacing `WorkerJavaScriptBackend` from `@cloudflare/computer/backends/worker-javascript`, and host modules use the `codemode:` prefix instead of `ws:`, such as `codemode:tools` and `codemode:git`.
+
 ### Upgrade from `@cloudflare/shell`
 
 Earlier versions of Think used a `Workspace` from `@cloudflare/shell`, which is now deprecated. Computer stores files in different tables, and Think does not move your data. To keep an existing workspace, copy its files with the script in [Migrating from `@cloudflare/shell` to `@cloudflare/computer` ↗︎](https://github.com/cloudflare/agents/blob/main/docs/shell/migrating-to-computer.md).
@@ -200,10 +219,13 @@ import { Think } from "@cloudflare/think";
 import { tool } from "ai";
 
 import { z } from "zod";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	getTools() {
@@ -230,10 +252,13 @@ import { Think } from "@cloudflare/think";
 import { tool } from "ai";
 import type { ToolSet } from "ai";
 import { z } from "zod";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think<Env> {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	getTools(): ToolSet {
@@ -358,10 +383,13 @@ Add MCP servers programmatically or via `@callable` methods:
 
 ```js
 import { callable } from "agents";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	@callable()
@@ -378,10 +406,13 @@ export class MyAgent extends Think {
 
 ```ts
 import { callable } from "agents";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think<Env> {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	@callable()
@@ -414,10 +445,13 @@ The one-liner infers the executor from `env.LOADER` and a live browser (`cdp.*`)
 import { Think } from "@cloudflare/think";
 import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { createExecuteTool } from "@cloudflare/think/tools/execute";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	getTools() {
@@ -434,10 +468,13 @@ export class MyAgent extends Think {
 import { Think } from "@cloudflare/think";
 import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { createExecuteTool } from "@cloudflare/think/tools/execute";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think<Env> {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	getTools() {
@@ -552,25 +589,87 @@ await runtime.expirePaused(); // reclaim stale never-approved pauses (call from 
 await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
 ```
 
-## Browser tools
+## Fetch tool
 
-Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
+The fetch tool gives the model a read-only way to read web pages and internal APIs. It is off by default. Set the `fetchTools` property to turn it on:
 
 ```js
 import { Think } from "@cloudflare/think";
-import { createBrowserTools } from "@cloudflare/think/tools/browser";
+import { createAI } from "agents/models/ai-sdk";
 
-export class MyAgent extends Think {
+export class DocsAgent extends Think {
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
+	fetchTools = {
+		allowlist: ["https://developers.cloudflare.com/**"],
+		bindings: {
+			docsApi: {
+				binding: this.env.DOCS_API,
+				description: "Internal docs search API.",
+				allowlist: ["/v1/docs/**"],
+				headers: { "x-agent": "think" },
+			},
+		},
+	};
+}
+```
+
+```ts
+import { Think } from "@cloudflare/think";
+import { createAI } from "agents/models/ai-sdk";
+
+export class DocsAgent extends Think<Env> {
+	getModel() {
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
+	}
+
+	fetchTools = {
+		allowlist: ["https://developers.cloudflare.com/**"],
+		bindings: {
+			docsApi: {
+				binding: this.env.DOCS_API,
+				description: "Internal docs search API.",
+				allowlist: ["/v1/docs/**"],
+				headers: { "x-agent": "think" },
+			},
+		},
+	};
+}
+```
+
+Think adds a `fetch_url` tool when you set a public `allowlist`, and one `fetch_<name>` tool for each entry in `bindings`, such as `fetch_docsApi` for a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). Each binding has its own path allowlist and fixed headers, which the model cannot see or change.
+
+The tool is built to be safe to hand to a model:
+
+- **Read-only.** It only sends `GET` requests. For changes, use an [action](https://developers.cloudflare.com/agents/harnesses/think/actions/) with approval.
+- **Allowlisted.** Every request must match the allowlist after the URL is normalized. `fetch_url` blocks private, loopback, link-local, and `*.internal` targets even if the allowlist allows them.
+- **Bounded.** `maxBytes` caps the download and `maxModelChars` truncates the text the model sees. With `response: "workspace"`, or `spillToWorkspace: true`, large or binary bodies are written to a workspace file under `/workspace/fetched/` instead of the transcript.
+- **Header-safe.** The model can only set headers in `modelHeaderAllowlist` (by default `accept`, `accept-language`, and `range`).
+- **Redirect-safe.** By default a redirect is followed only when the final URL is still allowlisted. Binding targets never follow cross-origin redirects.
+
+In an allowlist, a bare origin such as `https://example.com` matches that origin and every path under it. `**` matches any characters, including `/`, and `*` matches any character except `/`. Matching ignores the query string and fragment.
+
+Results are values, not exceptions. A failed request returns `{ ok: false, code, message }`, where `code` is one of `disallowed_url`, `disallowed_redirect`, `timeout`, `aborted`, `non_2xx`, `unsupported_content_type`, `invalid_json`, `too_large`, or `request_failed`.
+
+For an allowlist that changes per tenant or per turn, call `createFetchTools()` from `@cloudflare/think/tools/fetch` in `getTools()` instead. It takes the same options, and runs on every turn:
+
+```js
+import { Think } from "@cloudflare/think";
+import { createFetchTools } from "@cloudflare/think/tools/fetch";
+
+export class MyAgent extends Think {
 	getTools() {
+		const tenant = this.getConfig();
 		return {
-			...createBrowserTools({
-				ctx: this.ctx,
-				browser: this.env.BROWSER,
-				loader: this.env.LOADER,
+			...createFetchTools({
+				allowlist: tenant ? [`${tenant.docsOrigin}/**`] : [],
+				workspace: this.workspace,
 			}),
 		};
 	}
@@ -579,24 +678,88 @@ export class MyAgent extends Think {
 
 ```ts
 import { Think } from "@cloudflare/think";
-import { createBrowserTools } from "@cloudflare/think/tools/browser";
+import { createFetchTools } from "@cloudflare/think/tools/fetch";
 
 export class MyAgent extends Think<Env> {
-	getModel() {
-		/* ... */
-	}
-
 	getTools() {
+		const tenant = this.getConfig<{ docsOrigin: string }>();
 		return {
-			...createBrowserTools({
-				ctx: this.ctx,
-				browser: this.env.BROWSER,
-				loader: this.env.LOADER,
+			...createFetchTools({
+				allowlist: tenant ? [`${tenant.docsOrigin}/**`] : [],
+				workspace: this.workspace,
 			}),
 		};
 	}
 }
 ```
+
+To block or replace a fetch for one call, use [`beforeToolCall`](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/). For a stateless fetch tool that works with any AI SDK agent, refer to [Web fetch](https://developers.cloudflare.com/agents/tools/web-fetch/).
+
+## Browser tools
+
+Experimental
+
+The browser tool is built on the `Browser` capability from `agents/browser`, which is experimental. Its API may change in any release.
+
+`browserTool` from `agents/browser/ai-sdk` gives the model a persistent browser that it drives with the Chrome DevTools Protocol (CDP). Tabs, cookies, and logins carry over from one turn to the next. Install a `Browser` on the agent's Lifecycle, and return the tool from `getTools()`:
+
+```js
+import { Think } from "@cloudflare/think";
+import { Browser, browserRun } from "agents/browser";
+import { browserTool } from "agents/browser/ai-sdk";
+import { createAI } from "agents/models/ai-sdk";
+
+export class MyAgent extends Think {
+	browser = new Browser({ provider: browserRun(this.env.BROWSER) });
+
+	constructor(ctx, env) {
+		super(ctx, env);
+		this.lifecycle.use(this.browser);
+	}
+
+	getModel() {
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
+	}
+
+	getTools() {
+		return {
+			browser: browserTool({ browser: this.browser, loader: this.env.LOADER }),
+		};
+	}
+}
+```
+
+```ts
+import { Think } from "@cloudflare/think";
+import { Browser, browserRun } from "agents/browser";
+import { browserTool } from "agents/browser/ai-sdk";
+import { createAI } from "agents/models/ai-sdk";
+
+export class MyAgent extends Think<Env> {
+	readonly browser = new Browser({ provider: browserRun(this.env.BROWSER) });
+
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+		this.lifecycle.use(this.browser);
+	}
+
+	getModel() {
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
+	}
+
+	getTools() {
+		return {
+			browser: browserTool({ browser: this.browser, loader: this.env.LOADER }),
+		};
+	}
+}
+```
+
+It needs a Browser Run binding, a Worker Loader binding, and `@cloudflare/codemode` installed:
 
 ```jsonc
 {
@@ -620,45 +783,9 @@ binding = "BROWSER"
 binding = "LOADER"
 ```
 
-This adds the durable CDP tool plus stateless [Quick Action](https://developers.cloudflare.com/agents/tools/browser/#quick-actions) tools when a `browser` binding is present:
+For how the browser behaves, internal hostnames, Live View, and recording, refer to [Browse the web](https://developers.cloudflare.com/agents/tools/browser/).
 
-| Tool | Description |
-| --- | --- |
-| `browser_execute` | Run JavaScript against a live browser over CDP (screenshots, DOM reads, JS evaluation). |
-| `browser_markdown` | Read a page or raw HTML as Markdown. |
-| `browser_extract` | Extract structured data from a page with AI. |
-| `browser_links` | List links on a page. |
-| `browser_scrape` | Scrape specific elements by CSS selector. |
-
-Pass `quickActions: false` to keep only `browser_execute`, or pass `quickActions: { actions, maxChars, options }` to configure the stateless tools. The Quick Action tools share the `browser` binding, need no Worker Loader, and resolve `ctx` from the current Agent automatically. To use only the stateless tools, import `createQuickActionTools` from `@cloudflare/think/tools/browser`.
-
-The tool is backed by a Code Mode runtime with the `cdp` connector: the model writes async arrow functions that run in a sandboxed Worker isolate, with `cdp.send()`, `cdp.attachToTarget()`, `cdp.spec()` (the live, normalized protocol description), session helpers (`cdp.startSession()`, `cdp.sessionInfo()`, `cdp.closeSession()`), and debug-log helpers. Executions are recorded for abort-and-replay, so browser sessions survive approval pauses.
-
-By default each execution gets a fresh browser session (`one-shot`), torn down when the run ends. Pass `session: { mode: "dynamic" }` to let the model promote a session with `cdp.startSession()` so later executions continue in the same browser, or `session: { mode: "reuse", key }` for a named long-lived session. Stale sessions are reclaimed by the connector's `sweep()` — call it from a scheduled task.
-
-Note
-
-The simplest setup is the unified execute tool in [Code execution tool](#code-execution-tool): `createExecuteTool(this)` already includes `cdp.*` alongside `tools.*` when `env.BROWSER` is bound — one tool, one durable history. Use `createBrowserTools` when you want a separate, browser-only tool.
-
-For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
-
-```js
-createBrowserTools({
-	ctx: this.ctx,
-	cdpUrl: "http://localhost:9222",
-	loader: this.env.LOADER,
-});
-```
-
-```ts
-createBrowserTools({
-	ctx: this.ctx,
-	cdpUrl: "http://localhost:9222",
-	loader: this.env.LOADER,
-});
-```
-
-For the full CDP connector API, refer to [Browse the web](https://developers.cloudflare.com/agents/tools/browser/).
+`createBrowserTools()` and `createQuickActionTools()` from `@cloudflare/think/tools/browser` are deprecated. They keep working, but will not change. To read a page without a browser, use the [fetch tool](#fetch-tool).
 
 ## Extensions
 
@@ -668,24 +795,30 @@ Extensions require a `worker_loaders` binding:
 
 ```js
 import { Think } from "@cloudflare/think";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think {
 	extensionLoader = this.env.LOADER;
 
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 }
 ```
 
 ```ts
 import { Think } from "@cloudflare/think";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think<Env> {
 	extensionLoader = this.env.LOADER;
 
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 }
 ```
@@ -764,12 +897,15 @@ Give the model `createExtensionTools` so it can load extensions dynamically:
 
 ```js
 import { createExtensionTools } from "@cloudflare/think/tools/extensions";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think {
 	extensionLoader = this.env.LOADER;
 
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	getTools() {
@@ -783,12 +919,15 @@ export class MyAgent extends Think {
 
 ```ts
 import { createExtensionTools } from "@cloudflare/think/tools/extensions";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Think<Env> {
 	extensionLoader = this.env.LOADER;
 
 	getModel() {
-		/* ... */
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 
 	getTools() {
@@ -836,5 +975,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools","description":"Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools","description":"Connect a workspace, and use built-in workspace tools, custom tools, approvals, MCP tools, the fetch tool, code execution, and extensions in Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,5 +1,5 @@
 ---
-title: "IBM Db2 template variables | Grafana Enterprise Plugins documentation"
+title: "IBM Db2 template variables | Grafana Plugins documentation"
 description: "Use template variables with the IBM Db2 data source to create dynamic dashboards"
 ---
 

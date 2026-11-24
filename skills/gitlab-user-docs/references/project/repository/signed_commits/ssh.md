@@ -21,8 +21,8 @@ For GitLab to consider a commit verified:
 If the signature is valid but the committer email does not match a verified
 email on your account, the commit is marked **Unverified**.
 
-You may use the same SSH keys for `git+ssh` authentication to GitLab
-and signing commit signatures as long as their usage type is **Authentication & Signing**.
+You can use the same SSH keys for `git+ssh` authentication to GitLab
+and for signing commits, if their usage type is **Authentication & Signing**.
 It can be verified on the page for [adding an SSH key to your GitLab account](../../../ssh.md#add-an-ssh-key-to-your-gitlab-account).
 
 For more information about managing the SSH keys associated with your GitLab account, see

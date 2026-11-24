@@ -1,5 +1,5 @@
 ---
-title: "Configure the SAP HANA data source | Grafana Enterprise Plugins documentation"
+title: "Configure the SAP HANA data source | Grafana Plugins documentation"
 description: "Configure the SAP HANA data source in Grafana."
 ---
 

@@ -397,17 +397,23 @@ To disable GitLab Secrets Manager:
 When a CI/CD pipeline job attempts to fetch a secret, it might return this error:
 
 ```plaintext
-ERROR: Job failed (system failure): resolving secrets: getting secret: get secret data: reading from Vault: api error: status code 403: 1 error occurred: * permission denied
+ERROR: Job failed: resolving secrets: resolving secret "DB_PASSWORD": getting secret: get secret data: reading from Vault: api error: status code 403: 1 error occurred: * permission denied
 ```
 
-This error happens when a job attempts to fetch a secret that does not exist or has been deleted.
+The error names the CI/CD variable of the secret that the job could not read.
+Possible causes:
+
+- The secret does not exist or was deleted.
+- The secret's **Environments** setting does not include the job's environment.
+  A job without an `environment` can read only secrets available to all environments.
+- The secret's **Branches** or **Protected Branches** setting does not include the job's branch.
 
 ### Error: `inline auth JWT is required`
 
 When a CI/CD pipeline job attempts to fetch a secret, it might return this error:
 
 ```plaintext
-ERROR: Job failed (system failure): resolving secrets: creating vault client: configuring inline auth: inline auth JWT is required
+ERROR: Job failed (system failure): resolving secrets: resolving secret "DB_PASSWORD": creating vault client: configuring inline auth: inline auth JWT is required
 ```
 
 This error happens when the secrets manager instance has not been provisioned yet for the project or the group

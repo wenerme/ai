@@ -1,5 +1,5 @@
 ---
-title: "Splunk template variables | Grafana Enterprise Plugins documentation"
+title: "Splunk template variables | Grafana Plugins documentation"
 description: "Use template variables with the Splunk data source to create dynamic dashboards."
 ---
 

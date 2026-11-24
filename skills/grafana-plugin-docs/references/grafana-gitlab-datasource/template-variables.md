@@ -1,5 +1,5 @@
 ---
-title: "GitLab template variables | Grafana Enterprise Plugins documentation"
+title: "GitLab template variables | Grafana Plugins documentation"
 description: "Use template variables with the GitLab data source in Grafana"
 ---
 

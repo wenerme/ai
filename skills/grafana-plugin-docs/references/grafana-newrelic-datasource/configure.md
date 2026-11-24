@@ -1,5 +1,5 @@
 ---
-title: "Configure the New Relic data source | Grafana Enterprise Plugins documentation"
+title: "Configure the New Relic data source | Grafana Plugins documentation"
 description: "Configure the New Relic data source in Grafana."
 ---
 

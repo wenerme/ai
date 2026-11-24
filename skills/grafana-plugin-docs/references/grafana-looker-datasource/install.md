@@ -1,5 +1,5 @@
 ---
-title: "Install the Looker data source plugin | Grafana Enterprise Plugins documentation"
+title: "Install the Looker data source plugin | Grafana Plugins documentation"
 description: "Install and upgrade the Looker data source plugin for Grafana"
 ---
 

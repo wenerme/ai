@@ -1,5 +1,5 @@
 ---
-title: "Configure the Catchpoint data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Catchpoint data source | Grafana Plugins documentation"
 description: "Configure the Catchpoint data source in Grafana, including authentication and provisioning."
 ---
 

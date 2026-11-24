@@ -1,5 +1,5 @@
 ---
-title: "Snowflake annotations | Grafana Enterprise Plugins documentation"
+title: "Snowflake annotations | Grafana Plugins documentation"
 description: "Learn how to use annotations with the Snowflake data source in Grafana."
 ---
 

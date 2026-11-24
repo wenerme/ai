@@ -1,5 +1,5 @@
 ---
-title: "Configure the DynamoDB data source | Grafana Enterprise Plugins documentation"
+title: "Configure the DynamoDB data source | Grafana Plugins documentation"
 description: "Configure the DynamoDB data source for Grafana"
 ---
 

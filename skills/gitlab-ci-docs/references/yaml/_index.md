@@ -1249,6 +1249,8 @@ spec:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206931) in GitLab 18.6 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_file_inputs`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/579240) in GitLab 18.9. Feature flag `ci_file_inputs` removed.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/590532) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_spec_include_own_context`. Disabled by default.
+- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/624232) in GitLab 19.4.
+- [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/624232) in GitLab 19.7.
 
 Use `spec:include` to include external input definitions from other files.
 You can share and reuse input definitions across multiple pipeline configurations.

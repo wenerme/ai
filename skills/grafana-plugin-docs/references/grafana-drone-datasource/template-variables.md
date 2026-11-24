@@ -1,5 +1,5 @@
 ---
-title: "Drone template variables | Grafana Enterprise Plugins documentation"
+title: "Drone template variables | Grafana Plugins documentation"
 description: "Use template variables with the Drone data source to build dynamic, reusable Grafana dashboards."
 ---
 

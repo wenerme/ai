@@ -1,5 +1,5 @@
 ---
-title: "Vercel annotations | Grafana Enterprise Plugins documentation"
+title: "Vercel annotations | Grafana Plugins documentation"
 description: "Use the Vercel data source to add annotations to Grafana dashboards."
 ---
 

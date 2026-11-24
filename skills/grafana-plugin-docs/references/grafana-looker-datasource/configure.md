@@ -1,5 +1,5 @@
 ---
-title: "Configure the Looker data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Looker data source | Grafana Plugins documentation"
 description: "Configure the Looker data source in Grafana"
 ---
 

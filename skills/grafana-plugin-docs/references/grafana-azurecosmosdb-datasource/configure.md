@@ -1,5 +1,5 @@
 ---
-title: "Configure the Azure Cosmos DB data source | Grafana Enterprise Plugins documentation"
+title: "Configure the Azure Cosmos DB data source | Grafana Plugins documentation"
 description: "Configure the Azure Cosmos DB data source in Grafana, including authentication and provisioning."
 ---
 

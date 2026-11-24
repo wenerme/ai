@@ -1,5 +1,5 @@
 ---
-title: "Salesforce query editor | Grafana Enterprise Plugins documentation"
+title: "Salesforce query editor | Grafana Plugins documentation"
 description: "Learn how to use the Salesforce query editor in Grafana."
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB alerting | Grafana Enterprise Plugins documentation"
+title: "Azure Cosmos DB alerting | Grafana Plugins documentation"
 description: "Use the Azure Cosmos DB data source with Grafana alerting to create alert rules on your data."
 ---
 

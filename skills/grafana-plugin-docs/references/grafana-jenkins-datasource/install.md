@@ -1,5 +1,5 @@
 ---
-title: "Install and upgrade the Jenkins data source plugin | Grafana Enterprise Plugins documentation"
+title: "Install and upgrade the Jenkins data source plugin | Grafana Plugins documentation"
 description: "Install and upgrade the Jenkins data source plugin across Grafana deployment environments"
 ---
 

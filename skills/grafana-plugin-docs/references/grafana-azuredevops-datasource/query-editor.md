@@ -1,5 +1,5 @@
 ---
-title: "Azure DevOps query editor | Grafana Enterprise Plugins documentation"
+title: "Azure DevOps query editor | Grafana Plugins documentation"
 description: "Use the Azure DevOps query editor to retrieve data about projects, repositories, pull requests, builds, pipelines, and releases."
 ---
 

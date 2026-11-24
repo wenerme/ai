@@ -1,5 +1,5 @@
 ---
-title: "Zendesk data source | Grafana Enterprise Plugins documentation"
+title: "Zendesk data source | Grafana Plugins documentation"
 description: "The Zendesk data source lets you query and visualize Zendesk ticket and user data in Grafana."
 ---
 

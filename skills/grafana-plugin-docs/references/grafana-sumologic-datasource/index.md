@@ -1,5 +1,5 @@
 ---
-title: "Sumo Logic data source | Grafana Enterprise Plugins documentation"
+title: "Sumo Logic data source | Grafana Plugins documentation"
 description: "Use the Sumo Logic data source to query and visualize metrics and logs data in Grafana."
 ---
 

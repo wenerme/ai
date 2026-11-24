@@ -12,32 +12,32 @@ GitLab CI/CD can be used with Bitbucket Cloud by:
 
 To use GitLab CI/CD with a Bitbucket Cloud repository:
 
-1. In Bitbucket, create an [**App password**](https://support.atlassian.com/bitbucket-cloud/docs/api-tokens/) to authenticate
+1. In Bitbucket, create an [](https://support.atlassian.com/bitbucket-cloud/docs/api-tokens/) to authenticate
    the script that sets commit build
    statuses in Bitbucket. Repository write permissions are required.
 
    [Bitbucket Cloud page showing the App password creation interface.]
 
-1. In Bitbucket, from your repository, select **Clone**, then copy the URL that starts after `git clone`.
+1. In Bitbucket, from your repository, select , then copy the URL that starts after `git clone`.
 1. In GitLab, create a project:
 
-   1. In the upper-right corner, select **Create new** () and **New project/repository**.
-   1. Select **Run CI/CD for external repository**.
-   1. Select **Repository by URL**.
+   1. In the upper-right corner, select  () and .
+   1. Select .
+   1. Select .
    1. Complete the fields:
-      - For **Git repository URL**, enter the URL of your Bitbucket repository. Make sure to remove your `@username`.
-      - For **Username**, enter the username associated with the App password.
-      - For **Password**, enter the App password from Bitbucket.
+      - For , enter the URL of your Bitbucket repository. Make sure to remove your `@username`.
+      - For , enter the username associated with the App password.
+      - For , enter the App password from Bitbucket.
 
    GitLab imports the repository and enables [Pull Mirroring](../../user/project/repository/mirror/pull.md).
-   You can check that mirroring is working in the project in **Settings** > **Repository** > **Mirroring repositories**.
+   You can check that mirroring is working in the project in  >  > .
 
 1. In GitLab, generate a
    [personal access token](../../user/profile/personal_access_tokens.md)
    with `api` scope. The token is used to authenticate requests from the web
    hook that is created in Bitbucket to notify GitLab of new commits.
 
-1. In Bitbucket, from **Settings** > **Webhooks**, create a new webhook to notify
+1. In Bitbucket, from  > , create a new webhook to notify
    GitLab of new commits.
 
 1. Set the webhook URL to the [GitLab pull mirroring](../../api/project_pull_mirroring.md#start-the-pull-mirroring-process-for-a-project) endpoint, and
@@ -47,14 +47,14 @@ To use GitLab CI/CD with a Bitbucket Cloud repository:
    https://gitlab.example.com/api/v4/projects/:project_id/mirror/pull?private_token=<your_personal_access_token>
    ```
 
-   The webhook trigger should be set to **Repository Push**.
+   The webhook trigger should be set to .
 
    [Bitbucket Cloud repository settings page displaying webhook configuration for GitLab mirroring.]
 
    After saving, test the webhook by pushing a change to your Bitbucket
    repository.
 
-1. In GitLab, from **Settings** > **CI/CD** > **Variables**, add variables to allow
+1. In GitLab, from  >  > , add variables to allow
    communication with Bitbucket through the Bitbucket API:
 
    - `BITBUCKET_ACCESS_TOKEN`: The Bitbucket app password created previously. This variable should be [masked](../variables/_index.md#mask-a-cicd-variable).

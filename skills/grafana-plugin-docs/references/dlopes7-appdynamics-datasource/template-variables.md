@@ -1,5 +1,5 @@
 ---
-title: "AppDynamics template variables | Grafana Enterprise Plugins documentation"
+title: "AppDynamics template variables | Grafana Plugins documentation"
 description: "Use template variables with the AppDynamics data source in Grafana."
 ---
 

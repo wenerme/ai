@@ -1,5 +1,5 @@
 ---
-title: "Configure the ServiceNow data source | Grafana Enterprise Plugins documentation"
+title: "Configure the ServiceNow data source | Grafana Plugins documentation"
 description: "Configure the ServiceNow data source plugin for Grafana."
 ---
 
