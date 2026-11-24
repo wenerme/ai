@@ -73,7 +73,7 @@ The script does not appear in `listProcesses()`, because the sandbox starts it o
 
 Working with disabled iptables
 
-Cloudflare Containers do not support iptables manipulation. The `--iptables=false` and `--ip6tables=false` flags prevent Docker from attempting to configure network rules, which would otherwise fail.
+Containers that use the [`default` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-default-scheduling-policy) do not support iptables manipulation. The `--iptables=false` and `--ip6tables=false` flags prevent Docker from attempting to configure network rules, which would otherwise fail.
 
 To send or receive traffic from a container running within Docker-in-Docker, use the `--network=host` flag with `docker run`. A `docker build` step that uses the network, such as a package install, also needs `docker build --network=host`.
 

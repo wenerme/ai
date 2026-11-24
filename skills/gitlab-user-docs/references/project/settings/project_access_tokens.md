@@ -2,7 +2,7 @@
 
 Authentication, create, revoke, and token expiration.
 
-Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Project access tokens provide authenticated access to a specific project. They are similar to
 group access tokens and personal access tokens, but are scoped to the associated project rather

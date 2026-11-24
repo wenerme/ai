@@ -257,10 +257,7 @@ The sessions and their events are also listed in the AI audit event report:
 ## View connected agents
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267356) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_connected_agents_tab`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `ai_governance_connected_agents_tab` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/639518) in GitLab 19.7.
 
 The **Connected agents** tab lists each agent connection. A connection is an agent that a user
 connected to a project with `glab` on one computer. For example, two users who connect Claude Code

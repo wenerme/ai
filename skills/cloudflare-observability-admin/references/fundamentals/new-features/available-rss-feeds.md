@@ -202,6 +202,7 @@ Included products
 - <a href="https://developers.cloudflare.com/flagship/">Flagship</a><a href="https://developers.cloudflare.com/changelog/rss/flagship.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/hyperdrive/">Hyperdrive</a><a href="https://developers.cloudflare.com/changelog/rss/hyperdrive.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/images/">Cloudflare Images</a><a href="https://developers.cloudflare.com/changelog/rss/images.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/k2/">K2</a><a href="https://developers.cloudflare.com/changelog/rss/k2.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/kv/">KV</a><a href="https://developers.cloudflare.com/changelog/rss/kv.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/pages/">Pages</a><a href="https://developers.cloudflare.com/changelog/rss/pages.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/privacy-proxy/">Privacy Proxy</a><a href="https://developers.cloudflare.com/changelog/rss/privacy-proxy.xml">Subscribe to RSS</a>

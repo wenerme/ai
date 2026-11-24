@@ -8,6 +8,7 @@
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
 - Feature flags `duo_workflow_in_ci` and `duo_workflow` removed in GitLab 18.9.
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
+- Starts the Developer flow instead of a dedicated Convert to GitLab CI/CD flow in GitLab 19.5. The separate **Convert to GitLab CI/CD** foundational flow setting was [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/633595) in GitLab 19.7.
 
 The Convert to GitLab CI/CD Flow helps you migrate your Jenkins pipelines to GitLab CI/CD. This flow:
 

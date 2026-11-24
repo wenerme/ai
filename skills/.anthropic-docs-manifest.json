@@ -1118,8 +1118,8 @@
   "anthropic-docs/manage-claude/access-transparency.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/access-transparency",
     "skill": "anthropic-docs",
-    "size": 25071,
-    "updatedAt": "2026-11-23T22:03:50.478Z"
+    "size": 25415,
+    "updatedAt": "2026-11-24T09:37:39.013Z"
   },
   "anthropic-docs/manage-claude/access-transparency-log.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/access-transparency-log",
@@ -1130,8 +1130,8 @@
   "anthropic-docs/manage-claude/cmek.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek",
     "skill": "anthropic-docs",
-    "size": 4312,
-    "updatedAt": "2026-11-23T22:03:51.212Z"
+    "size": 4556,
+    "updatedAt": "2026-11-24T09:37:39.715Z"
   },
   "anthropic-docs/manage-claude/cmek-how-it-works.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek-how-it-works",

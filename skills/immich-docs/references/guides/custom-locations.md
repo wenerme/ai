@@ -1,4 +1,4 @@
-# Files Custom Locations
+# Files custom locations
 
 This guide explains how to store generated and raw files with docker's volume mount in different locations.
 

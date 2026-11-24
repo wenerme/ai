@@ -138,9 +138,9 @@ this.ctx.container.start({
 - `options` ( `object`, conditionally required): Startup options. Required for applications that use the `durable_object` scheduling policy and optional for applications that use the `default` scheduling policy.
   - `env` ( `Record<string, string>`, optional): Environment variables to pass to the container. Processes started with [`exec()`](#exec) do not receive these variables, except `PATH`.
   - `entrypoint` ( `string[]`, optional): Command and arguments to run in the container.
-  - `enableInternet` ( `boolean`, required): Whether to allow outbound Internet access. Required when you pass `options`.
+  - `enableInternet` ( `boolean`, optional): Whether to allow outbound Internet access. Defaults to `false`.
   - `image` ( `string`, conditionally required) durable\_object policy only: Image reference to start. Required unless you pass `containerSnapshot`. Pass the [`cloudflare/debian-trixie` managed image](https://developers.cloudflare.com/containers/guides/image-management/#use-the-cloudflare-managed-image) or a value from [`ctx.container.images`](#images).
-  - `instance` ( `string | object`, optional) durable\_object policy only: Instance size. Pass `"lite"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, `"standard-4"`, or a custom object with `vcpu`, `memoryMib`, and `diskMb` properties. `memoryMib` is in mebibytes and `diskMb` is in megabytes. Both must be positive integers. Defaults to `"lite"`.
+  - `instance` ( `string | object`, optional) durable\_object policy only: Instance size. Pass `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, `"standard-4"`, or a custom object with `vcpu`, `memoryMib`, and `diskMb` properties. `memoryMib` is in mebibytes and `diskMb` is in megabytes. Both must be positive integers. Defaults to `"lite"`.
   - `containerSnapshot` ( `ContainerSnapshotRestoreParams`, optional) durable\_object policy only: Snapshot handle to restore before startup. Pass the `ContainerSnapshot` returned by [`snapshotContainer()`](#snapshotcontainer), or an object containing its `id`. You cannot pass both `containerSnapshot` and `image`.
   - `labels` ( `Record<string, string>`, optional): Up to 10 labels that [`inspect()`](#inspect) returns. Label names must contain 1 to 16 bytes. Label values can contain up to 64 bytes. Names and values cannot contain control characters.
 
@@ -251,7 +251,7 @@ export class MyDurableObject extends DurableObject<Env> {
   - `stderr` ( `"pipe" | "ignore" | "combined"`, optional, default `"pipe"`): Captures, discards, or merges standard error into standard output. The `"combined"` value requires `stdout: "pipe"`. Combined output does not guarantee ordering between its source streams.
   - `cwd` ( `string`, optional): Working directory for the process.
   - `env` ( `Record<string, string>`, optional): Environment variables for the process. Other variables from `start()` or the image are not inherited, except for `PATH`. Unless overridden here, `PATH` uses the container's startup value, including any override passed to `start()`.
-  - `user` ( `string`, optional): Numeric Linux user and group IDs for the process, as `uid:gid`. When omitted, the process runs as the image user.
+  - `user` ( `string`, optional): Linux user and optional group for the process, as `user[:group]`. Each value can be a name or numeric ID. When omitted, the process runs as the image user.
   - `signal` ( `AbortSignal`, optional): Aborting the signal sends `SIGKILL` to the process. An already-aborted signal makes `exec()` throw an `AbortError`.
   - `pty` ( `boolean | { cols?: number; rows?: number }`, optional): Runs the process attached to a pseudo-terminal. `true` uses 80 columns and 24 rows.
 
@@ -264,8 +264,6 @@ const process = await this.ctx.container.exec(["touch", "/tmp/notes.txt"], {
 ```
 
 Caution
-
-Pass both IDs in `user`. A user ID without a group ID runs the process as `root`, and a user or group name makes `exec()` reject with an internal error.
 
 `user` does not restrict a process in a deployed container with the `durable_object` scheduling policy. Every process has the same Linux capabilities as `root`, regardless of user. File permissions do not stop the process, and it can switch back to `root`. The IDs set the owner of files that the process creates. In containers with the [`default` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/), other users have no capabilities, and file permissions apply.
 
@@ -297,13 +295,15 @@ The Workers TypeScript types declare `stdin`, `stdout`, and `stderr` as `| null`
 
 #### Process lifetime
 
-`exec()` has no built-in timeout. Use `kill()` to request termination, then observe completion through `exitCode`. A process can handle or ignore a signal, so this does not enforce a hard deadline. Do not infer a specific exit code from the signal.
+`exec()` rejects if the process does not start before the startup deadline. Once the process starts, there is no built-in time limit. Use `kill()` to request termination, then observe completion through `exitCode`. A process can handle or ignore a signal, so this does not enforce a hard deadline. Do not infer a specific exit code from the signal.
+
+Calling `kill()` or aborting `signal` after the process exits has no effect.
 
 `kill()` and `signal` reach only the process that `exec()` started. Processes that this process starts, such as the commands in a `bash -c` script, keep running. `output()` waits until they exit. To stop them too, refer to [Stop the processes a command starts](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts).
 
 Canceling the request that started a process does not stop the process. If the client retries, a second copy of the command runs.
 
-To stop the process when the client disconnects, turn on the [`enable_request_signal`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag in the Worker that defines the Durable Object, and call the Durable Object through `fetch()` on its stub. Then abort the `exec()` signal when `request.signal` aborts. RPC methods do not receive a request signal.
+To stop the process when the client disconnects, turn on the [`enable_request_signal`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag in the Worker that defines the Durable Object, and call the Durable Object through `fetch()` on its stub. Pass `request.signal` to `exec()`. RPC methods do not receive a request signal.
 
 ```js
 export class MyContainer extends DurableObject {
@@ -313,21 +313,9 @@ export class MyContainer extends DurableObject {
 			return new Response("The container is not running", { status: 503 });
 		}
 
-		const controller = new AbortController();
-		const abort = () => controller.abort();
-		if (request.signal.aborted) {
-			abort();
-		} else {
-			request.signal.addEventListener("abort", abort, { once: true });
-		}
-
 		const process = await container.exec(["sleep", "60"], {
-			signal: controller.signal,
+			signal: request.signal,
 		});
-		// Stop forwarding the abort once the process exits.
-		void process.exitCode.then(() =>
-			request.signal.removeEventListener("abort", abort),
-		);
 
 		const output = await process.output();
 		return new Response(`Exit code: ${output.exitCode}`);
@@ -343,33 +331,15 @@ export class MyContainer extends DurableObject {
 			return new Response("The container is not running", { status: 503 });
 		}
 
-		const controller = new AbortController();
-		const abort = () => controller.abort();
-		if (request.signal.aborted) {
-			abort();
-		} else {
-			request.signal.addEventListener("abort", abort, { once: true });
-		}
-
 		const process = await container.exec(["sleep", "60"], {
-			signal: controller.signal,
+			signal: request.signal,
 		});
-		// Stop forwarding the abort once the process exits.
-		void process.exitCode.then(() =>
-			request.signal.removeEventListener("abort", abort),
-		);
 
 		const output = await process.output();
 		return new Response(`Exit code: ${output.exitCode}`);
 	}
 }
 ```
-
-Caution
-
-Signal only a process that is still running. Aborting `signal` or calling `kill()` after the process exits raises an uncaught `internal error` in the Durable Object.
-
-Do not pass `AbortSignal.timeout()` or `request.signal` to `exec()` directly, because either can fire after the process exits. Pass the signal of an `AbortController` instead. Once `exitCode` resolves, stop anything that calls `abort()`, for example by clearing the timer or removing the `abort` listener from `request.signal`.
 
 #### Exceptions
 
@@ -399,7 +369,7 @@ The Worker API has no method to list snapshots. Store the returned `id`, for exa
 
 #### Parameters
 
-- `options` ( `ContainerSnapshotOptions`): Snapshot configuration. Pass `{}` when you do not set a name:
+- `options` ( `ContainerSnapshotOptions`, optional): Snapshot configuration:
   - `name` ( `string`, optional): Human-readable name for the snapshot.
 
 #### Return values
@@ -414,7 +384,6 @@ Container snapshots are immutable. Snapshot handles have an implicit 30-day time
 #### Exceptions
 
 - `snapshotContainer()` throws an `Error` when the container is not running.
-- `snapshotContainer()` throws a `TypeError` when `options` is omitted.
 
 ### `destroy`
 
@@ -784,5 +753,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/api/durable-object-container/#page","headline":"Durable Object Container API","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/containers/api/durable-object-container/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/api/durable-object-container/og.png?v=f13dbe1f95442c69","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/api/durable-object-container/#page","headline":"Durable Object Container API","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/containers/api/durable-object-container/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/api/durable-object-container/og.png?v=f13dbe1f95442c69","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

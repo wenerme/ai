@@ -307,6 +307,45 @@ Groups on the Open Source, Premium trial, or Ultimate trial plans keep the limit
 
 To request an exception for a top-level group, contact [GitLab Support](https://support.gitlab.com).
 
+## Service Desk external participant limit
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268802) in GitLab 19.7 [with a flag](../../administration/feature_flags/_index.md) named `service_desk_external_participant_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this limit is controlled by a feature flag.
+> For more information, see the history.
+
+GitLab.com limits by plan the number of new [external participants](../project/service_desk/external_participants.md)
+a top-level group can add each day:
+
+| Plan                                   | Daily limit |
+| -------------------------------------- | ----------- |
+| Free, Premium trial, Ultimate trial    | 20          |
+| Premium, Open Source                   | 50          |
+| Ultimate, Ultimate trial paid customer | 150         |
+
+The limit applies to email addresses added with:
+
+- The [`/add_email` quick action](../project/quick_actions.md#add_email).
+- The [`/convert_to_ticket` quick action](../project/quick_actions.md#convert_to_ticket).
+- The `Cc` header of an email to Service Desk, if you
+  [add external participants from the `Cc` header](../project/service_desk/external_participants.md#add-external-participants-from-the-cc-header).
+
+All projects and subgroups in the top-level group share the limit.
+The sender of the email that creates a Service Desk ticket does not count against the limit.
+
+Each day lasts 24 hours from when the top-level group adds its first new external participant.
+Each email address counts only one time each day, even if you add it to more than one ticket.
+
+When the top-level group reaches the limit:
+
+- GitLab does not add new email addresses with the `/add_email` quick action,
+  and shows an error message.
+- GitLab does not convert an issue to a ticket with the `/convert_to_ticket` quick action,
+  and shows an error message.
+- GitLab does not add new email addresses from the `Cc` header, and adds an internal note to the ticket.
+- GitLab still adds email addresses already counted that day.
+
 ## Group and project import by uploading export files
 
 To help avoid abuse, GitLab.com applies rate limits to:

@@ -1,4 +1,4 @@
-# External Library
+# External library
 
 This guide walks you through adding an [External Library](/features/libraries).
 This guide assumes you are running Immich in Docker and that the files you wish to access are stored
@@ -45,7 +45,7 @@ In the Immich web UI:
 - Click the three-dots menu and select **Scan New Library Files**
   
 
-# Confirm stuff is happening
+# Confirm jobs are running
 
 - Click **Administration**
   

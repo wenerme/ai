@@ -145,31 +145,31 @@ see [unit test report examples](unit_test_report_examples.md).
 
 You can view test results:
 
-- In the **Tests** tab of pipeline details after your test job completes.
-- In the **Test summary** panel of merge requests after your pipeline completes.
+- In the  tab of pipeline details after your test job completes.
+- In the  panel of merge requests after your pipeline completes.
 
 ## View test results in merge requests
 
 View detailed information about test failures in merge requests.
 
-The **Test summary** panel shows an overview of your test results,
+The  panel shows an overview of your test results,
 including how many tests failed and passed.
 
 [Expanded Test summary panel that shows one failed test with the View details link]
 
 To view test failure details:
 
-1. In a merge request, go to the **Test summary** panel.
-1. To expand the **Test summary** panel, select **Show details** ().
-1. Select **View details** next to a failed test.
+1. In a merge request, go to the  panel.
+1. To expand the  panel, select  ().
+1. Select  next to a failed test.
 
 The dialog displays the test name, file path, execution time, screenshot attachment (if configured),
 and error output.
 
 To view all test results:
 
-- From the **Test summary** panel, select **Full report**
-  to go to the **Tests** tab in the pipeline details.
+- From the  panel, select
+  to go to the  tab in the pipeline details.
 
 ### Copy failed test names
 
@@ -181,15 +181,15 @@ Prerequisites:
 
 To copy all failed test names:
 
-- From the **Test summary** panel, select **Copy failed tests** ().
+- From the  panel, select  ().
 
 The failed tests are copied as a space-separated string.
 
 To copy a single failed test name:
 
-1. To expand the **Test summary** panel, select **Show details** ().
-1. Select **View details** next to the test you want to copy.
-1. In the dialog, select **Copy test name to rerun locally** ().
+1. To expand the  panel, select  ().
+1. Select  next to the test you want to copy.
+1. In the dialog, select  ().
 
 The test name is copied to your clipboard.
 
@@ -200,7 +200,7 @@ View all test suites and cases in pipeline details, including results from child
 To view pipeline test results:
 
 1. Go to your pipeline details page.
-1. Select the **Tests** tab.
+1. Select the  tab.
 1. Select any test suite to see individual test cases.
 
 [Test results showing 1671 tests with 1 minute 11 seconds total execution time and individual job execution times.]
@@ -266,7 +266,7 @@ To add screenshots to test reports:
 1. Run your pipeline.
 
 You can access the screenshot link in the test details dialog
-when you select **View details** for a failed test in the **Test summary** panel.
+when you select  for a failed test in the  panel.
 
 [A failed unit test report with test details and screenshot attachment]
 
@@ -274,7 +274,7 @@ when you select **View details** for a failed test in the **Test summary** panel
 
 ### Test report appears empty
 
-You might see an empty **Test summary** panel in merge requests.
+You might see an empty  panel in merge requests.
 
 This issue occurs when:
 
@@ -302,7 +302,7 @@ To resolve this issue, ensure all test names and classes are unique.
 
 ### No test reports appear in merge requests
 
-You might not see the **Test summary** panel at all in merge requests.
+You might not see the  panel at all in merge requests.
 
 This issue occurs when the pipeline shown in the merge request has no JUnit report.
 For example:

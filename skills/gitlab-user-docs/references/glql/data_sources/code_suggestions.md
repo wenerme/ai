@@ -6,6 +6,7 @@
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.1.
 - `daily`, `weekly`, and fixed-day `granularity` values for `timestamp` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/528) in GitLab 19.5.
 - `!=` and `not in` operators on the `ideName`, `language`, and `user` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 Code suggestions is a data source that provides aggregated metrics about
 [GitLab Duo Code Suggestions](../../project/repository/code_suggestions/_index.md)
@@ -21,9 +22,9 @@ usage across your project or group.
 | --------- | --------------------------------------------------------------------------- |
 | `project` | Query code suggestions in a specific project.                               |
 | `group`   | Query code suggestions across all projects in a group, including subgroups. |
+| `organization` | Query code suggestions across an [organization](_index.md#organization). |
 
-To aggregate code suggestions across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate code suggestions across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -183,5 +184,18 @@ information, see [analytics mode sorting](../_index.md#sorting).
   dimensions: ideName as "IDE", language as "Language"
   metrics: totalCount as "Total", acceptanceRate as "Rate"
   sort: totalCount desc
+  ```
+  ````
+
+- Acceptance rate by language across an organization:
+
+  ````yaml
+  ```glql
+  display: table
+  mode: analytics
+  query: type = CodeSuggestion and organization = "gid://gitlab/Organizations::Organization/1" and timestamp >= -30d
+  dimensions: language as "Language"
+  metrics: totalCount as "Total", acceptanceRate as "Acceptance Rate"
+  sort: acceptanceRate desc
   ```
   ````

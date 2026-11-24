@@ -5928,6 +5928,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDependenciesVulnerabilities"
         '400':
           description: Bad Request
       parameters:
@@ -13843,6 +13849,31 @@ paths:
       responses:
         '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDoraMetric"
+              examples:
+                successfull_response:
+                  value:
+                  - date: '2021-03-01'
+                    value: 3
+                  - date: '2021-03-02'
+                    value: 6
+                  - date: '2021-03-03'
+                    value: 0
+                  - date: '2021-03-04'
+                    value: 0
+                  - date: '2021-03-05'
+                    value: 0
+                  - date: '2021-03-06'
+                    value: 0
+                  - date: '2021-03-07'
+                    value: 0
+                  - date: '2021-03-08'
+                    value: 4
         '400':
           description: Bad request
         '401':
@@ -13926,6 +13957,31 @@ paths:
       responses:
         '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDoraMetric"
+              examples:
+                successfull_response:
+                  value:
+                  - date: '2021-03-01'
+                    value: 3
+                  - date: '2021-03-02'
+                    value: 6
+                  - date: '2021-03-03'
+                    value: 0
+                  - date: '2021-03-04'
+                    value: 0
+                  - date: '2021-03-05'
+                    value: 0
+                  - date: '2021-03-06'
+                    value: 0
+                  - date: '2021-03-07'
+                    value: 0
+                  - date: '2021-03-08'
+                    value: 4
         '400':
           description: Bad request
         '401':
@@ -16008,6 +16064,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSearchMigration"
         '401':
           description: 401 Unauthorized
         '403':
@@ -23597,6 +23659,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBurndownEvent"
         '404':
           description: Not Found
         '400':
@@ -26450,6 +26518,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBurndownEvent"
         '404':
           description: Not Found
         '400':
@@ -44143,7 +44217,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPersonalAccessToken"
+                "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenAssociations"
         '401':
           description: Unauthorized
         '404':
@@ -89070,6 +89144,21 @@ components:
         web_url:
           type: string
           example: https://gitlab.example.com/groups/gitlab-org/-/iterations/1
+    APIEntitiesDependenciesVulnerabilities:
+      type: object
+      properties:
+        occurrence_id:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+        severity:
+          type: string
     APIEntitiesSamlGroupLink:
       type: object
       properties:
@@ -90424,7 +90513,9 @@ components:
       type: object
       properties:
         headers:
-          type: string
+          type: array
+          items:
+            type: object
         method:
           type: string
         url:
@@ -90435,7 +90526,9 @@ components:
       type: object
       properties:
         headers:
-          type: string
+          type: array
+          items:
+            type: object
         reason_phrase:
           type: string
         status_code:
@@ -90502,11 +90595,15 @@ components:
         description_html:
           type: string
         links:
-          type: string
+          type: array
+          items:
+            type: object
         location:
           type: string
         remediations:
-          type: string
+          type: array
+          items:
+            type: object
         solution:
           type: string
         evidence:
@@ -95235,6 +95332,16 @@ components:
           type: object
         issue:
           "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+    APIEntitiesDoraMetric:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2021-03-01'
+        value:
+          type: number
+          example: 3
     APIEntitiesProtectedBranch:
       type: object
       properties:
@@ -98136,7 +98243,9 @@ components:
         asset_proxy_url:
           type: string
         asset_proxy_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         static_objects_external_storage_auth_token:
           type: string
         static_objects_external_storage_url:
@@ -98168,7 +98277,9 @@ components:
         ci_partitions_in_seconds_limit_human_readable:
           type: string
         code_dropdown_custom_clients:
-          type: string
+          type: array
+          items:
+            type: object
         concurrent_github_import_jobs_limit:
           type: string
         concurrent_bitbucket_import_jobs_limit:
@@ -98196,7 +98307,7 @@ components:
         default_branch_protection:
           type: string
         default_branch_protection_defaults:
-          type: string
+          type: object
         default_ci_config_path:
           type: string
         default_group_visibility:
@@ -98224,7 +98335,7 @@ components:
         deny_all_requests_except_allowed:
           type: string
         dependency_management_settings:
-          type: string
+          type: object
         disable_admin_oauth_scopes:
           type: string
         disable_feed_token:
@@ -98236,21 +98347,29 @@ components:
         root_moved_permanently_redirection:
           type: string
         disabled_oauth_sign_in_sources:
-          type: string
+          type: array
+          items:
+            type: string
         domain_denylist:
-          type: string
+          type: array
+          items:
+            type: string
         domain_denylist_enabled:
           type: string
         domain_denylist_raw:
           type: string
         domain_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         domain_allowlist_raw:
           type: string
         outbound_local_requests_allowlist_raw:
           type: string
         outbound_local_requests_whitelist:
-          type: string
+          type: array
+          items:
+            type: string
         dsa_key_restriction:
           type: string
         ecdsa_key_restriction:
@@ -98346,11 +98465,15 @@ components:
         iframe_rendering_enabled:
           type: string
         iframe_rendering_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         iframe_rendering_allowlist_raw:
           type: string
         import_sources:
-          type: string
+          type: array
+          items:
+            type: string
         inactive_resource_access_tokens_delete_after_days:
           type: string
         inactive_projects_delete_after_months:
@@ -98372,7 +98495,9 @@ components:
         jira_connect_additional_audience_url:
           type: string
         jira_connect_domain_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         jira_connect_domain_allowlist_raw:
           type: string
         jira_forge_app_id:
@@ -98456,7 +98581,7 @@ components:
         kroki_url:
           type: string
         kroki_formats:
-          type: string
+          type: object
         kroki_diagram_proxy_enabled:
           type: string
         plantuml_enabled:
@@ -98498,7 +98623,9 @@ components:
         remember_me_enabled:
           type: string
         restricted_visibility_levels:
-          type: string
+          type: array
+          items:
+            type: string
         rsa_key_restriction:
           type: string
         session_expire_delay:
@@ -98510,7 +98637,7 @@ components:
         shared_runners_text:
           type: string
         sign_in_restrictions:
-          type: string
+          type: object
         signup_enabled:
           type: string
         silent_mode_enabled:
@@ -98894,7 +99021,9 @@ components:
         allow_runner_registration_token:
           type: string
         valid_runner_registrars:
-          type: string
+          type: array
+          items:
+            type: string
         user_defaults_to_private_profile:
           type: string
         deactivation_email_additional_text:
@@ -99108,7 +99237,7 @@ components:
         minimum_language_server_version:
           type: string
         vscode_extension_marketplace:
-          type: string
+          type: object
         vscode_extension_marketplace_enabled:
           type: string
         vscode_extension_marketplace_extension_host_domain:
@@ -99128,7 +99257,7 @@ components:
         delay_user_account_self_deletion:
           type: string
         resource_usage_limits:
-          type: string
+          type: object
         runner_jobs_request_api_limit:
           type: string
         runner_jobs_patch_trace_api_limit:
@@ -99170,7 +99299,9 @@ components:
         allow_all_integrations:
           type: string
         allowed_integrations:
-          type: string
+          type: array
+          items:
+            type: string
         allow_group_owners_to_manage_ldap:
           type: string
         automatic_purchased_storage_allocation:
@@ -99178,7 +99309,9 @@ components:
         check_namespace_plan:
           type: string
         ci_cd_catalog_projects_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         ci_cd_catalog_projects_allowlist_raw:
           type: string
         duo_chat_expiration_column:
@@ -99220,13 +99353,17 @@ components:
         elasticsearch_max_code_indexing_concurrency:
           type: string
         elasticsearch_namespace_ids:
-          type: string
+          type: array
+          items:
+            type: integer
         elasticsearch_pause_indexing:
           type: string
         elasticsearch_advanced_search_pause_indexing:
           type: string
         elasticsearch_project_ids:
-          type: string
+          type: array
+          items:
+            type: integer
         elasticsearch_retry_on_failure:
           type: string
         elasticsearch_replicas:
@@ -99236,7 +99373,9 @@ components:
         elasticsearch_shards:
           type: string
         elasticsearch_url:
-          type: string
+          type: array
+          items:
+            type: string
         elasticsearch_username:
           type: string
         elasticsearch_password:
@@ -99292,7 +99431,9 @@ components:
         throttle_incident_management_notification_period_in_seconds:
           type: string
         package_metadata_purl_types:
-          type: string
+          type: array
+          items:
+            type: integer
         product_analytics_enabled:
           type: string
         product_analytics_data_collector_host:
@@ -99324,7 +99465,9 @@ components:
         duo_workflow_file_attachments_enabled:
           type: boolean
         duo_namespace_access_rules:
-          type: string
+          type: array
+          items:
+            type: object
         duo_remote_flows_enabled:
           type: string
         duo_remote_flows_availability:
@@ -99366,7 +99509,9 @@ components:
         foundational_agents_default_enabled:
           type: string
         foundational_agents_statuses:
-          type: string
+          type: array
+          items:
+            type: object
         zoekt_indexing_enabled:
           type: string
         zoekt_search_enabled:
@@ -99550,11 +99695,13 @@ components:
         allow_local_requests_from_hooks_and_services:
           type: string
         asset_proxy_whitelist:
-          type: string
+          type: array
+          items:
+            type: string
         housekeeping_bitmaps_enabled:
           type: string
         repository_storages_weighted:
-          type: string
+          type: object
         gitlab_product_usage_data_source:
           type: string
         container_registry_import_max_tags_count:
@@ -99644,9 +99791,13 @@ components:
         max_number_of_repository_downloads_within_time_period:
           type: string
         git_rate_limit_users_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         git_rate_limit_users_alertlist:
-          type: string
+          type: array
+          items:
+            type: integer
         auto_ban_user_on_excessive_projects_download:
           type: string
         delete_unconfirmed_users:
@@ -99806,6 +99957,19 @@ components:
           example: Failed to move repository
         project:
           "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
+    APIEntitiesBurndownEvent:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          example: '2021-03-01T10:00:00.000Z'
+        weight:
+          type: integer
+          example: 2
+        action:
+          type: string
+          example: created
     APIEntitiesGlobalNotificationSetting:
       type: object
       properties:
@@ -100200,17 +100364,23 @@ components:
         provider:
           type: string
         providers:
-          type: string
+          type: array
+          items:
+            type: string
         root:
-          type: string
+          type: object
         source:
           type: string
         submodules:
-          type: string
+          type: array
+          items:
+            type: string
         version:
           type: string
         versions:
-          type: string
+          type: array
+          items:
+            type: string
     APIEntitiesCommit:
       type: object
       properties:
@@ -104876,7 +105046,9 @@ components:
         created_at:
           type: string
         tags:
-          type: string
+          type: array
+          items:
+            type: object
         pipeline:
           "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
     APIEntitiesPackage:
@@ -104928,7 +105100,9 @@ components:
           type: string
           example: gitlab/foo/bar
         tags:
-          type: string
+          type: array
+          items:
+            type: object
         pipeline:
           "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
         pipelines:
@@ -105638,6 +105812,96 @@ components:
           "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
         project:
           "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+    APIEntitiesGroupAssociationDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the group.
+          format: int64
+        web_url:
+          type: string
+          description: URL to access the group in a browser.
+          example: http://gitlab.example.com/groups/diaspora
+        name:
+          type: string
+          description: Name of the group.
+          example: Diaspora
+        parent_id:
+          type: integer
+          format: int64
+          example: 1
+        organization_id:
+          type: integer
+          format: int64
+          example: 1
+        access_levels:
+          type: integer
+          example: 50
+        visibility:
+          type: string
+          example: public
+    APIEntitiesProjectAssociationDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the project.
+          format: int64
+          example: 1
+        description:
+          type: string
+          description: Description of the project.
+          example: desc
+        name:
+          type: string
+          description: Name of the project.
+          example: project1
+        name_with_namespace:
+          type: string
+          description: Name of the project with its namespace.
+          example: John Doe / project1
+        path:
+          type: string
+          description: Path of the project.
+          example: project1
+        path_with_namespace:
+          type: string
+          description: Path of the project with its namespace.
+          example: namespace1/project1
+        created_at:
+          type: string
+          description: Date and time when the project was created.
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+        access_levels:
+          type: object
+          properties:
+            project_access_level:
+              type: integer
+              example: 50
+            group_access_level:
+              type: integer
+              example: 50
+        visibility:
+          type: string
+          example: public
+        web_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab
+        namespace:
+          "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
+    APIEntitiesPersonalAccessTokenAssociations:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesGroupAssociationDetails"
+        projects:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProjectAssociationDetails"
     APIEntitiesPagesDomainCertificateExpiration:
       type: object
       properties:
@@ -110814,9 +111078,13 @@ components:
         unique_project_download_limit_interval_in_seconds:
           type: string
         unique_project_download_limit_allowlist:
-          type: string
+          type: array
+          items:
+            type: string
         unique_project_download_limit_alertlist:
-          type: string
+          type: array
+          items:
+            type: integer
         auto_ban_user_on_excessive_projects_download:
           type: string
     APIEntitiesSshCertificate:
@@ -119311,13 +119579,22 @@ components:
           description: 'Dependency management settings. Set `security_update_scheduler_max_concurrency`
             (integer) to cap the number of security update scheduler jobs that run
             concurrently across the Sidekiq fleet. Default: `30`. Capped at `200`.
-            Set to `0` to remove the concurrency limit. Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239173)
+            Set to `0` to remove the concurrency limit. Set `security_update_scheduler_project_period_in_seconds`
+            (integer) to the seconds between security update scheduler runs for each
+            project. Default: `300`. Maximum: `86400`. Set the period to `0` to remove
+            the rate limit. Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239173)
             in GitLab 19.1.'
           properties:
             security_update_scheduler_max_concurrency:
               type: integer
               description: Maximum number of dependency management security update
                 scheduler jobs to run concurrently across the Sidekiq fleet.
+              nullable: true
+            security_update_scheduler_project_period_in_seconds:
+              type: integer
+              description: 'Seconds between dependency management security update
+                scheduler runs for each project. Default: `300`. Maximum: `86400`.
+                Set to `0` to remove the limit.'
               nullable: true
           nullable: true
         disable_admin_oauth_scopes:

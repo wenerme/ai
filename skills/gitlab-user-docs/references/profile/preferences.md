@@ -4,11 +4,8 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - Tabs [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257460) in GitLab 19.6 [with a flag](../../administration/feature_flags/_index.md) named `preferences_tabs`. Disabled by default.
-
-> [!flag]
-> The availability of the tabbed layout is controlled by a feature flag.
-> For more information, see the history.
-> Without tabs, the same sections appear on one page.
+- Tabs [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/631894) in GitLab 19.6.
+- Tabs [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/631894) in GitLab 19.7. Feature flag `preferences_tabs` removed.
 
 You can update your preferences to change the look and feel of GitLab.
 
@@ -292,11 +289,7 @@ To turn off emoji autocomplete:
 ### Set a default emoji skin tone
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/633107) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `emoji_skin_tone_preference`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/633111) in GitLab 19.7. Feature flag `emoji_skin_tone_preference` removed.
 
 Emoji that show people or hands come in five skin tone variants.
 Choose the skin tone that GitLab uses for these emoji by default, in the emoji picker and in emoji autocomplete.

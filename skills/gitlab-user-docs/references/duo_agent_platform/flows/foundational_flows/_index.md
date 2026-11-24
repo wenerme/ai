@@ -17,7 +17,6 @@ The following foundational flows are available:
 |------|-------------|
 | [Agentic Breaking Change Resolution](../../../application_security/dependency_scanning/agentic-breaking-change-resolution.md) | Automatically resolve breaking changes in dependency bump merge requests. |
 | [Code Review](code_review/_index.md) | Automate code review with AI-native analysis and feedback. |
-| [Convert to GitLab CI/CD](../../../../ci/migration/convert_to_gitlab_ci.md) | Migrate Jenkins pipelines to CI/CD. |
 | [Developer](../../../project/merge_requests/developer.md) | Convert issues into merge requests, or complete coding tasks in Agentic Chat or the GitLab Duo CLI. |
 | [Fix CI/CD Pipeline](../../../../ci/pipelines/fix_pipeline.md) | Diagnose and repair failed jobs. |
 | [Generate Workplan](../../../work_items/workplan.md) | Draft a workplan for a work item and add it to the Implementation widget. |

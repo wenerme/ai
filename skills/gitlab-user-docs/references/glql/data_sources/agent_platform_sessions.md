@@ -6,6 +6,7 @@
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592423) in GitLab 19.4.
 - `daily` and fixed-day `granularity` values for `created` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/528) in GitLab 19.5.
 - `!=` and `not in` operators on the `flowType` and `user` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 This data source provides aggregated metrics about GitLab Duo Agent Platform
 session usage across your project or group.
@@ -20,9 +21,9 @@ session usage across your project or group.
 |-----------|-------------|
 | `project` | Query GitLab Duo Agent Platform sessions in a specific project. |
 | `group`   | Query GitLab Duo Agent Platform sessions across all projects in a group, including subgroups. |
+| `organization` | Query GitLab Duo Agent Platform sessions across an [organization](_index.md#organization). |
 
-To aggregate GitLab Duo Agent Platform sessions across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate GitLab Duo Agent Platform sessions across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -164,5 +165,19 @@ For more information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = AgentPlatformSession and group = "gitlab-org" and created > -30d
   metrics: totalCount as "Total", completionRate as "Completion rate", durationQuantile(0.5) as "Median duration"
+  ```
+  ````
+
+- Sessions by flow type across an organization:
+
+  ````yaml
+  ```glql
+  title: "Agent Platform sessions by flow across an organization (last 30 days)"
+  display: table
+  mode: analytics
+  query: type = AgentPlatformSession and organization = "gid://gitlab/Organizations::Organization/1" and created > -30d
+  dimensions: flowType as "Flow"
+  metrics: totalCount as "Total", finishedCount as "Finished", completionRate as "Completion rate"
+  sort: totalCount desc
   ```
   ````

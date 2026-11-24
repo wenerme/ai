@@ -2,7 +2,7 @@
 
 ---
 
-# Mobile Backup
+# Mobile backup
 
 ## Overview
 
@@ -10,7 +10,7 @@ Immich supports uploading photos and videos from your mobile device to the serve
 
 When backup is enabled, Immich will upload new photos and videos from selected albums when you open or resume the app, as well as periodically in the background.
 
-## General Features
+## General features
 
 ### Backup albums selection
 
@@ -30,7 +30,7 @@ When enabled, Immich automatically creates albums on the server that mirror the 
 
 This is a one-way sync from your device to the server. You can enable this feature at any time and use the **Reorganize into album** button to backfill existing uploads into their corresponding albums.
 
-## Platform Specific Features
+## Platform specific features
 
 ### Android
 
@@ -48,7 +48,7 @@ This is a one-way sync from your device to the server. You can enable this featu
 
 - iOS automatically manages background tasks; the app cannot control when the background upload task will run. The more frequently you open the app, the more often background tasks will run.
 
-#### iCloud Backup
+#### iCloud backup
 
 Local albums containing assets from iCloud and marked for backup in Immich will be pulled from iCloud and temporarily stored in the app's cache folder. Once the hashing and uploading process is completed, the temporary files will be emptied.
 

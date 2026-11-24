@@ -1,4 +1,4 @@
-# Hardware Transcoding
+# Hardware transcoding
 
 This feature allows you to use a GPU to accelerate transcoding and reduce CPU load.
 Note that hardware transcoding produces significantly larger videos than software transcoding with similar settings, typically with lower quality. Using slow presets and preferring more efficient codecs can narrow this gap.
@@ -84,7 +84,7 @@ If you use a [configuration file](/install/config-file.md), use the `accel` opti
 }
 ```
 
-#### Single Compose File
+#### Single Compose file
 
 Some platforms, including Unraid and Portainer, do not support multiple Compose files as of writing. As an alternative, you can "inline" the relevant contents of the [`hwaccel.transcoding.yml`][hw-file] file into the `immich-server` service directly.
 

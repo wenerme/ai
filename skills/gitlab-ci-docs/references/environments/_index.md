@@ -28,7 +28,7 @@ You can view a list of environments for a given project in a few ways:
 
   [A project overview page displaying the number of available environments as an incremental counter.]
 
-- In the left sidebar, select **Operate** > **Environments**. The environments are displayed.
+- In the left sidebar, select  > . The environments are displayed.
 
   [A list of available environments in a GitLab project, showing environment names, statuses, and other relevant details.]
 
@@ -37,7 +37,7 @@ You can view a list of environments for a given project in a few ways:
 
   [A list of deployments for a selected environment, displaying deployment history and related details.]
 
-- To view a list of all manual jobs in a deployment pipeline, select the **Run** () dropdown list.
+- To view a list of all manual jobs in a deployment pipeline, select the  () dropdown list.
 
   [Viewing a manual job in a deployment pipeline]
 
@@ -106,11 +106,11 @@ Prerequisites:
 
 To create a static environment in the UI:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
-1. Select **Create an environment**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select  or .
 1. Complete the fields.
-1. Select **Save**.
+1. Select .
 
 ### In your `.gitlab-ci.yml` file
 
@@ -336,8 +336,8 @@ GitLab validates the pipeline configuration at pipeline creation.
 
 To search environments by name:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. In the search bar, enter your search term.
    - The length of your search term should be three or more characters.
    - Matching applies from the beginning of the environment name.
@@ -383,10 +383,10 @@ When using the `on_stop` action to stop an environment, the job runs if it's not
 
 To stop an environment in the GitLab UI:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
-1. Next to the environment you want to stop, select **Stop**.
-1. On the confirmation dialog, select **Stop environment**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the environment you want to stop, select  ().
+1. On the confirmation dialog, select .
 
 You can also [stop an environment without running the `on_stop` action](#stop-an-environment-without-running-the-on_stop-action).
 
@@ -448,7 +448,7 @@ the `stop` trigger is automatically enabled.
 In the following example, the `deploy_review` job calls a `stop_review` job to clean up and stop
 the environment.
 
-- When the [**Pipelines must succeed**](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge) setting is turned on,
+- When the [](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge) setting is turned on,
   you can configure the [`allow_failure: true`](../yaml/_index.md#allow_failure)
   keyword on the `stop_review` job to prevent it from blocking your pipelines and merge requests.
 
@@ -529,8 +529,8 @@ you can view its expiration date and time.
 
 To view an environment's expiration date and time:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the name of the environment.
 
 The expiration date and time is displayed in the upper-left corner, next to the environment's name.
@@ -542,8 +542,8 @@ you can override its expiration.
 
 To override an environment's expiration in the UI:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment name.
 1. In the upper-right corner, select the thumbtack ().
 
@@ -565,11 +565,11 @@ Prerequisites:
 
 To clean up stale environments:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
-1. Select **Clean up environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
 1. Select the date to use for determining which environments to consider stale.
-1. Select **Clean up**.
+1. Select .
 
 Active environments that haven't been updated after the specified date are stopped.
 Protected environments are ignored and not stopped.
@@ -678,7 +678,7 @@ teardown-cloud-b:
 
 ### Stop an environment without running the `on_stop` action
 
-- **Force stop** option in the UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432937) in GitLab 19.5.
+-  option in the UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432937) in GitLab 19.5.
 
 You can force stop an environment to skip its [`on_stop`](../yaml/_index.md#environmenton_stop) action.
 Use this option to:
@@ -687,7 +687,7 @@ Use this option to:
 - Recover an environment that's stuck in the `stopping` state. This can happen, for example, when
   the source branch is deleted before an `auto_stop_in` timer triggers the stop job.
 
-Force stopping an environment marks it as stopped immediately and moves it to the **Stopped** tab.
+Force stopping an environment marks it as stopped immediately and moves it to the  tab.
 GitLab doesn't run or wait for the `on_stop` job, so the cleanup steps in that job don't run.
 You must do this cleanup yourself. GitLab still deletes
 [GitLab-managed Kubernetes resources](../../user/clusters/agent/managed_kubernetes_resources.md#resource-lifecycle-management)
@@ -703,16 +703,16 @@ Prerequisites:
 
 To force stop an environment in the GitLab UI:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. If the environment is available and has an `on_stop` action defined:
-   1. Next to the environment, select **Stop**.
-   1. On the confirmation dialog, select the **Force stop** checkbox.
-   1. Select **Force stop environment**.
+   1. Next to the environment, select  ().
+   1. On the confirmation dialog, select the  checkbox.
+   1. Select .
 1. If the environment is stuck in the `stopping` state:
-   1. Next to the environment, select **More actions** () > **Force stop environment**.
-   1. On the confirmation dialog, select **Force stop environment**.
-      Alternatively, on the environment details page, select **Force stop**.
+   1. Next to the environment, select  () > .
+   1. On the confirmation dialog, select .
+      Alternatively, on the environment details page, select .
 
 You can also force stop an environment by using the
 [stop an environment API](../../api/environments.md#stop-an-environment) with the parameter
@@ -729,11 +729,11 @@ Prerequisites:
 
 To delete an environment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
-1. Select the **Stopped** tab.
-1. Next to the environment you want to delete, select **Delete environment**.
-1. On the confirmation dialog, select **Delete environment**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the  tab.
+1. Next to the environment you want to delete, select  () > .
+1. On the confirmation dialog, select .
 
 ## Access an environment for preparation or verification purposes
 
@@ -823,11 +823,11 @@ Limitations of GitLab Auto Rollback:
 
 GitLab Auto Rollback is turned off by default. To turn it on:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Automatic deployment rollbacks**.
-1. Select the checkbox for **Enable automatic rollbacks**.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select the checkbox for .
+1. Select .
 
 ## Environment permissions
 
@@ -842,7 +842,7 @@ and private projects.
 ### Create and update environments
 
 - You must have the Developer, Maintainer, or Owner role to create a new environment, or update an existing unprotected environment.
-- For [Protected environments](protected_environments.md), you must be in the **Allowed to deploy** list.
+- For [Protected environments](protected_environments.md), you must be in the  list.
 
 ### Stop and delete environments
 
@@ -881,7 +881,7 @@ Web terminals:
 
 In the UI, to view the Web terminal, either:
 
-- From the **Actions** menu, select **Terminal**:
+- Next to the environment, select  () > :
 
   [The Terminal button in the Actions dropdown list on the Environments page.]
 

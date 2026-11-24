@@ -17,6 +17,21 @@ image: https://developers.cloudflare.com/cloudflare-one/changelog/og.png?v=dd431
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-11-19
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Recent searches for Email Security investigations**
+
+Email Security investigations now show up to five of your recent searches. Select a search to run it again, or copy its URL to share.
+
+![The Investigation page displays a recent search and a copy URL control](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2376,height=824,format=webp/_astro/recent-searches-email.BRs98d1s.jpg)
+
+Recent searches are stored per user and are not visible to other account members.
+
+This feature is available to all Email Security customers.
+
 ## 2026-11-18
 
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)

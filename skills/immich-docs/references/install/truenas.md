@@ -6,22 +6,22 @@
 
 > **note**: This is a community contribution and not officially supported by the Immich team, but included here for convenience.
 
-Community support can be found in the dedicated channel on the [Discord Server](https://discord.immich.app/).
+Community support can be found in the dedicated channel on the [Discord server](https://discord.immich.app/).
 
-**Please report app issues to the corresponding [GitHub Repository](https://github.com/truenas/apps/tree/master/trains/community/immich).**
+**Please report app issues to the corresponding [GitHub repository](https://github.com/truenas/apps/tree/master/trains/community/immich).**
 
 > **warning**: This guide covers the installation of Immich on TrueNAS Community Edition 24.10.2.2 (Electric Eel) and later.
 
 We recommend keeping TrueNAS Community Edition and Immich relatively up to date with the latest versions to avoid any issues.
 
-If you are using an older version of TrueNAS, we ask that you upgrade to the latest version before installing Immich. Check the [TrueNAS Community Edition Release Notes](https://www.truenas.com/docs/softwarereleases/) for more information on breaking changes, new features, and how to upgrade your system.
+If you are using an older version of TrueNAS, we ask that you upgrade to the latest version before installing Immich. Check the [TrueNAS Community Edition release notes](https://www.truenas.com/docs/softwarereleases/) for more information on breaking changes, new features, and how to upgrade your system.
 
 Immich can easily be installed on TrueNAS Community Edition via the **Community** train application.
 Consider reviewing the TrueNAS [Apps resources](https://apps.truenas.com/getting-started/) if you have not previously configured applications on your system.
 
-## First Steps
+## First steps
 
-### Setting up Storage Datasets
+### Setting up storage datasets
 
 Before beginning app installation, [create the datasets](https://www.truenas.com/docs/scale/scaletutorials/storage/datasets/datasetsscale/) to use in the **Storage Configuration** section during installation.
 
@@ -55,7 +55,7 @@ If the **data** dataset uses ACL it must have [ACL mode](https://www.truenas.com
 
 To change or verify the ACL mode, go to the **Datasets** screen, select the **library** dataset, click on the **Edit** button next to **Dataset Details**, then click on the **Advanced Options** tab, scroll down to the **ACL Mode** section, and select `Passthrough` from the dropdown menu. Click **Save** to apply the changes. If the option is greyed out, set the **ACL Type** to `SMB/NFSv4` first, then you can change the **ACL Mode** to `Passthrough`.
 
-## Installing the Immich Application
+## Installing the Immich application
 
 To install the **Immich** application, go to **Apps**, click **Discover Apps**, and either begin typing Immich into the search field or scroll down to locate the **Immich** application widget.
 
@@ -76,7 +76,7 @@ Click **Install** to open the Immich application configuration screen.
 Application configuration settings are presented in several sections, each explained below.
 To find specific fields, click in the **Search Input Fields** search field, scroll down to a particular section, or click on the section heading on the navigation area in the upper-right corner.
 
-### Application Name and Version
+### Application name and version
 
 [Install Immich Screen]
 
@@ -85,7 +85,7 @@ Change it if you’re deploying a second instance.
 
 Immich version within TrueNAS catalog (Different from Immich release version).
 
-### Immich Configuration
+### Immich configuration
 
 [Configuration Settings]
 
@@ -120,7 +120,7 @@ More information on available environment variables can be found in the **[envir
 
 Some examples are: `IMMICH_VERSION`, `UPLOAD_LOCATION`, `DB_DATA_LOCATION`, `TZ`, `IMMICH_LOG_LEVEL`, `DB_PASSWORD`, `REDIS_PASSWORD`.
 
-### User and Group Configuration
+### User and group configuration
 
 Application in TrueNAS runs as a specific user and group. Immich uses the default user `apps` (UID 568) and the default group `apps` (GID 568).
 
@@ -132,7 +132,7 @@ Application in TrueNAS runs as a specific user and group. Immich uses the defaul
 
 > **warning**: If you change the user or group, make sure that the datasets you created for Immich data storage have the correct permissions set for that user and group as specified in the [Setting up Storage Datasets](#setting-up-storage-datasets) section above.
 
-### Network Configuration
+### Network configuration
 
 [Networking Settings]
 
@@ -142,9 +142,9 @@ Application in TrueNAS runs as a specific user and group. Immich uses the defaul
 
 - **Host IPs**: Leave the default blank value.
 
-### Storage Configuration
+### Storage configuration
 
-> **danger**: Default Settings (Not recommended)
+> **danger**: Default Settings (not recommended)
 The default setting for datasets is **ixVolume (dataset created automatically by the system)**. This is not recommended as this results in your data being harder to access manually and can result in data loss if you delete the immich app. It is also harder to manage snapshots and replication tasks. It is recommended to use the **Host Path (Path that already exists on the system)** option instead.
 
 The storage configuration section allows you to set up the storage locations for Immich data. You can select the datasets created in the previous step.
@@ -160,7 +160,7 @@ For the Postgres Data Storage, select **Host Path (Path that already exists on t
 > **info**: **Postgres Data Storage**
 Once **Host Path** is selected, a checkbox appears with **_Automatic Permissions_**. If you have not set the ownership of the **pgData** dataset to `netdata` (UID 999), tick this box as it will set the user ownership to `netdata` (UID 999) and the group ownership to `docker` (GID 999) automatically. If you have set the ownership of the **pgData** dataset to `netdata` (UID 999), you can leave this box unticked.
 
-### Additional Storage (Advanced Users)
+### Additional storage (advanced users)
 
 External Libraries
 
@@ -207,7 +207,7 @@ To mount these datasets:
 
 [Use Multiple Datasets for Immich Storage with Additional Storage]
 
-### Resources Configuration
+### Resources configuration
 
 - **CPU**: Depending on your system resources, you can keep the default value of `2` threads or specify a different number. Immich recommends at least `8` threads.
 
@@ -234,7 +234,7 @@ After that, you can start using Immich to upload and manage your photos and vide
 
 > **tip**: For more information on how to use the application once installed, please refer to the [Post Install](/install/post-install.mdx) guide.
 
-## Edit App Settings
+## Edit app settings
 
 - Go to the **Installed Applications** screen and select Immich from the list of installed applications.
 - Click **Edit** on the **Application Info** widget to open the **Edit Immich** screen.
@@ -243,7 +243,7 @@ After that, you can start using Immich to upload and manage your photos and vide
 - Click **Update** at the very bottom of the page to save changes.
   - TrueNAS automatically updates, recreates, and redeploys the Immich container with the updated settings.
 
-## Updating the App
+## Updating the app
 
 > **danger**: Make sure to read the general [upgrade instructions](/install/upgrading.md).
 
@@ -264,7 +264,7 @@ To update the app to the latest version:
 
 The migration should also be performed when the Immich app is not running to ensure no data is being written while you are copying the data.
 
-### Migration from Old Storage Configuration
+### Migration from old storage configuration
 
 There are two ways to migrate from the old storage configuration to the new one, depending on whether you want to keep the old multiple datasets or if you want to move to a double dataset configuration with a single dataset for Immich data storage and a single dataset for Postgres data storage.
 

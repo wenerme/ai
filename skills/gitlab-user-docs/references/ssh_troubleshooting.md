@@ -15,7 +15,7 @@ Replace any key longer than 8192 bits with a shorter key.
 
 ## Password prompt with `git clone`
 
-When you run `git clone`, you may be prompted for a password, like `git@gitlab.example.com's password:`.
+When you run `git clone`, you might be prompted for a password, like `git@gitlab.example.com's password:`.
 This indicates that something is wrong with your SSH setup.
 
 - Ensure that you generated your SSH key pair correctly and added the public SSH

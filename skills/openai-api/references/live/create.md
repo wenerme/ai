@@ -1156,7 +1156,7 @@ Content type: `application/json`
 
   - `idle_timeout_s: optional integer`
 
-    Whole seconds of inactivity after which a Live WebRTC session with a speech wake policy pauses inference. The connection and conversation history are retained. Omit to keep inference active after the first wake until the session ends.
+    Whole seconds of inactivity after which a Live WebRTC or SIP session with a speech wake policy pauses inference. The connection and conversation history are retained. Omit to keep inference active after the first wake until the session ends.
 
     `minimum: 5`, `maximum: 60`
 

@@ -83,23 +83,7 @@ You may prefer to set up your own code watchers and reloading mechanisms, or mou
 
 ## Differences after you deploy
 
-Local development runs your container in Docker. A deployed container that uses the [Durable Object scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy) differs from a local container in the following ways. Code that works locally can fail after you deploy.
-
-### The hostname is longer than a DNS label
-
-The hostname of a container is the name it uses for itself, which the `hostname` command prints. Nothing routes traffic to it. In a deployed container, the hostname is 64 characters, one more than a DNS label allows. `/etc/hosts` does not list it, so it does not resolve. Locally, the hostname is the 12-character Docker container ID, and `/etc/hosts` lists it. Code that looks up its own hostname can fail after you deploy.
-
-For example, `python3 -m http.server` and other servers built on the Python `http.server` module, such as `wsgiref`, exit on startup with this error:
-
-```txt
-UnicodeEncodeError: 'idna' codec can't encode characters in position 0-63: label too long
-```
-
-To serve files with Python, use `socketserver`, which does not look up the hostname:
-
-```sh
-python3 -c 'import http.server as h, socketserver as s; s.ThreadingTCPServer(("", 8000), h.SimpleHTTPRequestHandler).serve_forever()'
-```
+Local development runs your container in Docker. A deployed container that uses the [Durable Object scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy) grants Linux capabilities differently from a local container. Code that works locally can fail after you deploy.
 
 ### Other Linux users keep root capabilities
 
@@ -156,5 +140,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/local-dev/#page","headline":"Local Development","description":"Run Container-enabled Workers locally and test raw TCP and gRPC traffic with Wrangler.","url":"https://developers.cloudflare.com/containers/guides/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/local-dev/og.png?v=a2f82e93548ea4bd","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/local-dev/#page","headline":"Local Development","description":"Run Container-enabled Workers locally and test raw TCP and gRPC traffic with Wrangler.","url":"https://developers.cloudflare.com/containers/guides/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/local-dev/og.png?v=a2f82e93548ea4bd","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

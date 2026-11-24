@@ -18,6 +18,7 @@
 - `model` filter [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/542) in GitLab 19.6.
 - `idle` status [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/573) in GitLab 19.6.
 - Feature flag `dap_impact_v1` [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268734) in GitLab 19.6.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 > [!flag]
 > This data source reads from the GitLab Duo Agent Platform flow analytics engine, which is
@@ -38,9 +39,9 @@ credits they used.
 |-----------|-------------|
 | `project` | Query GitLab Duo Agent Platform flows in a specific project. |
 | `group`   | Query GitLab Duo Agent Platform flows across all projects in a group, including subgroups. |
+| `organization` | Query GitLab Duo Agent Platform flows across an [organization](_index.md#organization). |
 
-To aggregate GitLab Duo workflows across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate GitLab Duo workflows across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -393,5 +394,19 @@ information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = DuoWorkflow and group = "gitlab-org" and created > -30d
   metrics: totalCount as "Flows", usersCount as "Users", projectsCount as "Projects", creditsUsedQuantile(0.5) as "Median credits"
+  ```
+  ````
+
+- Flows by flow type across an organization:
+
+  ````yaml
+  ```glql
+  title: "Duo workflows by flow type across an organization (last 30 days)"
+  display: table
+  mode: analytics
+  query: type = DuoWorkflow and organization = "gid://gitlab/Organizations::Organization/1" and created > -30d
+  dimensions: flowType as "Flow"
+  metrics: totalCount as "Flows", usersCount as "Users", creditsUsedSum as "Credits"
+  sort: totalCount desc
   ```
   ````

@@ -6,6 +6,7 @@
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.2.
 - Configurable `granularity` parameter [introduced](https://gitlab.com/gitlab-org/glql/-/issues/130) in GitLab 19.3.
 - `!=` and `not in` operators on the `user` filter [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 Contributions is a data source that provides aggregated metrics about
 contribution activity (such as commits, issues, and merge requests) across
@@ -21,9 +22,9 @@ your projects or groups.
 | --------- | ------------------------------------------------------------------------ |
 | `project` | Query contributions in a specific project.                               |
 | `group`   | Query contributions across all projects in a group, including subgroups. |
+| `organization` | Query contributions across an [organization](_index.md#organization). |
 
-To aggregate contributions across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate contributions across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -131,5 +132,19 @@ information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = Contribution and group = "gitlab-org" and created >= -90d
   metrics: totalCount as "Total", usersCount as "Contributors"
+  ```
+  ````
+
+- Monthly contribution trend across an organization:
+
+  ````yaml
+  ```glql
+  title: "Monthly contributions across an organization"
+  display: table
+  mode: analytics
+  query: type = Contribution and organization = "gid://gitlab/Organizations::Organization/1" and created >= -365d
+  dimensions: created as "Month"
+  metrics: totalCount as "Total", usersCount as "Contributors"
+  sort: created desc
   ```
   ````

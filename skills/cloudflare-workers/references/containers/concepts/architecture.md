@@ -85,7 +85,7 @@ Durable Objects and their associated Container instances are not guaranteed to r
 
 Container placement is optimized for request routing and startup speed, so a Container may start in a different location than its Durable Object.
 
-Starting additional Container instances can use other locations where the image is available. Cloudflare prepares additional capacity as demand grows. Because prepared capacity is finite, some Container instances may start in locations farther from the end user. You are only charged for actively running instances, not for prepared images that are not running.
+Additional Container instances may start in different eligible locations, depending on available capacity and image availability. You are only charged for actively running instances, not for prepared images that are not running.
 
 #### Cold starts
 
@@ -95,13 +95,13 @@ Container cold starts can often be in the 1-3 second range, but this is dependen
 
 ### Requests to running Containers
 
-When a request *starts* a new container instance, the nearest location with a pre-fetched image is selected. Subsequent requests to a particular instance, regardless of where they originate, will be routed to this location as long as the instance stays alive.
+When a request starts a new Container instance, Cloudflare selects a suitable location based on request routing, available capacity, and image availability. Subsequent requests to that instance reach the same location for as long as the instance runs, regardless of where the requests originate.
 
-However, once that container instance stops and restarts, future requests could be routed to a *different* location. This location will again be the nearest location to the originating request with a pre-fetched image.
+After the Container stops, its next start may use a different eligible location. Refer to [Placement](https://developers.cloudflare.com/containers/concepts/placement/) for details, including how Durable Object jurisdiction affects placement.
 
 ### Container runtime
 
-Each container instance runs in a Firecracker microVM with its own kernel and network. No other workload on the Cloudflare network shares that kernel. Your image runs as a Linux container inside the VM.
+Each container instance runs in a microVM with its own kernel and network. No other workload on the Cloudflare network shares that kernel. Your image runs as a Linux container inside the VM.
 
 Containers should be built for the `linux/amd64` architecture, and should stay within [size limits](https://developers.cloudflare.com/containers/platform/limits/).
 
@@ -111,13 +111,9 @@ Containers should be built for the `linux/amd64` architecture, and should stay w
 
 Call [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout) to let the runtime stop the container after the Durable Object becomes inactive. The Durable Object becomes inactive when it stops receiving requests. The timeout can keep the container available while the Durable Object sleeps. You can also stop a container with [`signal()`](https://developers.cloudflare.com/containers/api/durable-object-container/#signal) or [`destroy()`](https://developers.cloudflare.com/containers/api/durable-object-container/#destroy).
 
-When the platform is about to stop a container instance, it:
+During a planned stop, such as host maintenance, Cloudflare can send `SIGTERM` to your container before stopping it. The time available for cleanup depends on what triggered the stop. Handle `SIGTERM` in your image if you need to clean up before exit.
 
-1. Sends `SIGTERM` to the main process in the container.
-2. Waits up to 15 minutes for that process to exit.
-3. Sends `SIGKILL` if the process is still running.
-
-Handle `SIGTERM` in your image if you need cleanup before exit. The same sequence runs when a [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/) replaces a container instance with a new image.
+For image updates on the `default` scheduling policy, refer to [How a container instance is replaced](https://developers.cloudflare.com/containers/configuration/rollouts/#how-a-container-instance-is-replaced).
 
 ### Lifecycle events
 
@@ -139,13 +135,13 @@ You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2
 
 ## An example request
 
-- A developer deploys a Container. Cloudflare automatically readies instances across its Network.
+- A developer deploys a Worker with a Container application using the `durable_object` scheduling policy and a named image.
 - A request is made from a client in Bariloche, Argentina. It reaches the Worker in a nearby Cloudflare location in Neuquen, Argentina.
-- This Worker request calls `env.MY_CONTAINER.getByName("session-1337")`. This brings up a Durable Object, which then calls `this.ctx.container.start()`.
-- This requests the nearest free Container instance. Cloudflare recognizes that an instance is free in Buenos Aires, Argentina, and starts it there.
+- This Worker request calls `env.MY_CONTAINER.getByName("session-1337")`. This brings up a Durable Object, which starts the Container using `this.ctx.container.start({ image: this.ctx.container.images.base, enableInternet: false })`.
+- Cloudflare selects a suitable location based on request routing, available capacity, and image availability. In this example, it starts the Container in Buenos Aires, Argentina.
 - A different user needs to route to the same container. This user's request reaches the Worker running in Cloudflare's location in San Diego, US.
 - The Worker again calls `env.MY_CONTAINER.getByName("session-1337")`.
-- If the initial container instance is still running, the request is routed to the original location in Buenos Aires. If the initial container has gone to sleep, Cloudflare will once again try to find the nearest "free" instance of the Container, likely one in North America, and start an instance there.
+- If the initial container instance is still running, the request is routed to the original location in Buenos Aires. If the initial Container has stopped, the Durable Object can start a new instance. Cloudflare selects an eligible location for that instance, which may differ from the original location.
 
 Was this helpful?
 
@@ -156,5 +152,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/architecture/#page","headline":"Lifecycle of a Container","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/architecture/#page","headline":"Lifecycle of a Container","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

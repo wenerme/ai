@@ -8,6 +8,9 @@
 - Configurable `granularity` and `quantile` parameters [introduced](https://gitlab.com/gitlab-org/glql/-/issues/130) in GitLab 19.3.
 - `durationMin`, `durationMax`, `durationMean`, and `durationSum` metrics [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/507) in GitLab 19.5.
 - `!=` and `not in` operators on the `ref`, `source`, and `status` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
+- `source` and `status` parameters on `totalCount` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/587) in GitLab 19.7.
+- `source` filter [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/587) to accept only known pipeline sources in GitLab 19.7.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 Analytics mode returns aggregated metrics for pipelines in all states, including
 in-progress pipelines, with data typically available within ten minutes.
@@ -20,9 +23,9 @@ To query individual pipeline records, use [Pipelines](pipelines.md).
 | --------- | -------------------------------------------------------------------- |
 | `project` | Query pipelines in a specific project.                               |
 | `group`   | Query pipelines across all projects in a group, including subgroups. |
+| `organization` | Query pipelines across an [organization](_index.md#organization). |
 
-To aggregate pipelines across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate pipelines across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -70,14 +73,16 @@ Use these fields in the `query` parameter to filter your results.
 
 **Allowed value types**:
 
-- `String`
+- `Enum`, one of `push`, `web`, `trigger`, `schedule`, `api`, `external`, `pipeline`, `chat`, `webide`,
+  `merge_request_event`, `external_pull_request_event`, `parent_pipeline`, `ondemand_dast_scan`,
+  `ondemand_dast_validation`, `security_orchestration_policy`, `container_registry_push`, `duo_workflow`,
+  `pipeline_execution_policy_schedule`, or `dependency_management_security_update`
 - `List` (use `in` or `not in` operator for multiple values)
 
 **Additional details**:
 
 - `!=` and `not in` return only pipelines that have a source. Pipelines without one are left out.
-- Excluding a source that GitLab does not recognize excludes nothing.
-  Validation of source values is proposed in [issue 629846](https://gitlab.com/gitlab-org/gitlab/-/issues/629846).
+- A value that is not a known source fails with an error.
 
 ### Started at
 
@@ -130,7 +135,7 @@ A pipeline is considered finished when it has completed processing and reached a
 | Failure rate      | `failureRate`      | Ratio of failed pipelines to finished pipelines.      |
 | Skipped rate      | `skippedRate`      | Ratio of skipped pipelines to finished pipelines.     |
 | Success rate      | `successRate`      | Ratio of successful pipelines to finished pipelines.  |
-| Total count       | `totalCount`       | Total number of pipelines, including in-progress ones. |
+| Total count       | `totalCount`       | Total number of pipelines, including in-progress ones. Accepts optional `source` and `status` parameters that count only pipelines with the given sources and statuses. For example, `totalCount(source="duo_workflow") as "Agent"`. |
 
 ## Sort fields
 
@@ -231,6 +236,21 @@ information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = Pipeline and group = "gitlab-org" and finished >= -14d and ref in ("master", "main") and status in ("success", "failed")
   dimensions: project as "Project", status as "Status"
+  metrics: totalCount as "Total", successRate as "Success rate"
+  sort: totalCount desc
+  limit: 20
+  ```
+  ````
+
+- Pipeline success rate by project across an organization:
+
+  ````yaml
+  ```glql
+  title: "Pipeline success rate by project across an organization (last 30 days)"
+  display: table
+  mode: analytics
+  query: type = Pipeline and organization = "gid://gitlab/Organizations::Organization/1" and finished >= -30d
+  dimensions: project as "Project"
   metrics: totalCount as "Total", successRate as "Success rate"
   sort: totalCount desc
   limit: 20

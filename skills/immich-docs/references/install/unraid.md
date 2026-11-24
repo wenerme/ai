@@ -2,18 +2,18 @@
 
 ---
 
-# Unraid [ Community ]
+# Unraid [Community]
 
 > **note**: This is a community contribution and not officially supported by the Immich team, but included here for convenience.
 
-Community support can be found in the dedicated channel on the [Discord Server](https://discord.immich.app/).
+Community support can be found in the dedicated channel on the [Discord server](https://discord.immich.app/).
 
 Immich can easily be installed and updated on Unraid via:
 
 1. Community made template on the Unraid Community Apps
 2. [Docker Compose Manager](https://forums.unraid.net/topic/114415-plugin-docker-compose-manager/) plugin from the Unraid Community Apps
 
-## Community Applications Template
+## Community Applications template
 
 > **info**: - The Unraid template uses a community made image and is not officially supported by Immich
 
@@ -23,7 +23,7 @@ Once you have Redis and PostgreSQL running, search for Immich on the Unraid CA, 
 
 For more information about setting up the community image see [here](https://github.com/imagegenius/docker-immich#application-setup)
 
-## Docker-Compose Method
+## Docker Compose method
 
 > **info**: - Guide was written using Unraid v6.12.10.
 - Requires you to have installed the plugin: [Docker Compose Manager](https://forums.unraid.net/topic/114415-plugin-docker-compose-manager/)
@@ -87,7 +87,7 @@ For more information about setting up the community image see [here](https://git
 
 > **tip**: For more information on how to use the application once installed, please refer to the [Post Install](/install/post-install.mdx) guide.
 
-## Updating Steps
+## Updating steps
 
 > **danger**: Make sure to read the general [upgrade instructions](/install/upgrading.md).
 

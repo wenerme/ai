@@ -15881,6 +15881,12 @@ Content type: `application/json`
 
   - `"24h"`
 
+- `safety_identifier: optional string or null`
+
+  A stable identifier used for safety monitoring and abuse detection.
+
+  `maxLength: 128`
+
 - `service_tier: optional "auto" or "default" or "fast" or 2 more or null`
 
   Specifies the processing type used for serving the request.   - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.   - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.   - If set to '[flex](/api/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.   - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. For models with a dedicated Fast tier, either value resolves to `service_tier=fast`; for other models, either value resolves to `service_tier=priority`.   - When not set, the default behavior is 'auto'.
@@ -15898,7 +15904,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `CompactedResponse object { id, created_at, object, 3 more }`
+- `CompactedResponse object { id, created_at, object, 5 more }`
 
   - `id: string`
 
@@ -20524,6 +20530,14 @@ Content type: `application/json`
       - `"enabled"`
 
       - `"disabled"`
+
+  - `safety_identifier: optional string or null`
+
+    A stable identifier that was used for safety monitoring and abuse detection.
+
+  - `service_tier: optional string`
+
+    The service tier used for compaction, when reported.
 
 ### Example
 
@@ -49857,7 +49871,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Compacted Response
 
-- `CompactedResponse object { id, created_at, object, 3 more }`
+- `CompactedResponse object { id, created_at, object, 5 more }`
 
   - `id: string`
 
@@ -54483,6 +54497,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"enabled"`
 
       - `"disabled"`
+
+  - `safety_identifier: optional string or null`
+
+    A stable identifier that was used for safety monitoring and abuse detection.
+
+  - `service_tier: optional string`
+
+    The service tier used for compaction, when reported.
 
 ### Computer Action
 

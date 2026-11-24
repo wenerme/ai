@@ -41,6 +41,7 @@ see [GLQL fields](fields.md).
 - Combining `=` with another comparison on the same date or range field [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/516) to return an error in GitLab 19.5. Previously only one of the two conditions was applied.
 - `not in` operator [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5 for list filters on analytics data sources.
 - An empty list with the `in` operator [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/549) to return an error in GitLab 19.6. Previously, analytics data sources returned no rows and other data sources ignored the filter.
+- More than one `=` comparison on the same single-value field, such as `milestone = "a" and milestone = "b"`, [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/579) to return an error in GitLab 19.7. Previously, the query matched either value. To match any of several values, use `in`.
 
 **Comparison operators**:
 
@@ -187,6 +188,8 @@ query: type = Issue AND project = "gitlab-org/gitlab" AND assignee = currentUser
 ````
 
 This source displays a view with columns `Title`, `Workflow`, and `Priority`.
+
+An alias cannot start with `__`, because GitLab reserves that prefix.
 
 ### Display types
 
@@ -348,6 +351,8 @@ Use the `as` keyword to rename dimension or metric columns:
 dimensions: language as "Language", ideName as "IDE"
 metrics: totalCount as "Total", acceptanceRate as "Acceptance Rate"
 ```
+
+An alias cannot start with `__`, because GitLab reserves that prefix.
 
 You can include the same [parameterized field](#field-parameters) more than
 once with different parameters:

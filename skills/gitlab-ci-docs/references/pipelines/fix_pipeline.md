@@ -51,7 +51,7 @@ a GitLab Duo Chat feature to troubleshoot single-job failures.
 ## Prerequisites
 
 - Meet the [prerequisites for the GitLab Duo Agent Platform](../../user/duo_agent_platform/_index.md#prerequisites).
-- Turn on **Allow foundational flows** and **Fix CI/CD Pipeline** [for the top-level group](../../user/duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+- Turn on  and  [for the top-level group](../../user/duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
 - Have the Developer, Maintainer, or Owner role for the project.
 - Have an existing failed pipeline.
 - [Configure push rules to allow a service account](../../user/duo_agent_platform/troubleshooting.md#configure-push-rules-to-allow-a-service-account).
@@ -65,20 +65,16 @@ a GitLab Duo Chat feature to troubleshoot single-job failures.
 
 To fix the CI/CD pipeline in a merge request:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Merge requests** and open your merge request.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  >  and open your merge request.
 1. Use one of these methods to fix the pipeline:
-   - Select the **Overview** tab and, under the failing pipeline, select
-     **Fix pipeline with Duo**.
-   - Select the **Pipelines** tab and, in the rightmost column, select
-     **Fix pipeline with Duo** ().
+   - Select the  tab and, under the failing pipeline, select
+     .
+   - Select the  tab and, in the rightmost column, select
+      ().
    - In the GitLab Duo sidebar, open a new or existing Agentic Chat conversation.
      Ask Agentic Chat to fix the pipeline.
-1. To monitor progress, in the left sidebar, select **AI** > **Sessions**.
-
-   If you are in Agentic Chat, you can also do the following:
-   - See the progress in the Chat conversation.
-   - Select **View Agent Session** in the conversation.
+1. To monitor progress, in the left sidebar, select  > .
 
 When the session is complete, the flow adds code suggestions to the merge request,
 or a comment describes possible next steps.
@@ -87,10 +83,10 @@ or a comment describes possible next steps.
 
 To fix a CI/CD pipeline that is not associated with a merge request:
 
-1. Select **Build** > **Pipelines**.
+1. Select  > .
 1. Select your failing pipeline.
-1. In the upper-right corner, select **Fix pipeline with Duo**.
-1. To monitor progress, select **AI** > **Sessions**.
+1. In the upper-right corner, select .
+1. To monitor progress, select  > .
 
 ## Use `AGENTS.md` to customize the flow
 
@@ -166,7 +162,7 @@ To work around this issue, try the following:
 
 ### Session failed to start
 
-The session for the Fix CI/CD Pipeline Flow fails, and on the session page (**AI** > **Sessions**),
+The session for the Fix CI/CD Pipeline Flow fails, and on the session page ( > ),
 the `Session failed to start` alert appears.
 
 Two pipelines are involved: the pipeline that failed, and the
@@ -178,7 +174,7 @@ For causes and how to resolve them, see
 
 ### Fix pipeline with Duo button does not appear
 
-You meet the [prerequisites](#prerequisites), but the **Fix pipeline with Duo** button
+You meet the [prerequisites](#prerequisites), but the  button
 does not appear.
 
 This issue occurs because the button depends on settings across three separate pages (GitLab
@@ -190,7 +186,7 @@ To resolve this issue, recheck each requirement:
 - [GitLab Duo](../../user/duo_agent_platform/turn_on_off.md#turn-gitlab-duo-on-or-off) or
   [GitLab Duo Core](../../user/duo_agent_platform/turn_on_off.md#turn-gitlab-duo-core-on-or-off) is turned on.
 - The [Agent Platform is turned on](../../user/duo_agent_platform/turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
-- **Allow foundational flows** and **Fix CI/CD Pipeline** are turned on for the top-level group
+-  and  are turned on for the top-level group
   and, on GitLab Self-Managed, the instance.
 
 ## Give feedback

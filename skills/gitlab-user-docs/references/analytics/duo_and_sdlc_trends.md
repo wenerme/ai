@@ -137,15 +137,11 @@ Hover over a bar to view for each language:
 ## GitLab Duo Code Suggestions acceptance by IDE
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/550064) in GitLab 18.7.
+- Chart tooltip [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/636194) to show only suggestions accepted in GitLab 19.7.
 
 The **GitLab Duo Code Suggestions acceptance by IDE** chart displays the number of Code Suggestions accepted by IDE for the last 30 days.
 
-Hover over a bar to view for each IDE:
-
-- **Suggestions accepted**: Number of suggestions accepted by users.
-- **Suggestions shown**: Number of suggestions shown to users.
-- **Acceptance rate**: Percentage of suggestions accepted.
-  Calculated as the number of accepted code suggestions divided by the total number of code suggestions shown.
+Hover over a bar to view the number of suggestions accepted for that IDE.
 
 ## Code generation volume trends
 

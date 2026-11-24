@@ -83,28 +83,11 @@ For more information, refer to [Pricing](https://developers.cloudflare.com/conta
 
 ## Placement
 
-*Place instances near users or within constraints.*
+*Start instances in eligible locations.*
 
-Cloudflare places Container instances across its network, helping applications serve users from suitable locations. You can constrain placement by region or jurisdiction when your workload has location or data residency requirements. You can also run multiple instances when your application needs more capacity.
+When a Durable Object starts a Container, Cloudflare selects a suitable location based on request routing, available capacity, and image availability. The Container and its Durable Object may run in different locations.
 
-Choose a location
- to send a request
-
-Reset
-
-Location A
-
-Location B
-
-Location C
-
-Container
-
-Container
-
-Container
-
-SchedulerSend requestSend requestSend request
+With the `durable_object` scheduling policy, the Durable Object's jurisdiction determines eligible Container locations. Your application can start multiple Container instances when it needs more capacity.
 
 For more information, refer to [Placement](https://developers.cloudflare.com/containers/concepts/placement/).
 
@@ -155,7 +138,7 @@ Route a gRPC stream through Spectrum and Workers to a Container.
 ## Related resources
 
 - [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/): the deep dive on deployment, routing, and shutdown.
-- [Placement](https://developers.cloudflare.com/containers/concepts/placement/): where instances run and how to constrain them.
+- [Placement](https://developers.cloudflare.com/containers/concepts/placement/): where instances run and how Durable Object jurisdiction affects placement.
 - [Connect to Workers and bindings](https://developers.cloudflare.com/containers/configuration/workers-connections/): reaching Cloudflare resources from a container.
 - [Bidirectional gRPC with Workers and Containers](https://developers.cloudflare.com/containers/examples/bidirectional-grpc/): routing raw TCP streams to a containerized gRPC server.
 - [Limits and instance types](https://developers.cloudflare.com/containers/platform/limits/) and [Pricing](https://developers.cloudflare.com/containers/platform/pricing/): sizes, account limits, and billing.
@@ -170,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/concepts/#page","headline":"Container Fundamentals","description":"Understand what a Cloudflare Container is, how HTTP and TCP traffic reaches it, how it starts and stops, where it runs, and how it holds state.","url":"https://developers.cloudflare.com/containers/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/og.png?v=23cdeac259988f35","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/concepts/#page","headline":"Container Fundamentals","description":"Understand what a Cloudflare Container is, how HTTP and TCP traffic reaches it, how it starts and stops, where it runs, and how it holds state.","url":"https://developers.cloudflare.com/containers/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/og.png?v=23cdeac259988f35","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

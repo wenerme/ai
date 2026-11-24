@@ -2,7 +2,7 @@
 
 ---
 
-# Help Me!
+# Help me!
 
 Running into an issue or have a question? Try the following:
 

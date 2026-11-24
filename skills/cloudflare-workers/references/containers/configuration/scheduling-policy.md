@@ -212,12 +212,13 @@ The image map is uploaded with the Worker version. Updating the map does not res
 Set `instance` in `ctx.container.start()` to one of the following [named instance types](https://developers.cloudflare.com/containers/platform/limits/#instance-types):
 
 - `lite`
+- `basic`
 - `standard-1`
 - `standard-2`
 - `standard-3`
 - `standard-4`
 
-The runtime does not accept `basic` or the legacy `dev` and `standard` aliases.
+The runtime does not accept the legacy `dev` and `standard` aliases.
 
 If you omit `instance`, the Container uses `lite`. You can also supply a custom instance object that meets the [custom instance type constraints](https://developers.cloudflare.com/containers/platform/limits/#custom-instance-types):
 
@@ -283,5 +284,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/#page","headline":"Scheduling Policies","description":"Choose whether Container configuration is managed centrally or by each Durable Object at runtime.","url":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/og.png?v=d30120184c1c529d","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/#page","headline":"Scheduling Policies","description":"Choose whether Container configuration is managed centrally or by each Durable Object at runtime.","url":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/og.png?v=d30120184c1c529d","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

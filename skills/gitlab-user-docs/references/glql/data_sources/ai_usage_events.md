@@ -8,6 +8,7 @@
 - `group` dimension [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/530) in GitLab 19.5.
 - `!=` and `not in` operators on the `event`, `feature`, and `user` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
 - `event` parameter on `totalCount` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/541) in GitLab 19.5.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 AI usage events is a data source that provides aggregated metrics about
 GitLab Duo feature usage across your project or group.
@@ -22,9 +23,9 @@ GitLab Duo feature usage across your project or group.
 | --------- | --------------------------------------------------------------------------- |
 | `project` | Query AI usage events in a specific project.                                |
 | `group`   | Query AI usage events across all projects in a group, including subgroups.  |
+| `organization` | Query AI usage events across an [organization](_index.md#organization). |
 
-To aggregate AI usage events across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate AI usage events across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -200,5 +201,19 @@ information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = AiUsageEvent and group = "gitlab-org" and timestamp > -30d
   metrics: usersCount as "Users"
+  ```
+  ````
+
+- Feature adoption across an organization:
+
+  ````yaml
+  ```glql
+  title: "GitLab Duo feature adoption across an organization (last 30 days)"
+  display: table
+  mode: analytics
+  query: type = AiUsageEvent and organization = "gid://gitlab/Organizations::Organization/1" and timestamp > -30d
+  dimensions: feature as "Feature"
+  metrics: totalCount as "Total events", usersCount as "Users"
+  sort: usersCount desc
   ```
   ````

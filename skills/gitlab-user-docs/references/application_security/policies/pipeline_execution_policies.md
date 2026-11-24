@@ -102,10 +102,13 @@ Note the following:
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589650) in GitLab 18.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_pipeline_check`. Disabled by default.
-- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/issues/592205) in GitLab 18.11.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589650) in GitLab 18.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_pipeline_check`. Enabled by default.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/592205) in GitLab 19.7.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 When pipeline execution policies or [scan execution policies](scan_execution_policies.md) are configured
 for a project and  is turned on,

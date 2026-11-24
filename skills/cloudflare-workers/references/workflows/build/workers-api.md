@@ -470,7 +470,7 @@ Key each entry by the name of the class that extends `WorkflowEntrypoint`. Set `
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-24",
 	"exports": {
 		"MyWorkflow": {
 			"type": "workflow",
@@ -487,7 +487,7 @@ name = "billing-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-24"
 
 [exports.MyWorkflow]
 type = "workflow"
@@ -612,7 +612,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-24",
 	"workflows": [
 		{
 			// name of your workflow
@@ -632,7 +632,7 @@ name = "workflows-starter"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-24"
 
 [[workflows]]
 name = "workflows-starter"
@@ -659,7 +659,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-24",
 	"workflows": [
 		{
 			// name of your workflow
@@ -682,7 +682,7 @@ name = "web-api-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-24"
 
 [[workflows]]
 name = "billing-workflow"
@@ -893,14 +893,19 @@ type WorkflowBatchCreateResult = {
 };
 ```
 
-`created` contains a `WorkflowInstance` for each created instance, in input order. `errors` contains the entries that were not created. Each error includes the position of the entry in the input (`index`), its `id` if one was provided, and an error code and message.
+`created` contains a `WorkflowInstance` for each created instance, in input order. `errors` contains the entries that were not created. Each error includes the position of the entry in the input (`index`), its `id`, and an error code and message. If you did not provide an `id` for the entry, the error includes the ID that was generated for it.
 
-Unlike [`create`](https://developers.cloudflare.com/workflows/build/workers-api/#create), `createBatch` does not throw when an ID is already in use. Instead, it reports the entry in `errors` with one of the following codes:
+Unlike [`create`](https://developers.cloudflare.com/workflows/build/workers-api/#create), `createBatch` does not throw when it cannot create an entry for one of the following reasons. Instead, it reports the entry in `errors` with the matching code:
 
 | Code | Description |
 | --- | --- |
+| `10002` | The `params` for the entry contain a value that Workflows cannot store, such as a function. |
 | `10405` | An instance with this ID already exists. |
-| `10415` | An earlier entry in the same batch uses this ID. Only the first entry with the ID is created. |
+| `10415` | An earlier entry in the same batch uses this ID. Only the first entry with the ID can be created. |
+
+If more than one of these reasons applies to an entry, it is reported with `10405` or `10415`, not `10002`. In the `count` form, all instances share the same `params`, so if they contain a value that Workflows cannot store, every instance is reported with `10002` and no instances are created.
+
+Entries can also fail for other reasons, such as an internal error, and are reported with a different code.
 
 If any entry has invalid options, such as an invalid ID or retention duration, the call throws an error before it creates any instances.
 
@@ -912,7 +917,7 @@ Passing an array to `createBatch` is deprecated. Use the `instances` option inst
 
 - `createBatch(batch: WorkflowInstanceCreateOptions[]): Promise<WorkflowInstance[]>`
 
-The array form returns an array of `WorkflowInstance`. It skips IDs that already exist or repeat within the batch, and excludes them from the returned array without reporting an error.
+The array form returns an array of `WorkflowInstance`. It skips entries whose ID already exists or repeats within the batch, or whose `params` contain a value that cannot be stored, and excludes them from the returned array without reporting an error.
 
 To migrate, pass the array as `instances` and read the instances from `created`:
 
@@ -1370,5 +1375,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
