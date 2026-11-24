@@ -69,20 +69,9 @@ You can export container logs via [Logpush](https://developers.cloudflare.com/lo
 
 ## How are container instance locations selected?
 
-When initially deploying a Container, Cloudflare will select various locations across our network to deploy instances to. These locations will span multiple regions.
+With the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), Cloudflare selects a suitable location when your Durable Object calls `this.ctx.container.start()`. Placement takes into account the Durable Object's jurisdiction, available capacity, and cached images.
 
-When a Container instance is requested with `this.ctx.container.start`, the nearest free container instance will be selected from the pre-initialized locations. This will likely be in the same region as the external request, but may not be. Once the container instance is running, any future requests will be routed to the initial location.
-
-An Example:
-
-- A user deploys a Container. Cloudflare automatically readies instances across its Network.
-- A request is made from a client in Bariloche, Argentina. It reaches the Worker in Cloudflare's location in Neuquen, Argentina.
-- This Worker request calls `MY_CONTAINER.get("session-1337")` which brings up a Durable Object, which then calls `this.ctx.container.start`.
-- This requests the nearest free Container instance.
-- Cloudflare recognizes that an instance is free in Buenos Aires, Argentina, and starts it there.
-- A different user needs to route to the same container. This user's request reaches the Worker running in Cloudflare's location in San Diego.
-- The Worker again calls `MY_CONTAINER.get("session-1337")`.
-- If the initial container instance is still running, the request is routed to the location in Buenos Aires. If the initial container has gone to sleep, Cloudflare will once again try to find the nearest "free" instance of the Container, likely one in North America, and start an instance there.
+While the container is running, requests through its Durable Object reach that same instance. After it stops, a later start may select a different location. For more information, refer to [Placement](https://developers.cloudflare.com/containers/concepts/placement/).
 
 ## How do container updates and rollouts work?
 
@@ -134,7 +123,7 @@ You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2
 
 ## What happens if I run out of memory?
 
-If you run out of memory, your instance will throw an Out of Memory (OOM) error and will be restarted.
+If an out-of-memory (OOM) condition stops an instance that uses the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), its Durable Object must start it again.
 
 Containers do not use swap memory.
 
@@ -144,15 +133,7 @@ Cloudflare does not stop a container instance after a fixed maximum runtime. Cal
 
 Another platform event can stop an active container. For example, a host server restart happens on an irregular cadence. Cloudflare does not guarantee that any container instance will run for a set period.
 
-When the platform is about to stop a container instance (including before a host moves work off a server), it:
-
-1. Sends `SIGTERM` to the main process in the container.
-2. Waits up to 15 minutes for that process to exit.
-3. Sends `SIGKILL` if the process is still running.
-
-Handle `SIGTERM` in your image if you need cleanup before exit. After a host stop, a new container instance may start on a different server when traffic needs it again.
-
-Image updates during a deploy use the same stop sequence. Refer to [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
+After a host stop, a new container instance may start on a different server. For cleanup guidance, refer to [Container shutdown](https://developers.cloudflare.com/containers/concepts/architecture/#container-shutdown).
 
 ## How can I pass secrets to my container?
 
@@ -162,28 +143,28 @@ For implementation details, refer to [Environment variables and secrets](https:/
 
 ## Can I run Docker inside a container (Docker-in-Docker)?
 
-Yes. Use the `docker:dind` image, and start the Docker daemon with iptables and IP forwarding turned off:
+Yes. With the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), Docker can use bridge networking, iptables, and IP forwarding. Use the `docker:dind` image:
 
 *Dockerfiledockerfile*
 
 ```dockerfile
 FROM docker:dind
 
-# Start dockerd with iptables and IP forwarding turned off, then run your app
-ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false --ip-forward=false & exec /path/to/your-app"]
+# Start dockerd, then run your app
+ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd & exec /path/to/your-app"]
 ```
 
-This Dockerfile works with both [scheduling policies](https://developers.cloudflare.com/containers/configuration/scheduling-policy/). Containers that use the `durable_object` policy cannot turn on IP forwarding. In those containers, the Docker daemon exits on startup unless you pass `--ip-forward=false`.
+Run the Docker daemon as `root` for this setup.
 
-Run the Docker daemon as `root`. Rootless Docker does not start in Containers.
-
-If your application needs to wait for dockerd to become ready before using Docker, use an entrypoint script instead of the inline command above:
+If your application uses Docker or writes to `/tmp` during startup, wait for the daemon before starting the application. The `docker:dind` entrypoint can mount a new filesystem over `/tmp` during startup. Use an entrypoint script that waits for Docker:
 
 *entrypoint.shsh*
 
 ```sh
 #!/bin/sh
 set -eu
+
+dockerd-entrypoint.sh dockerd &
 
 # Wait for dockerd to be ready
 until docker version >/dev/null 2>&1; do
@@ -192,16 +173,6 @@ done
 
 exec /path/to/your-app
 ```
-
-Working with disabled iptables
-
-Cloudflare Containers do not support iptables manipulation. The `--iptables=false` and `--ip6tables=false` flags prevent Docker from attempting to configure network rules, which would otherwise fail.
-
-To send or receive traffic from a container running within Docker-in-Docker, use the `--network=host` flag with `docker run`. A `docker build` step that uses the network, such as a package install, also needs `docker build --network=host`.
-
-This allows you to connect to the container, but it means each inner container has access to your outer container's network stack. Ensure you understand the security implications of this setup before proceeding.
-
-For a complete working example, refer to the [Docker-in-Docker Containers example ↗︎](https://github.com/th0m/containers-dind). The example uses the `default` scheduling policy. To run it with `scheduling_policy: "durable_object"`, add `--ip-forward=false` to its `dockerd` flags.
 
 ## How do I allow or disallow egress from my container?
 
@@ -216,5 +187,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/faq/og.png?v=54d27de1bf2e71bb","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/faq/og.png?v=54d27de1bf2e71bb","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

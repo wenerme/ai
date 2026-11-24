@@ -14,6 +14,7 @@ GLQL can query the following data sources:
 | Code suggestions | No | Yes | `CodeSuggestion` | Aggregated GitLab Duo Code Suggestions analytics. |
 | Contributions | No | Yes | `Contribution` | Aggregated contribution activity analytics. |
 | Duo workflows | No | Yes | `DuoWorkflow` | Aggregated GitLab Duo Agent Platform flow analytics, including credits used. |
+| Duo tool calls | No | Yes | `DuoToolCall` | Aggregated GitLab Duo Chat tool call analytics. |
 
 Each data source has its own set of supported fields for filtering, display, and sorting.
 
@@ -38,6 +39,35 @@ If you don't specify a scope, GLQL infers it from where the query is embedded:
 - In a project context (such as an issue or merge request description), GLQL uses the current project.
 - In a group context (such as an epic description), GLQL uses the current group.
 
+### Organization
+
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
+
+In [analytics mode](../_index.md#analytics-mode), the `organization` filter scopes a query to an organization.
+It takes the organization's global ID, in the format `gid://gitlab/Organizations::Organization/<id>`.
+For example:
+
+```yaml
+query: type = MergeRequest and organization = "gid://gitlab/Organizations::Organization/1" and merged > -30d
+```
+
+When you use `organization`:
+
+- A blank value (`organization = ""`) selects the current organization.
+  To remove the scope, omit the filter.
+- Any other value that is not an organization global ID fails with an error.
+- Without a list, `organization` aggregates data across the whole organization if you can read
+  the organization's analytics. Otherwise, it aggregates the organization's top-level groups
+  that you are a member of and can read analytics for, up to a maximum of 20 groups.
+  If none of your groups qualify, or more than the maximum do, the query fails with an error.
+- You can combine `organization` with a `group in (...)` or `project in (...)` list to aggregate
+  only the listed groups and projects. Every listed group and project must belong to the organization
+  and be accessible to you. If one is outside the organization or not accessible, the query fails
+  with an error, and no group or project is skipped.
+  You cannot combine `organization` with a single `group = "..."` or `project = "..."`.
+  A list with one path, such as `group in ("gitlab-org")`, still counts as a list.
+- Only the `=` operator is supported.
+
 ### Multiple groups and projects
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/628101) in GitLab 19.5.
@@ -52,7 +82,7 @@ display: table
 mode: analytics
 query: type = MergeRequest and group in ("gitlab-org", "gitlab-com") and merged > -30d
 dimensions: merged(weekly) as "Week"
-metrics: totalCount as "Total", throughputCount as "Merged"
+metrics: totalCount as "Total", throughputCount as "Throughput"
 sort: merged desc
 ```
 ````
@@ -83,7 +113,8 @@ When you use a list:
 - You can list at most 20 groups and projects combined.
 - You must have access to every listed group and project. If any of them is missing or
   not accessible, the query fails with an error that names the paths that cannot be read.
-- A list with a single path behaves like `group = "..."` or `project = "..."`.
+- A list with a single path behaves like `group = "..."` or `project = "..."`, except when you combine it
+  with [`organization`](#organization). In that case, it stays a list.
 - When you embed the query in a project or group, GLQL uses the listed paths as the scope instead of that project or group.
 
 Lists are not supported in standard mode. Data sources such as work items and jobs accept

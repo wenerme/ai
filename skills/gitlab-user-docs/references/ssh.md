@@ -187,7 +187,7 @@ To add an SSH key to your GitLab account:
 1. In the **Key** box, paste the contents of your public key.
    If you manually copied the key, make sure you copy the entire key,
    which starts with `ssh-rsa`, `ssh-dss`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`, `ecdsa-sha2-nistp521`,
-   `ssh-ed25519`, `sk-ecdsa-sha2-nistp256@openssh.com`, or `sk-ssh-ed25519@openssh.com`, and may end with a comment.
+   `ssh-ed25519`, `sk-ecdsa-sha2-nistp256@openssh.com`, or `sk-ssh-ed25519@openssh.com`, and might end with a comment.
 1. In the **Title** box, type a description, like `Work Laptop` or
    `Home Workstation`.
 1. Optional. Select the **Usage type** of the key. It can be used either for `Authentication` or `Signing` or both. `Authentication & Signing` is the default value.

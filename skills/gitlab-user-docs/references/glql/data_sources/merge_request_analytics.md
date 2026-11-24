@@ -9,6 +9,8 @@
 - `createdByDuo` filter and dimension, and `acceptanceRate` metric [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/518) in GitLab 19.5.
 - `!=` and `not in` operators on the `state` and `targetBranch` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
 - `authorHuman` filter [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/569) in GitLab 19.6.
+- `author` filter [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/588) in GitLab 19.7.
+- `organization` scope [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/585) in GitLab 19.7.
 
 Analytics mode returns aggregated metrics for merge requests, with data
 typically available within 10 minutes.
@@ -21,9 +23,9 @@ To query individual merge request records, use [Merge requests](merge_requests.m
 | --------- | -------------------------------------------------------------------------- |
 | `project` | Query merge requests in a specific project.                               |
 | `group`   | Query merge requests across all projects in a group, including subgroups. |
+| `organization` | Query merge requests across an [organization](_index.md#organization). |
 
-To aggregate merge requests across multiple groups or projects, use a list with the `in` operator.
-For more information, see [multiple groups and projects](_index.md#multiple-groups-and-projects).
+To aggregate merge requests across [multiple groups and projects](_index.md#multiple-groups-and-projects), use a list with the `in` operator.
 
 ## Query filters
 
@@ -31,12 +33,28 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                               | Name           | Operators                 |
 | ----------------------------------- | -------------- | ------------------------- |
+| [Author](#author)                   | `author`       | `=`, `!=`, `in`, `not in` |
 | [Author is human](#author-is-human) | `authorHuman`  | `=`, `!=`                 |
 | [Created at](#created-at)           | `created`      | `=`, `>`, `<`, `>=`, `<=` |
 | [Created by Duo](#created-by-duo)   | `createdByDuo` | `=`, `!=`                 |
 | [Merged at](#merged-at)             | `merged`       | `=`, `>`, `<`, `>=`, `<=` |
 | [State](#state)                     | `state`        | `=`, `!=`, `in`, `not in` |
 | [Target branch](#target-branch)     | `targetBranch` | `=`, `!=`, `in`, `not in` |
+
+### Author
+
+**Description**: Filter merge requests by their author.
+
+**Allowed value types**:
+
+- `Number` (a user ID)
+- `List` (use `in` or `not in` operator for multiple values)
+
+**Additional details**:
+
+- Unlike in standard mode, analytics mode takes numeric user IDs, not usernames.
+  Username support is proposed in [issue 143](https://gitlab.com/gitlab-org/glql/-/work_items/143).
+- `!=` and `not in` return only merge requests that have an author. Merge requests with no author are left out.
 
 ### Author is human
 
@@ -158,7 +176,7 @@ information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = MergeRequest and project = "gitlab-org/gitlab" and merged > -30d
   dimensions: merged(weekly) as "Week"
-  metrics: totalCount as "Total", throughputCount as "Merged", timeToMergeQuantile(0.5) as "Median time to merge"
+  metrics: totalCount as "Total", throughputCount as "Throughput", timeToMergeQuantile(0.5) as "Median time to merge"
   sort: merged desc
   ```
   ````
@@ -228,5 +246,19 @@ information, see [analytics mode sorting](../_index.md#sorting).
   mode: analytics
   query: type = MergeRequest and group = "gitlab-org" and created > -7d
   metrics: totalCount as "Total"
+  ```
+  ````
+
+- Weekly merge request throughput across an organization:
+
+  ````yaml
+  ```glql
+  title: "Weekly merge request throughput across an organization (last 30 days)"
+  display: table
+  mode: analytics
+  query: type = MergeRequest and organization = "gid://gitlab/Organizations::Organization/1" and merged > -30d
+  dimensions: merged(weekly) as "Week"
+  metrics: totalCount as "Total", throughputCount as "Throughput"
+  sort: merged desc
   ```
   ````

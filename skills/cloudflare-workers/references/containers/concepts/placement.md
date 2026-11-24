@@ -2,7 +2,7 @@
 agent:
   instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
   search: "https://developers.cloudflare.com/.well-known/search?q={query}"
-description: Control where your containers run with regional and jurisdictional constraints.
+description: Understand how Cloudflare places Container instances and how Durable Object jurisdiction affects placement.
 title: Placement
 image: https://developers.cloudflare.com/containers/concepts/placement/og.png?v=4dec4faf359f60ac
 ---
@@ -15,9 +15,31 @@ image: https://developers.cloudflare.com/containers/concepts/placement/og.png?v=
 
 # Placement
 
-By default, containers run in the location nearest to the incoming request with a pre-fetched image. Use placement constraints to restrict where your containers run for data residency, compliance, or latency requirements.
+With the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), your Durable Object starts a Container instance on demand through `ctx.container.start()`. Cloudflare selects a suitable location based on request routing, available capacity, and image availability.
 
-## Regional constraints
+## Placement and routing
+
+A Container and its associated Durable Object are not guaranteed to run in the same location. Placement balances request routing with startup speed, so the Container may start in another eligible location.
+
+Requests to a running Container continue to reach that instance, regardless of where the requests originate. After the Container stops, its next start may use a different location.
+
+## Jurisdiction
+
+Container placement uses the jurisdiction of its associated Durable Object to determine eligible locations. Configure the Durable Object namespace's jurisdiction using the [Durable Objects data location API](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction).
+
+The `durable_object` policy does not support application-level regional constraints or application-level EU and US jurisdiction settings. Set jurisdiction through the Durable Object namespace.
+
+Image and snapshot storage
+
+Jurisdiction controls where Container instances run. It does not determine where Container images or [snapshots](https://developers.cloudflare.com/containers/guides/snapshots/) are stored. If storage location is part of your requirement, confirm the supported image workflow with your account team before you deploy.
+
+For Data Localization Suite support, refer to [Product compatibility](https://developers.cloudflare.com/data-localization/compatibility/#developer-platform).
+
+## Placement constraints for the default policy
+
+Applications that use the [`default` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-default-scheduling-policy) can set application-level placement constraints in their Wrangler configuration.
+
+### Regional constraints
 
 Use the `regions` constraint to limit container placement to specific geographic areas:
 
@@ -35,7 +57,7 @@ Use the `regions` constraint to limit container placement to specific geographic
 
 Limited capacity regions (ME, OC, AFR) cannot be used exclusively. Include at least one other region, or contact support for dedicated access.
 
-## Jurisdictional constraints
+### Jurisdictional constraints
 
 Use the `jurisdiction` constraint to restrict containers to compliance boundaries:
 
@@ -47,15 +69,7 @@ Use the `jurisdiction` constraint to restrict containers to compliance boundarie
 
 When you specify both `jurisdiction` and `regions`, the regions must be valid for that jurisdiction. For example, specifying `jurisdiction: "eu"` with `regions: ["ENAM"]` is invalid.
 
-Jurisdiction controls where containers run, not where images are stored
-
-The `jurisdiction` constraint controls where Container instances run. It does not determine where Container images or [snapshots](https://developers.cloudflare.com/containers/guides/snapshots/) are stored. If storage location is part of your requirement, confirm the supported image workflow with your account team before you deploy.
-
-The `jurisdiction` constraint in Wrangler configuration applies to applications that use the [`default` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/). With the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), a Container runs where its Durable Object runs. To restrict that location, create the Durable Object in a [jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction).
-
-For Data Localization Suite support, refer to [Product compatibility](https://developers.cloudflare.com/data-localization/compatibility/#developer-platform).
-
-## Configure placement
+### Configure placement
 
 Set placement constraints in your Wrangler configuration:
 
@@ -64,7 +78,7 @@ Set placement constraints in your Wrangler configuration:
   "$schema": "./node_modules/wrangler/config-schema.json",
   "containers": [
     {
-      "name": "my-container",
+      "class_name": "MyContainer",
       "image": "docker.io/my-org/my-image:latest",
       "constraints": {
         "regions": [
@@ -80,7 +94,7 @@ Set placement constraints in your Wrangler configuration:
 
 ```toml
 [[containers]]
-name = "my-container"
+class_name = "MyContainer"
 image = "docker.io/my-org/my-image:latest"
 
 [containers.constraints]
@@ -99,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/placement/#page","headline":"Placement","description":"Control where your containers run with regional and jurisdictional constraints.","url":"https://developers.cloudflare.com/containers/concepts/placement/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/placement/og.png?v=4dec4faf359f60ac","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/placement/#page","headline":"Placement","description":"Understand how Cloudflare places Container instances and how Durable Object jurisdiction affects placement.","url":"https://developers.cloudflare.com/containers/concepts/placement/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/placement/og.png?v=4dec4faf359f60ac","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

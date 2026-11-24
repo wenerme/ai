@@ -20,7 +20,7 @@ You can use a group access token to authenticate:
 
 Prerequisites:
 
-- You must have the Owner role for the group.
+- The Owner role for the group.
 
 > [!note]
 > On GitLab.com, group access tokens require a Premium or Ultimate subscription. They are not
@@ -249,11 +249,12 @@ To limit potential abuse, you can restrict users from creating group and project
 The restriction covers the entire group, including all subgroups and their projects. Existing
 tokens remain valid until they expire or you revoke them.
 
+> [!note]
+> On GitLab.com, restricting the creation of access tokens requires a Premium or Ultimate subscription.
+
 Prerequisites:
 
-- You must have the Owner role for the group.
-- The group must be a top-level group.
-- On GitLab.com, the group must have a Premium or Ultimate subscription.
+- The Owner role for the top-level group.
 
 To restrict the creation of access tokens:
 

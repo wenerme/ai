@@ -1,6 +1,6 @@
 
 
-# Mobile App
+# Mobile app
 
 ## Download
 
@@ -37,9 +37,9 @@ First, you need to enable the Storage Indicator in your app's settings. Navigate
 
 Now make sure that the local album is selected in the backup screen (steps 1-2 above). You can find these albums listed in **<ins>Library -> On this device</ins>**. To selectively upload photos from these albums, simply select the local-only photos and tap on the `Upload` button in the dynamic bottom menu.
 
-## Free Up Space
+## Free up space
 
-**Free Up Space** allows you to remove local media files from your device that have already been successfully backed up to your Immich server (and are not in Immich trash). This helps reclaim storage on your mobile device without losing your memories.
+**Free up space** allows you to remove local media files from your device that have already been successfully backed up to your Immich server (and are not in Immich trash). This helps reclaim storage on your mobile device without losing your memories.
 
 ### How it works
 
@@ -68,7 +68,7 @@ If, in addition to Immich, you rely on iCloud as a secondary backup (as part of 
 
 iCloud utilizes a two-way sync; this means deleting a photo, or using Free Up Space from your iPhone will **also delete it from iCloud** and all other devices (Mac, iPad) where you're signed in with the same Apple Account. See [Apple Support](https://support.apple.com/en-us/108922#iCloud_photo_library) for more info.
 
-### External App Dependencies (WhatsApp, etc.) \{#external-app-dependencies\}
+### External app dependencies (WhatsApp, etc.) \{#external-app-dependencies\}
 
 Android applications like **WhatsApp** rely on local files to display media in chat history.
 
@@ -76,11 +76,11 @@ If Immich backs up your WhatsApp folder and you run **Free Up Space**, the local
 
 **Recommendation:** If keeping chat history intact is important, exclude WhatsApp with `Keep albums` in Free Up Space and review the deletion list carefully. You have to enable [Album Sync](#album-sync) for WhatsApp to show up in the list. Alternatively, don't [back up](#backup) WhatsApp with Immich.
 
-## Album Sync
+## Album sync
 
 You can sync or mirror an album from your phone to the Immich server on your account. For example, if you select Recents, Camera and Videos album for backup, the corresponding album with the same name will be created on the server. Once the assets from those albums are uploaded, they will be put into the target albums automatically.
 
-### Album Synchronization Highlights
+### Album synchronization highlights
 
 - **One-Way Sync:** Synchronization is one-way, from the device to the server.
 
@@ -102,7 +102,7 @@ Albums can be synchronized to the server even if they did not exist on the serve
 If you delete/move photos in the local album on your device, it will not be reflected in the album on the server **even if** you click Sync albums
 It will only reflect files you add.
 
-## Read-only/kid Mode
+## Read-only mode (kid mode)
 
 You can set the app to read-only mode to prevent accidental deletion of photos from your device, and only allow viewing photos on the timeline.
 

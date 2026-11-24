@@ -41,6 +41,9 @@ and all secondary sites:
    to protect the disaster recovery (DR) capability of the secondary sites.
    Pause replication when your priority is preserving a clean DR checkpoint during a higher-risk upgrade window.
    Do not pause replication if your priority is keeping the secondary current and serving read traffic normally during the upgrade, especially in a zero-downtime approach.
+1. If users usually access secondary sites,
+   [route their traffic to the primary site](#route-traffic-to-the-primary-site-during-upgrades)
+   before you upgrade the primary site.
 1. SSH into each node of the primary site.
 1. [Upgrade GitLab on the primary site](../../../update/package/_index.md).
 1. Perform testing on the primary site, particularly if you paused replication in step 1 to protect DR.
@@ -60,6 +63,23 @@ and all secondary sites:
    ```
 
 1. [Test](#check-status-after-upgrading) primary and secondary sites, and check version in each.
+1. If you changed routing before the upgrade, revert the DNS or load balancer changes
+   after the GitLab version and revision match and the post-upgrade checks pass.
+
+### Route traffic to the primary site during upgrades
+
+After you upgrade the primary site, secondary sites running the previous version can
+[return 404 errors for assets](troubleshooting/client_http.md#asset-requests-return-404-errors-on-a-secondary-site).
+To avoid these errors, use one of the following methods before you upgrade the primary site:
+
+- If the sites use separate URLs, point the secondary site's domain to the primary site in DNS.
+  Verify that the primary site can serve requests for that domain before you change DNS.
+- If the sites use a unified URL, remove the secondary site from the DNS or load balancer pool
+  for the unified URL.
+  Keep the primary site in the pool.
+
+The primary site handles all user traffic while the secondary sites are out of rotation.
+Users lose accelerated reads from the secondary sites during this time.
 
 ### Check status after upgrading
 

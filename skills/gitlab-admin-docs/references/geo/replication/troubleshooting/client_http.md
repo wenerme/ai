@@ -86,6 +86,25 @@ To fix this issue, set the primary site's internal URL to a URL that is:
 1. Visit the primary site.
 1. [Set up the internal URLs](../../../geo_sites.md#set-up-the-internal-urls).
 
+### Asset requests return 404 errors on a secondary site
+
+If pages on a secondary site are blank or partially rendered, check for requests to
+`/assets/` that return 404 errors.
+A Geo secondary site proxies most pages from the primary site but serves `/assets/` locally.
+When the sites run different GitLab versions or revisions,
+the proxied pages can reference files that the secondary site doesn't have.
+
+To check for a mismatch, use either method:
+
+- On the primary site, go to **Admin** > **Geo** > **Sites**. The secondary site's
+   is red when its version or revision differs from the primary site's.
+- Run `sudo gitlab-rake gitlab:env:info` on an application node at each site and compare
+  the `Revision` lines.
+
+To resolve the mismatch, upgrade the secondary site to match the primary site's
+GitLab version and revision. To avoid asset errors while the sites differ,
+[route traffic to the primary site during the upgrade](../upgrading_the_geo_sites.md#route-traffic-to-the-primary-site-during-upgrades).
+
 ### Geo Admin area returns 404 error for a secondary site
 
 Sometimes `sudo gitlab-rake gitlab:geo:check` indicates that Rails nodes of the secondary sites are

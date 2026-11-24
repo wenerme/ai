@@ -11,6 +11,8 @@ External participants are users without a GitLab account that can interact with 
 They get notified of public comments on an issue or ticket by [Service Desk emails](configure.md#customize-emails-sent-to-external-participants).
 
 The maximum number of external participants on an issue or ticket is 10.
+On GitLab.com, top-level groups also have a
+[daily limit on new external participants](../../gitlab_com/rate_limits.md#service-desk-external-participant-limit).
 
 <i class="fa-youtube-play" aria-hidden="true"></i>
 For an overview, see [multiple external participants in GitLab Service Desk](https://www.youtube.com/watch?v=eKNe7fYQCLc).

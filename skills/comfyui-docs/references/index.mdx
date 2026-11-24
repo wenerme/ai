@@ -46,7 +46,7 @@ mode: "frame"
 <div className="px-4 max-w-5xl mx-auto">
 
 <p className="max-w-xl mx-auto px-4 mb-12 text-lg text-center text-gray-500 dark:text-zinc-500">
-The most powerful open source node-based application for generative AI
+The most powerful open source application for visual AI
 </p>
 
 <div className="mb-12">
@@ -68,13 +68,28 @@ The most powerful open source node-based application for generative AI
 </div>
 
 <div className="mb-12">
-  <h2 className="text-2xl font-bold mb-6 text-center">AI Agents & MCP</h2>
+  <h2 className="text-2xl font-bold mb-6 text-center">A single API for all frontier models with Comfy Router</h2>
+  
+    
+      Call partner models through one API endpoint with a single key
+    
+    
+      Browse the models available through Comfy Router
+    
+    
+      Full reference for Router endpoints, headers, and limits
+    
+  
+</div>
+
+<div className="mb-12">
+  <h2 className="text-2xl font-bold mb-6 text-center">Set up Comfy through Agents & MCP</h2>
   
     
       Connect AI agents via MCP for image, video, audio, and 3D generation
     
     
-      Hosted MCP at cloud.comfy.org — run workflows on Cloud GPUs
+      Hosted MCP for Comfy Cloud and Local
     
     
       Call partner models from the terminal with comfy generate (beta)
@@ -83,16 +98,16 @@ The most powerful open source node-based application for generative AI
 </div>
 
 <div className="mb-12">
-  <h2 className="text-2xl font-bold mb-6 text-center">Comfy Router</h2>
+  <h2 className="text-2xl font-bold mb-6 text-center">Deploy Comfy to your infrastructure</h2>
   
     
-      Call partner models through one API endpoint with a single key
+      Run ComfyUI locally, on a server, or in the cloud
     
     
-      Run workflows against a ComfyUI deployment from your application
+      Run workflows against a deployment from your application
     
     
-      Full reference for Router endpoints, headers, and limits
+      Contribute to ComfyUI development
     
   
 </div>
@@ -108,21 +123,6 @@ The most powerful open source node-based application for generative AI
     
     
       Learn about each node in ComfyUI
-    
-  
-</div>
-
-<div className="mb-12">
-  <h2 className="text-2xl font-bold mb-6 text-center">Developers</h2>
-  
-    
-      Run ComfyUI locally, on a server, or in the cloud
-    
-    
-      Run workflows against a deployment from your application
-    
-    
-      Contribute to ComfyUI development
     
   
 </div>
@@ -166,10 +166,18 @@ The most powerful open source node-based application for generative AI
     Written by <a href="https://github.com/comfyanonymous" className="text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">comfyanonymous</a> and other <a href="https://github.com/Comfy-Org/ComfyUI/graphs/contributors" className="text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">contributors</a>.
   </p>
 
-  <ul className="list-none space-y-2 max-w-2xl mx-auto">
-    <li><strong>ComfyUI</strong> is a node-based interface and inference engine for generative AI</li>
-    <li>Users can combine various AI models and operations through nodes to achieve highly customizable and controllable content generation</li>
-    <li>ComfyUI is completely open source and can run on your local device</li>
+  <p className="max-w-2xl mx-auto mb-6">
+    <strong>ComfyUI</strong> is an open source, node-based interface and inference engine for visual AI. You connect models and operations as Nodes in a Workflow to control every step of image, video, audio, and 3D generation. Comfy builds these products around it:
+  </p>
+
+  <ul className="list-none space-y-3 max-w-2xl mx-auto text-left">
+    <li><a href="https://github.com/Comfy-Org/ComfyUI" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">ComfyUI</a>: the open source engine and interface. Run it on your own computer or server, for free.</li>
+    <li><a href="/installation/desktop/overview" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Desktop</a>: the app for Windows, macOS, and Linux that installs ComfyUI and opens it on your computer or on Comfy Cloud.</li>
+    <li><a href="/get_started/cloud" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Cloud</a>: ComfyUI running on cloud GPUs, with nothing to install.</li>
+    <li><a href="/development/comfy-router/quickstart" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Router</a>: one API and one key for frontier image, video, and audio models.</li>
+    <li><a href="/development/deploy/overview" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy API</a>: deploy your Workflows and run them from your own application.</li>
+    <li><a href="/agent-tools" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy MCP and Comfy CLI</a>: connect AI agents and scripts to ComfyUI, locally or on Comfy Cloud.</li>
+    <li><a href="/registry/overview" className="font-semibold text-blue-500 dark:text-blue-400 underline hover:text-blue-600 dark:hover:text-blue-500">Comfy Registry</a>: the public index of Custom Nodes that extend ComfyUI.</li>
   </ul>
 </div>
 

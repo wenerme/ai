@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 The pipeline editor is the primary place to edit the GitLab CI/CD configuration in
-the `.gitlab-ci.yml` file in the root of your repository. To access the editor, go to **Build** > **Pipeline editor**.
+the `.gitlab-ci.yml` file in the root of your repository. To access the editor, go to  > .
 
 From the pipeline editor page you can:
 
@@ -35,16 +35,16 @@ use the pipeline editor validation tool. This tool simulates the creation of a p
 due to a Git push event, and can help troubleshoot logic issues, including incorrect
 `rules` and `needs` job dependencies:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline editor**.
-1. Select the **Validate** tab.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the  tab.
 1. Optional. Select a different branch to use for the simulated push event by using
-   the **Pipeline run source** dropdown list.
-1. Select **Validate pipeline**.
+   the  dropdown list.
+1. Select .
 
-The simulated pipeline uses the existing pipeline configuration from the **Edit** tab.
+The simulated pipeline uses the existing pipeline configuration from the  tab.
 
-To validate a CI/CD YAML snippet without adding it to the **Edit** tab, use the
+To validate a CI/CD YAML snippet without adding it to the  tab, use the
 [CI Lint tool](../yaml/lint.md#simulate-a-pipeline) instead.
 
 ## View included CI/CD configuration
@@ -57,7 +57,7 @@ for review.
 ## Visualize CI/CD configuration
 
 To view a visualization of your `.gitlab-ci.yml` configuration, in your project,
-go to **Build** > **Pipeline editor**, and then select the **Visualize** tab. The
+go to  > , and then select the  tab. The
 visualization shows all stages and jobs. Any [`needs`](../yaml/_index.md#needs)
 relationships are displayed as lines connecting jobs together, showing the
 hierarchy of execution.
@@ -75,7 +75,7 @@ do not display in this visualization because they are not defined in the project
 ## View full configuration
 
 To view the fully expanded CI/CD configuration as one combined file, go to the
-pipeline editor's **Full configuration** tab. This tab displays an expanded configuration
+pipeline editor's  tab. This tab displays an expanded configuration
 where:
 
 - Configuration imported with [`include`](../yaml/_index.md#include) is copied into the view.
@@ -121,7 +121,7 @@ fully expanded version are both valid:
       - !reference [.rule-02, rules]
   ```
 
-- Expanded configuration in **Full configuration** tab:
+- Expanded configuration in  tab:
 
   ```yaml
   ".python-req":
@@ -188,10 +188,9 @@ It can happen when GitLab is unable to communicate with the service that validat
 
 The information in these sections may not display properly:
 
-- The syntax status on the **Edit** tab (valid or invalid).
-- The **Visualize** tab.
-- The **Lint** tab.
-- The **Full configuration** tab.
+- The syntax status on the  tab (valid or invalid).
+- The  tab.
+- The  tab.
 
 You can still work on your CI/CD configuration and commit the changes you made without
 any issues. As soon as the service becomes available again, the syntax validation

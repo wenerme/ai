@@ -40,6 +40,8 @@ Automatically open merge requests to fix vulnerable dependencies.
   `dependency_management_scheduler_rate_limit`. Disabled by default.
 - Per-project scheduler rate limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272129)
   in GitLab 19.7. Feature flag `dependency_management_scheduler_rate_limit` removed.
+- Configurable scheduler rate limit period [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271226)
+  in GitLab 19.7.
 
 Dependency scanning auto-remediation opens a merge request to bump a vulnerable dependency
 to a non-vulnerable version when one is available. A service account creates the
@@ -109,9 +111,8 @@ eligible vulnerability:
 During beta, GitLab processes three vulnerabilities at a time, starting
 with the highest severity finding.
 
-GitLab starts at most one scheduler run for each project every five minutes. Runs that fill
-a slot freed by a dismissed update have their own limit of one every five minutes. For more information, see
-[non-configurable rate limits](../../../rate_limits/non_configurable.md).
+By default, GitLab starts at most one scheduler run for each project every five minutes.
+Administrators can [change this limit](#configure-the-scheduler-rate-limit).
 
 ### Merge request titles and commit messages
 
@@ -177,7 +178,19 @@ Administrators can limit how many auto-remediation scheduler jobs
 run concurrently across the Sidekiq fleet. Use the
 `security_update_scheduler_max_concurrency`
 [application setting](../../../api/settings.md) to set the cap. The default is `30`,
-and the value is capped at `200`. Set the value to `0` to pause scheduling.
+and the value is capped at `200`. Set the value to `0` to remove the concurrency limit.
+
+## Configure the scheduler rate limit
+
+GitLab starts at most one auto-remediation scheduler run for each project in each period.
+Runs that fill a slot freed by a dismissed update have their own limit of one in the same period.
+GitLab skips a run over the limit and does not retry it.
+
+Administrators can set the period with the `security_update_scheduler_project_period_in_seconds`
+[application setting](../../../api/settings.md). The default is `300` seconds,
+and the maximum is `86400`. Set the value to `0` to remove both limits.
+
+A shorter period applies to a project after its current period ends.
 
 ## Set runner tags for auto-remediation jobs
 

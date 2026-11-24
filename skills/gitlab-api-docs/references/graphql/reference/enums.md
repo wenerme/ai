@@ -6801,6 +6801,25 @@ Weight ID wildcard values.
 | `ANY` | Weight is assigned. |
 | `NONE` | No weight is assigned. |
 
+## `WikiPageFilter`
+
+Values for filtering wiki pages.
+
+| Value | Description |
+| ----- | ----------- |
+| `ALL` | All wiki pages, including templates and uploads. |
+| `PAGES` | Wiki pages outside the `templates/` and `uploads/` directories. |
+| `TEMPLATES` | Wiki pages in the `templates/` directory. |
+
+## `WikiPageSort`
+
+Values for sorting wiki pages.
+
+| Value | Description |
+| ----- | ----------- |
+| `PATH_ASC` | Path by ascending order. |
+| `PATH_DESC` | Path by descending order. |
+
 ## `WorkItemAgentPlanGenerationStatus`
 
 Status of the asynchronous workplan generation flow for a work item.

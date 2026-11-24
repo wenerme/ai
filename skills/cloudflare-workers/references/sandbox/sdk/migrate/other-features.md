@@ -34,7 +34,7 @@ Each 0.12 feature has one section:
 
 ## Run Docker inside the sandbox
 
-The 0.x Docker setup starts from `docker:dind-rootless`, switches to `USER root`, and copies in the musl build of the 0.x server. On a 1.0 container, its Docker daemon exits with `failed to set IP forwarding '/proc/sys/net/ipv4/ip_forward' = '1': open /proc/sys/net/ipv4/ip_forward: read-only file system`.
+The 0.12 Docker setup uses `docker:dind-rootless` with `USER root` and the musl build of the sandbox server. For 1.0, use `docker:dind` with its default bridge networking.
 
 1. Replace your `Dockerfile`:
 
@@ -47,12 +47,12 @@ The 0.x Docker setup starts from `docker:dind-rootless`, switches to `USER root`
 
    COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
-   ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false --ip-forward=false > /var/log/dockerd.log 2>&1 & exec sleep infinity"]
+   ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd > /var/log/dockerd.log 2>&1 & exec sleep infinity"]
    ```
 
-   The Docker daemon runs as `root`, with iptables and IP forwarding turned off. It logs to `/var/log`, because the `docker:dind` entrypoint mounts an empty `/tmp`. `sleep infinity` keeps the container running. Keep the `COPY` line only if your class uses `Files`, `S3Mount`, or `DirectoryBackup`. `sandbox-shim` is statically linked, so it runs on the Alpine-based `docker:dind` image.
+   The Docker daemon runs as `root` and logs to `/var/log`. The `docker:dind` entrypoint can mount a new filesystem over `/tmp`. `sleep infinity` keeps the container running. Keep the `COPY` line only if your class uses `Files`, `S3Mount`, or `DirectoryBackup`. `sandbox-shim` is statically linked, so it runs on the Alpine-based `docker:dind` image.
 2. Keep `enableInternet: true` in `start()`, so that Docker can pull images. 0.12 allowed Internet access by default.
-3. Wait for Docker, and run containers with `--network=host`:
+3. Wait for Docker, then run a container:
 
    *src/index.ts (0.12)ts*
 
@@ -98,7 +98,6 @@ The 0.x Docker setup starts from `docker:dind-rootless`, switches to `USER root`
    				"docker",
    				"run",
    				"--rm",
-   				"--network=host",
    				"alpine:3.22",
    				"echo",
    				"Hello from Docker",
@@ -111,7 +110,6 @@ The 0.x Docker setup starts from `docker:dind-rootless`, switches to `USER root`
    }
    ```
 
-   Without `--network=host`, `docker run` fails with `failed to disable IPv6 on container's interface eth0`. A `docker build` step that uses the network, such as a package install, also needs `docker build --network=host`. An inner container started this way shares the network access of the sandbox.
 4. Call `runImage()` from your Worker. It returns `Hello from Docker`. The first call also pulls `alpine:3.22`, and Docker writes its progress to `stderr`.
 
 For more information, refer to [Docker-in-Docker in the Containers FAQ](https://developers.cloudflare.com/containers/faq/#can-i-run-docker-inside-a-container-docker-in-docker).
@@ -681,5 +679,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/#page","headline":"Move other 0.x features","description":"Move @cloudflare/sandbox 0.12 Docker-in-Docker images, binding handlers, and the opencode, openai, and bridge subpaths to 1.0, and remove WarmPool.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.png?v=f9210298c4783c03","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/#page","headline":"Move other 0.x features","description":"Move @cloudflare/sandbox 0.12 Docker-in-Docker images, binding handlers, and the opencode, openai, and bridge subpaths to 1.0, and remove WarmPool.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.png?v=f9210298c4783c03","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

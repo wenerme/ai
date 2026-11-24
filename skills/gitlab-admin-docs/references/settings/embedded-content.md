@@ -85,10 +85,10 @@ To add or replace embed providers:
      'dashboards' => {
        'name' => 'Dashboards',
        'matches' => [
-         { 'host' => 'dashboards.example.com', 'path' => '/d/{uid}' }
+         { 'host' => 'dashboards.example.org', 'path' => '/d/{uid}' }
        ],
-       'src' => 'https://dashboards.example.com/d/{uid}',
-       'view' => 'https://dashboards.example.com/d/{uid}',
+       'src' => 'https://dashboards.example.org/d/{uid}',
+       'view' => 'https://dashboards.example.org/d/{uid}',
        'sandbox' => ['allow-scripts', 'allow-same-origin']
      }
    }
@@ -117,10 +117,10 @@ To add or replace embed providers:
          dashboards:
            name: Dashboards
            matches:
-             - host: dashboards.example.com
+             - host: dashboards.example.org
                path: /d/{uid}
-           src: https://dashboards.example.com/d/{uid}
-           view: https://dashboards.example.com/d/{uid}
+           src: https://dashboards.example.org/d/{uid}
+           view: https://dashboards.example.org/d/{uid}
            sandbox: [allow-scripts, allow-same-origin]
    ```
 
@@ -144,10 +144,10 @@ To add or replace embed providers:
              'dashboards' => {
                'name' => 'Dashboards',
                'matches' => [
-                 { 'host' => 'dashboards.example.com', 'path' => '/d/{uid}' }
+                 { 'host' => 'dashboards.example.org', 'path' => '/d/{uid}' }
                ],
-               'src' => 'https://dashboards.example.com/d/{uid}',
-               'view' => 'https://dashboards.example.com/d/{uid}',
+               'src' => 'https://dashboards.example.org/d/{uid}',
+               'view' => 'https://dashboards.example.org/d/{uid}',
                'sandbox' => ['allow-scripts', 'allow-same-origin']
              }
            }
@@ -170,10 +170,10 @@ To add or replace embed providers:
          dashboards:
            name: Dashboards
            matches:
-             - host: dashboards.example.com
+             - host: dashboards.example.org
                path: /d/{uid}
-           src: https://dashboards.example.com/d/{uid}
-           view: https://dashboards.example.com/d/{uid}
+           src: https://dashboards.example.org/d/{uid}
+           view: https://dashboards.example.org/d/{uid}
            sandbox: [allow-scripts, allow-same-origin]
    ```
 
@@ -220,3 +220,6 @@ Each embed provider supports the following keys:
 
 If `sandbox` includes `allow-same-origin`, `src` and `additional_csp_hosts` cannot use the hostname
 of your GitLab instance, your GitLab Pages domain, or its subdomains.
+
+If GitLab Pages is not configured on a Linux package, Docker, or self-compiled installation,
+the Pages domain is `example.com`.

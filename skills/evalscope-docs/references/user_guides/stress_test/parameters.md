@@ -7,15 +7,19 @@ Execute `evalscope perf --help` to get a full parameter description.
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
 | `--model` | `str` | Name or path of the test model | - |
-| `--url` | `str` | API address, supporting `/chat/completions`, `/completions`, and `/responses` endpoints | - |
+| `--url` | `str` | API address, supporting `/chat/completions`, `/completions`, `/responses`, and `/v1/messages` endpoints | - |
 | `--name` | `str` | Name for wandb/swanlab database result and result database | `{model_name}_{current_time}` |
 | `--alias` | `str` | Human-readable run alias shown in the Web dashboard lists and reports to distinguish runs of the same model (display label only) | `None` |
-| `--api` | `str` | Service API type• `openai`: OpenAI-compatible Chat Completions API (requires `--url`)• `openai_responses`: OpenAI official Responses API• `openai_embedding`: OpenAI-compatible Embedding API• `openai_rerank`: OpenAI/Cohere-compatible Rerank API• `local`: Start local transformers inference• `local_vllm`: Start local vLLM inference service• Custom: See [Custom API Guide](./custom.md#custom-api-requests) | - |
+| `--api` | `str` | Service API type• `openai`: OpenAI-compatible Chat Completions API (requires `--url`)• `openai_responses`: OpenAI official Responses API• `anthropic`: Anthropic Messages API• `openai_embedding`: OpenAI-compatible Embedding API• `openai_rerank`: OpenAI/Cohere-compatible Rerank API• `local`: Start local transformers inference• `local_vllm`: Start local vLLM inference service• Custom: See [Custom API Guide](./custom.md#custom-api-requests) | - |
 | `--port` | `int` | Port for local inference serviceOnly applicable to `local` and `local_vllm` | `8877` |
 | `--attn-implementation` | `str` | Attention implementation methodOnly effective when `api=local` | `None`(Optional: `flash_attention_2`, `eager`, `sdpa`) |
 | `--api-key` | `str` | API key | `None` |
 | `--debug` | `bool` | Whether to output debug information | `False` |
 | `--scenario` | `str` | External workload scenario. `agentx` runs AIPerf AgentX MVP; also accepts AgentX JSON. See [AgentX MVP](./agentx.md). | `None` |
+
+With `--api anthropic`, pass the service base URL (for example, `https://api.anthropic.com`) or the full `/v1/messages` endpoint. EvalScope sends `--api-key` as the `x-api-key` header. Leave sampling options unset when the model requires provider defaults.
+
+Anthropic performance metrics use the input and output token counts reported by the service in `usage`. A response with missing or invalid counts is recorded as a failed request. Tokenizers can still be used for workload generation and input length filtering.
 
 ## Network Configuration
 
@@ -297,7 +301,7 @@ Replay behaviour is tuned via `--dataset-args`:
 | `--seed` | `int` | Random seed | `None` |
 | `--stop` | `str` | Tokens that stop the generation | - |
 | `--stop-token-ids` | `list[int]` | IDs of tokens that stop the generation | - |
-| `--temperature` | `float` | Sampling temperature | `0` |
+| `--temperature` | `float` | Sampling temperature | Server default for `anthropic`, `0` for other protocols |
 | `--top-p` | `float` | Top-p sampling | - |
 | `--top-k` | `int` | Top-k sampling | - |
 | `--extra-args` | `str` | Additional parameters to be passed in the request bodyJSON string formatExample: `'{"ignore_eos": true}'` | - |

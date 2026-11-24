@@ -32,18 +32,18 @@ Prerequisites:
 
 To create a pipeline schedule:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline schedules**.
-1. Select **New schedule**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
 1. Complete the fields.
-   - **Interval Pattern**: Select one of the preconfigured intervals, or enter a custom
+   - : Select one of the preconfigured intervals, or enter a custom
      interval in [cron notation](../../topics/cron/_index.md). You can use any cron value,
      but scheduled pipelines cannot run more frequently than the instance's
      [maximum scheduled pipeline frequency](../../administration/cicd/limits.md#maximum-scheduled-pipeline-frequency).
-   - **Target branch or tag**: Select the branch or tag for the pipeline.
-   - **Inputs**: Set values for any [inputs](../inputs/_index.md) defined in your pipeline's `spec:inputs` section.
+   - : Select the branch or tag for the pipeline.
+   - : Set values for any [inputs](../inputs/_index.md) defined in your pipeline's `spec:inputs` section.
      These input values are used every time the scheduled pipeline runs. A schedule can have a maximum of 20 inputs.
-   - **Variables**: Add any number of [CI/CD variables](../variables/_index.md) to the schedule.
+   - : Add any number of [CI/CD variables](../variables/_index.md) to the schedule.
      These variables are available only when the scheduled pipeline runs,
      and not in any other pipeline run. Inputs are recommended for pipeline configuration instead of variables
      because they offer improved security and flexibility.
@@ -64,10 +64,10 @@ Prerequisites:
 
 To edit a pipeline schedule:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline schedules**.
-1. Next to the schedule, select **Edit** ().
-1. Make your changes, then select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the schedule, select  ().
+1. Make your changes, then select .
 
 ## Run manually
 
@@ -76,9 +76,9 @@ When you run a scheduled pipeline manually, it uses your permissions instead of 
 
 To trigger a pipeline schedule immediately instead of waiting for the next scheduled time:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline schedules**.
-1. Next to the schedule, select **Run** ().
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the schedule, select  ().
 
 ## Take ownership
 
@@ -92,9 +92,10 @@ Prerequisites:
 
 To take ownership of a schedule:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline schedules**.
-1. Next to the schedule, select **Take ownership**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the schedule, select  ().
+1. In the dialog, select .
 
 ## View your scheduled pipelines
 
@@ -103,9 +104,9 @@ To take ownership of a schedule:
 To view the active pipeline schedules that you own across all your projects:
 
 1. In the upper-right corner, select your avatar.
-1. Select **Edit profile**.
-1. Select **Account**.
-1. Scroll to **Scheduled pipelines you own**.
+1. Select .
+1. Select .
+1. Scroll to .
 
 ## Related topics
 

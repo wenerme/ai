@@ -457,7 +457,7 @@ export class MyContainer extends DurableObject<Env> {
 }
 ```
 
-The `user` option sets the numeric Linux user and group IDs for the process, as `uid:gid`. When omitted, the process runs as the image user. Before you rely on `user` to restrict a process, refer to [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec).
+The `user` option sets the Linux user and optional group for the process, as `user[:group]`. Each value can be a name or numeric ID. When omitted, the process runs as the image user. Before you rely on `user` to restrict a process, refer to [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec).
 
 ## Combine standard error
 
@@ -697,7 +697,7 @@ This method transfers output, not the `ExecProcess` handle. Define a separate ap
 
 ## Stop a process
 
-`exec()` has no built-in timeout. You can request termination after a delay with `kill()` and then await `exitCode`.
+Once a process starts, there is no built-in time limit. To request termination after a delay, call `kill()` and then await `exitCode`.
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -854,5 +854,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/execute-commands/#page","headline":"Execute commands","description":"Run additional processes inside a running container.","url":"https://developers.cloudflare.com/containers/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/execute-commands/og.png?v=1357ed940a06bbcf","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/execute-commands/#page","headline":"Execute commands","description":"Run additional processes inside a running container.","url":"https://developers.cloudflare.com/containers/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/execute-commands/og.png?v=1357ed940a06bbcf","dateModified":"2026-11-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

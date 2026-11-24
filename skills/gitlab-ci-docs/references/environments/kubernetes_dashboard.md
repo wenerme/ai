@@ -22,25 +22,25 @@ Prerequisites:
 
 ### The environment already exists
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment to be associated with the agent for Kubernetes.
-1. Select **Edit**.
+1. Select .
 1. Select a GitLab agent for Kubernetes.
-1. Optional. From the **Kubernetes namespace** dropdown list, select a namespace.
-1. Optional. From the **Flux resource** dropdown list, select a Flux resource.
-1. Select **Save**.
+1. Optional. From the  dropdown list, select a namespace.
+1. Optional. From the  dropdown list, select a Flux resource.
+1. Select .
 
 ### The environment doesn't exist
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
-1. Select **New environment**.
-1. Complete the **Name** field.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. Complete the  field.
 1. Select a GitLab agent for Kubernetes.
-1. Optional. From the **Kubernetes namespace** dropdown list, select a namespace.
-1. Optional. From the **Flux resource** dropdown list, select a Flux resource.
-1. Select **Save**.
+1. Optional. From the  dropdown list, select a namespace.
+1. Optional. From the  dropdown list, select a Flux resource.
+1. Select .
 
 ### Configure a dashboard for a dynamic environment
 
@@ -76,10 +76,10 @@ The status of your Kubernetes resources and Flux reconciliation updates in real 
 
 To view a configured dashboard:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment associated with the agent for Kubernetes.
-1. Select the **Kubernetes overview** tab.
+1. Select the  tab.
 
 A list of pods is displayed. Select a pod to view its details.
 
@@ -89,7 +89,7 @@ You can review the sync status of your Flux deployments from a dashboard.
 To display the deployment status, your dashboard must retrieve the `Kustomization` and `HelmRelease` resources,
 which requires a namespace to be configured for the environment.
 
-GitLab searches the `Kustomization` and `HelmRelease` resources specified by the **Flux resource** dropdown list in the environment settings.
+GitLab searches the `Kustomization` and `HelmRelease` resources specified by the  dropdown list in the environment settings.
 
 A dashboard displays one of the following status badges:
 
@@ -111,7 +111,7 @@ You can manually reconcile your deployment with its Flux resources.
 To trigger a reconciliation:
 
 1. On a dashboard, select the sync status badge of a Flux deployment.
-1. Select **Actions** () > **Trigger reconciliation** ().
+1. In the  section, select  ().
 
 ### Suspend or resume Flux reconciliation
 
@@ -122,9 +122,9 @@ You can manually suspend or resume your Flux reconciliation from the UI.
 To suspend or resume reconciliation:
 
 1. On a dashboard, select the sync status badge of a Flux deployment.
-1. Select **Actions** (), then choose one of the following:
-   - **Suspend reconciliation** () to pause the Flux reconciliation.
-   - **Resume reconciliation** () to restart the Flux reconciliation.
+1. In the  section, select one of the following:
+   -  () to pause the Flux reconciliation.
+   -  () to restart the Flux reconciliation.
 
 ### View pod logs
 
@@ -132,7 +132,7 @@ To suspend or resume reconciliation:
 
 View pod logs when you want to quickly understand and troubleshoot issues across your environments from a configured dashboard. You can view logs for each container in a pod.
 
-- Select **View logs**, then select the container you want to view logs for.
+- Select , then select the container you want to view logs for.
 
 You can also view pod logs from the pod details.
 
@@ -144,8 +144,8 @@ To restart a failed pod, delete it from the Kubernetes dashboard.
 
 To delete a pod:
 
-1. On the **Kubernetes overview** tab, find the pod you want to delete.
-1. Select **Actions** () > **Delete pod** ().
+1. On the  tab, find the pod you want to delete.
+1. Next to the pod, select  ().
 
 You can also delete a pod from the pod details.
 
@@ -190,8 +190,8 @@ The detailed dashboard is not linked from the sidebar navigation.
 To view a detailed dashboard:
 
 1. Find your agent for Kubernetes ID:
-   1. In the top bar, select **Search or go to** and find your project.
-   1. Select **Operate** > **Kubernetes clusters**.
+   1. In the top bar, select  and find your project.
+   1. Select  > .
    1. Copy the numerical ID of the agent you want to access.
 1. Go to one of the following URLs, replacing `<agent_id>` with your agent ID:
 
@@ -220,6 +220,6 @@ To resolve, check your [RBAC configuration](../../user/clusters/agent/user_acces
 
 ### GitLab agent dropdown list is empty
 
-When you configure a new environment, the **GitLab agent** dropdown list might be empty, even if you have configured Kubernetes clusters.
+When you configure a new environment, the  dropdown list might be empty, even if you have configured Kubernetes clusters.
 
-To populate the **GitLab agent** dropdown list, grant an agent Kubernetes access with the [`user_access`](../../user/clusters/agent/user_access.md) keyword.
+To populate the  dropdown list, grant an agent Kubernetes access with the [`user_access`](../../user/clusters/agent/user_access.md) keyword.

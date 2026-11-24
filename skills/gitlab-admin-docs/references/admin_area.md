@@ -560,14 +560,16 @@ The list view displays verification status for a selected component.
 
 - Collation health check [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/555916) in GitLab 18.3.
 - Planner statistics check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266548) in GitLab 19.6.
+- Pending migrations check [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634029) in GitLab 19.7.
 - Schema health check, search path check, and loose foreign keys backlog check [moved](https://gitlab.com/gitlab-org/gitlab/-/work_items/634440) to the [database pre-upgrade checks](#database-pre-upgrade-checks) page in GitLab 19.6.
 
 The database diagnostics page shows PostgreSQL information that loads with the page, including
 timeouts, running vacuums, and the autovacuum settings in effect. For more information, see
 [Monitor autovacuum](postgresql/vacuum.md#monitor-autovacuum).
 
-The page also has the [collation health check](#collation-health-check) and the
-[planner statistics check](#planner-statistics-check). To run the collation health check, select
+The page also has the [collation health check](#collation-health-check), the
+[planner statistics check](#planner-statistics-check), and the
+[pending migrations check](#pending-migrations-check). To run the collation health check, select
 the run button for the check. Selecting the run button schedules a background job that reports
 information from the check to the page.
 
@@ -621,6 +623,41 @@ To run the check from the console:
 
 ```shell
 sudo gitlab-rake gitlab:db:diagnostics:planner_statistics
+```
+
+The task exits with status `1` when it finds an error.
+
+#### Pending migrations check
+
+The pending migrations check runs when the page loads. For each database, the
+ section lists the migrations that
+have not run, with the version, the name, and the type of each migration. Use the check to
+confirm that an upgrade is complete when you cannot run `gitlab-rake db:migrate:status` on
+the host.
+
+The check reports the two types of migration separately:
+
+- A regular migration that has not run is an error. The database schema is behind the code
+  that GitLab runs, which can cause errors. To fix the error, run the database migrations.
+- A post-deployment migration that has not run is a warning. The warning is expected for a
+  short time after an upgrade, for example during a
+  [zero-downtime upgrade](../update/zero_downtime.md). The upgrade is not complete until
+  all post-deployment migrations have run. Until then,
+  [batched background migrations](../update/background_migrations.md) that those migrations
+  queue are not listed on the background migrations page.
+
+The check also reports what prevents a complete answer:
+
+- A file in a migration directory that is not named like a migration is an error. Database
+  migrations cannot run until you rename or remove the file.
+- A process that has no post-deployment migration directory, for example because
+  `SKIP_POST_DEPLOYMENT_MIGRATIONS` is set, gets a warning that post-deployment migrations
+  were not checked.
+
+To run the check from the console:
+
+```shell
+sudo gitlab-rake gitlab:db:diagnostics:pending_migrations
 ```
 
 The task exits with status `1` when it finds an error.

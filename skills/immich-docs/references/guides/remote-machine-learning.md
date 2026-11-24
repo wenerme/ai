@@ -1,4 +1,4 @@
-# Remote Machine Learning
+# Remote machine learning
 
 To alleviate [performance issues on low-memory systems](/FAQ.mdx#why-is-immich-slow-on-low-memory-systems-like-the-raspberry-pi) like the Raspberry Pi, you may also host Immich's machine learning container on a more powerful system, such as your laptop or desktop computer. The server container will send requests containing the image preview to the remote machine learning container for processing. The machine learning container does not persist this data or associate it with a particular user.
 

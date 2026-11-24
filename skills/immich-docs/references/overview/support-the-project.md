@@ -2,7 +2,7 @@
 
 ---
 
-# Support The Project
+# Support the project
 
 ## Report issues
 

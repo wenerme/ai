@@ -82,8 +82,8 @@ Prerequisites:
 
 To configure review apps in your project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline editor**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. In your `.gitlab-ci.yml` file, add a job that creates a [dynamic environment](../environments/_index.md#create-a-dynamic-environment).
    You can use a [predefined CI/CD variable](../variables/predefined_variables.md) to differentiate
    each environment. For example, using the `CI_COMMIT_REF_SLUG` predefined variable:
@@ -103,7 +103,7 @@ To configure review apps in your project:
 
 1. Optional. Add `when: manual` to the job to only deploy review apps manually.
 1. Optional. Add a job to [stop the review app](#stop-review-apps) when it's no longer needed.
-1. Enter a commit message and select **Commit changes**.
+1. Enter a commit message and select .
 
 ### Use the review apps template
 
@@ -111,10 +111,10 @@ GitLab provides a built-in template that's configured for merge request pipeline
 
 To use and customize this template:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
-1. Select **Enable review apps**.
-1. From the **Enable Review Apps** dialog that appears, copy the YAML template:
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. From the  dialog that appears, copy the YAML template:
 
    ```yaml
    deploy_review:
@@ -128,7 +128,7 @@ To use and customize this template:
        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
    ```
 
-1. Select **Build** > **Pipeline editor**.
+1. Select  > .
 1. Paste the template into your `.gitlab-ci.yml` file.
 1. Customize the template based on your deployment needs:
 
@@ -158,7 +158,7 @@ To use and customize this template:
    This configuration sets up an automated deployment to Heroku whenever a pipeline runs for a merge request.
    It uses Ruby's `dpl` deployment tool to handle the process, and creates a dynamic review environment that can be accessed through the specified URL.
 
-1. Enter a commit message and select **Commit changes**.
+1. Enter a commit message and select .
 
 ### Stop review apps
 
@@ -221,8 +221,8 @@ review_app:
 To deploy and access review apps:
 
 1. Go to your merge request.
-1. Optional. If the review app job is manual, select **Run** () to start the deployment.
-1. When the pipeline finishes, select **View app** to open the review app in your browser.
+1. Optional. If the review app job is manual, select  () to start the deployment.
+1. When the pipeline finishes, select  to open the review app in your browser.
 
 ## Example implementations
 
@@ -323,7 +323,7 @@ Prerequisites:
 
 To view mapped pages from the merge request widget:
 
-1. In the merge request widget, select **View app**.
+1. In the merge request widget, select .
    The dropdown list shows up to 5 mapped pages (with filtering if more are available).
 
 [Merge request widget with route maps showing matched items and filter bar.]
@@ -331,7 +331,7 @@ To view mapped pages from the merge request widget:
 To view a mapped page from a file:
 
 1. Go to a file that matches your route map using one of these methods:
-   - From a merge request: In the **Changes** tab, select **View file @ [commit]**.
+   - From a merge request: In the  tab, select **View file @ [commit]**.
    - From a commit page: Select the filename.
    - From a comparison: When comparing revisions, select the filename.
 1. On the file's page, select **View on [environment-name]** () in the upper-right corner.
@@ -339,13 +339,13 @@ To view a mapped page from a file:
 To view mapped pages from a commit:
 
 1. Go to a commit that has a review app deployment:
-   - For branch pipelines: In the left sidebar, select **Code** > **Commits** and select a commit with a pipeline badge.
-   - For merge request pipelines: In your merge request, select the **Commits** tab and select a commit.
-   - For merged results pipelines: In your merge request, select the **Pipelines** tab and select the pipeline commit.
+   - For branch pipelines: In the left sidebar, select  >  and select a commit with a pipeline badge.
+   - For merge request pipelines: In your merge request, select the  tab and select a commit.
+   - For merged results pipelines: In your merge request, select the  tab and select the pipeline commit.
 1. Select the review app icon () next to a filename that matches your route map.
    The icon opens the corresponding page in your review app.
 
 > [!note]
 > Merged results pipelines create an internal commit that merges your branch with the target branch.
-> To access review app links for these pipelines, use the commit from the **Pipelines** tab,
-> not the **Commits** tab.
+> To access review app links for these pipelines, use the commit from the  tab,
+> not the  tab.

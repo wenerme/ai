@@ -1806,6 +1806,7 @@ Examples:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605882) in GitLab 19.4.
 - `discussions` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597686) in GitLab 19.5.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
+- [Removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/633053) the `mr_page_size` and `mr_pagination_cursor` parameters in favor of `related_merge_requests_first` and `related_merge_requests_after` in GitLab 19.7.
 
 This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1830,8 +1831,6 @@ are omitted.
 | `discussions_filter`            | string  | No       | Which discussions to return: `all_notes` (default), `only_comments` to leave out system notes, or `only_activity` for system notes only. |
 | `related_merge_requests_first`  | integer | No       | Number of related merge requests to return. Default 20, maximum 100. |
 | `related_merge_requests_after`  | string  | No       | Cursor for forward pagination of related merge requests. |
-| `mr_page_size`                  | integer | No       | Deprecated: use `related_merge_requests_first` instead. |
-| `mr_pagination_cursor`          | string  | No       | Deprecated: use `related_merge_requests_after` instead. |
 
 The `notes` facet returns up to 100 notes per call and paginates in both directions with
 the `notes_*` parameters. Each note includes `discussion.id`, the ID of the thread it belongs to,
