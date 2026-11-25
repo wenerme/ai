@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.
 title: Build an API to access D1 using a proxy Worker
 image: https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/og.png?v=f46d53b0420bb46b

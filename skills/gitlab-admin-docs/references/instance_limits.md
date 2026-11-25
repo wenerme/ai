@@ -786,7 +786,7 @@ To configure this limit, see [diff limits administration](diff_limits.md).
 
 ### Draft notes per merge request
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471) in GitLab 19.6.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267480) in GitLab 19.6.
 
 Each user can have up to 200 unpublished [draft notes](../user/project/merge_requests/reviews/_index.md)
 on a merge request. To add more draft notes, submit or discard the review first.
@@ -812,8 +812,8 @@ Reports that go over the 20 MB limit aren't loaded. Affected reports:
 
 - Tier: Ultimate
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) in GitLab 19.6 [with feature flags](feature_flags/_index.md) named `scanned_resources_csv_limits` and `scanned_resources_graphql_limits`. Disabled by default.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) to application settings in GitLab 19.7.
+- Introduced in GitLab 19.6 for [scanned resources CSV](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268224) [with a feature flag](feature_flags/_index.md) named `scanned_resources_csv_limits` and for [GraphQL fields](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269459) with a feature flag named `scanned_resources_graphql_limits`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272432) to application settings in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -1078,7 +1078,7 @@ The [changelog API](../api/repositories.md#add-changelog-data-to-file) enforces 
 ### Stages per top-level namespace
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267098) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `vsa_hierarchy_stage_limit`. Disabled by default.
-- Feature flag `vsa_hierarchy_stage_limit` [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/638599) in GitLab 19.6.
+- Enabled on GitLab.com in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

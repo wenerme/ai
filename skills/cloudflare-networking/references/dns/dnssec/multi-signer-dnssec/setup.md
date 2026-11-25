@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure multi-signer DNSSEC for your zone.
 title: Set up multi-signer DNSSEC
 image: https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/og.png?v=36b8a6759a58e293
@@ -43,7 +45,7 @@ For the purpose of this tutorial, you will update your registrar with the DS rec
    - A [DNSKEY record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ds-and-dnskey) with the zone signing key(s) (ZSKs) of your external provider(s).
    - An [NS record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ns) with your external provider nameservers.
 
-1. Use the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) to enable DNSSEC and activate multi-signer DNSSEC for your zone. Set `status` to `active` and `dnssec_multi_signer` to `true`, as in the following example.
+1) Use the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) to enable DNSSEC and activate multi-signer DNSSEC for your zone. Set `status` to `active` and `dnssec_multi_signer` to `true`, as in the following example.
 
 <details>
 
@@ -183,7 +185,7 @@ For the purpose of this tutorial, you will update your registrar with the DS rec
 4. Add the zone signing key(s) (ZSKs) of your external provider(s) to a DNSKEY record at your primary DNS provider. This record should be transferred successfully to Cloudflare.
 5. Add your external provider(s) nameservers as NS records on your zone apex at your primary DNS provider. These records should be transferred successfully to Cloudflare.
 
-1. Use the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) to enable DNSSEC and activate multi-signer DNSSEC for your zone. Set `status` to `active` and `dnssec_multi_signer` to `true`, as in the following example.
+1) Use the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) to enable DNSSEC and activate multi-signer DNSSEC for your zone. Set `status` to `active` and `dnssec_multi_signer` to `true`, as in the following example.
 
 <details>
 

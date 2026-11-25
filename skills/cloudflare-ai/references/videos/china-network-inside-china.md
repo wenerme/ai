@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.
 title: China network - How to speed up your web traffic inside mainland China
 image: https://developers.cloudflare.com/og-docs.png

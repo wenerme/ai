@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment
 title: Configure Virtual Appliance
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/og.png?v=15655f7ee3651792
@@ -286,10 +288,11 @@ When you have more than one anycast IP configured in your account (set up during
 4. In **VLAN ID**, enter a number between `0` and `4094` to specify a [VLAN ID](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#vlan-id).
 5. In **Priority**, choose the priority for your WAN. Lower numbers have higher priority. For details on how Cloudflare calculates priorities, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
 6. In **Health check rate** configure the health check frequency for your site. Options are `low`, `mid`, and `high`. For details, refer to [Update tunnel health checks frequency](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/).
-7. **Addressing**: Select **DHCP**. This is needed the first time you set up your Cloudflare One Virtual Appliance to successfully download all settings to the machine and activate it. If you need a static IP address in your network environment:
+7. (Optional) In **Provisioned upload bandwidth (Mbps)** and **Provisioned download bandwidth (Mbps)**, enter the upload and download speeds of the WAN circuit. The appliance uses the upload value to shape upload traffic so that [prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/) takes effect when the circuit is congested. Download traffic is not currently shaped. For details, refer to [Set the provisioned upload bandwidth](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/#set-the-provisioned-upload-bandwidth).
+8. **Addressing**: Select **DHCP**. This is needed the first time you set up your Cloudflare One Virtual Appliance to successfully download all settings to the machine and activate it. If you need a static IP address in your network environment:
    1. Continue the set up flow to activate your Cloudflare One Virtual Appliance.
    2. Refer to [WAN with a static IP address](#wan-with-a-static-ip-address). If you choose a static IP, you also need to specify the static IP and gateway addresses.
-8. Select **Save** when you are finished.
+9. Select **Save** when you are finished.
 
 Note
 
@@ -298,6 +301,8 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
 The `static_addressing` object is optional. Omit it if you are using DHCP. If you are using static addressing, add the `secondary_address` parameter when your site is in high availability (HA) mode. If the secondary appliance uses a different default gateway than the primary appliance (for example, because each appliance connects to a different ISP), also add the `secondary_gateway_address` parameter. If you omit `secondary_gateway_address`, the secondary appliance uses `gateway_address`. You can only use `secondary_gateway_address` on sites in HA mode.
+
+To shape upload traffic for [prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/), add the optional `provisioned_upload_kbps` parameter with the circuit's upload speed in kilobits per second. You can also add `provisioned_download_kbps` to record the circuit's download speed. Download traffic is not currently shaped.
 
 Example:
 
@@ -329,8 +334,12 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
    - **Next hop**: The address of the L3 router to which the Cloudflare One Virtual Appliance should forward packets for this subnet.
    - **Static NAT prefix**: Optional setting. If you want to enable NAT for a routed subnet, supply an "external" prefix for the overlay-facing side of the NAT to use. It must be the same size as **Prefix**.
       For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
-8. Select **Save**.
-9. Select **Done** to finish your configuration. Tunnels and static routes will be automatically created for your Cloudflare One Virtual Appliance, once it boots up.
+8. (Optional) To reach a remote subnet through Cloudflare using a different local prefix, select **Add DNAT translation** under **DNAT translations**:
+   - **Pre-NAT prefix**: The prefix that hosts on the LAN send traffic to. It cannot overlap the LAN's static address or routed subnets.
+   - **Post-NAT prefix**: The real prefix of the remote subnet, reachable through Cloudflare. It must be the same size as **Pre-NAT prefix**.
+      For details, refer to [DNAT translations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dnat-translations/).
+9. Select **Save**.
+10. Select **Done** to finish your configuration. Tunnels and static routes will be automatically created for your Cloudflare One Virtual Appliance, once it boots up.
 
 Note
 
@@ -497,5 +506,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/og.png?v=15655f7ee3651792","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/og.png?v=15655f7ee3651792","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

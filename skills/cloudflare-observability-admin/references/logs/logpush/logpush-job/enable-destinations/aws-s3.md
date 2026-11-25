@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to Amazon S3.
 title: Enable Amazon S3
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/og.png?v=919663589b56b43b
@@ -27,8 +29,8 @@ Cloudflare Logpush supports pushing logs directly to Amazon S3 via the Cloudflar
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **Amazon S3**.
-5. Enter or select the following destination information:
+4) In **Select a destination**, choose **Amazon S3**.
+5) Enter or select the following destination information:
    - **Bucket** - S3 bucket name
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use the local Artifacts binding with Wrangler, Vite, or Workers Vitest without accessing your deployed repositories.
 title: Local development
 image: https://developers.cloudflare.com/artifacts/guides/local-development/og.png?v=2387a9a4a53aca77
@@ -59,7 +61,7 @@ The local simulator is available through `wrangler dev`, the Cloudflare Vite plu
      "name": "artifacts-worker",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-11-23",
+     "compatibility_date": "2026-11-25",
      "artifacts": [
        {
          "binding": "ARTIFACTS",
@@ -73,7 +75,7 @@ The local simulator is available through `wrangler dev`, the Cloudflare Vite plu
    name = "artifacts-worker"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
 
    [[artifacts]]
    binding = "ARTIFACTS"
@@ -165,7 +167,7 @@ export default defineConfig({
   	name: "artifacts-worker",
   	entrypoint: "./src/index.ts",
   	// Set this to today's date
-  	compatibilityDate: "2026-11-23",
+  	compatibilityDate: "2026-11-25",
   	env: {
   		ARTIFACTS: bindings.artifacts({ namespace: "default" }),
   	},
@@ -191,7 +193,7 @@ Wrangler
 	"name": "artifacts-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"artifacts": [{ "binding": "ARTIFACTS", "namespace": "default" }],
 	"workflows": [
 		{
@@ -216,7 +218,7 @@ Wrangler
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[artifacts]]
 binding = "ARTIFACTS"

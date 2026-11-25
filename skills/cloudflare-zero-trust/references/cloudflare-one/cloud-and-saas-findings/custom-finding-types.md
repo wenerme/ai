@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Define your own posture finding types with Rego in Cloudflare CASB.
 title: Custom finding types
 image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/og.png?v=25f252b39abecfe2
@@ -208,8 +210,8 @@ When you create a custom finding type with the API or Terraform, you provide the
 7. Select **Validate**. Resolve each validation error before continuing.
 8. Select **Create finding type**.
 
-1. (Optional) Check the finding type before you create it. Make a `POST` request to the [Validate a custom finding type](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/finding_types/methods/validate/) endpoint with the same body you will use to create it. The response lists any errors in the Rego expression or the request. Like **Validate** in the dashboard, it does not run the expression against asset data.
-2. Make a `POST` request to the [Create a finding type](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/finding_types/methods/create/) endpoint. Provide the Rego expression in `expression`, without a package declaration or import statements:<details><summary>
+1) (Optional) Check the finding type before you create it. Make a `POST` request to the [Validate a custom finding type](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/finding_types/methods/validate/) endpoint with the same body you will use to create it. The response lists any errors in the Rego expression or the request. Like **Validate** in the dashboard, it does not run the expression against asset data.
+2) Make a `POST` request to the [Create a finding type](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/finding_types/methods/create/) endpoint. Provide the Rego expression in `expression`, without a package declaration or import statements:<details><summary>
 
    Required API token permissions</summary>
 

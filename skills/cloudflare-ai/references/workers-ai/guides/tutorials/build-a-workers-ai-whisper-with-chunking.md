@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn how to transcribe large audio files using Workers AI.
 title: Whisper-large-v3-turbo with Cloudflare Workers AI
 image: https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/og.png?v=20179da55475897c
@@ -111,14 +113,14 @@ In your wrangler file, add or update the following settings to enable Node.js AP
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23"
+	"compatibility_date": "2026-11-25"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 ```
 
 ## 4. Handle large audio files with chunking

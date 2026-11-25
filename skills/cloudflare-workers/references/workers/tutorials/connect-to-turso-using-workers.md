@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.
 title: Connect to and query your Turso database using Workers
 image: https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/og.png?v=f2a414422c33aa66

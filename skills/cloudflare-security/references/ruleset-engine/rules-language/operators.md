@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn about comparison, logical operators, and grouping symbols in Cloudflare's Rules language. Understand precedence and how to structure expressions.
 title: Operators and grouping symbols
 image: https://developers.cloudflare.com/ruleset-engine/rules-language/operators/og.png?v=6d9b481e4dc42e76
@@ -37,17 +39,17 @@ The Rules language supports these comparison operators:
 | Name | Operator Notation | | Supported Data Types | | | |
 | --- | --- | --- | --- | --- | --- | --- |
 |  | English | C-like | String<sup>1</sup> | IP | Number | Example (operator in bold) |
-| Equal | `eq` | `==` | ✅ | ✅ | ✅ | `http.request.uri.path **eq** "/articles/2008/"` |
-| Not equal | `ne` | `!=` | ✅ | ✅ | ✅ | `ip.src **ne** 203.0.113.0` |
-| Less than | `lt` | `<` | ✅ | ❌ | ✅ | `cf.waf.score **lt** 10` |
-| Less than<br>or equal | `le` | `<=` | ✅ | ❌ | ✅ | `cf.waf.score **le** 20` |
-| Greater than | `gt` | `>` | ✅ | ❌ | ✅ | `cf.waf.score **gt** 25` |
-| Greater than<br>or equal | `ge` | `>=` | ✅ | ❌ | ✅ | `cf.waf.score **ge** 60` |
-| Contains | `contains` |  | ✅ | ❌ | ❌ | `http.request.uri.path **contains** "/articles/"` |
-| [Wildcard](#wildcard-matching)<br>(case-insensitive) | `wildcard` |  | ✅ | ❌ | ❌ | `http.request.uri.path **wildcard** "/articles/*"` |
-| [Strict wildcard](#wildcard-matching)<br>(case-sensitive) | `strict wildcard` |  | ✅ | ❌ | ❌ | `http.request.uri.path **strict wildcard** "/AdminTeam/*"` |
-| [Matches<br>regex](#regular-expression-matching)<sup>2</sup> | `matches` | `~` | ✅ | ❌ | ❌ | `http.request.uri.path **matches** "^/articles/200[7-8]/$"` |
-| Is in set of values / list<sup>3</sup> | `in` |  | ✅ | ✅ | ✅ | `ip.src **in** { 203.0.113.0 203.0.113.1 }`<br>`ip.src.asnum **in** $<LIST>` |
+| Equal | `eq` | `==` | ✅ | ✅ | ✅ | `http.request.uri.path eq "/articles/2008/"` |
+| Not equal | `ne` | `!=` | ✅ | ✅ | ✅ | `ip.src ne 203.0.113.0` |
+| Less than | `lt` | `<` | ✅ | ❌ | ✅ | `cf.waf.score lt 10` |
+| Less than<br>or equal | `le` | `<=` | ✅ | ❌ | ✅ | `cf.waf.score le 20` |
+| Greater than | `gt` | `>` | ✅ | ❌ | ✅ | `cf.waf.score gt 25` |
+| Greater than<br>or equal | `ge` | `>=` | ✅ | ❌ | ✅ | `cf.waf.score ge 60` |
+| Contains | `contains` |  | ✅ | ❌ | ❌ | `http.request.uri.path contains "/articles/"` |
+| [Wildcard](#wildcard-matching)<br>(case-insensitive) | `wildcard` |  | ✅ | ❌ | ❌ | `http.request.uri.path wildcard "/articles/*"` |
+| [Strict wildcard](#wildcard-matching)<br>(case-sensitive) | `strict wildcard` |  | ✅ | ❌ | ❌ | `http.request.uri.path strict wildcard "/AdminTeam/*"` |
+| [Matches<br>regex](#regular-expression-matching)<sup>2</sup> | `matches` | `~` | ✅ | ❌ | ❌ | `http.request.uri.path matches "^/articles/200[7-8]/$"` |
+| Is in set of values / list<sup>3</sup> | `in` |  | ✅ | ✅ | ✅ | `ip.src in { 203.0.113.0 203.0.113.1 }`<br>`ip.src.asnum in $<LIST>` |
 
 <sup>1</sup> All string operators are case-sensitive unless explicitly stated as case-insensitive, such as the `wildcard` operator.
 <sup>2</sup> Access to the `matches` operator requires a Cloudflare Business or Enterprise plan.
@@ -210,10 +212,10 @@ Each logical operator has an [order of precedence](#order-of-precedence). The or
 
 | Name | English<br>Notation | C-like<br>Notation | Example | Order of Precedence |
 | --- | --- | --- | --- | --- |
-| Logical NOT | `not` | `!` | `**not** ( http.host eq "www​.cloudflare​.com" and ip.src in {203.0.113.0/24} )` | 1 |
-| Logical AND | `and` | `&&` | `http.host eq "www​.cloudflare​.com" **and** ip.src in {203.0.113.0/24}` | 2 |
-| Logical XOR<br>(exclusive OR) | `xor` | `^^` | `http.host eq "www​.cloudflare​.com" **xor** ip.src in {203.0.113.0/24}` | 3 |
-| Logical OR | `or` | `\|\|` | `http.host eq "www​.cloudflare​.com" **or** ip.src in 203.0.113.0/24` | 4 |
+| Logical NOT | `not` | `!` | `not ( http.host eq "www​.cloudflare​.com" and ip.src in {203.0.113.0/24} )` | 1 |
+| Logical AND | `and` | `&&` | `http.host eq "www​.cloudflare​.com" and ip.src in {203.0.113.0/24}` | 2 |
+| Logical XOR<br>(exclusive OR) | `xor` | `^^` | `http.host eq "www​.cloudflare​.com" xor ip.src in {203.0.113.0/24}` | 3 |
+| Logical OR | `or` | `\|\|` | `http.host eq "www​.cloudflare​.com" or ip.src in 203.0.113.0/24` | 4 |
 
 Caution
 

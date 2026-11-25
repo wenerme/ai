@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Monitor tunnel health, connectors, and connection status.
 title: Observability
 image: https://developers.cloudflare.com/tunnel/observability/og.png?v=b6362e17db073593
@@ -148,7 +150,7 @@ The `cloudflared` daemon can stream logs from any tunnel in your account to the 
    cloudflared tail --output=json <UUID> | jq .
    ```
 
-3. If you are running multiple [replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability), you can specify which replica to stream logs from:
+3) If you are running multiple [replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability), you can specify which replica to stream logs from:
 
    ```sh
    cloudflared tail --connector-id <REPLICA ID> <UUID>

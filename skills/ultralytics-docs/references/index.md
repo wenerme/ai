@@ -228,20 +228,3 @@ For more details, visit our [Licensing](https://www.ultralytics.com/license) pag
 ### How can Ultralytics YOLO be used for real-time object tracking?
 
 Ultralytics YOLO supports efficient and customizable multi-object tracking. Call `YOLO("yolo26n.pt").track(source="path/to/video.mp4")` in Python, or run `yolo track source=path/to/video.mp4` from the command line — both work with video files, live streams, and webcam input. For a detailed guide on setting up and running object tracking, check our [Track Mode](modes/track.md) documentation, which explains the configuration and practical applications in real-time scenarios.
-
-<div align="center">
-
-  <a href="https://github.com/ultralytics">[Ultralytics GitHub]</a>
-
-  <a href="https://www.linkedin.com/company/ultralytics/">[Ultralytics LinkedIn]</a>
-
-  <a href="https://twitter.com/ultralytics">[Ultralytics Twitter]</a>
-
-  <a href="https://www.youtube.com/ultralytics?sub_confirmation=1">[Ultralytics YouTube]</a>
-
-  <a href="https://www.tiktok.com/@ultralytics">[Ultralytics TikTok]</a>
-
-  <a href="https://ultralytics.com/bilibili">[Ultralytics BiliBili]</a>
-
-  <a href="https://discord.com/invite/ultralytics">[Ultralytics Discord]</a>
-</div>

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.
 title: DeepSeek V4 Pro
 image: https://developers.cloudflare.com/og-docs.png
@@ -33,7 +35,7 @@ DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via F
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
 | More information | [link ↗](https://api-docs.deepseek.com) |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input (per 1M tokens)$1.74</li><li>Output (per 1M tokens)$3.48</li><li>Cached input (per 1M tokens)$0.145</li></ul> |

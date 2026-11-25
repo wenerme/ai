@@ -938,6 +938,7 @@ guide.
 
   {% tab label="CLI" %}
   ```bash
+  # generate streams text deltas to stdout by default (--stream=false returns one complete response; -o json emits raw SSE events).
   gemini-api generate "Explain how AI works"
   ```
 

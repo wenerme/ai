@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.
 title: Configuration
 image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd
@@ -41,7 +43,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -77,7 +79,7 @@ name = "my-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 workers_dev = false
 
 [route]
@@ -219,16 +221,16 @@ The `main` key is optional for assets-only Workers.
 - `limits` `Limits` optional
   - Configures limits to be imposed on execution at runtime. Refer to [Limits](#limits).
 
-- `observability` `object` optional
+* `observability` `object` optional
   - Configures automatic observability settings for telemetry data emitted from your Worker. Refer to [Observability](#observability).
-- `assets` `Assets` optional
+* `assets` `Assets` optional
   - Configures static assets that will be served. Refer to [Assets](https://developers.cloudflare.com/workers/static-assets/binding/) for more details.
-- `exports` `object` optional
+* `exports` `object` optional
   - Declares the Durable Object classes this Worker exports and their lifecycle state ( `created`, `deleted`, `renamed`, `transferred`, `expecting-transfer`). Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Durable Object entries are mutually exclusive with `migrations`.
   - Declares the Workflows this Worker defines. Refer to [Workflow exports](#workflow-exports).
-- `migrations` `object` optional
+* `migrations` `object` optional
   - Legacy imperative configuration that maps a Durable Object from a class name to a runtime state. For new Workers, prefer [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
-- `placement` `object` optional
+* `placement` `object` optional
   - Configures where your Worker runs to minimize latency to back-end services. Refer to [Placement](https://developers.cloudflare.com/workers/configuration/placement/).
   - `mode` `string` — Set to `"smart"` to automatically place your Worker near back-end services based on observed latency.
   - `region` `string` — Specify a cloud region (for example, `"aws:us-east-1"`, `"gcp:europe-west1"`, or `"azure:westeurope"`) to place your Worker near infrastructure in that region.
@@ -1986,11 +1988,11 @@ You can configure various aspects of local development, such as the local protoc
 
 - `ip` `string` optional
 
-- IP address for the local dev server to listen on. Defaults to `localhost`.
+* IP address for the local dev server to listen on. Defaults to `localhost`.
 
 - `port` `number` optional
 
-- Port for the local dev server to listen on. Defaults to `8787`.
+* Port for the local dev server to listen on. Defaults to `8787`.
 
 - `inspector_port` `number` optional
   - Port for the local dev server's inspector (DevTools) to listen on. Defaults to `9229`. If you do not set this and the default port is in use, Wrangler picks another available port. Set this when you run several dev servers at once and need each inspector on a predictable port. The [`--inspector-port`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#dev) flag overrides this value.

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Cloudflare Zero Trust is a simple, (sometimes free!) way for startups to develop a comprehensive Zero Trust strategy. This guide explains how to use Cloudflare to establish the foundation for a Zero Trust architecture.
 title: Building zero trust architecture into your startup
 image: https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/og.png?v=8c8e975919a43c84

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Understand how Cloud Workload Security combines workloads, policy sets, policy filters, and Rego checks to validate API requests.
 title: Request Validation
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/concepts/request-validation/og.png?v=482f7acb7c765646

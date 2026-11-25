@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Switch Nuxt's Nitro preset from vercel to cloudflare_module, replace isr route rules, read Cloudflare bindings, and fix stacked cache headers on Workers.
 title: Migrate Nuxt from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/og.png?v=7641575da81cc2c4
@@ -98,7 +100,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"observability": {
    		"enabled": true,
    	},
@@ -109,7 +111,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
 
    [observability]
    enabled = true

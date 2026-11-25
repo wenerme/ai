@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 title: llama-3.3-70b-instruct-fp8-fast
 image: https://developers.cloudflare.com/og-docs.png
@@ -32,7 +34,7 @@ Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Zero data retention | Yes |

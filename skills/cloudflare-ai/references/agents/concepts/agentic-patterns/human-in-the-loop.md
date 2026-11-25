@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.
 title: Human-in-the-loop patterns
 image: https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/og.png?v=b6b831b35a9f5372
@@ -478,7 +480,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
@@ -499,7 +501,7 @@ name = "expense-approval"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Client sessions in Zero Trust.
 title: Client sessions
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/og.png?v=87c41abaadbbf5fd
@@ -43,10 +45,10 @@ To configure a session timeout for a Gateway policy:
 4. Enter a session expiration time in `1h30m0s` format and save.
 5. Save the policy.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Choose a Network ( `l4`) or HTTP ( `http`) policy with an Allow action.
-3. In the policy's [`rule_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), use the `check_session` argument to enable and configure a session timeout:
+2) Choose a Network ( `l4`) or HTTP ( `http`) policy with an Allow action.
+3) In the policy's [`rule_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), use the `check_session` argument to enable and configure a session timeout:
 
    ```tf
    resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {

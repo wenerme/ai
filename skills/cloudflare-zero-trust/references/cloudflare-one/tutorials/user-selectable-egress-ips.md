@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This tutorial gives administrators an easy way to allow their users to change their egress IP address between any of your assigned dedicated egress IP addresses.
 title: Use virtual networks to change user egress IPs
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/og.png?v=4bacf9e9102fae9d
@@ -44,7 +46,7 @@ First, create [virtual networks](https://developers.cloudflare.com/cloudflare-on
 4. Select **Save**.
 5. Repeat Steps 2-4 for each dedicated egress IP you want users to switch between. For example, you can create another virtual network called `vnet-EMEA` for egress from Europe, the Middle East, and Africa.
 
-1. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) corresponding to one of your dedicated egress IPs. We recommend using a name related to the location of the corresponding dedicated egress IP. For example, if your users will egress from the Americas, you can name the virtual network `vnet-AMER`.<details><summary>
+1) Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) corresponding to one of your dedicated egress IPs. We recommend using a name related to the location of the corresponding dedicated egress IP. For example, if your users will egress from the Americas, you can name the virtual network `vnet-AMER`.<details><summary>
 
    Required API token permissions</summary>
 
@@ -68,7 +70,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    ```
 
    For more information, refer to [Create a virtual network](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/virtual_networks/methods/create/).
-2. Repeat Step 1 for each dedicated egress IP you want users to switch between. For example, you can create another virtual network called `vnet-EMEA` for egress from Europe, the Middle East, and Africa.
+2) Repeat Step 1 for each dedicated egress IP you want users to switch between. For example, you can create another virtual network called `vnet-EMEA` for egress from Europe, the Middle East, and Africa.
 
 ## Assign each virtual network to each tunnel
 
@@ -82,7 +84,7 @@ After creating your virtual networks, route your private network CIDRs over each
 6. To route `10.0.0.0/8` over another virtual network, repeat Steps 2-5 using a different virtual network (for example, `vnet-EMEA`).
 7. Repeat for each virtual network you created and for each private network tunnel route.
 
-1. Assign your first virtual network to your private network route. For example, assign `vnet-AMER` to your tunnel that routes `10.0.0.0/8`:<details><summary>
+1) Assign your first virtual network to your private network route. For example, assign `vnet-AMER` to your tunnel that routes `10.0.0.0/8`:<details><summary>
 
    Required API token permissions</summary>
 
@@ -106,7 +108,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    ```
 
    For more information, refer to [Update a tunnel route](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/edit/).
-2. Repeat this process for each virtual network you created. For example:<details><summary>
+2) Repeat this process for each virtual network you created. For example:<details><summary>
 
    Required API token permissions</summary>
 
@@ -129,7 +131,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-3. Repeat Steps 1-2 for each private network tunnel route.
+3) Repeat Steps 1-2 for each private network tunnel route.
 
 Each tunnel connected to your private network should have each of your virtual networks assigned to it. For example, if you have tunnels routing `10.0.0.0/8` and `192.168.88.0/24`, both tunnels should have the `vnet-AMER` and `vnet-EMEA` virtual networks assigned.
 
@@ -156,7 +158,7 @@ Next, assign your dedicated egress IPs to each virtual network using Gateway egr
 6. Select **Create policy**.
 7. Repeat Steps 1-6 to create a separate egress policy for each virtual network you created.
 
-1. Add a Gateway egress policy that matches the corresponding virtual network. For example:
+1) Add a Gateway egress policy that matches the corresponding virtual network. For example:
 
    *Create a Zero Trust Gateway rulebash*
 
@@ -187,7 +189,7 @@ Next, assign your dedicated egress IPs to each virtual network using Gateway egr
    ```
 
    For more information, refer to [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/).
-2. Repeat Step 1 to create an egress policy for each virtual network you created.
+2) Repeat Step 1 to create an egress policy for each virtual network you created.
 
 Each policy you create should correspond to a different primary dedicated egress IP.
 

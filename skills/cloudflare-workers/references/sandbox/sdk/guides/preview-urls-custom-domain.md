@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Set up wildcard DNS, routes, and TLS so Sandbox SDK 0.x exposePort preview URLs work on your domain.
 title: Configure preview URLs on a custom domain
 image: https://developers.cloudflare.com/sandbox/sdk/guides/preview-urls-custom-domain/og.png?v=7c438da5385a7ba4
@@ -72,7 +74,7 @@ Add a wildcard route to your Wrangler configuration:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"routes": [
 		{
 			"pattern": "*.yourdomain.com/*",
@@ -88,7 +90,7 @@ name = "my-sandbox-app"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[routes]]
 pattern = "*.yourdomain.com/*"

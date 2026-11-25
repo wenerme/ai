@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Integrate Okta as an identity provider for Cloudflare One.
 title: Okta
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/og.png?v=6d47373916738c55
@@ -78,14 +80,14 @@ Token claim expressions
 
 10. In the **General** tab, copy the **Client ID** and **Client secret**.![Finding your Client credentials in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=763,height=672,format=webp/_astro/okta-3.BzGr0OXt.png)
 
-11. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
-12. Under **Your identity providers**, select **Add new identity provider**. Select **Okta** as your identity provider.
-13. Fill in the following information:
+11) In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+12) Under **Your identity providers**, select **Add new identity provider**. Select **Okta** as your identity provider.
+13) Fill in the following information:
     - **Name**: Name your identity provider.
     - **App ID**: Enter your Okta client ID.
     - **Client secret**: Enter your Okta client secret.
     - **Okta account URL**: Enter your [Okta domain ↗︎](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
-14. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** (the token can be read-only). Use an API token if your Okta tenant has more than 100 groups. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses this token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not add groups to the Access policy builder; the group options in the policy builder come from groups provisioned through [SCIM](#synchronize-users-and-groups).
+14) (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** (the token can be read-only). Use an API token if your Okta tenant has more than 100 groups. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses this token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not add groups to the Access policy builder; the group options in the policy builder come from groups provisioned through [SCIM](#synchronize-users-and-groups).
 
 Note
 

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Troubleshoot Troubleshoot compute accounts issues in Zero Trust integrations.
 title: Troubleshoot compute accounts
 image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/og.png?v=ae9618e3fbab5629
@@ -72,7 +74,7 @@ To roll your API token:
 2. Next to the API token you want to roll, select the **three dot icon** > **Roll**.
 3. Select **Confirm** to generate a new API token.
 
-4. Copy your API token.
+4) Copy your API token.
 
 Once you roll your API token in Cloudflare, you can update the API token value in your secrets manager for [Amazon Web Services (AWS) ↗︎](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_update-secret-value.html) or [Google Cloud Platform (GCP) ↗︎](https://cloud.google.com/secret-manager/docs/edit-secrets).
 

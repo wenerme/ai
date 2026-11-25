@@ -1586,6 +1586,11 @@ Example response:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227817) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `semantic_code_search_rest_api`. Enabled by default.
 - Feature flag `semantic_code_search_rest_api` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240677) in GitLab 19.2.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272871) to return `202`, `429`, and `500` status codes for projects without embeddings in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `semantic_search_update_no_embeddings_status_codes`. Disabled by default.
+
+> [!flag]
+> The availability of the `202`, `429`, and `500` status codes for projects without embeddings is controlled by a feature flag.
+> For more information, see the history.
 
 Search for code in a project based on meaning rather than keyword matching.
 
@@ -1635,4 +1640,26 @@ The response is an array of code search results. Each result contains the follow
     "file_url": "https://gitlab.example.com/my-org/my-project/-/blob/main/app/services/auth/jwt_service.rb"
   }
 ]
+```
+
+If the project is not indexed, the endpoint does not return search results.
+Instead, it returns one of the following [status codes](rest/troubleshooting.md#status-codes)
+and a `message` attribute that describes the reason:
+
+| Status code | Description |
+|-------------|-------------|
+| `202`       | Initial indexing of the project has started or is in progress. Try the request again in a few minutes. |
+| `422`       | The project is not indexed, the project is not eligible for indexing, or a previous indexing failed. Use another tool or context source. |
+| `429`       | The namespace has too many indexing requests. Try the request again later. |
+| `500`       | GitLab could not start initial indexing of the project. |
+
+When the `semantic_search_update_no_embeddings_status_codes` feature flag is disabled,
+all of these cases return `422`.
+
+Example response:
+
+```json
+{
+  "message": "Project '12' has no embeddings - initial indexing has been started, try again in a few minutes"
+}
 ```

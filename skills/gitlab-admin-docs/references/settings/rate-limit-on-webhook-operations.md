@@ -6,8 +6,8 @@
 - Rate limit for webhook testing [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150066) in GitLab 17.0 with a [flag](../feature_flags/_index.md) named `web_hook_test_api_endpoint_rate_limit`. Enabled by default.
 - Rate limit for webhook event resends [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151130) in GitLab 17.1 with a [flag](../feature_flags/_index.md) named `web_hook_event_resend_api_endpoint_rate_limit`. Enabled by default.
 - Customizable rate limits [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587887) in GitLab 19.3. Feature flags `web_hook_test_api_endpoint_rate_limit` and `web_hook_event_resend_api_endpoint_rate_limit` removed.
-- Rate limit for project webhook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605597) in GitLab 19.6.
-- Rate limits for group webhook and system hook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281) in GitLab 19.6.
+- Rate limit for project webhook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263931) in GitLab 19.6.
+- Rate limits for group webhook and system hook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264311) in GitLab 19.6.
 - Rate limit for organization webhook testing [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632598) in GitLab 19.6.
 
 Configure the per-minute rate limit for requests that:

@@ -236,14 +236,7 @@ Otherwise, GitLab shows **GitLab MCP server**.
 
 ## Session events for Externally Connected Agents
 
-- Offering: GitLab.com, GitLab Self-Managed
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269742) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md) named `external_agent_session_audit_events`. Disabled by default.
-- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/639448) in GitLab 19.7.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269742) in GitLab 19.7.
 
 [Externally Connected Agents](externally-connected-agents.md) are coding agents,
 such as Claude Code, Codex, Cursor, and OpenCode, that send their sessions to GitLab

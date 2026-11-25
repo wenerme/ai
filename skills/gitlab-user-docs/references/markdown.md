@@ -162,7 +162,7 @@ The anchors are generated from the content of the heading according to the follo
 1. All text is converted to lowercase.
 1. All characters except letters, numbers, hyphens, and underscores are removed.
 1. All spaces are converted to hyphens.
-1. If a heading with the same anchor has already been generated,
+1. If a heading or description list term with the same anchor has already been generated,
    a unique incrementing number is appended, starting at 1.
 
 Example:
@@ -547,10 +547,17 @@ CommonMark ignores the blank line and renders this as one list with paragraph sp
 ### Description lists
 
 - Description lists [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/26314) in GitLab 17.7.
+- Term anchors [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606644) in GitLab 19.7.
 
 A description list is a list of terms with corresponding descriptions.
 Each term can have multiple descriptions.
 In HTML this is represented with `<dl>`, `<dt>`, and `<dd>` tags.
+
+GitLab adds an anchor to each term, so you can link to it.
+Term anchors follow the same rules as heading anchors and share their numbering.
+For example, if a term and a later heading are both `Setup`, the term anchor is `#setup`
+and the heading anchor is `#setup-1`.
+Unlike headings, terms don't show a link on hover.
 
 To create a description list, place the term on one line, with the description on the next line beginning with a colon.
 
@@ -1232,9 +1239,12 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 
 You can control the width and height of an image or video by following the image with
 an attribute list.
-The value must an integer with a unit of either `px` (default) or `%`.
+Set each value in pixels, such as `100` or `100px`, or as a percentage, such as `75%`.
+The attribute list can span multiple lines.
+If the attribute list has a syntax error, such as `foo` in `{width=100 foo}`,
+GitLab shows the whole list as text.
 
-For example
+For example:
 
 ```markdown
 ![GitLab logo](img/markdown_logo_v17_11.png "Title Text"){width=100 height=100px}
@@ -1247,7 +1257,7 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 > [GitLab logo]{width=100 height=100px}
 
 You can also use the `img` HTML tag instead of Markdown and set its `height` and
-`width` parameters.
+`width` attributes.
 
 When you paste a higher resolution PNG image into a Markdown text box [in GitLab 17.1 and later](https://gitlab.com/gitlab-org/gitlab/-/issues/419913),
 dimensions are always appended. The dimensions are automatically adjusted to
@@ -1281,13 +1291,13 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 > [GitLab logo]{.float-right width=100}
 > This text wraps around the left side of the image.
 
-You can also use the `img` HTML tag with a `glfm-float-left`, `glfm-float-right`, or `glfm-float-none` class:
+You can also use the `img` HTML tag with a `float-left`, `float-right`, or `float-none` class:
 
 ```html
-<img src="img/markdown_logo_v17_11.png" alt="GitLab logo" class="glfm-float-right" width="100">
+<img src="img/markdown_logo_v17_11.png" alt="GitLab logo" class="float-right" width="100">
 ```
 
-If the `class` attribute contains any other class, GitLab removes the attribute, and the image doesn't float.
+GitLab removes any other classes from the image.
 
 You can't float videos or audio.
 

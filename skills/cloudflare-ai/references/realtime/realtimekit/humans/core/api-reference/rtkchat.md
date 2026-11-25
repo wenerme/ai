@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 title: RTKChat
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkchat/og.png?v=2e0f5cfdae4e5e11
 ---
@@ -17,7 +19,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 This is the chat module, which can be used to send and receive messages from the meeting.
 
 - [RTKChat](#module_RTKChat)
-  - ~~ [.messages](#module_RTKChat+messages)~~
+  - ~~[.messages](#module_RTKChat+messages)~~
   - [.setMaxTextLimit(limit)](#module_RTKChat+setMaxTextLimit)
   - [.updateRateLimits(num, period)](#module_RTKChat+updateRateLimits)
   - [.sendTextMessage(message, \[peerIds\])](#module_RTKChat+sendTextMessage)

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.
 title: Cache keys
 image: https://developers.cloudflare.com/workers/cache/cache-keys/og.png?v=be4ec8a6bbecd55f
@@ -304,7 +306,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -318,7 +320,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [cache]
 enabled = true

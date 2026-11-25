@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
 title: kimi-k2.6
 image: https://developers.cloudflare.com/og-docs.png
@@ -40,10 +42,10 @@ This model is not available through standard Workers Free billing. To use it, up
 | Model Info | |
 | --- | --- |
 | Deprecated | 11/20/2026 |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Terms and License | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.6/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | `none``high` (default) |
+| Reasoning | `none` `high` (default) |
 | Vision | Yes |
 | Zero data retention | Yes |
 | Batch | Yes |

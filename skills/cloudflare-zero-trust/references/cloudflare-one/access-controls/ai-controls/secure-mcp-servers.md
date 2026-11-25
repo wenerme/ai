@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Secure MCP servers with Cloudflare Access.
 title: Secure MCP servers
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/og.png?v=c1144e27be33fe5f
@@ -156,7 +158,7 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
     3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
 12. Select **Create**.
 
-1. Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) endpoint:<details><summary>
+1) Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) endpoint:<details><summary>
 
    Required API token permissions</summary>
 
@@ -194,8 +196,8 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-2. Copy the `client_id` and `client_secret` returned in the response.
-3. Build the OAuth endpoint URLs using your team name and the `client_id` returned in the response:
+2) Copy the `client_id` and `client_secret` returned in the response.
+3) Build the OAuth endpoint URLs using your team name and the `client_id` returned in the response:
 
    | Endpoint | URL |
    | --- | --- |
@@ -233,7 +235,7 @@ To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-
 
    Enter the output of this command into `COOKIE_ENCRYPTION_KEY`.
 
-1. Create the following [Workers secrets](https://developers.cloudflare.com/workers/configuration/secrets/):
+1) Create the following [Workers secrets](https://developers.cloudflare.com/workers/configuration/secrets/):
 
    ```sh
    npx wrangler secret put ACCESS_CLIENT_ID
@@ -243,7 +245,7 @@ To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-
    npx wrangler secret put ACCESS_JWKS_URL
    ```
 
-2. When prompted to enter a secret value, paste the corresponding values obtained from the [Access for SaaS app](#2-create-an-access-for-saas-app).
+2) When prompted to enter a secret value, paste the corresponding values obtained from the [Access for SaaS app](#2-create-an-access-for-saas-app).
 
    | Workers secret | SaaS app field |
    | --- | --- |
@@ -256,7 +258,7 @@ To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-
    Note
 
    Use the Client ID, Client secret, and OAuth endpoints copied from the Cloudflare One dashboard. Do not use the OAuth values from your [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/).
-3. Generate a random string for the cookie encryption key:
+3) Generate a random string for the cookie encryption key:
 
    ```sh
    openssl rand -hex 32

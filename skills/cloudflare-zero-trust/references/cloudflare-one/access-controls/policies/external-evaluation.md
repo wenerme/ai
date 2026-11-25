@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: External Evaluation rules in Access.
 title: External Evaluation rules
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/og.png?v=2cd3a98a76161dc1
@@ -71,7 +73,7 @@ You can set up External Evaluation rules using any API service, but to get start
   "name": "my-worker",
   "workers_dev": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "main": "index.js",
   "upload_source_maps": true,
   "kv_namespaces": [
@@ -92,7 +94,7 @@ You can set up External Evaluation rules using any API service, but to get start
 name = "my-worker"
 workers_dev = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "index.js"
 upload_source_maps = true
 

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Cloudflare provides a complete suite of services around application performance, security, reliability, development, and Zero Trust.
 title: Securely deliver applications with Cloudflare
 image: https://developers.cloudflare.com/reference-architecture/design-guides/secure-application-delivery/og.png?v=350f3653e700fd06

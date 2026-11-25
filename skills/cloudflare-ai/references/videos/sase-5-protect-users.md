@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 title: SASE - Protect your users from Internet risks
 image: https://developers.cloudflare.com/og-docs.png

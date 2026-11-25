@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.
 title: CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
 image: https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/og.png?v=70c66fd7d717500d

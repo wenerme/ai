@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Integrate Miro with Access.
 title: Miro
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/miro-saas/og.png?v=4619c28f3f9a7edf
@@ -50,15 +52,15 @@ This guide covers how to configure [Miro ↗︎](https://help.miro.com/hc/articl
 6. Once you receive a verification email, select the link in the email, then select **Save**. When the domain is successfully configured, the **VERIFY EMAIL** label next to the domain in the SSO/SAML configuration page will disappear.
 7. If you have additional domains you want to configure SSO for, repeat steps 4-6 for each domain.
 
-1. In Miro, select your profile picture > **Settings** > **\*\*Security and Compliance\*\* > \*\*Authentication\*\* > \*\*Single sign-on\*\***.
-2. Turn on **SSO/SAML**.
-3. Fill in the following fields:
+1) In Miro, select your profile picture > **Settings** > **\*\*Security and Compliance\*\* > \*\*Authentication\*\* > \*\*Single sign-on\*\***.
+2) Turn on **SSO/SAML**.
+3) Fill in the following fields:
    - **SAML Sign-in URL**: SSO endpoint from application configuration in Cloudflare One
    - **Key x509 Certificate**: Public key from application configuration in Cloudflare One
-4. In **Domain**, enter the domain you want to configure SSO for and select **Enter**.
-5. If you have not previously \[verified the domain](https://help.miro.com/hc/articles/360034831793-Domain-control), enter an email address from that domain and select **send verification**.
-6. Once you receive a verification email, select the link in the email, then select **Save**. When the domain is successfully configured, the **VERIFY EMAIL** label next to the domain in the SSO/SAML configuration page will disappear.
-7. If you have additional domains you want to configure SSO for, repeat steps 4-6 for each domain.
+4) In **Domain**, enter the domain you want to configure SSO for and select **Enter**.
+5) If you have not previously \[verified the domain](https://help.miro.com/hc/articles/360034831793-Domain-control), enter an email address from that domain and select **send verification**.
+6) Once you receive a verification email, select the link in the email, then select **Save**. When the domain is successfully configured, the **VERIFY EMAIL** label next to the domain in the SSO/SAML configuration page will disappear.
+7) If you have additional domains you want to configure SSO for, repeat steps 4-6 for each domain.
 
 ## 3. Test the integration
 

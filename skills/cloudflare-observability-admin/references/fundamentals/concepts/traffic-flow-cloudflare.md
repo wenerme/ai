@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.
 title: Traffic flow through Cloudflare
 image: https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/og.png?v=1a4233e998cfb6d7
@@ -50,7 +52,7 @@ With these options, any request from a user device can access internal private a
 
 Refer to the list below for products you can use to on-ramp traffic to Cloudflare.
 
-- [Anycast routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) uses Anycast IP addressing to route traffic to the nearest Cloudflare data center. Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and [ DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+- [Anycast routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) uses Anycast IP addressing to route traffic to the nearest Cloudflare data center. Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and [DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 - [DNS-based](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-dns-provider) traffic resolves domains onboarded to [Cloudflare's CDN](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/). Cloudflare's DNS directs traffic to Cloudflare's global network of servers instead of a website's origin server.
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connects your resources to Cloudflare without a publicly routable IP address so that your origins can serve traffic through Cloudflare without being vulnerable to attacks that bypass Cloudflare.
 - [Magic Transit](https://developers.cloudflare.com/magic-transit/about/) offers DDoS protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks by accepting IP packets destined for your network, processing them, and outputting the packets to your origin infrastructure.

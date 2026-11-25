@@ -235,7 +235,11 @@ provide citation information linking parts of the response to their sources.
 
 The key fields in the response:
 
-* `google_search_call` : Contains the search `queries` the model executed.
+* `google_search_call`: Contains search `queries` surfaced for the response.
+  Use this field for attribution and debugging, not to count billed queries.
+  Extra queries the model runs during reasoning might not appear here, but
+  they still count toward billing. See [Counting billed search
+  queries](/docs/google-search#counting-billed-search-queries) for details.
 
 * `google_search_result` : Contains `search_suggestions`, an HTML snippet
   for rendering search suggestions in your UI. Full usage requirements are
@@ -492,6 +496,23 @@ page](/docs/pricing).
   **Request more quota** next to the `generate_content_search_request_paid` limit).
 
 {% /callout %}
+
+### Counting billed search queries  {% id="counting-billed-search-queries" %}
+
+Search queries returned in the API response are not a billing count. Your
+billed search query count can be higher than the queries listed in
+`google_search_call` steps. The same applies to
+`groundingMetadata.webSearchQueries` in the [Generate Content
+API](/docs/google-search?generate-content=true#counting-billed-search-queries).
+
+During multi-step reasoning, the model can run intermediate queries to explore
+a topic or refine results. Response metadata can omit queries that the model
+does not cite in the final answer. On Gemini 3 and newer models, billing counts
+every unique non-empty search query the model runs, including uncited queries.
+
+To monitor billed usage, check the [Cloud Billing
+console](https://console.cloud.google.com/billing) or see [Monitor
+usage](/docs/billing#monitor-usage).
 
 ## Supported models  {% id="supported-models" %}
 

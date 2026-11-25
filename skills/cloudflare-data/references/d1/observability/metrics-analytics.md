@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.
 title: Metrics and analytics
 image: https://developers.cloudflare.com/d1/observability/metrics-analytics/og.png?v=ebbea2eb8fd63786
@@ -168,6 +170,8 @@ Note
 Run `wrangler d1 insights --help` to view current options.
 
 `wrangler d1 insights` reads data from the GraphQL Analytics API. If you use an API token, the token must have the **Account Analytics Read** permission.
+
+`wrangler d1 insights` does not return index recommendations. To list them, use `cf d1 insights recommendations`. For more information, refer to [Index recommendations](https://developers.cloudflare.com/d1/observability/metrics-analytics/index-recommendations/).
 
 Pass a database name, binding, or ID to get the top queries for that database. Leave it out to run account-wide and get the top queries across every D1 database in your account:
 
@@ -381,5 +385,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/metrics-analytics/og.png?v=ebbea2eb8fd63786","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/metrics-analytics/og.png?v=ebbea2eb8fd63786","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

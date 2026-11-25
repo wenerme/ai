@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Deploy a Foldkit single-page, statically generated, or server-rendered application to Cloudflare Workers.
 title: Foldkit
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/og.png?v=aec8c202932ddb85
@@ -55,7 +57,7 @@ The SPA build writes `index.html` and browser assets to `dist`. The `single-page
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-foldkit-app",
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
@@ -66,7 +68,7 @@ The SPA build writes `index.html` and browser assets to `dist`. The `single-page
 ```toml
 name = "my-foldkit-app"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist"
@@ -82,7 +84,7 @@ The SSG build uses a server bundle to prerender routes, then writes HTML and bro
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-foldkit-app",
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "assets": {
     "directory": "./dist/client"
   }
@@ -92,7 +94,7 @@ The SSG build uses a server bundle to prerender routes, then writes HTML and bro
 ```toml
 name = "my-foldkit-app"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/client"
@@ -108,7 +110,7 @@ The SSR build writes a Web `fetch` handler to `dist/server/fetch.js` and browser
   "name": "my-foldkit-app",
   "main": "./dist/server/fetch.js",
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "assets": {
     "directory": "./dist/client"
   }
@@ -119,7 +121,7 @@ The SSR build writes a Web `fetch` handler to `dist/server/fetch.js` and browser
 name = "my-foldkit-app"
 main = "./dist/server/fetch.js"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/client"

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Swap @astrojs/vercel for @astrojs/cloudflare, upgrade to Astro 7, and replace Vercel ISR with Astro route caching and Vercel images with the Images binding.
 title: Migrate Astro from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/og.png?v=1b80ccdffe9f8185
@@ -141,7 +143,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "@astrojs/cloudflare/entrypoints/server",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"compatibility_flags": ["global_fetch_strictly_public"],
    	"assets": {
    		"binding": "ASSETS",
@@ -158,7 +160,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    name = "<YOUR_PROJECT_NAME>"
    main = "@astrojs/cloudflare/entrypoints/server"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    compatibility_flags = [ "global_fetch_strictly_public" ]
 
    [assets]

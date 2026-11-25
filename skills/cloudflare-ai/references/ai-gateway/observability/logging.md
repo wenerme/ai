@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Store and inspect AI Gateway request logs including prompts, responses, tokens, costs, and DLP actions.
 title: Logging
 image: https://developers.cloudflare.com/ai-gateway/observability/logging/og.png?v=f094a3014c753364
@@ -34,6 +36,10 @@ New gateways require [authentication](https://developers.cloudflare.com/ai-gatew
 Logs are enabled by default for each gateway. This setting applies to all requests unless a request overrides it.
 
 You can turn off collection for privacy or compliance requirements.
+
+Note
+
+Requests paid through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) or [Machine Payments (x402)](https://developers.cloudflare.com/ai-gateway/features/machine-payments/) are always logged, even when logs are turned off for the gateway or the request. The log entry includes metadata and billing details, but not the request and response bodies.
 
 To change the default log configuration in the dashboard:
 
@@ -104,7 +110,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Note
 
-If `cf-aig-collect-log` is set to `false`, AI Gateway does not store the request and response bodies, regardless of the `cf-aig-collect-log-payload` value, and skips the rest of the log entry. For [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) requests, AI Gateway always logs the request billing details. If the collect logs headers are set to `false`, the entry is logged without the request and response bodies.
+If `cf-aig-collect-log` is set to `false`, AI Gateway does not store the request and response bodies, regardless of the `cf-aig-collect-log-payload` value, and skips the rest of the log entry. Requests paid through Unified Billing or Machine Payments (x402) are the exception. Refer to [Default configuration](#default-configuration).
 
 Use `cf-aig-collect-log-payload: false` on its own if you only want to suppress payload storage while retaining metadata logs.
 
@@ -129,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/#page","headline":"Logging","description":"Store and inspect AI Gateway request logs including prompts, responses, tokens, costs, and DLP actions.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/observability/logging/og.png?v=f094a3014c753364","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/#page","headline":"Logging","description":"Store and inspect AI Gateway request logs including prompts, responses, tokens, costs, and DLP actions.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/observability/logging/og.png?v=f094a3014c753364","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

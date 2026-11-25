@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 title: RTKParticipants
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/og.png?v=2a1d7451ac9c7547
 ---
@@ -21,7 +23,7 @@ This module represents all the participants in the meeting (except the local use
 - `active`: A map of active participants who should be displayed in the meeting grid.
 - `pinned`: A map of pinned participants.
 
-- [RTKParticipants](#module_RTKParticipants)
+* [RTKParticipants](#module_RTKParticipants)
   - [.waitlisted](#module_RTKParticipants+waitlisted)
   - [.joined](#module_RTKParticipants+joined)
   - [.active](#module_RTKParticipants+active)

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.
 title: Markdown for Agents
 image: https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/og.png?v=338bcd55a33b0004
@@ -160,6 +162,12 @@ Example output:
 }
 ```
 ````
+
+## Combine with Search for Agents
+
+[Search for Agents](https://developers.cloudflare.com/ai-search/how-to/search-for-agents/) lets agents search your site's indexed content through an endpoint on your domain. It complements Markdown for Agents, which converts individual pages to Markdown on request.
+
+When both features are on, Markdown responses include search discovery metadata in YAML front matter. Agents can use this metadata to find relevant content instead of crawling individual pages. For the metadata format and request examples, refer to [Discover the search endpoint](https://developers.cloudflare.com/ai-search/how-to/search-for-agents/#discover-the-search-endpoint).
 
 ## How to enable
 
@@ -439,5 +447,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/og.png?v=338bcd55a33b0004","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/og.png?v=338bcd55a33b0004","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

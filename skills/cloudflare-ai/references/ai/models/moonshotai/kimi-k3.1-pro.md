@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Kimi K3.1 Pro is Moonshot's flagship model for long-horizon coding and end-to-end knowledge work, and the first model in the K3.1 series. A post-trained version of Kimi K3 with substantially larger post-training compute, it offers native visual understanding, always-on reasoning, and a 1M-token context window, with gains in coding, 3D creation, and financial research.
 title: Kimi K3.1 Pro
 image: https://developers.cloudflare.com/og-docs.png
@@ -33,7 +35,7 @@ Kimi K3.1 Pro is Moonshot's flagship model for long-horizon coding and end-to-en
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | More information | [link ↗](https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart) |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$10.00</li><li>Cached input (per 1M tokens)$0.20</li></ul> |

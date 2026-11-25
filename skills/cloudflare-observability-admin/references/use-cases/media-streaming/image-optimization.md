@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.
 title: Optimize and transform images for the web
 image: https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/og.png?v=6e9daddecdcfc3a3
@@ -37,7 +39,7 @@ Automatic image compression without quality loss. [Learn more about Polish](http
 
 1. [Images get started](https://developers.cloudflare.com/images/get-started/introduction/)
 2. [Enable Polish](https://developers.cloudflare.com/images/polish/)
-3. [Transform images via URL](https://developers.cloudflare.com/images/optimization/transformations/overview/)
+3. [Transform images via URL](https://developers.cloudflare.com/images/optimization/transformations/url/)
 
 Was this helpful?
 
@@ -48,5 +50,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/#page","headline":"Optimize and transform images for the web","description":"Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.","url":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/","inLanguage":"en","image":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/og.png?v=6e9daddecdcfc3a3","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/#page","headline":"Optimize and transform images for the web","description":"Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.","url":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/","inLanguage":"en","image":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/og.png?v=6e9daddecdcfc3a3","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

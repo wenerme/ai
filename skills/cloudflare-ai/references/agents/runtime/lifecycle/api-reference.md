@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference for every export of agents/lifecycle, including the Lifecycle class, host hooks, capability hooks, Lifecycle services, job types, and context types.
 title: Lifecycle API
 image: https://developers.cloudflare.com/agents/runtime/lifecycle/api-reference/og.png?v=a9924ce16a6a02ee
@@ -75,7 +77,7 @@ This page lists every export of `agents/lifecycle`. For a guided introduction, r
 | `isStarted()` | `boolean` | `true` after every capability and the host `onStart()` have finished. |
 | `name` | `string` | The object's name from `ctx.id.name`. Throws when the object has no name. |
 | `jobs` | `LifecycleJobs` | The host's view of the [job queue](https://developers.cloudflare.com/agents/runtime/lifecycle/job-queue/). |
-| ``sql`...``` | `T[]` | Runs a query against the object's SQLite database with bound parameters. |
+| `` sql`...` `` | `T[]` | Runs a query against the object's SQLite database with bound parameters. |
 | `rearmAlarm()` | `Promise<void>` | Sets the alarm from the job queue. Queue changes call this for you. |
 | `trackAlarmWork(promise)` | `boolean` | Keeps work handed off by a job inside the current alarm's memory-limit protection. Returns `false` outside an alarm. |
 | `dispose()` | `Promise<void>` | Calls each capability's `dispose()` in reverse registration order. |

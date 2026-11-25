@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure Host selectors in Gateway.
 title: Host selectors
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors/og.png?v=6814836d0539a0c5
@@ -43,15 +45,15 @@ Egress policies are evaluated at Layer 4 ([https://www.cloudflare.com/learning/d
 1. When Gateway receives a DNS query for a hostname that matches one of these selectors, it initially resolves the query to a temporary initial resolved IP. By default, this IP is drawn from a Cloudflare-owned public range ( `172.64.128.0/20` for IPv4, or `2606:4700:0cf1:4000::/64` for IPv6). You can [configure a custom IPv4 range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) if it conflicts with your existing network.
 2. When traffic arrives with this temporary destination IP, Gateway can identify which hostname the connection belongs to, apply the correct egress policy, then replace the temporary IP with the real destination IP before forwarding the traffic.
 
-1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+1) [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
    Requests `bank.example.com`
-2. DNS query↓
-3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
+2) DNS query↓
+3) [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
    Returns a temporary initial resolved IP, matches the connection to a Host egress policy, then rewrites the destination to the real IP. `172.64.128.0/20`
-4. Host selector match↓
-5. ↗Public Internet
+4) Host selector match↓
+5) ↗Public Internet
 
    `bank.example.com` · real destination IP
 

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Give your agent a web fetch tool with document conversion, pagination, and request controls. Use Pi Durable, AI SDK, TanStack AI, or your own harness.
 title: Web fetch
 image: https://developers.cloudflare.com/agents/tools/web-fetch/og.png?v=876c4e97e6613361

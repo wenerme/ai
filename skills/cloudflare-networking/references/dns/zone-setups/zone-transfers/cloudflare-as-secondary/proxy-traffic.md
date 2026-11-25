@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Proxy traffic through Cloudflare on secondary zones.
 title: Proxy traffic
 image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/og.png?v=6fdc5649dc51a947
@@ -46,7 +48,7 @@ Before you set up Secondary DNS override, make sure that you have:
 2. Enable **Secondary DNS override**.
 3. On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, for specific A, AAAA, or CNAME records, select the grey cloud icon to set their **Proxy status** to **Proxied**.
 
-1. To enable Secondary DNS override on a zone, use the following PATCH request:
+1) To enable Secondary DNS override on a zone, use the following PATCH request:
 
 <details>
 

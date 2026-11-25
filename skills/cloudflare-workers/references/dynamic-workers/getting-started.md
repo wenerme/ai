@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Load and run a dynamic Worker.
 title: Getting started
 image: https://developers.cloudflare.com/dynamic-workers/getting-started/og.png?v=c5045a7077eea0f8
@@ -70,7 +72,7 @@ export default {
 	async fetch(request, env) {
 		// Load a worker.
 		const worker = env.LOADER.load({
-			compatibilityDate: "2026-11-23",
+			compatibilityDate: "2026-11-25",
 
 			mainModule: "src/index.js",
 			modules: {
@@ -149,7 +151,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 	// Return the same format as `env.LOADER.load()` accepts.
 	return {
-		compatibilityDate: "2026-11-23",
+		compatibilityDate: "2026-11-25",
 		mainModule: "index.js",
 		modules: { "index.js": code },
 		globalOutbound: null,
@@ -189,7 +191,7 @@ To run Python code in a Dynamic Worker, you must include the `python_workers` co
 
 ```js
 const worker = env.LOADER.load({
-	compatibilityDate: "2026-11-23",
+	compatibilityDate: "2026-11-25",
 	compatibilityFlags: ["python_workers"],
 	mainModule: "worker.py",
 	modules: {
@@ -245,7 +247,7 @@ const worker = env.LOADER.get("my-worker", async () => {
 		},
 	});
 
-	return { mainModule, modules, compatibilityDate: "2026-11-23" };
+	return { mainModule, modules, compatibilityDate: "2026-11-25" };
 });
 ```
 

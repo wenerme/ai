@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a Workers project with cf init, develop it locally, and deploy it with the Cloudflare CLI.
 title: Deploy your first Worker
 image: https://developers.cloudflare.com/cf/get-started/first-worker/og.png?v=77bcce5f2775c97f
@@ -48,12 +50,12 @@ Apart from `node_modules` and the lockfile from the install, `cf init` creates t
   - vite.config.ts
   - vitest.config.ts
 
-- `src/index.ts` is the Worker.
-- `cloudflare.config.ts` describes the Worker in TypeScript.
-- `vite.config.ts` adds the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), which runs your code in the Workers runtime during development and builds it for deployment. The project uses [Vite+ ↗︎](https://viteplus.dev/), which includes Vite and Vitest.
-- `test/index.test.ts` and `vitest.config.ts` run a test against the Worker in the Workers runtime.
-- `package.json` has `dev`, `build`, and `deploy` scripts that run the matching `cf` commands, and `check`, `format`, `test`, and `typecheck` scripts that run Vite+. It lists `cf` and the release candidate of the Cloudflare Vite plugin 2.0, which `cf` uses, but not Wrangler.
-- `.cloudflare/types/index.d.ts` holds generated binding and runtime types. The Vite plugin updates it when you run `cf dev` or `cf build`. The generated `.gitignore` excludes `.cloudflare/`.
+* `src/index.ts` is the Worker.
+* `cloudflare.config.ts` describes the Worker in TypeScript.
+* `vite.config.ts` adds the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), which runs your code in the Workers runtime during development and builds it for deployment. The project uses [Vite+ ↗︎](https://viteplus.dev/), which includes Vite and Vitest.
+* `test/index.test.ts` and `vitest.config.ts` run a test against the Worker in the Workers runtime.
+* `package.json` has `dev`, `build`, and `deploy` scripts that run the matching `cf` commands, and `check`, `format`, `test`, and `typecheck` scripts that run Vite+. It lists `cf` and the release candidate of the Cloudflare Vite plugin 2.0, which `cf` uses, but not Wrangler.
+* `.cloudflare/types/index.d.ts` holds generated binding and runtime types. The Vite plugin updates it when you run `cf dev` or `cf build`. The generated `.gitignore` excludes `.cloudflare/`.
 
 With pnpm, `cf init` also writes `pnpm-workspace.yaml`, which approves the build scripts that the project's dependencies need. With Yarn, it writes `.yarnrc.yml`.
 

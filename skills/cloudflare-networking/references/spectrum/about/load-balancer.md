@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Add TCP health checks, failover, and traffic steering to Spectrum applications.
 title: Cloudflare Load Balancing
 image: https://developers.cloudflare.com/spectrum/about/load-balancer/og.png?v=d4eca97bee635dfb
@@ -132,7 +134,7 @@ Weight configured within a load balancer pool will be honored with load balancin
 - Load Balancing [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), [failover across pools](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/#failover-across-pools), and [custom rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) are not supported by Spectrum.
 - UDP health checks are only available with public monitoring. TCP can be used with both public and private monitoring.
 
-- This feature requires an Enterprise plan. If you would like to upgrade, contact your account team.
+* This feature requires an Enterprise plan. If you would like to upgrade, contact your account team.
 
 Was this helpful?
 

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.
 title: Turnstile Spin
 image: https://developers.cloudflare.com/turnstile/spin/og.png?v=73d0422760495ee5
@@ -72,7 +74,7 @@ If you do not see the **Set up with Spin** button in your dashboard, or you want
 1. **Open your AI coding agent** in your project (Claude Code, Cursor, Codex, OpenCode, GitHub Copilot Chat).
 2. **Paste this prompt into your agent:**
 
-   *Spin prompttxt*
+   *&#83;pin prompttxt*
 
 
 

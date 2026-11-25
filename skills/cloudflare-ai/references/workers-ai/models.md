@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Browse the catalog of machine learning models available on Workers AI.
 title: Workers AI Models
 image: https://developers.cloudflare.com/workers-ai/models/og.png?v=40351c4db9a31785
@@ -263,28 +265,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/workers-ai/models/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/workers-ai/models/glm-5.3/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/workers-ai/models/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/workers-ai/models/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +5

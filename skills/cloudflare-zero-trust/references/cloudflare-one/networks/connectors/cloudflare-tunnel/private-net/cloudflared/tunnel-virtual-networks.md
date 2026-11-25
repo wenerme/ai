@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Virtual networks in Zero Trust networking.
 title: Virtual networks
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/og.png?v=6b1a554b6918a01a
@@ -263,9 +265,9 @@ You can verify that the virtual network was successfully deleted by typing `clou
 2. Go to **Home**.
 3. In the **VNET** dropdown, choose the virtual network you want to connect to (for example, `staging-vnet`).
 
-1. Open the Cloudflare One Client.
-2. Go to **Settings** > **Traffic and DNS mode** > **Virtual Networks**.
-3. Choose the virtual network you want to connect to, for example `staging-vnet`.
+1) Open the Cloudflare One Client.
+2) Go to **Settings** > **Traffic and DNS mode** > **Virtual Networks**.
+3) Choose the virtual network you want to connect to, for example `staging-vnet`.
 
 When you visit `10.128.0.3/32`, the Cloudflare One Client will route your request to the staging environment.
 

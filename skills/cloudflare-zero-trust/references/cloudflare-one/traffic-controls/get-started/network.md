@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Network filtering in Gateway.
 title: Network filtering
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/network/og.png?v=d7942ba3de3aa7ea
@@ -49,15 +51,15 @@ To verify your device is connected to Cloudflare One:
 3. On your Cloudflare One Client device, open a browser and visit any website. This generates traffic that should appear in the logs.
 4. Determine the **Source IP** for your device (the public-facing address Cloudflare sees for your connection):
 
-1. Open the Cloudflare One Client.
-2. Go to **Profile**.
-3. Note the **Client Interface IP**. This is the same address that will appear as the Source IP in your network logs.
+1) Open the Cloudflare One Client.
+2) Go to **Profile**.
+3) Note the **Client Interface IP**. This is the same address that will appear as the Source IP in your network logs.
 
 1. Open the Cloudflare One Client.
 2. Go to **Settings** (gear icon) **Preferences** > **General**.
 3. Note the **Public IP**. This is the same address that will appear as the Source IP in your network logs.
 
-5. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **Network logs**. Before building network policies, make sure you see network logs from the Source IP assigned to your device.
+5) In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **Network logs**. Before building network policies, make sure you see network logs from the Source IP assigned to your device.
 
 If no logs appear after a few minutes, check two things: first, verify that the [Gateway proxy is turned on](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#turn-on-the-gateway-proxy). Second, confirm that the device is enrolled in your Zero Trust organization by checking the Cloudflare One Client connection status.
 
@@ -79,13 +81,13 @@ To create a new network policy:
    | Passed Device Posture Checks | not in | *Device serial numbers* |  |  |
 6. Select **Create policy**.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+1) [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
    | Type | Item | Permission |
    | --- | --- | --- |
    | Account | Zero Trust | Edit |
-2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
-3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
+2) (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
+3) Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
    *Create a Zero Trust Gateway rulebash*
 

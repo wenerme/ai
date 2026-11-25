@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Zone plan and account subscription values available to Cloudflare Tenant partners.
 title: Available subscriptions
 image: https://developers.cloudflare.com/tenant/reference/subscriptions/og.png?v=1a7ee43d692b7c12
@@ -52,7 +54,7 @@ The following table lists sample values for various Developer platform subscript
 | Feature | Subscription IDs |
 | --- | --- |
 | [Images](https://developers.cloudflare.com/images/) | `IMAGES_ENT`,`IMAGES_BASIC` |
-| [Image transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/) | `IMAGE_RESIZING_ENT`, `IMAGE_RESIZING_BASIC` |
+| [Image transformations](https://developers.cloudflare.com/images/optimization/transformations/url/) | `IMAGE_RESIZING_ENT`, `IMAGE_RESIZING_BASIC` |
 | [Stream](https://developers.cloudflare.com/stream/) | `PARTNERS_STREAM_ENT`, `PARTNERS_STREAM_BASIC`, `STREAM_BASIC` |
 | [Workers](https://developers.cloudflare.com/workers) | `PARTNERS_WORKERS_ENT`, `WORKERS_PAID`, `PARTNERS_WORKERS_SS`, `PARTNERS_WORKERS_BASIC` |
 
@@ -105,5 +107,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/reference/subscriptions/#page","headline":"Available subscriptions","description":"Zone plan and account subscription values available to Cloudflare Tenant partners.","url":"https://developers.cloudflare.com/tenant/reference/subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/tenant/reference/subscriptions/og.png?v=1a7ee43d692b7c12","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/reference/subscriptions/#page","headline":"Available subscriptions","description":"Zone plan and account subscription values available to Cloudflare Tenant partners.","url":"https://developers.cloudflare.com/tenant/reference/subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/tenant/reference/subscriptions/og.png?v=1a7ee43d692b7c12","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

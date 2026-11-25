@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: With account-level custom nameservers, you can use the same custom nameservers for different zones in the account. The domain or domains that provide the nameservers names do not have to exist as zones in Cloudflare.
 title: Set up account custom nameservers
 image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/og.png?v=e8bbda815daffe1b
@@ -48,10 +50,10 @@ Account owners that want to [use their own IP prefix](https://developers.cloudfl
 
 1. Create ACNS names and sets:
 
-1. In the Cloudflare dashboard, go to the account **Settings** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
-2. Go to **DNS Settings**.
-3. For **Account custom nameservers**, select **Configure custom nameservers**.
-4. Insert a fully qualified domain name for **Nameserver name** and choose a **Nameserver set**. Follow the [configuration conditions](#configuration-conditions).
+1) In the Cloudflare dashboard, go to the account **Settings** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+2) Go to **DNS Settings**.
+3) For **Account custom nameservers**, select **Configure custom nameservers**.
+4) Insert a fully qualified domain name for **Nameserver name** and choose a **Nameserver set**. Follow the [configuration conditions](#configuration-conditions).
 
 Use the [Add account custom nameserver endpoint](https://developers.cloudflare.com/api/resources/custom_nameservers/methods/create/) to create account custom nameservers. Follow the [conditions](#configuration-conditions) for `ns_name` and `ns_set`.
 
@@ -77,10 +79,10 @@ Cloudflare will assign an IPv4 and an IPv6 address to each ACNS name, and these 
 
 1. Choose an ACNS set as custom nameservers for a zone:
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
-2. For **Custom nameservers**, select **Configure**.
-3. Select **Use your account custom nameservers** and choose a nameserver set from the list.
-4. Select **Save** to confirm.
+1) In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+2) For **Custom nameservers**, select **Configure**.
+3) Select **Use your account custom nameservers** and choose a nameserver set from the list.
+4) Select **Save** to confirm.
 
 Use the endpoint [Update DNS Settings for a Zone](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) and configure the `nameservers` object accordingly for each zone.
 
@@ -124,8 +126,8 @@ To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 - If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the regular Cloudflare branded nameservers.
 - If you are not using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), modify the domain's registrar to use your regular Cloudflare branded nameservers.
 
-- If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to set the `type` parameter in the `nameservers` object to `"cloudflare.standard"`. Then, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the regular Cloudflare branded nameservers.
-- If you are not using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), modify the domain's registrar to use your regular Cloudflare branded nameservers and then use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to set the `type` parameter in the `nameservers` object to `"cloudflare.standard"`.
+* If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to set the `type` parameter in the `nameservers` object to `"cloudflare.standard"`. Then, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the regular Cloudflare branded nameservers.
+* If you are not using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), modify the domain's registrar to use your regular Cloudflare branded nameservers and then use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to set the `type` parameter in the `nameservers` object to `"cloudflare.standard"`.
 
 ### 2. Delete ACNS names or sets
 

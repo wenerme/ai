@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Set up Internal DNS for private name resolution.
 title: Get started
 image: https://developers.cloudflare.com/dns/internal-dns/get-started/og.png?v=c1a12feb3125af18
@@ -175,7 +177,7 @@ For details, refer to [reference zones](https://developers.cloudflare.com/dns/in
 4. Select **Add reference zone**.
 5. Find the zone you want to use as reference and choose **Select** in the respective row.
 
-1. Use the [Update DNS settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to add a reference from an internal zone to another internal zone. In `--json`, specify the `internal_dns` object with the parameter `reference_zone_id`.
+1) Use the [Update DNS settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to add a reference from an internal zone to another internal zone. In `--json`, specify the `internal_dns` object with the parameter `reference_zone_id`.
 
 In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`) is referencing internal zone B (ID `8e64c6fb4b514f3faf64de81efc11e51`).
 
@@ -236,7 +238,7 @@ DNS view configuration conditions
 5. Select **Manage zones** to add zones to your view. Select the internal zones that should be used to resolve queries sent by Gateway resolver to this view.
 6. Choose **Save** to confirm.
 
-1. Use the [Create Internal DNS View](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/views/methods/create/) endpoint. For each view you create, list all the internal zones that should be grouped under that view.
+1) Use the [Create Internal DNS View](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/views/methods/create/) endpoint. For each view you create, list all the internal zones that should be grouped under that view.
 
 <details>
 

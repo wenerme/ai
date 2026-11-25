@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Start using Artifacts with Workers or the REST API.
 title: Get started
 image: https://developers.cloudflare.com/artifacts/get-started/og.png?v=21ff698bbfe1e2c8
@@ -23,8 +25,8 @@ Artifacts requires **[Workers Paid](https://developers.cloudflare.com/workers/pl
 - Use **Workers** when you want the simplest path and already use Wrangler.
 - Use **REST API** when you want control-plane HTTP access with a Cloudflare API token.
 
-- [Workers](https://developers.cloudflare.com/artifacts/get-started/workers/)
-- [REST API](https://developers.cloudflare.com/artifacts/get-started/rest-api/)
+* [Workers](https://developers.cloudflare.com/artifacts/get-started/workers/)
+* [REST API](https://developers.cloudflare.com/artifacts/get-started/rest-api/)
 
 Was this helpful?
 

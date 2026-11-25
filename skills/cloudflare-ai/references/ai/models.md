@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Browse AI models available through Cloudflare, including hosted models on Workers AI and external providers via AI Gateway.
 title: Models
 image: https://developers.cloudflare.com/ai/models/og.png?v=bb7974aa265b08c2
@@ -21,7 +23,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 317 modelsClear filters
+We found 319 modelsClear filters
 
 ## Compare models
 
@@ -1403,6 +1405,12 @@ Compare
 
 Compare
 
+[![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>vectorize</h3>RecraftImage-to-Image Recraft Vectorize converts a raster image (PNG, JPG or WEBP) into a clean, editable SVG made of shapes. Use it to make logos, icons and illustrations scalable. V1 Pro produces higher-quality vectors.](https://developers.cloudflare.com/ai/models/recraft/vectorize/)
+
+- Third-party
+
+Compare
+
 [r<h3>beam-1.0-501b-a23b</h3>reflection-aiText Generation Beam-1.0-501B-A23B is Reflection AI's open-weights mixture-of-experts model with 501B total parameters and 23B active parameters, built for coding, reasoning, and agentic workloads.](https://developers.cloudflare.com/ai/models/reflection-ai/beam-1.0-501b-a23b/)
 
 - Third-party
@@ -1441,6 +1449,12 @@ Compare
 Compare
 
 [t<h3>gigapixel-standard-2</h3>topazImage-to-Image Topaz Labs Gigapixel Standard 2 is a general-purpose precision image upscaler that balances detail, sharpness, and noise reduction while staying true to the source. It is the recommended default for photos, graphics, and print, with optional face recovery.](https://developers.cloudflare.com/ai/models/topaz/gigapixel-standard-2/)
+
+- Third-party
+
+Compare
+
+[t<h3>proteus-4</h3>topazvideo-to-video Topaz Labs Proteus 4 (prob-4) is a general-purpose precision video enhancer that upscales, denoises and sharpens low to medium quality footage to 1080p or 4K without generating new detail. It is Topaz's recommended default model and costs far less than the generative Starlight models.](https://developers.cloudflare.com/ai/models/topaz/proteus-4/)
 
 - Third-party
 
@@ -1839,28 +1853,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +5

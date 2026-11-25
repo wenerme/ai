@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn the runtime under every agent. Build a counter on a Durable Object with the Agents SDK Lifecycle, add durable state and WebSockets, then connect a client that stays in sync.
 title: Learn the runtime
 image: https://developers.cloudflare.com/agents/getting-started/learn-the-runtime/og.png?v=f3a922910ac4962f
@@ -74,7 +76,7 @@ Add a SQLite-backed Durable Object to your Wrangler configuration file:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "Counter", "class_name": "Counter" }],
@@ -90,7 +92,7 @@ name = "my-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -105,8 +107,8 @@ storage = "sqlite"
 - `name` in the binding becomes the property on `env`, for example `env.Counter`.
 - `class_name` must match the exported class name.
 
-- `exports` declares the class with `"storage": "sqlite"`. The [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) and its capabilities store their data in each object's SQLite database. Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/).
-- The `agents` package requires the `nodejs_compat` flag.
+* `exports` declares the class with `"storage": "sqlite"`. The [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) and its capabilities store their data in each object's SQLite database. Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/).
+* The `agents` package requires the `nodejs_compat` flag.
 
 ## Write the agent
 

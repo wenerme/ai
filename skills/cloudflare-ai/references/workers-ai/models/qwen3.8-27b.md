@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads.
 title: qwen3.8-27b
 image: https://developers.cloudflare.com/og-docs.png
@@ -34,9 +36,9 @@ Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Ali
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | `low``medium``xhigh` (default) |
+| Reasoning | `low` `medium` `xhigh` (default) |
 | Vision | Yes |
 | Zero data retention | Yes |
 | Batch | Yes |

@@ -5,39 +5,34 @@
 
 # Document understanding
 
-Gemini models can process documents in PDF format, using native
-vision to understand entire document contexts. This goes beyond
-just text extraction, allowing Gemini to:
+Gemini models process PDFs, Microsoft Office files, and OpenDocument files,
+including Word documents, PowerPoint presentations, and Excel spreadsheets, to
+analyze, summarize, and extract information from complex files. In addition to
+reading plain text, the models understand visual and structural context, which
+lets you:
 
-* Analyze and interpret content, including text, images, diagrams,
-  charts, and tables, even in long documents up to 1000 pages.
-
+* Analyze text, images, diagrams, charts, and tables across up to 1,000 PDF
+  pages or up to 2,000 Office and OpenDocument pages or slides.
+* Read spreadsheet values, formulas, and rendered charts across worksheets.
 * Extract information into [structured output](/docs/structured-output) formats.
+* Summarize, compare, and answer questions using both visual and textual details.
+* Transcribe documents to formats like HTML while preserving layout.
 
-* Summarize and answer questions based on both the visual and textual elements
-  in a document.
-
-* Transcribe document content (e.g. to HTML), preserving layouts and
-  formatting, for use in downstream applications.
-
-
-You can also pass Microsoft Office and OpenDocument files, such as Word
-documents, PowerPoint presentations, and Excel spreadsheets. To inspect specific
-pages, sheets, or content layers instead of a whole file, see
+See [Office and OpenDocument files](/docs/document-processing#office-documents)
+for supported MIME types and defaults. To inspect specific pages, sheets, or
+content layers instead of a whole file, see
 [Customize document, presentation, and spreadsheet processing](/docs/document-processing#customize-document-processing).
-Other non-PDF documents, such as TXT, Markdown, or HTML files, are processed as
-plain text, which eliminates context like charts or formatting.
+Plain-text formats such as TXT, Markdown, and HTML are read as text only,
+without layout or chart context.
 
-## Passing PDF data inline  {% id="inline_data" %}
+## Passing document data inline  {% id="inline_data" %}
 
-You can pass PDF data inline in the request. This is best
-suited for smaller documents or temporary processing where you don't need to
-reference the file in subsequent requests. We recommend using the
-[Files API](/docs/document-processing#large-pdfs)
-for larger documents that you need to refer to in multi-turn interactions to
-improve request latency and reduce bandwidth usage.
+Pass document data inline for small files or one-off requests where you do not
+need to reuse the file. For larger documents or multi-turn workflows, use the
+[Files API](/docs/document-processing#large-pdfs) to reduce latency and
+bandwidth.
 
-The following example shows you how to pass PDF data inline:
+The following example passes a PDF inline:
 
 {% tabs %}
   {% tab label="Python" %}
@@ -235,7 +230,7 @@ The following example shows you how to pass PDF data inline:
 
 {% /tabs %}
 
-You can also upload a local PDF file for processing:
+You can also upload a local document for processing:
 
 {% tabs %}
   {% tab label="Python" %}
@@ -398,11 +393,11 @@ You can also upload a local PDF file for processing:
 
 {% /tabs %}
 
-## Uploading PDFs using the Files API  {% id="large-pdfs" %}
+## Uploading documents using the Files API  {% id="large-pdfs" %}
 
-We recommend you use Files API for larger files or when you intend to reuse a
-document across multiple requests. This improves request latency and reduces
-bandwidth usage by decoupling the file upload from the model requests.
+Use the Files API for larger files or when you reuse a document across multiple
+requests. Uploading once decouples file transfer from model requests, which
+reduces latency and bandwidth.
 
 {% callout type="note" %}
   The Files API is available at no cost in all regions where the Gemini API
@@ -410,9 +405,9 @@ bandwidth usage by decoupling the file upload from the model requests.
 
 {% /callout %}
 
-### Large PDFs from URLs  {% id="large-pdfs-urls" %}
+### Large documents from URLs  {% id="large-pdfs-urls" %}
 
-Use the File API to simplify uploading and processing large PDF files from URLs:
+Use the Files API to upload and process large documents from URLs:
 
 {% tabs %}
   {% tab label="Python" %}
@@ -690,7 +685,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
   {% tab label="CLI" %}
   ```bash
-  curl -sL -o Gemini_paper.pdf "https://arxiv.org/pdf/2312.11805"
+  curl -fsSL -o Gemini_paper.pdf "https://arxiv.org/pdf/2312.11805"
   FILE=$(gemini-api files upload Gemini_paper.pdf --wait)
   gemini-api analyze -i "$FILE" "Summarize this document"
   ```
@@ -699,7 +694,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
 {% /tabs %}
 
-### Large PDFs stored locally  {% id="large-pdfs-local" %}
+### Large documents stored locally  {% id="large-pdfs-local" %}
 
 {% tabs %}
   {% tab label="Python" %}
@@ -1032,6 +1027,7 @@ metadata by calling [`files.get`](/api-reference/files/get-file). Only the `name
 
   {% tab label="CLI" %}
   ```bash
+  # Replace example.pdf with the path to a local PDF file.
   FILE=$(gemini-api files upload example.pdf)
   gemini-api files get "$FILE" -o json
   ```
@@ -1040,11 +1036,10 @@ metadata by calling [`files.get`](/api-reference/files/get-file). Only the `name
 
 {% /tabs %}
 
-## Passing multiple PDFs  {% id="prompt-multiple" %}
+## Passing multiple documents  {% id="prompt-multiple" %}
 
-The Gemini API is capable of processing multiple PDF documents (up to 1000
-pages) in a single request, as long as the combined size of the documents and
-the text prompt stays within the model's context window.
+You can process multiple documents in a single request as long as the combined
+files and prompt fit within the model's context window.
 
 {% tabs %}
   {% tab label="Python" %}
@@ -1394,8 +1389,8 @@ the text prompt stays within the model's context window.
 
   {% tab label="CLI" %}
   ```bash
-  curl -sL -o Gemini_paper.pdf "https://arxiv.org/pdf/2312.11805"
-  curl -sL -o Gemini_1.5_paper.pdf "https://arxiv.org/pdf/2403.05530"
+  curl -fsSL -o Gemini_paper.pdf "https://arxiv.org/pdf/2312.11805"
+  curl -fsSL -o Gemini_1.5_paper.pdf "https://arxiv.org/pdf/2403.05530"
   PDF_1=$(gemini-api files upload Gemini_paper.pdf --wait)
   PDF_2=$(gemini-api files upload Gemini_1.5_paper.pdf --wait)
   gemini-api analyze -i "$PDF_1" -i "$PDF_2" \
@@ -1531,37 +1526,31 @@ page limits apply to the whole file.
 
 ## Customize document, presentation, and spreadsheet processing  {% id="customize-document-processing" %}
 
-You can pass `processing` (`{"type": "static", ...}`) on a `document` block to
-select page ranges, worksheet tabs, cell ranges, content layers, and rendering
-resolution. These options work across all Gemini 3 and Gemini 4+ models in user
-`input` and inside `function_result.result`.
+You can select specific pages, worksheet tabs, cell ranges, content layers, and
+rendering resolution instead of sending an entire file. Pass a `processing`
+object with `type` set to `static` on a document block, as shown in the examples
+below. Gemini 3 and Gemini 4 models support these options in both user inputs
+and tool results.
 
-Gemini counts and bills tokens only for the sliced output sent to the model. The
-model also receives total page counts and worksheet names automatically so it
-can request follow-up ranges across turns.
+Gemini counts and bills tokens only for the slice you send. The model also
+receives total page counts and worksheet names so it can ask for follow-up
+ranges in later turns.
 
 ### Slice pages and select content layers  {% id="page-options" %}
 
-For PDFs (`.pdf`), documents (`.docx`, `.doc`, `.dotx`, `.odt`), and
-presentations (`.pptx`, `.ppt`, `.odp`), set `processing.page_options`:
+Use `processing.page_options` to slice PDFs, documents, and presentations. All
+fields are optional.
 
-* `start_page` (integer, optional): 1-indexed inclusive start page. Defaults to
-  `1` when `end_page` is set. Values `<= 0` return `400 INVALID_ARGUMENT`.
-  Values past the page count return an empty slice.
-* `end_page` (integer, optional): 1-indexed inclusive end page. Defaults to the
-  last page when `start_page` is set, and clamps to the last page if it exceeds
-  the page count. Must be `>= start_page`.
-* `content_layers` (list of strings, optional): Choose `"page_image"` (rendered
-  page images), `"page_text"` (extracted text), or both. Defaults to
-  `["page_image"]` when `processing` is set.
-* `resolution` (string, optional): Set on the outer `document` block (`"low"`,
-  `"medium"`, or `"high"`). Defaults to `"medium"` (~560 tokens per page;
-  `"low"` uses ~280 and `"high"` uses ~1,120).
+| Option | Description |
+| --- | --- |
+| `start_page` | First page to include (1-indexed, inclusive). Defaults to 1 when you set `end_page`. Values of 0 or less return an invalid argument error; values past the end of the file return an empty slice. |
+| `end_page` | Last page to include (1-indexed, inclusive). Defaults to the last page when you set `start_page`, and clamps to the end of the file if higher. Must be at least `start_page`. |
+| `content_layers` | List of layers to extract: `page_image` for rendered page images, `page_text` for extracted text, or both. Defaults to `page_image` when `processing` is set. |
+| `resolution` | Set on the outer document block to `low` (~280 tokens/page), `medium` (default, ~560 tokens/page), or `high` (~1,120 tokens/page). |
 
 {% callout type="note" %}
-  For large Office documents and presentations, scan the file with
-  `content_layers: ["page_text"]` first, then request `"page_image"` at `"high"`
-  resolution only for pages or slides with charts or dense layouts.
+  For large documents or slide decks, scan with `page_text` first. Then request
+  `page_image` at `high` resolution only for pages with charts or dense layouts.
 
 {% /callout %}
 
@@ -1811,18 +1800,15 @@ presentations (`.pptx`, `.ppt`, `.odp`), set `processing.page_options`:
 
 ### Select spreadsheet tabs and cell ranges  {% id="spreadsheet-options" %}
 
-For spreadsheets (`.xlsx`, `.xls`, `.ods`), set `processing.spreadsheet_options`:
+Use `processing.spreadsheet_options` to select tabs, cell ranges, and layers in
+spreadsheets. All fields are optional.
 
-* `sheet_index` (integer, optional): 1-indexed worksheet position in tab order.
-  Omit to ingest all sheets (up to 50,000 cells per sheet). Values `<= 0` or
-  above the sheet count return `400 INVALID_ARGUMENT`.
-* `visible_cells` (string, optional): Standard A1 cell or range (such as
-  `"A1:G40"` or `"B5"`). Crops all selected layers to that region.
-* `content_layers` (list of strings, optional): Choose `"data"` (evaluated cell
-  values), `"formulas"` (raw formulas), and `"visual"` (rendered sheet snapshot
-  for charts and layout). Defaults to `["data", "formulas"]`.
-* `resolution` (string, optional): Set on the outer `document` block (`"low"`,
-  `"medium"`, or `"high"`) when `"visual"` is enabled. Defaults to `"medium"`.
+| Option | Description |
+| --- | --- |
+| `sheet_index` | Worksheet position in tab order (1-indexed). Omit to include all sheets, up to 50,000 cells per sheet. Values of 0 or less, or above the sheet count, return an invalid argument error. |
+| `visible_cells` | Cell or range in A1 notation, such as A1:G40 or B5. Crops all selected layers to that region. |
+| `content_layers` | List of layers to extract: `data` for evaluated values, `formulas` for raw formulas, and `visual` for a rendered snapshot of charts and layout. Defaults to `data` and `formulas`. |
+| `resolution` | Set on the outer document block to `low`, `medium` (default), or `high` when you include the `visual` layer. |
 
 {% tabs %}
   {% tab filename="spreadsheet_options.py" label="Python" %}
@@ -2085,31 +2071,30 @@ For spreadsheets (`.xlsx`, `.xls`, `.ods`), set `processing.spreadsheet_options`
 
 ### Limits and scaling  {% id="limits-and-scaling" %}
 
-* **File size and length**: Up to 50 MB per file, 1,000 pages per PDF, or 2,000
-  pages or slides per Office or OpenDocument file (applies to both inline data
-  and Files API uploads, and to the full uploaded file even when slicing).
-* **Spreadsheets**: Up to 50,000 cells per sheet.
-* **Page image rendering**: Gemini renders PDF and Office pages to 2-megapixel
-  images (288 DPI) while preserving aspect ratio. Input pixel dimensions don't
-  change token cost. Use `resolution` to control token budget and detail.
-* **Other text formats**: Files such as TXT, Markdown, HTML, and XML are
-  extracted as plain text only (layout, formatting, and charts aren't
-  preserved). See [File input methods](/docs/file-input-methods) for all input
-  options.
+* File size and length: Up to 50 MB per file, 1,000 pages per PDF, or 2,000
+  pages or slides per Office or OpenDocument file. These limits apply to both
+  inline data and Files API uploads, and to the full uploaded file even when
+  slicing.
+* Spreadsheets: Up to 50,000 cells per sheet.
+* Page image rendering: Gemini renders PDF and Office pages to 2-megapixel
+  images (288 DPI) while preserving aspect ratio. Input pixel dimensions do not
+  change token cost; use `resolution` to control token budget and detail.
+* Other text formats: Plain-text files such as TXT, Markdown, HTML, and XML are
+  extracted as text only, without layout, formatting, or charts. See
+  [File input methods](/docs/file-input-methods) for all input options.
 
 ### Tokens and billing  {% id="tokens-and-billing" %}
 
-* **Gemini 4 and Gemini 3 models**: Page image token counts depend on
-  `resolution`. They use approximately 280 tokens per page at `low`, 560 at
-  `medium` (default), or 1,120 at `high`. See
-  [Media resolution](/docs/media-resolution) for details.
-* **Gemini 2.5 models**: Flat 258 tokens per page.
-* **PDF native text and usage reporting**: For default PDF processing (without
-  `processing` options), embedded PDF text is extracted alongside page images
-  at no extra token charge. Page image tokens are reported under the `"image"`
-  modality in `usage.input_tokens_by_modality`.
-* **Sliced billing**: When you set `processing` options, Gemini counts and bills
-  only the selected pages, sheets, and `content_layers` sent to the model.
+* Gemini 4 and Gemini 3 models: Page image token counts depend on `resolution`.
+  They use about 280 tokens per page at `low`, 560 at `medium` (default), or
+  1,120 at `high`. See [Media resolution](/docs/media-resolution) for details.
+* Gemini 2.5 models: Flat 258 tokens per page.
+* PDF native text and usage reporting: For default PDF processing without
+  `processing` options, embedded PDF text is extracted alongside page images at
+  no extra token charge. Page image tokens appear under the `image` modality in
+  `usage.input_tokens_by_modality`.
+* Sliced billing: When you set `processing` options, Gemini counts and bills
+  only the selected pages, sheets, and content layers sent to the model.
 
 ## Best practices  {% id="best-practices" %}
 

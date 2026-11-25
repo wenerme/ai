@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn about isolate access applications in this guide.
 title: Isolate Access applications
 image: https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/og.png?v=01eda837c59f7bb1
@@ -36,12 +38,12 @@ Your browser must [allow third-party cookies](https://developers.cloudflare.com/
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Browser isolation** > **Browser isolation settings**.
 2. Turn on **Allow users to open a remote browser without the device client**.
 
-3. Go to **Access controls** > **Applications**.
-4. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Edit**.
-5. Go to **Policies**.
-6. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Edit**.
-7. Under **Additional settings**, turn on **Isolate application**.
-8. Save the policy.
+3) Go to **Access controls** > **Applications**.
+4) Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Edit**.
+5) Go to **Policies**.
+6) Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Edit**.
+7) Under **Additional settings**, turn on **Isolate application**.
+8) Save the policy.
 
 Browser Isolation is now enabled for users who match this policy. After the user logs into Access, the application will launch in a remote browser. To confirm that the application is isolated, refer to [Check if a web page is isolated](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/#3-check-if-a-web-page-is-isolated).
 

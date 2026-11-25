@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference information for Download Cloudflare One Client stable releases in Zero Trust.
 title: Download Cloudflare One Client stable releases
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/og.png?v=d28c7aa1bbf99689
@@ -53,9 +55,9 @@ Latest release
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -79,9 +81,9 @@ Windows 2026.8.2110.0
 
 #### Release notes
 
-This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.
 
-
+</details>
 
 <details>
 
@@ -149,9 +151,9 @@ Windows 2026.7.1384.0
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -167,9 +169,9 @@ Windows 2026.7.1376.0
 
 #### Release notes
 
-Fixed a rare but critical issue where the client could fail to connect or switch organizations due to an invalid registration after switching installed client versions. Additionally, this hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.</details>
+Fixed a rare but critical issue where the client could fail to connect or switch organizations due to an invalid registration after switching installed client versions. Additionally, this hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
 
-
+</details>
 
 <details>
 
@@ -221,9 +223,9 @@ Windows 2026.6.906.0
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -239,9 +241,9 @@ Windows 2026.6.905.0
 
 #### Release notes
 
-This hotfix addresses an uncommon and intermittent case on Windows devices where the device is unable to reconnect after the device is woken from sleep.</details>
+This hotfix addresses an uncommon and intermittent case on Windows devices where the device is unable to reconnect after the device is woken from sleep.
 
-
+</details>
 
 <details>
 
@@ -257,9 +259,9 @@ Windows 2026.6.880.0
 
 #### Release notes
 
-This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.</details>
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-
+</details>
 
 <details>
 
@@ -275,9 +277,9 @@ Windows 2026.6.850.0
 
 #### Release notes
 
-This hotfix addresses a Windows authentication issue in the embedded WebView2 browser. Single sign-on could fail to use the Windows primary account, causing users to be prompted for an interactive sign-in. The embedded authentication browser now allows SSO providers to use the OS primary account when available.</details>
+This hotfix addresses a Windows authentication issue in the embedded WebView2 browser. Single sign-on could fail to use the Windows primary account, causing users to be prompted for an interactive sign-in. The embedded authentication browser now allows SSO providers to use the OS primary account when available.
 
-
+</details>
 
 <details>
 
@@ -348,9 +350,9 @@ Windows 2026.4.1391.0
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -588,9 +590,9 @@ Latest release
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -614,9 +616,9 @@ macOS 2026.8.2110.0
 
 #### Release notes
 
-This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.
 
-
+</details>
 
 <details>
 
@@ -680,9 +682,9 @@ macOS 2026.7.1384.0
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -698,9 +700,9 @@ macOS 2026.7.1376.0
 
 #### Release notes
 
-This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.</details>
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
 
-
+</details>
 
 <details>
 
@@ -750,9 +752,9 @@ macOS 2026.6.906.0
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -768,9 +770,9 @@ macOS 2026.6.880.0
 
 #### Release notes
 
-This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.</details>
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-
+</details>
 
 <details>
 
@@ -836,9 +838,9 @@ macOS 2026.4.1391.0
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -1019,9 +1021,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -1047,9 +1049,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.
 
-
+</details>
 
 <details>
 
@@ -1114,9 +1116,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -1134,9 +1136,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.</details>
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
 
-
+</details>
 
 <details>
 
@@ -1190,9 +1192,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 
@@ -1210,9 +1212,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.</details>
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-
+</details>
 
 <details>
 
@@ -1313,9 +1315,9 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 #### Release notes
 
-This hotfix addresses an issue building trusted certificate chains.</details>
+This hotfix addresses an issue building trusted certificate chains.
 
-
+</details>
 
 <details>
 

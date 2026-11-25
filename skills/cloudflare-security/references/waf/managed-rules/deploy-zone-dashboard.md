@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Deploy WAF managed rulesets at the zone level in the dashboard.
 title: Deploy a WAF managed ruleset in the dashboard
 image: https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/og.png?v=aeb053ca111856cf
@@ -80,14 +82,14 @@ To configure (or override) settings of rules tagged with specific tags:
 3. Search for the managed ruleset you want to configure/browse. Look for a rule with an *Execute* action.
 4. Select the rule name (containing the name of the managed ruleset), and then select **Browse rules**.
 
-5. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
+5) Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
     If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all \<NUMBER> rules**.![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
-6. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
-7. Select **Next**.
-8. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+6) Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
+7) Select **Next**.
+8) A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
    - Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
    - Select **Only selected rules** to apply your configurations to the selected rules only.
-9. Select **Save**.
+9) Select **Save**.
 
 ### Configure individual rules of a managed ruleset
 
@@ -98,11 +100,11 @@ To configure (or override) settings of individual rules of a managed ruleset:
 3. Search for the managed ruleset you want to configure/browse. Look for a rule with an *Execute* action.
 4. Select the rule name (containing the name of the managed ruleset), and then select **Browse rules**.
 
-5. Search for rules using the available filters.
-6. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
+5) Search for rules using the available filters.
+6) In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
 
    To configure multiple rules with the same value, select the checkboxes for all the rules you want to configure. If not all the rules are displayed in the current page, you can extend your selection to all rules across all pages by selecting **Select all \<NUMBER> rules**. Then, use the buttons displayed in the top right corner of the table — for example, **Set status** — to update one or more fields for the selected rules.![The Configure deployment page displaying selected rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
-7. Select **Next**, and then select **Save**.
+7) Select **Next**, and then select **Save**.
 
 ### Browse the rules of a managed ruleset
 

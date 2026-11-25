@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Manage which origins Cloudflare Images can use as the source for image transformations.
 title: Define source origins
 image: https://developers.cloudflare.com/images/optimization/transformations/sources/og.png?v=7a75418215992362
@@ -15,65 +17,121 @@ image: https://developers.cloudflare.com/images/optimization/transformations/sou
 
 # Define source origins
 
-When optimizing remote images, you can specify which origins can be used as the source for transformed images. By default, Cloudflare accepts only source images from the zone where your transformations are served.
+Transformation URLs fetch source images before applying optimizations.
 
-On this page, you will learn how to define and manage the origins for the source images that you want to optimize.
+By default, Images accepts sources images only from the same zone where it serves the transformation. Use an allowlist to control the origins where `/cdn-cgi/image/` transformation URLs can fetch source images.
 
 Note
 
-The allowed origins setting only applies to [transformation URLs](https://developers.cloudflare.com/images/optimization/features/#url-interface) that use the `/cdn-cgi/image/` format.
+The allowlist applies only to `/cdn-cgi/image/` transformation URLs. It does not apply to the [Images binding](https://developers.cloudflare.com/images/optimization/binding/) or when a Worker uses `cf.image` on a `fetch()` subrequest.
 
-It does not apply when you use a [Worker](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) to optimize remote images via a `fetch()` subrequest. If your Worker accepts source image URLs from user input, then validate them in your Worker code.
+## Configure allowed origins
 
-## How it works
+Before you can specify an allowlist, you must [enable transformation URLs](https://developers.cloudflare.com/images/optimization/transformations/url/) for the zone or Worker that serves them.
 
-In the Cloudflare dashboard, go to **Images** > **Transformations** and select the zone where you want to serve transformations.
+Configure allowed origins at the same scope as the URL interface.
 
-To get started, you must have [transformations enabled on your zone](https://developers.cloudflare.com/images/optimization/transformations/overview/#how-it-works).
+### Zone
 
-In **Sources**, you can configure the origins for transformations on your zone.
+| Interface | Setting |
+| --- | --- |
+| Wrangler | Not available |
+| Cloudflare CLI | [`cf zones transformations-allowed-origins edit`](https://developers.cloudflare.com/images/optimization/transformations/url/#zone-cli) |
+| Dashboard | [**Images** > **Transformations** > **Sources**](https://developers.cloudflare.com/images/optimization/transformations/url/#zone-dashboard) |
+| REST API | [`transformations_allowed_origins`](https://developers.cloudflare.com/images/optimization/transformations/url/#zone-rest-api) |
 
-![Enable allowed origins from the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1664,height=872,format=webp/_astro/allowed-origins.4hu5lHws.png)
+### Worker
 
-## Allow source images only from allowed origins
+| Interface | Setting |
+| --- | --- |
+| Wrangler | [`images.url_transformations.allowed_origins`](https://developers.cloudflare.com/images/optimization/transformations/url/#worker-wrangler-cli) |
+| Cloudflare CLI | [`worker.images.urlTransformations.allowedOrigins`](https://developers.cloudflare.com/images/optimization/transformations/url/#worker-wrangler-cli) |
+| Dashboard | Not available |
+| REST API | [`allowed_origins`](https://developers.cloudflare.com/images/optimization/transformations/url/#worker-rest-api) |
 
-You can restrict source images to **allowed origins**, which applies transformations only to source images from a defined list.
+## How the allowlist works
 
-By default, your accepted sources are set to **allowed origins**. Cloudflare will always allow source images from the same zone where your transformations are served.
+Cloudflare rejects a transformation request when the source does not match the active allowlist.
 
-If you request a transformation with a source image from outside your **allowed origins**, then the image will be rejected. For example, if you serve transformations on your zone `a.com` and do not define any additional origins, then `a.com/image.png` can be used as a source image, but `b.com/image.png` will return an error.
+The same hostname, wildcard, path, and redirect behaviors apply to both zone-scoped and Worker-scoped allowlists in production.
 
-To define a new origin:
+For zone-scoped transformations without an allowlist, Images accepts sources from any hostname in the same zone, including subdomains.
 
-1. From **Sources**, select **Add origin**.
-2. Under **Domain**, specify the domain for the source image. Only valid web URLs will be accepted.
+For custom domains routed to a Worker, the Worker's `allowed_origins` list replaces the zone-scoped allowlist handled by that Worker.
 
-![Add the origin for source images in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2142,height=1104,format=webp/_astro/add-origin.BtfOyoOS.png)
+Worker allowlists
 
-When you add a root domain, subdomains are not accepted. In other words, if you add `b.com`, then source images from `media.b.com` will be rejected.
+When configuring an allowlist for a Worker, explicitly include every hostname used for relative or same-host sources, including its `workers.dev` hostname and connected custom domains.
 
-To support individual subdomains, define an additional origin such as `media.b.com`. If you add only `media.b.com` and not the root domain, then source images from the root domain (`b.com`) and other subdomains (`cdn.b.com`) will be rejected.
+For example, consider a Worker that serves transformations from both:
 
-To support all subdomains, use the `*` wildcard at the beginning of the root domain. For example, `*.b.com` will accept source images from the root domain (like `b.com/image.png`) as well as from subdomains (like `media.b.com/image.png` or `cdn.b.com/image.png`).
+- `image-app.<YOUR_SUBDOMAIN>.workers.dev`
+- `images.example.com`
 
-3. Optionally, you can specify the **Path** for the source image. If no path is specified, then source images from all paths on this domain are accepted.
+You must add both hostnames to the allowlist to use `/image.png` as a relative source from either hostname in production.
 
-Cloudflare checks whether the defined path is at the beginning of the source path. If the defined path is not present at the beginning of the path, then the source image will be rejected.
+When developing locally, Images always accepts relative sources.
 
-For example, if you define an origin with domain `b.com` and path `/themes`, then `b.com/themes/image.png` will be accepted but `b.com/media/themes/image.png` will be rejected.
+## Match hostnames and subdomains
 
-4. Select **Add**. Your origin will now appear in your list of allowed origins.
-5. Select **Save**. These changes will take effect immediately.
+Each hostname in an allowlist matches only that exact hostname unless you use a wildcard.
 
-When you configure **allowed origins**, only the initial URL of the source image is checked. Any redirects, including URLs that leave your zone, will be followed, and the resulting image will be transformed.
+| Allowed origin | Accepted source hostnames | Rejected source hostnames |
+| --- | --- | --- |
+| `b.com` | `b.com` | `media.b.com`, `cdn.b.com` |
+| `media.b.com` | `media.b.com` | `b.com`, `cdn.b.com` |
+| `*.b.com` | `b.com`, `media.b.com`, `cdn.b.com` | `example.com` |
 
-If you change your accepted sources to **any origin**, then your list of sources will be cleared and reset to default.
+Add `*.` before a domain to match the domain and all of its subdomains.
 
-## Allow source images from any origin
+## Match paths
 
-When your accepted sources are set to **any origin**, any publicly available image can be used as the source image for transformations on this zone.
+You can restrict an allowed origin to a path. If you omit the path, then Images accepts source images from every path on that hostname.
 
-**Any origin** is less secure and may allow third parties to serve transformations on your zone.
+Cloudflare matches the configured path against the beginning of the source path.
+
+| Allowed origin | Source URL | Result |
+| --- | --- | --- |
+| `b.com/themes` | `https://b.com/themes/image.png` | Accepted |
+| `b.com/themes` | `https://b.com/themes/icons/image.png` | Accepted |
+| `b.com/themes` | `https://b.com/media/themes/image.png` | Rejected |
+
+## Follow redirects
+
+Cloudflare checks the initial source URL against the allowed origins. After accepting the initial URL, Images follows redirects and processes the resulting image even when they lead to an origin that is not allowed.
+
+Only allow hostnames whose redirects you trust.
+
+## Allow any origin
+
+Caution
+
+Allowing any origin lets third parties request transformations through the URL interface, which may cause unintended usage. Use this setting only when you expect arbitrary source hostnames.
+
+To accept publicly available source images from any origin:
+
+### Zone
+
+- **Cloudflare CLI:** Set the value to `"*"`:
+
+```sh
+cf zones transformations-allowed-origins edit \
+   --zone example.com \
+   --value "*"
+```
+
+- REST API: Send "value": "\*" to the [`transformations_allowed_origins`](https://developers.cloudflare.com/api/resources/zones/subresources/transformations_allowed_origins/) endpoint.
+- **Dashboard:** Select **Any origin** under **Sources**.
+
+Changing a zone to accept any origin clears its allowlist.
+
+### Worker
+
+- **Wrangler**: Set `allowed_origins = ["*"]`.
+- **Cloudflare CLI**: Set `allowedOrigins: ["*"]` in `cloudflare.config.ts`.
+- **REST API**: Set `allowed_origins` to `["*"]` in the Worker transformation settings request.
+
+For Worker configuration, `"*"` must be the only entry in the list.
 
 Was this helpful?
 
@@ -84,5 +142,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/sources/#page","headline":"Define source origins","description":"Manage which origins Cloudflare Images can use as the source for image transformations.","url":"https://developers.cloudflare.com/images/optimization/transformations/sources/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/transformations/sources/og.png?v=7a75418215992362","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/sources/#page","headline":"Define source origins","description":"Manage which origins Cloudflare Images can use as the source for image transformations.","url":"https://developers.cloudflare.com/images/optimization/transformations/sources/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/transformations/sources/og.png?v=7a75418215992362","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

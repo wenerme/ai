@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This tutorial covers how to build a Cloudflare R2 bucket to store Zero Trust logs. It also shows how to connect the bucket to the Zero Trust Logpush service.
 title: Use Cloudflare R2 as a Zero Trust log destination
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/r2-logs/og.png?v=548215f7eb23ae7e

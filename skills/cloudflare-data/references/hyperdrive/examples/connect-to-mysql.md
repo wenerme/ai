@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.
 title: Connect to MySQL
 image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/og.png?v=f0d045b55ddb782f
@@ -41,7 +43,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -54,7 +56,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -161,7 +163,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -174,7 +176,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -256,7 +258,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -269,7 +271,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

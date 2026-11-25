@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Certificate Transparency (CT) Monitoring emails you when a new SSL/TLS certificate is issued for your domain, so you can spot unauthorized or mis-issued certificates.
 title: Certificate Transparency Monitoring
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/og.png?v=4e69a56add743946

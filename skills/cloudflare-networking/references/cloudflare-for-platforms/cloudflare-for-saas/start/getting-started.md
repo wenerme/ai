@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Get started with Cloudflare for SaaS
 title: Configuring Cloudflare for SaaS
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/og.png?v=8bac18110b280e70
@@ -55,9 +57,9 @@ To create your fallback origin:
 
 2. Designate that record as your fallback origin.
 
-1. In the Cloudflare dashboard, go to the **Custom Hostnames** page. [Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
-2. For **Fallback Origin**, enter the hostname for your fallback origin.
-3. Select **Add Fallback Origin**.
+1) In the Cloudflare dashboard, go to the **Custom Hostnames** page. [Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+2) For **Fallback Origin**, enter the hostname for your fallback origin.
+3) Select **Add Fallback Origin**.
 
 Using the hostname of the record you just created, [update the fallback origin value](https://developers.cloudflare.com/api/resources/custom_hostnames/subresources/fallback_origin/methods/update/).
 

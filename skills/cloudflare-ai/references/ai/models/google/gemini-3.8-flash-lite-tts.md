@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Gemini 3.8 Flash-Lite TTS is a fast, cost-efficient text-to-speech model optimized for high-throughput production workloads.
 title: Gemini 3.8 Flash-Lite TTS
 image: https://developers.cloudflare.com/og-docs.png
@@ -33,7 +35,7 @@ Gemini 3.8 Flash-Lite TTS is a fast, cost-efficient text-to-speech model optimiz
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
 | More information | [link ↗](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts) |
 | Pricing | <ul><li>Input text (per 1M tokens)$0.50</li><li>Cached input (per 1M tokens)$0.125</li><li>Output audio (per 1M tokens)$6.00</li></ul> |
 

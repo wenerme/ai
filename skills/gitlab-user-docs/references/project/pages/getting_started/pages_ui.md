@@ -5,6 +5,7 @@ Deploy a static site or framework-based application to GitLab Pages with a guide
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+[GitLab Pages](../_index.md) publishes static websites from a repository in GitLab.
 Create a GitLab Pages deployment to convert your static site or framework into a website hosted on GitLab.
 Through a step-by-step form, GitLab:
 

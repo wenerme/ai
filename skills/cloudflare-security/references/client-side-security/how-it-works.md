@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Cloudflare's client-side security tracks resources (such as scripts) loaded by your website visitors and provides alerts when it detects new, changed, or malicious resources.
 title: How client-side security works
 image: https://developers.cloudflare.com/client-side-security/how-it-works/og.png?v=63a847ca3f98c32b

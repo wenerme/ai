@@ -13035,6 +13035,7 @@ Enable/disable secret push protection for the given project.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `preReceiveSecretDetectionEnabled` | [`Boolean`](scalars.md#boolean) | Whether the feature is enabled. |
 | `secretPushProtectionEnabled` | [`Boolean`](scalars.md#boolean) | Whether the feature is enabled. |
+| `warnings` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Messages from warn-mode settings policies that flagged the change without blocking it. The setting was still updated. |
 
 ## `setSecretPushProtection`
 
@@ -13056,6 +13057,7 @@ Enable/disable secret push protection for the given project.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `preReceiveSecretDetectionEnabled` | [`Boolean`](scalars.md#boolean) | Whether the feature is enabled. |
 | `secretPushProtectionEnabled` | [`Boolean`](scalars.md#boolean) | Whether the feature is enabled. |
+| `warnings` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Messages from warn-mode settings policies that flagged the change without blocking it. The setting was still updated. |
 
 ## `setValidityChecks`
 

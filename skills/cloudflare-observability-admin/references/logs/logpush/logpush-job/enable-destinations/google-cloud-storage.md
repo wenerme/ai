@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to Google Cloud Storage.
 title: Enable Google Cloud Storage
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/google-cloud-storage/og.png?v=dfb9ce036f0d7704
@@ -27,8 +29,8 @@ Cloudflare Logpush supports pushing logs directly to Google Cloud Storage (GCS) 
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **Google Cloud Storage**.
-5. Enter or select the following destination details:
+4) In **Select a destination**, choose **Google Cloud Storage**.
+5) Enter or select the following destination details:
    - **Bucket** - GCS bucket name
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)

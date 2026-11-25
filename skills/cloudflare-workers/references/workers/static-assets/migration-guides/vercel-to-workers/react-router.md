@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Upgrade Remix v2 to React Router v7, then replace vercelPreset with the Cloudflare Vite plugin, a Worker entry, and a renderToReadableStream server entry.
 title: Migrate React Router and Remix from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/react-router/og.png?v=89b5412c7fd8cff2
@@ -208,7 +210,7 @@ Skip this section if your application already uses React Router v7.
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "./workers/app.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"observability": {
    		"enabled": true,
    	},
@@ -221,7 +223,7 @@ Skip this section if your application already uses React Router v7.
    name = "<YOUR_PROJECT_NAME>"
    main = "./workers/app.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    upload_source_maps = true
 
    [observability]

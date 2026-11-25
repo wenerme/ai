@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Work with the instances in an AI Search namespace from a Cloudflare Worker using the namespace binding.
 title: Workers binding
 image: https://developers.cloudflare.com/ai-search/api/namespaces/workers-binding/og.png?v=fa78d292a041eecc
@@ -27,7 +29,7 @@ Add an `ai_search_namespaces` entry to your [Wrangler configuration](https://dev
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -39,7 +41,7 @@ Add an `ai_search_namespaces` entry to your [Wrangler configuration](https://dev
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"

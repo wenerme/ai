@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: SMB in Zero Trust networking.
 title: SMB
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/og.png?v=ca443db86d67ee09
@@ -39,9 +41,9 @@ You can use Cloudflare Tunnel to create a secure, outbound-only connection from 
 1. In the Cloudflare dashboard, go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 
-3. In the Cloudflare dashboard, go to **Networking** > **Routes**. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-4. Select **Create route** > **Tunnel CIDR**. Select the tunnel you just created, enter the private IP or CIDR address of your server, and select **Create route**.
-5. (Optional) [Set up Zero Trust policies](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#4-recommended-filter-network-traffic-with-gateway) to fine-tune access to your server.
+3) In the Cloudflare dashboard, go to **Networking** > **Routes**. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+4) Select **Create route** > **Tunnel CIDR**. Select the tunnel you just created, enter the private IP or CIDR address of your server, and select **Create route**.
+5) (Optional) [Set up Zero Trust policies](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#4-recommended-filter-network-traffic-with-gateway) to fine-tune access to your server.
 
 ### 2. Set up the client
 

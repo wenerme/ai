@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Integrate Slack with Access.
 title: Slack
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/og.png?v=855c5b3facc4b6a3
@@ -60,18 +62,18 @@ This guide covers how to configure [Slack ↗︎](https://slack.com/help/article
 10. (Optional) Under **Customize**, enter a **Sign in Button Label**.
 11. Test your set-up. If all works well, turn **Test** to **Configure**.
 
-1. In Slack, go to **Settings & administration** > **Organization settings** > **Security** > **SSO Settings**.
-2. For **SSO name**, enter your desired name.
-3. Fill in the following fields:
+1) In Slack, go to **Settings & administration** > **Organization settings** > **Security** > **SSO Settings**.
+2) For **SSO name**, enter your desired name.
+3) Fill in the following fields:
    - **SAML 2.0 Endpoint URL**: SSO endpoint from application configuration in Cloudflare One.
    - **Identity Provider Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.
    - **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
    - **x.509 Certificate**: Paste the entire x.509 certificate from step [2. Create a x.509 certificate](#2-create-a-x509-certificate).
-4. For **AuthnContextClassRef**, ensure *urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport* is selected.
-5. Ensure **Sign the AuthnRequest** is turned off.
-6. For **SAML Response Signing**, turn on **Sign the Response** and **Sign the Assertion**.
-7. Select **Test Configuration**.
-8. If all works well, select **Turn on SSO** or **Add SSO**.
+4) For **AuthnContextClassRef**, ensure *urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport* is selected.
+5) Ensure **Sign the AuthnRequest** is turned off.
+6) For **SAML Response Signing**, turn on **Sign the Response** and **Sign the Assertion**.
+7) Select **Test Configuration**.
+8) If all works well, select **Turn on SSO** or **Add SSO**.
 
 Was this helpful?
 

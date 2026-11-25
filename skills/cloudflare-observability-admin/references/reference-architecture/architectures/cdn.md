@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This reference architecture discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.
 title: Content Delivery Network (CDN) Reference Architecture
 image: https://developers.cloudflare.com/reference-architecture/architectures/cdn/og.png?v=206536e407d66b82
@@ -27,8 +29,8 @@ To build a stronger baseline understanding of Cloudflare, we recommend the follo
 
 - What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- What is a CDN? | [Website ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (5 minute read)
-- Analyst Report: [Cloudflare named Leader in 2024 GigaOm Radar for Content Delivery Networks ↗︎](https://www.cloudflare.com/lp/gigaom-radar-cdn/) (20 minute read)
+* What is a CDN? | [Website ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (5 minute read)
+* Analyst Report: [Cloudflare named Leader in 2024 GigaOm Radar for Content Delivery Networks ↗︎](https://www.cloudflare.com/lp/gigaom-radar-cdn/) (20 minute read)
 
 Those who read this reference architecture will learn:
 
@@ -245,7 +247,7 @@ When combined with Tiered Caching and Argo Smart Routing, Cache Reserve can be a
 
 Note
 
-Using [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) with Cache Reserve will not result in resized images being stored in Cache Reserve since Image Resizing takes place after reading from Cache Reserve. Resized images will be cached in other available tiers when they are served after resizing.
+Using [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/url/) with Cache Reserve will not result in resized images being stored in Cache Reserve since Image Resizing takes place after reading from Cache Reserve. Resized images will be cached in other available tiers when they are served after resizing.
 
 ### Traffic flow: Cache Reserve topology
 
@@ -275,5 +277,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/#page","headline":"Content Delivery Network (CDN) Reference Architecture","description":"This reference architecture discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/og.png?v=206536e407d66b82","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/#page","headline":"Content Delivery Network (CDN) Reference Architecture","description":"This reference architecture discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/og.png?v=206536e407d66b82","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

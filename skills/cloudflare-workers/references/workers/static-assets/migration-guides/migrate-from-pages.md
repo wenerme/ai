@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.
 title: Migrate from Pages to Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/og.png?v=edab3eb43a5d9092
@@ -70,7 +72,7 @@ Now, with **Cloudflare Workers**:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -80,7 +82,7 @@ Now, with **Cloudflare Workers**:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/client/"
@@ -102,7 +104,7 @@ For a Single Page Application (SPA):
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "single-page-application"
@@ -113,7 +115,7 @@ For a Single Page Application (SPA):
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/client/"
@@ -126,7 +128,7 @@ For custom 404 pages:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "404-page"
@@ -137,7 +139,7 @@ For custom 404 pages:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/client/"
@@ -178,7 +180,7 @@ Then, update your configuration file's `main` field to point to the location of 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./dist/client/_worker.js",
 	"upload_source_maps": true, // or some other location if you moved the script out of the static asset directory
 	"assets": {
@@ -190,7 +192,7 @@ Then, update your configuration file's `main` field to point to the location of 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./dist/client/_worker.js"
 upload_source_maps = true
 
@@ -224,7 +226,7 @@ Once the Worker script has been compiled, you can update your configuration file
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./dist/worker/index.js",
 	"upload_source_maps": true,
 	"assets": {
@@ -236,7 +238,7 @@ Once the Worker script has been compiled, you can update your configuration file
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./dist/worker/index.js"
 upload_source_maps = true
 
@@ -254,7 +256,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./dist/worker/index.js",
 	"upload_source_maps": true,
 	"assets": {
@@ -267,7 +269,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./dist/worker/index.js"
 upload_source_maps = true
 
@@ -308,7 +310,7 @@ export default class extends WorkerEntrypoint {
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -320,7 +322,7 @@ export default class extends WorkerEntrypoint {
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -336,7 +338,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -349,7 +351,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -366,7 +368,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
@@ -383,7 +385,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 compatibility_flags = [ "nodejs_compat" ]
 main = "./worker/index.ts"
 upload_source_maps = true
@@ -428,7 +430,7 @@ To get a similar experience in Workers:
    {
        "name": "my-worker",
        // Set this to today's date
-       "compatibility_date": "2026-11-23",
+       "compatibility_date": "2026-11-25",
        "main": "./worker/index.ts",
        "upload_source_maps": true,
        "assets": {
@@ -442,7 +444,7 @@ To get a similar experience in Workers:
    ```toml
    name = "my-worker"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    main = "./worker/index.ts"
    upload_source_maps = true
    preview_urls = true
@@ -475,7 +477,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"workers_dev": true
@@ -485,7 +487,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./worker/index.ts"
 upload_source_maps = true
 workers_dev = true

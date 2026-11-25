@@ -5,7 +5,7 @@ description: "Browse Nvidia model IDs, capabilities, and context windows. Learn 
 
 # [Nvidia logo]Nvidia
 
-Access 52 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 41 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -88,42 +88,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/google/diffusiongemma-26b-a4b-it",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 250000,
-    "maxOutput": 32768,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/google/gemma-4-31b-it",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "nvidia/google/google-paligemma",
     "imageInput": true,
     "audioInput": false,
@@ -132,54 +96,6 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/meta/llama-3.2-11b-vision-instruct",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/meta/llama-3.2-90b-vision-instruct",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/meta/llama-guard-4-12b",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 163840,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/meta/muse-glimmer-30b",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },
@@ -239,30 +155,6 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/nvidia/llama-nemotron-embed-vl-1b-v2",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 2048,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/nvidia/llama-nemotron-rerank-vl-1b-v2",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 10240,
     "maxOutput": 4096,
     "inputCost": null,
     "outputCost": null
@@ -340,18 +232,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/nvidia/nemotron-voicechat",
-    "imageInput": false,
-    "audioInput": true,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "nvidia/nvidia/sparsedrive",
     "imageInput": false,
     "audioInput": false,
@@ -396,18 +276,6 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": null,
     "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "nvidia/openai/gpt-oss-20b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

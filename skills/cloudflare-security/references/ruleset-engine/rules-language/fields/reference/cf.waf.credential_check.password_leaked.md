@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Indicates whether the password detected in the request was previously leaked.
 title: cf.waf.credential_check.password_leaked
 image: https://developers.cloudflare.com/og-docs.png
@@ -11,7 +13,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.credential\_check.password\_leaked
 
-`cf.waf.credential_check.password_leaked``Boolean`
+`cf.waf.credential_check.password_leaked` `Boolean`
 
 Indicates whether the password detected in the request was previously leaked.
 

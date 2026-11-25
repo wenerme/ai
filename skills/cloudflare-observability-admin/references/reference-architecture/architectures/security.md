@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This document provides insight into how this network and platform are architected from a security perspective, how they are operated, and what services are available for businesses to address their own security challenges.
 title: Cloudflare Security Architecture
 image: https://developers.cloudflare.com/reference-architecture/architectures/security/og.png?v=56cbeef087279971
@@ -34,7 +36,7 @@ To build a stronger baseline understanding of Cloudflare, we recommend the follo
 
 - What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- [How Cloudflare strengthens security everywhere you do business ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/is7XGR7xZ8CqW0l9EyHZR/1b4311823f602f72036385a66fb96e8c/Everywhere_Security-Cloudflare-strengthens-security-everywhere-you_do-business.pdf) (10 minutes)
+* [How Cloudflare strengthens security everywhere you do business ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/is7XGR7xZ8CqW0l9EyHZR/1b4311823f602f72036385a66fb96e8c/Everywhere_Security-Cloudflare-strengthens-security-everywhere-you_do-business.pdf) (10 minutes)
 
 ## Secure global network
 

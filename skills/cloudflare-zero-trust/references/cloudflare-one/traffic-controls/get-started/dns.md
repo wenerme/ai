@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: DNS filtering in Gateway.
 title: DNS filtering
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/dns/og.png?v=d36ff9c8bf482aa7
@@ -72,13 +74,13 @@ A DNS policy has two parts: a **traffic condition** that defines which queries t
    | Security Categories | in | *All security risks* | Block |
 6. Select **Create policy**.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+1) [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
    | Type | Item | Permission |
    | --- | --- | --- |
    | Account | Zero Trust | Edit |
-2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
-3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, the following request creates a policy that blocks all default [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories). The numeric IDs in the `traffic` field (such as `68`, `178`, `80`) correspond to Cloudflare's predefined security threat categories — refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories) for the full mapping. The `precedence` field controls evaluation order when multiple policies match ( `0` means this policy is evaluated first).
+2) (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
+3) Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, the following request creates a policy that blocks all default [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories). The numeric IDs in the `traffic` field (such as `68`, `178`, `80`) correspond to Cloudflare's predefined security threat categories — refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories) for the full mapping. The `precedence` field controls evaluation order when multiple policies match ( `0` means this policy is evaluated first).
 
    *Create a Zero Trust Gateway rulebash*
 

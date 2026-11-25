@@ -2187,7 +2187,7 @@ Example response:
 
 ## Retrieve merge request changes
 
-- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270291) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
 
 > [!warning]
 > This endpoint was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/322117) in GitLab 15.7
@@ -2336,7 +2336,7 @@ Example response:
 ## List merge request diffs
 
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
-- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270291) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
 
 > [!flag]
 > The availability of the rate limit is controlled by a feature flag. For more information, see the history.
@@ -2422,7 +2422,7 @@ Example response:
 
 ## Show merge request raw diffs
 
-- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270291) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
 
 > [!flag]
 > The availability of the rate limit is controlled by a feature flag. For more information, see the history.
@@ -4246,7 +4246,7 @@ Example response:
 ## Retrieve a merge request diff version
 
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
-- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270291) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
 
 > [!flag]
 > The availability of the rate limit is controlled by a feature flag. For more information, see the history.

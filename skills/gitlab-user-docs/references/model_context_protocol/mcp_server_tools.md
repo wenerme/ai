@@ -326,6 +326,7 @@ Get merge request 15 in project gitlab-org/gitlab with its commits
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617173) in GitLab 19.5.
 - `include_triggers` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640203) in GitLab 19.7.
 - `url` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640950) in GitLab 19.7.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631699) `can_start_session` to check access to GitLab Duo Agentic Chat for foundational agents that don't need the repository in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -334,7 +335,9 @@ available instead of guessing a flow name. Which agents and flows a project offe
 configured per project, and their IDs differ between projects.
 
 Each entry includes `can_start_session`, which is `true` for a flow you have permission to run,
-and for a foundational chat agent when you can run sessions in CI in the project. The default
+and for a foundational chat agent when you can run sessions in CI in the project. A foundational
+chat agent that doesn't need the repository, such as Data Analyst, runs without a CI job, so it is
+`true` when you can use GitLab Duo Agentic Chat in the project. The default
 GitLab Duo agent, other agents, and external agents are listed for discovery only, and
 `can_start_session` is always `false` for them. It is also `false` for a flow you cannot execute,
 or whose version is unreleased or still a draft.
@@ -405,6 +408,7 @@ Why didn't the review flow run on my merge request in gitlab-org/gitlab?
 ## `start_duo_session`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607619) in GitLab 19.5.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631699) to run foundational agents that don't need the repository without a CI job in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -414,7 +418,9 @@ Returns a `workflow_id` immediately. Use `get_duo_session` with that ID to track
 These tools are listed only when GitLab Duo Agent Platform is available for you.
 For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
 
-The session runs in a CI job that can push commits and open merge requests.
+A flow runs in a CI job that can push commits and open merge requests, and so does a
+foundational agent that needs the repository. A foundational agent that doesn't need it, such as
+Data Analyst, runs without a CI job and answers in seconds.
 
 Provide exactly one of `url` or `project_id`. Provide at most one of `flow`, `flow_item_id`,
 `ai_catalog_item_consumer_id`, or `agent`.
@@ -512,7 +518,8 @@ List my active Duo Agent Platform sessions in gitlab-org/gitlab
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Checks the status of a GitLab Duo Agent Platform session. Running sessions include a suggested
-polling delay, which is longer while the session waits for its CI job to start. Finished sessions
+polling delay, which is longer while the session waits for its CI job to start, and shorter for a
+session that runs without a CI job. Finished sessions
 and completed chat turns include the latest agent answer. The merge requests and work items the
 session was started from are included as `source_merge_requests` and `source_work_items`. Each is an
 array, empty when the session has no source of that kind. Entries have `id` (the GraphQL global ID),
@@ -551,17 +558,20 @@ Check the status of Duo session 42
 ## `send_duo_session_input`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617171) in GitLab 19.5.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631699) to continue sessions of foundational agents that don't need the repository without a CI job in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Answers a GitLab Duo Agent Platform session that is waiting for input: approves or rejects a
 pending plan or tool call, or replies to a question the agent asked. Works for sessions started
 from `ai_catalog_item_consumer_id` and for those started from `agent`. A session accepts input
-once its last CI job has finished, whether it is waiting with status `input_required`,
-`plan_approval_required`, or `tool_call_approval_required`.
+when it is waiting with status `input_required`, `plan_approval_required`, or
+`tool_call_approval_required`. A session that runs in CI accepts it once its last CI job has finished.
 
-The session continues in a CI job. The response includes a suggested polling delay; use
-`get_duo_session` with the same `workflow_id` to follow progress.
+A session that ran in a CI job continues in a new one. A session that ran without a CI job
+continues without one, and accepts one answer at a time: input sent while the agent is still
+working is refused until the session pauses again. The response includes a suggested polling
+delay; use `get_duo_session` with the same `workflow_id` to follow progress.
 
 | Parameter        | Type    | Required | Description |
 |------------------|---------|----------|-------------|

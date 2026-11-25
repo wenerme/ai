@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Cloudflare mTLS now supports client certificates that have not been issued by Cloudflare CA. Learn how you can bring your own CA and use it with Cloudflare mTLS.
 title: Bring your own CA for mTLS
 image: https://developers.cloudflare.com/ssl/client-certificates/byo-ca/og.png?v=c020e73e6b5686bc
@@ -86,7 +88,7 @@ If your client certificates are issued by an intermediate CA, upload the full CA
 6. On the **Associate Hostnames** page, enter the hostname that should use this CA for mTLS validation and select **Add** for each one. You can also skip this step and associate hostnames later.
 7. Select **Save** to confirm.
 
-1. Use the [Upload mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls_certificates/methods/create/) to upload the CA root certificate.
+1) Use the [Upload mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls_certificates/methods/create/) to upload the CA root certificate.
 
 - `ca` boolean required
   - Set to `true` to indicate that the certificate is a CA certificate.
@@ -137,7 +139,7 @@ If you wish to remove the association from the Cloudflare-managed certificate an
 3. Select the cross next to the hostname you want to remove.
 4. Select **Save** to confirm.
 
-1. [List the hostname associations](https://developers.cloudflare.com/api/resources/certificate_authorities/subresources/hostname_associations/methods/get/) **without** the `mtls_certificate_id` parameter.
+1) [List the hostname associations](https://developers.cloudflare.com/api/resources/certificate_authorities/subresources/hostname_associations/methods/get/) **without** the `mtls_certificate_id` parameter.
 
 <details>
 
@@ -202,7 +204,7 @@ If you want to remove a CA that you have previously uploaded, you must first rem
 4. Remove all associated hostnames first, if any exist.
 5. Select the delete option and confirm.
 
-1. Make a request to the [Replace Hostname Associations endpoint](https://developers.cloudflare.com/api/resources/certificate_authorities/subresources/hostname_associations/methods/update/), with an empty array for `hostnames` and specifying your CA certificate ID in `mtls_certificate_id`:
+1) Make a request to the [Replace Hostname Associations endpoint](https://developers.cloudflare.com/api/resources/certificate_authorities/subresources/hostname_associations/methods/update/), with an empty array for `hostnames` and specifying your CA certificate ID in `mtls_certificate_id`:
 
 ```txt
   "hostnames": [],

@@ -601,7 +601,7 @@ Supported attributes:
 |---------------|-------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
 | `id`          | integer or string | yes      | ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) maintained by the authenticated user. |
 | `agent_id`    | integer           | yes      | ID of the agent.                                                                                                      |
-| `url`         | string            | yes      | Agent URL for this URL configuration.                                                                                 |
+| `url`         | string            | yes      | Agent URL for this URL configuration. Must use the `grpc` or `grpcs` scheme and must not resolve to `localhost` or the local network. |
 | `client_cert` | string            | no       | Client certificate in PEM format if mTLS authentication should be used. Must be provided with `client_key`.           |
 | `client_key`  | string            | no       | Client key in PEM format if mTLS authentication should be used. Must be provided with `client_cert`.                  |
 | `ca_cert`     | string            | no       | CA certificate in PEM format to verify the agent endpoint.                                                            |

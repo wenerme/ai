@@ -1062,7 +1062,7 @@ The rotation length of the on-call rotation.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `length` | [`Int!`](scalars.md#int) | Rotation length of the on-call rotation. |
+| `length` | [`Int!`](scalars.md#int) | Rotation length of the on-call rotation. Must be at most one year: 8760 hours, 365 days, or 52 weeks. |
 | `unit` | [`OncallRotationUnitEnum!`](enums.md#oncallrotationunitenum) | Unit of the rotation length of the on-call rotation. |
 
 ## `OncallUserInputType`

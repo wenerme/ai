@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: HTTP filtering in Gateway.
 title: HTTP filtering
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/og.png?v=ebafe190bef5a2e1
@@ -69,13 +71,13 @@ To create a new HTTP policy:
    | Security Categories | in | *All security risks* | Block |
 6. Select **Create policy**.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+1) [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
    | Type | Item | Permission |
    | --- | --- | --- |
    | Account | Zero Trust | Edit |
-2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
-3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, if you have configured TLS decryption, some applications that use [embedded certificates](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#inspection-limitations) may not support HTTP inspection, such as some Google products. You can create a policy to bypass inspection for these applications:
+2) (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
+3) Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, if you have configured TLS decryption, some applications that use [embedded certificates](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#inspection-limitations) may not support HTTP inspection, such as some Google products. You can create a policy to bypass inspection for these applications:
 
    *Create a Zero Trust Gateway rulebash*
 

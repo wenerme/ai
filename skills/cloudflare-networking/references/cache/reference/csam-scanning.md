@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Scan cached content for child sexual abuse material.
 title: CSAM Scanning Tool
 image: https://developers.cloudflare.com/cache/reference/csam-scanning/og.png?v=dd69b4feb6b4deb4
@@ -57,8 +59,8 @@ You are responsible for understanding and complying with any legal obligations y
 
 
 
-- You may need to preserve and securely store a copy of the content and related data in the case NCMEC or law enforcement reach out for additional details.
-- You likely have an obligation to securely preserve certain information related to your report for one year in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.
+* You may need to preserve and securely store a copy of the content and related data in the case NCMEC or law enforcement reach out for additional details.
+* You likely have an obligation to securely preserve certain information related to your report for one year in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.
 
 
 

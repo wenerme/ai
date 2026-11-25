@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.
 title: Media and streaming
 image: https://developers.cloudflare.com/use-cases/media-streaming/og.png?v=4ea4d21c69d0864a
@@ -56,13 +58,13 @@ Handle media uploads from users at scale:
 ### Create a new application
 
 - A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up). Stream and R2 are account-level offerings. You do not need a domain added to Cloudflare to upload, encode, or store media.
-- For Image Transformations: enable the feature per domain from the [Transformations page ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/).
+- For Image Transformations: enable the feature per domain from the [Transformations page ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/url/).
 
 ### Use an existing application
 
 - A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for CDN caching, image optimization (Polish), and cache rules.
-- For Image Transformations on an existing domain: enable the feature from the [Transformations page ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/).
+- For Image Transformations on an existing domain: enable the feature from the [Transformations page ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/url/).
 
 ---
 
@@ -89,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/media-streaming/#page","headline":"Media and streaming","description":"Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.","url":"https://developers.cloudflare.com/use-cases/media-streaming/","inLanguage":"en","image":"https://developers.cloudflare.com/use-cases/media-streaming/og.png?v=4ea4d21c69d0864a","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/media-streaming/#page","headline":"Media and streaming","description":"Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.","url":"https://developers.cloudflare.com/use-cases/media-streaming/","inLanguage":"en","image":"https://developers.cloudflare.com/use-cases/media-streaming/og.png?v=4ea4d21c69d0864a","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

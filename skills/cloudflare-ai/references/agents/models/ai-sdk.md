@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.
 title: AI SDK
 image: https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e

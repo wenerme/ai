@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Build a Worker gateway that routes and load balances across multiple private VPC Services.
 title: Route to private services from Workers
 image: https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/og.png?v=ab255030f9d9eab6
@@ -54,7 +56,7 @@ Update your Wrangler configuration file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"vpc_services": [
 		{
 			"binding": "USER_SERVICE",
@@ -74,7 +76,7 @@ name = "api-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[vpc_services]]
 binding = "USER_SERVICE"

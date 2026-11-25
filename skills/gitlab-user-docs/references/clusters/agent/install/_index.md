@@ -150,6 +150,10 @@ cannot establish a network connection to the GitLab instance, but can be connect
    GitLab can authenticate to the agent in your cluster using:
    - A JWT token. Available in both `grpc://` and `grpcs://` configurations. You don't need to generate client certificates with this method.
 1. Add a URL configuration to the agent with the [cluster agents API](../../../../api/cluster_agents.md#create-a-url-configuration). If you delete the URL configuration, the receptive agent becomes an ordinary agent. You can associate a receptive agent with only one URL configuration at a time.
+
+   The URL must not point to `localhost` or to the local network. If your agent is only reachable
+   on the local network, ask an administrator to
+   [allow receptive agents in the local network](../../../../administration/clusters/kas.md#allow-receptive-agents-in-the-local-network).
 1. Install the agent into the cluster. Use the command you copied when you registered the agent, but remove the `--set config.kasAddress=...` parameter.
 
    JWT token authentication example. Note the added `config.receptive.enabled=true` and `config.api.jwt` settings:

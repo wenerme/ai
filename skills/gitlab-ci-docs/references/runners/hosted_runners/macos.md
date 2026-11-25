@@ -34,11 +34,50 @@ in your `.gitlab-ci.yml` file. Each image runs a specific version of macOS and X
 
 | VM image                   | Status       |              |
 |----------------------------|--------------|--------------|
-| `macos-15-xcode-16`        | `GA`         | [Preinstalled Software](https://gitlab-org.gitlab.io/ci-cd/shared-runners/images/macos-image-inventory/macos-15-xcode-16/) |
+| `macos-15-xcode-16`        | `deprecated` | [Preinstalled Software](https://gitlab-org.gitlab.io/ci-cd/shared-runners/images/macos-image-inventory/macos-15-xcode-16/) |
 | `macos-26-xcode-26`        | `GA`         | [Preinstalled Software](https://gitlab-org.gitlab.io/ci-cd/shared-runners/images/macos-image-inventory/macos-26-xcode-26/) |
-| `macos-27-xcode-27`        | `beta`       | [Preinstalled Software](https://gitlab-org.gitlab.io/ci-cd/shared-runners/images/macos-image-inventory/macos-27-xcode-27/) |
+| `macos-27-xcode-27`        | `GA`         | [Preinstalled Software](https://gitlab-org.gitlab.io/ci-cd/shared-runners/images/macos-image-inventory/macos-27-xcode-27/) |
 
-If no image is specified, the macOS runner uses `macos-26-xcode-26`.
+If no image is specified, the macOS runner uses `macos-27-xcode-27`.
+
+## Select an Xcode version
+
+Each image has a default Xcode version, which the image name refers to.
+Some images include more than one Xcode version.
+To find the Xcode versions an image includes,
+see the  section of the
+image's preinstalled software page.
+The section lists the `DEVELOPER_DIR` path of each version and marks the default.
+
+To use a version other than the default,
+set the `DEVELOPER_DIR` variable to the path of that version.
+Xcode tools such as `xcodebuild`, `xcrun`, and `swift`
+use the version that `DEVELOPER_DIR` points to.
+
+For example, to build with Xcode 27.2 on the `macos-27-xcode-27` image:
+
+```yaml
+build:
+  tags:
+    - saas-macos-medium-m1
+  image: macos-27-xcode-27
+  variables:
+    DEVELOPER_DIR: /Applications/Xcode-27.2.0.app/Contents/Developer
+  script:
+    - xcodebuild -version
+```
+
+Alternatively, to change the default Xcode version for the rest of the job,
+run `xcode-select` in the job script:
+
+```shell
+sudo xcode-select --switch /Applications/Xcode-27.2.0.app/Contents/Developer
+```
+
+To always use the newest installed version of an Xcode major release,
+use the `/Applications/Xcode-<major>.app/Contents/Developer` path.
+For example, `/Applications/Xcode-27.app/Contents/Developer`.
+This path might point to a version other than the default.
 
 ## Image update policy for macOS
 
@@ -59,7 +98,7 @@ The following sample `.gitlab-ci.yml` file shows how to start using the hosted r
 .macos_saas_runners:
   tags:
     - saas-macos-medium-m1
-  image: macos-26-xcode-26
+  image: macos-27-xcode-27
   before_script:
     - echo "started by ${GITLAB_USER_NAME} / @${GITLAB_USER_LOGIN}"
 

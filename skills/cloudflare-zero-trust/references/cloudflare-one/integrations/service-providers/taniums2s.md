@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Tanium in Zero Trust integrations.
 title: Tanium
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/taniums2s/og.png?v=cbdb6d8d13135e5d
@@ -54,9 +56,9 @@ To retrieve the API URL, determine your Tanium Gateway root endpoint:
 3. Select **Tanium**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
 
-5. Enter the **Client Secret** and **REST API URL** you noted down above.
-6. Choose a **Polling frequency** for how often Cloudflare One should query Tanium for information.
-7. Select **Test and save**.
+5) Enter the **Client Secret** and **REST API URL** you noted down above.
+6) Choose a **Polling frequency** for how often Cloudflare One should query Tanium for information.
+7) Select **Test and save**.
 
 ### 3. Configure the posture check
 

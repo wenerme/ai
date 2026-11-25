@@ -10,6 +10,8 @@ Every call to this API requires authentication.
 
 ## Create a dependency list export
 
+- `separate_component_group_and_name` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273648) in GitLab 19.7.
+
 Creates a CycloneDX JSON export for all the project dependencies detected in a pipeline.
 
 If an authenticated user does not have the [read_dependency](../user/custom_roles/abilities.md#vulnerability-management)
@@ -28,6 +30,7 @@ POST /pipelines/:id/dependency_list_exports
 | `id`                | integer           | yes        | The ID of the project, group, or pipeline that the authenticated user has access to. |
 | `export_type`       | string            | yes        | Format of the export. See [export types](#export-types) for a list of accepted values. |
 | `send_email`        | boolean           | no         | When set to `true`, sends an email notification to the user who requested the export when the export completes. |
+| `separate_component_group_and_name` | boolean | no | When set to `true`, exports the CycloneDX component `group` and `name` as separate fields for the `sbom` and `cyclonedx_1_6_json` formats. Not supported for group exports. Default is `false`. |
 
 ```shell
 curl --request POST \
@@ -172,3 +175,6 @@ Example response:
 }
 
 ```
+
+> [!note]
+> For namespaced package types such as Maven and npm, GitLab stores the component group as part of `name`, in the form `<group>/<name>`. To export the `group` and `name` as separate fields instead, set `separate_component_group_and_name` to `true`. This option applies to the `sbom` and `cyclonedx_1_6_json` export formats.

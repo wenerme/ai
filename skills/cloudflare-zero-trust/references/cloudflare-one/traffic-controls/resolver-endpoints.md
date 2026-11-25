@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure resolver endpoints in Cloudflare One.
 title: Resolver endpoints
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/og.png?v=f6c4ad99df2a34b5
@@ -38,8 +40,8 @@ To add a DNS location to Gateway:
 8. Select **Continue**.
 9. Review the settings for your DNS location, then choose **Done**.
 
-10. Change the DNS resolvers on your router, browser, or OS by following the setup instructions in the UI.
-11. Select **Go to DNS Location**. Your location will appear in your list of locations.
+10) Change the DNS resolvers on your router, browser, or OS by following the setup instructions in the UI.
+11) Select **Go to DNS Location**. Your location will appear in your list of locations.
 
 You can now apply [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) to your location using the [Location selector](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#location).
 

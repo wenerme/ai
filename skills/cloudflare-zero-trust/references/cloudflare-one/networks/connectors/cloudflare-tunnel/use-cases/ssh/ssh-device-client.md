@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Connect with self-managed SSH keys in Zero Trust networking.
 title: Connect with self-managed SSH keys
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/og.png?v=9b575724e4a63119
@@ -252,9 +254,9 @@ By default, all devices enrolled in your organization can SSH to the server unle
 4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
 5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
+2) Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
 
    ```tf
    resource "cloudflare_zero_trust_device_settings "global_warp_settings" {

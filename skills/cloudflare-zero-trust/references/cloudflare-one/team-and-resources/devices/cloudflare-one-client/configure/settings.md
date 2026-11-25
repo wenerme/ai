@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference information for Device client settings in Zero Trust.
 title: Device client settings
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/og.png?v=c0592dc6bb5fe62e
@@ -85,9 +87,9 @@ To activate the override code on a user device:
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
 3. Enter the override code and select **Disconnect**.
 
-1. In the Cloudflare One Client, go to **Settings** > **Preferences** > **Advanced**.
-2. Select **Enter code**.
-3. Enter the override code.
+1) In the Cloudflare One Client, go to **Settings** > **Preferences** > **Advanced**.
+2) Select **Enter code**.
+3) Enter the override code.
 
 The user can now toggle the client's connection toggle or use the `warp-cli connect` command. The client will automatically reconnect after the [Auto connect period](#auto-connect), but the user can continue to connect or disconnect the Cloudflare One Client until the override expires.
 
@@ -626,9 +628,9 @@ Version 2026.1 and earlier
 1. Open a terminal window.
 2. Run `warp-cli override local-network start`.
 
-1. Open the Cloudflare One Agent app.
-2. Go to **Settings** > **Advanced** > **Connection Options**.
-3. Select **Access Local Network**.
+1) Open the Cloudflare One Agent app.
+2) Go to **Settings** > **Advanced** > **Connection Options**.
+3) Select **Access Local Network**.
 
 #### Limitations
 

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Details on how to configure Workers static assets and its binding.
 title: Configuration and Bindings
 image: https://developers.cloudflare.com/workers/static-assets/binding/og.png?v=cb99c9bbfafafcaf
@@ -28,7 +30,7 @@ The folder of static assets to be served. For many frameworks, this is the `./pu
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./public/",
 	},
@@ -39,7 +41,7 @@ The folder of static assets to be served. For many frameworks, this is the `./pu
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./public/"
@@ -74,7 +76,7 @@ Controls whether to invoke the Worker script regardless of a request which would
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// The following configuration unconditionally invokes the Worker script at
@@ -91,7 +93,7 @@ Controls whether to invoke the Worker script regardless of a request which would
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "src/index.ts"
 upload_source_maps = true
 
@@ -115,7 +117,7 @@ The order in which the patterns are listed is not significant.
 {
 	"name": "my-spa-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -130,7 +132,7 @@ The order in which the patterns are listed is not significant.
 ```toml
 name = "my-spa-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "./src/index.ts"
 upload_source_maps = true
 
@@ -162,7 +164,7 @@ The binding uses the current Worker version's assets and configuration. It does 
 	"main": "./src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./public/",
 		"binding": "ASSETS",
@@ -176,7 +178,7 @@ name = "my-worker"
 main = "./src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./public/"

@@ -235,7 +235,9 @@ The data ends at the last minute that the `pg_ash_rollup_minute_worker` job summ
 so the newest data is usually one or two minutes old.
 The tab shows:
 
-- : A chart of the average number of active sessions in each minute, stacked by wait event type. An average of 1 means one session ran or waited for the whole minute, or two sessions for half a minute.
+- : A chart of the average number of active sessions in each minute,
+  stacked by wait event type.
+  An average of 1 means one session ran or waited for the whole minute, or two sessions for half a minute.
 - : The share of the load for each wait event type,
   and the average and peak number of active sessions.
   `CPU*` counts sessions that were active without a wait event.
@@ -247,13 +249,47 @@ for example on the first day after you install it, `pg_ash` reads hourly summari
 
 - The time range widens to whole hours.
   The current hour has no hourly summary yet, so its load is missing.
-- The  chart shows the average load in each hour. An hour without an hourly summary, such as the current hour, shows as a gap.
+- The  chart shows the average load in each hour.
+  An hour without an hourly summary, such as the current hour, shows as a gap.
 -  shows .
 - Time without summarized samples, such as before the install or the current hour, counts as no load,
   so averages are lower than the load while sampling ran.
 
 The tab shows only sessions on the primary database, so load on read replicas does not appear.
 Sessions of other database users appear only if the GitLab database user has the `pg_read_all_stats` role.
+
+#### View the queries behind a wait event type
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266416) in GitLab 19.7.
+
+To view the queries behind a wait event type:
+
+1. Do one of the following:
+   - On the  tab, select a wait event type.
+     The queries are from the five minutes with the most load of that wait event type in the time range.
+   - In the  chart, select a point.
+     The queries are from the five minutes around that point, for the wait event type you selected.
+     If you select above the stacked areas, the queries are for the wait event type
+     with the most load in those minutes.
+     If no wait event type has load in them, nothing opens.
+     This choice ignores wait event types that you hide in the chart legend.
+
+   The queries open in a drawer, and the chart marks the minutes they are from.
+1. Optional. To see the minutes before or after, in the drawer,
+   select  ()
+   or  ().
+1. To close the drawer, select **Close drawer** () or press <kbd>Escape</kbd>.
+
+These queries come from raw samples, which are slow to read, so they cover five minutes at a time.
+Raw samples are kept for less time than the summaries that the chart and tables use.
+When the raw samples for those minutes are removed, the queries cannot be shown.
+For how long each is kept, see [Rollup and retention](#rollup-and-retention).
+
+When the tab reads hourly summaries, the queries are not available.
+A time range is at least 61 minutes long, so this can happen to every time range
+until `pg_ash` has more than an hour of minute summaries,
+for example right after you install it or change the sample interval.
+To see the queries, choose a time range that starts later, or wait.
 
 #### Query IDs and text
 

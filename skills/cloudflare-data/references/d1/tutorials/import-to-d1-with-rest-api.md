@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This tutorial uses the REST API to import a database into D1.
 title: Bulk import to D1 using REST API
 image: https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/og.png?v=f43c28391039d221
@@ -211,7 +213,7 @@ The import process consists of four steps:
 3. **Start ingestion**: This step starts the ingestion process.
 4. **Polling**: This step polls the import process until it completes.
 
-1. Create a function called `uploadToD1` which executes the four steps of the import process.
+1) Create a function called `uploadToD1` which executes the four steps of the import process.
 
    *index.jsjs*
 
@@ -281,7 +283,7 @@ The import process consists of four steps:
    - Before starting ingestion, the ETag is verified.
    - `ingestResponse` starts the ingestion process.
    - `pollImport` polls the import process until it completes.
-2. Add the `pollImport` function to the `index.js` file.
+2) Add the `pollImport` function to the `index.js` file.
 
    *index.jsjs*
 
@@ -321,7 +323,7 @@ The import process consists of four steps:
    The code above does the following:
    - Sends a `poll` action to the D1 API.
    - Polls the import process until it completes.
-3. Finally, add the `runImport` function to the `index.js` file to run the import process.
+3) Finally, add the `runImport` function to the `index.js` file to run the import process.
 
    *index.jsjs*
 

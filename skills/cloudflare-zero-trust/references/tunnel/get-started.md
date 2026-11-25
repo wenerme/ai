@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create your first Cloudflare Tunnel and publish an application in under 5 minutes.
 title: Get started
 image: https://developers.cloudflare.com/tunnel/get-started/og.png?v=d2faec8e7bce325e
@@ -93,7 +95,7 @@ If your origin already serves HTTPS or redirects HTTP to HTTPS, refer to [Troubl
    If the origin certificate covers the public hostname rather than the service address, set **Origin Server Name** to the certificate hostname and keep **Disable TLS certificate verification** turned off. Refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) for the complete configuration.
 6. Select **Add route**.
 
-1. Configure your tunnel's ingress rules:<details><summary>
+1) Configure your tunnel's ingress rules:<details><summary>
 
    Required API token permissions</summary>
 
@@ -127,7 +129,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    ```
 
    Your ingress rules must include a catch-all rule at the end. In this example, `cloudflared` will respond with a 404 status code when the request does not match any hostname.
-2. Create a DNS record for your application:<details><summary>
+2) Create a DNS record for your application:<details><summary>
 
    Required API token permissions</summary>
 
@@ -150,7 +152,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/get-started/#create-a-tunnel):
+3) Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/get-started/#create-a-tunnel):
    1. [Download and install ↗︎](https://pkg.cloudflare.com/index.html) `cloudflared`.
    2. Run the following command:
 
@@ -158,9 +160,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-   1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
-   2. Open Command Prompt as administrator.
-   3. Run the following command:
+   1) [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
+   2) Open Command Prompt as administrator.
+   3) Run the following command:
 
       ```txt
       cloudflared.exe service install <TUNNEL_TOKEN>
@@ -173,8 +175,8 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-   1. Open a terminal window.
-   2. Run the following command:
+   1) Open a terminal window.
+   2) Run the following command:
 
       ```sh
       docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>

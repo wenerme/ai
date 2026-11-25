@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Manage findings in Cloudflare One.
 title: Manage findings
 image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/og.png?v=31d64742589b6a07
@@ -83,10 +85,10 @@ Posture finding instances and content findings for some integrations (such as [M
 4. In **Active Instances**, select the file name.
 5. In **Shared Links**, select the linked file instance.
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Content Findings**.
-2. Choose **SaaS** or **Cloud**.
-3. Select the file name of the detected asset.
-4. In **Sharing details**, select the linked file instance.
+1) In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Content Findings**.
+2) Choose **SaaS** or **Cloud**.
+3) Select the file name of the detected asset.
+4) In **Sharing details**, select the linked file instance.
 
 ## Hide findings
 

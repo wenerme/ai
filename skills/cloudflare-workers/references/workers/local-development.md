@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Develop and test HTTP, TCP, and gRPC Workers locally.
 title: Local development
 image: https://developers.cloudflare.com/workers/local-development/og.png?v=f54ca19c6e1d7c99
@@ -127,7 +129,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 
 	"r2_buckets": [
 		{
@@ -142,7 +144,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -162,7 +164,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 
 	"env": {
 		"production": {
@@ -189,7 +191,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -599,7 +601,7 @@ When using remote development, all bindings automatically connect to their remot
 
 ### Limitations
 
-- When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in [ Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
+- When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in [Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
 - [Python Workers](https://developers.cloudflare.com/workers/languages/python/) do not support the `--remote` flag. Use remote bindings instead.
 
 Was this helpful?

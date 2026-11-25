@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Clef-flash is a fast 9B multimodal decision model that turns a state and a schema of typed questions into decisions. It reads the state as text, JSON, images, or video, and returns a probability for every allowed option of every question.
 title: clef-flash
 image: https://developers.cloudflare.com/og-docs.png
@@ -31,7 +33,7 @@ Clef-flash is a fast 9B multimodal decision model that turns a state and a schem
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,576 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,576 tokens |
 | Terms and License | [link ↗](https://huggingface.co/Cloudflare/clef-flash/blob/main/LICENSE) |
 | More information | [link ↗](https://huggingface.co/Cloudflare/clef-flash) |
 | Vision | Yes |

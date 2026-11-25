@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 605 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 610 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -164,7 +164,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
     "contextWindow": 32768,
     "maxOutput": 16384,
@@ -896,7 +896,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 163840,
     "maxOutput": 65536,
@@ -2704,6 +2704,18 @@ for await (const chunk of stream) {
     "outputCost": 1.5
   },
   {
+    "model": "nano-gpt/kitani/evolve-beta",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 8192,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "nano-gpt/LatitudeGames/Wayfarer-Large-70B-Llama-3.3",
     "imageInput": false,
     "audioInput": false,
@@ -3178,7 +3190,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 1048576,
     "maxOutput": 524288,
     "inputCost": 0.15,
     "outputCost": 0.6
@@ -3752,7 +3764,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 16384,
@@ -3764,7 +3776,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 16384,
@@ -3860,7 +3872,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 1047576,
     "maxOutput": 32768,
@@ -3908,7 +3920,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 16384,
@@ -5268,8 +5280,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 65536,
-    "inputCost": 0.203,
-    "outputCost": 2.24
+    "inputCost": 0.25,
+    "outputCost": 2
   },
   {
     "model": "nano-gpt/qwen/qwen3.6-27b:thinking",
@@ -5280,8 +5292,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 65536,
-    "inputCost": 0.203,
-    "outputCost": 2.24
+    "inputCost": 0.25,
+    "outputCost": 2
   },
   {
     "model": "nano-gpt/qwen/qwen3.6-35b-a3b",
@@ -5696,7 +5708,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 32768,
     "maxOutput": 32768,
@@ -6360,8 +6372,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 64000,
-    "inputCost": 0.7506,
-    "outputCost": 2.2509
+    "inputCost": 0.834,
+    "outputCost": 2.501
   },
   {
     "model": "nano-gpt/TheDrummer/artemis-31b-v1.2",
@@ -6508,6 +6520,30 @@ for await (const chunk of stream) {
     "outputCost": 0.2006
   },
   {
+    "model": "nano-gpt/upstage/solar-mini-4-5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.01,
+    "outputCost": 0.04
+  },
+  {
+    "model": "nano-gpt/upstage/solar-mini-4-5:thinking",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.01,
+    "outputCost": 0.04
+  },
+  {
     "model": "nano-gpt/upstage/solar-mini4",
     "imageInput": false,
     "audioInput": false,
@@ -6530,6 +6566,30 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.05,
     "outputCost": 0.2
+  },
+  {
+    "model": "nano-gpt/upstage/solar-pro-4-contributor",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.09,
+    "outputCost": 0.36
+  },
+  {
+    "model": "nano-gpt/upstage/solar-pro-4-contributor:thinking",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.09,
+    "outputCost": 0.36
   },
   {
     "model": "nano-gpt/upstage/solar-pro4",
@@ -6737,7 +6797,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "nano-gpt/xiaomi/mimo-v2.6-flash-uncensored",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -6749,7 +6809,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "nano-gpt/xiaomi/mimo-v2.6-flash-uncensored:thinking",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -6800,7 +6860,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 65536,
@@ -6836,7 +6896,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 65536,
@@ -7269,7 +7329,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": true,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 202800,
     "maxOutput": 131072,
     "inputCost": 1.2,

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.
 title: Examples
 image: https://developers.cloudflare.com/workers/cache/examples/og.png?v=e7b4e199277c303d
@@ -39,7 +41,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"cache": { "enabled": true },
 	"exports": {
 		// The gateway runs on every request — no caching in front of it.
@@ -55,7 +57,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [cache]
 enabled = true
@@ -99,7 +101,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -113,7 +115,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [cache]
 enabled = true
@@ -384,7 +386,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -398,7 +400,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [cache]
 enabled = true
@@ -558,7 +560,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -572,7 +574,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [cache]
 enabled = true
@@ -819,7 +821,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -833,7 +835,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [cache]
 enabled = true

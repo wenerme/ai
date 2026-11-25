@@ -34,16 +34,20 @@ Audit events are sent using the POST request method protocol supported by HTTP.
 - Offering: GitLab.com
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249354) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `audit_event_streaming_via_nats`. Disabled by default.
+- Batched delivery for destinations created on or after December 1, 2026 [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/616472) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
 By default, GitLab sends each audit event to a streaming destination in its own request.
-When the `audit_event_streaming_via_nats` feature flag is enabled for a top-level group,
-GitLab sends the audit events of the group in batches instead.
+Instead, GitLab sends audit events in batches to:
+
+- Destinations created on or after December 1, 2026.
+- All destinations of a top-level group, when the `audit_event_streaming_via_nats` feature flag
+  is enabled for the group.
+
 A batch can contain events of different types, and can contain a single event.
-The batch format applies to every delivery to the destinations of the group.
 
 If a delivery to a destination fails, GitLab redelivers the whole batch,
 which can duplicate every event in it.

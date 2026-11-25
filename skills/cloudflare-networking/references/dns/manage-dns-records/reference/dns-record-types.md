@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: DNS record types supported by Cloudflare.
 title: DNS record types
 image: https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/og.png?v=a410073f748f42e8
@@ -41,7 +43,7 @@ These records include the following fields:
   - There is no requirement to start with a letter or end with a letter or digit.
   - Underscores are valid in DNS and commonly used for service records.
 
-- **IPv4/IPv6 address**: Your origin server address (cannot be a [Cloudflare IP ↗︎](https://www.cloudflare.com/ips))
+* **IPv4/IPv6 address**: Your origin server address (cannot be a [Cloudflare IP ↗︎](https://www.cloudflare.com/ips))
 
 Note
 

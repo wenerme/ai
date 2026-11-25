@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This example demonstrates how to query a private PostgreSQL database from a Worker using Workers VPC and Hyperdrive. The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.
 title: Connect to a private database
 image: https://developers.cloudflare.com/workers-vpc/examples/private-database/og.png?v=51911d82efb15602
@@ -182,7 +184,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -195,7 +197,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Detect sensitive data like credit card numbers in HTTP responses.
 title: Cloudflare Sensitive Data Detection
 image: https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/og.png?v=22a350721914a667
@@ -97,14 +99,14 @@ Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy
 3. For **Sensitive data detection**, select **Configured ruleset: \<SCOPE>**, and then select **Next**.
 4. Select **Browse rules**.![The Cloudflare dashboard displaying the list of rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1302,height=838,format=webp/_astro/rules-config-sdd-ruleset.CggZM4C2.png)
 
-5. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
+5) Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
     If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all \<NUMBER> rules**.![The Configure deployment page displaying selected rules with the 'encryption' tag in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=611,format=webp/_astro/tags-config-sdd-ruleset.DQw7m2sB.png)
-6. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
-7. Select **Next**.
-8. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+6) Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
+7) Select **Next**.
+8) A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
    - Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
    - Select **Only selected rules** to apply your configurations to the selected rules only.
-9. Select **Save**.
+9) Select **Save**.
 
 ### Rule-level configuration
 
@@ -119,11 +121,11 @@ Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy
 3. For **Sensitive data detection**, select **Configured ruleset: \<SCOPE>**, and then select **Next**.
 4. Select **Browse rules**.![The Cloudflare dashboard displaying the list of rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1302,height=838,format=webp/_astro/rules-config-sdd-ruleset.CggZM4C2.png)
 
-5. Search for rules using the available filters.
-6. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
+5) Search for rules using the available filters.
+6) In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
 
    To configure multiple rules with the same value, select the checkboxes for all the rules you want to configure. If not all the rules are displayed in the current page, you can extend your selection to all rules across all pages by selecting **Select all \<NUMBER> rules**. Then, use the buttons displayed in the top right corner of the table — for example, **Set status** — to update one or more fields for the selected rules.![The Configure deployment page displaying selected rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=611,format=webp/_astro/tags-config-sdd-ruleset.DQw7m2sB.png)
-7. Select **Next**, and then select **Save**.
+7) Select **Next**, and then select **Save**.
 
 ## Configure via API
 
