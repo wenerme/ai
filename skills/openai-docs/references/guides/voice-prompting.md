@@ -1514,6 +1514,75 @@ Preamble sample phrases:
 tools := realtime.RealtimeToolsConfigParam{{OfFunction: &realtime.RealtimeFunctionToolParam{Type: "function", Name: openai.String("lookup_account"), Description: openai.String("Retrieve a customer account using either an email or phone number to enable verification and account-specific actions.\n\nPreamble sample phrases:\n- For security, I’ll pull up your account using the email on file.\n- Let me look up your account by {email} now.\n- I’m fetching the account linked to {phone} to verify access.\n- One moment—I’m opening your account details."), Parameters: map[string]any{"type": "object", "properties": map[string]any{"email": map[string]any{"type": "string"}, "phone": map[string]any{"type": "string"}}, "additionalProperties": false}}}, {OfFunction: &realtime.RealtimeFunctionToolParam{Type: "function", Name: openai.String("check_outage"), Description: openai.String("Check for network outages affecting a given service address and return status and ETA if applicable.\n\nPreamble sample phrases:\n- I’ll check for any outages at {service_address} right now.\n- Let me look up network status for your area.\n- I’m checking whether there’s an active outage impacting your address.\n- One sec—verifying service status and any posted ETA."), Parameters: map[string]any{"type": "object", "properties": map[string]any{"service_address": map[string]any{"type": "string"}}, "required": []any{"service_address"}, "additionalProperties": false}}}}
 ```
 
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.*;
+import com.openai.helpers.*;
+import com.openai.models.realtime.*;
+import java.util.*;
+
+var http = OkHttpClient.builder().build();
+var options = ClientOptions.builder().fromEnv().httpClient(http).build();
+try (http;
+    var connection =
+        RealtimeConnection.connect(
+            options,
+            RealtimeWebSocketOptions.builder().model("gpt-realtime-1.5").build())) {
+  var tools =
+      List.of(
+          RealtimeFunctionTool.builder()
+              .type(RealtimeFunctionTool.Type.FUNCTION)
+              .name("lookup_account")
+              .description(
+                  "Retrieve a customer account using either an email or phone number to enable verification and account-specific actions.\n\nPreamble sample phrases:\n- For security, I\u2019ll pull up your account using the email on file.\n- Let me look up your account by {email} now.\n- I\u2019m fetching the account linked to {phone} to verify access.\n- One moment\u2014I\u2019m opening your account details.")
+              .parameters(
+                  JsonValue.from(
+                      Map.ofEntries(
+                          Map.entry("type", "object"),
+                          Map.entry(
+                              "properties",
+                              Map.ofEntries(
+                                  Map.entry(
+                                      "email", Map.ofEntries(Map.entry("type", "string"))),
+                                  Map.entry(
+                                      "phone", Map.ofEntries(Map.entry("type", "string"))))),
+                          Map.entry("additionalProperties", false))))
+              .build(),
+          RealtimeFunctionTool.builder()
+              .type(RealtimeFunctionTool.Type.FUNCTION)
+              .name("check_outage")
+              .description(
+                  "Check for network outages affecting a given service address and return status and ETA if applicable.\n\nPreamble sample phrases:\n- I\u2019ll check for any outages at {service_address} right now.\n- Let me look up network status for your area.\n- I\u2019m checking whether there\u2019s an active outage impacting your address.\n- One sec\u2014verifying service status and any posted ETA.")
+              .parameters(
+                  JsonValue.from(
+                      Map.ofEntries(
+                          Map.entry("type", "object"),
+                          Map.entry(
+                              "properties",
+                              Map.ofEntries(
+                                  Map.entry(
+                                      "service_address",
+                                      Map.ofEntries(Map.entry("type", "string"))))),
+                          Map.entry("required", List.of("service_address")),
+                          Map.entry("additionalProperties", false))))
+              .build());
+  var session = RealtimeSessionCreateRequest.builder();
+  for (var tool : tools) session.addTool(tool);
+  update(connection, session.build());
+}
+
+static void update(RealtimeConnection connection, RealtimeSessionCreateRequest session) {
+  connection.send(
+      RealtimeClientEvent.ofSessionUpdate(SessionUpdateEvent.builder().session(session).build()));
+  while (true) {
+    var event = connection.receive();
+    if (event.error().isPresent())
+      throw new IllegalStateException(event.error().orElseThrow().toString());
+    if (event.sessionUpdated().isPresent()) return;
+  }
+}
+```
+
 ```ruby
 tools = [
   {
@@ -2047,7 +2116,7 @@ This approach reduces the model’s cognitive load, making it easier for it to h
 
 #### Example
 
-Update the conversation state
+Build the conversation state
 
 ```typescript
 type State = "verify" | "resolve";
@@ -2249,6 +2318,104 @@ func buildSessionUpdate(state string) (realtime.RealtimeSessionCreateRequestPara
 		Parameters:  map[string]any{"type": "object", "properties": map[string]any{"next_state": map[string]any{"type": "string", "enum": allowed}}, "required": []string{"next_state"}},
 	}})
 	return realtime.RealtimeSessionCreateRequestParam{Instructions: openai.String(instructionsByState[state]), Tools: tools}, nil
+}
+```
+
+```java
+import com.openai.core.*;
+import com.openai.models.realtime.*;
+import java.util.*;
+
+enum State {
+  VERIFY,
+  RESOLVE
+}
+
+static final Map<String, List<String>> TRANSITIONS =
+    Map.ofEntries(Map.entry("verify", List.of("resolve")), Map.entry("resolve", List.of()));
+static final Map<String, String> INSTRUCTIONS =
+    Map.ofEntries(
+        Map.entry(
+            "verify",
+            "# Role & Objective\nVerify identity to access the account.\n\n# Conversation (Verify)\n- Ask for the email or phone on the account.\n- Read back digits one-by-one (e.g., '4-1-5\u2026 Is that correct?').\nExit when: Account ID is returned.\nWhen exit is satisfied: call set_conversation_state(next_state=\"resolve\")."),
+        Map.entry(
+            "resolve",
+            "# Role & Objective\nApply a fix by booking a technician.\n\n# Conversation (Resolve)\n- Offer two windows: '10\u201312 ET' or '2\u20134 ET'.\n- Book the chosen window.\nExit when: Appointment is confirmed.\nWhen exit is satisfied: end the call politely."));
+static final Map<String, List<Map<String, Object>>> TOOLS =
+    Map.ofEntries(
+        Map.entry(
+            "verify",
+            List.of(
+                Map.ofEntries(
+                    Map.entry("type", "function"),
+                    Map.entry("name", "lookup_account"),
+                    Map.entry("description", "Fetch account by email or phone."),
+                    Map.entry(
+                        "parameters",
+                        Map.ofEntries(
+                            Map.entry("type", "object"),
+                            Map.entry(
+                                "properties",
+                                Map.ofEntries(
+                                    Map.entry(
+                                        "email_or_phone",
+                                        Map.ofEntries(Map.entry("type", "string"))))),
+                            Map.entry("required", List.of("email_or_phone"))))))),
+        Map.entry(
+            "resolve",
+            List.of(
+                Map.ofEntries(
+                    Map.entry("type", "function"),
+                    Map.entry("name", "schedule_technician"),
+                    Map.entry("description", "Book a technician visit."),
+                    Map.entry(
+                        "parameters",
+                        Map.ofEntries(
+                            Map.entry("type", "object"),
+                            Map.entry(
+                                "properties",
+                                Map.ofEntries(
+                                    Map.entry(
+                                        "account_id", Map.ofEntries(Map.entry("type", "string"))),
+                                    Map.entry(
+                                        "window",
+                                        Map.ofEntries(
+                                            Map.entry("type", "string"),
+                                            Map.entry(
+                                                "enum", List.of("10-12 ET", "14-16 ET")))))),
+                            Map.entry("required", List.of("account_id", "window"))))))));
+
+// For transitions, call this only after your application confirms the current state
+// has met its exit conditions. Send the result in a session.update event.
+static RealtimeSessionCreateRequest buildSession(State state) {
+  String name = state.name().toLowerCase(java.util.Locale.ROOT);
+  var session = RealtimeSessionCreateRequest.builder().instructions(INSTRUCTIONS.get(name));
+  for (var definition : TOOLS.get(name))
+    session.addTool(JsonValue.from(definition).convert(RealtimeFunctionTool.class));
+  var allowed = TRANSITIONS.get(name);
+  String readable =
+      allowed.isEmpty() ? "no further states (terminal)" : String.join(", ", allowed);
+  session.addTool(
+      RealtimeFunctionTool.builder()
+          .type(RealtimeFunctionTool.Type.FUNCTION)
+          .name("set_conversation_state")
+          .description(
+              "Switch the conversation phase. Current: '"
+                  + name
+                  + "'. You may switch only to: "
+                  + readable
+                  + ". Call this AFTER exit criteria are satisfied.")
+          .parameters(
+              JsonValue.from(
+                  Map.of(
+                      "type",
+                      "object",
+                      "properties",
+                      Map.of("next_state", Map.of("type", "string", "enum", allowed)),
+                      "required",
+                      List.of("next_state"))))
+          .build());
+  return session.build();
 }
 ```
 

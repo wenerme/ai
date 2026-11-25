@@ -57,6 +57,8 @@ Match the look and feel of your product by specifying colors, typography, and mo
 
 For all theming options, see the [API reference](https://openai.github.io/chatkit-js/api/openai/chatkit/type-aliases/themeoption/).
 
+Customize the ChatKit theme
+
 ```typescript
 import type { ChatKitOptions } from "@openai/chatkit";
 
@@ -81,6 +83,8 @@ const options: Partial<ChatKitOptions> = {
 
 Let users know what to ask or guide their first input by changing the composer’s placeholder text.
 
+Set the greeting and placeholder text
+
 ```typescript
 const options: Partial<ChatKitOptions> = {
   composer: {
@@ -96,6 +100,8 @@ const options: Partial<ChatKitOptions> = {
 ## Show starter prompts for new threads
 
 Guide users on what to ask or do by suggesting prompt ideas when starting a conversation.
+
+Add starter prompts
 
 ```typescript
 const options: Partial<ChatKitOptions> = {
@@ -122,6 +128,8 @@ const options: Partial<ChatKitOptions> = {
 
 Custom header buttons help you add navigation, context, or actions relevant to your integration.
 
+Add custom header buttons
+
 ```typescript
 const options: Partial<ChatKitOptions> = {
   header: {
@@ -146,6 +154,8 @@ See the Python SDK docs for more information on other upload strategies work wit
 
 You can also control the number, size, and types of files that users can attach to messages.
 
+Enable file attachments
+
 ```typescript
 const options: Partial<ChatKitOptions> = {
   composer: {
@@ -166,6 +176,8 @@ Let users tag custom “entities” with @-mentions. This enables richer convers
 
 - Use `onTagSearch` to return a list of entities based on the input query.
 - Use `onClick` to handle the click event of an entity.
+
+Configure entity tags
 
 ```typescript
 const options: Partial<ChatKitOptions> = {
@@ -205,6 +217,8 @@ Browse available widgets.
 
 
 
+Show entity previews
+
 ```typescript
 const options: Partial<ChatKitOptions> = {
   entities: {
@@ -230,6 +244,8 @@ const options: Partial<ChatKitOptions> = {
 Enhance productivity by letting users trigger app-specific actions from the composer bar. The selected tool
 will be sent to the model as a tool preference.
 
+Add composer tools
+
 ```typescript
 const options: Partial<ChatKitOptions> = {
   composer: {
@@ -250,6 +266,8 @@ const options: Partial<ChatKitOptions> = {
 
 Disable major UI regions and features if you need more customization over the options available in the header and want to implement your own instead. Disabling history can be useful when the concept of threads and history doesn't make sense for your use case—e.g., in a support chatbot.
 
+Show or hide UI regions
+
 ```typescript
 const options: Partial<ChatKitOptions> = {
   history: { enabled: false },
@@ -261,6 +279,8 @@ const options: Partial<ChatKitOptions> = {
 ## Override the locale
 
 Override the default locale if you have an app-wide language setting. By default, the locale is set to the browser's locale.
+
+Set the locale
 
 ```typescript
 const options: Partial<ChatKitOptions> = {

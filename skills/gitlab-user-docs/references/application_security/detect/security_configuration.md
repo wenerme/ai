@@ -11,8 +11,8 @@ becomes difficult to maintain at scale. For multiple projects or groups, shared 
 configuration provides easier management while still allowing some customization where needed.
 
 For example, if you have 10 projects with the same security scanning configuration applied manually,
-a single change must be made 10 times. If instead you create a shared CI/CD configuration, the
-single change only needs to be made once.
+a single change must be made 10 times.
+If instead you create a shared configuration, the single change only needs to be made once.
 
 ## Configure an individual project
 
@@ -26,10 +26,10 @@ To configure security scanning in an individual project, either:
 To manually enable security scanning of individual projects, either:
 
 - Enable individual security scanners.
-- Enable all security scanners by using AutoDevOps.
+- Enable all security scanners by using Auto DevOps.
 
-AutoDevOps provides a least-effort path to enabling most of the security scanners. However,
-customization options are limited, compared with enabling individual security scanners.
+Auto DevOps provides a least-effort path to enabling most of the security scanners.
+However, customization options are limited, compared with enabling individual security scanners.
 
 #### Enable individual security scanners
 
@@ -107,12 +107,16 @@ documentation.
 To apply the same security scanning configuration to multiple projects, use one of the following
 methods:
 
-- [Scan execution policy](../policies/scan_execution_policies.md)
-- [Pipeline execution policy](../policies/pipeline_execution_policies.md)
+- [Security configuration profiles](../configuration/security_configuration_profiles.md):
+  Apply scanner settings to groups and projects without editing CI/CD files.
+- [Scan execution policies](../policies/scan_execution_policies.md):
+  Enforce GitLab security scans based on the security CI/CD templates.
+- [Pipeline execution policies](../policies/pipeline_execution_policies.md):
+  Enforce custom CI/CD jobs, including security scans, across multiple projects.
 
-Each of these methods allows a CI/CD configuration, including security scanning, to be defined once
-and applied to multiple projects and groups. These methods have several advantages over configuring
-each project individually, including:
+Scan execution policies and pipeline execution policies define a security scanning configuration
+once and apply it to multiple projects and groups.
+Policies have several advantages over configuring each project individually, including:
 
 - Configuration changes only have to be made once instead of for each project.
 - Permission to make configuration changes is restricted, providing separation of duties.
@@ -129,25 +133,34 @@ When customizing the security scanning configuration:
 - Test all customization of security scanning tools by using a merge request before merging changes
   to the default branch. Failure to do so can give unexpected results, including a large number of
   false positives.
-- [Include](../../../ci/yaml/_index.md#include) the scanning tool's CI/CD template. Don't copy the
-  content of the template.
+- [Include](../../../ci/yaml/_index.md#include) the scanning tool's CI/CD template.
+  Do not copy the content of the template.
 - Override values in the template only as needed. All other values are inherited from the template.
-- Use the stable edition of each template for production workflows. The stable edition changes less
-  often, and breaking changes are only made between major GitLab versions. The latest version
-  contains the most recent changes, but may have significant changes between minor GitLab versions.
+- Use the stable edition of each template for production workflows.
+  The stable edition changes less often, and breaking changes are only made between major
+  GitLab versions.
+  The latest version contains the most recent changes, but might have significant changes between
+  minor GitLab versions.
 
 ### Template editions
 
 GitLab application security tools have up to three template editions:
 
-- **Stable**: The stable template is the default. It offers a reliable and consistent application
-  security experience. You should use the stable template for most users and projects that require
-  stability and predictable behavior in their CI/CD pipelines.
-- **Latest**: The latest template is for those who want to access and test cutting-edge features. It
-  is identified by the word `latest` in the template's name. It is not considered stable and may
-  include breaking changes that are planned for the next major release. This template allows you to
-  try new features and updates before they become part of the stable release.
-- **Versioned**: A versioned template introduces breaking changes that are not backward compatible
+Stable
+: The stable template is the default.
+  It offers a reliable and consistent application security experience.
+  You should use the stable template for most users and projects that require stability and
+  predictable behavior in their CI/CD pipelines.
+
+Latest
+: The latest template is for those who want to access and test cutting-edge features.
+  It is identified by the word `latest` in the template's name.
+  It is not considered stable and might include breaking changes that are planned for the next
+  major release.
+  Use this template to try new features and updates before they become part of the stable release.
+
+Versioned
+: A versioned template introduces breaking changes that are not backward compatible
   with the stable template. Versioned templates have a version suffix (like `v2`, `v3`) in the
   template name. Each version is stable in its major version, but you must opt in to adopt it
   because of breaking changes. Only dependency scanning provides a versioned template
@@ -157,8 +170,8 @@ GitLab application security tools have up to three template editions:
   [migration guide](../dependency_scanning/migration_guide_to_sbom_based_scans.md).
 
 > [!note]
-> Don't mix **Stable** and **Latest** security templates in the same project. Mixing different security template editions can
-> cause both merge request and branch pipelines to run.
+> Do not mix stable and latest security templates in the same project.
+> Mixing different security template editions can cause both merge request and branch pipelines to run.
 
 ### Override the default registry base address
 
@@ -177,8 +190,11 @@ By default, the application security jobs are configured to run for branch pipel
 To use them with [merge request pipelines](../../../ci/pipelines/merge_request_pipelines.md),
 either:
 
-- Set the CI/CD variable `AST_ENABLE_MR_PIPELINES` to `"true"` ([introduced in 18.0](https://gitlab.com/gitlab-org/gitlab/-/issues/410880)) (Recommended)
+- Set the CI/CD variable `AST_ENABLE_MR_PIPELINES` to `"true"`,
+  [in GitLab 18.0 and later](https://gitlab.com/gitlab-org/gitlab/-/issues/410880).
 - Use the [`latest` edition template](#template-editions), which enables merge request pipelines by default.
+
+If either method works for your project, you should use the CI/CD variable.
 
 For example, to run both SAST and dependency scanning with merge request pipelines enabled, the following configuration is used:
 
@@ -266,7 +282,7 @@ This issue occurs when the stage used by the security scanning jobs isn't declar
 
 To resolve this, either:
 
-- Add a `test` stage in your `.gitlab-ci.yml`:
+- Add a `test` stage in your `.gitlab-ci.yml` file:
 
   ```yaml
   stages:

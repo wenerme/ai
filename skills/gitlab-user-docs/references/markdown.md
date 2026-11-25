@@ -1327,17 +1327,10 @@ download the file, for example from its URL.
 
 ### Embedded content
 
-- Offering: GitLab.com, GitLab Self-Managed
-- Status: Experiment
-
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/204952) as an [experiment](../policy/development_stages_support.md#experiment) in GitLab 18.5 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
 - Embed providers [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599713) in GitLab 19.5. Embed providers replace the allowlist of domains.
 - Option to load external content on request [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254949) in GitLab 19.5.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/596742) in GitLab 19.7. Feature flag `allow_iframes_in_markdown` removed.
 
 Image tags that link to content from an allowed embed provider render as embedded content.
 The content loads in a browser sandbox, below a banner that shows the host the content loads from.

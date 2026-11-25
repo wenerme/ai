@@ -6,7 +6,7 @@ Supervised fine-tuning (SFT) lets you train an OpenAI model with examples for yo
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
   accessible to new users. Eligible existing customers can create training jobs
-  until January 6, 2027, unless the base model shuts down earlier.
+  until December 15, 2026, unless the base model shuts down earlier.
   
 
   Fine-tuned models remain available for inference until their base model shuts

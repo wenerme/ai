@@ -67,7 +67,7 @@ Evaluates a condition against the [request metadata](#request-metadata) and rout
   - `true`: Forwards request to provided element if condition evaluates to true
   - `false`: Forwards request to provided element if condition evaluates to false
 
-`conditions` supports MongoDB-like operators such as `$eq`, `$ne`, `$in`, `$and`, and `$or`. If the request does not include a metadata key, the condition evaluates the key as missing. For example, `$eq` evaluates to false and `$ne` evaluates to true.
+`conditions` supports MongoDB-like operators such as `$eq`, `$ne`, `$in`, `$and`, and `$or`, plus `$contains` to [match one entry in a list](#match-one-entry-in-a-list). If the request does not include a metadata key, the condition evaluates the key as missing. For example, `$eq` evaluates to false and `$ne` evaluates to true.
 
 ```json
 {
@@ -84,6 +84,22 @@ Evaluates a condition against the [request metadata](#request-metadata) and rout
 	}
 }
 ```
+
+#### Match one entry in a list
+
+Metadata values cannot be arrays. To send a list, such as the groups a user belongs to, send it as one comma-separated string and use `$contains` to check for one entry. This uses one [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) key for the whole list.
+
+For example, if you send `cf-aig-metadata: {"groups": "engineering,finance"}`, the following condition evaluates to true:
+
+```json
+{
+	"conditions": {
+		"metadata.groups": { "$contains": "finance" }
+	}
+}
+```
+
+`$contains` splits the value on commas, trims spaces around each entry and around the operand, and matches an entry that equals the operand exactly. It is case-sensitive and matches whole entries only, so `finance` does not match `finance-readonly`. It evaluates to false when the key is missing or its value is not a string. You can combine it with `$and`, `$or`, and `$not`.
 
 ### Percentage Split
 
@@ -195,5 +211,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/#page","headline":"JSON Configuration","description":"Define AI Gateway dynamic routing flows using the REST API and JSON element structure.","url":"https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/og.png?v=d0ecbe9d1009423a","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/#page","headline":"JSON Configuration","description":"Define AI Gateway dynamic routing flows using the REST API and JSON element structure.","url":"https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/og.png?v=d0ecbe9d1009423a","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

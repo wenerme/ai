@@ -1909,6 +1909,56 @@ Get the Webex Teams settings for a group.
 GET /groups/:id/integrations/webex-teams
 ```
 
+## Workday
+
+- Tier: Ultimate
+- Offering: GitLab.com
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270885) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `workday_integration`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> This feature is available for testing, but not ready for production use.
+
+The Workday integration is available only for top-level groups.
+The settings are not inherited by subgroups or projects.
+
+### Set up Workday
+
+Set up the Workday integration for a top-level group.
+
+```plaintext
+PUT /groups/:id/integrations/workday
+```
+
+Parameters:
+
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `people_report_url` | string | yes | URL of the Workday report that lists people. Must use HTTPS. |
+| `workforce_units_report_url` | string | yes | URL of the Workday report that lists workforce units. Must use HTTPS. |
+| `token_url` | string | yes | Token endpoint of the Workday API client. Must use HTTPS. |
+| `client_id` | string | yes | Client ID of the Workday API client. |
+| `client_secret` | string | yes | Client secret of the Workday API client. |
+| `refresh_token` | string | yes | Refresh token generated for the Workday API client. |
+
+### Disable Workday
+
+Disable the Workday integration for a top-level group. Integration settings are reset.
+
+```plaintext
+DELETE /groups/:id/integrations/workday
+```
+
+### Get Workday settings
+
+Get the Workday integration settings for a top-level group.
+
+```plaintext
+GET /groups/:id/integrations/workday
+```
+
 ## YouTrack
 
 ### Set up YouTrack

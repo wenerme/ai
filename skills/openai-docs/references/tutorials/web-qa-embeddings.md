@@ -64,6 +64,8 @@ For Ruby, append all snippets to one `.rb` file and run it in a directory where 
 
 
 
+For Java, use these tested Maven dependencies: `com.openai:openai-java:4.105.0`, `org.jsoup:jsoup:1.24.1`, `org.apache.commons:commons-csv:1.14.1`, `com.knuddels:jtokkit:1.1.0`, and `com.fasterxml.jackson.core:jackson-databind:2.18.11`. Use one Java class for the four crawler excerpts, one class for the three final question-answering excerpts, and a separate class for each intermediate example. In each Java file, put imports at the top, place executable statements in a `main` method that declares checked exceptions, and place helper methods, fields, and records at class scope. Set `OPENAI_API_KEY` and run the classes in order from your IDE or build tool, with the Maven dependencies on the runtime classpath. Use the same working directory so each program can read the preceding program’s `text/` and `processed/` outputs.
+
 ## Setting up a web crawler
 
 Choose a website you can crawl. Expand the steps below to collect page text for the embeddings.
@@ -90,7 +92,7 @@ Choose a website you can crawl. Expand the steps below to collect page text for 
 
 While this crawler is written from scratch, open source packages like [`Scrapy`](https://github.com/scrapy/scrapy) can also help with these operations.
 
-This crawler will start from the root URL passed in at the bottom of the code below, visit each page, find additional links, and visit those pages as well (as long as they have the same root domain). To begin, import the required packages, set the starting URL, and define a subclass of `HTMLParser`.
+This crawler will start from the root URL passed in at the bottom of the code below, visit each page, find additional links, and visit those pages as well (as long as they have the same root domain). To begin, import the required packages and set the starting URL. Python uses an `HTMLParser` subclass; Java uses `jsoup`. Combine the four Java excerpts in this section into the same crawler class.
 
 Set up the web crawler
 
@@ -189,6 +191,18 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+```
+
+```java
+static final HttpClient HTTP =
+    HttpClient.newBuilder()
+        .connectTimeout(Duration.ofSeconds(10))
+        .followRedirects(HttpClient.Redirect.NEVER)
+        .build();
+
+static List<String> hyperlinks(String html) {
+  return Jsoup.parse(html).select("a[href]").stream().map(link -> link.attr("href")).toList();
 }
 ```
 
@@ -426,6 +440,19 @@ func getHyperlinks(ctx context.Context, address string) ([]string, error) {
 }
 ```
 
+```java
+static List<String> getHyperlinks(URI url) throws Exception {
+  var response =
+      HTTP.send(
+          HttpRequest.newBuilder(url).timeout(Duration.ofSeconds(10)).GET().build(),
+          HttpResponse.BodyHandlers.ofString());
+  if (response.statusCode() != 200
+      || !response.headers().firstValue("content-type").orElse("").startsWith("text/html"))
+    return List.of();
+  return hyperlinks(response.body());
+}
+```
+
 ```ruby
 def fetch_page(url, local_domain = nil)
   uri = URI.parse(url)
@@ -555,6 +582,32 @@ func main() {
 	if err := json.NewEncoder(os.Stdout).Encode(links); err != nil {
 		log.Fatal(err)
 	}
+}
+```
+
+```java
+static Set<URI> getDomainHyperlinks(String domain, URI url) throws Exception {
+  return domainHyperlinks(domain, url, getHyperlinks(url));
+}
+
+static Set<URI> domainHyperlinks(String domain, URI url, List<String> hrefs) {
+  var links = new LinkedHashSet<URI>();
+  for (String href : hrefs) {
+    if (href.isEmpty() || href.startsWith("#")) continue;
+    try {
+      // Query-only references keep the current path, including its final segment.
+      URI link =
+          href.startsWith("?")
+              ? URI.create(url.toString().split("[?#]", 2)[0] + href)
+              : url.resolve(href);
+      link = URI.create(link.toString().split("#", 2)[0]);
+      if (("http".equals(link.getScheme()) || "https".equals(link.getScheme()))
+          && domain.equals(link.getRawAuthority())) links.add(link);
+    } catch (IllegalArgumentException malformed) {
+      /* Ignore malformed links. */
+    }
+  }
+  return links;
 }
 ```
 
@@ -926,6 +979,58 @@ func main() {
 }
 ```
 
+```java
+import java.net.URI;
+import java.net.http.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.time.Duration;
+import java.util.*;
+import org.jsoup.Jsoup;
+
+crawl(URI.create("https://example.com/"));
+
+static void crawl(URI initial) throws Exception {
+  URI start = initial.getRawPath().isEmpty() ? URI.create(initial + "/") : initial;
+  String domain = start.getRawAuthority();
+  Path directory = Path.of("text", domain);
+  Files.createDirectories(directory);
+  Files.createDirectories(Path.of("processed"));
+  var queue = new ArrayDeque<URI>();
+  queue.add(start);
+  var seen = new HashSet<URI>();
+  seen.add(start);
+  while (!queue.isEmpty()) {
+    URI url = queue.removeLast();
+    var response =
+        HTTP.send(
+            HttpRequest.newBuilder(url).timeout(Duration.ofSeconds(10)).GET().build(),
+            HttpResponse.BodyHandlers.ofString());
+    if (response.statusCode() != 200
+        || !response
+            .headers()
+            .firstValue("content-type")
+            .orElse("")
+            .toLowerCase(Locale.ROOT)
+            .startsWith("text/html")) continue;
+    System.out.println(url);
+    String filename = (domain + url.getRawPath()).replace("/", "_");
+    String suffix =
+        "#"
+            + HexFormat.of()
+                .formatHex(
+                    java.security.MessageDigest.getInstance("SHA-256")
+                        .digest(url.toString().getBytes(StandardCharsets.UTF_8)));
+    while (filename.getBytes(StandardCharsets.UTF_8).length > 255 - suffix.length() - 4)
+      filename = filename.substring(0, filename.offsetByCodePoints(filename.length(), -1));
+    filename += suffix;
+    Files.writeString(directory.resolve(filename + ".txt"), Jsoup.parse(response.body()).text());
+    for (URI link : domainHyperlinks(domain, url, hyperlinks(response.body())))
+      if (seen.add(link)) queue.add(link);
+  }
+}
+```
+
 ```ruby
 def crawl(full_url)
   initial = URI.parse(full_url)
@@ -1043,6 +1148,19 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+System.out.println(removeNewlines("first\nsecond"));
+
+static String removeNewlines(String text) {
+  return text.replace("\n", " ").replace("\\n", " ").replaceAll(" {2,}", " ");
 }
 ```
 
@@ -1220,6 +1338,41 @@ func main() {
 	if err := json.NewEncoder(os.Stdout).Encode(rows); err != nil {
 		log.Fatal(err)
 	}
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+String domain = java.net.URI.create("https://example.com/").getRawAuthority();
+var rows = new ArrayList<Map<String, String>>();
+try (var files = Files.list(Path.of("text", domain))) {
+  for (var file : files.sorted().toList()) {
+    String title =
+        file.getFileName()
+            .toString()
+            .replaceFirst("\\.txt$", "")
+            .replaceFirst("#[0-9a-f]{64}$", "");
+    if (title.startsWith(domain + "_")) title = title.substring(domain.length() + 1);
+    else if (title.equals(domain)) title = "index";
+    if (title.isEmpty()) title = "index";
+    title = title.replace("-", " ").replace("_", " ").replace("#update", "");
+    String text = Files.readString(file).replace("\n", " ").replace("\\n", " ");
+    rows.add(Map.of("fname", title, "text", title + ". " + text));
+  }
+}
+Files.createDirectories(Path.of("processed"));
+try (var writer =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader("id", "fname", "text")
+        .get()
+        .print(Files.newBufferedWriter(Path.of("processed/scraped.csv")))) {
+  for (int i = 0; i < rows.size(); i++)
+    writer.printRecord(i, rows.get(i).get("fname"), rows.get(i).get("text"));
 }
 ```
 
@@ -1423,6 +1576,55 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+var texts = new ArrayList<String>();
+try (var csv =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("processed/scraped.csv")))) {
+  for (var row : csv) texts.add(row.get("text"));
+}
+var counts = texts.stream().map(ENCODING::countTokens).toList();
+int total = histogram(counts);
+
+static final com.knuddels.jtokkit.api.Encoding ENCODING =
+    com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
+        .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
+
+static int histogram(List<Integer> counts) throws Exception {
+  var bins = new TreeMap<Integer, Integer>();
+  for (int count : counts) bins.merge(count, 1, Integer::sum);
+  var image =
+      new java.awt.image.BufferedImage(640, 400, java.awt.image.BufferedImage.TYPE_INT_RGB);
+  var graphics = image.createGraphics();
+  try {
+    graphics.setColor(java.awt.Color.WHITE);
+    graphics.fillRect(0, 0, 640, 400);
+    int index = 0, maximum = bins.values().stream().max(Integer::compare).orElse(1);
+    for (var bin : bins.entrySet()) {
+      int x = 40 + index++ * 540 / Math.max(1, bins.size()),
+          height = bin.getValue() * 300 / maximum;
+      graphics.setColor(java.awt.Color.BLUE);
+      graphics.fillRect(x, 340 - height, Math.max(1, 500 / Math.max(1, bins.size())), height);
+      graphics.setColor(java.awt.Color.BLACK);
+      graphics.drawString(bin.getKey().toString(), x, 360);
+    }
+  } finally {
+    graphics.dispose();
+  }
+  javax.imageio.ImageIO.write(image, "png", Path.of("local-plot.png").toFile());
+  return bins.values().stream().mapToInt(Integer::intValue).sum();
+}
+```
+
 ```ruby
 require "csv"
 require "tiktoken_ruby"
@@ -1459,6 +1661,14 @@ plot.save("token-histogram.png")
 
 
 Split longer pages into chunks that fit within the [embedding model’s input limit](https://developers.openai.com/api/docs/models/text-embedding-3-small).
+
+
+
+
+The Java programs pass data between steps through CSV files. The splitting step reads `processed/scraped.csv` and writes each chunk and its token count to `processed/chunks.csv`. The following histogram and embedding steps read that file.
+
+
+
 
 Split long pages into chunks
 
@@ -1665,6 +1875,57 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+try (var input =
+        CSVFormat.DEFAULT
+            .builder()
+            .setHeader()
+            .setSkipHeaderRecord(true)
+            .get()
+            .parse(Files.newBufferedReader(Path.of("processed/scraped.csv")));
+    var output =
+        CSVFormat.DEFAULT
+            .builder()
+            .setHeader("text", "n_tokens")
+            .get()
+            .print(Files.newBufferedWriter(Path.of("processed/chunks.csv")))) {
+  for (var row : input) {
+    for (var chunk : splitIntoMany(row.get("text"), 500)) {
+      output.printRecord(chunk, ENCODING.countTokens(chunk));
+    }
+  }
+}
+
+static final com.knuddels.jtokkit.api.Encoding ENCODING =
+    com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
+        .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
+
+static List<String> splitIntoMany(String text, int maxTokens) {
+  if (maxTokens < 1) throw new IllegalArgumentException("maxTokens must be positive");
+  var chunks = new ArrayList<String>();
+  if (text.isBlank()) return chunks;
+  String chunk = "";
+  String[] sentences = text.split("\\. ", -1);
+  for (int i = 0; i < sentences.length; i++) {
+    String sentence = sentences[i] + (i < sentences.length - 1 ? "." : "");
+    if (ENCODING.countTokens(sentence) > maxTokens)
+      throw new IllegalArgumentException("Split the overlong sentence before chunking");
+    String candidate = chunk.isEmpty() ? sentence : chunk + " " + sentence;
+    if (ENCODING.countTokens(candidate) > maxTokens) {
+      chunks.add(chunk);
+      chunk = sentence;
+    } else chunk = candidate;
+  }
+  if (!chunk.isEmpty()) chunks.add(chunk);
+  return chunks;
+}
+```
+
 ```ruby
 require "csv"
 require "json"
@@ -1818,6 +2079,55 @@ func main() {
 	if err := histogram(texts); err != nil {
 		log.Fatal(err)
 	}
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+var texts = new ArrayList<String>();
+try (var csv =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("processed/chunks.csv")))) {
+  for (var row : csv) texts.add(row.get("text"));
+}
+var counts = texts.stream().map(ENCODING::countTokens).toList();
+int total = histogram(counts);
+
+static final com.knuddels.jtokkit.api.Encoding ENCODING =
+    com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
+        .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
+
+static int histogram(List<Integer> counts) throws Exception {
+  var bins = new TreeMap<Integer, Integer>();
+  for (int count : counts) bins.merge(count, 1, Integer::sum);
+  var image =
+      new java.awt.image.BufferedImage(640, 400, java.awt.image.BufferedImage.TYPE_INT_RGB);
+  var graphics = image.createGraphics();
+  try {
+    graphics.setColor(java.awt.Color.WHITE);
+    graphics.fillRect(0, 0, 640, 400);
+    int index = 0, maximum = bins.values().stream().max(Integer::compare).orElse(1);
+    for (var bin : bins.entrySet()) {
+      int x = 40 + index++ * 540 / Math.max(1, bins.size()),
+          height = bin.getValue() * 300 / maximum;
+      graphics.setColor(java.awt.Color.BLUE);
+      graphics.fillRect(x, 340 - height, Math.max(1, 500 / Math.max(1, bins.size())), height);
+      graphics.setColor(java.awt.Color.BLACK);
+      graphics.drawString(bin.getKey().toString(), x, 360);
+    }
+  } finally {
+    graphics.dispose();
+  }
+  javax.imageio.ImageIO.write(image, "png", Path.of("local-plot.png").toFile());
+  return bins.values().stream().mapToInt(Integer::intValue).sum();
 }
 ```
 
@@ -1976,6 +2286,48 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.embeddings.EmbeddingCreateParams;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+var client = OpenAIOkHttpClient.fromEnv();
+Files.createDirectories(Path.of("processed"));
+try (var chunks =
+        CSVFormat.DEFAULT
+            .builder()
+            .setHeader()
+            .setSkipHeaderRecord(true)
+            .get()
+            .parse(Files.newBufferedReader(Path.of("processed/chunks.csv")));
+    var csv =
+        CSVFormat.DEFAULT
+            .builder()
+            .setHeader("text", "n_tokens", "embeddings")
+            .get()
+            .print(Files.newBufferedWriter(Path.of("processed/embeddings.csv")))) {
+  for (var chunk : chunks) {
+    String text = chunk.get("text");
+    int tokens = Integer.parseInt(chunk.get("n_tokens"));
+    var embedding =
+        client
+            .embeddings()
+            .create(
+                EmbeddingCreateParams.builder()
+                    .model("text-embedding-3-small")
+                    .input(text)
+                    .build())
+            .data()
+            .get(0)
+            .embedding();
+    csv.printRecord(text, tokens, new ObjectMapper().writeValueAsString(embedding));
+  }
+}
+```
+
 ```csharp
 using System.Globalization;
 using System.Text.Json;
@@ -2047,7 +2399,7 @@ This should take about 3-5 minutes but after you will have your embeddings ready
 
 ---
 
-Turning the embeddings into a NumPy array is the first step, which will provide more flexibility in how to use it given the many functions available that operate on NumPy arrays. It will also flatten the dimension to 1-D, which is the required format for many subsequent operations.
+Load the saved embeddings as numeric vectors: NumPy arrays in Python or lists in Java. The Java embedding step preserves the `text` and `n_tokens` columns alongside each vector in `processed/embeddings.csv`, which the answer program reads.
 
 Load the saved embeddings
 
@@ -2166,6 +2518,34 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+var vectors = new ArrayList<List<Double>>();
+try (var csv =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("processed/embeddings.csv")))) {
+  for (var row : csv) {
+    List<Double> vector =
+        new ObjectMapper()
+            .readValue(
+                row.get("embeddings"),
+                new com.fasterxml.jackson.core.type.TypeReference<List<Double>>() {});
+    if (vector.stream().anyMatch(v -> v == null || !Double.isFinite(v)))
+      throw new IllegalArgumentException("Invalid embedding");
+    vectors.add(vector);
+  }
+}
+System.out.println(vectors.get(0));
+```
+
 ```ruby
 require "csv"
 require "json"
@@ -2177,7 +2557,9 @@ end
 ```
 
 
-Embed the question using the same model you used to build the index. The example computes cosine distances and retrieves the closest text chunks.
+For Java, combine the next three excerpts—the context builder, answer function, and question calls—into one class. Collect their imports at the top. Place the `Page` record and helper methods at class scope; put the client setup, CSV loading, and question calls in the same `main` method.
+
+Embed the question using the same model you used to build the index. Compare the vectors using cosine similarity and retrieve the closest text chunks.
 
 Build context for a question
 
@@ -2433,6 +2815,49 @@ func createContext(ctx context.Context, client *openai.Client, question string, 
 }
 ```
 
+```java
+record Page(String text, int tokens, List<Double> embedding) {}
+
+static double cosine(List<Float> query, List<Double> vector) {
+  if (query.size() != vector.size())
+    throw new IllegalArgumentException("Embedding dimensions differ");
+  double dot = 0, a = 0, b = 0;
+  for (int i = 0; i < query.size(); i++) {
+    dot += query.get(i) * vector.get(i);
+    a += Math.pow(query.get(i), 2);
+    b += Math.pow(vector.get(i), 2);
+  }
+  if (a == 0 || b == 0) throw new IllegalArgumentException("Zero embedding norm");
+  return dot / Math.sqrt(a * b);
+}
+
+static String createContext(
+    OpenAIClient client, List<Page> pages, String question, int maxTokens) {
+  var query =
+      client
+          .embeddings()
+          .create(
+              EmbeddingCreateParams.builder()
+                  .model("text-embedding-3-small")
+                  .input(question)
+                  .build())
+          .data()
+          .get(0)
+          .embedding();
+  var ordered = new ArrayList<>(pages);
+  ordered.sort(
+      Comparator.comparingDouble((Page page) -> cosine(query, page.embedding())).reversed());
+  var selected = new ArrayList<String>();
+  int tokens = 0;
+  for (var page : ordered) {
+    tokens += page.tokens() + 4;
+    if (tokens > maxTokens) break;
+    selected.add(page.text());
+  }
+  return String.join("\n\n###\n\n", selected);
+}
+```
+
 ```csharp
 using System.Globalization;
 using System.Text.Json;
@@ -2501,7 +2926,7 @@ end
 ```
 
 
-The `max_len` argument limits how many tokens of retrieved text to include. Pass that text and the question to the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) using `gpt-6-luna`. Read the answer from `response.output_text`.
+The `max_len` argument in Python, or `maxTokens` in Java, limits how many tokens of retrieved text to include. Pass that text and the question to the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) using `gpt-6-luna`. The example extracts the response's output text.
 
 Answer a question from the website
 
@@ -2552,6 +2977,59 @@ func answerQuestion(ctx context.Context, client *openai.Client, rows []embeddedR
 		return "", fmt.Errorf("response ended with status %s", response.Status)
 	}
 	return strings.TrimSpace(response.OutputText()), nil
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.embeddings.EmbeddingCreateParams;
+import com.openai.models.responses.ResponseCreateParams;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+var client = OpenAIOkHttpClient.fromEnv();
+var pages = new ArrayList<Page>();
+try (var csv =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("processed/embeddings.csv")))) {
+  for (var row : csv)
+    pages.add(
+        new Page(
+            row.get("text"),
+            Integer.parseInt(row.get("n_tokens")),
+            new ObjectMapper()
+                .readValue(
+                    row.get("embeddings"),
+                    new com.fasterxml.jackson.core.type.TypeReference<List<Double>>() {})));
+}
+
+static String answerQuestion(
+    OpenAIClient client, List<Page> pages, String question, int maxTokens) {
+  String context = createContext(client, pages, question, maxTokens);
+  var response =
+      client
+          .responses()
+          .create(
+              ResponseCreateParams.builder()
+                  .model("gpt-6-luna")
+                  .instructions(
+                      "Answer the question using only the supplied context. If the context doesn't answer the question, say \"I don't know.\"")
+                  .input("Context: " + context + "\n\nQuestion: " + question)
+                  .build());
+  return response.output().stream()
+      .flatMap(item -> item.message().stream())
+      .flatMap(message -> message.content().stream())
+      .flatMap(content -> content.outputText().stream())
+      .map(text -> text.text())
+      .collect(java.util.stream.Collectors.joining())
+      .strip();
 }
 ```
 
@@ -2619,6 +3097,11 @@ func main() {
 		fmt.Println(answer)
 	}
 }
+```
+
+```java
+System.out.println(answerQuestion(client, pages, "What is ChatGPT?", 1800));
+System.out.println(answerQuestion(client, pages, "What did I have for breakfast today?", 1800));
 ```
 
 ```csharp

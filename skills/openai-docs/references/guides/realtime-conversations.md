@@ -1284,6 +1284,61 @@ if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
 }
 ```
 
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.ClientOptions;
+import com.openai.core.JsonMissing;
+import com.openai.helpers.RealtimeConnection;
+import com.openai.helpers.RealtimeWebSocketOptions;
+import com.openai.models.realtime.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
+
+connection.send(
+    RealtimeClientEvent.ofConversationItemCreate(
+        ConversationItemCreateEvent.builder()
+            .item(
+                RealtimeConversationItemUserMessage.builder()
+                    .object_(JsonMissing.of())
+                    .addContent(
+                        RealtimeConversationItemUserMessage.Content.builder()
+                            .type(
+                                RealtimeConversationItemUserMessage.Content.Type.INPUT_IMAGE)
+                            .imageUrl(
+                                "data:image/png;base64,"
+                                    + Base64.getEncoder()
+                                        .encodeToString(
+                                            Files.readAllBytes(Path.of("image.png"))))
+                            .build())
+                    .addContent(
+                        RealtimeConversationItemUserMessage.Content.builder()
+                            .type(RealtimeConversationItemUserMessage.Content.Type.INPUT_TEXT)
+                            .text("Describe this image.")
+                            .build())
+                    .build())
+            .build()));
+connection.send(
+    RealtimeClientEvent.ofResponseCreate(
+        ResponseCreateEvent.builder()
+            .response(
+                RealtimeResponseCreateParams.builder()
+                    .addOutputModality(RealtimeResponseCreateParams.OutputModality.TEXT)
+                    .build())
+            .build()));
+while (true) {
+  var event = connection.receive();
+  if (event.error().isPresent())
+    throw new IllegalStateException(event.error().orElseThrow().toString());
+  if (event.responseDone().isPresent()) {
+    var response = event.responseDone().orElseThrow().response();
+    if (!response.status().filter(RealtimeResponse.Status.COMPLETED::equals).isPresent())
+      throw new IllegalStateException("Response did not complete: " + response.status());
+    break;
+  }
+}
+```
+
 ```csharp
 using OpenAI.Realtime;
 #pragma warning disable OPENAI002

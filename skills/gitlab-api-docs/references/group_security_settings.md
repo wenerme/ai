@@ -1,6 +1,6 @@
 # Group security settings API
 
-Update group security settings in GitLab. Configure secret push protection and other security policies for all projects within a group.
+REST API to turn on secret push protection for projects in a group.
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
@@ -9,7 +9,7 @@ Update group security settings in GitLab. Configure secret push protection and o
 
 Every API call to group security settings must be [authenticated](rest/authentication.md).
 
-If a user isn't a member of a private group, requests to the private group return a `404 Not Found` status code.
+If a user is not a member of a private group, requests to the private group return a `404 Not Found` status code.
 
 ## Update group security settings
 

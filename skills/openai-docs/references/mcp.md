@@ -167,11 +167,11 @@ Remix the server example on Replit to test live.
 
 
 
-The following examples implement both `search` and `fetch` with an MCP SDK.
+The examples below implement both the `search` and `fetch` tools. The Python example uses FastMCP. The Java example uses `com.openai:openai-java:4.105.0`, `io.modelcontextprotocol.sdk:mcp-core:1.1.5`, `io.modelcontextprotocol.sdk:mcp-json-jackson2:1.1.5`, and `org.eclipse.jetty.ee10:jetty-ee10-servlet:12.0.41`. Put the Java setup inside the `main` method of a server class, set `OPENAI_API_KEY`, and replace `vs_123` with your vector store ID. The Java server exposes its SSE endpoint at `/sse`.
 
 
 
-#### Full MCP server implementation
+#### Search and fetch server implementation
 
 
 
@@ -629,6 +629,177 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.ObjectMappers;
+import com.openai.models.vectorstores.VectorStoreSearchParams;
+import com.openai.models.vectorstores.files.*;
+import io.modelcontextprotocol.json.jackson2.JacksonMcpJsonMapper;
+import io.modelcontextprotocol.server.*;
+import io.modelcontextprotocol.server.transport.DefaultServerTransportSecurityValidator;
+import io.modelcontextprotocol.server.transport.HttpServletSseServerTransportProvider;
+import io.modelcontextprotocol.spec.McpSchema;
+import java.util.*;
+import org.eclipse.jetty.ee10.servlet.*;
+import org.eclipse.jetty.server.*;
+
+
+
+var client = OpenAIOkHttpClient.fromEnv();
+    String vectorStoreId = "vs_123";
+    var mapper = new JacksonMcpJsonMapper(JsonMapper.builder().build());
+    var transport =
+        HttpServletSseServerTransportProvider.builder()
+            .jsonMapper(mapper)
+            .sseEndpoint("/sse")
+            .messageEndpoint("/messages/")
+            // Allow local clients and the local MCP Inspector. Add trusted hosts and origins
+            // explicitly when deploying this server behind a proxy.
+            .securityValidator(
+                DefaultServerTransportSecurityValidator.builder()
+                    .allowedHosts(List.of("localhost:*", "127.0.0.1:*"))
+                    .allowedOrigins(List.of("http://localhost:6274", "http://127.0.0.1:6274"))
+                    .build())
+            .build();
+    var search =
+        McpSchema.Tool.builder()
+            .name("search")
+            .description("Search documents, then fetch complete content with citations.")
+            .inputSchema(
+                mapper,
+"""
+{"type":"object","properties":{"query":{"type":"string"}},"required":["query"]}
+""")
+            .outputSchema(
+                mapper,
+"""
+{"type":"object","properties":{"results":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"title":{"type":"string"},"url":{"type":"string"}},"required":["id","title","url"]}}},"required":["results"]}
+""")
+            .build();
+    var fetch =
+        McpSchema.Tool.builder()
+            .name("fetch")
+            .description("Retrieve complete document text, metadata, and citation by file ID.")
+            .inputSchema(
+                mapper,
+"""
+{"type":"object","properties":{"id":{"type":"string"}},"required":["id"]}
+""")
+            .outputSchema(
+                mapper,
+"""
+{"type":"object","properties":{"id":{"type":"string"},"title":{"type":"string"},"text":{"type":"string"},"url":{"type":"string"},"metadata":{"type":["object","null"]}},"required":["id","title","text","url"]}
+""")
+            .build();
+    var server =
+        McpServer.sync(transport)
+            .serverInfo("Sample MCP Server", "1.0.0")
+            .capabilities(McpSchema.ServerCapabilities.builder().tools(false).build())
+            .toolCall(
+                search,
+                (exchange, request) -> {
+                  try {
+                    String query = (String) request.arguments().get("query");
+                    var results = new ArrayList<Map<String, String>>();
+                    if (query != null && !query.isBlank()) {
+                      var page =
+                          client
+                              .vectorStores()
+                              .search(
+                                  vectorStoreId,
+                                  VectorStoreSearchParams.builder().query(query).build());
+                      for (var item : page.data())
+                        results.add(
+                            Map.of(
+                                "id",
+                                item.fileId(),
+                                "title",
+                                item.filename(),
+                                "url",
+                                "https://platform.openai.com/storage/files/" + item.fileId()));
+                    }
+                    return result(Map.of("results", results));
+                  } catch (Exception error) {
+                    return failure(error);
+                  }
+                })
+            .toolCall(
+                fetch,
+                (exchange, request) -> {
+                  try {
+                    String id = (String) request.arguments().get("id");
+                    if (id == null || id.isBlank())
+                      throw new IllegalArgumentException("Document ID is required");
+                    var content =
+                        client
+                            .vectorStores()
+                            .files()
+                            .content(
+                                id,
+                                FileContentParams.builder().vectorStoreId(vectorStoreId).build());
+                    var file =
+                        client
+                            .vectorStores()
+                            .files()
+                            .retrieve(
+                                id,
+                                FileRetrieveParams.builder().vectorStoreId(vectorStoreId).build());
+                    var parts = new ArrayList<String>();
+                    for (var item : content.data()) item.text().ifPresent(parts::add);
+                    String title = client.files().retrieve(id).filename();
+                    var document = new LinkedHashMap<String, Object>();
+                    document.put("id", id);
+                    document.put("title", title);
+                    document.put("text", String.join("\n", parts));
+                    document.put("url", "https://platform.openai.com/storage/files/" + id);
+                    document.put(
+                        "metadata",
+                        file.attributes()
+                            .map(value -> ObjectMappers.jsonMapper().valueToTree(value))
+                            .orElse(null));
+                    return result(document);
+                  } catch (Exception error) {
+                    return failure(error);
+                  }
+                })
+            .build();
+    var httpServer = new Server();
+    var connector = new ServerConnector(httpServer);
+    connector.setHost("127.0.0.1");
+    connector.setPort(8000);
+    httpServer.addConnector(connector);
+    var context = new ServletContextHandler();
+    context.setContextPath("/");
+    context.addServlet(new ServletHolder(transport), "/*");
+    httpServer.setHandler(context);
+    try {
+      httpServer.start();
+      httpServer.join();
+    } finally {
+      server.closeGracefully();
+      httpServer.stop();
+      client.close();
+    }
+
+static McpSchema.CallToolResult result(Map<String, ?> value) throws Exception {
+  String encoded = ObjectMappers.jsonMapper().writeValueAsString(value);
+  return McpSchema.CallToolResult.builder()
+      .structuredContent(value)
+      .addTextContent(encoded)
+      .isError(false)
+      .build();
+}
+
+static McpSchema.CallToolResult failure(Exception error) {
+  return McpSchema.CallToolResult.builder()
+      .isError(true)
+      .addTextContent(
+          error.getMessage() == null ? error.getClass().getSimpleName() : error.getMessage())
+      .build();
+}
+```
+
 ```ruby
 require "openai"
 require "mcp"
@@ -770,7 +941,7 @@ end
 
 
 
-On Replit, configure `OPENAI_API_KEY` with your OpenAI API key in the "Secrets" UI. In the sample, replace `vs_123` with the ID of the vector store you created earlier for search.
+On Replit, configure `OPENAI_API_KEY` with your OpenAI API key in the Secrets UI. In the sample, replace `vs_123` with the ID of the vector store you created earlier for search.
 
 On free Replit accounts, server URLs are active for as long as the editor is active, so while you are testing, you'll need to keep the browser tab open. Select the link icon to get a URL for your MCP server:
 

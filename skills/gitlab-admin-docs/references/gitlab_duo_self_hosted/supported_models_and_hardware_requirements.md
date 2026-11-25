@@ -120,6 +120,16 @@ This feature is in beta and is therefore subject to change as we gather feedback
 | General        | [Gemma-4-31B-IT](https://huggingface.co/google/gemma-4-31B-it) |
 | Qwen           | [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) |
 
+#### Code Review Flow
+
+Code Review Flow accepts some model families that other GitLab Duo Agent Platform features do not,
+such as Llama 3, Mixtral, and Codestral.
+GitLab does not test Code Review Flow with every model family, so reviews might fail or return low-quality findings.
+Models with limited functionality for GitLab Duo Agent Platform in the [supported models table](#supported-models)
+do not receive GitLab support for Code Review Flow.
+
+Code Review Flow requires a model endpoint that supports [tool calling](#tool-calling-requirements).
+
 #### Context window requirements
 
 With the general model family, GitLab Duo Agent Platform trims conversation history to fit a 200,000-token context window.

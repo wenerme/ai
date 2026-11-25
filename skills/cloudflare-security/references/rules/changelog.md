@@ -681,11 +681,11 @@ Learn more in the [Transform Rules](https://developers.cloudflare.com/rules/tran
 
 **Fine-tune image optimization — WebP now supported in Configuration Rules**
 
-You can now enable [Polish](https://developers.cloudflare.com/images/polish/activate-polish/) with the `webp` format directly in [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), allowing you to optimize image delivery for specific routes, user agents, or A/B tests — without applying changes zone-wide.
+You can now enable [Polish](https://developers.cloudflare.com/images/polish/configure-polish/) with the `webp` format directly in [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), allowing you to optimize image delivery for specific routes, user agents, or A/B tests — without applying changes zone-wide.
 
 **What’s new:**
 
-- [WebP](https://developers.cloudflare.com/images/polish/compression/#webp) is now a supported [value](https://developers.cloudflare.com/rules/configuration-rules/settings/#polish) in the **Polish** setting for Configuration Rules.
+- [WebP](https://developers.cloudflare.com/images/polish/configure-polish/#webp) is now a supported [value](https://developers.cloudflare.com/rules/configuration-rules/settings/#polish) in the **Polish** setting for Configuration Rules.
 
 This gives you more precise control over how images are compressed and delivered, whether you're targeting modern browsers, running experiments, or tailoring performance by geography or device type.
 

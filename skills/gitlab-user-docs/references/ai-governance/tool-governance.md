@@ -131,10 +131,7 @@ In GitLab Duo Agent Platform sessions, those tools still prompt for approval.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606073) in GitLab 19.4 with a [feature flag](../../administration/feature_flags/_index.md) named `duo_mcp_tool_governance`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/607499) in GitLab 19.4.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/274037) in GitLab 19.7. Feature flag `duo_mcp_tool_governance` removed.
 
 Tools exposed by the GitLab MCP server appear on the **Tool management** tab
 with a source of `mcp`, alongside the GitLab Duo Agent Platform tools. You set

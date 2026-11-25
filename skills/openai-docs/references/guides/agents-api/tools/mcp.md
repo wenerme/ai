@@ -127,6 +127,13 @@ In `/workspace`, install `@modelcontextprotocol/sdk` and `zod`, then save the Ty
 
 
 
+
+
+The Java version uses `io.modelcontextprotocol.sdk:mcp-core:1.1.5`, `io.modelcontextprotocol.sdk:mcp-json-jackson2:1.1.5`, and `com.fasterxml.jackson.core:jackson-databind:2.18.11`. It serves the same tool over standard input and output:
+
+
+
+
 Run a customer lookup MCP server
 
 ```typescript
@@ -242,6 +249,62 @@ func main() {
 		log.Fatal(err)
 	}
 	<-shutdownDone
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import io.modelcontextprotocol.json.jackson2.JacksonMcpJsonMapper;
+import io.modelcontextprotocol.server.McpServer;
+import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
+import io.modelcontextprotocol.spec.McpSchema;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
+
+var mapper = new JacksonMcpJsonMapper(JsonMapper.builder().build());
+var closed = new CountDownLatch(1);
+var input =
+    new FilterInputStream(System.in) {
+      @Override
+      public int read(byte[] bytes, int offset, int length) throws IOException {
+        int count = super.read(bytes, offset, length);
+        if (count == -1) closed.countDown();
+        return count;
+      }
+    };
+var transport = new StdioServerTransportProvider(mapper, input, System.out);
+var tool =
+    McpSchema.Tool.builder()
+        .name("get_customer")
+        .description("Look up a customer in the example data.")
+        .inputSchema(
+            mapper,
+            """
+  {"type":"object","properties":{"customer_id":{"type":"string"}},"required":["customer_id"],"additionalProperties":false}
+  """)
+        .build();
+var server =
+    McpServer.sync(transport)
+        .serverInfo("customer-lookup", "1.0.0")
+        .capabilities(McpSchema.ServerCapabilities.builder().tools(false).build())
+        .toolCall(
+            tool,
+            (exchange, request) -> {
+              String text =
+                  "123".equals(request.arguments().get("customer_id"))
+                      ? "{\"customer\":{\"name\":\"Example Customer\",\"plan\":\"pro\"}}"
+                      : "{\"customer\":null}";
+              return McpSchema.CallToolResult.builder()
+                  .addTextContent(text)
+                  .isError(false)
+                  .build();
+            })
+        .build();
+try {
+  closed.await();
+} finally {
+  server.closeGracefully();
 }
 ```
 

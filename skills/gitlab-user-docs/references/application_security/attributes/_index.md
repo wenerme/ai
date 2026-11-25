@@ -1,6 +1,6 @@
 # Security attributes
 
-Security attributes allows security teams to apply custom metadata labels to projects and groups, enabling them to filter and prioritize security risks based on business context.
+Apply custom metadata labels to projects and groups, then filter and prioritize security risks by business context.
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
@@ -25,7 +25,8 @@ By applying these attributes across your projects, you can much more quickly ide
 - Review scan coverage for each application or business unit.
 - Locate projects that contribute to publicly accessible and exposed applications.
 
-Track the development of the security inventory in [epic 16939](https://gitlab.com/groups/gitlab-org/-/work_items/16939). Share [your feedback](https://gitlab.com/gitlab-org/gitlab/-/issues/553062) as development continues on this feature.
+Track the development of security attributes in [epic 18010](https://gitlab.com/groups/gitlab-org/-/work_items/18010).
+Share [your feedback](https://gitlab.com/gitlab-org/gitlab/-/work_items/588643) as development continues on this feature.
 
 ## Manage security attributes for groups
 

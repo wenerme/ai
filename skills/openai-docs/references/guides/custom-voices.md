@@ -263,6 +263,22 @@ const sessionConfig = JSON.stringify({
 });
 ```
 
+```python
+session_config = {
+    "session": {
+        "type": "realtime",
+        "model": "gpt-realtime-2.1-mini",
+        "instructions": "Read the user's text aloud without adding commentary.",
+        "output_modalities": ["audio"],
+        "audio": {
+            "output": {
+                "voice": {"id": "voice_123abc"},
+            },
+        },
+    },
+}
+```
+
 ```go
 sessionConfig := map[string]any{
 	"session": map[string]any{
@@ -273,6 +289,29 @@ sessionConfig := map[string]any{
 		"audio":             map[string]any{"output": map[string]any{"voice": map[string]any{"id": "voice_123abc"}}},
 	},
 }
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+import java.util.Map;
+
+// Replace the illustrative voice ID with your own custom voice.
+var config =
+    Map.of(
+        "session",
+        Map.of(
+            "type",
+            "realtime",
+            "model",
+            "gpt-realtime-2.1-mini",
+            "instructions",
+            "Read the user's text aloud without adding commentary.",
+            "output_modalities",
+            List.of("audio"),
+            "audio",
+            Map.of("output", Map.of("voice", Map.of("id", "voice_123abc")))));
+System.out.println(new ObjectMapper().writeValueAsString(config));
 ```
 
 ```ruby

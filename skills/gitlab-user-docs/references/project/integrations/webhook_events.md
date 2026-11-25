@@ -891,6 +891,7 @@ Payload example:
 ## Merge request events
 
 - Webhook event for when setting or canceling auto-merge [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/515530) in GitLab 19.2.
+- Webhook event for when a thread is unresolved on a merge request [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/349623) in GitLab 19.7.
 
 Merge request events are triggered when:
 
@@ -901,10 +902,17 @@ Merge request events are triggered when:
 - A merge request is set to auto-merge, or auto-merge is canceled.
 - A commit is added in the source branch.
 - All threads are resolved on the merge request.
+- A thread is unresolved on a merge request that previously had all threads resolved.
 
 Merge request events can be triggered even if the `changes` field is empty.
 Webhook receivers should always inspect the content of the `changes` field for the
 actual changes in a merge request.
+
+For both thread events, `blocking_discussions_resolved` reflects the thread state only
+when the  setting is turned on for the project.
+Otherwise, the payload is the same whether the threads were resolved or reopened, and
+you can use the [merge requests API](../../../api/merge_requests.md) to check the
+thread state.
 
 ### Payload structure
 

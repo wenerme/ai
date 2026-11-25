@@ -150,7 +150,7 @@ Before running this example, install `openai` and `async-websocket` for Ruby (`g
 
 
 
-Before running this example, add the Maven dependency `com.openai:openai-java:4.75.1`.
+Before running this example, add the Maven dependency `com.openai:openai-java:4.105.0`.
 
 
 
@@ -158,7 +158,7 @@ Before running this example, add the Maven dependency `com.openai:openai-java:4.
 
 
 
-The Java examples cover connection setup, language configuration, and audio input separately. They don't show a complete translation workflow: the Java SDK supports receiving events and finishing a session, but this guide doesn't include Java examples for those steps. Use the Node.js or Python examples to follow the complete workflow below.
+The Java examples cover connection setup, language configuration, audio input, event reception, and session completion in separate snippets. Keep the same translation connection across these steps in your application.
 
 
 
@@ -534,6 +534,31 @@ func listen(ctx context.Context, session *realtime.TranslationSession) error {
 }
 ```
 
+```java
+static void listen(TranslationConnection connection) {
+  while (true) {
+    var event = connection.receive();
+    if (event.error().isPresent())
+      throw new IllegalStateException(event.error().orElseThrow().toString());
+    if (event.sessionCreated().isPresent()) System.out.println("session.created");
+    if (event.sessionUpdated().isPresent()) System.out.println("session.updated");
+    event.sessionOutputTranscriptDelta().ifPresent(delta -> System.out.print(delta.delta()));
+    event
+        .sessionOutputAudioDelta()
+        .ifPresent(
+            delta -> {
+              byte[] pcm = Base64.getDecoder().decode(delta.delta());
+              // Feed pcm to your application's 24 kHz audio player.
+              System.err.println("Received audio bytes: " + pcm.length);
+            });
+    if (event.sessionClosed().isPresent()) {
+      System.out.println();
+      return;
+    }
+  }
+}
+```
+
 ```ruby
 handle_translation_event = lambda do |event, output|
   case event
@@ -709,6 +734,13 @@ if err := session.Send(ctx, realtime.RealtimeTranslationClientEventUnionParam{
 }); err != nil {
 	return err
 }
+```
+
+```java
+// Stop sending audio, then drain events until the server acknowledges closure.
+var finished = connection.finishAsync(java.time.Duration.ofSeconds(30));
+listen(connection);
+finished.join();
 ```
 
 ```ruby

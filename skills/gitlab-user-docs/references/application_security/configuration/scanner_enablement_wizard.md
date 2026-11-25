@@ -25,16 +25,16 @@ To view scanner coverage:
 1. In the left sidebar, select **Secure** > **Security configuration**.
 1. Select the **Scanners** tab.
 
-The tab displays the following cards:
+The tab displays the following information:
 
-| Card | Description |
+| Item | Description |
 |------|-------------|
 | Unprotected projects | List of projects with no scanners enabled. |
 | Scanners enabled | Count of all scanner types enabled in the group. |
 | Needs attention | List of projects with scan failures. |
 | Stale scans | List of projects with a scanner missing from at least three consecutive default branch pipelines. |
 
-Below the cards, a list of each scanner type indicates how many projects have the scanner active, failed, or not configured.
+The tab also lists each scanner type with its project coverage: the number of projects where the scanner is active, failed, or stale.
 
 ## View scanner details
 
@@ -45,7 +45,7 @@ To view the status of a scanner across the projects in the group:
 1. Select the **Scanners** tab.
 1. Next to the scanner, select **View details**.
 
-The scanner details page shows stat cards for the scanner (**Enabled**, **Not enabled**,
+The scanner details page shows counts for the scanner (**Enabled**, **Not enabled**,
 **Needs attention**, and **Stale**) and a table of every project in the group.
 
 The table shows the following columns:
@@ -87,14 +87,14 @@ The Scanner Enablement Wizard provides two approaches:
 
 > [!note]
 > The wizard does not configure DAST, container scanning, or IaC scanning. Configure these scanners
-> through security policies or at the project level.
+> through security policies or for each project.
 
 ### Quick setup
 
 - Mode step [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635247) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `scanner_wizard_attach_modes`. Enabled by default.
 
 > [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the
+> The availability of the mode step is controlled by a feature flag. For more information, see the
 > history.
 
 Use Quick setup to apply profiles to the entire group, based on the mode you select.
@@ -139,6 +139,8 @@ applies to.
 
 Advanced setup applies only the selected profiles to specific projects and scanners. If you need to apply profiles
 to more than 100 projects at once, use Quick setup.
+
+To use Advanced setup:
 
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Secure** > **Security configuration**.

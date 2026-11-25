@@ -123,6 +123,22 @@ func main() {
 }
 ```
 
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.chat.completions.ChatCompletionCreateParams;
+
+// Use your configured OpenAIClient named client.
+ChatCompletionCreateParams params =
+    ChatCompletionCreateParams.builder()
+        .model("gpt-6.2-astra")
+        .addUserMessage("Write a one-sentence bedtime story about a unicorn.")
+        .build();
+client.chat().completions().create(params).choices().stream()
+    .flatMap(choice -> choice.message().content().stream())
+    .forEach(System.out::println);
+```
+
 ```csharp
 using OpenAI.Chat;
 #pragma warning disable OPENAI001
@@ -198,6 +214,24 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.responses.ResponseCreateParams;
+
+// Use your configured OpenAIClient named client.
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6.2-astra")
+        .input("Write a one-sentence bedtime story about a unicorn.")
+        .build();
+client.responses().create(params).output().stream()
+    .flatMap(item -> item.message().stream())
+    .flatMap(message -> message.content().stream())
+    .flatMap(content -> content.outputText().stream())
+    .forEach(text -> System.out.println(text.text()));
 ```
 
 ```csharp

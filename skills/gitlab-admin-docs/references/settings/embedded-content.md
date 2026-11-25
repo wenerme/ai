@@ -4,16 +4,11 @@ Choose the embed providers that users can embed content from in Markdown.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
-- Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200864) in GitLab 18.7 [with a feature flag](../feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200864) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 18.7 [with a feature flag](../feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
 - Embed providers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254945) in GitLab 19.5. Embed providers replace the allowlist of domains. The upgrade to GitLab 19.5 clears the existing allowlist.
 - Custom embed providers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271233) in GitLab 19.7.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/596742) in GitLab 19.7. Feature flag `allow_iframes_in_markdown` removed.
 
 Users can embed content from external providers, like YouTube videos and Figma designs, in Markdown.
 You choose which embed providers to allow on your instance.

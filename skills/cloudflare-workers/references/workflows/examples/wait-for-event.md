@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Human-in-the-loop Workflow with waitForEvent API
 title: Human-in-the-Loop Image Tagging with waitForEvent
 image: https://developers.cloudflare.com/workflows/examples/wait-for-event/og.png?v=93162668546496eb
@@ -148,7 +150,7 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1,
@@ -185,7 +187,7 @@ name = "workflows-waitforevent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [observability]
 enabled = true

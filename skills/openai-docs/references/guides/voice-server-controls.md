@@ -424,6 +424,56 @@ func updateSession(ctx context.Context, client openai.Client, callID string) err
 }
 ```
 
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.ClientOptions;
+import com.openai.helpers.RealtimeConnection;
+import com.openai.helpers.RealtimeWebSocketOptions;
+import com.openai.models.realtime.*;
+import java.util.concurrent.TimeUnit;
+
+var http = OkHttpClient.builder().build();
+var options = ClientOptions.builder().fromEnv().httpClient(http).build();
+
+// Obtain callId from the existing call's Location header or SIP webhook.
+try (http;
+    var connection =
+        RealtimeConnection.connect(
+            options, RealtimeWebSocketOptions.builder().callId(callId).build())) {
+  connection.send(
+      RealtimeClientEvent.ofSessionUpdate(
+          SessionUpdateEvent.builder()
+              .session(
+                  RealtimeSessionCreateRequest.builder()
+                      .instructions("Be extra nice today!")
+                      .build())
+              .build()));
+  long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(30);
+  while (true) {
+    var event =
+        connection
+            .receiveAsync()
+            .get(Math.max(0, deadline - System.nanoTime()), TimeUnit.NANOSECONDS);
+    if (event.error().isPresent())
+      throw new IllegalStateException(event.error().orElseThrow().toString());
+    if (event.sessionUpdated().isPresent()) {
+      var session =
+          event.sessionUpdated().orElseThrow().session().realtimeSessionCreateRequest();
+      if (session.isEmpty()
+          || !session
+              .orElseThrow()
+              .instructions()
+              .filter("Be extra nice today!"::equals)
+              .isPresent()) throw new IllegalStateException("Session update was not applied");
+      System.out.println("session.updated");
+      break;
+    }
+  }
+} finally {
+  options.close();
+}
+```
+
 ```ruby
 require "openai"
 

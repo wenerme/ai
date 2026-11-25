@@ -112,6 +112,67 @@ m = p.merge_requests.find_by(iid: <iid>)
 Issuable::DestroyService.new(container: m.project, current_user: u).execute(m)
 ```
 
+## Retry failed merge request ref cleanup from the Rails console
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+GitLab deletes merge request refs, like `refs/merge-requests/:iid/head`,
+14 days after a merge request is closed or merged.
+A background job performs this cleanup from a schedule stored
+for each merge request.
+If the job fails repeatedly, for example because Gitaly is unavailable,
+GitLab stops retrying and marks the schedule as failed.
+The refs then remain in the repository and continue to count toward its size.
+
+Users with access to the [Rails console](../../../administration/operations/rails_console.md)
+can make failed schedules eligible for cleanup again. The hourly job picks them up and
+processes them until no eligible schedules remain.
+Confirm that Gitaly is healthy first. Otherwise, the schedules will fail again.
+
+> [!warning]
+> Commands that change data can cause damage if not run correctly or under the right conditions.
+> Always run commands in a test environment first and have a backup instance ready to restore.
+
+To count the schedules that are marked as failed:
+
+```ruby
+MergeRequest::CleanupSchedule.where(status: MergeRequest::CleanupSchedule::STATUSES[:failed]).count
+```
+
+To retry the cleanup for a single merge request, replace `<namespace/project>` and
+`<iid>` with appropriate values:
+
+```ruby
+p = Project.find_by_full_path('<namespace/project>')
+m = p.merge_requests.find_by(iid: <iid>)
+m.cleanup_schedule.update!(
+  status: MergeRequest::CleanupSchedule::STATUSES[:unstarted],
+  scheduled_at: Time.current,
+  failed_count: 0
+)
+```
+
+To confirm that the ref was deleted, run this command after the next hourly job finishes. It should return `false`:
+
+```ruby
+p.repository.ref_exists?(m.ref_path)
+```
+
+To retry the cleanup for all failed schedules on the instance:
+
+```ruby
+MergeRequest::CleanupSchedule
+  .where(status: MergeRequest::CleanupSchedule::STATUSES[:failed])
+  .in_batches(of: 1000) do |batch|
+    batch.update_all(
+      status: MergeRequest::CleanupSchedule::STATUSES[:unstarted],
+      scheduled_at: Time.current,
+      failed_count: 0
+    )
+  end
+```
+
 ## Merge request pre-receive hook failed
 
 If a merge request times out, you might see messages that indicate a Puma worker

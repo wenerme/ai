@@ -26,7 +26,7 @@ The example below uses Marin, PCM16 audio at 24 kHz, and a Responses backend wit
 
 For Node.js 22.6 or later, install `openai` and `ws` with `npm install openai ws` and save the TypeScript example as `client.mts`. For Python on macOS or Linux, install `openai[realtime]` and save the Python example as `client.py`. Set `OPENAI_API_KEY` in the server environment. These examples require an SDK version with Live support. The example reads raw, mono PCM16 audio at 24 kHz from standard input and writes returned audio in the same format to standard output. Connect these streams to your application's audio capture and playback. Logs and transcript events go to standard error so they do not corrupt the audio stream.
 
-For Go, use Go 1.26 or later, save the example as `main.go`, initialize a module with `go mod init live-demo`, and install `github.com/openai/openai-go/v3@v3.85.1` with `go get`. For Java, use Java 17 or later, add the Maven dependency `com.openai:openai-java:4.95.0`, and use the `LiveConnectionWebsocketExample` class. For Ruby 3.3 or later, install the SDK with `gem install openai -v 0.110.0`, install its WebSocket dependency with `gem install async-websocket`, and save the example as `client.rb`.
+For Go, use Go 1.26 or later, save the example as `main.go`, initialize a module with `go mod init live-demo`, and install `github.com/openai/openai-go/v3@v3.85.1` with `go get`. For Java, add the Maven dependency `com.openai:openai-java:4.95.0` and use the `LiveConnectionWebsocketExample` class. For Ruby 3.3 or later, install the SDK with `gem install openai -v 0.110.0`, install its WebSocket dependency with `gem install async-websocket`, and save the example as `client.rb`.
 
 ```typescript
 import OpenAI from "openai";
@@ -846,7 +846,7 @@ OpenAI SDK (Java)
 
     
 
-      Use Java 17 or later with `com.openai:openai-java:4.75.1`.
+      Use `com.openai:openai-java:4.75.1`.
     
 
     Connect with the OpenAI SDK (Java)

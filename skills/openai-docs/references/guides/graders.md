@@ -448,6 +448,41 @@ func main() {
 }
 ```
 
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.JsonValue;
+import com.openai.models.finetuning.alpha.graders.*;
+import com.openai.models.graders.gradermodels.PythonGrader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+
+// Use your configured OpenAIClient named client.
+// Save the Python grading function as grader.py before running this example.
+var grader =
+    PythonGrader.builder()
+        .name("word_overlap")
+        .source(Files.readString(Path.of("grader.py")))
+        .build();
+System.out.println(
+    client
+        .fineTuning()
+        .alpha()
+        .graders()
+        .validate(GraderValidateParams.builder().grader(grader).build()));
+System.out.println(
+    client
+        .fineTuning()
+        .alpha()
+        .graders()
+        .run(
+            GraderRunParams.builder()
+                .grader(grader)
+                .item(JsonValue.from(Map.of("reference_answer", "fuzzy wuzzy had no hair")))
+                .modelSample("fuzzy wuzzy was a bear")
+                .build()));
+```
+
 ```ruby
 require "openai"
 

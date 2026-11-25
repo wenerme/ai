@@ -175,6 +175,17 @@ var client = openai.NewClient(
 )
 ```
 
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+
+var client =
+    OpenAIOkHttpClient.builder()
+        .fromEnv()
+        .baseUrl("https://southcentralus.privatelink.api.openai.com/v1")
+        .build();
+client.withOptions(options -> System.out.println(options.build().baseUrl()));
+```
+
 ```csharp
 using System.ClientModel;
 using OpenAI;

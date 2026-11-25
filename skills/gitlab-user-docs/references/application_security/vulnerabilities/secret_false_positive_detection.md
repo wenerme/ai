@@ -9,9 +9,7 @@ Automatic detection and filtering of false positives in secret detection finding
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17885) in GitLab 18.10 as a [beta](../../../policy/development_stages_support.md#beta) feature with a [feature flag](../../../administration/feature_flags/_index.md) named `duo_secret_detection_false_positive`. [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227074).
 - [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/21233) in GitLab 19.1.
 - Support in the triage and remediation profile [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254011) in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `triage_and_remediation_profile`. Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- Feature flag `duo_secret_detection_false_positive` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/593648) in GitLab 19.7.
 
 Secret false positive detection is an opt-in feature. When you enable it, GitLab Duo analyzes detected secrets to determine the likelihood that they're false positives. Detection is available for all secret types detected by [GitLab Secret Detection](../secret_detection/_index.md).
 

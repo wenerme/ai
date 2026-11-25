@@ -182,6 +182,37 @@ func main() {
 }
 ```
 
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.beta.agents.sessions.artifacts.*;
+import java.nio.file.*;
+
+// Use your configured OpenAIClient named client.
+downloadArtifact(
+    client, "sess_123", "turn_123", "/workspace/outputs/report.pdf", Path.of("report.pdf"));
+
+static void downloadArtifact(
+    OpenAIClient client, String sessionId, String turnId, String path, Path destination)
+    throws Exception {
+  var artifacts = client.beta().agents().sessions().artifacts();
+  for (var artifact :
+      artifacts.list(ArtifactListParams.builder().sessionId(sessionId).build()).autoPager()) {
+    if (!artifact.turnId().equals(turnId) || !artifact.path().equals(path)) continue;
+    try (var content =
+        artifacts.content(
+            ArtifactContentParams.builder()
+                .sessionId(sessionId)
+                .artifactId(artifact.id())
+                .build())) {
+      Files.copy(content.body(), destination, StandardCopyOption.REPLACE_EXISTING);
+    }
+    return;
+  }
+  throw new java.io.FileNotFoundException("No artifact for " + path + " in turn " + turnId);
+}
+```
+
 ```ruby
 require "openai"
 

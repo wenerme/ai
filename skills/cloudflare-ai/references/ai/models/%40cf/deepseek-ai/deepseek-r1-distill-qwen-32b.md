@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.
 title: deepseek-r1-distill-qwen-32b
 image: https://developers.cloudflare.com/og-docs.png
@@ -33,7 +35,7 @@ DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen
 | Model Info | |
 | --- | --- |
 | Deprecated | 11/20/2026 |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
 | Terms and License | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
 | Reasoning | Yes |
 | Zero data retention | Yes |

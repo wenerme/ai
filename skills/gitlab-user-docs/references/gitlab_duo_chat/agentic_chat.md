@@ -607,6 +607,7 @@ GitLab Duo sidebar.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/587158) in GitLab 19.6.
 - Web search toggle shown when web search is not allowed [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20480) in GitLab 19.7 with a [flag](../../administration/feature_flags/_index.md) named `dap_web_search_unavailable_hint`. Disabled by default.
 - Web search [turned on by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/641684) in new conversations in GitLab 19.7.
+- Setting to block domains [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604066) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -635,8 +636,7 @@ Web search is limited for each model call:
 Chat can make more than one model call to answer a message,
 so the total for one message can be higher than five.
 
-You cannot limit which domains web search can reach.
-[Issue 604066](https://gitlab.com/gitlab-org/gitlab/-/work_items/604066) proposes to add domain allowlists and denylists.
+To stop web search from reaching specific domains, [block domains for web search](#block-domains-for-web-search).
 
 If web search is not allowed for your group or instance, the **Web search** toggle is turned off
 and you cannot change the toggle. A note at the bottom of the menu tells you who can allow web search.
@@ -691,6 +691,31 @@ To allow web search for an instance:
 To allow web search for an instance, you can also use the `webSearchEnabled` argument of the
 [`duoSettingsUpdate`](../../api/graphql/reference/mutations.md#duosettingsupdate) GraphQL mutation.
 
+### Block domains for web search
+
+Block domains so that Chat does not search or read them when web search is on.
+Subdomains are blocked too, so `example.com` also blocks `docs.example.com`.
+
+You can block up to 100 domains.
+Enter each domain without a scheme or path, for example `example.com`.
+IP addresses and names without a dot, such as `localhost`, are not supported.
+A leading `*.` and a trailing `.` are removed.
+Use ASCII characters only, and enter internationalized domain names in their punycode form,
+for example `xn--mnchen-3ya.de`.
+Domains with an internationalized top-level domain, such as `example.xn--p1ai`, are not supported.
+
+Prerequisites:
+
+- On GitLab.com, you must have the Owner role for the top-level group.
+- On GitLab Self-Managed and GitLab Dedicated, you must have administrator access.
+
+To block domains, set `domainSettingType` to `WEB_SEARCH_DENIED` in one of these GraphQL mutations:
+
+- On GitLab.com, [`aiDomainSettingsNamespaceUpdate`](../../api/graphql/reference/mutations.md#aidomainsettingsnamespaceupdate)
+  for the top-level group.
+- On GitLab Self-Managed and GitLab Dedicated,
+  [`aiDomainSettingsInstanceUpdate`](../../api/graphql/reference/mutations.md#aidomainsettingsinstanceupdate).
+
 ### Turn web search on or off in a conversation
 
 Turn web search on or off in a conversation to choose whether Chat searches the web for an answer.
@@ -727,7 +752,8 @@ For Anthropic models, Chat can read up to five web pages for each request.
 Web search creates the following audit events:
 
 - `web_search_enabled_updated`: A user changes the **Allow web search** setting for a group.
-- `ai_setting_updated`: An administrator changes the **Allow web search** setting for an instance.
+- `web_search_denied_domains_updated`: A user changes the blocked domains for a group.
+- `ai_setting_updated`: An administrator changes the **Allow web search** setting or the blocked domains for an instance.
 - `ai_web_search_invoked`: Chat runs a web search.
 
 For more information, see [audit event types](../compliance/audit_event_types.md).

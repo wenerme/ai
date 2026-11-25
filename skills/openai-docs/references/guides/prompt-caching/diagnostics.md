@@ -145,6 +145,62 @@ func main() {
 }
 ```
 
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.JsonMissing;
+import com.openai.models.responses.*;
+import java.nio.file.*;
+
+// Use your configured OpenAIClient named client.
+String policy = Files.readString(Path.of("support-policy.txt")); // At least 1,024 tokens.
+var baseline =
+    ResponseCreateParams.builder()
+        .model("gpt-6-astra")
+        .instructions(policy)
+        .input("Reply with exactly OK.");
+var first =
+    client
+        .responses()
+        .create(
+            baseline
+                .addTool(
+                    FunctionTool.builder()
+                        .name("get_time")
+                        .parameters(JsonMissing.of())
+                        .strict(JsonMissing.of())
+                        .build())
+                .build());
+var second =
+    client
+        .responses()
+        .create(
+            ResponseCreateParams.builder()
+                .model("gpt-6-astra")
+                .instructions(policy)
+                .input("Reply with exactly OK.")
+                .addTool(
+                    FunctionTool.builder()
+                        .name("get_date")
+                        .parameters(JsonMissing.of())
+                        .strict(JsonMissing.of())
+                        .build())
+                .promptCacheOptions(
+                    ResponseCreateParams.PromptCacheOptions.builder()
+                        .comparisonResponseId(first.id())
+                        .build())
+                .build());
+second
+    .promptCacheDiagnostics()
+    .flatMap(Response.PromptCacheDiagnostics::cacheMiss)
+    .ifPresent(
+        diagnostics -> {
+          System.out.println(diagnostics.reason().asString());
+          System.out.println(
+              diagnostics.comparisonReusableTokens().map(Object::toString).orElse("None"));
+          System.out.println(diagnostics.cacheMissedTokens());
+        });
+```
+
 ```ruby
 require "openai"
 

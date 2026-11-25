@@ -76,8 +76,8 @@ Anthropic’s [client SDKs](https://platform.claude.com/docs/en/cli-sdks-librari
     <Tabs>
       <Tab title="Gradle">
         ```kotlin
-        implementation("com.anthropic:anthropic-java:3.13.0")
-        implementation("com.anthropic:anthropic-java-foundry:3.13.0")
+        implementation("com.anthropic:anthropic-java:3.14.0")
+        implementation("com.anthropic:anthropic-java-foundry:3.14.0")
         ```
       </Tab>
 
@@ -86,12 +86,12 @@ Anthropic’s [client SDKs](https://platform.claude.com/docs/en/cli-sdks-librari
         <dependency>
             <groupId>com.anthropic</groupId>
             <artifactId>anthropic-java</artifactId>
-            <version>3.13.0</version>
+            <version>3.14.0</version>
         </dependency>
         <dependency>
             <groupId>com.anthropic</groupId>
             <artifactId>anthropic-java-foundry</artifactId>
-            <version>3.13.0</version>
+            <version>3.14.0</version>
         </dependency>
         ```
       </Tab>
@@ -618,7 +618,11 @@ Claude in Microsoft Foundry supports most Claude features. [Features overview](h
 
 ### Context window
 
-All [available models](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry#api-model-ids-and-deployments) have a [1M-token context window](https://platform.claude.com/docs/en/build-with-claude/context-windows) on Microsoft Foundry except Claude Opus 4.5, Claude Sonnet 4.5 (deprecated), and Claude Haiku 4.5. These three models have a 200k-token context window.
+On Microsoft Foundry, all [available models](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry#api-model-ids-and-deployments) have a [1M-token context window](https://platform.claude.com/docs/en/build-with-claude/context-windows) except the models in the following list. These models have a 200k-token context window:
+
+* Claude Opus 4.5 (deprecated)
+* Claude Sonnet 4.5 (deprecated)
+* Claude Haiku 4.5
 
 ### Claude features not supported for Claude in Microsoft Foundry
 

@@ -8,6 +8,9 @@ Documentation for the REST API for issues statistics in GitLab.
 Use this API to retrieve statistics about [issues](../user/project/issues/_index.md).
 Every call to this API requires authentication.
 
+The response always includes the number of all, closed, and opened issues that match the filters.
+The `state` attribute has no effect on these endpoints.
+
 If a user is not a member of a project and the project is private, a `GET`
 request on that project results in a `404` status code.
 
@@ -28,9 +31,7 @@ set the `scope` attribute to `all`.
 GET /issues_statistics
 GET /issues_statistics?labels=foo
 GET /issues_statistics?labels=foo,bar
-GET /issues_statistics?labels=foo,bar&state=opened
 GET /issues_statistics?milestone=1.0.0
-GET /issues_statistics?milestone=1.0.0&state=opened
 GET /issues_statistics?iids[]=42&iids[]=43
 GET /issues_statistics?author_id=5
 GET /issues_statistics?assignee_id=5
@@ -88,9 +89,7 @@ Retrieves statistics for issues in a specified group.
 GET /groups/:id/issues_statistics
 GET /groups/:id/issues_statistics?labels=foo
 GET /groups/:id/issues_statistics?labels=foo,bar
-GET /groups/:id/issues_statistics?labels=foo,bar&state=opened
 GET /groups/:id/issues_statistics?milestone=1.0.0
-GET /groups/:id/issues_statistics?milestone=1.0.0&state=opened
 GET /groups/:id/issues_statistics?iids[]=42&iids[]=43
 GET /groups/:id/issues_statistics?search=issue+title+or+description
 GET /groups/:id/issues_statistics?author_id=5
@@ -147,9 +146,7 @@ Retrieves statistics for issues in a specified project.
 GET /projects/:id/issues_statistics
 GET /projects/:id/issues_statistics?labels=foo
 GET /projects/:id/issues_statistics?labels=foo,bar
-GET /projects/:id/issues_statistics?labels=foo,bar&state=opened
 GET /projects/:id/issues_statistics?milestone=1.0.0
-GET /projects/:id/issues_statistics?milestone=1.0.0&state=opened
 GET /projects/:id/issues_statistics?iids[]=42&iids[]=43
 GET /projects/:id/issues_statistics?search=issue+title+or+description
 GET /projects/:id/issues_statistics?author_id=5

@@ -158,6 +158,51 @@ func reviewPullRequest(ctx context.Context, client openai.Client, diff string) (
 }
 ```
 
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.beta.responses.*;
+
+// Use your configured OpenAIClient named client.
+System.out.println(reviewPullRequest(client, "-timeout = 30\n+timeout = None"));
+
+static String reviewPullRequest(OpenAIClient client, String diff) {
+  var response =
+      client
+          .beta()
+          .responses()
+          .create(
+              ResponseCreateParams.builder()
+                  .model("gpt-6.2-sol")
+                  .input(
+                      "Review the pull-request diff below with three agents: one for correctness, one for security, and one for missing tests. Reconcile duplicate or conflicting findings, then return a prioritized review with file and line references.\n\n<diff>\n"
+                          + diff
+                          + "\n</diff>")
+                  .multiAgent(
+                      ResponseCreateParams.MultiAgent.builder()
+                          .enabled(true)
+                          .maxConcurrentSubagents(3)
+                          .build())
+                  .addBeta(ResponseCreateParams.Beta.of("responses_multi_agent=v1"))
+                  .build());
+  return response.output().stream()
+      .flatMap(item -> item.message().stream())
+      .filter(
+          message ->
+              message.agent().map(agent -> agent.agentName().equals("/root")).orElse(false))
+      .filter(
+          message ->
+              message
+                  .phase()
+                  .filter(BetaResponseOutputMessage.Phase.FINAL_ANSWER::equals)
+                  .isPresent())
+      .flatMap(message -> message.content().stream())
+      .flatMap(content -> content.outputText().stream())
+      .map(text -> text.text())
+      .collect(java.util.stream.Collectors.joining());
+}
+```
+
 ```ruby
 def review_pull_request(client, diff)
   response = client.beta.responses.create(
@@ -1253,6 +1298,155 @@ func main() {
 	if err := run(ctx); err != nil {
 		log.Fatal(err)
 	}
+}
+```
+
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.JsonValue;
+import com.openai.core.ObjectMappers;
+import com.openai.core.http.WebSocketOptions;
+import com.openai.models.beta.responses.*;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+
+
+var client = OpenAIOkHttpClient.fromEnv();
+try (var connection =
+    client
+        .beta()
+        .responses()
+        .connectWebSocket(
+            WebSocketOptions.builder()
+                .putHeader("OpenAI-Beta", "responses_multi_agent=v1")
+                .build())) {
+  var tool =
+      BetaFunctionTool.builder()
+          .name("get_proposal")
+          .strict(true)
+          .parameters(
+              BetaFunctionTool.Parameters.builder()
+                  .putAdditionalProperty("type", JsonValue.from("object"))
+                  .putAdditionalProperty(
+                      "properties",
+                      JsonValue.from(
+                          Map.of(
+                              "proposal",
+                              Map.of("type", "string", "enum", List.of("alpha", "beta")))))
+                  .putAdditionalProperty("required", JsonValue.from(List.of("proposal")))
+                  .putAdditionalProperty("additionalProperties", JsonValue.from(false))
+                  .build())
+          .build();
+
+  var input = new ArrayList<BetaResponseInputItem>();
+  input.add(
+      BetaResponseInputItem.ofBetaEasyInputMessage(
+          BetaEasyInputMessage.builder()
+              .role(BetaEasyInputMessage.Role.USER)
+              .content(new Scanner(System.in).nextLine())
+              .build()));
+  String previousResponseId = null;
+  while (true) {
+    var request =
+        BetaResponsesClientEvent.ResponseCreate.builder()
+            .model("gpt-6.2-sol")
+            .store(true)
+            .inputOfBetaResponse(input)
+            .addTool(tool)
+            .multiAgent(
+                BetaResponsesClientEvent.ResponseCreate.MultiAgent.builder()
+                    .enabled(true)
+                    .maxConcurrentSubagents(3)
+                    .build());
+    if (previousResponseId != null) request.previousResponseId(previousResponseId);
+    connection.send(BetaResponsesClientEvent.ofResponseCreate(request.build()));
+    String responseId = null;
+    BetaResponse completed = null;
+    int pending = 0;
+    var retryInput = new ArrayList<BetaResponseInputItem>();
+    long deadline = System.nanoTime() + TimeUnit.MINUTES.toNanos(5);
+    while (completed == null || pending != 0) {
+      var event =
+          connection
+              .receiveAsync()
+              .get(Math.max(0, deadline - System.nanoTime()), TimeUnit.NANOSECONDS);
+      if (event.error().isPresent()
+          || event.responseFailed().isPresent()
+          || event.responseIncomplete().isPresent())
+        throw new IllegalStateException("Multi-agent response failed: " + event);
+      if (event.responseCreated().isPresent())
+        responseId = event.responseCreated().orElseThrow().response().id();
+      if (event.responseOutputItemDone().isPresent()) {
+        var item = event.responseOutputItemDone().orElseThrow().item();
+        if (item.functionCall().isPresent()) {
+          var call = item.functionCall().orElseThrow();
+          if (responseId == null || !call.name().equals("get_proposal"))
+            throw new IllegalStateException("Unexpected function call");
+          String proposal =
+              ObjectMappers.jsonMapper().readTree(call.arguments()).path("proposal").asText();
+          if (!proposal.equals("alpha") && !proposal.equals("beta"))
+            throw new IllegalArgumentException("Unknown proposal");
+          String result =
+              ObjectMappers.jsonMapper()
+                  .writeValueAsString(
+                      Map.of(
+                          "estimated_weeks",
+                          proposal.equals("alpha") ? 6 : 8,
+                          "risk",
+                          proposal.equals("alpha") ? "medium" : "low"));
+          connection.send(
+              BetaResponsesClientEvent.ofResponseInject(
+                  BetaResponseInjectEvent.builder()
+                      .responseId(responseId)
+                      .addInput(
+                          BetaResponseInputItem.FunctionCallOutput.builder()
+                              .callId(call.callId())
+                              .output(result)
+                              .build())
+                      .build()));
+          pending++;
+        }
+      }
+      if (event.responseInjectCreated().isPresent()) pending--;
+      if (event.responseInjectFailed().isPresent()) {
+        var failed = event.responseInjectFailed().orElseThrow();
+        pending--;
+        if (!failed
+            .error()
+            .code()
+            .equals(BetaResponseInjectFailedEvent.Error.Code.RESPONSE_ALREADY_COMPLETED))
+          throw new IllegalStateException("Injection failed: " + failed.error());
+        retryInput.addAll(failed.input());
+      }
+      if (pending < 0) throw new IllegalStateException("Unexpected injection acknowledgement");
+      if (event.responseCompleted().isPresent())
+        completed = event.responseCompleted().orElseThrow().response();
+    }
+    if (!retryInput.isEmpty()) {
+      input = retryInput;
+      previousResponseId = completed.id();
+      continue;
+    }
+    completed.output().stream()
+        .flatMap(item -> item.message().stream())
+        .filter(
+            message ->
+                message.agent().map(agent -> agent.agentName().equals("/root")).orElse(false))
+        .filter(
+            message ->
+                message
+                    .phase()
+                    .filter(BetaResponseOutputMessage.Phase.FINAL_ANSWER::equals)
+                    .isPresent())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(text -> System.out.print(text.text()));
+    System.out.println();
+    break;
+  }
+} finally {
+  client.close();
 }
 ```
 

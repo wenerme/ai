@@ -921,6 +921,168 @@ func logMCPEvent(event realtime.RealtimeServerEventUnion) error {
 }
 ```
 
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.ClientOptions;
+import com.openai.helpers.RealtimeConnection;
+import com.openai.helpers.RealtimeWebSocketOptions;
+import com.openai.models.realtime.*;
+import java.util.List;
+
+connection.send(
+    RealtimeClientEvent.ofSessionUpdate(
+        SessionUpdateEvent.builder()
+            .session(
+                RealtimeSessionCreateRequest.builder()
+                    .addTool(
+                        RealtimeToolsConfigUnion.Mcp.builder()
+                            .serverLabel("openai_docs")
+                            .serverUrl("https://developers.openai.com/mcp")
+                            .allowedToolsOfMcp(List.of("search_openai_docs"))
+                            .requireApproval(
+                                RealtimeToolsConfigUnion.Mcp.RequireApproval
+                                    .McpToolApprovalSetting.NEVER)
+                            .build())
+                    .build())
+            .build()));
+
+var expectedCalls = new java.util.HashSet<String>();
+var completedCalls = new java.util.HashSet<String>();
+boolean responseCompleted = false;
+long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(90);
+while (true) {
+  var event =
+      connection
+          .receiveAsync()
+          .get(
+              Math.max(0, deadline - System.nanoTime()),
+              java.util.concurrent.TimeUnit.NANOSECONDS);
+  if (event.error().isPresent())
+    throw new IllegalStateException(event.error().orElseThrow().toString());
+  if (event.mcpListToolsFailed().isPresent())
+    throw new IllegalStateException("MCP tool listing failed");
+  if (event.responseMcpCallFailed().isPresent())
+    throw new IllegalStateException("MCP tool call failed");
+  event
+      .mcpListToolsInProgress()
+      .ifPresent(
+          value -> System.out.println("Listing MCP tools for item: " + value.itemId()));
+  if (event.mcpListToolsCompleted().isPresent()) {
+    System.out.println(
+        "MCP tools ready for item: " + event.mcpListToolsCompleted().orElseThrow().itemId());
+    connection.send(
+        RealtimeClientEvent.ofResponseCreate(
+            ResponseCreateEvent.builder()
+                .response(
+                    RealtimeResponseCreateParams.builder()
+                        .addOutputModality(RealtimeResponseCreateParams.OutputModality.TEXT)
+                        .addInput(
+                            RealtimeConversationItemUserMessage.builder()
+                                .object_(com.openai.core.JsonMissing.of())
+                                .addContent(
+                                    RealtimeConversationItemUserMessage.Content.builder()
+                                        .type(
+                                            RealtimeConversationItemUserMessage.Content.Type
+                                                .INPUT_TEXT)
+                                        .text(
+                                            "Which Realtime API transport should browser clients use?")
+                                        .build())
+                                .build())
+                        .toolChoice(com.openai.models.responses.ToolChoiceOptions.REQUIRED)
+                        .parallelToolCalls(false)
+                        .build())
+                .build()));
+  }
+  event
+      .conversationItemDone()
+      .ifPresent(
+          done -> {
+            done.item()
+                .mcpListTools()
+                .ifPresent(
+                    item ->
+                        System.out.println(
+                            "MCP tools ready on "
+                                + item.serverLabel()
+                                + ": "
+                                + item.tools().stream()
+                                    .map(tool -> tool.name())
+                                    .collect(java.util.stream.Collectors.joining(", "))));
+            done.item()
+                .mcpApprovalRequest()
+                .ifPresent(
+                    item ->
+                        System.out.println(
+                            "Approval required for: "
+                                + item.name()
+                                + " "
+                                + item.arguments()));
+          });
+  event
+      .responseMcpCallArgumentsDone()
+      .ifPresent(
+          value -> System.out.println("Final MCP call arguments: " + value.arguments()));
+  event
+      .responseMcpCallInProgress()
+      .ifPresent(value -> System.out.println("Running MCP tool for item: " + value.itemId()));
+  event
+      .responseMcpCallCompleted()
+      .ifPresent(value -> System.out.println("MCP tool call completed: " + value.itemId()));
+  event
+      .responseOutputItemDone()
+      .ifPresent(
+          done -> {
+            done.item()
+                .mcpCall()
+                .ifPresent(
+                    call -> {
+                      if (call.id().isBlank()
+                          || call.error().isPresent()
+                          || call.output().filter(output -> !output.isBlank()).isEmpty())
+                        throw new IllegalStateException("MCP tool call failed");
+                      if (!completedCalls.add(call.id()))
+                        throw new IllegalStateException("Duplicate MCP result");
+                      System.out.println(
+                          "MCP output from "
+                              + call.serverLabel()
+                              + "."
+                              + call.name()
+                              + ": "
+                              + call.output().orElseThrow());
+                    });
+            done.item()
+                .realtimeConversationItemAssistantMessage()
+                .ifPresent(
+                    item ->
+                        System.out.println(
+                            "Assistant: "
+                                + item.content().stream()
+                                    .map(content -> content.text().orElse(""))
+                                    .collect(java.util.stream.Collectors.joining())));
+          });
+  if (event.responseDone().isPresent()) {
+    var response = event.responseDone().orElseThrow().response();
+    if (responseCompleted
+        || !response.status().filter(RealtimeResponse.Status.COMPLETED::equals).isPresent())
+      throw new IllegalStateException("Realtime response did not complete");
+    for (var item : response.output().orElseThrow())
+      item.mcpCall()
+          .ifPresent(
+              call -> {
+                if (call.id().isBlank() || !expectedCalls.add(call.id()))
+                  throw new IllegalStateException("Invalid MCP call identity");
+              });
+    if (expectedCalls.isEmpty())
+      throw new IllegalStateException("The response did not call an MCP tool");
+    responseCompleted = true;
+  }
+  if (responseCompleted && expectedCalls.equals(completedCalls)) {
+    System.out.println("Realtime turn complete.");
+    break;
+  }
+}
+```
+
 ```ruby
 completed_events = {}
 expected_calls = []

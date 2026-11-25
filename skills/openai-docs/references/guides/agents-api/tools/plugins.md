@@ -414,6 +414,81 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.beta.agents.*;
+import com.openai.models.beta.agents.sessions.SessionCreateParams;
+import java.io.ByteArrayOutputStream;
+import java.nio.file.*;
+import java.util.*;
+import java.util.zip.*;
+
+// Use your configured OpenAIClient named client.
+System.out.println(uploadPlugin(client, plugin));
+
+static String uploadPlugin(OpenAIClient client, Path pluginDirectory) throws Exception {
+  Path plugin = pluginDirectory.toAbsolutePath().normalize();
+  // Reject links before reading the manifest or any archive content.
+  if (Files.isSymbolicLink(plugin))
+    throw new java.io.IOException("Plugin directory must not be a symbolic link");
+  plugin = plugin.toRealPath();
+  List<Path> entries;
+  try (var files = Files.walk(plugin)) {
+    entries = files.sorted().toList();
+  }
+  for (var entry : entries) {
+    if (Files.isSymbolicLink(entry)
+        || (!Files.isDirectory(entry, LinkOption.NOFOLLOW_LINKS)
+            && !Files.isRegularFile(entry, LinkOption.NOFOLLOW_LINKS)))
+      throw new java.io.IOException("Unsupported plugin entry: " + entry);
+  }
+  com.fasterxml.jackson.databind.JsonNode manifest;
+  try (var input =
+      Files.newInputStream(
+          plugin.resolve(".codex-plugin/plugin.json"), LinkOption.NOFOLLOW_LINKS)) {
+    manifest = new ObjectMapper().readTree(input);
+  }
+  var bytes = new ByteArrayOutputStream();
+  try (var archive = new ZipOutputStream(bytes)) {
+    for (var file : entries) {
+      if (Files.isDirectory(file, LinkOption.NOFOLLOW_LINKS)) continue;
+      archive.putNextEntry(
+          new ZipEntry(plugin.getParent().relativize(file).toString().replace('\\', '/')));
+      try (var input = Files.newInputStream(file, LinkOption.NOFOLLOW_LINKS)) {
+        input.transferTo(archive);
+      }
+      archive.closeEntry();
+    }
+  }
+  var session =
+      client
+          .beta()
+          .agents()
+          .sessions()
+          .create(
+              SessionCreateParams.builder()
+                  .agent(SessionCreateParams.Agent.builder().model("gpt-6-astra").build())
+                  .environment(
+                      EnvironmentParam.OpenAIHosted.builder()
+                          .addPlugin(
+                              HostedPluginParam.builder()
+                                  .name(manifest.required("name").asText())
+                                  .description(manifest.required("description").asText())
+                                  .source(
+                                      InlineCapabilitySourceParam.builder()
+                                          .data(
+                                              Base64.getEncoder()
+                                                  .encodeToString(bytes.toByteArray()))
+                                          .build())
+                                  .build())
+                          .build())
+                  .build());
+  return session.id();
+}
+```
+
 ```ruby
 require "openai"
 require "json"

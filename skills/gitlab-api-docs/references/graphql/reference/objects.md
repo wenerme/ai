@@ -3311,7 +3311,7 @@ Represents an epic on an issue board.
 | `name` | [`String`](scalars.md#string) | Name or title of the object. |
 | `notes` | [`NoteConnection!`](#noteconnection) | All notes on this noteable. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `notes`:</strong> <dl><dt>`filter` ([`NotesFilterType`](enums.md#notesfiltertype))</dt><dd>Type of notes collection: ALL_NOTES, ONLY_COMMENTS, ONLY_ACTIVITY.</dd></dl> |
 | `parent` | [`Epic`](#epic) | Parent epic of the epic. |
-| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants for the epic. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants for the epic. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `reference` | [`String!`](scalars.md#string) | Internal reference of the epic. Returned in shortened format by default.  <strong>Arguments for `reference`:</strong> <dl><dt>`full` ([`Boolean`](scalars.md#boolean))</dt><dd>Indicates if the reference should be returned in full.</dd></dl> |
 | `relationPath` | [`String`](scalars.md#string) | URI path of the epic-issue relationship. |
 | `relativePosition` | [`Int`](scalars.md#int) | Relative position of the epic in the epic tree. |
@@ -3321,7 +3321,7 @@ Represents an epic on an issue board.
 | `startDateFromMilestones` | [`Time`](scalars.md#time) | Inherited start date of the epic from milestones. |
 | `startDateIsFixed` | [`Boolean`](scalars.md#boolean) | Indicates if the start date has been manually set. |
 | `state` | [`EpicState!`](enums.md#epicstate) | State of the epic. |
-| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the epic. |
+| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the epic. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. |
 | `textColor` | [`String`](scalars.md#string) | Text color generated for the epic. |
 | `title` | [`String`](scalars.md#string) | Title of the epic. |
 | `titleHtml` | [`String`](scalars.md#string) | HTML rendering of `title`. |
@@ -9052,6 +9052,7 @@ GitLab Duo Agent Platform session.
 | `userPermissions` | [`DuoWorkflowPermissions`](#duoworkflowpermissions) | Permissions of the current user for the workflow. |
 | `webPath` | [`String`](scalars.md#string) | Web path of the session. |
 | `webSearchAllowed` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates web search is allowed for the session. On GitLab.com, the top-level group setting decides. On GitLab Self-Managed and GitLab Dedicated, the instance setting decides. Does not include the user choice in `webSearchEnabled`. |
+| `webSearchDeniedDomains` | [`[String!]!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Domains that GitLab Duo web search does not search or read in the session, from the top-level group on GitLab.com and from the instance on GitLab Self-Managed and GitLab Dedicated. |
 | `webSearchEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Whether web search is enabled for the session. |
 | `webUrl` | [`String`](scalars.md#string) | URL of the session. |
 | `workItem` | [`WorkItem`](#workitem) | Associated work item (issue or epic), if any. |
@@ -9071,6 +9072,7 @@ Agent attribution for an object, such as a note, created by a GitLab Duo Agent P
 | `agentName` | [`String`](scalars.md#string) | Name of the agent that ran the session. |
 | `flowTrigger` | [`AiFlowTriggerType`](#aiflowtriggertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Flow trigger (automation) that started the session. Event-based sessions also have a trigger, so use `triggerSource` to detect scheduled sessions. Null when the trigger was deleted or the current user cannot read it. |
 | `sessionId` | [`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid) | Global ID of the session that created the object. |
+| `sessionWebPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Web path of the session. Null unless the current user can read the session. |
 | `sourceLink` | [`String`](scalars.md#string) | URL or deep link to the location where the session was triggered from. Null unless the current user can read the session. |
 | `sourceType` | [`DuoWorkflowSourceType`](enums.md#duoworkflowsourcetype) | Type of source that initiated the session. |
 | `triggerSource` | [`DuoWorkflowTriggerSource`](enums.md#duoworkflowtriggersource) | Kind of initiator that started the session. |
@@ -9669,7 +9671,7 @@ Represents an epic.
 | `name` | [`String`](scalars.md#string) | Name or title of the object. |
 | `notes` | [`NoteConnection!`](#noteconnection) | All notes on this noteable. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `notes`:</strong> <dl><dt>`filter` ([`NotesFilterType`](enums.md#notesfiltertype))</dt><dd>Type of notes collection: ALL_NOTES, ONLY_COMMENTS, ONLY_ACTIVITY.</dd></dl> |
 | `parent` | [`Epic`](#epic) | Parent epic of the epic. |
-| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants for the epic. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants for the epic. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `reference` | [`String!`](scalars.md#string) | Internal reference of the epic. Returned in shortened format by default.  <strong>Arguments for `reference`:</strong> <dl><dt>`full` ([`Boolean`](scalars.md#boolean))</dt><dd>Indicates if the reference should be returned in full.</dd></dl> |
 | `relationPath` | [`String`](scalars.md#string) | URI path of the epic-issue relationship. |
 | `relativePosition` | [`Int`](scalars.md#int) | Relative position of the epic in the epic tree. |
@@ -9679,7 +9681,7 @@ Represents an epic.
 | `startDateFromMilestones` | [`Time`](scalars.md#time) | Inherited start date of the epic from milestones. |
 | `startDateIsFixed` | [`Boolean`](scalars.md#boolean) | Indicates if the start date has been manually set. |
 | `state` | [`EpicState!`](enums.md#epicstate) | State of the epic. |
-| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the epic. |
+| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the epic. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. |
 | `textColor` | [`String`](scalars.md#string) | Text color generated for the epic. |
 | `title` | [`String`](scalars.md#string) | Title of the epic. |
 | `titleHtml` | [`String`](scalars.md#string) | HTML rendering of `title`. |
@@ -9824,7 +9826,7 @@ Relationship between an epic and an issue.
 | `movedTo` | [`Issue`](#issue) | Updated Issue after it got moved to another project. |
 | `name` | [`String`](scalars.md#string) | Name or title of the object. |
 | `notes` | [`NoteConnection!`](#noteconnection) | All notes on this noteable. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `notes`:</strong> <dl><dt>`filter` ([`NotesFilterType`](enums.md#notesfiltertype))</dt><dd>Type of notes collection: ALL_NOTES, ONLY_COMMENTS, ONLY_ACTIVITY.</dd></dl> |
-| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants in the issue. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants in the issue. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `projectId` | [`Int`](scalars.md#int) | ID of the issue project. |
 | `reference` | [`String!`](scalars.md#string) | Internal reference of the issue. Returned in shortened format by default.  <strong>Arguments for `reference`:</strong> <dl><dt>`full` ([`Boolean`](scalars.md#boolean))</dt><dd>Boolean option specifying whether the reference should be returned in full.</dd></dl> |
 | `relatedMergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests related to the issue. This field can only be resolved for one issue in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -9837,7 +9839,7 @@ Relationship between an epic and an issue.
 | `state` | [`IssueState!`](enums.md#issuestate) | State of the issue. |
 | `status` | [`WorkItemStatus`](#workitemstatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Status of the issue. |
 | `statusPagePublishedIncident` | [`Boolean`](scalars.md#boolean) | Indicates whether an issue is published to the status page. |
-| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the issue. |
+| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the issue. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. |
 | `taskCompletionStatus` | [`TaskCompletionStatus!`](#taskcompletionstatus) | Task completion status of the issue. |
 | `timeEstimate` | [`Int!`](scalars.md#int) | Time estimate of the issue. |
 | `timelogs` | [`TimelogConnection!`](#timelogconnection) | Timelogs on the issue. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -12001,7 +12003,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 | `movedTo` | [`Issue`](#issue) | Updated Issue after it got moved to another project. |
 | `name` | [`String`](scalars.md#string) | Name or title of the object. |
 | `notes` | [`NoteConnection!`](#noteconnection) | All notes on this noteable. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `notes`:</strong> <dl><dt>`filter` ([`NotesFilterType`](enums.md#notesfiltertype))</dt><dd>Type of notes collection: ALL_NOTES, ONLY_COMMENTS, ONLY_ACTIVITY.</dd></dl> |
-| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants in the issue. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `participants` | [`UserCoreConnection`](#usercoreconnection) | List of participants in the issue. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `projectId` | [`Int`](scalars.md#int) | ID of the issue project. |
 | `reference` | [`String!`](scalars.md#string) | Internal reference of the issue. Returned in shortened format by default.  <strong>Arguments for `reference`:</strong> <dl><dt>`full` ([`Boolean`](scalars.md#boolean))</dt><dd>Boolean option specifying whether the reference should be returned in full.</dd></dl> |
 | `relatedMergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests related to the issue. This field can only be resolved for one issue in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -12013,7 +12015,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 | `state` | [`IssueState!`](enums.md#issuestate) | State of the issue. |
 | `status` | [`WorkItemStatus`](#workitemstatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Status of the issue. |
 | `statusPagePublishedIncident` | [`Boolean`](scalars.md#boolean) | Indicates whether an issue is published to the status page. |
-| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the issue. |
+| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates the currently logged in user is subscribed to the issue. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. |
 | `taskCompletionStatus` | [`TaskCompletionStatus!`](#taskcompletionstatus) | Task completion status of the issue. |
 | `timeEstimate` | [`Int!`](scalars.md#int) | Time estimate of the issue. |
 | `timelogs` | [`TimelogConnection!`](#timelogconnection) | Timelogs on the issue. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -12923,7 +12925,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 | `milestone` | [`Milestone`](#milestone) | Milestone of the merge request. |
 | `name` | [`String`](scalars.md#string) | Name or title of the object. |
 | `notes` | [`NoteConnection!`](#noteconnection) | All notes on this noteable. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `notes`:</strong> <dl><dt>`filter` ([`NotesFilterType`](enums.md#notesfiltertype))</dt><dd>Type of notes collection: ALL_NOTES, ONLY_COMMENTS, ONLY_ACTIVITY.</dd></dl> |
-| `participants` | [`MergeRequestParticipantConnection`](#mergerequestparticipantconnection) | Participants in the merge request. This includes the author, assignees, reviewers, and users mentioned in notes. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `participants` | [`MergeRequestParticipantConnection`](#mergerequestparticipantconnection) | Participants in the merge request. This includes the author, assignees, reviewers, and users mentioned in notes. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `pipelineCreationRequests` | [`[CiPipelineCreationRequest!]!`](#cipipelinecreationrequest) | Pipeline creation requests for the merge request. |
 | `pipelines` | [`PipelineConnection`](#pipelineconnection) | Pipelines for the merge request. Note: for performance reasons, no more than the most recent 500 pipelines will be returned. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter pipelines by their Global IDs. Maximum 20 IDs per request. Child pipelines are included when requested by ID.</dd><dt>`ref` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the ref they are run for.</dd><dt>`refType` ([`RefType`](enums.md#reftype))</dt><dd>Type of ref.</dd><dt>`scope` ([`PipelineScopeEnum`](enums.md#pipelinescopeenum))</dt><dd>Filter pipelines by scope.</dd><dt>`sha` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the sha of the commit they are run for.</dd><dt>`source` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by their source.</dd><dt>`status` ([`PipelineStatusEnum`](enums.md#pipelinestatusenum))</dt><dd>Filter pipelines by their status.</dd><dt>`updatedAfter` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated after the date.</dd><dt>`updatedBefore` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated before the date.</dd><dt>`username` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the user that triggered the pipeline.</dd></dl> |
 | `policiesOverridingApprovalSettings` | [`[PolicyApprovalSettingsOverride!]`](#policyapprovalsettingsoverride) | Approval settings that are overridden by the policies for the merge request. |
@@ -12957,7 +12959,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 | `squashReadOnly` | [`Boolean!`](scalars.md#boolean) | Indicates if `squashReadOnly` is enabled. |
 | `stack` | [`[MergeRequest!]`](#mergerequest) | Other open merge requests in the same stack as this merge request, ordered from the top of the stack to the bottom. Returns null if this merge request is not part of a stack, or if the stack contains more than 20 merge requests. Returns an error when all `stack` fields in one request return more than 420 merge requests in total, counting at least one for each field. |
 | `state` | [`MergeRequestState!`](enums.md#mergerequeststate) | State of the merge request. |
-| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates if the currently logged in user is subscribed to the merge request. |
+| `subscribed` | [`Boolean!`](scalars.md#boolean) | Indicates if the currently logged in user is subscribed to the merge request. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. |
 | `suggestedReviewers` | [`SuggestedReviewersType`](#suggestedreviewerstype) | Suggested reviewers for merge request. |
 | `supportsLockOnMerge` | [`Boolean!`](scalars.md#boolean) | Indicates if the merge request supports locked labels. |
 | `targetBranch` | [`String!`](scalars.md#string) | Target branch of the merge request. |
@@ -15706,7 +15708,8 @@ Paginated collection of [`PathLock`](#pathlock). See [Standard connection fields
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `destroyPathLock` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `destroy_path_lock` on this resource. |
+| `deletePathLock` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `delete_path_lock` on this resource. |
+| `destroyPathLock` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `delete_path_lock` on this resource. Use `deletePathLock` instead. |
 
 ## `PendingGroupMember`
 
@@ -23632,7 +23635,7 @@ Represents the notifications widget.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `subscribed` | [`Boolean!`](scalars.md#boolean) | Whether the current user is subscribed to notifications on the work item. |
+| `subscribed` | [`Boolean!`](scalars.md#boolean) | Whether the current user is subscribed to notifications on the work item. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. |
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 
 ## `WorkItemWidgetParticipants`
@@ -23645,7 +23648,7 @@ Represents a participants widget.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `participants` | [`UserCoreConnection`](#usercoreconnection) | Participants in the work item. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `participants` | [`UserCoreConnection`](#usercoreconnection) | Participants in the work item. Requests that resolve the `participants` and `subscribed` fields more than 20 times in total count toward a rate limit. When the `graphql_participant_fields_rate_limit` feature flag is disabled, requests over the limit are only logged. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 
 ## `WorkItemWidgetProgress`

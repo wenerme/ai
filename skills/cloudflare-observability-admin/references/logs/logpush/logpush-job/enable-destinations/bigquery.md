@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to Google BigQuery.
 title: Enable Google BigQuery
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/og.png?v=d89814c56cd7ee79
@@ -54,8 +56,8 @@ bq mk --table "${PROJECT_ID}:${DATASET_ID}.${TABLE_ID}" schema.json
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **Google BigQuery**.
-5. Enter the following destination details:
+4) In **Select a destination**, choose **Google BigQuery**.
+5) Enter the following destination details:
    - **Project ID** - your Google Cloud project ID
    - **Dataset ID** - the BigQuery dataset containing your table
    - **Table ID** - the BigQuery table to push logs to

@@ -37,7 +37,7 @@ Anthropic personnel access customer content only under defined conditions. Acces
 * **Claude for Enterprise and Claude Apps:** claude.ai Enterprise seats, Claude for Work, Cowork, and Claude in Chrome are not covered.
 * **Claude consumer products:** Claude Free, Pro, Max, or Ultra plans.
 * **Partner-operated platforms:** Claude Models on Google Cloud (Google managed) and Amazon Bedrock. Refer to those platforms’ transparency controls.
-* **Anything ZDR does not cover:** Products that are not covered by ZDR (for example, the Files API, Anthropic-hosted stateful applications, and the Batch API) are not covered by Access Transparency. See [Zero data retention (ZDR)](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#zero-data-retention-zdr-scope) for additional details.
+* **Anything ZDR does not cover:** Products that are not covered by ZDR (for example, the Files API, Anthropic-hosted stateful applications, and the Batch API) are not covered by Access Transparency. See [Legacy zero data retention (Legacy ZDR)](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#zero-data-retention-zdr-scope) for additional details.
 * **Data in customer-owned storage:** On Claude Platform (the Claude API), Access Transparency has no record for data in [customer-owned storage](https://platform.claude.com/docs/en/manage-claude/enterprise-frontier-safeguards/customer-owned-storage).
 
 ## Getting started
@@ -199,6 +199,7 @@ The following table lists which surfaces are covered by Access Transparency. Cov
 | Claude API (`api.anthropic.com`) | Yes | Prompts, completions, and data directly embedded in the API inputs |
 | Claude Code (using an API key) | Yes | API traffic from Claude Code is covered as Claude API traffic |
 | Claude Platform on AWS | Yes | Claude Platform on AWS generates Access Transparency events within the Compliance API (not AWS CloudTrail) |
+| Claude Models on Google Cloud (Anthropic managed) | Yes | Claude Models on Google Cloud (Anthropic managed) generates Access Transparency events within the Compliance API, which you [read with Google Cloud credentials](https://platform.claude.com/docs/en/manage-claude/compliance-api-access#set-up-the-compliance-api) |
 | Claude API (`api.anthropic.com`) (Batch, Files) | No | The Claude API Batch and Files APIs are not covered, just like they are not covered by ZDR |
 | Claude for Enterprise (claude.ai seats) | No | Not covered |
 | Claude for Work | No | Not covered |

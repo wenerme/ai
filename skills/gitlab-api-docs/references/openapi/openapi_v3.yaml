@@ -45347,9 +45347,9 @@ paths:
         schema:
           type: string
           enum:
-          - id
+          - user_id
           nullable: true
-          default: id
+          default: user_id
         in: query
       - name: sort
         required: false
@@ -45405,13 +45405,51 @@ paths:
           type: integer
         in: path
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4OrganizationsIdUsersRequest"
       x-gitlab-lifecycle: experiment
   "/api/v4/organizations/{id}/users/{user_id}":
+    get:
+      operationId: getApiV4OrganizationsIdUsersUserId
+      summary: Get an organization user
+      description: Gets a single user of an organization. This feature was introduced
+        in GitLab 19.7.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesOrganizationsOrganizationUser"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: The ID of the organization.
+        schema:
+          type: integer
+        in: path
+      - name: user_id
+        required: true
+        description: ID or username of the user.
+        schema:
+          type: string
+        in: path
+      x-gitlab-lifecycle: experiment
     put:
       operationId: putApiV4OrganizationsIdUsersUserId
       summary: Update an organization user
@@ -45445,9 +45483,9 @@ paths:
         in: path
       - name: user_id
         required: true
-        description: The ID of the user to update.
+        description: ID or username of the user.
         schema:
-          type: integer
+          type: string
         in: path
       requestBody:
         required: true
@@ -45486,9 +45524,9 @@ paths:
         in: path
       - name: user_id
         required: true
-        description: The ID of the user to remove.
+        description: ID or username of the user.
         schema:
-          type: integer
+          type: string
         in: path
       x-gitlab-lifecycle: experiment
   "/api/v4/offline_exports":
@@ -59187,6 +59225,45 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/putApiV4ProjectsIdServicesGoogleCloudPlatformWorkloadIdentityFederationRequest"
+  "/api/v4/projects/{id}/services/workday":
+    put:
+      operationId: putApiV4ProjectsIdServicesWorkday
+      summary: Create or update the Workday integration
+      description: Creates or updates the Workday integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesIntegrationBasic"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/putApiV4ProjectsIdServicesWorkdayRequest"
+      x-gitlab-tier: ultimate
   "/api/v4/projects/{id}/services/mock-ci":
     put:
       operationId: putApiV4ProjectsIdServicesMockCi
@@ -59335,6 +59412,7 @@ paths:
           - git-guardian
           - google-cloud-platform-artifact-registry
           - google-cloud-platform-workload-identity-federation
+          - workday
           - mock-ci
           - mock-monitoring
           minLength: 1
@@ -59423,6 +59501,7 @@ paths:
           - git-guardian
           - google-cloud-platform-artifact-registry
           - google-cloud-platform-workload-identity-federation
+          - workday
           - mock-ci
           - mock-monitoring
           minLength: 1
@@ -61363,6 +61442,45 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/putApiV4ProjectsIdIntegrationsGoogleCloudPlatformWorkloadIdentityFederationRequest"
+  "/api/v4/projects/{id}/integrations/workday":
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsWorkday
+      summary: Create or update the Workday integration
+      description: Creates or updates the Workday integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesIntegrationBasic"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/putApiV4ProjectsIdIntegrationsWorkdayRequest"
+      x-gitlab-tier: ultimate
   "/api/v4/projects/{id}/integrations/mock-ci":
     put:
       operationId: putApiV4ProjectsIdIntegrationsMockCi
@@ -61511,6 +61629,7 @@ paths:
           - git-guardian
           - google-cloud-platform-artifact-registry
           - google-cloud-platform-workload-identity-federation
+          - workday
           - mock-ci
           - mock-monitoring
           minLength: 1
@@ -61599,6 +61718,7 @@ paths:
           - git-guardian
           - google-cloud-platform-artifact-registry
           - google-cloud-platform-workload-identity-federation
+          - workday
           - mock-ci
           - mock-monitoring
           minLength: 1
@@ -63489,6 +63609,44 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/putApiV4GroupsIdIntegrationsGoogleCloudPlatformWorkloadIdentityFederationRequest"
+  "/api/v4/groups/{id}/integrations/workday":
+    put:
+      operationId: putApiV4GroupsIdIntegrationsWorkday
+      summary: Create or update the Workday integration
+      description: Creates or updates the Workday integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesIntegrationBasic"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/putApiV4GroupsIdIntegrationsWorkdayRequest"
+      x-gitlab-tier: ultimate
   "/api/v4/groups/{id}/integrations/mock-ci":
     put:
       operationId: putApiV4GroupsIdIntegrationsMockCi
@@ -63635,6 +63793,7 @@ paths:
           - git-guardian
           - google-cloud-platform-artifact-registry
           - google-cloud-platform-workload-identity-federation
+          - workday
           - mock-ci
           - mock-monitoring
           minLength: 1
@@ -63722,6 +63881,7 @@ paths:
           - git-guardian
           - google-cloud-platform-artifact-registry
           - google-cloud-platform-workload-identity-federation
+          - workday
           - mock-ci
           - mock-monitoring
           minLength: 1
@@ -99087,6 +99247,8 @@ components:
           type: string
         merge_request_diff_download_request_limit:
           type: string
+        merge_request_notes_index_unauthenticated_limit:
+          type: string
         merge_requests_create_limit:
           type: string
         environment_delete_rows_limit_per_user:
@@ -99354,6 +99516,8 @@ components:
         merge_request_diffs_page_request_limit:
           type: string
         merge_request_diff_resources_request_limit:
+          type: string
+        graphql_participant_fields_request_limit:
           type: string
         work_item_hierarchy_add_children_limit:
           type: string
@@ -106381,7 +106545,7 @@ components:
     APIEntitiesOrganizationsOrganizationUser:
       type: object
       properties:
-        id:
+        user_id:
           type: integer
           format: int64
           example: 1
@@ -120146,6 +120310,14 @@ components:
           type: string
           description: Grafana URL.
           nullable: true
+        graphql_participant_fields_request_limit:
+          type: integer
+          description: 'Maximum number of GraphQL requests per minute for each user,
+            or for each IP address for unauthenticated requests, that resolve the
+            `participants` and `subscribed` fields more than 20 times in total. Default:
+            `100`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271502)
+            in GitLab 19.7.'
+          nullable: true
         gravatar_enabled:
           type: boolean
           description: If `true`, enables the Gravatar service.
@@ -120290,6 +120462,13 @@ components:
           description: Maximum size of the Terraform state file in bytes. Set to `0`
             for unlimited size.
           nullable: true
+        merge_request_notes_index_unauthenticated_limit:
+          type: integer
+          description: 'Maximum number of unauthenticated requests to fetch new and
+            changed merge request comments. Requests are counted every minute for
+            each IP address. Default: `60`. Set to `0` to disable the rate limit.
+            Introduced in GitLab 19.7.'
+          nullable: true
         merge_requests_create_limit:
           type: integer
           description: 'Maximum number of merge requests a user can create per minute.
@@ -120335,14 +120514,14 @@ components:
         pages_domain_create_limit:
           type: integer
           description: 'Maximum number of Pages custom domains each user can create
-            per day. Default: `50`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635642)
+            per day. Default: `50`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268633)
             in GitLab 19.6.'
           nullable: true
         pages_domain_verify_limit:
           type: integer
           description: 'Maximum number of Pages custom domain verification requests
             per minute for each user. Default: `5`. Set to `0` to disable the rate
-            limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635642)
+            limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268633)
             in GitLab 19.6.'
           nullable: true
         password_authentication_enabled:
@@ -132825,9 +133004,15 @@ components:
     postApiV4OrganizationsIdUsersRequest:
       type: object
       properties:
+        user_id:
+          type: integer
+          description: The ID of the user to add. Mutually exclusive with `username`.
+            At least one of `user_id`, `username` must be provided.
+          nullable: true
         username:
           type: string
-          description: The username of the user to add.
+          description: The username of the user to add. Mutually exclusive with `user_id`.
+            At least one of `user_id`, `username` must be provided.
           nullable: true
         access_level:
           type: string
@@ -132837,8 +133022,6 @@ components:
           description: The access level of the user in the organization.
           nullable: true
           default: default
-      required:
-      - username
     putApiV4OrganizationsIdUsersUserIdRequest:
       type: object
       properties:
@@ -137106,6 +137289,48 @@ components:
       - workload_identity_federation_project_number
       - workload_identity_pool_id
       - workload_identity_pool_provider_id
+    putApiV4ProjectsIdServicesWorkdayRequest:
+      type: object
+      properties:
+        people_report_url:
+          type: string
+          description: URL of the Workday report that lists people. Paste the URL
+            exactly as Workday shows it. Must use HTTPS.
+          nullable: true
+        workforce_units_report_url:
+          type: string
+          description: URL of the Workday report that lists workforce units. Paste
+            the URL exactly as Workday shows it. Must use HTTPS.
+          nullable: true
+        token_url:
+          type: string
+          description: Token endpoint of the Workday API client. Paste the URL exactly
+            as Workday shows it. Must use HTTPS.
+          nullable: true
+        client_id:
+          type: string
+          description: Client ID of the Workday API client.
+          nullable: true
+        client_secret:
+          type: string
+          description: Client secret of the Workday API client.
+          nullable: true
+        refresh_token:
+          type: string
+          description: Refresh token generated for the Workday API client.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults
+            to `false`.
+          nullable: true
+      required:
+      - people_report_url
+      - workforce_units_report_url
+      - token_url
+      - client_id
+      - client_secret
+      - refresh_token
     putApiV4ProjectsIdServicesMockCiRequest:
       type: object
       properties:
@@ -139496,6 +139721,48 @@ components:
       - workload_identity_federation_project_number
       - workload_identity_pool_id
       - workload_identity_pool_provider_id
+    putApiV4ProjectsIdIntegrationsWorkdayRequest:
+      type: object
+      properties:
+        people_report_url:
+          type: string
+          description: URL of the Workday report that lists people. Paste the URL
+            exactly as Workday shows it. Must use HTTPS.
+          nullable: true
+        workforce_units_report_url:
+          type: string
+          description: URL of the Workday report that lists workforce units. Paste
+            the URL exactly as Workday shows it. Must use HTTPS.
+          nullable: true
+        token_url:
+          type: string
+          description: Token endpoint of the Workday API client. Paste the URL exactly
+            as Workday shows it. Must use HTTPS.
+          nullable: true
+        client_id:
+          type: string
+          description: Client ID of the Workday API client.
+          nullable: true
+        client_secret:
+          type: string
+          description: Client secret of the Workday API client.
+          nullable: true
+        refresh_token:
+          type: string
+          description: Refresh token generated for the Workday API client.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults
+            to `false`.
+          nullable: true
+      required:
+      - people_report_url
+      - workforce_units_report_url
+      - token_url
+      - client_id
+      - client_secret
+      - refresh_token
     putApiV4ProjectsIdIntegrationsMockCiRequest:
       type: object
       properties:
@@ -141886,6 +142153,48 @@ components:
       - workload_identity_federation_project_number
       - workload_identity_pool_id
       - workload_identity_pool_provider_id
+    putApiV4GroupsIdIntegrationsWorkdayRequest:
+      type: object
+      properties:
+        people_report_url:
+          type: string
+          description: URL of the Workday report that lists people. Paste the URL
+            exactly as Workday shows it. Must use HTTPS.
+          nullable: true
+        workforce_units_report_url:
+          type: string
+          description: URL of the Workday report that lists workforce units. Paste
+            the URL exactly as Workday shows it. Must use HTTPS.
+          nullable: true
+        token_url:
+          type: string
+          description: Token endpoint of the Workday API client. Paste the URL exactly
+            as Workday shows it. Must use HTTPS.
+          nullable: true
+        client_id:
+          type: string
+          description: Client ID of the Workday API client.
+          nullable: true
+        client_secret:
+          type: string
+          description: Client secret of the Workday API client.
+          nullable: true
+        refresh_token:
+          type: string
+          description: Refresh token generated for the Workday API client.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults
+            to `false`.
+          nullable: true
+      required:
+      - people_report_url
+      - workforce_units_report_url
+      - token_url
+      - client_id
+      - client_secret
+      - refresh_token
     putApiV4GroupsIdIntegrationsMockCiRequest:
       type: object
       properties:

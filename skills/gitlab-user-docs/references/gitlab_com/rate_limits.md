@@ -199,6 +199,8 @@ the burst limit is also 2,000 requests each minute, so the two limits are the sa
 | GitLab Pages requests for a GitLab Pages domain                                                               | 5,000 requests every 10 seconds |
 | GitLab Pages TLS connections for an IP address                                                                | 1,000 requests every 50 seconds |
 | GitLab Pages TLS connections for a GitLab Pages domain                                                        | 400 requests every 10 seconds   |
+| [GitLab Pages custom domain creation](../../administration/settings/pages_domain_rate_limits.md) for a user   | 50 domains each day             |
+| GitLab Pages custom domain verification for a user                                                            | 5 requests each minute          |
 | Pipeline creation requests for a project, user, or commit                                                     | 25 requests each minute         |
 | Pipeline creation requests for a user                                                                         | 2,000 requests each minute      |
 | [CI Lint](../../ci/yaml/lint.md) requests for a user                                                          | 400 requests each minute        |

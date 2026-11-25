@@ -10,26 +10,7 @@ Actions are a way for the ChatKit SDK frontend to trigger a streaming response w
 
 Actions can be triggered by attaching an `ActionConfig` to any widget node that supports it. For example, you can respond to click events on Buttons. When a user clicks on this button, the action will be sent to your server where you can update the widget, run inference, stream new thread items, etc.
 
-
-
-
-The TypeScript widget uses the `Widgets.Button` type from `@openai/chatkit`. Install that package in your TypeScript project to type-check the widget payload. This example defines the button payload; your ChatKit integration renders the button and supplies its server-side action handler.
-
-
-
-
-```typescript
-import type { Widgets } from "@openai/chatkit";
-
-const button: Widgets.Button = {
-  type: "Button",
-  label: "Example",
-  onClickAction: {
-    type: "example",
-    payload: { id: 123 },
-  },
-};
-```
+Python server SDK: attach a widget action
 
 ```python
 button = Button(
@@ -44,6 +25,8 @@ button = Button(
 
 Actions can also be sent imperatively by your frontend with `sendCustomAction()`. This is probably most useful when you need ChatKit to respond to interaction happening outside ChatKit, but it can also be used to chain actions when you need to respond on both the client and the server (more on that below).
 
+Client: send an action to the server
+
 ```typescript
 await chatKit.sendCustomAction({
   type: "example",
@@ -57,6 +40,8 @@ await chatKit.sendCustomAction({
 ### On the server
 
 By default, actions are sent to your server. You can handle actions on your server by implementing the `action` method on `ChatKitServer`.
+
+Python server SDK: handle an action
 
 ```python
 class MyChatKitServer(ChatKitServer[RequestContext]):
@@ -96,6 +81,8 @@ Treat actions and their payloads as untrusted data because the client sends them
 
 Sometimes you’ll want to handle actions in your client integration. To do that you need to specify that the action should be sent to your client-side action handler by adding `handler="client"` to the `ActionConfig`.
 
+Python server SDK: configure a client-handled action
+
 ```python
 button = Button(
     label="Example",
@@ -105,6 +92,8 @@ button = Button(
 
 
 Then, when the action is triggered, it will then be passed to a callback that you provide when instantiating ChatKit.
+
+Client: handle the action and notify the server
 
 ```typescript
 async function handleWidgetAction(action: { type: string }) {
@@ -130,6 +119,8 @@ chatKit.setOptions({
 ## Strongly typed actions
 
 By default `Action` and `ActionConfig` are not strongly typed. However, we do expose a `create` helper on `Action` that generates `ActionConfig`s from a set of strongly-typed actions.
+
+Python server SDK: define and validate typed actions
 
 ```python
 class ExamplePayload(BaseModel):
@@ -192,6 +183,8 @@ Form values are keyed in the `payload` by their `name` e.g.
 
 - `Select(name="title")` → `action.payload.title`
 - `Select(name="todo.title")` → `action.payload.todo.title`
+
+Python server SDK: define a form and handle submission
 
 ```python
 form = Form(
@@ -261,6 +254,8 @@ If there is a naming collision with some other existing pre-defined key on your 
 ## Control loading state interactions in widgets
 
 Use `ActionConfig.loadingBehavior` to control how actions trigger different loading states in a widget.
+
+Python server SDK: configure widget loading behavior
 
 ```python
 button = Button(

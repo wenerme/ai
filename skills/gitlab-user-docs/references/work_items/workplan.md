@@ -109,8 +109,8 @@ To show the widget, turn on planning for that work item.
 
 Prerequisites:
 
+- The Developer, Maintainer, or Owner role for the project.
 - An issue or a task.
-- Permission to edit the work item.
 
 To turn on planning, on the work item, in the upper-right corner, use one of the following methods:
 
@@ -129,8 +129,8 @@ Create a workplan to describe how to complete a unit of work.
 
 Prerequisites:
 
+- The Developer, Maintainer, or Owner role for the project.
 - Planning turned on for the work item.
-- Permission to edit the work item.
 
 You can generate a workplan with GitLab Duo or write one manually.
 
@@ -146,6 +146,7 @@ GitLab Duo starts to generate a workplan.
 
 Prerequisites:
 
+- The Developer, Maintainer, or Owner role for the project.
 - Workplan generation [set up](#set-up-workplan-generation).
 
 To generate a workplan with GitLab Duo:
@@ -215,7 +216,7 @@ Regenerate a workplan to replace its content with a new version from GitLab Duo.
 
 Prerequisites:
 
-- Permission to edit the work item.
+- The Developer, Maintainer, or Owner role for the project.
 - Workplan generation [set up](#set-up-workplan-generation).
 
 To regenerate a workplan:
@@ -335,6 +336,7 @@ additional context.
 
 Prerequisites:
 
+- The Developer, Maintainer, or Owner role for the project.
 - GitLab Duo Agent Platform remote flows turned on.
 - [Developer Flow](../project/merge_requests/developer.md) turned on for the top-level
   group and the project. For more information, see
@@ -356,6 +358,7 @@ GitLab Duo starts the Developer Flow with the work item as context, and planning
 
 Prerequisites:
 
+- The Developer, Maintainer, or Owner role for the project.
 - GitLab Duo Agent Platform remote flows turned on.
 - [Developer Flow](../project/merge_requests/developer.md) turned on for the top-level
   group and the project. For more information, see

@@ -12,6 +12,9 @@
 Use this API to render [Markdown](../user/markdown.md) content as HTML.
 
 All requests to this API must be [authenticated](rest/authentication.md).
+If you use an access token, it must have the `api` or `read_api` scope.
+If you use a [fine-grained personal access token](../auth/tokens/fine_grained_access_tokens_rest.md#markdown),
+it must have the **Render** permission for the **Markdown** resource.
 
 ## Render Markdown content
 

@@ -11,6 +11,7 @@ Create and use custom fields for work items to track specific information unique
 - Custom fields for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580397) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named
   `work_item_ticket_migration`. Disabled by default.
 - Custom fields for tickets [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/630485) in GitLab 19.6.
+- Date field type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/510518) in GitLab 19.7.
 
 > [!flag]
 > The availability of custom fields for tickets is controlled by a feature flag.
@@ -28,6 +29,7 @@ Choose from various field types to accommodate different data requirements and p
 - Multi-select
 - Number
 - Text
+- Date
 
 ## Configure custom fields for a group
 
@@ -61,6 +63,7 @@ To create a custom field:
      - Multi-select
      - Number
      - Text field
+     - Date
 
      The field type cannot be changed after you create the field.
    - In , select the work item types where you want this field to be available.
@@ -205,6 +208,20 @@ Text fields work well for:
 - Contact information
 - Brief notes or comments
 - URLs or links
+
+### Date fields
+
+Use date fields when:
+
+- You need to record a single date that the start date and due date do not cover.
+- You want each value to be a date instead of free-form text.
+
+Date fields work well for:
+
+- Launch or release dates
+- Customer commitment dates
+- Review or audit dates
+- Contract or renewal dates
 
 ## Naming conventions for custom fields
 

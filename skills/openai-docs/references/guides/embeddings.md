@@ -170,6 +170,8 @@ Usage is priced per input token. Below is an example of pricing pages of text pe
 
 ## Use cases
 
+The Java examples use `com.openai:openai-java:4.105.0`, `org.apache.commons:commons-csv:1.14.1`, and `com.fasterxml.jackson.core:jackson-databind:2.18.11`. For token counting, add `com.knuddels:jtokkit:1.1.0`. For visualization, clustering, classification, and regression, also add `com.github.haifengl:smile-core:3.1.1`; the examples use that version’s API. Keep imports at the top of your file and helper methods and records at class scope. Place the statements for each step inside a `main` method that declares checked exceptions. Use the same working directory for the CSV files shared by the steps.
+
 Here we show some representative use cases, using the [Amazon fine-food reviews dataset](https://www.kaggle.com/snap/amazon-fine-food-reviews).
 
 ### Obtaining the embeddings
@@ -208,6 +210,14 @@ For Go, save the review CSV as `data/fine_food_reviews_1k.csv`. Keep the `Summar
 
 
 Download and extract the [TypeScript samples and locked dependencies](https://developers.openai.com/api/docs/samples/typescript.tar.gz), including OpenAI and the CSV parser and writer. Save the review dataset as `data/fine_food_reviews_1k.csv` and set `OPENAI_API_KEY`. Keep `Summary`, `Text`, `Score`, `UserId`, and `ProductId`; the producer preserves these columns in its output for the analysis programs. Use a dataset with at least four rows for the four-cluster example.
+
+
+
+
+
+
+
+Save the review dataset as `data/fine_food_reviews_1k.csv`. Keep `Summary`, `Text`, `Score`, `UserId`, and `ProductId`; the Java producer preserves these columns and adds `combined` and `ada_embedding`. Use at least four labeled reviews for the visualization. The visualization sets t-SNE perplexity based on the dataset size, with a maximum of 15, and writes `local-plot.png`.
 
 
 
@@ -373,36 +383,51 @@ func embedding(ctx context.Context, client *openai.Client, text string) ([]float
 ```
 
 ```java
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.embeddings.EmbeddingCreateParams;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
 
-static String csvField(String value) {
-  return "\"" + value.replace("\"", "\"\"") + "\"";
-}
-
-List<String> reviews = List.of("A rich cup of coffee.", "A bright herbal tea.");
 Path output = Path.of("output", "embedded_1k_reviews.csv");
 Files.createDirectories(output.getParent());
-try (var writer = Files.newBufferedWriter(output)) {
-  writer.write("combined,ada_embedding\n");
-  for (String review : reviews) {
-    var embedding =
-        client
-            .embeddings()
-            .create(
-                EmbeddingCreateParams.builder()
-                    .model("text-embedding-3-small")
-                    .inputOfArrayOfStrings(List.of(review.replace("\n", " ")))
-                    .build())
-            .data()
-            .get(0)
-            .embedding();
-    writer.write(csvField(review) + "," + csvField(embedding.toString()) + "\n");
+try (var reviews =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("data/fine_food_reviews_1k.csv")))) {
+  var headers = new ArrayList<>(reviews.getHeaderNames());
+  headers.add("combined");
+  headers.add("ada_embedding");
+  try (var writer =
+      CSVFormat.DEFAULT
+          .builder()
+          .setHeader(headers.toArray(String[]::new))
+          .get()
+          .print(Files.newBufferedWriter(output))) {
+    for (var review : reviews) {
+      String combined = (review.get("Summary") + " " + review.get("Text")).replace("\n", " ");
+      var embedding =
+          client
+              .embeddings()
+              .create(
+                  EmbeddingCreateParams.builder()
+                      .model("text-embedding-3-small")
+                      .inputOfArrayOfStrings(List.of(combined))
+                      .build())
+              .data()
+              .get(0)
+              .embedding();
+      var values = new ArrayList<String>();
+      for (String header : reviews.getHeaderNames()) values.add(review.get(header));
+      values.add(combined);
+      values.add(new ObjectMapper().writeValueAsString(embedding));
+      writer.printRecord(values);
+    }
   }
 }
 System.out.println(output);
@@ -622,6 +647,34 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+var vectors = new ArrayList<List<Double>>();
+try (var csv =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("output/embedded_1k_reviews.csv")))) {
+  for (var row : csv) {
+    List<Double> vector =
+        new ObjectMapper()
+            .readValue(
+                row.get("ada_embedding"),
+                new com.fasterxml.jackson.core.type.TypeReference<List<Double>>() {});
+    if (vector.stream().anyMatch(v -> v == null || !Double.isFinite(v)))
+      throw new IllegalArgumentException("Invalid embedding");
+    vectors.add(vector);
+  }
+}
+System.out.println(vectors.get(0));
+```
+
 ```ruby
 # standard:disable Lint/UselessAssignment -- Preserve named results for the next workflow step.
 require "csv"
@@ -806,7 +859,7 @@ Question_answering_using_embeddings.ipynb
 
 
 
-In many common cases, the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
+The model may not have learned the facts you want it to use when responding to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embedding-based search.
 
 Answer a question with retrieved context
 
@@ -2065,6 +2118,67 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+import smile.manifold.TSNE;
+
+var vectors = new ArrayList<double[]>();
+var colors = new ArrayList<Integer>();
+try (var csv =
+    CSVFormat.DEFAULT
+        .builder()
+        .setHeader()
+        .setSkipHeaderRecord(true)
+        .get()
+        .parse(Files.newBufferedReader(Path.of("output/embedded_1k_reviews.csv")))) {
+  for (var row : csv) {
+    vectors.add(new ObjectMapper().readValue(row.get("ada_embedding"), double[].class));
+    colors.add(Integer.parseInt(row.get("Score")) - 1);
+  }
+}
+if (vectors.size() < 4)
+  throw new IllegalArgumentException("Provide at least four labeled reviews.");
+smile.math.MathEx.setSeed(42);
+var tsne =
+    new TSNE(
+        vectors.toArray(double[][]::new), 2, Math.min(15, (vectors.size() - 1) / 3), 200, 1000);
+var points = tsne.coordinates;
+var image =
+    new java.awt.image.BufferedImage(640, 480, java.awt.image.BufferedImage.TYPE_INT_RGB);
+var graphics = image.createGraphics();
+var plotted = new ArrayList<double[]>();
+try {
+  graphics.setColor(java.awt.Color.WHITE);
+  graphics.fillRect(0, 0, 640, 480);
+  var palette =
+      new java.awt.Color[] {
+        java.awt.Color.RED,
+        java.awt.Color.ORANGE,
+        java.awt.Color.YELLOW,
+        java.awt.Color.CYAN,
+        java.awt.Color.GREEN
+      };
+  double minX = Arrays.stream(points).mapToDouble(p -> p[0]).min().orElseThrow(),
+      maxX = Arrays.stream(points).mapToDouble(p -> p[0]).max().orElseThrow();
+  double minY = Arrays.stream(points).mapToDouble(p -> p[1]).min().orElseThrow(),
+      maxY = Arrays.stream(points).mapToDouble(p -> p[1]).max().orElseThrow();
+  for (int i = 0; i < points.length; i++) {
+    var point = points[i];
+    int x = 20 + (int) (600 * (point[0] - minX) / Math.max(1e-12, maxX - minX));
+    int y = 20 + (int) (440 * (point[1] - minY) / Math.max(1e-12, maxY - minY));
+    graphics.setColor(palette[colors.get(i)]);
+    graphics.fillOval(x - 3, y - 3, 6, 6);
+    plotted.add(point);
+  }
+} finally {
+  graphics.dispose();
+}
+javax.imageio.ImageIO.write(image, "png", Path.of("local-plot.png").toFile());
+```
+
 ```ruby
 require "csv"
 require "json"
@@ -2117,6 +2231,14 @@ An embedding can be used as a general free-text feature encoder within a machine
 We observed that generally the embedding representation is rich and information dense. For example, reducing the dimensionality of the inputs using SVD or PCA, even by 10%, generally results in worse downstream performance on specific tasks.
 
 This code splits the data into a training set and a testing set, which will be used by the following two use cases, namely regression and classification.
+
+
+
+
+The Java split takes a `double[][] vectors` array and a matching `int[] scores` array from your labeled reviews. It returns primitive arrays that both model examples can use; the regression example converts the integer ratings to continuous targets.
+
+
+
 
 Split the dataset for training and testing
 
@@ -2288,6 +2410,28 @@ func main() {
 		log.Fatal(err)
 	}
 }
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.Path;
+import java.util.*;
+
+// Shuffle paired examples once so each vector stays aligned with its score.
+var indices = new ArrayList<Integer>();
+for (int i = 0; i < vectors.length; i++) indices.add(i);
+Collections.shuffle(indices, new Random(42));
+int testSize = (int) Math.ceil(vectors.length * 0.2);
+var testIndices = indices.subList(0, testSize);
+var trainIndices = indices.subList(testSize, indices.size());
+var xTrain = trainIndices.stream().map(i -> vectors[i]).toArray(double[][]::new);
+var xTest = testIndices.stream().map(i -> vectors[i]).toArray(double[][]::new);
+var yTrain = trainIndices.stream().mapToInt(i -> scores[i]).toArray();
+var yTest = testIndices.stream().mapToInt(i -> scores[i]).toArray();
+System.out.println("Training examples: " + xTrain.length);
+System.out.println("Test examples: " + xTest.length);
+
+
 ```
 
 ```ruby
@@ -2510,6 +2654,35 @@ func main() {
 		log.Fatal(err)
 	}
 }
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+import smile.data.DataFrame;
+import smile.data.formula.Formula;
+import smile.data.vector.DoubleVector;
+import smile.regression.RandomForest;
+
+smile.math.MathEx.setSeed(42);
+String[] columns =
+    java.util.stream.IntStream.range(0, xTrain[0].length)
+        .mapToObj(index -> "embedding_" + index)
+        .toArray(String[]::new);
+var training =
+    DataFrame.of(xTrain, columns)
+        .merge(DoubleVector.of("score", Arrays.stream(yTrain).asDoubleStream().toArray()));
+var options = new Properties();
+options.setProperty("smile.random_forest.trees", "100");
+options.setProperty("smile.random_forest.node_size", "1");
+options.setProperty("smile.random_forest.max_nodes", "4");
+var forest = RandomForest.fit(Formula.lhs("score"), training, options);
+var test = DataFrame.of(xTest, columns);
+var predictions = new ArrayList<Number>();
+for (int i = 0; i < test.nrow(); i++) predictions.add(forest.predict(test.get(i)));
+System.out.println(predictions);
 ```
 
 ```ruby
@@ -2763,6 +2936,33 @@ func main() {
 		log.Fatal(err)
 	}
 }
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+import smile.classification.RandomForest;
+import smile.data.DataFrame;
+import smile.data.formula.Formula;
+import smile.data.vector.IntVector;
+
+smile.math.MathEx.setSeed(42);
+String[] columns =
+    java.util.stream.IntStream.range(0, xTrain[0].length)
+        .mapToObj(index -> "embedding_" + index)
+        .toArray(String[]::new);
+var training = DataFrame.of(xTrain, columns).merge(IntVector.of("score", yTrain));
+var options = new Properties();
+options.setProperty("smile.random_forest.trees", "100");
+options.setProperty("smile.random_forest.node_size", "1");
+options.setProperty("smile.random_forest.max_nodes", "4");
+var forest = RandomForest.fit(Formula.lhs("score"), training, options);
+var test = DataFrame.of(xTest, columns);
+var predictions = new ArrayList<Number>();
+for (int i = 0; i < test.nrow(); i++) predictions.add(forest.predict(test.get(i)));
+System.out.println(predictions);
 ```
 
 ```ruby
@@ -3202,6 +3402,37 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+// vectors is a double[][] with one embedding per review.
+// userIds and productIds are String[] columns in the same review-row order.
+var users = averageBy(userIds, vectors);
+var products = averageBy(productIds, vectors);
+System.out.println(new ObjectMapper().writeValueAsString(users));
+System.out.println(new ObjectMapper().writeValueAsString(products));
+
+static Map<String, double[]> averageBy(String[] groups, double[][] vectors) {
+  var sums = new LinkedHashMap<String, double[]>();
+  var counts = new HashMap<String, Integer>();
+  for (int i = 0; i < vectors.length; i++) {
+    var sum = sums.computeIfAbsent(groups[i], key -> new double[vectors[0].length]);
+    if (sum.length != vectors[i].length)
+      throw new IllegalArgumentException("Embedding dimensions differ");
+    for (int j = 0; j < sum.length; j++) sum[j] += vectors[i][j];
+    counts.merge(groups[i], 1, Integer::sum);
+  }
+  sums.forEach(
+      (group, sum) -> {
+        for (int j = 0; j < sum.length; j++) sum[j] /= counts.get(group);
+      });
+  return sums;
+}
+```
+
 ```ruby
 vectors = rows.map { |row| row.fetch("ada_embedding") }
 user_ids = rows.map { |row| row.fetch("UserId") }
@@ -3480,6 +3711,20 @@ func main() {
 }
 ```
 
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+import smile.clustering.KMeans;
+
+// matrix is a double[][] containing at least four review embeddings.
+// Each row must have the same number of dimensions.
+smile.math.MathEx.setSeed(42);
+var clusters = KMeans.fit(matrix, 4);
+System.out.println(Arrays.toString(clusters.y));
+```
+
 ```ruby
 require "rumale/clustering"
 
@@ -3557,6 +3802,19 @@ func main() {
 	}
 	fmt.Println(count)
 }
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import org.apache.commons.csv.*;
+
+System.out.println(ENCODING.countTokens("tiktoken is great!"));
+
+static final com.knuddels.jtokkit.api.Encoding ENCODING =
+    com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
+        .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
 ```
 
 ```ruby

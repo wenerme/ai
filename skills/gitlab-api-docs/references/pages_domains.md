@@ -205,6 +205,7 @@ Example response:
 
 Creates a Pages domain in the specified project. The user must have permissions to create new
 Pages domains.
+This endpoint has a [rate limit](../administration/settings/pages_domain_rate_limits.md) for each user.
 
 ```plaintext
 POST /projects/:id/pages/domains
@@ -412,6 +413,7 @@ Example response:
 
 Verifies the specified Pages domain in a project.
 The user must have permissions to update Pages domains.
+This endpoint has a rate limit for each user.
 
 ```plaintext
 PUT /projects/:id/pages/domains/:domain/verify

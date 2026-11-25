@@ -17,15 +17,17 @@ image: https://developers.cloudflare.com/waf/change-log/scheduled-changes/og.png
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-11-03
+## 2026-11-24
 
 
-**WAF Release - Scheduled changes for 2026-11-10**
+**WAF Release - Scheduled changes for 2026-12-01**
 
 | Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-10-12 | 2026-11-10 | Log | N/A | ...5ea9966d | Broken Access Control - Directory Traversal (Beta) | This rule will be merged into the original rule "Broken Access Control - Directory Traversal" (ID: ...cb14ded8). |
-| 2026-11-03 | 2026-11-10 | Log | N/A | ...7178209b | Generic Rules - Dangerous File Upload | This is a new detection. |
+| 2026-10-12 | 2026-12-01 | Log | N/A | ...5ea9966d | Broken Access Control - Directory Traversal (Beta) | This rule will be merged into the original rule "Broken Access Control - Directory Traversal" (ID: ...cb14ded8). |
+| 2026-11-03 | 2026-12-01 | Log | N/A | ...7178209b | Generic Rules - Dangerous File Upload | This is a new detection. |
+| 2026-11-24 | 2026-12-01 | Log | N/A | ...8c710a44 | Magento - Template Injection - CVE: [CVE-2026-103849 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-103849) | This is a new detection. |
+| 2026-11-24 | 2026-12-01 | Log | N/A | ...ba332ed3 | PHP - Code Injection #3 | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

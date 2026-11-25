@@ -226,8 +226,8 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | GitLab CI/CD job token                            | gitlab_ci_build_token                         | Yes | Yes | No | Yes | Both |
 | GitLab CI/CD job token (JWT)                      | gitlab_ci_build_token_jwt                     | Yes | No | Yes | No | None |
 | GitLab deploy token                               | gitlab_deploy_token                           | Yes | Yes | Yes | Yes | Both |
-| GitLab deploy token (routable)                    | gitlab_deploy_token_routable                  | Yes | No | Yes | No | None |
-| GitLab deploy token in a Git URL                  | gitlab_deploy_token_in_url                    | Yes | No | Yes | No | None |
+| GitLab deploy token (routable)                    | gitlab_deploy_token_routable                  | Yes | No | Yes | Yes | Both |
+| GitLab deploy token in a Git URL                  | gitlab_deploy_token_in_url                    | Yes | No | Yes | Yes | Both |
 | GitLab feature flags client token                 | gitlab_feature_flags_client_token             | Yes | Yes | Yes | No | None |
 | GitLab feed token                                 | gitlab_feed_token                             | Yes | Yes | No | No | None |
 | GitLab feed token v2                              | gitlab_feed_token_v2                          | Yes | Yes | Yes | Yes | Both |
@@ -236,7 +236,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | GitLab IAM OAuth refresh token                    | gitlab_iam_refresh_token                      | Yes | No | Yes | No | None |
 | GitLab incoming email token                       | gitlab_incoming_email_token                   | Yes | Yes | Yes | Yes | Both |
 | GitLab Kubernetes agent token                     | gitlab_kubernetes_agent_token                 | Yes | Yes | Yes | Yes | Both |
-| GitLab Kubernetes agent token (routable)          | gitlab_kubernetes_agent_token_routable        | Yes | No | Yes | No | None |
+| GitLab Kubernetes agent token (routable)          | gitlab_kubernetes_agent_token_routable        | Yes | No | Yes | Yes | Both |
 | GitLab OAuth application secret                   | gitlab_oauth_app_secret                       | Yes | Yes | Yes | Yes | Both |
 | GitLab path-dependent feed token                  | gitlab_feed_token_path_dependent              | Yes | No | Yes | No | None |
 | GitLab personal access token                      | gitlab_personal_access_token                  | Yes | Yes | Yes | Yes | Both |
