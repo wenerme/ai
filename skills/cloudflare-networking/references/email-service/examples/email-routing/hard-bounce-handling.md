@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Detect hard bounce notifications and store recipients in Workers KV.
 title: Hard bounce handling
 image: https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/og.png?v=f99a6c6d7fdb1fa0
@@ -36,7 +38,7 @@ Configure your worker to handle bounce notifications:
 {
 	"name": "bounce-handler",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"send_email": [{ "name": "EMAIL" }],
 	"kv_namespaces": [
 		{
@@ -50,7 +52,7 @@ Configure your worker to handle bounce notifications:
 ```toml
 name = "bounce-handler"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[send_email]]
 name = "EMAIL"

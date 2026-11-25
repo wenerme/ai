@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to a custom HTTP endpoint.
 title: Enable HTTP destination
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/http/og.png?v=de37939f18dde145
@@ -33,18 +35,18 @@ Cloudflare expects that the endpoint is available over HTTPS, using a trusted ce
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **HTTP destination**.
-5. Enter the **HTTP endpoint** where you want to send the logs to, and select **Continue**. - You can use `"header_*"` URL parameters to set request headers, for example, to pass an authentication token to your HTTP endpoint.
-6. Select the dataset to push to the storage service.
-7. In the next step, you need to configure your logpush job:
+4) In **Select a destination**, choose **HTTP destination**.
+5) Enter the **HTTP endpoint** where you want to send the logs to, and select **Continue**. - You can use `"header_*"` URL parameters to set request headers, for example, to pass an authentication token to your HTTP endpoint.
+6) Select the dataset to push to the storage service.
+7) In the next step, you need to configure your logpush job:
    - Enter the **Job name**.
    - Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
    - In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
-8. In **Advanced Options**, you can:
+8) In **Advanced Options**, you can:
    - Choose the format of timestamp fields in your logs ( `RFC3339` (default), `Unix`, or `UnixNano`).
    - Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
    - Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
-9. Select **Submit** once you are done configuring your logpush job.
+9) Select **Submit** once you are done configuring your logpush job.
 
 ## Manage via API
 

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Xiaomi MiMo-V2.6-Pro is a reasoning model served by PrimaLabs. It thinks before it answers, supports tool calling and prompt caching, and has a context window of about 1M tokens through an OpenAI-compatible Chat Completions API.
 title: MiMo-V2.6-Pro
 image: https://developers.cloudflare.com/og-docs.png
@@ -33,7 +35,7 @@ Xiaomi MiMo-V2.6-Pro is a reasoning model served by PrimaLabs. It thinks before 
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | More information | [link ↗](https://docs.primalabs.ai/inference/models.md) |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input (per 1M tokens)$4.00</li><li>Output (per 1M tokens)$8.00</li><li>Cached input (per 1M tokens)$0.036</li></ul> |

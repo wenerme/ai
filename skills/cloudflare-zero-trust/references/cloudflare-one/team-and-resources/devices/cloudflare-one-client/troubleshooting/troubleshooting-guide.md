@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference information for Cloudflare One Client troubleshooting guide in Zero Trust.
 title: Cloudflare One Client troubleshooting guide
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/og.png?v=cfaec6e6d8e00cb9
@@ -51,10 +53,10 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 2. Select **About**.
 3. Compare your device's version with the [latest version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
-4. Open the Cloudflare One Client on the desktop.
-5. Select the gear icon.
-6. Select **About WARP**.
-7. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+4) Open the Cloudflare One Client on the desktop.
+5) Select the gear icon.
+6) Select **About WARP**.
+7) Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
 #### Via the Cloudflare dashboard
 
@@ -601,7 +603,7 @@ If the end user does not see the [disconnect button](https://developers.cloudfla
 
 2. Select **Connect**.
 
-1. On the end user device, open the Cloudflare One Client and disconnect.
+1) On the end user device, open the Cloudflare One Client and disconnect.
 
 What if the end user cannot disconnect?
 
@@ -621,9 +623,9 @@ To reset the encryption keys on an end user's desktop:
 2. Go to **Connectivity** > **Encryption keys**
 3. Select **Reset keys**.
 
-1. Open the Cloudflare One Client GUI on your device.
-2. Select the gear icon > **Preferences** > **Connection**.
-3. Select **Reset Encryption Keys**.
+1) Open the Cloudflare One Client GUI on your device.
+2) Select the gear icon > **Preferences** > **Connection**.
+3) Select **Reset Encryption Keys**.
 
 Resetting the encryption keys forces the client to reestablish its tunnel and retrieve the latest configuration.
 

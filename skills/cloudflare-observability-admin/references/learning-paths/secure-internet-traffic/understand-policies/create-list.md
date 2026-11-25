@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Build reusable IP and domain lists.
 title: Create a list of IPs or domains
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/create-list/og.png?v=45fd078aac549628
@@ -49,9 +51,9 @@ To upload the list to the Cloudflare dashboard:
 4. Drag and drop a file into the **CSV file** window, or select a file.
 5. Select **Create**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Decode the contents of the CSV file and store it as a local value:
+2) Decode the contents of the CSV file and store it as a local value:
 
    ```tf
    locals {
@@ -59,7 +61,7 @@ To upload the list to the Cloudflare dashboard:
    }
    ```
 
-3. Create a list using the [`cloudflare_zero_trust_list` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource:
+3) Create a list using the [`cloudflare_zero_trust_list` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource:
 
    ```tf
    resource "cloudflare_zero_trust_list" "ips_from_csv" {

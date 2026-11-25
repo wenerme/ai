@@ -392,6 +392,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | `SECURITY_REVIEW` | Security review feature setting. |
 | `SUMMARIZE_NEW_MERGE_REQUEST` | Summarize new merge request feature setting. |
 | `SUMMARIZE_REVIEW` | Summarize review feature setting. |
+| `VULNERABILITY_CONTEXT_FLOW` | Vulnerability context flow feature setting. |
 
 ## `AiFlowTriggerErrorReason`
 
@@ -576,6 +577,7 @@ AI features that can be configured through the Model Selection feature settings.
 | `SECURITY_REVIEW` | Security review feature setting. |
 | `SUMMARIZE_NEW_MERGE_REQUEST` | Summarize new merge request feature setting. |
 | `SUMMARIZE_REVIEW` | Summarize review feature setting. |
+| `VULNERABILITY_CONTEXT_FLOW` | Vulnerability context flow feature setting. |
 
 ## `AiSelfHostedModelProvider`
 

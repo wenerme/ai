@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Convert a full DNS setup to a partial CNAME setup.
 title: Convert full setup to partial setup
 image: https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/og.png?v=257d785674f07224
@@ -98,8 +100,8 @@ A verification record for <code>example.com</code> might be:
    | --- | --- | --- |
    | TXT | <code>cloudflare-verify.example.com</code> | 966215192-518620144 |</details>
 
-1. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `partial` to convert the zone type.
-2. Take note of the value returned under `verification_key` in the API response and add the corresponding TXT record at your new authoritative DNS provider.<details><summary>
+1) Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `partial` to convert the zone type.
+2) Take note of the value returned under `verification_key` in the API response and add the corresponding TXT record at your new authoritative DNS provider.<details><summary>
 
    Example verification record</summary>
 

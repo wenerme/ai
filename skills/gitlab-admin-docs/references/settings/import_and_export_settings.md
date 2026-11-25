@@ -456,7 +456,7 @@ For more information, see [application settings API](../../api/settings.md).
 
 ### Concurrent project file exports
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599092) in GitLab 19.4
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250244) in GitLab 19.4
   [with a feature flag](../feature_flags/_index.md) named `limit_concurrent_project_exports`.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273045) in GitLab 19.7.
 

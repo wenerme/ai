@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Set up reverse DNS zones and PTR records.
 title: Reverse zones and PTR records
 image: https://developers.cloudflare.com/dns/additional-options/reverse-zones/og.png?v=78527b91083833d7
@@ -57,8 +59,8 @@ To set up a reverse zone, you need to create a reverse DNS zone and add PTR reco
    - **Reverse zone**: <code>100.51.198.in-addr.arpa</code></details>
 
    - For IPv6, consider the following examples:
-   - **IPv6 prefix**: `2001:DB8::0/32`
-   - **Reverse zone**: `8.b.d.0.1.0.0.2.ip6.arpa`
+   * **IPv6 prefix**: `2001:DB8::0/32`
+   * **Reverse zone**: `8.b.d.0.1.0.0.2.ip6.arpa`
    - **IPv6 prefix**: `2001:DB8::0/48`
    - **Reverse zone**: `0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`
 3. If you are adding less than 200 PTR records, select the **Free** plan. If you are adding more, select a paid plan.

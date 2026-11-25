@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference information for Diagnostic logs in Zero Trust.
 title: Diagnostic logs
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/og.png?v=7d60642679b225d4
@@ -312,12 +314,12 @@ To view client logs on mobile devices:
    2. Select **Export QLogs**.
    3. Enter a descriptive file name (such as `qlogs.zip`) if available for your sharing method. Then share or save the file.
 
-1. Open the Cloudflare One Agent app.
-2. Go to **Settings** > **Advanced** > **Diagnostics**.
-3. Scroll down to the **Debug logs** section.
-4. (Optional) Turn on **Enable qlogs** for devices using the [MASQUE tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol).
-5. Select **Download logs**.
-6. Share the `warp-debugging-info-<date>-<time>.zip` file via email, Google Drive, or another installed app.
+1) Open the Cloudflare One Agent app.
+2) Go to **Settings** > **Advanced** > **Diagnostics**.
+3) Scroll down to the **Debug logs** section.
+4) (Optional) Turn on **Enable qlogs** for devices using the [MASQUE tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol).
+5) Select **Download logs**.
+6) Share the `warp-debugging-info-<date>-<time>.zip` file via email, Google Drive, or another installed app.
 
 ### Mobile app logs
 

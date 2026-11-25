@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure the Cloudflare One Client to use a custom root certificate instead of the Cloudflare certificate.
 title: Deploy custom certificate
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/og.png?v=13ffcb4b6efa47c3
@@ -124,7 +126,7 @@ You can upload a single root certificate or a full certificate chain. When uploa
 
    You can now [use the generated custom root certificate](#use-a-custom-root-certificate) for inspection.
 
-1. Use the [Upload mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls_certificates/methods/create/) to upload the certificate and private key to Cloudflare. The certificate must be a root CA or certificate chain, formatted as a single string with `\n` replacing the line breaks.<details><summary>
+1) Use the [Upload mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls_certificates/methods/create/) to upload the certificate and private key to Cloudflare. The certificate must be a root CA or certificate chain, formatted as a single string with `\n` replacing the line breaks.<details><summary>
 
    Required API token permissions</summary>
 
@@ -165,7 +167,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    ```
 
    When uploading a certificate chain, the `certificates` field should contain all certificates in PEM format. To format this field, order the root certificate first, then concatenate any intermediate certificates.
-2. Set the certificate as available for use in inspection with the [Activate a Zero Trust certificate endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/certificates/methods/activate/). This will deploy the certificate across the Cloudflare global network.
+2) Set the certificate as available for use in inspection with the [Activate a Zero Trust certificate endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/certificates/methods/activate/). This will deploy the certificate across the Cloudflare global network.
 
    *Activate a Zero Trust certificatebash*
 
@@ -201,7 +203,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-3. Use the [Get Zero Trust certificate details endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/certificates/methods/get/) to verify the certificate's binding status is set to `available`.
+3) Use the [Get Zero Trust certificate details endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/certificates/methods/get/) to verify the certificate's binding status is set to `available`.
 
    *Get Zero Trust certificate detailsbash*
 
@@ -235,8 +237,8 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-4. (Optional) Verify the certificate is installed on your user's devices either [with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) or [manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
-5. Use the [Patch Zero Trust account configuration endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/configurations/methods/edit/) to turn on the certificate for use in inspection. For example:
+4) (Optional) Verify the certificate is installed on your user's devices either [with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) or [manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
+5) Use the [Patch Zero Trust account configuration endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/configurations/methods/edit/) to turn on the certificate for use in inspection. For example:
 
 *Patch Zero Trust account configurationbash*
 

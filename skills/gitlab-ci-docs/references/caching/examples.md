@@ -130,7 +130,7 @@ default:
 
 #### Yarn with offline mirror
 
-If you're using [Yarn](https://yarnpkg.com/), you can use [`yarn-offline-mirror`](https://classic.yarnpkg.com/blog/2016/11/24/offline-mirror/)
+If you're using [Yarn Classic (1.x)](https://classic.yarnpkg.com/), you can use [`yarn-offline-mirror`](https://classic.yarnpkg.com/blog/2016/11/24/offline-mirror/)
 to cache the zipped `node_modules` tarballs. The cache generates more quickly, because
 fewer files have to be compressed:
 
@@ -146,6 +146,26 @@ job:
         - yarn.lock
     paths:
       - .yarn-cache/
+```
+
+#### Yarn 2 and later
+
+Yarn 2 and later do not support `yarn-offline-mirror`. Instead, cache the
+`.yarn/cache` folder. In Yarn 4 and later, the cache is stored in the home folder
+by default, so set `YARN_ENABLE_GLOBAL_CACHE` to `false` to keep it in the project directory:
+
+```yaml
+job:
+  variables:
+    YARN_ENABLE_GLOBAL_CACHE: "false"
+  script:
+    - yarn install --immutable
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - .yarn/cache/
 ```
 
 ### PHP

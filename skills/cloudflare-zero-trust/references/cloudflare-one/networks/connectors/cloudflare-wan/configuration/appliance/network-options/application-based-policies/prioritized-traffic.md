@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Prioritized traffic allows you to define which applications are processed first by Connector.
 title: Prioritized traffic
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/og.png?v=e07842367d846e13
@@ -15,13 +17,87 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Prioritized traffic
 
-Prioritized traffic allows you to define which applications Cloudflare One Appliance (formerly Magic WAN Connector) should process first. Applications not in the list will be queued behind prioritized traffic.
+Prioritized traffic allows you to define which applications Cloudflare One Appliance (formerly Magic WAN Connector) should process first when a WAN is congested. Applications not in the list are sent as default (best effort) traffic, queued behind prioritized traffic.
 
 Similarly to breakout traffic, prioritized traffic also works via DNS requests inspection.
 
 Caution
 
 Prioritized traffic will not work for applications that use DNS-over-HTTPS.
+
+## How traffic prioritization works
+
+Cloudflare One Appliance sorts the upload traffic it sends out of each WAN into two classes:
+
+| Class | Traffic in this class |
+| --- | --- |
+| **Prioritized** | Traffic that matches an application in the site's **Prioritized traffic** list. |
+| **Default (best effort)** | All other traffic. |
+
+When a WAN is congested, the appliance sends prioritized traffic ahead of default traffic. Prioritized traffic cannot completely starve default traffic, so a high-volume prioritized application does not block all other traffic on the WAN. Within each class, the appliance shares bandwidth fairly between flows, so a single large transfer does not crowd out other connections.
+
+Prioritization applies to upload traffic that the appliance sends through its IPsec tunnels to Cloudflare, and to [breakout traffic](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/) that it sends directly to the Internet.
+
+### Set the provisioned upload bandwidth
+
+The appliance can only prioritize traffic that is waiting in a queue on the appliance. If your WAN circuit is slower than the appliance port it is connected to (for example, a 100 Mbps circuit on a 1 Gbps port), traffic leaves the appliance at full port speed and queues in your modem or your ISP's network instead. Prioritization then has little or no effect.
+
+To make prioritization take effect, set **Provisioned upload bandwidth** on each WAN to the upload speed of that circuit. The appliance then limits (shapes) the upload traffic on that WAN to 95% of the value you enter. This keeps the queue on the appliance, where prioritized traffic can be sent first.
+
+1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
+3. Select the Cloudflare One Appliance profile you want to configure > **Edit**.
+4. Go to **Network configuration** > **WAN configuration**.
+5. Find the WAN you want to configure > select the three dots next to it > **Edit**.
+6. In **Provisioned upload bandwidth (Mbps)**, enter the upload speed of the WAN circuit. Enter a value from `0.001` to `1,000,000` Mbps, with up to three decimal places.
+7. (Optional) In **Provisioned download bandwidth (Mbps)**, enter the download speed of the WAN circuit.
+8. Select **Save**.
+
+To stop shaping a WAN, clear **Provisioned upload bandwidth (Mbps)** and select **Save**.
+
+Note
+
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+
+Send a `PATCH` request to [update the WAN](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/edit/). Set `provisioned_upload_kbps` and, optionally, `provisioned_download_kbps` in kilobits per second (kbps). Both fields accept integers from `1` to `1000000000`. For example, a 100 Mbps upload circuit is `100000`.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Patch Site WANbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/wans/$WAN_ID" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"provisioned_upload_kbps": 100000,
+		"provisioned_download_kbps": 500000
+	}'
+```
+
+You can also set both fields when you [create a WAN](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/create/). To remove a value and stop shaping the WAN, set the field to `null` in a `PATCH` request.
+
+### Considerations
+
+- **No provisioned upload bandwidth means no shaping.** If you leave **Provisioned upload bandwidth** empty, the appliance does not shape the WAN. Prioritized traffic still goes first, but only when the appliance itself is the bottleneck.
+- **Use the real circuit speed.** If the value is too low, the appliance limits throughput below what the circuit can carry. If it is too high, traffic queues upstream of the appliance and prioritization becomes less effective.
+- **Each WAN is shaped on its own.** If several WANs share one physical port (for example, as VLANs), the appliance shapes each WAN separately. Make sure the combined provisioned upload bandwidth of those WANs does not exceed what the shared port or circuit can carry.
+- **Download traffic is not shaped.** The appliance does not currently shape or prioritize download traffic. It saves **Provisioned download bandwidth** with the WAN, but does not use it for shaping.
+- **IPv4 only.** Traffic prioritization applies to IPv4 traffic.
+- **Appliance version.** Upload shaping requires Appliance version 2026.10.3 or later. Appliances update automatically during their [interrupt window](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/).
 
 ## Add an application to your account
 
@@ -243,5 +319,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/#page","headline":"Prioritized traffic","description":"Prioritized traffic allows you to define which applications are processed first by Connector.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/og.png?v=e07842367d846e13","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/#page","headline":"Prioritized traffic","description":"Prioritized traffic allows you to define which applications are processed first by Connector.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/og.png?v=e07842367d846e13","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

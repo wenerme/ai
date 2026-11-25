@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.
 title: Domains ranking
 image: https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/og.png?v=9d0c73638d9cd54e

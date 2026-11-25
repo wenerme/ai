@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Optimize images with Polish, Mirage, and Image Resizing.
 title: Image optimization
 image: https://developers.cloudflare.com/speed/optimization/images/og.png?v=3f3e9c2e0a5a8bb2
@@ -15,7 +17,7 @@ image: https://developers.cloudflare.com/speed/optimization/images/og.png?v=3f3e
 
 # Image optimization
 
-- [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/)
+- [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/url/)
 - [Polish](https://developers.cloudflare.com/images/polish/)
 - [Cloudflare Mirage (deprecated)](https://developers.cloudflare.com/speed/optimization/images/mirage/)
 - [Troubleshooting](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/)

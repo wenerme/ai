@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure custom device posture checks in Cloudflare One using a service-to-service integration.
 title: Custom device posture integration
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/custom/og.png?v=d0be19807fed83b3
@@ -125,10 +127,10 @@ To create a custom service-to-service integration:
 3. Select **Custom service provider**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
 
-5. In **Access client ID** and **Access client secret**, enter the Access service token used to authenticate to your external API.
-6. In **Rest API URL**, enter the external API endpoint that Cloudflare will query for posture information (for example, `https://api.example.com`). For more information, refer to [External API requirements](#external-api-requirements).
-7. In **Polling frequency**, choose how often Cloudflare One should query the external API for information.
-8. Select **Test and save**. The test checks if Cloudflare can authenticate to the API URL using the provided Access credentials.
+5) In **Access client ID** and **Access client secret**, enter the Access service token used to authenticate to your external API.
+6) In **Rest API URL**, enter the external API endpoint that Cloudflare will query for posture information (for example, `https://api.example.com`). For more information, refer to [External API requirements](#external-api-requirements).
+7) In **Polling frequency**, choose how often Cloudflare One should query the external API for information.
+8) Select **Test and save**. The test checks if Cloudflare can authenticate to the API URL using the provided Access credentials.
 
 Next, [configure a device posture check](#4-configure-the-posture-check) to determine if a given posture score constitutes a pass or fail.
 

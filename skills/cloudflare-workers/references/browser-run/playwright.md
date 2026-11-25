@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.
 title: Playwright
 image: https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a
@@ -65,7 +67,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -80,7 +82,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 upload_source_maps = true
 
 [browser]
@@ -251,7 +253,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"upload_source_maps": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -270,7 +272,7 @@ main = "src/index.ts"
 upload_source_maps = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [browser]
 binding = "MYBROWSER"

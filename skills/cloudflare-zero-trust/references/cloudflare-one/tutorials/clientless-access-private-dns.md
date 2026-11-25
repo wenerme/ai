@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: With Cloudflare Browser Isolation and resolver policies, users can connect to private web-based applications via their private hostnames.
 title: Access a web application via its private hostname without the Cloudflare One Client
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/og.png?v=62607a959113a351
@@ -49,9 +51,9 @@ The application and DNS server are now connected to Cloudflare.
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Browser isolation** > **Browser isolation settings**.
 2. Turn on **Allow users to open a remote browser without the device client**.
 
-3. For **Permissions**, select **Manage**.
-4. Select **Add a rule**.
-5. Create an expression that defines who can open the Clientless Web Isolation browser. For example,
+3) For **Permissions**, select **Manage**.
+4) Select **Add a rule**.
+5) Create an expression that defines who can open the Clientless Web Isolation browser. For example,
 
    | Rule action | Rule type | Selector | Value | Action |
    | --- | --- | --- | --- | --- |

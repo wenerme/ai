@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: How Cloudflare Network Firewall protects your network traffic.
 title: About
 image: https://developers.cloudflare.com/cloudflare-network-firewall/about/og.png?v=9de2ec79f3c29195
@@ -25,13 +27,13 @@ When using Cloudflare Network Firewall alongside other Cloudflare services that 
 - You must allow [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips/).
 - When using Cloudflare Network Firewall, fragmented packets are reassembled into complete packets before they are inspected. As a result, you cannot create firewall rules for fragments.
 
-- [Analytics](https://developers.cloudflare.com/cloudflare-network-firewall/about/analytics/)
-- [IDS](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/)
-- [List types](https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/)
-- [Protocol validation rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/)
-- [Ruleset logic](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/)
-- [Traffic types](https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/)
-- [Unified Routing behavior changes](https://developers.cloudflare.com/cloudflare-network-firewall/about/unified-routing-changes/)
+* [Analytics](https://developers.cloudflare.com/cloudflare-network-firewall/about/analytics/)
+* [IDS](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/)
+* [List types](https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/)
+* [Protocol validation rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/)
+* [Ruleset logic](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/)
+* [Traffic types](https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/)
+* [Unified Routing behavior changes](https://developers.cloudflare.com/cloudflare-network-firewall/about/unified-routing-changes/)
 
 Was this helpful?
 

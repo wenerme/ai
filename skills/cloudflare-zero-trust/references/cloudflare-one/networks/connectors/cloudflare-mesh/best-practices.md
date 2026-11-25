@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Recommended practices for reliable Cloudflare Mesh deployments.
 title: Best practices
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/best-practices/og.png?v=7cc188f2cbe2feef
@@ -33,13 +35,13 @@ Updating a Mesh node means updating the `cloudflare-warp` package on the Linux h
    sudo apt-get update && sudo apt-get install --only-upgrade cloudflare-warp
    ```
 
-1. Check the current version:
+1) Check the current version:
 
    ```sh
    warp-cli --version
    ```
 
-2. Update the package:
+2) Update the package:
 
    ```sh
    sudo yum update cloudflare-warp

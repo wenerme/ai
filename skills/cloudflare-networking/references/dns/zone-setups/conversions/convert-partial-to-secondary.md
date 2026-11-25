@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: If you initially set up a partial zone on Cloudflare, you can later convert it to use a secondary setup.
 title: Convert partial setup to secondary setup
 image: https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/og.png?v=75f9bed0a2a145c2
@@ -155,15 +157,15 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 3. Link your Cloudflare zone to the peer DNS server you just created.
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
-2. Under **DNS Zone Transfers**, select **Manage linked peers**.
-3. Choose a value for **Zone refresh**, which controls the number of seconds between zone updates from your primary DNS server.
+1) In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+2) Under **DNS Zone Transfers**, select **Manage linked peers**.
+3) Choose a value for **Zone refresh**, which controls the number of seconds between zone updates from your primary DNS server.
 
    Caution
 
    Cloudflare will not use the REFRESH value inside the SOA record that is served by your primary provider. Instead the value of zone refresh configured for your secondary zone on Cloudflare will be used to determine the interval after which the SOA serial of the primary zone will be checked for changes.
-4. Select the peer server you previously created. If needed, you can link more than one peer server to a zone.
-5. Select **Save** to confirm.
+4) Select the peer server you previously created. If needed, you can link more than one peer server to a zone.
+5) Select **Save** to confirm.
 
 Use the [Update Secondary Zone Configuration endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/peers/methods/update/) to link your Cloudflare zone to the peer DNS server.
 

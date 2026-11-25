@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Manual deployment in Zero Trust.
 title: Manual deployment
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/og.png?v=cdb8712d3b783a4e
@@ -37,17 +39,17 @@ To enroll your device using the client GUI:
    Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
 6. Select **Open the Cloudflare One Client** to complete the registration.
 
-7. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
-8. Launch the Cloudflare One Client.
-9. Select the Cloudflare logo in the menu bar.
-10. Select the gear icon.
-11. Go to **Preferences** > **Account**.
-12. Select **Login with Cloudflare Zero Trust**.
-13. Enter your team name.
-14. Complete the authentication steps required by your organization.
+7) [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
+8) Launch the Cloudflare One Client.
+9) Select the Cloudflare logo in the menu bar.
+10) Select the gear icon.
+11) Go to **Preferences** > **Account**.
+12) Select **Login with Cloudflare Zero Trust**.
+13) Enter your team name.
+14) Complete the authentication steps required by your organization.
 
     Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
-15. Select **Open Cloudflare WARP.app** to complete the registration.
+15) Select **Open Cloudflare WARP.app** to complete the registration.
 
 The device is now protected by your organization's Zero Trust policies.
 

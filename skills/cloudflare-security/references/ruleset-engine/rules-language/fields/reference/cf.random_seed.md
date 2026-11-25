@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Returns per-request random bytes that you can use in the [`uuidv4()`](/ruleset-engine/rules-language/functions/#uuidv4) function.
 title: cf.random_seed
 image: https://developers.cloudflare.com/og-docs.png
@@ -11,7 +13,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.random\_seed
 
-`cf.random_seed``Bytes`
+`cf.random_seed` `Bytes`
 
 Returns per-request random bytes that you can use in the [`uuidv4()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#uuidv4) function.
 

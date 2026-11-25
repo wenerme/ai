@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Let a Workers AI model write JavaScript and run it in a Dynamic Worker sandbox.
 title: Build an AI code interpreter
 image: https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/og.png?v=7b150c445b3ba3bc
@@ -104,7 +106,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-code-interpreter",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"observability": {
    		"enabled": true,
    	},
@@ -125,7 +127,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-code-interpreter"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    upload_source_maps = true
 
    [observability]
@@ -164,7 +166,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env, code) {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-11-23",
+		compatibilityDate: "2026-11-25",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -225,7 +227,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env: Env, code: string): Promise<Output> {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-11-23",
+		compatibilityDate: "2026-11-25",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `

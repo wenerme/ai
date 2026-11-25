@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Build a Sandbox SDK 0.x code interpreter using the Workers AI GPT-OSS model and the workers-ai-provider package.
 title: Code interpreter with Workers AI
 image: https://developers.cloudflare.com/sandbox/sdk/tutorials/workers-ai-code-interpreter/og.png?v=09a347cf9eb5745f
@@ -126,7 +128,7 @@ The template includes the proper Wrangler configuration:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "ai": {
     "binding": "AI"
   },
@@ -155,7 +157,7 @@ name = "sandbox-code-interpreter-example"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [ai]
 binding = "AI"

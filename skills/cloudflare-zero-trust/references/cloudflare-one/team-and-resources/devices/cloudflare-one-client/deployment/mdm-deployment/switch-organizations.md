@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Switch between Zero Trust organizations in Zero Trust.
 title: Switch between Zero Trust organizations
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/og.png?v=3c5a03c108948fb9
@@ -116,8 +118,8 @@ In the Cloudflare One Client, select the gear icon &gt; **Switch configurations*
 1. Open the Cloudflare One Agent app on your device.
 2. Go to **Settings** > **Advanced** > **Switch configurations**. The menu will show the organizations that the admin has configured for your device.
 
-3. Select the configuration that you want to connect to.
-4. If prompted, complete the authentication steps required for the new organization. Your authentication information will be saved and you will be able to switch back and forth between configurations.
+3) Select the configuration that you want to connect to.
+4) If prompted, complete the authentication steps required for the new organization. Your authentication information will be saved and you will be able to switch back and forth between configurations.
 
 Note
 

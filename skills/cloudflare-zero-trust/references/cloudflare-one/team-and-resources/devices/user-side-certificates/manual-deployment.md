@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Manually add a Cloudflare certificate to mobile devices and individual applications.
 title: Install certificate manually
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/og.png?v=b6e53927267d3f8d
@@ -105,9 +107,9 @@ Some applications require a certificate formatted in the `.cer` file type. You c
    openssl x509 -inform PEM -in ~/Downloads/certificate.pem -outform DER -out ~/Downloads/certificate.cer
    ```
 
-1. [Install OpenSSL for Windows ↗︎](https://slproweb.com/products/Win32OpenSSL.html).
-2. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
-3. In a PowerShell terminal, convert the certificate to DER format with the `.cer` file type:
+1) [Install OpenSSL for Windows ↗︎](https://slproweb.com/products/Win32OpenSSL.html).
+2) [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
+3) In a PowerShell terminal, convert the certificate to DER format with the `.cer` file type:
 
    ```powershell
    openssl x509 -inform PEM -in "$HOME\Downloads\certificate.pem" -outform DER -out "$HOME\Downloads\certificate.cer"
@@ -269,18 +271,18 @@ ChromeOS devices use different methods to store and deploy root certificates. Ce
 3. Select **Manage Android preferences**.
 4. Go to **Security & location** > **Credentials** > **Install from SD card**.
 
-5. In the file open dialog, choose the `certificate.crt` file you downloaded. Select **Open**.
-6. Enter a name to identify the certificate. Ensure **Credential use** is set to *VPN and apps*.
-7. Select **OK**.
+5) In the file open dialog, choose the `certificate.crt` file you downloaded. Select **Open**.
+6) Enter a name to identify the certificate. Ensure **Credential use** is set to *VPN and apps*.
+7) Select **OK**.
 
 1. [Download a Cloudflare certificate](#download-the-cloudflare-root-certificate) in `.crt` format.
 2. Go to **Settings** > **Apps** > **Google Play Store**.
 3. Select **Manage Android preferences**.
 4. Go to **Security & location** > **Credentials** > **Install a certificate > CA certificate**.
 
-5. When prompted with a privacy warning, select **Install anyway**.
-6. In the file open dialog, choose the `certificate.crt` file you downloaded. Select **Open**.
-7. To verify the certificate is installed and trusted, go to **Settings** > **Apps** > **Google Play Store** > **Manage Android Preferences** > **Security** > **Credentials** > **Trusted credentials** > **User**.
+5) When prompted with a privacy warning, select **Install anyway**.
+6) In the file open dialog, choose the `certificate.crt` file you downloaded. Select **Open**.
+7) To verify the certificate is installed and trusted, go to **Settings** > **Apps** > **Google Play Store** > **Manage Android Preferences** > **Security** > **Credentials** > **Trusted credentials** > **User**.
 
 After adding the Cloudflare certificate to ChromeOS, you may also have to [install the certificate in your browser](#browsers).
 
@@ -423,20 +425,20 @@ The command to install the certificate with Python on Windows automatically incl
 
 6. Restart your terminal.
 
-1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
-2. In a terminal, install the `certifi` package:
+1) [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
+2) In a terminal, install the `certifi` package:
 
    ```sh
    python -m pip install certifi
    ```
 
-3. Append the Cloudflare certificate to this CA store by running:
+3) Append the Cloudflare certificate to this CA store by running:
 
    ```sh
    echo | cat - certificate.pem >> $(python -m certifi)
    ```
 
-4. (Optional) Configure your system variables to point to the CA store by adding them to your shell's configuration file (such as `~/.zshrc` or `~/.bash_profile`). For example:
+4) (Optional) Configure your system variables to point to the CA store by adding them to your shell's configuration file (such as `~/.zshrc` or `~/.bash_profile`). For example:
 
    ```sh
    echo 'export CERT_PATH=$(python -c "import certifi; print(certifi.where())")
@@ -444,7 +446,7 @@ The command to install the certificate with Python on Windows automatically incl
    export REQUESTS_CA_BUNDLE=${CERT_PATH}' >> ~/.zshrc
    ```
 
-5. Restart your terminal.
+5) Restart your terminal.
 
 #### Java
 
@@ -467,20 +469,20 @@ To install a Cloudflare root certificate in the system JVM, follow the procedure
 
 4. Restart any instances of Java.
 
-1. Install [OpenSSL for Windows ↗︎](https://slproweb.com/products/Win32OpenSSL.html).
-2. In an administrator PowerShell terminal, format the Cloudflare certificate for Java.
+1) Install [OpenSSL for Windows ↗︎](https://slproweb.com/products/Win32OpenSSL.html).
+2) In an administrator PowerShell terminal, format the Cloudflare certificate for Java.
 
    ```powershell
    openssl x509 -in Cloudflare_CA.pem -inform pem -out Cloudflare_CA.der -outform der
    ```
 
-3. Import the converted certificate into the Java keystore.
+3) Import the converted certificate into the Java keystore.
 
    ```powershell
    "%JAVA_HOME%\bin\keytool" -import -trustcacerts -alias "Cloudflare Root CA" -file Cloudflare_CA.der -keystore "%JAVA_HOME%\jre\lib\security\cacerts" -storepass changeit -noprompt
    ```
 
-4. Restart any instances of Java.
+4) Restart any instances of Java.
 
 #### Ruby
 
@@ -519,26 +521,26 @@ To trust a Cloudflare root certificate in RubyGems, follow the procedure for you
 
 6. Restart any terminal sessions.
 
-1. Install [OpenSSL for Windows ↗︎](https://slproweb.com/products/Win32OpenSSL.html).
-2. In a PowerShell terminal, format the Cloudflare certificate for Ruby.
+1) Install [OpenSSL for Windows ↗︎](https://slproweb.com/products/Win32OpenSSL.html).
+2) In a PowerShell terminal, format the Cloudflare certificate for Ruby.
 
    ```powershell
    openssl x509 -in %UserProfile%\Downloads\certificate.pem -out %UserProfile%\Downloads\ruby-root-ca.crt
    ```
 
-3. Create a RubyGems certificate directory in your home folder.
+3) Create a RubyGems certificate directory in your home folder.
 
    ```powershell
    mkdir -Force "$env:USERPROFILE\.gem\ssl"
    ```
 
-4. Copy the Cloudflare certificate to your RubyGems certificate store.
+4) Copy the Cloudflare certificate to your RubyGems certificate store.
 
    ```powershell
    Copy-Item "$env:USERPROFILE\Downloads\ruby-root-ca.crt" "$env:USERPROFILE\.gem\ssl\rubygems.org.pem"
    ```
 
-5. Configure RubyGems to use the certificate.
+5) Configure RubyGems to use the certificate.
 
    ```powershell
    gem sources --add-trusted-cert "$env:USERPROFILE\.gem\ssl\rubygems.org.pem"
@@ -550,7 +552,7 @@ To trust a Cloudflare root certificate in RubyGems, follow the procedure for you
    :ssl_cert: C:/Users/<username>/.gem/ssl/rubygems.org.pem
    ```
 
-6. Restart any terminal sessions.
+6) Restart any terminal sessions.
 
 #### Rust
 
@@ -886,19 +888,19 @@ Android Studio uses its own JVM and certificate store. To install a Cloudflare r
 
 3. Add the Cloudflare certificate to Android Studio's JVM:
 
-1. In a terminal, add the JRE path you copied as an environment variable.
+1) In a terminal, add the JRE path you copied as an environment variable.
 
    ```sh
    export JAVA_HOME="/path/to/jre"
    ```
 
-2. Run `keytool` to install and trust the Cloudflare certificate.
+2) Run `keytool` to install and trust the Cloudflare certificate.
 
    ```sh
    "$JAVA_HOME/bin/keytool" -import -file ~/Downloads/certificate.crt -alias CloudflareRootCA -keystore "$JAVA_HOME/lib/security/cacerts" -storepass changeit -trustcacerts -noprompt
    ```
 
-3. Restart Android Studio.
+3) Restart Android Studio.
 
 1. In an administrator PowerShell terminal, add the JRE path you copied as an environment variable.
 
@@ -949,19 +951,19 @@ To install a Cloudflare root certificate on Eclipse IDE for Java Developers, you
    4. Copy the full path after `java.home=`.
 3. Add the Cloudflare certificate to Eclipse's JVM:
 
-1. In a terminal, add the `java.home` value you copied as an environment variable.
+1) In a terminal, add the `java.home` value you copied as an environment variable.
 
    ```sh
    export JAVA_HOME=$(echo /path/to/java.home)
    ```
 
-2. Run `keytool` to install and trust the Cloudflare certificate.
+2) Run `keytool` to install and trust the Cloudflare certificate.
 
    ```sh
    "$JAVA_HOME/bin/keytool" -import -file ~/Downloads/certificate.crt -alias CloudflareRootCA -keystore "$JAVA_HOME/lib/security/cacerts" -storepass changeit -trustcacerts -noprompt
    ```
 
-3. Restart Eclipse.
+3) Restart Eclipse.
 
 1. In a terminal, add the `java.home` value you copied as an environment variable.
 

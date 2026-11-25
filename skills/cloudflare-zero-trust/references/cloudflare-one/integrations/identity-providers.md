@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Identity providers in Zero Trust integrations.
 title: Identity providers
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/og.png?v=87d8bca43b876987
@@ -41,9 +43,9 @@ Cloudflare One supports social identity providers that do not require administra
    Each identity provider will have different required fields for you to fill in. Step-by-step instructions are shown in the dashboard side panel. Alternatively, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 5. Once you have filled in the necessary fields, select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-2. Add an identity provider to Cloudflare One using the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource. For example, to add a Microsoft Entra ID integration:
+2) Add an identity provider to Cloudflare One using the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource. For example, to add a Microsoft Entra ID integration:
 
    ```tf
    resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {

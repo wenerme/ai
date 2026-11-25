@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Move @cloudflare/sandbox 0.12 Docker-in-Docker images, binding handlers, and the opencode, openai, and bridge subpaths to 1.0, and remove WarmPool.
 title: Move other 0.x features
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.png?v=f9210298c4783c03

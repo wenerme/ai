@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Set up subdomain zone when parent uses partial setup.
 title: Parent zone on partial setup
 image: https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/og.png?v=343d89f458ea8622
@@ -26,11 +28,11 @@ If you have not yet created a DNS record covering your subdomain in the parent z
 3. After creating the DNS records on the child zone, add the Cloudflare nameservers as `NS` records at your external DNS provider.
 4. Within a short period of time, the child zone should be active.
 
-1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
-2. Select either Business or Enterprise as your zone plan and complete the onboarding flow according to your needs.
-3. On the [Overview page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone), select **Convert to CNAME DNS Setup**.
-4. Confirm that you have created all the [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) needed for your child zone.
-5. On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.
+1) Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
+2) Select either Business or Enterprise as your zone plan and complete the onboarding flow according to your needs.
+3) On the [Overview page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone), select **Convert to CNAME DNS Setup**.
+4) Confirm that you have created all the [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) needed for your child zone.
+5) On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.
 
 <details>
 
@@ -90,17 +92,17 @@ If you have already created a DNS record covering your subdomain in the parent z
 7. Within a short period of time, the child zone should be active.
 8. On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page of the parent zone, [delete](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#delete-dns-records) any `A`, `AAAA`, or `CNAME` records referencing the subdomain or any of its deeper subdomains.
 
-1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
-2. Select either Business or Enterprise as your zone plan and complete the onboarding flow according to your needs.
-3. On the [Overview page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone), select **Convert to CNAME DNS Setup**.
-4. In your child zone, [re-create all DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that relate to your subdomain. This includes all DNS records deeper than the subdomain you used to create the zone - if you are creating a zone for `www.example.com`, you should also move over records for `api.www.example.com`.
+1) Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
+2) Select either Business or Enterprise as your zone plan and complete the onboarding flow according to your needs.
+3) On the [Overview page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone), select **Convert to CNAME DNS Setup**.
+4) In your child zone, [re-create all DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that relate to your subdomain. This includes all DNS records deeper than the subdomain you used to create the zone - if you are creating a zone for `www.example.com`, you should also move over records for `api.www.example.com`.
 
    Note
 
    Cloudflare recommends [exporting](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#export-records) records from the parent zone, deleting all unnecessary records, and then [importing](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#import-records) the records into your new zone.
-5. Make sure that you migrate over any settings ([WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), [Rules](https://developers.cloudflare.com/rules/), [Workers](https://developers.cloudflare.com/workers/), and more) that might be needed for the child zone.
-6. In the child zone, [order an advanced SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) that covers the child subdomain and any deeper subdomains.
-7. On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.
+5) Make sure that you migrate over any settings ([WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), [Rules](https://developers.cloudflare.com/rules/), [Workers](https://developers.cloudflare.com/workers/), and more) that might be needed for the child zone.
+6) In the child zone, [order an advanced SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) that covers the child subdomain and any deeper subdomains.
+7) On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.
 
 <details>
 

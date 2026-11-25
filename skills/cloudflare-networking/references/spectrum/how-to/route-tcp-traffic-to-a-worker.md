@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a Spectrum application that sends inbound TCP connections to a Cloudflare Worker.
 title: Route TCP traffic to a Worker
 image: https://developers.cloudflare.com/spectrum/how-to/route-tcp-traffic-to-a-worker/og.png?v=516d02cf4204f414
@@ -78,7 +80,7 @@ These applications have no TLS or advanced options. Spectrum passes the TCP payl
 8. Leave **Edge TLS Termination** turned off to pass the TCP payload to the Worker without terminating TLS.
 9. Select **Add Application**.
 
-1. To find the Worker tag, search for the deployed Worker:npmyarnpnpm
+1) To find the Worker tag, search for the deployed Worker:npmyarnpnpm
 
    ```
    npx cf@latest workers scripts search --name <WORKER_NAME>
@@ -93,7 +95,7 @@ These applications have no TLS or advanced options. Spectrum passes the TCP payl
    ```
 
    Copy the Worker ID, also called the Worker tag, from the result.
-2. Create the Spectrum application:npmyarnpnpm
+2) Create the Spectrum application:npmyarnpnpm
 
    ```
    npx cf@latest spectrum apps create --zone example.com --body '{"dns":{"type":"CNAME","name":"tcp.example.com"},"protocol":"tcp/50051","traffic_type":"worker","origin_worker_id":"<WORKER_TAG>"}'

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to New Relic.
 title: Enable New Relic
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/new-relic/og.png?v=c9bec446e7a06080
@@ -27,12 +29,12 @@ Cloudflare Logpush supports pushing logs directly to New Relic via the Cloudflar
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **New Relic**.
-5. Enter the **New Relic Logs Endpoint**:
+4) In **Select a destination**, choose **New Relic**.
+5) Enter the **New Relic Logs Endpoint**:
 
 - `"https://log-api.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
 
-- `"https://log-api.eu.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
+* `"https://log-api.eu.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
 
 Use the region that matches the one that has been set on your New Relic account. The **License key** field can be found on the New Relic dashboard. It can be retrieved by following [these steps ↗︎](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#manage-license-key).
 

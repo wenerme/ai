@@ -180,8 +180,12 @@ You can now make requests to the API with the access token.
 > Check the [RFC spec](https://www.rfc-editor.org/info/rfc6749/#section-4.1) for a
 > detailed flow description.
 
-The authorization code flow is essentially the same as
+The authorization code flow is similar to the
 [authorization code flow with PKCE](#authorization-code-with-proof-key-for-code-exchange-pkce),
+but it uses the client secret instead of a code verifier and code challenge:
+
+- When you request the authorization code, you don't send `code_challenge` or `code_challenge_method`.
+- When you request the access token, you send `client_secret` instead of `code_verifier`.
 
 Before starting the flow, generate the `STATE`. It is a value that can't be predicted
 used by the client to maintain state between the request and callback. It should also

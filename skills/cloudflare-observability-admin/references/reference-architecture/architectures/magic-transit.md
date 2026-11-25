@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.
 title: Magic Transit Reference Architecture
 image: https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/og.png?v=6d840ee66761d72c
@@ -27,7 +29,7 @@ To build a stronger baseline understanding of Cloudflare, we recommend the follo
 
 - What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- Blog: [Magic Transit makes your network smarter, better, stronger, and cheaper to operate ↗︎](https://blog.cloudflare.com/magic-transit) (14 minute read)
+* Blog: [Magic Transit makes your network smarter, better, stronger, and cheaper to operate ↗︎](https://blog.cloudflare.com/magic-transit) (14 minute read)
 
 Those who read this reference architecture will learn:
 

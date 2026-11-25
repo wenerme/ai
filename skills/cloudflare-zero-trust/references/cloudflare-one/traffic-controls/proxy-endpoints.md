@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Proxy endpoints in Zero Trust networking.
 title: Proxy endpoints
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/og.png?v=dd16943525b64f64
@@ -414,7 +416,7 @@ To get the domain of a proxy endpoint:
 2. Choose the proxy endpoint. Select **Edit**.
 3. In **Proxy Endpoint**, copy the domain.
 
-1. Use the [List proxy endpoints](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/proxy_endpoints/methods/list/) operation to get a list of your proxy endpoints and their details. For example:
+1) Use the [List proxy endpoints](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/proxy_endpoints/methods/list/) operation to get a list of your proxy endpoints and their details. For example:
 
    *List proxy endpointsbash*
 
@@ -440,8 +442,8 @@ To get the domain of a proxy endpoint:
    }
    ```
 
-2. Find the proxy endpoint you want to use.
-3. Copy the value of the `subdomain` key.
+2) Find the proxy endpoint you want to use.
+3) Copy the value of the `subdomain` key.
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
@@ -468,8 +470,8 @@ Using your proxy endpoint's domain, you can get the IP addresses assigned to the
    2606:4700:5c::a29f:2e07
    ```
 
-1. Open a PowerShell terminal.
-2. Run `Resolve-DnsName` on your proxy endpoint's A records. Your proxy endpoint's IPv4 addresses will appear under `IPAddress`. For example:
+1) Open a PowerShell terminal.
+2) Run `Resolve-DnsName` on your proxy endpoint's A records. Your proxy endpoint's IPv4 addresses will appear under `IPAddress`. For example:
 
    ```powershell
    Resolve-DnsName -Name example.cloudflare-gateway.com -Type A
@@ -482,7 +484,7 @@ Using your proxy endpoint's domain, you can get the IP addresses assigned to the
    example.cloudflare-gateway.com                 A      300   Answer     162.159.36.20
    ```
 
-3. Run `Resolve-DnsName` on your proxy endpoint's AAAA records. Your proxy endpoint's IPv6 addresses will appear under `IPAddress`. For example:
+3) Run `Resolve-DnsName` on your proxy endpoint's AAAA records. Your proxy endpoint's IPv6 addresses will appear under `IPAddress`. For example:
 
    ```powershell
    Resolve-DnsName -Name example.cloudflare-gateway.com -Type AAAA

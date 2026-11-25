@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Connect Hyperdrive to a Prisma Postgres database.
 title: Prisma Postgres
 image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/og.png?v=131d184c7e460874
@@ -88,7 +90,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"main": "src/index.ts",
    	"upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -108,7 +110,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -175,7 +177,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -188,7 +190,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -250,14 +252,14 @@ Hyperdrive's origin connection limit should be lower than the Prisma Postgres co
 2. Go to **Settings**.
 3. In **Origin connection limit**, select **Edit Settings**, and set your maximum connections to a number that is lower than your Prisma connection limit.
 
-1. Edit your existing Hyperdrive configuration with the `--origin-connection-limit` parameter:
+1) Edit your existing Hyperdrive configuration with the `--origin-connection-limit` parameter:
 
    ```bash
    npx wrangler hyperdrive update <HYPERDRIVE_ID> --origin-connection-limit=10
    ```
 
    Replace `<HYPERDRIVE_ID>` with your Hyperdrive configuration ID and set the connection limit to a number that is less than your Prisma connection limit.
-2. Verify the configuration change:
+2) Verify the configuration change:
 
    ```bash
    npx wrangler hyperdrive get <HYPERDRIVE_ID>

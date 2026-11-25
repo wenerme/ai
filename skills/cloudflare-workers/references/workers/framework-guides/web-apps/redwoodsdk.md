@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a RedwoodSDK application and deploy it to Cloudflare Workers.
 title: RedwoodSDK
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/og.png?v=806222694c01d46a
@@ -43,7 +45,7 @@ RedwoodSDK is a framework for building server-side web applications on Cloudflar
    cd my-project-name
    ```
 
-3. **Install dependencies.**npmyarnpnpmbun
+3. **Install dependencies.**&#110;pmyarnpnpmbun
 
    ```
    npm install

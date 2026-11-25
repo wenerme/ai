@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Bria's RMBG 3.0 removes the background from an image and returns a PNG cutout with a transparent background, with cleaner edges than RMBG 2.0 on hair, fur, glass, smoke and other fine or see-through detail. In Bria's blind test on 234 hard images it gave the best or tied-best cutout on 185, more than Photoroom, remove.bg, Ideogram, BiRefNet or RMBG 2.0. It is trained only on licensed data and takes a few seconds per image; for speed and high volume use bria/remove-background (RMBG 2.0).
 title: RMBG 3.0
 image: https://developers.cloudflare.com/og-docs.png

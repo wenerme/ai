@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Build Python Workers APIs using FastAPI with the built-in ASGI server.
 title: FastAPI
 image: https://developers.cloudflare.com/workers/languages/python/packages/fastapi/og.png?v=29f1e6f7ba365af9
@@ -48,7 +50,7 @@ Default = asgi.entrypoint(app)
 	"name": "my-fastapi-app",
 	"main": "src/main.py",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"compatibility_flags": ["python_workers"],
 }
 ```
@@ -58,7 +60,7 @@ Default = asgi.entrypoint(app)
 name = "my-fastapi-app"
 main = "src/main.py"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 compatibility_flags = [ "python_workers" ]
 ```
 
@@ -113,7 +115,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 	"name": "my-fastapi-app",
 	"main": "src/worker.py",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"compatibility_flags": ["python_workers"],
 	"assets": {
 		"directory": "./public/",
@@ -127,7 +129,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 name = "my-fastapi-app"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

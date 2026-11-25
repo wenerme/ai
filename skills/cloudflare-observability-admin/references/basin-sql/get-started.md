@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create your first pipeline to ingest streaming data and write to Basin Catalog as an Apache Iceberg table.
 title: Getting started
 image: https://developers.cloudflare.com/basin-sql/get-started/og.png?v=8fe96c60f1f68a3b
@@ -72,10 +74,10 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    pnpm wrangler r2 bucket create pipelines-tutorial
    ```
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
-2. Select **Create bucket**.
-3. Enter the bucket name: pipelines-tutorial
-4. Select **Create bucket**.
+1) In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+2) Select **Create bucket**.
+3) Enter the bucket name: pipelines-tutorial
+4) Select **Create bucket**.
 
 ## 2. Enable Basin Catalog
 

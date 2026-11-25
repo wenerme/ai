@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: "Manage tunnel tokens and control who can run your remotely-managed tunnels.\n"
 title: Tunnel permissions
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/og.png?v=fe433415af9ca7aa
@@ -139,7 +141,7 @@ To rotate a tunnel token:
    2. Select a tunnel to open its detail page.
    3. On the **Overview** tab, select **Refresh token**.
    4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.
-   1. Generate a random base64 string (minimum size 32 bytes) to use as a tunnel secret:
+   1) Generate a random base64 string (minimum size 32 bytes) to use as a tunnel secret:
 
       ```sh
       openssl rand -base64 32
@@ -149,7 +151,7 @@ To rotate a tunnel token:
       AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=
       ```
 
-   2. Make a `PATCH` request to the [Cloudflare Tunnel](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/methods/edit/) endpoint:<details><summary>
+   2) Make a `PATCH` request to the [Cloudflare Tunnel](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/methods/edit/) endpoint:<details><summary>
 
       Required API token permissions</summary>
 
@@ -195,7 +197,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       }
       ```
 
-   3. Copy the `token` value shown in the output.
+   3) Copy the `token` value shown in the output.
 
    After refreshing the token, `cloudflared` can no longer establish new connections to Cloudflare using the old token. However, existing connectors will remain active and the tunnel will continue serving traffic.
 2. On half of your `cloudflared` replicas, reinstall the `cloudflared` service with the new token. For example, on a Linux host:

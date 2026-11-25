@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a new React + Vite application or deploy an existing one to Cloudflare Workers with Workers Assets.
 title: React + Vite
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/react/og.png?v=757a34c0abb4669e
@@ -41,7 +43,7 @@ pnpm create cloudflare@latest my-react-app --framework=react
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create/deploy-to-workers&repository=https://github.com/cloudflare/templates/tree/main/react-starter-template)
 
-1. **Create a new project with the create-cloudflare CLI (C3)**npmyarnpnpm
+1. **Create a new project with the create-cloudflare CLI (C3)**&#110;pmyarnpnpm
 
    ```
    npm create cloudflare@latest -- my-react-app --framework=react
@@ -198,7 +200,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-11-23",
+     "compatibility_date": "2026-11-25",
      "assets": {
        "not_found_handling": "single-page-application"
      }
@@ -208,7 +210,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
 
    [assets]
    not_found_handling = "single-page-application"
@@ -384,7 +386,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-11-23",
+     "compatibility_date": "2026-11-25",
      "main": "./worker/index.ts",
      "upload_source_maps": true,
      "assets": {
@@ -396,7 +398,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    main = "./worker/index.ts"
    upload_source_maps = true
 
@@ -444,7 +446,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "cloudflare-vite-tutorial",
      // Set this to today's date
-     "compatibility_date": "2026-11-23",
+     "compatibility_date": "2026-11-25",
      "main": "./worker/index.ts",
      "upload_source_maps": true,
      "assets": {
@@ -459,7 +461,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "cloudflare-vite-tutorial"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    main = "./worker/index.ts"
    upload_source_maps = true
 

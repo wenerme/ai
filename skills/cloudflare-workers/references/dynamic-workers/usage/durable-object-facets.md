@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Run dynamically-loaded code with isolated persistent storage.
 title: Durable Object Facets
 image: https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/og.png?v=94fdf8e0117dba2a
@@ -39,7 +41,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "main": "src/index.ts",
   "upload_source_maps": true,
   "migrations": [
@@ -60,7 +62,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 main = "src/index.ts"
 upload_source_maps = true
 
@@ -130,7 +132,7 @@ export class AppRunner extends DurableObject {
 
 		return this.env.LOADER.get(codeId, async () => {
 			return {
-				compatibilityDate: "2026-11-23",
+				compatibilityDate: "2026-11-25",
 				mainModule: "worker.js",
 				modules: { "worker.js": AGENT_CODE },
 				globalOutbound: null, // block network access

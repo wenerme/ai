@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.
 title: /cdn-cgi/ endpoint
 image: https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/og.png?v=6580e7700cc99bf3
@@ -27,7 +29,7 @@ A few examples include (but are not limited to):
 
 - [Identify the Cloudflare data center serving your request](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#identify-the-cloudflare-data-center-serving-your-request), which is helpful for troubleshooting ( `https://<YOUR_DOMAIN>/cdn-cgi/trace`).
 - [JavaScript detection](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) used by Cloudflare bot products ( `example.com/cdn-cgi/challenge-platform/`)
-- [Image transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/) in the new URLs you would use for images ( `example.com/cdn-cgi/image/`)
+- [Image transformations](https://developers.cloudflare.com/images/optimization/transformations/url/) in the new URLs you would use for images ( `example.com/cdn-cgi/image/`)
 - [Email address obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) used to hide email addresses from malicious bots ( `example.com/cdn-cgi/l/email-protection`)
 - [Web analytics](https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare) for a website proxied through Cloudflare ( `example.com/cdn-cgi/rum`). This endpoint returns a `204` HTTP status code.
 - [Speed Brain](https://developers.cloudflare.com/speed/optimization/content/speed-brain/) adds an HTTP header called `Speculation-Rules` to web page responses. This header contains a URL that hosts an opinionated Speculation-Rules configuration, which instructs the browser to initiate prefetch requests for anticipated future navigations.
@@ -52,7 +54,7 @@ As a best practice, update your `robots.txt` file to include `Disallow: /cdn-cgi
 
 Note
 
-If you serve transformations through [Images](https://developers.cloudflare.com/images/optimization/transformations/overview/), a blanket `Disallow: /cdn-cgi/` prevents search engines from indexing your transformed images served from `/cdn-cgi/image/`. To allow crawlers to discover these images, add an `Allow` rule before the `Disallow`:
+If you serve transformations through [Images](https://developers.cloudflare.com/images/optimization/transformations/url/), a blanket `Disallow: /cdn-cgi/` prevents search engines from indexing your transformed images served from `/cdn-cgi/image/`. To allow crawlers to discover these images, add an `Allow` rule before the `Disallow`:
 
 ```txt
 Allow: /cdn-cgi/image/
@@ -70,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/#page","headline":"/cdn-cgi/ endpoint","description":"Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.","url":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/og.png?v=6580e7700cc99bf3","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/#page","headline":"/cdn-cgi/ endpoint","description":"Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.","url":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/og.png?v=6580e7700cc99bf3","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

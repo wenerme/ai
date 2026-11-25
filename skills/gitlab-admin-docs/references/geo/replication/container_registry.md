@@ -445,3 +445,32 @@ container repositories changed. In this situation, the recommended action is to
 [reverify all container repositories on the primary site](resync_reverify.md#reverify-one-component-on-all-sites).
 The primary site recalculates all checksums, and secondary sites then resync only the
 repositories whose content changed.
+
+### Container repository sync fails because tags fail to sync
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253800) in GitLab 19.6 [with a feature flag](../../feature_flags/_index.md) named `geo_container_repository_report_tag_sync_failures`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+When a tag fails to sync, the secondary site marks the container repository sync as failed.
+The `last_sync_failure` field reports how many tags failed and names up to five of them, for example:
+
+```plaintext
+Container repository sync failed: 2 of 3 tags failed to sync: v1, v2
+```
+
+The number after `of` counts the tags this sync attempted, not every tag in the repository,
+and names longer than 24 characters end in `...`.
+If more than five tags failed, the list ends with `and <count> more`,
+where `<count>` is the number of other failed tags.
+The `geo.log` file on the secondary site records the error for each failed tag.
+
+A failed tag doesn't stop the sync.
+Geo still syncs the other tags in the repository.
+Geo retries the failed sync automatically, and the failure clears after a sync succeeds.
+
+To restore the previous behavior, where tag errors are only logged and the sync reports success,
+disable the `geo_container_repository_report_tag_sync_failures` feature flag on the primary site.
+A secondary site can take up to an hour to apply the change.

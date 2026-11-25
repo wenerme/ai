@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a Next.js application with vinext and deploy it to Cloudflare Workers.
 title: Next.js
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/og.png?v=031a280c12d018c5
@@ -84,7 +86,7 @@ Use the vinext Agent Skill when you want a coding agent to inspect your Next.js 
 1. **Open your Next.js project.**
 
    Use an existing project, or create a project with your preferred Next.js setup flow.
-2. **Install the vinext Agent Skill.**npmyarnpnpm
+2. **Install the vinext Agent Skill.**&#110;pmyarnpnpm
 
    ```
    npx skills add cloudflare/vinext
@@ -248,7 +250,7 @@ Use `vinext init` when you want a direct command-line setup. The migration is no
 
 Use the create-cloudflare CLI (C3) when you want to scaffold a new Next.js project already configured for Cloudflare Workers.
 
-1. **Create a new project with C3.**npmyarnpnpm
+1. **Create a new project with C3.**&#110;pmyarnpnpm
 
    ```
    npm create cloudflare@latest -- my-next-app --framework=next

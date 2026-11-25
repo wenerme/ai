@@ -3256,6 +3256,9 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesAiSemanticCodeResponse"
+        '202':
+          description: Accepted - project has no embeddings yet, indexing started
+            or in progress
         '401':
           description: Unauthorized
         '403':
@@ -3265,7 +3268,9 @@ paths:
         '422':
           description: Unprocessable entity - project has no embeddings
         '429':
-          description: Too many requests
+          description: Too many requests - search or ad-hoc indexing rate limited
+        '500':
+          description: Internal server error - ad-hoc indexing could not be started
         '503':
           description: Service unavailable - search backend timed out
         '400':
@@ -51063,7 +51068,9 @@ paths:
               schema:
                 type: array
                 items:
-                  "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                  anyOf:
+                  - "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesExternalIssue"
         '403':
           description: Forbidden
         '404':
@@ -51115,6 +51122,14 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                  - "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesExternalIssue"
         '403':
           description: Forbidden
         '404':
@@ -95678,7 +95693,7 @@ components:
           description: Relative position of the issue in the epic tree
           example: 0
         epic:
-          type: object
+          "$ref": "#/components/schemas/APIEntitiesEpic"
         issue:
           "$ref": "#/components/schemas/APIEntitiesIssueBasic"
     APIEntitiesDoraMetric:
@@ -101188,8 +101203,8 @@ components:
           format: int64
           example: 1
         last_pipeline:
-          type: object
           description: Latest pipeline for the commit.
+          "$ref": "#/components/schemas/APIEntitiesCiPipelineBasic"
     APIEntitiesApplicationStatistics:
       type: object
       properties:
@@ -108020,6 +108035,15 @@ components:
             "$ref": "#/components/schemas/APIEntitiesDiff"
         overflow:
           type: boolean
+    APIEntitiesExternalIssue:
+      type: object
+      properties:
+        title:
+          type: string
+          example: External Issue PROJ-123
+        id:
+          type: string
+          example: PROJ-123
     APIEntitiesMember:
       type: object
       properties:
@@ -113641,6 +113665,12 @@ components:
           description: Format of the export.
           nullable: true
           default: dependency_list
+        separate_component_group_and_name:
+          type: boolean
+          description: For cyclonedx_1_6_json, export the component group and name
+            as separate fields
+          nullable: true
+          default: false
     postApiV4GroupsIdDependencyListExportsRequest:
       type: object
       properties:
@@ -113674,6 +113704,11 @@ components:
           description: Format of the export.
           nullable: true
           default: sbom
+        separate_component_group_and_name:
+          type: boolean
+          description: For sbom, export the component group and name as separate fields
+          nullable: true
+          default: false
     postApiV4GroupsIdProtectedBranchesRequest:
       type: object
       properties:
@@ -120172,13 +120207,13 @@ components:
         discussions_resolve_limit:
           type: integer
           description: 'Maximum number of thread resolve and unresolve requests per
-            minute for each user. Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606720)
+            minute for each user. Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264595)
             in GitLab 19.6.'
           nullable: true
         draft_notes_create_limit:
           type: integer
           description: 'Maximum number of draft note create requests per minute for
-            each user. Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471)
+            each user. Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267498)
             in GitLab 19.6.'
           nullable: true
         domain_denylist_enabled:
@@ -120472,7 +120507,7 @@ components:
         merge_requests_create_limit:
           type: integer
           description: 'Maximum number of merge requests a user can create per minute.
-            Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606714)
+            Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264619)
             in GitLab 19.6.'
           nullable: true
         merge_requests_merge_ref_limit:
@@ -120484,7 +120519,7 @@ components:
         merge_requests_rebase_limit:
           type: integer
           description: 'Maximum number of merge request rebases per minute for each
-            user. Default: `30`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606716)
+            user. Default: `30`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267972)
             in GitLab 19.6.'
           nullable: true
         merge_requests_read_diffs_limit:
@@ -120492,7 +120527,7 @@ components:
           description: 'Maximum number of merge request changes, diffs, raw diffs,
             and diff version API requests per minute for each user, or for each IP
             address for unauthenticated requests. Default: `300`. Set to `0` to disable
-            the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717)
+            the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270291)
             in GitLab 19.7.'
           nullable: true
         metrics_method_call_threshold:
@@ -120940,28 +120975,28 @@ components:
           type: integer
           description: 'Maximum number of project relations export requests per minute
             per user for each project during direct transfer migrations. Default:
-            `6`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634958)
+            `6`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264070)
             in GitLab 19.6.'
           nullable: true
         project_relations_export_download_limit:
           type: integer
           description: 'Maximum number of project relations export downloads per minute
             per user for each project during direct transfer migrations. Default:
-            `100`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634958)
+            `100`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264070)
             in GitLab 19.6.'
           nullable: true
         group_relations_export_limit:
           type: integer
           description: 'Maximum number of group relations export requests per minute
             per user for each group during direct transfer migrations. Default: `6`.
-            Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634958)
+            Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264070)
             in GitLab 19.6.'
           nullable: true
         group_relations_export_download_limit:
           type: integer
           description: 'Maximum number of group relations export downloads per minute
             per user for each group during direct transfer migrations. Default: `100`.
-            Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634958)
+            Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264070)
             in GitLab 19.6.'
           nullable: true
         bulk_import_enabled:
@@ -121484,7 +121519,7 @@ components:
           type: string
           description: 'Maximum number of simultaneous project file exports to process.
             Default: `25`. Behind a feature flag named `limit_concurrent_project_exports`,
-            disabled by default. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599092)
+            disabled by default. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250244)
             in GitLab 19.4.'
           nullable: true
         container_expiration_policies_enable_historic_entries:
@@ -121726,7 +121761,7 @@ components:
         group_hooks_create_limit:
           type: string
           description: 'Maximum number of group webhooks a user can create per minute
-            for a given group. Default: `10`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281)
+            for a given group. Default: `10`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264311)
             in GitLab 19.6.'
           nullable: true
         group_download_export_limit:
@@ -122026,7 +122061,7 @@ components:
         project_hooks_create_limit:
           type: string
           description: 'Maximum number of project webhooks a user can create per minute
-            for a given project. Default: `5`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605597)
+            for a given project. Default: `5`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263931)
             in GitLab 19.6.'
           nullable: true
         project_download_export_limit:
@@ -122054,7 +122089,7 @@ components:
           type: string
           description: 'Maximum number of requests every minute for each user or IP
             address to `GET /projects/:id/members/all` and `GET /groups/:id/members/all`.
-            Default: `200`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/578527)
+            Default: `200`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/211239)
             in GitLab 18.6.'
           nullable: true
         project_repositories_blame_limit:
@@ -122134,21 +122169,21 @@ components:
           type: string
           description: 'Maximum number of requests per minute per job token for requests
             to the `/jobs/*` runner jobs API endpoints. Default: `200`. To disable
-            throttling, set to `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537)
+            throttling, set to `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206712)
             in GitLab 18.5.'
           nullable: true
         runner_jobs_patch_trace_api_limit:
           type: string
           description: 'Maximum number of requests per minute per runner token for
             requests to the `PATCH /jobs/:id/trace` runner jobs API endpoint. Default:
-            2000. To disable throttling, set to 0. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537)
+            2000. To disable throttling, set to 0. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206712)
             in GitLab 18.5.'
           nullable: true
         runner_jobs_request_api_limit:
           type: string
           description: 'Maximum number of requests per minute per runner token for
             requests to the `/jobs/request` runner jobs API endpoint. Default: `2000`.
-            To disable throttling, set to `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537)
+            To disable throttling, set to `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206712)
             in GitLab 18.5.'
           nullable: true
         runner_manager_creation_limit:
@@ -122237,7 +122272,7 @@ components:
         system_hooks_create_limit:
           type: string
           description: 'Maximum number of system hooks a user can create per minute.
-            Default: `5`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281)
+            Default: `5`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264311)
             in GitLab 19.6.'
           nullable: true
         tags_create_limit:
@@ -147608,7 +147643,7 @@ components:
         draft_notes_per_merge_request:
           type: integer
           description: Maximum number of draft notes one user can have on a merge
-            request. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471)
+            request. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267480)
             in GitLab 19.6.
           nullable: true
         enforcement_limit:
@@ -147701,7 +147736,7 @@ components:
           type: integer
           description: Maximum number of integration executions that can be enqueued
             per minute, per top-level namespace, excluding Datadog. Set to `0` for
-            unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636614)
+            unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266721)
             in GitLab 19.6. This parameter is in beta and might be changed or removed
             without notice.
           nullable: true
@@ -147709,7 +147744,7 @@ components:
           type: integer
           description: Maximum number of Datadog integration executions that can be
             enqueued per minute, per top-level namespace. Set to `0` for unlimited.
-            [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636614)
+            [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266721)
             in GitLab 19.6. This parameter is in beta and might be changed or removed
             without notice.
           nullable: true

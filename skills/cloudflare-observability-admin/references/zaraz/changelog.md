@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Track the latest updates and changes to Cloudflare Zaraz.
 title: Changelog
 image: https://developers.cloudflare.com/zaraz/changelog/og.png?v=3992ed6277267910
@@ -25,27 +27,27 @@ image: https://developers.cloudflare.com/zaraz/changelog/og.png?v=3992ed62772679
 
 - **Consent Management**: Allow forcing the consent modal language
 
-- **Zaraz Debugger**: Log the response status and body for server-side requests
+* **Zaraz Debugger**: Log the response status and body for server-side requests
 
 - **Monitoring**: Introduce "Advanced Monitoring" with new reports such as geography, user timeline, funnel, retention and more
 - **Monitoring**: Show information about server-side requests success rate
 
-- **Zaraz Types**: Update the `zaraz-types` package
-- **Custom HTML Managed Component**: Apply syntax highlighting for inlined JavaScript code
+* **Zaraz Types**: Update the `zaraz-types` package
+* **Custom HTML Managed Component**: Apply syntax highlighting for inlined JavaScript code
 
 ## 2024-11-12
 
 - **Facebook Component**: Update to version 21 of the API, and fail gracefully when e-commerce payload doesn't match schema
 
-- **Zaraz Monitoring**: Show all response status codes from the Zaraz server-side requests in the dashboard
-- **Zaraz Debugger**: Fix a bug that broke the display when Custom HTML included backticks
-- **Context Enricher**: It's now possible to programatically edit the Zaraz `config` itself, in addition to the `system` and `client` objects
-- **Rocker Loader**: Issues with using Zaraz next to Rocket Loader were fixed
-- **Automatic Actions**: The tools setup flow now fully supports configuring Automatic Actions
-- **Bing Managed Component**: Issues with setting the currency field were fixed
-- **Improvement**: The allowed size for a Zaraz config was increased by 250x
-- **Improvement**: The Zaraz runtime should run faster due to multiple code optimizations
-- **Bugfix**: Fixed an issue that caused the dashboard to sometimes show "E-commerce" option for tools that do not support it
+* **Zaraz Monitoring**: Show all response status codes from the Zaraz server-side requests in the dashboard
+* **Zaraz Debugger**: Fix a bug that broke the display when Custom HTML included backticks
+* **Context Enricher**: It's now possible to programatically edit the Zaraz `config` itself, in addition to the `system` and `client` objects
+* **Rocker Loader**: Issues with using Zaraz next to Rocket Loader were fixed
+* **Automatic Actions**: The tools setup flow now fully supports configuring Automatic Actions
+* **Bing Managed Component**: Issues with setting the currency field were fixed
+* **Improvement**: The allowed size for a Zaraz config was increased by 250x
+* **Improvement**: The Zaraz runtime should run faster due to multiple code optimizations
+* **Bugfix**: Fixed an issue that caused the dashboard to sometimes show "E-commerce" option for tools that do not support it
 
 ## 2024-09-17
 

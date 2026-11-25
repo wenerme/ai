@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Onboard your IP prefixes to Cloudflare with BYOIP.
 title: Get started
 image: https://developers.cloudflare.com/byoip/get-started/og.png?v=813afd9184592636
@@ -102,7 +104,7 @@ Prove ownership by adding the validation token to either your IRR record or reve
 
    The process for updating an IRR object depends on the registry. Refer to [IRR best practices](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/) for more information.
 
-1. Determine which reverse DNS zones are required for your prefix. IPv4 reverse DNS delegations commonly align on octet boundaries, and IPv6 delegations align on nibble boundaries. A prefix that does not align with the next boundary must be divided into smaller reverse zones.<details><summary>
+1) Determine which reverse DNS zones are required for your prefix. IPv4 reverse DNS delegations commonly align on octet boundaries, and IPv6 delegations align on nibble boundaries. A prefix that does not align with the next boundary must be divided into smaller reverse zones.<details><summary>
 
    Examples</summary>
 
@@ -116,14 +118,14 @@ Use the following formula to determine the number of zones at the next delegatio
 
    The IPv6 prefix <code>2001:db8::/34</code> requires four <code>/36</code> reverse zones: <code>2001:db8::/36</code>, <code>2001:db8:1000::/36</code>, <code>2001:db8:2000::/36</code>, and <code>2001:db8:3000::/36</code>.</details>
 
-2. Create the required reverse DNS zones. If you use Cloudflare for authoritative DNS, refer to [Set up a reverse DNS zone](https://developers.cloudflare.com/dns/additional-options/reverse-zones/#set-up-a-reverse-zone). Otherwise, follow your DNS provider's instructions.
-3. In each reverse zone, create a TXT record named `cf-validation` whose value is the ownership validation token.
+2) Create the required reverse DNS zones. If you use Cloudflare for authoritative DNS, refer to [Set up a reverse DNS zone](https://developers.cloudflare.com/dns/additional-options/reverse-zones/#set-up-a-reverse-zone). Otherwise, follow your DNS provider's instructions.
+3) In each reverse zone, create a TXT record named `cf-validation` whose value is the ownership validation token.
 
    ```text
    cf-validation.<REVERSE_ZONE> IN TXT "<OWNERSHIP_VALIDATION_TOKEN>"
    ```
 
-4. At your RIR, delegate the reverse zones to the authoritative nameservers that host them.
+4) At your RIR, delegate the reverse zones to the authoritative nameservers that host them.
 
 After publishing the validation token, use the [Validate Prefix endpoint](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/validate/) to trigger the prefix validation checks:
 

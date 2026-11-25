@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a Code Mode runtime with connectors, direct host APIs, durable approvals, rollback, execution history, and reusable snippets.
 title: Create a durable Code Mode runtime
 image: https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/og.png?v=6bc318b2012537c6
@@ -51,7 +53,7 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      // Set this to today's date
-     "compatibility_date": "2026-11-23",
+     "compatibility_date": "2026-11-25",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -65,7 +67,7 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
 
    ```toml
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]

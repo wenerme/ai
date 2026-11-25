@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Test Email Service routing Workers locally with simulated incoming emails.
 title: Test email routing locally
 image: https://developers.cloudflare.com/email-service/observability/local-development/routing/og.png?v=17d6ff7e7dfc8640
@@ -46,14 +48,14 @@ Configure your Wrangler file:
 {
 	"name": "email-routing-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 }
 ```
 
 ```toml
 name = "email-routing-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 ```
 
 ## Basic routing worker

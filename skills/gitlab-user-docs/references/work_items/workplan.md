@@ -36,8 +36,8 @@ After you turn on planning for a work item, the Implementation widget appears.
 The widget has the following sections:
 
 - : The status of the workplan.
-- : The readiness level of the work item.
-  It appears after GitLab Duo evaluates the work item.
+- : The readiness level of the work item,
+  or the status of its evaluation. It appears after the work item has a workplan.
 
 The workplan status is one of the following:
 
@@ -267,8 +267,19 @@ Prerequisites:
 
 In the Implementation widget, the readiness level appears as
 , , or .
-The readiness level appears only after GitLab Duo generates a workplan and
+The readiness level appears after GitLab Duo generates a workplan and
 evaluates the work item.
+
+While GitLab Duo evaluates the work item, the
+Implementation widget shows .
+If the work item has no readiness level, the widget shows one of the following:
+
+- : The session failed before the evaluation finished.
+- : The session was canceled before the evaluation finished.
+- : GitLab Duo did not evaluate the current workplan.
+  For example, you created or edited the workplan manually.
+
+To try again, [regenerate the workplan](#regenerate-a-workplan).
 
 To view feedback on how to improve readiness, select
 () next to the readiness level.

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Understand spans captured as requests move through Cloudflare.
 title: Spans
 image: https://developers.cloudflare.com/observability/traces/spans/og.png?v=2668c41ce53abbb0
@@ -57,13 +59,11 @@ Ruleset phase spans measure rule execution and application of the phase output. 
 
 ## Workers runtime spans
 
-Cloudflare Traces include spans for supported Workers runtime operations, including handler invocations, fetch calls, and binding operations.
+With [Workers tracing](https://developers.cloudflare.com/workers/observability/traces/) enabled, Cloudflare Traces include spans for supported Workers runtime operations, such as handler invocations, fetch calls, and binding operations.
+
+If your Worker uses [static assets](https://developers.cloudflare.com/workers/static-assets/) or [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/), its spans appear in a separate trace from the Cloudflare Trace for the same request. To find both traces, filter by their shared Ray ID (`cloudflare.ray_id`).
 
 Refer to [Workers spans and attributes](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/) for the complete runtime reference. You can also [create custom spans](https://developers.cloudflare.com/workers/observability/traces/custom-spans/) for application-specific operations.
-
-Note
-
-[Workers tracing](https://developers.cloudflare.com/workers/observability/traces/) needs to be enabled to see Workers spans in a Cloudflare Trace.
 
 ## Features without spans
 
@@ -82,5 +82,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/traces/spans/#page","headline":"Spans","description":"Understand spans captured as requests move through Cloudflare.","url":"https://developers.cloudflare.com/observability/traces/spans/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/traces/spans/og.png?v=2668c41ce53abbb0","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/traces/spans/#page","headline":"Spans","description":"Understand spans captured as requests move through Cloudflare.","url":"https://developers.cloudflare.com/observability/traces/spans/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/traces/spans/og.png?v=2668c41ce53abbb0","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

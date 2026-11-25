@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: xAI's Grok 4.7, a frontier reasoning model for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high, xhigh).
 title: Grok 4.7
 image: https://developers.cloudflare.com/og-docs.png
@@ -34,7 +36,7 @@ xAI's Grok 4.7, a frontier reasoning model for coding, agentic tasks, and knowle
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens |
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service-enterprise) |
 | More information | [link ↗](https://docs.x.ai/developers/models/grok-4.7) |
 | Zero data retention | Yes |

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Gemini 4 Hydrogen brings Gemini 4 agent and coding quality at Flash speed.
 title: Gemini 4 Hydrogen
 image: https://developers.cloudflare.com/og-docs.png
@@ -34,7 +36,7 @@ Gemini 4 Hydrogen brings Gemini 4 agent and coding quality at Flash speed.
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-hydrogen) |
 | Zero data retention | Yes |

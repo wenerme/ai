@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: This tutorial explains how to connect to a MongoDB database with Cloudflare Workers. The Workers application you create in this tutorial will query a movies database in MongoDB.
 title: Connect to a MongoDB database with Cloudflare Workers
 image: https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/og.png?v=cdb0c521bc47671d
@@ -345,7 +347,7 @@ Configure the Durable Object binding and migration in your Wrangler file:
   "name": "mongodb-tutorial",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-23",
+  "compatibility_date": "2026-11-25",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -372,7 +374,7 @@ Configure the Durable Object binding and migration in your Wrangler file:
 name = "mongodb-tutorial"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]

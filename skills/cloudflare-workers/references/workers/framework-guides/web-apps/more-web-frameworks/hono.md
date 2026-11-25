@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a Hono application and deploy it to Cloudflare Workers with Workers Assets.
 title: Hono
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/og.png?v=90fa67c4eec730db
@@ -43,7 +45,7 @@ pnpm create cloudflare@latest my-hono-app --template=cloudflare/templates/vite-r
 
 ## Creating a full-stack Hono app with a React SPA
 
-1. **Create a new project with the create-cloudflare CLI (C3)**npmyarnpnpm
+1. **Create a new project with the create-cloudflare CLI (C3)**&#110;pmyarnpnpm
 
    ```
    npm create cloudflare@latest -- my-hono-app --template=cloudflare/templates/vite-react-template

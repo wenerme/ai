@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to Datadog.
 title: Enable Datadog
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/og.png?v=9921ac5bf5f92789
@@ -27,13 +29,13 @@ Cloudflare Logpush supports pushing logs directly to Datadog via the Cloudflare 
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **Datadog**.
-5. Enter or select the following destination information:
+4) In **Select a destination**, choose **Datadog**.
+5) Enter or select the following destination information:
    - **Datadog URL Endpoint**, which can be either one below. You can find the difference at [Datadog API reference ↗︎](https://docs.datadoghq.com/api/latest/logs/).
 
 - `http-intake.logs.datadoghq.com/v1/input`
 
-- `http-intake.logs.datadoghq.com/api/v2/logs`
+* `http-intake.logs.datadoghq.com/api/v2/logs`
 
 - **Datadog API Key**, can be retrieved by following [these steps ↗︎](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token).
 - **Service**, **Hostname**, **Datadog ddsource field**, and **ddtags** fields can be set as URL parameters. For more information, refer to the [Logs section ↗︎](https://docs.datadoghq.com/api/latest/logs/) in Datadog's documentation. While these parameters are optional, they can be useful for indexing or processing logs. Note that the values of these parameters may contain special characters, which should be URL encoded.

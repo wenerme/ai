@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: OS version in Zero Trust.
 title: OS version
 image: https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/og.png?v=62c713f1a6bac1cc
@@ -35,10 +37,10 @@ The OS Version device posture attribute checks whether the version of a device's
 
    To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.
    - **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).
-   - **Rapid Security Response Version**: Enter the macOS [Rapid Security Response (RSR) ↗︎](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
+   * **Rapid Security Response Version**: Enter the macOS [Rapid Security Response (RSR) ↗︎](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
    - **Distro name** and **Distro revision**: Enter the Linux distribution you want devices to match (for example, `ubuntu 22.04`). The distro version always matches with an equal-to operator (==) regardless of the **Operator** setting.
    - **Patch Version**: Enter the [patch version](#linux) of the kernel. For example, if the kernel is `6.50.0-1007-oem`, enter `1007`.
-   - **Rapid Security Response Version**: Enter the iOS [Rapid Security Response (RSR) ↗︎](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
+   * **Rapid Security Response Version**: Enter the iOS [Rapid Security Response (RSR) ↗︎](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
 6. Select **Save**.
 
 Next, go to **Insights** > **Logs** > **Posture logs** and verify that the OS version check is returning the expected results.

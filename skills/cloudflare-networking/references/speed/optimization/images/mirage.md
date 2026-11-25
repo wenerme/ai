@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Lazy-load images and reduce bandwidth on mobile connections.
 title: Cloudflare Mirage (deprecated)
 image: https://developers.cloudflare.com/speed/optimization/images/mirage/og.png?v=155aa04387185b67
@@ -44,7 +46,7 @@ Modern web standards and browser capabilities have evolved to provide native sup
 Instead of Mirage, use:
 
 - **[Polish](https://developers.cloudflare.com/images/polish/)** - Seamlessly optimizes images for all browsers, not only mobile, and keeps images at full resolution.
-- **[Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/)** - Combined with `loading="lazy"` and `srcset` HTML attributes, provides modern responsive image delivery.
+- **[Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/url/)** - Combined with `loading="lazy"` and `srcset` HTML attributes, provides modern responsive image delivery.
 - **[Lazy loading guide](https://developers.cloudflare.com/images/tutorials/optimize-mobile-viewing/)** - Learn how to implement native lazy loading.
 - **[Responsive images guide](https://developers.cloudflare.com/images/optimization/make-responsive-images/)** - Create images that adapt to different devices.
 
@@ -57,5 +59,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/mirage/#page","headline":"Cloudflare Mirage (deprecated)","description":"Lazy-load images and reduce bandwidth on mobile connections.","url":"https://developers.cloudflare.com/speed/optimization/images/mirage/","inLanguage":"en","image":"https://developers.cloudflare.com/speed/optimization/images/mirage/og.png?v=155aa04387185b67","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/mirage/#page","headline":"Cloudflare Mirage (deprecated)","description":"Lazy-load images and reduce bandwidth on mobile connections.","url":"https://developers.cloudflare.com/speed/optimization/images/mirage/","inLanguage":"en","image":"https://developers.cloudflare.com/speed/optimization/images/mirage/og.png?v=155aa04387185b67","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

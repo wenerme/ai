@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to S3-compatible storage.
 title: Enable S3-compatible endpoints
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/og.png?v=404cec24240902c9
@@ -38,8 +40,8 @@ For more information about Logpush and the current production APIs, refer to [Cl
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **S3-Compatible**.
-5. Enter or select the following destination information:
+4) In **Select a destination**, choose **S3-Compatible**.
+5) Enter or select the following destination information:
    - **Bucket** - S3 Compatible bucket name
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)

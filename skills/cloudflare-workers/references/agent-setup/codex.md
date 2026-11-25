@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: OpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.
 title: Codex + Cloudflare
 image: https://developers.cloudflare.com/agent-setup/codex/og.png?v=a071c5162a14c963
@@ -61,10 +63,10 @@ TerminalStandaloneCloudExtensionOpen Source
    Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
-1. **Download Codex**
+1) **Download Codex**
 
    Follow the download instructions for your operating system at [developers.openai.com/codex/app ↗︎](https://developers.openai.com/codex/app).
-2. **Install the Cloudflare plugin**
+2) **Install the Cloudflare plugin**
 
    In the Codex app, go to **Plugins** and install **Cloudflare**.![Install the Cloudflare plugin in the Codex desktop app.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2658,height=1712,format=webp/_astro/codex-desktop.6tRb7-2M.png)
 

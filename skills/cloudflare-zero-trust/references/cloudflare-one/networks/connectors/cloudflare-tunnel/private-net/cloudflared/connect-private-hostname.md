@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Connect a private hostname in Zero Trust networking.
 title: Connect a private hostname
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/og.png?v=8a696e856c49ddc9
@@ -107,9 +109,9 @@ Before you can connect to private hostnames, you must enable the Gateway proxy.
 4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
 5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
+2) Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
 
    ```tf
    resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
@@ -181,8 +183,8 @@ Cloudflare WAN
 5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
 6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
-8. After the tunnel is connected, go to the tunnel's **Routes** tab and select **Add route**, then select **Private hostname**.
-9. Enter the fully qualified domain name (FQDN) that represents your application (for example, `wiki.internal.local`).<details><summary>
+8) After the tunnel is connected, go to the tunnel's **Routes** tab and select **Add route**, then select **Private hostname**.
+9) Enter the fully qualified domain name (FQDN) that represents your application (for example, `wiki.internal.local`).<details><summary>
 
    Hostname format restrictions</summary>
 
@@ -195,7 +197,7 @@ Cloudflare WAN
    - **Wildcard trimming**: Leading wildcards (<code>*</code>) are trimmed off and an implicit dot (<code>.</code>) is assumed. For example, <code>*.internal.local</code> is saved as <code>internal.local</code> but will match all subdomains at the wildcard level (covers <code>foo.internal.local</code> but not <code>foo.bar.internal.local</code>).
    - **Dot trimming:** Leading and ending dots (<code>.</code>) are allowed but trimmed off.</details>
 
-10. Select **Save**.
+10) Select **Save**.
 
 ### 2. Configure DNS resolution
 

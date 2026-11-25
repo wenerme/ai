@@ -712,6 +712,289 @@ static void require(boolean condition, String message) {
 }
 ```
 
+```csharp
+using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+
+namespace OpenAI.Docs.Examples.Psp;
+
+internal static class RecoverRecordExample
+{
+
+private static readonly UTF8Encoding Utf8 = new(false, true);
+
+    // Supply the already decrypted capsule and trusted original registration.
+    // Keep the RSA private key in the cloud. Return the exact recovered UTF-8 text.
+    internal static string RecoverRecord(byte[] bundleJson, byte[] capsule, string originalKeyId, string publicPem)
+    {
+        Dictionary<string, object?> bundle = Object(Parse(bundleJson));
+        Dictionary<string, object?> record = Object(Field(bundle, "protected_record"));
+        Dictionary<string, object?> access = Object(Field(bundle, "customer_access"));
+        Require(Field(bundle, "bundle_version") is 1L && Field(access, "version") is 1L,
+            "Unsupported bundle or capsule version");
+        Require(Text(record, "version") == "v4"
+            && Text(record, "algorithm") == "HPKE-v1-DHKEM_P256_HKDF_SHA256-EXPORT_ONLY-AES256_GCM"
+            && Text(access, "algorithm") == "RSA-OAEP-256"
+            && Text(access, "customer_key_id") == originalKeyId, "Wrong schema or original key");
+
+        ReadOnlySpan<char> pem = publicPem.AsSpan().Trim();
+        Require(PemEncoding.TryFind(pem, out PemFields fields)
+            && fields.Location.GetOffsetAndLength(pem.Length) == (0, pem.Length), "Expected one public key");
+        string label = pem[fields.Label].ToString();
+        Require(label is "PUBLIC KEY" or "RSA PUBLIC KEY", "Expected an RSA public key");
+        using RSA rsa = RSA.Create();
+        rsa.ImportFromPem(pem);
+        Require(rsa.KeySize == 3072, "Expected RSA-3072");
+        Require(Decode(Text(access, "recovery_secret")).Length == 384, "Wrong RSA ciphertext length");
+        Require(Equal(Decode(Text(access, "customer_public_key_fingerprint")),
+            SHA256.HashData(rsa.ExportSubjectPublicKeyInfo())), "Wrong key fingerprint");
+
+        byte[] runtimePoint = Decode(Text(record, "safety_review_runtime_public_key"));
+        Require(runtimePoint.Length == 65 && runtimePoint[0] == 4, "Invalid P-256 encoding");
+        using ECDiffieHellman runtime = ECDiffieHellman.Create(new ECParameters
+        {
+            Curve = ECCurve.NamedCurves.nistP256,
+            Q = new ECPoint { X = runtimePoint[1..33], Y = runtimePoint[33..65] }
+        });
+        byte[] thumbprint = SHA256.HashData(Canonical(new Dictionary<string, object?>
+        {
+            ["crv"] = "P-256",
+            ["kty"] = "EC",
+            ["x"] = Encode(runtimePoint[1..33]),
+            ["y"] = Encode(runtimePoint[33..65])
+        }));
+        Require(Equal(Decode(Text(record, "key_thumbprint")), thumbprint), "Wrong runtime key");
+        byte[] nonce = Decode(Text(record, "nonce"));
+        byte[] ciphertext = Decode(Text(record, "ciphertext"));
+        Require(nonce.Length == 12 && ciphertext.Length >= 16, "Invalid AES-GCM parameters");
+        byte[] binding = SHA256.HashData(Canonical(new Dictionary<string, object?>
+        {
+            ["purpose"] = "OpenAI-PSP-v4/customer-recovery-binding",
+            ["bundle_version"] = 1L,
+            ["record"] = record,
+            ["recovery_header"] = Without(access, "recovery_secret")
+        }));
+        Require(capsule.Length == 72 && Equal(capsule.AsSpan(0, 8), "PSPv4\0\0\x01"u8)
+            && Equal(capsule.AsSpan(40, 32), binding), "Invalid recovery capsule binding");
+
+        byte[] scalar = capsule[8..40];
+        byte[]? key = null;
+        byte[] plaintext = new byte[ciphertext.Length - 16];
+        try
+        {
+            byte[] order = Convert.FromHexString(
+                "FFFFFFFF00000000FFFFFFFFFFFFFFFFBCE6FAADA7179E84F3B9CAC2FC632551");
+            Require(!Equal(scalar, new byte[32]) && scalar.AsSpan().SequenceCompareTo(order) < 0,
+                "Invalid P-256 private scalar");
+            using ECDiffieHellman ephemeral = ECDiffieHellman.Create(new ECParameters
+            {
+                Curve = ECCurve.NamedCurves.nistP256,
+                D = scalar
+            });
+            ECParameters parameters = ephemeral.ExportParameters(false);
+            byte[] encapsulation = Join([4], parameters.Q.X!, parameters.Q.Y!);
+            Require(Equal(Decode(Text(record, "encrypted_dek")), encapsulation), "Wrong recovered scalar");
+            byte[] aad = Canonical(Without(record, "ciphertext"));
+            key = PayloadKey(ephemeral, runtime.PublicKey, encapsulation, runtimePoint, aad);
+            using AesGcm cipher = new(key, 16);
+            cipher.Decrypt(nonce, ciphertext.AsSpan(0, ciphertext.Length - 16),
+                ciphertext.AsSpan(ciphertext.Length - 16), plaintext, aad);
+            return Utf8.GetString(plaintext);
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(scalar);
+            if (key is not null) CryptographicOperations.ZeroMemory(key);
+            CryptographicOperations.ZeroMemory(plaintext);
+        }
+    }
+
+    // RFC 9180 base-mode DHKEM(P-256, HKDF-SHA256), export-only AEAD.
+    // Native ECDH and HKDF implement the primitives; recovery reuses the original scalar.
+    internal static byte[] PayloadKey(ECDiffieHellman ephemeral, ECDiffieHellmanPublicKey runtime,
+        byte[] encapsulation, byte[] runtimePoint, byte[] aad)
+    {
+        List<byte[]> secrets = [];
+        byte[] Remember(byte[] value) { secrets.Add(value); return value; }
+        byte[] Extract(byte[] suite, string label, byte[] input, byte[] salt)
+        {
+            byte[] labeled = Join("HPKE-v1"u8.ToArray(), suite, Utf8.GetBytes(label), input);
+            try { return Remember(HKDF.Extract(HashAlgorithmName.SHA256, labeled, salt)); }
+            finally { CryptographicOperations.ZeroMemory(labeled); }
+        }
+        byte[] Expand(byte[] suite, string label, byte[] secret, byte[] info)
+        {
+            byte[] labeled = Join([0, 32], "HPKE-v1"u8.ToArray(), suite, Utf8.GetBytes(label), info);
+            try { return Remember(HKDF.Expand(HashAlgorithmName.SHA256, secret, 32, labeled)); }
+            finally { CryptographicOperations.ZeroMemory(labeled); }
+        }
+        try
+        {
+            byte[] kem = [0x4b, 0x45, 0x4d, 0, 0x10];
+            byte[] dh = Remember(ephemeral.DeriveRawSecretAgreement(runtime));
+            byte[] prk = Extract(kem, "eae_prk", dh, []);
+            byte[] shared = Expand(kem, "shared_secret", prk, Join(encapsulation, runtimePoint));
+            byte[] suite = [0x48, 0x50, 0x4b, 0x45, 0, 0x10, 0, 1, 0xff, 0xff];
+            byte[] schedule = Join([0], Extract(suite, "psk_id_hash", [], []),
+                Extract(suite, "info_hash", "OpenAI-PSP-v4/HPKE-export"u8.ToArray(), []));
+            byte[] exporter = Expand(suite, "exp", Extract(suite, "secret", [], shared), schedule);
+            byte[] key = Expand(suite, "sec", exporter,
+                Join("OpenAI-PSP-v4/payload-key"u8.ToArray(), SHA256.HashData(aad)));
+            return key.ToArray();
+        }
+        finally
+        {
+            foreach (byte[] secret in secrets) CryptographicOperations.ZeroMemory(secret);
+        }
+    }
+
+    // This example supports a strict RFC 8785 subset: numbers must have integer
+    // JSON spelling and lie within +/-9007199254740991. Reject fractional,
+    // exponent and unsafe-integer inputs instead of approximating JCS numbers.
+    // Otherwise-valid bundles with unsupported numeric extension fields are rejected.
+    // Preserve Unicode exactly, reject duplicate names and malformed UTF-8 or
+    // surrogate pairs, and sort names by UTF-16 ordinal code units.
+    internal static object? Parse(byte[] json)
+    {
+        _ = Utf8.GetString(json);
+        using JsonDocument document = JsonDocument.Parse(json, new JsonDocumentOptions { MaxDepth = 128 });
+        return ConvertValue(document.RootElement);
+    }
+
+    private static object? ConvertValue(JsonElement value)
+    {
+        switch (value.ValueKind)
+        {
+            case JsonValueKind.Object:
+                Dictionary<string, object?> fields = new(StringComparer.Ordinal);
+                foreach (JsonProperty property in value.EnumerateObject())
+                {
+                    CheckUnicode(property.Name);
+                    Require(fields.TryAdd(property.Name, ConvertValue(property.Value)), "Duplicate JSON key");
+                }
+                return fields;
+            case JsonValueKind.Array:
+                return value.EnumerateArray().Select(ConvertValue).ToArray();
+            case JsonValueKind.String:
+                string text = value.GetString()!;
+                CheckUnicode(text);
+                return text;
+            case JsonValueKind.Number:
+                string raw = value.GetRawText();
+                Require(!raw.Contains('.') && !raw.Contains('e') && !raw.Contains('E')
+                    && value.TryGetInt64(out long _), "Only safe integer numbers are supported");
+                long number = value.GetInt64();
+                Require(number is >= -9007199254740991L and <= 9007199254740991L, "Unsafe integer");
+                return number;
+            case JsonValueKind.True: return true;
+            case JsonValueKind.False: return false;
+            case JsonValueKind.Null: return null;
+            default: throw new ArgumentException("Unsupported JSON value");
+        }
+    }
+
+    internal static byte[] Canonical(object? value)
+    {
+        StringBuilder text = new();
+        void WriteString(string item)
+        {
+            CheckUnicode(item);
+            text.Append('"');
+            foreach (char c in item)
+            {
+                text.Append(c switch
+                {
+                    '"' => "\\\"",
+                    '\\' => "\\\\",
+                    '\b' => "\\b",
+                    '\t' => "\\t",
+                    '\n' => "\\n",
+                    '\f' => "\\f",
+                    '\r' => "\\r",
+                    < ' ' => "\\u" + ((int)c).ToString("x4", CultureInfo.InvariantCulture),
+                    _ => c.ToString()
+                });
+            }
+            text.Append('"');
+        }
+        void Write(object? item)
+        {
+            switch (item)
+            {
+                case null: text.Append("null"); break;
+                case string s: WriteString(s); break;
+                case bool b: text.Append(b ? "true" : "false"); break;
+                case long n when n is >= -9007199254740991L and <= 9007199254740991L:
+                    text.Append(n.ToString(CultureInfo.InvariantCulture)); break;
+                case Dictionary<string, object?> fields:
+                    text.Append('{');
+                    bool first = true;
+                    foreach (string name in fields.Keys.Order(StringComparer.Ordinal))
+                    {
+                        if (!first) text.Append(',');
+                        first = false;
+                        WriteString(name); text.Append(':'); Write(fields[name]);
+                    }
+                    text.Append('}'); break;
+                case object?[] items:
+                    text.Append('[');
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        if (i > 0) text.Append(',');
+                        Write(items[i]);
+                    }
+                    text.Append(']'); break;
+                default: throw new ArgumentException("Outside the supported canonical JSON subset");
+            }
+        }
+        Write(value);
+        return Utf8.GetBytes(text.ToString());
+    }
+
+    private static void CheckUnicode(string value)
+    {
+        for (int i = 0; i < value.Length; i++)
+        {
+            if (!char.IsSurrogate(value[i])) continue;
+            Require(char.IsHighSurrogate(value[i]) && i + 1 < value.Length
+                && char.IsLowSurrogate(value[++i]), "Malformed Unicode");
+        }
+    }
+
+    private static Dictionary<string, object?> Object(object? value) =>
+        value as Dictionary<string, object?> ?? throw new ArgumentException("Expected an object");
+    private static object? Field(Dictionary<string, object?> value, string name) =>
+        value.TryGetValue(name, out object? item) ? item : throw new ArgumentException("Missing field");
+    private static string Text(Dictionary<string, object?> value, string name) =>
+        Field(value, name) as string ?? throw new ArgumentException("Expected text");
+    private static Dictionary<string, object?> Without(Dictionary<string, object?> value, string name) =>
+        value.Where(pair => pair.Key != name).ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
+    private static string Encode(byte[] value) => Convert.ToBase64String(value).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+    private static byte[] Decode(string value)
+    {
+        Require(value.All(c => char.IsAsciiLetterOrDigit(c) || c is '-' or '_'), "Invalid base64url");
+        byte[] bytes = Convert.FromBase64String(value.Replace('-', '+').Replace('_', '/') + new string('=', (4 - value.Length % 4) % 4));
+        Require(Encode(bytes) == value, "Noncanonical base64url");
+        return bytes;
+    }
+    private static bool Equal(ReadOnlySpan<byte> left, ReadOnlySpan<byte> right) =>
+        CryptographicOperations.FixedTimeEquals(left, right);
+    private static byte[] Join(params byte[][] arrays)
+    {
+        byte[] result = new byte[arrays.Sum(array => array.Length)];
+        int offset = 0;
+        foreach (byte[] array in arrays) { array.CopyTo(result, offset); offset += array.Length; }
+        return result;
+    }
+    private static void Require(bool condition, string message)
+    {
+        if (!condition) throw new ArgumentException(message);
+    }
+}
+```
+
 ```ruby
 require "base64"
 require "digest"

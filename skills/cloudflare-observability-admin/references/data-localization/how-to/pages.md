@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure Pages with Regional Services and Customer Metadata Boundary.
 title: Pages
 image: https://developers.cloudflare.com/data-localization/how-to/pages/og.png?v=628908dd438424db
@@ -28,8 +30,8 @@ To configure Regional Services for hostnames [proxied](https://developers.cloudf
 5. From the **Region** dropdown, select the region you would like to use on your domain.
 6. Select **Save**.
 
-1. Use the [API POST](https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/domains/methods/create/) command to add a Custom Domain to a Pages project.
-2. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the Pages Custom Domain to create a `regional_hostnames` with a specific Region.
+1) Use the [API POST](https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/domains/methods/create/) command to add a Custom Domain to a Pages project.
+2) Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the Pages Custom Domain to create a `regional_hostnames` with a specific Region.
 
 Note
 

@@ -19,7 +19,9 @@ Choose the agents to sync with `--agents`. Without it, setup syncs the agents se
 
 Setup also installs the fallback periodic sync: a launchd agent (`~/Library/LaunchAgents/com.gitlab.glab-govern-audit-sync.plist`) on macOS, or a systemd user timer (`~/.config/systemd/user/glab-govern-audit-sync.timer`) on Linux.
 
-The fallback periodic sync runs `glab minder audit sync --all` every 30 minutes, and on Linux also 5 minutes after boot, until you remove it. It uploads anything the hooks missed for sessions they have already recorded (see `glab minder audit sync --help` for what is uploaded), using your stored glab credentials and the glab configuration directory in use when you run setup. Each session goes to the project and host of the Git repository the agent ran in. It also marks sessions completed once they have been idle for 24 hours. It pauses sessions from agents that use hooks while those hooks are not installed. Pass `--no-fallback-sync` to install only the hooks and plugin, which Codex and Cursor cannot be synced without. The fallback periodic sync is not available on Windows.
+The fallback periodic sync runs `glab minder audit sync --all` every 30 minutes, and on Linux also 5 minutes after boot, until you remove it. It uploads anything the hooks missed for sessions they have already recorded (see `glab minder audit sync --help` for what is uploaded), using your stored glab credentials and the glab configuration directory in use when you run setup. It also marks sessions completed once they have been idle for 24 hours. It pauses sessions from agents that use hooks while those hooks are not installed. Pass `--no-fallback-sync` to install only the hooks and plugin, which Codex and Cursor cannot be synced without. The fallback periodic sync is not available on Windows.
+
+Each session goes to the project of the Git repository the agent runs in, split across projects in the same top-level group when it works in more than one.
 
 By default, glab uploads only what each agent does after you first set it up: not its sessions from before, and not the earlier turns of a session from before that you resume.
 
@@ -32,6 +34,8 @@ Run setup again with `--agents` to add agents. Agents set up by an earlier run s
 Safe to run multiple times: existing hooks are not duplicated, and an existing fallback periodic sync job is replaced. Run `glab minder doctor` afterwards to verify the setup.
 
 Run `glab minder setup --uninstall` to remove everything setup installed: the hooks, the OpenCode plugin, the fallback periodic sync job, and Codex and Cursor session syncing. It also removes glab's local records of your agent sessions and forgets the agents you set up and when, so the next setup starts with Claude Code again. Other hooks and settings in `~/.claude/settings.json`, and other OpenCode plugins, are left unchanged.
+
+Setup and uninstall are for a person to confirm. When glab detects that a coding agent runs it, setup and uninstall refuse to run, with or without `--yes`, and the user must run them in their own terminal. glab detects agents from the environment variables they set, so it does not detect an agent that sets none.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

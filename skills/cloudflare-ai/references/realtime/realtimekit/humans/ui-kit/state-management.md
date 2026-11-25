@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Manage and synchronize meeting state across RealtimeKit UI Kit components.
 title: State Management
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/state-management/og.png?v=b4ad3d5fe2eeda63
@@ -67,10 +69,10 @@ flowchart LR
 3. **State propagation**: The meeting component propagates the updated state to all other child components to keep them synchronized
 4. **External notification**: The meeting component also emits a `rtkStatesUpdate` event that your application can listen to for updating your custom UI or performing actions based on state changes
 
-1. **UI Kit manages internal state**: The UI Kit handles all component communication and state synchronization internally
-2. **Your app registers event listeners**: You attach event listeners (such as `RtkMeetingRoomEventListener` and `RtkSelfEventListener`) to the Core SDK's `meeting` object
-3. **Callbacks fire on state changes**: When the meeting state changes (for example, a participant joins or audio is toggled), the corresponding listener callback is invoked
-4. **You update your UI**: Use the callback data to update your application's UI or trigger other actions
+1) **UI Kit manages internal state**: The UI Kit handles all component communication and state synchronization internally
+2) **Your app registers event listeners**: You attach event listeners (such as `RtkMeetingRoomEventListener` and `RtkSelfEventListener`) to the Core SDK's `meeting` object
+3) **Callbacks fire on state changes**: When the meeting state changes (for example, a participant joins or audio is toggled), the corresponding listener callback is invoked
+4) **You update your UI**: Use the callback data to update your application's UI or trigger other actions
 
 1. **UI Kit manages internal state**: The `RtkMeeting` component handles all internal component communication and state synchronization
 2. **Your app observes state via hooks**: Use `useRealtimeKitSelector` to select specific meeting properties and re-render when they change
@@ -635,20 +637,20 @@ For the full list of available properties, refer to the [Core SDK meeting object
 - **Use states for conditional rendering**: Leverage the UI states to show/hide UI elements or respond to interface changes (e.g., showing custom indicators when `states.activeScreenShare` is true).
 - **Understand the difference**: `rtkStatesUpdate` provides **UI Kit internal states** for interface management. For meeting data (participants, active speaker, recording status), use the Core SDK's `meeting` object and its events directly.
 
-- **Remove listeners on cleanup**: Always remove event listeners in `onDestroy()` to prevent memory leaks. Store listener references so you can unregister them later.
-- **Use appropriate threading**: Event listener callbacks may fire on background threads. Use `runOnUiThread` or post to the main handler when updating UI elements.
-- **Store state in observable patterns**: Use `LiveData`, `StateFlow`, or `MutableState` (Compose) to propagate state changes to your UI reactively.
-- **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
+* **Remove listeners on cleanup**: Always remove event listeners in `onDestroy()` to prevent memory leaks. Store listener references so you can unregister them later.
+* **Use appropriate threading**: Event listener callbacks may fire on background threads. Use `runOnUiThread` or post to the main handler when updating UI elements.
+* **Store state in observable patterns**: Use `LiveData`, `StateFlow`, or `MutableState` (Compose) to propagate state changes to your UI reactively.
+* **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
 
 - **Remove listeners on cleanup**: Always remove event listeners when your view controller or view model is deallocated to prevent retain cycles and memory leaks.
 - **Use `@Published` for reactive UI**: In SwiftUI, mark state properties as `@Published` in your `ObservableObject` to automatically re-render views when meeting state changes.
 - **Handle threading**: Event listener callbacks may fire on background threads. Use `DispatchQueue.main.async` when updating UI elements from callbacks.
 - **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
 
-- **Use selectors for efficiency**: The `useRealtimeKitSelector` hook only re-renders your component when the selected value changes. Select only the specific properties you need rather than the entire meeting object.
-- **Clean up event listeners**: When using `meeting.self.on()` event listeners, always return a cleanup function from `useEffect` that calls `removeListener`.
-- **Combine with `useMemo` and `useCallback`**: Use React memoization hooks to prevent unnecessary re-renders when meeting state changes frequently.
-- **Understand the difference**: `useRealtimeKitSelector` provides access to **Core SDK meeting state** (participants, media, room state). The UI Kit handles its own internal UI state through the `RtkMeeting` component.
+* **Use selectors for efficiency**: The `useRealtimeKitSelector` hook only re-renders your component when the selected value changes. Select only the specific properties you need rather than the entire meeting object.
+* **Clean up event listeners**: When using `meeting.self.on()` event listeners, always return a cleanup function from `useEffect` that calls `removeListener`.
+* **Combine with `useMemo` and `useCallback`**: Use React memoization hooks to prevent unnecessary re-renders when meeting state changes frequently.
+* **Understand the difference**: `useRealtimeKitSelector` provides access to **Core SDK meeting state** (participants, media, room state). The UI Kit handles its own internal UI state through the `RtkMeeting` component.
 
 Was this helpful?
 

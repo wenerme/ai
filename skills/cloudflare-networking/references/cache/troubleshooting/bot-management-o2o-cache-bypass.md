@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: In Orange-to-Orange (O2O) setups — where a SaaS provider uses Cloudflare for SaaS and their customer also has their own Cloudflare zone — the __cf_bm Bot Management cookie returned from the origin-facing Cloudflare zone can cause the eyeball-facing zone to bypass cache. This occurs because the Set-Cookie header in the response triggers Cloudflare's default behavior of not caching responses with Set-Cookie.
 title: Bot Management cookie causes cache bypass in O2O setups
 image: https://developers.cloudflare.com/cache/troubleshooting/bot-management-o2o-cache-bypass/og.png?v=a679315e8bda7705

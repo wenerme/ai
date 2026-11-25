@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Understand which Preview resources are shared, which are isolated, and which invocation types have limitations.
 title: Resources and isolation
 image: https://developers.cloudflare.com/workers/previews/resources/og.png?v=a51699232e855b7d
@@ -56,7 +58,7 @@ export default defineConfig(({ isPreview }) => ({
 	worker: {
 		name: "my-worker",
 		entrypoint: "./src/index.ts",
-		compatibilityDate: "2026-11-23",
+		compatibilityDate: "2026-11-25",
 		env: {
 			DB: bindings.d1({
 				id: isPreview ? "<PREVIEW_DATABASE_ID>" : "<PRODUCTION_DATABASE_ID>",
@@ -75,7 +77,7 @@ export default defineConfig(({ isPreview }) => ({
 	worker: {
 		name: "my-worker",
 		entrypoint: "./src/index.ts",
-		compatibilityDate: "2026-11-23",
+		compatibilityDate: "2026-11-25",
 		env: {
 			DB: bindings.d1({
 				id: isPreview
@@ -110,7 +112,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"migrations": [
 		{ "tag": "v1", "new_classes": ["Counter"] }
 	],
@@ -120,7 +122,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 previews = { }
 
 [[migrations]]
@@ -206,7 +208,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -233,7 +235,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[migrations]]
 tag = "v1"
@@ -266,7 +268,7 @@ return container.fetch(request);
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -303,7 +305,7 @@ return container.fetch(request);
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[migrations]]
 tag = "v1"

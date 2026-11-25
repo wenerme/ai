@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: How to configure a HTML handling and trailing slashes for the static assets of your Worker.
 title: HTML handling
 image: https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/og.png?v=ba5d7fb5fe208661
@@ -34,7 +36,7 @@ This will usually give you the desired behavior automatically: individual files 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "auto-trailing-slash"
@@ -45,7 +47,7 @@ This will usually give you the desired behavior automatically: individual files 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/"
@@ -75,7 +77,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "force-trailing-slash"
@@ -86,7 +88,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/"
@@ -116,7 +118,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "drop-trailing-slash"
@@ -127,7 +129,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/"
@@ -157,7 +159,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "none"
@@ -168,7 +170,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [assets]
 directory = "./dist/"

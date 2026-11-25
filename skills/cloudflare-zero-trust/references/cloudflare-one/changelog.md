@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Review recent changes to Cloudflare One.
 title: Changelog
 image: https://developers.cloudflare.com/cloudflare-one/changelog/og.png?v=dd4319fb842ef5a5
@@ -16,6 +18,99 @@ image: https://developers.cloudflare.com/cloudflare-one/changelog/og.png?v=dd431
 # Changelog
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
+
+## 2026-11-25
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+
+**Reach overlapping remote networks with DNAT translations on Cloudflare One Appliance**
+
+You can now configure DNAT (destination NAT) translations on a [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) LAN, in beta. A DNAT translation maps a local **pre-NAT prefix** to a **post-NAT prefix** of the same size, which is the real prefix of a remote subnet reachable through Cloudflare WAN, such as a data center connected over an IPsec tunnel. Hosts on the LAN send traffic to the pre-NAT prefix, and the Appliance translates it 1:1 to the remote subnet and back.
+
+Use DNAT translations to reach a remote network that uses the same addresses as your site, without renumbering either side. You can also use them to avoid adding routes for remote subnets to your local network. Combine DNAT translations with [static NAT for a subnet](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/) when both sides of the connection use the same addresses.
+
+- In the dashboard, edit a LAN in your Appliance profile's **Network configuration**, then select **Add DNAT translation** under **DNAT translations**. [Go to **Appliances** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/appliances)
+- In the API, set the `remote_subnets` array when you [create](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/lans/methods/create/) or [update](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/lans/methods/edit/) a LAN. Each item has a `local_alias_prefix` (pre-NAT) and a `remote_prefix` (post-NAT).
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Patch Site LANbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"remote_subnets": [
+				{
+						"local_alias_prefix": "100.64.1.0/24",
+						"remote_prefix": "10.1.1.0/24"
+				}
+		]
+	}'
+```
+
+DNAT translations require Appliance OS version 2026.11.2 or later, which deploys automatically.
+
+For details, refer to [DNAT translations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dnat-translations/).
+
+## 2026-11-25
+
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+
+**Prioritized traffic now takes effect on congested WAN circuits for Cloudflare One Appliance**
+
+[Prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/) on [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) now takes effect when your WAN circuit is slower than the appliance port, which is common for branch Internet connections. Enter the circuit's upload speed on each WAN, and the appliance shapes upload traffic to 95% of that value. Traffic then queues on the appliance instead of in your modem or ISP network, so the appliance can send prioritized applications, such as voice and video calls, ahead of everything else.
+
+- **Two traffic classes**: Applications in the **Prioritized traffic** list go first. All other traffic is default (best effort). Prioritized traffic cannot completely starve default traffic, and flows within each class share bandwidth fairly.
+- **Dashboard**: When you create or edit a WAN, enter **Provisioned upload bandwidth (Mbps)** and, optionally, **Provisioned download bandwidth (Mbps)**. Saved values appear in the WAN details.
+- **API**: Set `provisioned_upload_kbps` and `provisioned_download_kbps`, in kilobits per second, when you [create](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/create/) or [update](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/edit/) a WAN. To remove a value with a `PATCH` request, set it to `null`.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Patch Site WANbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/wans/$WAN_ID" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"provisioned_upload_kbps": 100000,
+		"provisioned_download_kbps": 500000
+	}'
+```
+
+Both fields are optional. If you do not set the upload value, the appliance does not shape the WAN, which matches how it worked before. The appliance does not currently shape download traffic. Upload shaping requires Appliance version 2026.10.3 or later, which appliances install automatically during their interrupt window.
+
+For details, refer to [How traffic prioritization works](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/#how-traffic-prioritization-works).
 
 ## 2026-11-19
 

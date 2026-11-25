@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create your first D1 database, define a schema, and query it from a Cloudflare Worker.
 title: Getting started
 image: https://developers.cloudflare.com/d1/get-started/og.png?v=f4bd290d0b828d3b
@@ -504,11 +506,11 @@ To deploy your Worker to production using Wrangler, you must first repeat the [d
    For example, if the URL of your new Worker is `d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev`, accessing `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages` sends a request to your Worker that queries your live database directly.
 4. Test your database is running successfully. Add `/api/beverages` to the provided Wrangler URL. For example, `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages`.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select your `d1-tutorial` Worker.
-3. Select **Deployments**.
-4. From the **Version History** table, select **Deploy version**.
-5. From the **Deploy version** page, select **Deploy**.
+1) In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2) Select your `d1-tutorial` Worker.
+3) Select **Deployments**.
+4) From the **Version History** table, select **Deploy version**.
+5) From the **Deploy version** page, select **Deploy**.
 
 This deploys the latest version of the Worker code to production.
 

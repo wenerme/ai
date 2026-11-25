@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure Cache with Regional Services and Customer Metadata Boundary.
 title: Cache
 image: https://developers.cloudflare.com/data-localization/how-to/cache/og.png?v=0dbb220e9572ec3f
@@ -26,8 +28,8 @@ To configure Regional Services for hostnames [proxied](https://developers.cloudf
 3. From the **Region** dropdown, select the region you would like to use on your domain.
 4. Select **Save**.
 
-1. To create records with the API, use the [API POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) command.
-2. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the hostname to create a `regional_hostnames` with a specific region.
+1) To create records with the API, use the [API POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) command.
+2) Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the hostname to create a `regional_hostnames` with a specific region.
 
 Note
 

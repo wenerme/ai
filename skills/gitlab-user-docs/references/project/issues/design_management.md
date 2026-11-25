@@ -45,6 +45,7 @@ If the requirements are not met, you are notified in the  section.
 
 You can upload files of the following types as designs:
 
+- AVIF
 - BMP
 - GIF
 - ICO

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.
 title: How to
 image: https://developers.cloudflare.com/ai-search/how-to/og.png?v=ad57cb0ed01281c2
@@ -20,6 +22,7 @@ These guides walk through common AI Search use cases, from no-code setups to ful
 | Guide | Difficulty | What you build |
 | --- | --- | --- |
 | [Add search to your website](https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/) | Beginner | Add a search bar, chat bubble, and search modal to a site with the prebuilt UI snippets. |
+| [Search for Agents](https://developers.cloudflare.com/ai-search/how-to/search-for-agents/) | Beginner | Make your website searchable by AI agents with automatic indexing and a discoverable search endpoint. |
 | [Connect your AI Search to an MCP client](https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/) | Beginner | Expose your indexed content as a search tool for any MCP client or AI assistant, with no code. |
 | [Create a simple search engine](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/) | Beginner | Query an instance from a Worker using the search binding. |
 | [Multitenancy](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) | Intermediate | Keep each tenant's data separate with a per-tenant instance or a shared instance and metadata filtering. |
@@ -38,5 +41,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/how-to/#page","headline":"How to","description":"Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.","url":"https://developers.cloudflare.com/ai-search/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/og.png?v=ad57cb0ed01281c2","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/how-to/#page","headline":"How to","description":"Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.","url":"https://developers.cloudflare.com/ai-search/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/og.png?v=ad57cb0ed01281c2","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

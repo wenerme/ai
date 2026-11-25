@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Build a Worker that clones a GitHub repository into a Linux sandbox, runs Claude Code on a task in the background, and returns its changes as a diff.
 title: Build a coding agent runner
 image: https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/og.png?v=db44ca7232ae4c09
@@ -141,7 +143,7 @@ You also need:
    	"name": "sandbox-coding-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"compatibility_flags": ["nodejs_compat"],
    	"observability": {
    		"enabled": true,
@@ -188,7 +190,7 @@ You also need:
    name = "sandbox-coding-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
    compatibility_flags = [ "nodejs_compat" ]
    upload_source_maps = true
 

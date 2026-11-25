@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Short-lived certificates (legacy) in Access.
 title: Short-lived certificates (legacy)
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/og.png?v=356bb9b1d55e35b7
@@ -129,19 +131,19 @@ Since this will put the security of your server entirely dependent on your Acces
 
 1. Copy the public key generated from the dashboard in Step 3.
 
-1. Use the following command to change directories to the SSH configuration directory on the remote target machine:
+1) Use the following command to change directories to the SSH configuration directory on the remote target machine:
 
    ```sh
    cd /etc/ssh
    ```
 
-2. Once there, you can use the following command to both generate the file and open a text editor to input/paste the public key.
+2) Once there, you can use the following command to both generate the file and open a text editor to input/paste the public key.
 
    ```sh
    vim ca.pub
    ```
 
-3. In the `ca.pub` file, paste the public key without any modifications.
+3) In the `ca.pub` file, paste the public key without any modifications.
 
    *ca.pubtxt*
 
@@ -152,7 +154,7 @@ Since this will put the security of your server entirely dependent on your Acces
    ```
 
    The `ca.pub` file can hold multiple keys, listed one per line. Empty lines and comments starting with `#` are also allowed.
-4. Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:
+4) Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:
 
    ```bash
    :w !sudo tee %

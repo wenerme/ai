@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Migrate 1.1.1.1 app in Zero Trust.
 title: Migrate 1.1.1.1 app
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/og.png?v=058e804fe54bef50
@@ -45,9 +47,9 @@ If you downloaded and installed the 1.1.1.1 app manually, here are the recommend
    This prevents certificate pinning issues when performing the Android migration.
 3. Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#ios-android-and-chromeos) to install and enroll the Cloudflare One Agent.
 
-1. Update the **1.1.1.1** app to version 6.22 or above. The update ensures that 1.1.1.1 can [co-exist](#what-to-do-with-the-old-app) with the new Cloudflare One Agent app.
-2. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) the **Cloudflare One Agent** app.
-3. Launch the Cloudflare One Agent app. All settings from 1.1.1.1 will automatically migrate over to the Cloudflare One Agent. The user does not need to reauthenticate.
+1) Update the **1.1.1.1** app to version 6.22 or above. The update ensures that 1.1.1.1 can [co-exist](#what-to-do-with-the-old-app) with the new Cloudflare One Agent app.
+2) [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) the **Cloudflare One Agent** app.
+3) Launch the Cloudflare One Agent app. All settings from 1.1.1.1 will automatically migrate over to the Cloudflare One Agent. The user does not need to reauthenticate.
 
 The 1.1.1.1 app will automatically log you out of Cloudflare Zero Trust and revert to consumer mode. Selecting **Login to Cloudflare Zero Trust** in 1.1.1.1 opens an onboarding screen where you can choose the Cloudflare One Agent app and log in to your Zero Trust organization.
 
@@ -72,11 +74,11 @@ If you deployed the 1.1.1.1 app with an [MDM provider](https://developers.cloudf
 5. Using your MDM tool, install the **Cloudflare One Agent** on your devices.
 6. On Android, the user will need to [re-authenticate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#ios-android-and-chromeos) to the new application, following the same onboarding steps they went through initially.
 
-1. Using your MDM tool, update the **1.1.1.1** app to version 6.22 or above. The update ensures that 1.1.1.1 can co-exist with the new Cloudflare One Agent app during the migration.
-2. Add the **Cloudflare One Agent** app from the App store. Its application ID is `com.cloudflare.cloudflareoneagent`.
-3. Copy your [MDM deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#ios) for the **1.1.1.1** app.
-4. Paste the MDM deployment parameters into the **Cloudflare One Agent** app configuration. Make sure that you do not accidentally overwrite the application ID ( `com.cloudflare.cloudflareoneagent`).
-5. Using your MDM tool, install the **Cloudflare One Agent** on your devices.
+1) Using your MDM tool, update the **1.1.1.1** app to version 6.22 or above. The update ensures that 1.1.1.1 can co-exist with the new Cloudflare One Agent app during the migration.
+2) Add the **Cloudflare One Agent** app from the App store. Its application ID is `com.cloudflare.cloudflareoneagent`.
+3) Copy your [MDM deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#ios) for the **1.1.1.1** app.
+4) Paste the MDM deployment parameters into the **Cloudflare One Agent** app configuration. Make sure that you do not accidentally overwrite the application ID ( `com.cloudflare.cloudflareoneagent`).
+5) Using your MDM tool, install the **Cloudflare One Agent** on your devices.
 
 On iOS, the user does not need to re-authenticate — registration data from the 1.1.1.1 app is automatically migrated to the new Cloudflare One Agent app.
 

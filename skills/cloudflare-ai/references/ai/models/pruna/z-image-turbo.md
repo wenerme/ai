@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Z-Image Turbo is Tongyi-MAI's 6B-parameter distilled text-to-image model, served by Pruna. It generates photorealistic images in about 8 steps, renders English and Chinese text well, and supports custom sizes up to 2048×2048.
 title: Z-Image Turbo
 image: https://developers.cloudflare.com/og-docs.png

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create and manage breakout rooms in RealtimeKit meetings for smaller group discussions.
 title: Breakout Rooms
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/breakout-rooms/og.png?v=2c58dd3ea3e8b2cb
@@ -142,8 +144,8 @@ To assign participants manually:
 4. Click **Start Breakout**
 5. Click **Yes, start** in the confirmation dialog
 
-1. In your RealtimeKit meeting, tap **Breakout Rooms**
-2. In the Create Breakout dialog, add the number of rooms you want and tap **Create**
+1) In your RealtimeKit meeting, tap **Breakout Rooms**
+2) In the Create Breakout dialog, add the number of rooms you want and tap **Create**
 
 Once you have created breakout rooms, assign participants to the rooms. You can assign participants automatically (RealtimeKit splits them evenly) or manually (you choose who goes where).
 
@@ -168,8 +170,8 @@ To assign participants manually:
 4. Tap **Start Breakout**
 5. Tap **Yes, start** in the confirmation dialog
 
-1. In your RealtimeKit meeting, tap **Breakout Rooms**
-2. In the Create Breakout dialog, add the number of rooms you want and tap **Create**
+1) In your RealtimeKit meeting, tap **Breakout Rooms**
+2) In the Create Breakout dialog, add the number of rooms you want and tap **Create**
 
 Once you have created breakout rooms, assign participants to the rooms. You can assign participants automatically (RealtimeKit splits them evenly) or manually (you choose who goes where).
 
@@ -194,8 +196,8 @@ To assign participants manually:
 4. Tap **Start Breakout**
 5. Tap **Yes, start** in the confirmation dialog
 
-1. In your RealtimeKit meeting, tap **Breakout Rooms**
-2. In the Create Breakout dialog, add the number of rooms you want and tap **Create**
+1) In your RealtimeKit meeting, tap **Breakout Rooms**
+2) In the Create Breakout dialog, add the number of rooms you want and tap **Create**
 
 Once you have created breakout rooms, assign participants to the rooms. You can assign participants automatically (RealtimeKit splits them evenly) or manually (you choose who goes where).
 

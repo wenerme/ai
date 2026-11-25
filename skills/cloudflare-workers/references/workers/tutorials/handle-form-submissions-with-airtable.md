@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.
 title: Handle form submissions with Airtable
 image: https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/og.png?v=f11c1b154d2a03d7
@@ -266,7 +268,7 @@ Add a `vars` table at the end of your Wrangler file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"vars": {
 		"AIRTABLE_BASE_ID": "exampleBaseId",
 		"AIRTABLE_TABLE_NAME": "Form Submissions"
@@ -280,7 +282,7 @@ name = "workers-airtable-form"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [vars]
 AIRTABLE_BASE_ID = "exampleBaseId"

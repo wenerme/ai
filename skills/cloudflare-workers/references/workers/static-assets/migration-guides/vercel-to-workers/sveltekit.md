@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Replace adapter-vercel with adapter-cloudflare, pick the right adapter for SvelteKit 2 or 3, convert ISR routes, and read bindings on Cloudflare Workers.
 title: Migrate SvelteKit from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/sveltekit/og.png?v=7a68b8d01a7414e6
@@ -153,7 +155,7 @@ When you finish, list the files you changed, behavior changes from any SvelteKit
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": ".svelte-kit/cloudflare/_worker.js",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-23",
+   	"compatibility_date": "2026-11-25",
    	"assets": {
    		"binding": "ASSETS",
    		"directory": ".svelte-kit/cloudflare",
@@ -169,7 +171,7 @@ When you finish, list the files you changed, behavior changes from any SvelteKit
    name = "<YOUR_PROJECT_NAME>"
    main = ".svelte-kit/cloudflare/_worker.js"
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
 
    [assets]
    binding = "ASSETS"

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.
 title: Build a Comments API
 image: https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/og.png?v=58be1d800b39c472
@@ -106,7 +108,7 @@ bun add hono
      "main": "src/index.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-11-23",
+     "compatibility_date": "2026-11-25",
      "d1_databases": [
        {
          "binding": "DB",
@@ -122,7 +124,7 @@ bun add hono
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-23"
+   compatibility_date = "2026-11-25"
 
    [[d1_databases]]
    binding = "DB" # available in your Worker on env.DB

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: The Life of a Request is automatic, but you are the conductor. From DNS Resolution to Origin Delivery, watch how to use Cloudflare rules and Workers to intercept, modify, and route traffic at every stage. Turn a standard lifecycle into a fully programmable workflow tailored to your specific business needs.
 title: "Life of a Request: The Control Tower - Steering the Life of a Request"
 image: https://developers.cloudflare.com/og-docs.png

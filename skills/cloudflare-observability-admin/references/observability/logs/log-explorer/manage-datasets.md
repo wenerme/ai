@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Enable, disable, or delete Log Explorer datasets.
 title: Manage datasets
 image: https://developers.cloudflare.com/observability/logs/log-explorer/manage-datasets/og.png?v=d1f4a26b9f0b45a8
@@ -137,8 +139,8 @@ Dataset deletion is irreversible. Deleted data cannot be recovered.
 3. If deletion protection is enabled, disable it in the confirmation dialog.
 4. Enter the dataset name and select **Delete**.
 
-1. Set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/update/) method.
-2. Delete the dataset with the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/delete/) method.
+1) Set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/update/) method.
+2) Delete the dataset with the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/delete/) method.
 
 Was this helpful?
 

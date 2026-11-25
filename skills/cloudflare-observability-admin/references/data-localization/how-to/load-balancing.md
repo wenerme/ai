@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure Load Balancing with Regional Services and Customer Metadata Boundary.
 title: Load Balancing
 image: https://developers.cloudflare.com/data-localization/how-to/load-balancing/og.png?v=59ed1e7d5a87f086
@@ -29,8 +31,8 @@ To configure Regional Services for hostnames [proxied](https://developers.cloudf
 4. Select **Next** and continue with the regular setup.
 5. Select **Save**.
 
-1. Follow the instructions outlined to [create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/#create-a-load-balancer) via API.
-2. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the Load Balancer hostname to create a `regional_hostnames` with a specific region.
+1) Follow the instructions outlined to [create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/#create-a-load-balancer) via API.
+2) Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the Load Balancer hostname to create a `regional_hostnames` with a specific region.
 
 ## Customer Metadata Boundary
 

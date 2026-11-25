@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Learn how to enable the Basin Catalog on your bucket, load sample data, and run your first query.
 title: Getting started
 image: https://developers.cloudflare.com/basin-catalog/get-started/og.png?v=59ca79981771be63
@@ -87,11 +89,11 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
 
    When you run this command, take note of the **Warehouse** and **Catalog URI**. You will need these later.
 
-1. In the Cloudflare dashboard, go to the **Basin Catalog** page. [Go to **Basin Catalog** ↗](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
-2. Select **Create catalog**.
-3. Enter the bucket name `r2-data-catalog-tutorial`. The wizard creates the bucket automatically if it does not already exist. Optionally choose a location hint.
-4. Review the configuration and select **Create catalog**.
-5. Once created, the catalog detail page displays your **Catalog URI** and **Warehouse name**. Note these values for later.
+1) In the Cloudflare dashboard, go to the **Basin Catalog** page. [Go to **Basin Catalog** ↗](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
+2) Select **Create catalog**.
+3) Enter the bucket name `r2-data-catalog-tutorial`. The wizard creates the bucket automatically if it does not already exist. Optionally choose a location hint.
+4) Review the configuration and select **Create catalog**.
+5) Once created, the catalog detail page displays your **Catalog URI** and **Warehouse name**. Note these values for later.
 
 ## 2. Create an API token
 

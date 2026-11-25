@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Update or rotate database credentials for an existing Hyperdrive configuration.
 title: Rotating database credentials
 image: https://developers.cloudflare.com/hyperdrive/configuration/rotate-credentials/og.png?v=19ad03c9e41d76a6
@@ -40,7 +42,7 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-23",
+	"compatibility_date": "2026-11-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +55,7 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-23"
+compatibility_date = "2026-11-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

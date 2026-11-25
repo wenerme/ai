@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Understand the architecture of Workers for Platforms, including dispatch namespaces, dynamic dispatch Workers, user Workers, and outbound Workers.
 title: How Workers for Platforms works
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/og.png?v=e1eb69aa3883894e
@@ -34,6 +36,14 @@ Best practice
 All your customers' Workers should live in a single namespace (for example, `production`). Do not create a namespace per customer.
 
 If you need to test changes safely, create a separate `staging` namespace.
+
+Dispatch namespace names must follow the same rules as Worker names:
+
+- Use only lowercase letters, numbers, underscores ( `_`), and dashes ( `-`).
+- Start with a letter, number, or underscore.
+- Be 256 characters or fewer.
+
+A request to create a namespace with a name that does not meet these requirements returns error `100120`. Existing namespaces are not affected.
 
 You cannot rename a dispatch namespace after you create it. A request that changes the name of a namespace returns error `100413`. To use a different name, create a new namespace and upload your user Workers to it. Then update the [dispatch namespace binding](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) in your dispatch Worker to use the new namespace, and delete the old one.
 

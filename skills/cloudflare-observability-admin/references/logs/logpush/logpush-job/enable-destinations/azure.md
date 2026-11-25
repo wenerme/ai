@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Push Cloudflare logs to Microsoft Azure Blob Storage.
 title: Enable Microsoft Azure
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/og.png?v=a84f0c029ee421b8
@@ -31,8 +33,8 @@ The [Microsoft Sentinel](https://developers.cloudflare.com/analytics/analytics-i
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 
-4. In **Select a destination**, choose **Microsoft Azure**.
-5. Enter or select the following destination details:
+4) In **Select a destination**, choose **Microsoft Azure**.
+5) Enter or select the following destination details:
    - **SAS URL** - a pre-signed URL that grants access to Azure Storage resources. Refer to [Azure storage documentation ↗︎](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer?tabs=macos#shared-access-signature-sas-url) for more information on generating a SAS URL using Azure Storage Explorer. The service must be set to Blob-only ( `ss=b`), and the resource type must be set to Object-only ( `srt=o`).
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)

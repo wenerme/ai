@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Measure and improve cache performance for your site.
 title: Cache performance
 image: https://developers.cloudflare.com/cache/performance-review/cache-performance/og.png?v=3beb0f0ad63dfc73
@@ -44,10 +46,10 @@ This option caches all HTML regardless of the presence of dynamic content (conte
 - Excluding requests that match known dynamic content file paths.
 - Excluding requests with dynamic content extensions (or no extension).
 
-- Short cache expiration TTL.
+* Short cache expiration TTL.
   - Identify the issue: Select **Add filter** and select **Cache status equals Revalidated**.
   - Resolution: [Increase Cloudflare's Edge Cache TTL via a Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/edge-ttl/).
-- Need to enable Tiered Cache or custom cache key.
+* Need to enable Tiered Cache or custom cache key.
   - Identify the issue: Select **Add filter** and select **Cache status equals Miss**.
   - Resolution: [Enable Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#enable-tiered-cache) or [create a custom cache key](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/custom-cache-key/).
 

@@ -218,21 +218,38 @@ the GPU count for larger models:
 | Model size                                 | Minimum GPU configuration | Minimum VRAM required |
 |--------------------------------------------|---------------------------|-----------------------|
 | 7B models(for example, Mistral 7B)     | 1x NVIDIA A100 (40 GB)    | 35 GB                 |
+| Mistral Small 24B Instruct 2506[^mistral]  | 2x NVIDIA A100 (40 GB)    | 80 GB                 |
+| Qwen3.8-27B[^qwen](BF16 weights)       | 2x NVIDIA A100 (40 GB)    | 80 GB                 |
 | 22B models(for example, Codestral 22B) | 2x NVIDIA A100 (80 GB)    | 110 GB                |
-| Qwen3.8-27B[^testing](BF16 weights)    | 2x NVIDIA A100 (40 GB)    | 80 GB                 |
 | Mixtral 8x7B                               | 2x NVIDIA A100 (80 GB)    | 220 GB                |
 | Mixtral 8x22B                              | 8x NVIDIA A100 (80 GB)    | 526 GB                |
 
-[^testing]: GitLab tested Qwen3.8-27B with vLLM 0.18.1.
-    BF16 weights on two A100 (40 GB) GPUs run out of memory at startup.
-    The failure happens when vLLM profiles memory for graph capture.
-    You must limit the capture sizes with `--compilation-config '{"cudagraph_capture_sizes":[1,2,4,8,16]}'`
-    for Qwen3.8-27B to start.
+[^mistral]: GitLab tested Mistral Small 24B Instruct 2506 with vLLM 0.34.0
+    and BF16 weights on two A100 (40 GB) GPUs.
+    The context length was 32,768 tokens.
+    This model does not load on one GPU.
+
+[^qwen]: GitLab tested Qwen3.8-27B with vLLM 0.18.1 and 0.34.0.
+    The context length was 32,768 tokens.
+    This model requires an extra flag to start with BF16 weights on two A100 (40 GB) GPUs.
+    The flag depends on the vLLM version.
+
+    With vLLM 0.18.1, startup runs out of memory when vLLM profiles memory for graph capture.
+    Limit the capture sizes with `--compilation-config '{"cudagraph_capture_sizes":[1,2,4,8,16]}'`.
+
+    With vLLM 0.34.0, startup fails with the error `max_num_seqs (256) exceeds available Mamba cache blocks`.
+    Start vLLM with `--max-num-seqs 16`.
+    Limiting the capture sizes does not fix this failure.
+    The `--max-num-seqs 16` flag limits vLLM to 16 concurrent requests.
+    With 32,768-token requests, memory on two GPUs holds fewer than 16 at a time.
+
+    With either version, `--enforce-eager` also starts the model on two GPUs.
+    This flag slows token generation.
 
     A100 GPUs have no native FP8 support, so vLLM serves FP8 weights with weight-only kernels.
-    With FP8 weights on a single GPU, vLLM fails at the same step.
-    In that FP8 setup, start vLLM with `--enforce-eager` instead of limiting the capture sizes.
-    This flag slows token generation.
+    With vLLM 0.18.1 and FP8 weights on a single GPU, start vLLM with `--enforce-eager`.
+    With vLLM 0.34.0, FP8 weights on a single GPU leave too little memory
+    for a 32,768-token context.
 
 Use [Hugging Face's memory utility](https://huggingface.co/spaces/hf-accelerate/model-memory-usage) to verify memory requirements.
 

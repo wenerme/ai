@@ -774,6 +774,7 @@ objects in the `input` array:
 
   {% tab label="CLI" %}
   ```bash
+  # -i accepts local files, files/<id>, or YouTube URLs. For other https:// images, download them locally first.
   gemini-api analyze "What is different between these two images?" -i image1.jpg -i image2.jpg
   ```
 
@@ -1082,6 +1083,7 @@ your original image size.
 
   {% tab label="CLI" %}
   ```bash
+  # -i accepts local files, files/<id>, or YouTube URLs. For other https:// images, download locally first (or pass the full input array in --body without -i or a prompt argument).
   gemini-api generate -i image.png "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000." \
     --body '{"response_format": {"type": "text", "mime_type": "application/json", "schema": {
       "type": "object", "required": ["boxes"], "properties": {"boxes": {"type": "array", "items": {

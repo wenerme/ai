@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Returns `true` when the RFC 9440 encoded mTLS client certificate exceeds the 10 KiB size limit.
 title: cf.tls_client_auth.cert_rfc9440_too_large
 image: https://developers.cloudflare.com/og-docs.png
@@ -11,7 +13,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_auth.cert\_rfc9440\_too\_large
 
-`cf.tls_client_auth.cert_rfc9440_too_large``Boolean`
+`cf.tls_client_auth.cert_rfc9440_too_large` `Boolean`
 
 Returns `true` when the RFC 9440 encoded mTLS client certificate exceeds the 10 KiB size limit.
 

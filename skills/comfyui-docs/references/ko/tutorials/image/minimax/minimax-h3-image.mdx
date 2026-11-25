@@ -1,16 +1,16 @@
 ---
 title: "MiniMax-H3-Image: ComfyUI에서 16 MP 텍스트 기반 이미지 생성과 이미지 편집"
 description: "ComfyUI에서 MiniMax-H3-Image를 실행하세요. 약 16 MP 해상도의 텍스트 기반 이미지 생성과 프롬프트 기반 이미지 편집을 하나의 오픈 가중치 checkpoint로 처리하며, 6개의 샘플러 스텝으로 distilled되었습니다."
-translationSourceHash: 44fe1b30
+translationSourceHash: 344cac95
 translationFrom: tutorials/image/minimax/minimax-h3-image.mdx
 translationBlockHashes:
   "_intro": 42477b29
-  "Key features": eaf127b0
-  "Templates": 07d72d48
-  "Model downloads": 27a8bb4a
-  "Sampling and canvas size": 3cd06f2c
+  "Key features": 6c823c76
+  "Templates": 3225cd1c
+  "Model downloads": 52fc666f
+  "Sampling and canvas size": 4f403250
   "Reference images in image editing": 8f40b9eb
-  "Prompt expander": d077657a
+  "Prompt expander": 2445fd36
 ---
 
 **MiniMax-H3-Image**는 MiniMax의 오픈 웨이트 이미지 모델로, 체크포인트 하나로 텍스트 기반 이미지 생성과 이미지 편집을 모두 처리합니다. diffusion transformer는 BF16 기준 33.1B 파라미터이며, CFG 없이 6-step 샘플러로 증류되었습니다. 출력은 약 16 MP의 네이티브 해상도이므로 4096 x 4096 이미지를 업스케일 체인 없이 한 번에 생성할 수 있습니다.
@@ -26,7 +26,7 @@ translationBlockHashes:
 
 ## 주요 기능
 
-- **하나의 checkpoint로 텍스트 기반 이미지 생성과 편집**: 별도의 편집 모델이나 어댑터를 로드할 필요가 없습니다
+- **하나의 checkpoint로 텍스트 기반 이미지 생성과 편집**: 별도의 편집 모델을 로드할 필요가 없습니다
 - **6단계 샘플링**: 가이드가 1로 고정되어 CFG 패스와 네거티브 프롬프트가 없습니다
 - **기본 약 16 MP**: 업스케일 패스 없이 4096 x 4096에서 최대 6272 x 2688
 - **다중 레퍼런스**: 최대 16개의 입력 이미지를 사용하며, 프롬프트에서 `<Picture 1>`부터 지정합니다
@@ -35,7 +35,7 @@ translationBlockHashes:
 
 ## 템플릿
 
-모델과 함께 두 개의 템플릿 워크플로가 제공됩니다. 둘 모두 ComfyUI **0.45.0+**와 템플릿 팩 **0.11.104+**가 필요합니다.
+모델과 함께 세 개의 템플릿 워크플로가 제공됩니다. 모두 ComfyUI **0.45.0+**가 필요합니다. 텍스트 기반 이미지 생성과 이미지 편집 템플릿에는 템플릿 팩 **0.11.104+**, 캐릭터 교체에는 **0.11.115+**가 필요합니다.
 
 ### MiniMax-H3-Image 텍스트 기반 이미지 생성 {#image_minimax_h3_image_t2i}
 
@@ -65,9 +65,32 @@ translationBlockHashes:
     템플릿이 편집하는 소스 이미지
   
 
+### MiniMax-H3-Image 캐릭터 교체 {#image_minimax_h3_image_character_swap}
+
+사진 속 인물을 참조 이미지의 캐릭터로 교체합니다. 템플릿은 사진을 `<Picture 1>`, 캐릭터를 `<Picture 2>`로 읽고, 원본 사진의 포즈, 구도, 조명을 유지하면서 참조 캐릭터의 얼굴, 의상, 재질을 그대로 가져옵니다. 같은 checkpoint에 강도 1.0의 캐릭터 교체 어댑터를 더해 실행합니다.
+
+[MiniMax-H3-Image 캐릭터 교체. 원본 사진과 교체 결과]
+
+  
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "MiniMax-H3-Image: Character Swap"을 검색하세요
+  
+
+다른 두 템플릿과 두 가지가 다릅니다. 소스 사진은 1 MP로 축소되며(예제 이미지 기준 864 x 1152), 그 크기가 출력 크기가 됩니다. 또한 프롬프트 확장기가 없습니다. 어댑터는 짧은 편집 지시로 학습되었으므로 지시를 직접 쓰고 참조를 명시하세요. 예를 들어 "`<Picture 1>`의 인물을 `<Picture 2>`의 캐릭터로 교체하고 장면, 구도, 대상의 포즈는 유지"처럼 작성합니다.
+
+**입력 자료**
+
+템플릿에는 소스 사진과 참조 캐릭터가 각각 1장씩 포함되어 있습니다.
+
+  
+    편집할 사진. 첫 번째 이미지로 읽힙니다
+  
+  
+    교체할 캐릭터. 두 번째 이미지로 읽힙니다
+  
+
 ## 모델 다운로드
 
-파일 4개를 `ComfyUI/models` 아래에 배치합니다. 모두 Comfy-Org 미러 저장소에서 제공됩니다.
+텍스트 기반 이미지 생성과 이미지 편집 템플릿이 이 파일 4개를 사용하며, 모두 Comfy-Org 미러 저장소에서 제공됩니다. 캐릭터 교체 템플릿은 프롬프트 확장기를 쓰지 않고, 어댑터 작성자가 공개한 파일이 하나 더 필요합니다.
 
   
     프루닝된 INT8 DiT, 21 GB. <code>ComfyUI/models/diffusion_models/</code>에 배치
@@ -76,10 +99,13 @@ translationBlockHashes:
     Qwen3-VL-32B, INT8, 25.28 GB. <code>ComfyUI/models/text_encoders/</code>에 배치
   
   
-    Qwen3.5 9B W4A8, 7.34 GB. <code>ComfyUI/models/text_encoders/</code>에 배치
+    Qwen3.5 9B W4A8, 7.34 GB. <code>ComfyUI/models/text_encoders/</code>에 배치. 텍스트 기반 이미지 생성과 이미지 편집 전용
   
   
     이미지 VAE, FP16, 1.17 GB. <code>ComfyUI/models/vae/</code>에 배치
+  
+  
+    Rank-16 LoRA, 155 MB. 어댑터 원본 저장소에서 제공. <code>ComfyUI/models/loras/</code>에 배치
   
 
 **모델 저장 위치**
@@ -89,6 +115,8 @@ translationBlockHashes:
 ├── 📂 models/
 │   ├── 📂 diffusion_models/
 │   │   └── minimax_h3_image_pruned_int8_convrot.safetensors
+│   ├── 📂 loras/
+│   │   └── h3_image_character_swap_v1.safetensors
 │   ├── 📂 text_encoders/
 │   │   ├── qwen3vl_32b_minimax_h3_int8_convrot.safetensors
 │   │   └── qwen3.5_9b_w4a8_gptq.safetensors
@@ -96,9 +124,11 @@ translationBlockHashes:
 │       └── minimax_h3_image_vae_fp16.safetensors
 ```
 
+어댑터는 [akatz-ai/MiniMax-H3-Image-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Image-Character-Swap-LoRA)에 공개되어 있으며, 140쌍의 편집 예제로 학습되고 위의 INT8 checkpoint에서 평가되었습니다. 어댑터 사용은 MiniMax H3 Image 커뮤니티 라이선스 계약을 따릅니다.
+
 ## 샘플링 및 캔버스 크기
 
-두 템플릿 모두 증류된 스케줄을 제공합니다:
+모든 템플릿이 증류된 스케줄을 제공합니다:
 
 | 설정 | 값 |
 | --- | --- |
@@ -135,8 +165,8 @@ translationBlockHashes:
 
 ## 프롬프트 확장기 {#prompt-expander}
 
-두 템플릿 모두 샘플러 앞에 텍스트 생성 단계를 두고 있습니다. 텍스트 기반 이미지 생성 템플릿에서는 프롬프트를 상세한 영어 캡션으로 다시 씁니다. 이미지 편집 템플릿에서는 짧은 지시를 완성된 이미지에 대한 레퍼런스 인식 설명으로 바꿉니다.
+텍스트 기반 이미지 생성과 이미지 편집 템플릿은 샘플러 앞에 텍스트 생성 단계를 두고 있습니다. 텍스트 기반 이미지 생성 템플릿에서는 프롬프트를 상세한 영어 캡션으로 다시 씁니다. 이미지 편집 템플릿에서는 짧은 지시를 완성된 이미지에 대한 레퍼런스 인식 설명으로 바꿉니다.
 
 MiniMax-H3-Image의 공식 확장기는 Qwen3.8-27B FP4 모델이며, [MiniMaxAI/MiniMax-H3-Image-PE](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image-PE)로 공개되어 있습니다. 템플릿은 대신 더 가벼운 Qwen3.5 9B W4A8 빌드를 사용하므로, 확장기가 21 GB diffusion 모델과 함께 하나의 GPU에 들어갑니다.
 
-두 템플릿 모두 확장기가 켜진 상태로 제공되므로 프롬프트는 샘플링 전에 다시 씁니다. 확장기를 끄면 입력한 프롬프트가 그대로 모델에 전달됩니다.
+텍스트 기반 이미지 생성과 이미지 편집 템플릿은 확장기가 켜진 상태로 제공되므로 프롬프트는 샘플링 전에 다시 씁니다. 확장기를 끄면 입력한 프롬프트가 그대로 모델에 전달됩니다.

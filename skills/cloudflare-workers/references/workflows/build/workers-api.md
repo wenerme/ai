@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.
 title: Workers API
 image: https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63
@@ -470,7 +472,7 @@ Key each entry by the name of the class that extends `WorkflowEntrypoint`. Set `
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-24",
+	"compatibility_date": "2026-11-25",
 	"exports": {
 		"MyWorkflow": {
 			"type": "workflow",
@@ -487,7 +489,7 @@ name = "billing-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-24"
+compatibility_date = "2026-11-25"
 
 [exports.MyWorkflow]
 type = "workflow"
@@ -612,7 +614,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-24",
+	"compatibility_date": "2026-11-25",
 	"workflows": [
 		{
 			// name of your workflow
@@ -632,7 +634,7 @@ name = "workflows-starter"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-24"
+compatibility_date = "2026-11-25"
 
 [[workflows]]
 name = "workflows-starter"
@@ -659,7 +661,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-24",
+	"compatibility_date": "2026-11-25",
 	"workflows": [
 		{
 			// name of your workflow
@@ -682,7 +684,7 @@ name = "web-api-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-24"
+compatibility_date = "2026-11-25"
 
 [[workflows]]
 name = "billing-workflow"

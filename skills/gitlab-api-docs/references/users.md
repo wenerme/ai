@@ -1036,6 +1036,7 @@ Prerequisites:
 - You must be authenticated.
 - Your file must be 200 KB or smaller. The ideal image size is 192 x 192 pixels.
 - The image must be one of the following file types:
+  - `.avif`
   - `.bmp`
   - `.gif`
   - `.ico`

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a KV namespace, write key-value pairs, and read data from Workers KV using the Cloudflare CLI, Wrangler, or the dashboard.
 title: Getting started
 image: https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984
@@ -150,11 +152,11 @@ Wrangler
 
    For example: `CI=true npm create cloudflare@latest kv-tutorial --type=simple --git --ts --deploy=false` creates a basic "Hello World" project ready to build on.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application**.
-3. Select **Start with Hello World!** > **Get started**.
-4. Name your Worker. For this tutorial, name your Worker `kv-tutorial`.
-5. Select **Deploy**.
+1) In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2) Select **Create application**.
+3) Select **Start with Hello World!** > **Get started**.
+4) Name your Worker. For this tutorial, name your Worker `kv-tutorial`.
+5) Select **Deploy**.
 
 ## 2. Create a KV namespace
 
@@ -226,10 +228,10 @@ To create a KV namespace via Wrangler:
    }
    ```
 
-1. In the Cloudflare dashboard, go to the **Workers KV** page. [Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
-2. Select **Create instance**.
-3. Enter a name for your namespace. For this tutorial, use `kv_tutorial_namespace`.
-4. Select **Create**.
+1) In the Cloudflare dashboard, go to the **Workers KV** page. [Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+2) Select **Create instance**.
+3) Enter a name for your namespace. For this tutorial, use `kv_tutorial_namespace`.
+4) Select **Create**.
 
 ### KV Instant namespaces
 
@@ -343,12 +345,12 @@ Wrangler
    - The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_KV"` or `binding = "routingConfig"` would both be valid names for the binding.
    - Your binding is available in your Worker at `env.<BINDING_NAME>` from within your Worker. For this tutorial, the binding is available at `env.USERS_NOTIFICATION_CONFIG`.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select the `kv-tutorial` Worker you created in [step 1](https://developers.cloudflare.com/kv/get-started/#1-create-a-worker-project).
-3. Got to the **Bindings** tab, then select **Add binding**.
-4. Select **KV namespace** > **Add binding**.
-5. Name your binding ( `BINDING_NAME`) in **Variable name**, then select the KV namespace ( `kv_tutorial_namespace`) you created in [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace) from the dropdown menu.
-6. Select **Add binding** to deploy your binding.
+1) In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2) Select the `kv-tutorial` Worker you created in [step 1](https://developers.cloudflare.com/kv/get-started/#1-create-a-worker-project).
+3) Got to the **Bindings** tab, then select **Add binding**.
+4) Select **KV namespace** > **Add binding**.
+5) Name your binding ( `BINDING_NAME`) in **Variable name**, then select the KV namespace ( `kv_tutorial_namespace`) you created in [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace) from the dropdown menu.
+6) Select **Add binding** to deploy your binding.
 
 ## 4. Interact with your KV namespace
 
@@ -594,10 +596,10 @@ The code above:
 4. If the key is not null, it returns the value of the key.
 5. Uses JavaScript's [`try...catch` ↗︎](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/try...catch) exception handling to catch potential errors. When writing or reading from any service, such as Workers KV or external APIs using `fetch()`, you should expect to handle exceptions explicitly.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Go to the `kv-tutorial` Worker you created.
-3. Select **Edit Code**.
-4. Clear the contents of the `workers.js` file, then paste the following code.
+1) In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2) Go to the `kv-tutorial` Worker you created.
+3) Select **Edit Code**.
+4) Clear the contents of the `workers.js` file, then paste the following code.
 
    ```js
    export default {
@@ -659,7 +661,7 @@ The code above:
    3. Uses JavaScript's [`try...catch` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) exception handling to catch potential errors. When writing or reading from any service, such as Workers KV or external APIs using `fetch()`, you should expect to handle exceptions explicitly.
 
    The browser should simply return the `VALUE` corresponding to the `KEY` you have specified with the `get()` method.
-5. Select the dropdown arrow next to **Deploy** and select **Save**.
+5) Select the dropdown arrow next to **Deploy** and select **Save**.
 
 ## 6. Deploy your Worker
 
@@ -685,11 +687,11 @@ Deploy your Worker to Cloudflare's global network.
 
    For example, if the URL of your new Worker is `kv-tutorial.<YOUR_SUBDOMAIN>.workers.dev`, accessing `https://kv-tutorial.<YOUR_SUBDOMAIN>.workers.dev/` sends a request to your Worker that writes (and reads) from Workers KV.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select your `kv-tutorial` Worker.
-3. Select **Deployments**.
-4. From the **Version History** table, select **Deploy version**.
-5. From the **Deploy version** page, select **Deploy**.
+1) In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2) Select your `kv-tutorial` Worker.
+3) Select **Deployments**.
+4) From the **Version History** table, select **Deploy version**.
+5) From the **Deploy version** page, select **Deploy**.
 
    This deploys the latest version of the Worker code to production.
 

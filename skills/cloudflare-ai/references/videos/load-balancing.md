@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Unexpected traffic spikes can crash your website, but Cloudflare Load Balancing helps keep your apps online and fast. In this step-by-step tutorial, learn how to create a public load balancer in just five steps - select a hostname, add an origin pool, attach a health monitor, choose a traffic steering method, and configure custom rules. We'll also explain the difference between public and private load balancers and guide you through using session affinity, fallback pools, and proxy modes.
 title: How to set up a load balancer
 image: https://developers.cloudflare.com/og-docs.png

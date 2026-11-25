@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Worker Bindings that allow for interaction with other Cloudflare Resources.
 title: Bindings (env)
 image: https://developers.cloudflare.com/workers/runtime-apis/bindings/og.png?v=8ce2f2fc2792c44e
@@ -147,7 +149,7 @@ Bindings are located on the `env` object, which can be accessed in several ways:
   };
   ```
 
-- It is a class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
+* It is a class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
 
   ```js
   export class MyDurableObject extends DurableObject {
@@ -165,7 +167,7 @@ Bindings are located on the `env` object, which can be accessed in several ways:
   		return Response(f"Hi {self.env.NAME}")
   ```
 
-- It can be imported from `cloudflare:workers`:
+* It can be imported from `cloudflare:workers`:
 
   ```js
   import { env } from "cloudflare:workers";

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use Cloudflare migration tools to migrate data between cloud object storage providers.
 title: On-demand Object Storage Data Migration
 image: https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/og.png?v=3b48de35305cd302
@@ -35,7 +37,7 @@ Here's how Sippy works: it will first attempt to retrieve an object from R2 stor
 
 *Figure 1: On-demand Object Storage Data Migration with Sippy*
 
-1. The client requests an object from R2 using [ Workers ↗︎](https://developers.cloudflare.com/r2/api/workers/), [ S3 API ↗︎](https://developers.cloudflare.com/r2/api/s3/), or [ public bucket ↗︎](https://developers.cloudflare.com/r2/buckets/public-buckets/).
+1. The client requests an object from R2 using [Workers ↗︎](https://developers.cloudflare.com/r2/api/workers/), [S3 API ↗︎](https://developers.cloudflare.com/r2/api/s3/), or [public bucket ↗︎](https://developers.cloudflare.com/r2/buckets/public-buckets/).
 2. If the object is found in your R2 bucket it is served to the client.
 3. If the object is not found in R2, the object will simultaneously be returned from your source storage bucket and copied to R2. Note: Some large objects may take multiple requests to copy to R2 because they are copied over as multipart uploads. From the client’s perspective they will still get the file they are requesting.
 

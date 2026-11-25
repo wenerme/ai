@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: SSH with Access for Infrastructure in Zero Trust networking.
 title: SSH with Access for Infrastructure
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/og.png?v=c2e8385d8c51f11a
@@ -24,8 +26,8 @@ Furthermore, Access for Infrastructure replaces traditional SSH keys with short-
 1. In the Cloudflare dashboard, go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 
-3. In the Cloudflare dashboard, go to **Networking** > **Routes**. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-4. Select **Create route** > **Tunnel CIDR**. Select the tunnel you just created, enter the IP or CIDR address of your server (typically a private IP, but public IPs are also allowed), and select **Create route**.
+3) In the Cloudflare dashboard, go to **Networking** > **Routes**. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+4) Select **Create route** > **Tunnel CIDR**. Select the tunnel you just created, enter the IP or CIDR address of your server (typically a private IP, but public IPs are also allowed), and select **Create route**.
 
 ## 2. Set up the client
 
@@ -355,12 +357,12 @@ To generate a Cloudflare SSH CA and get its public key:
 4. Select the **SSH with Access for Infrastructure** certificate.
 5. Copy its **CA public key**. You can return to copy this public key at any time.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+1) [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
    | Type | Item | Permission |
    | --- | --- | --- |
    | Account | Access: SSH Auditing | Edit |
-2. If you have not yet generated a Cloudflare SSH CA, make a `POST` request to the Cloudflare API:
+2) If you have not yet generated a Cloudflare SSH CA, make a `POST` request to the Cloudflare API:
 
 <details>
 

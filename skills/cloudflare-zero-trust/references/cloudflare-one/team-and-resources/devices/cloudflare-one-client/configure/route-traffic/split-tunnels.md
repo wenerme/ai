@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Split Tunnels in Zero Trust.
 title: Split Tunnels
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/og.png?v=04fdb399546ba34f
@@ -33,10 +35,10 @@ Because Split Tunnels controls what Gateway has visibility on at the network lev
    - **Exclude IPs and domains** — (Default) All traffic will be sent to Cloudflare Gateway except for the IPs and domains you specify.
    - **Include IPs and Domains** — Only traffic destined to the IPs or domains you specify will be sent to Cloudflare Gateway. All other traffic will bypass Gateway and will no longer be filtered by your network or HTTP policies. In order to use certain features, you will need to manually add [Zero Trust domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-domains).
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Choose a [`cloudflare_zero_trust_device_default_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile) or [`cloudflare_zero_trust_device_custom_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile) resource to modify, or [create a new device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#create-a-new-profile).
-3. In your device profile, configure either the `exclude` or `include` argument. You cannot set both `exclude` and `include` in a given device profile.
+2) Choose a [`cloudflare_zero_trust_device_default_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile) or [`cloudflare_zero_trust_device_custom_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile) resource to modify, or [create a new device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#create-a-new-profile).
+3) In your device profile, configure either the `exclude` or `include` argument. You cannot set both `exclude` and `include` in a given device profile.
 
    a. To manage Split Tunnel routes in **Exclude** mode, use the `exclude` argument:
 
@@ -107,10 +109,10 @@ All clients with this device profile will now switch to the new mode and its def
 
    When a user goes to the domain, the domain gets resolved according to your Local Domain Fallback configuration (either by Gateway or by your private DNS server). Split Tunnels will then dynamically include or exclude the IP address returned in the DNS lookup.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Choose a [`cloudflare_zero_trust_device_default_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile) or [`cloudflare_zero_trust_device_custom_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile) resource to modify, or [create a new device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#create-a-new-profile).
-3. (Optional) Create a list of split tunnel routes that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
+2) Choose a [`cloudflare_zero_trust_device_default_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile) or [`cloudflare_zero_trust_device_custom_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile) resource to modify, or [create a new device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#create-a-new-profile).
+3) (Optional) Create a list of split tunnel routes that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
 
    *split-tunnels.local.tftf*
 
@@ -175,7 +177,7 @@ All clients with this device profile will now switch to the new mode and its def
    }
    ```
 
-4. In the device profile, exclude or include routes based on either their IP address or domain:
+4) In the device profile, exclude or include routes based on either their IP address or domain:
 
    *device-profiles.tftf*
 

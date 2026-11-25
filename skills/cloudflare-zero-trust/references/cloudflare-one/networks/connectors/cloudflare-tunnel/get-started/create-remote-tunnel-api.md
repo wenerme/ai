@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a tunnel (API) in Zero Trust networking.
 title: Create a tunnel (API)
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/og.png?v=f1a2b51a8abf3dad
@@ -214,9 +216,9 @@ Install `cloudflared` on your server and run the tunnel using the `token` value 
    sudo cloudflared service install <TUNNEL_TOKEN>
    ```
 
-1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
-2. Open Command Prompt as administrator.
-3. Run the following command:
+1) [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
+2) Open Command Prompt as administrator.
+3) Run the following command:
 
    ```txt
    cloudflared.exe service install <TUNNEL_TOKEN>
@@ -229,8 +231,8 @@ Install `cloudflared` on your server and run the tunnel using the `token` value 
    sudo cloudflared service install <TUNNEL_TOKEN>
    ```
 
-1. Open a terminal window.
-2. Run the following command:
+1) Open a terminal window.
+2) Run the following command:
 
    ```sh
    docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>

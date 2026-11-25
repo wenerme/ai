@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Create a tunnel to your private network.
 title: Connect with Cloudflare Tunnel
 image: https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/og.png?v=7ea5b0840616b97a
@@ -28,8 +30,8 @@ To connect your private network:
 5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
 6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
-9. In the **CIDR** tab, enter the CIDR of your private network (for example, `10.0.0.0/8`).
-10. Select **Save tunnel**.
+9) In the **CIDR** tab, enter the CIDR of your private network (for example, `10.0.0.0/8`).
+10) Select **Save tunnel**.
 
 1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Cloudflare Tunnel Write`
@@ -118,9 +120,9 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-   1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
-   2. Open Command Prompt as administrator.
-   3. Run the following command:
+   1) [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
+   2) Open Command Prompt as administrator.
+   3) Run the following command:
 
       ```txt
       cloudflared.exe service install <TUNNEL_TOKEN>
@@ -133,8 +135,8 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-   1. Open a terminal window.
-   2. Run the following command:
+   1) Open a terminal window.
+   2) Run the following command:
 
       ```sh
       docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>

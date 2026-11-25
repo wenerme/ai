@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Generic SAML 2.0 in Zero Trust integrations.
 title: Generic SAML 2.0
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/og.png?v=43c0ee926b2dd606
@@ -64,9 +66,9 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 7. (Optional) Under **Optional configurations**, configure [additional SAML options](#optional-configurations).
 8. Select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-2. Configure the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
+2) Configure the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {

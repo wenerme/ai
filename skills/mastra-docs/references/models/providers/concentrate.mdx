@@ -5,7 +5,7 @@ description: "Browse Concentrate model IDs, capabilities, context windows, and p
 
 # [Concentrate logo]Concentrate
 
-Access 164 Concentrate models through Mastra's model router. Authentication is handled automatically using the `CONCENTRATE_API_KEY` environment variable.
+Access 165 Concentrate models through Mastra's model router. Authentication is handled automatically using the `CONCENTRATE_API_KEY` environment variable.
 
 Learn more in the [Concentrate documentation](https://concentrate.ai/docs).
 
@@ -686,6 +686,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.45,
     "outputCost": 1.5
+  },
+  {
+    "model": "concentrate/glm-5.3-flashx-legal",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.37,
+    "outputCost": 1.25
   },
   {
     "model": "concentrate/gpt-4.1",
@@ -1907,7 +1919,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 64000,
+    "maxOutput": 131072,
     "inputCost": 0.276,
     "outputCost": 1.101
   },

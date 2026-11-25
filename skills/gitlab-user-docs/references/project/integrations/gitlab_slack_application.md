@@ -194,7 +194,7 @@ After users interact with GitLab Duo, it creates an agent session that is visibl
 ### Set up GitLab Duo in Slack
 
 An Owner of a top-level group sets up GitLab Duo in Slack once for each Slack workspace.
-After that, members of the group with at least the Developer role can mention GitLab Duo in Slack.
+After that, members of the group who meet the [prerequisites](#use-gitlab-duo-in-slack) can mention GitLab Duo in Slack.
 Each user [connects their own GitLab account](#use-gitlab-duo-in-slack)
 the first time they mention GitLab Duo.
 For existing installations, [reinstall the GitLab for Slack app](#reinstall-the-gitlab-for-slack-app)
@@ -314,13 +314,23 @@ To turn GitLab Duo off, select **Turn off GitLab Duo**, then select **Turn off G
 
 ### Use GitLab Duo in Slack
 
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/641673) in GitLab 19.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `duo_interactive_flow_authorization` to require at least the Guest role, instead of the Developer role. Disabled by default.
+
+> [!flag]
+> The availability of the Guest role requirement is controlled by a feature flag.
+> For more information, see the history.
+
 Each user must connect their own GitLab account the first time they mention GitLab Duo.
 Without a linked account, GitLab Duo does not run your request.
 
 Prerequisites:
 
 - GitLab Duo in Slack must be [set up](#set-up-gitlab-duo-in-slack).
-- You must have at least the Developer role for the GitLab Duo group.
+- You must have at least the Guest role for the GitLab Duo group, or for a subgroup or project in it,
+  and be able to use [GitLab Duo Agentic Chat](../../gitlab_duo_chat/agentic_chat.md) there.
+  The Minimal Access role on its own is not enough.
+  If the `duo_interactive_flow_authorization` feature flag is disabled,
+  you must have at least the Developer role for the GitLab Duo group instead.
 - If the subscription has a GitLab Duo add-on with seats,
   you must have an [assigned seat](../../../subscriptions/subscription-add-ons.md#assign-gitlab-duo-seats).
   On GitLab.com, the subscription of the GitLab Duo group applies.

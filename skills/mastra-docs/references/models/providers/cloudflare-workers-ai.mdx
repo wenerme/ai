@@ -5,7 +5,7 @@ description: "Browse Cloudflare Workers AI model IDs, capabilities, context wind
 
 # [Cloudflare Workers AI logo]Cloudflare Workers AI
 
-Access 30 Cloudflare Workers AI models through Mastra's model router. Authentication is handled automatically using the `CLOUDFLARE_API_KEY` environment variable. Configure `CLOUDFLARE_ACCOUNT_ID` as well.
+Access 18 Cloudflare Workers AI models through Mastra's model router. Authentication is handled automatically using the `CLOUDFLARE_API_KEY` environment variable. Configure `CLOUDFLARE_ACCOUNT_ID` as well.
 
 Learn more in the [Cloudflare Workers AI documentation](https://developers.cloudflare.com/workers-ai/models/).
 
@@ -63,6 +63,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.1,
     "outputCost": null
+  },
+  {
+    "model": "cloudflare-workers-ai/@cf/daily-co/phonellm-mini-alpha-2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262140,
+    "maxOutput": 262140,
+    "inputCost": 0.06,
+    "outputCost": 0.24
   },
   {
     "model": "cloudflare-workers-ai/@cf/deepseek-ai/deepseek-v4.1-flash-1017",
@@ -281,7 +293,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "cloudflare-workers-ai/@cf/zai-org/glm-5.3-flash"
+      ? "cloudflare-workers-ai/@cf/zai-org/glm-5.3"
       : "cloudflare-workers-ai/@cf/aisingapore/gemma-sea-lion-v4-27b-it";
   }
 });

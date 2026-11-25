@@ -383,6 +383,24 @@ To enable receptive agents:
 1. Expand **GitLab Agent for Kubernetes**.
 1. Turn on the **Enable receptive mode** toggle.
 
+### Allow receptive agents in the local network
+
+A user with the Maintainer role chooses the URL that GitLab connects to, so GitLab and KAS refuse to
+connect to a receptive agent that resolves to `localhost` or to the local network. Attempts to
+configure such a URL fail with a `is blocked` error.
+
+If your agent is only reachable on the local network, either:
+
+- [Allow requests to the local network from webhooks and integrations](../../security/webhooks.md#allow-requests-to-the-local-network-from-webhooks-and-integrations).
+  This affects all outbound requests from GitLab, not only receptive agents.
+- [Add the agent host to the outbound requests allowlist](../../security/webhooks.md#allow-outbound-requests-to-certain-ip-addresses-and-domains).
+  Prefer this option, because it is limited to the hosts you list.
+
+Receptive agents also follow the
+[block all requests except the allowlist](../../security/webhooks.md#filter-requests)
+setting. If you turn that setting on, you must add every receptive agent host to the allowlist,
+including hosts that are not on the local network.
+
 ## Configure Kubernetes API proxy response header allowlist
 
 - [Introduced](https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/issues/642) in GitLab 18.3 [with a feature flag](../feature_flags/_index.md) named `kas_k8s_api_proxy_response_header_allowlist`. Disabled by default.

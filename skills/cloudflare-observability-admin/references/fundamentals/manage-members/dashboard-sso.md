@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.
 title: Set up dashboard SSO
 image: https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/og.png?v=ce56a2db812d7cdb
@@ -412,7 +414,7 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
 3. Disable all SSO connectors.
 4. Delete all SSO connectors.
 
-1. Get all SSO connectors for your account.
+1) Get all SSO connectors for your account.
 
    *cURL commandbash*
 
@@ -424,7 +426,7 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
      --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-2. Disable any active SSO connectors using the `id` of each connector from the previous step.
+2) Disable any active SSO connectors using the `id` of each connector from the previous step.
 
    *cURL commandbash*
 
@@ -439,7 +441,7 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
      }'
    ```
 
-3. Delete all SSO connectors using the `id` of each connector from the previous step.
+3) Delete all SSO connectors using the `id` of each connector from the previous step.
 
    *cURL commandbash*
 

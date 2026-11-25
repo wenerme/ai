@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use R2 from Cloudflare Workers with the Workers API.
 title: Workers API
 image: https://developers.cloudflare.com/r2/get-started/workers-api/og.png?v=5497e0b0b68f0765
@@ -40,11 +42,11 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    npx wrangler r2 bucket list
    ```
 
-1. In the Cloudflare Dashboard, go to **R2 object storage**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
-2. Select **Create bucket**.
-3. Enter a name for your bucket.
-4. Select a [location](https://developers.cloudflare.com/r2/reference/data-location) for your bucket and a [default storage class](https://developers.cloudflare.com/r2/buckets/storage-classes/).
-5. Select **Create bucket**.
+1) In the Cloudflare Dashboard, go to **R2 object storage**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+2) Select **Create bucket**.
+3) Enter a name for your bucket.
+4) Select a [location](https://developers.cloudflare.com/r2/reference/data-location) for your bucket and a [default storage class](https://developers.cloudflare.com/r2/buckets/storage-classes/).
+5) Select **Create bucket**.
 
 ## 2. Create a Worker with an R2 binding
 

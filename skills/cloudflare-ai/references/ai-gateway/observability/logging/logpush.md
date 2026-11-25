@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Export encrypted AI Gateway logs to external storage using Logpush.
 title: Logpush
 image: https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=766096e7fe00e132
@@ -23,7 +25,7 @@ Logpush supports four jobs per account. Each exported log can be up to 1 MB.
 
 Note
 
-Logpush exports logs whether or not logs are turned on for the gateway. The `cf-aig-collect-log` and `cf-aig-collect-log-payload` headers do not change what Logpush exports.
+Logpush exports logs whether or not logs are turned on for the gateway. The `cf-aig-collect-log` and `cf-aig-collect-log-payload` headers do not change what Logpush exports. Exported logs include the encrypted request and response bodies, even when payload collection is turned off.
 
 Need a higher limit?
 
@@ -240,5 +242,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/#page","headline":"Logpush","description":"Export encrypted AI Gateway logs to external storage using Logpush.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=766096e7fe00e132","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/#page","headline":"Logpush","description":"Export encrypted AI Gateway logs to external storage using Logpush.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=766096e7fe00e132","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Control which devices can enroll.
 title: Define device enrollment permissions
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/device-enrollment-permissions/og.png?v=a63fbb62988b2dc6
@@ -38,9 +40,9 @@ Device posture checks are not supported in device enrollment policies. The Cloud
    b. (Optional) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the Cloudflare Access login page. Instead, Cloudflare will redirect users directly to your SSO login event.
 5. Select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Apps and Policies Write`
-2. Create a reusable Access policy using the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+2) Create a reusable Access policy using the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_policy" "allow_company_emails" {
@@ -57,7 +59,7 @@ Device posture checks are not supported in device enrollment policies. The Cloud
    }
    ```
 
-3. Use the [`cloudflare_zero_trust_access_application` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_application) resource to create an application with type `warp`.
+3) Use the [`cloudflare_zero_trust_access_application` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_application) resource to create an application with type `warp`.
 
    ```tf
    resource "cloudflare_zero_trust_access_application" "device_enrollment" {
@@ -142,10 +144,10 @@ To check for an mTLS certificate:
    | Allow | Require | Common Name | `<CERT-COMMON-NAME>` |
 7. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 
-1. Add the following permissions to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1) Add the following permissions to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Mutual TLS Certificates Write`
    - `Access: Apps and Policies Write`
-2. Use the [`cloudflare_zero_trust_access_mtls_certificate` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_mtls_certificate) resource to add an mTLS certificate to your account:
+2) Use the [`cloudflare_zero_trust_access_mtls_certificate` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_mtls_certificate) resource to add an mTLS certificate to your account:
 
    ```tf
    resource "cloudflare_zero_trust_access_mtls_certificate" "example_mtls_cert" {
@@ -161,7 +163,7 @@ To check for an mTLS certificate:
    }
    ```
 
-3. Create the following Access policy:
+3) Create the following Access policy:
 
    ```tf
    resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {
@@ -191,8 +193,8 @@ To check for an mTLS certificate:
    }
    ```
 
-4. Add the policy to your [`cloudflared_zero_trust_access_application` for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
-5. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
+4) Add the policy to your [`cloudflared_zero_trust_access_application` for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
+5) On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 
 ## Best practices
 

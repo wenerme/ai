@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: How Captive portal detection works in Zero Trust.
 title: Captive portal detection
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/captive-portals/og.png?v=3362a9dc406fd768
@@ -91,10 +93,10 @@ To get captive portal logs:
 
 3. When prompted with `You're currently connected via interface '<INTERFACE>' (<SSID>). Is this interface connected to the network causing issues?`, select **Yes** to confirm.
 
-1. Open the Cloudflare One Client.
-2. Go to **Settings** (gear icon) > **Preferences** > **Advanced**.
-3. Select **Collect Captive Portal Diag**.
-4. The Cloudflare One Client will ask if the device is connected (or attempting to connect) to the Wi-Fi network that is causing issues. Select **Yes** to confirm.
+1) Open the Cloudflare One Client.
+2) Go to **Settings** (gear icon) > **Preferences** > **Advanced**.
+3) Select **Collect Captive Portal Diag**.
+4) The Cloudflare One Client will ask if the device is connected (or attempting to connect) to the Wi-Fi network that is causing issues. Select **Yes** to confirm.
 
 macOS limitation
 

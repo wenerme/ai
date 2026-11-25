@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Complete reference for the R2 in-Worker API, including bucket and object operations.
 title: Workers API reference
 image: https://developers.cloudflare.com/r2/api/workers/workers-api-reference/og.png?v=c3d660cabeabbae1
@@ -121,7 +123,7 @@ class Default(WorkerEntrypoint):
   - Returns up to 1000 entries, but may return less in order to minimize memory pressure within the Worker.
   - To explicitly set the number of objects to list, provide an [R2ListOptions](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2listoptions) object with the `limit` property set.
 
-- `createMultipartUpload` `(key: string, options?: R2MultipartOptions): Promise<R2MultipartUpload>`
+* `createMultipartUpload` `(key: string, options?: R2MultipartOptions): Promise<R2MultipartUpload>`
   - Creates a multipart upload.
   - Returns Promise which resolves to an `R2MultipartUpload` object representing the newly created multipart upload. Once the multipart upload has been created, the multipart upload can be immediately interacted with globally, either through the Workers API, or through the S3 API.
 

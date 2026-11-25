@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.
 title: Kimi K3
 image: https://developers.cloudflare.com/og-docs.png
@@ -33,7 +35,7 @@ Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta
 
 | Model Info | |
 | --- | --- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Context Window [↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | More information | [link ↗](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart) |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input (per 1M tokens)$3.00</li><li>Cached input (per 1M tokens)$0.30</li><li>Output (per 1M tokens)$15.00</li></ul> |

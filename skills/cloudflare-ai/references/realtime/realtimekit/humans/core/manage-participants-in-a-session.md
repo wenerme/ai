@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Use RealtimeKit host controls to mute, pin, or remove participants in a live session.
 title: Manage Participants in a Session
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/manage-participants-in-a-session/og.png?v=e51984af50731733
@@ -156,7 +158,7 @@ To mute a specific participant's audio:
    );
    ```
 
-1. Check that the local participant has permission to mute other participants' audio.
+1) Check that the local participant has permission to mute other participants' audio.
 
    ```ts
    const canMuteAudio =
@@ -166,7 +168,7 @@ To mute a specific participant's audio:
    }
    ```
 
-2. Call `disableAudio()` on the target participant.
+2) Call `disableAudio()` on the target participant.
 
    If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.
 
@@ -182,7 +184,7 @@ To mute a specific participant's audio:
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.
 
@@ -262,7 +264,7 @@ To mute a specific participant's audio:
    );
    ```
 
-1. Check that the local participant has permission to mute other participants' audio.
+1) Check that the local participant has permission to mute other participants' audio.
 
 ```kotlin
 val canMuteAudio = meeting.localUser.permissions.host.canMuteAudio
@@ -406,7 +408,7 @@ This affects all participants, including the local participant. To mute audio fo
    });
    ```
 
-1. Check that the local participant has permission to mute other participants' audio.
+1) Check that the local participant has permission to mute other participants' audio.
 
    ```ts
    const canMuteAudio =
@@ -416,7 +418,7 @@ This affects all participants, including the local participant. To mute audio fo
    }
    ```
 
-2. Call `disableAllAudio()`.
+2) Call `disableAllAudio()`.
 
    If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.
 
@@ -432,7 +434,7 @@ This affects all participants, including the local participant. To mute audio fo
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds, each participant’s `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event. The local participant also receives `audioUpdate` on `meeting.self`.
 
@@ -508,7 +510,7 @@ This affects all participants, including the local participant. To mute audio fo
    });
    ```
 
-1. Check that the local participant has permission to mute other participants' audio.
+1) Check that the local participant has permission to mute other participants' audio.
 
 ```kotlin
 val canMuteAudio = meeting.localUser.permissions.host.canMuteAudio
@@ -656,7 +658,7 @@ To disable a specific participant's video:
    );
    ```
 
-1. Check that the local participant has permission to disable other participants' video.
+1) Check that the local participant has permission to disable other participants' video.
 
    ```ts
    const canDisableVideo =
@@ -666,7 +668,7 @@ To disable a specific participant's video:
    }
    ```
 
-2. Call `disableVideo()` on the target participant.
+2) Call `disableVideo()` on the target participant.
 
    If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.
 
@@ -682,7 +684,7 @@ To disable a specific participant's video:
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.
 
@@ -758,7 +760,7 @@ To disable a specific participant's video:
    );
    ```
 
-1. Check that the local participant has permission to disable other participants' video.
+1) Check that the local participant has permission to disable other participants' video.
 
 ```kotlin
 val canMuteVideo = meeting.localUser.permissions.host.canMuteVideo
@@ -902,7 +904,7 @@ This affects all participants, including the local participant. To disable video
    });
    ```
 
-1. Check that the local participant has permission to disable other participants' video.
+1) Check that the local participant has permission to disable other participants' video.
 
    ```ts
    const canDisableVideo =
@@ -912,7 +914,7 @@ This affects all participants, including the local participant. To disable video
    }
    ```
 
-2. Call `disableAllVideo()`.
+2) Call `disableAllVideo()`.
 
    If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.
 
@@ -928,7 +930,7 @@ This affects all participants, including the local participant. To disable video
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds, each participant’s `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event. The local participant also receives `videoUpdate` on `meeting.self`.
 
@@ -1004,7 +1006,7 @@ This affects all participants, including the local participant. To disable video
    });
    ```
 
-1. Check that the local participant has permission to disable other participants' video.
+1) Check that the local participant has permission to disable other participants' video.
 
 ```kotlin
 val canMuteVideo = meeting.localUser.permissions.host.canMuteVideo
@@ -1164,7 +1166,7 @@ To pin a participant in a session:
    });
    ```
 
-1. Check that the local participant has permission to pin participants.
+1) Check that the local participant has permission to pin participants.
 
    ```ts
    const canPinParticipant = meeting.self.permissions.pinParticipant === true;
@@ -1173,7 +1175,7 @@ To pin a participant in a session:
    }
    ```
 
-2. Call `pin()` on the target participant.
+2) Call `pin()` on the target participant.
 
    If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.
 
@@ -1189,7 +1191,7 @@ To pin a participant in a session:
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds:
    - The target participant's `isPinned` becomes true.
@@ -1215,7 +1217,7 @@ To pin a participant in a session:
    ```
 
    If there was an existing pinned participant before, then the SDK emits an `unpinned` event for that participant.
-4. On the target pinned participant's side, `meeting.self.isPinned` becomes `true` and `meeting.self` emits `pinned`:
+4) On the target pinned participant's side, `meeting.self.isPinned` becomes `true` and `meeting.self` emits `pinned`:
 
    ```ts
    meeting.self.on("pinned", (selfParticipant) => {
@@ -1282,7 +1284,7 @@ To pin a participant in a session:
    });
    ```
 
-1. Check that the local participant has permission to pin participants.
+1) Check that the local participant has permission to pin participants.
 
 ```kotlin
 val canPinParticipant = meeting.localUser.permissions.host.canPinParticipant
@@ -1428,7 +1430,7 @@ Unpin a participant when you need to undo the highlight and return the session t
    });
    ```
 
-1. Check that the local participant has permission to unpin participants.
+1) Check that the local participant has permission to unpin participants.
 
    ```ts
    const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;
@@ -1437,7 +1439,7 @@ Unpin a participant when you need to undo the highlight and return the session t
    }
    ```
 
-2. Call `unpin()` on the target participant.
+2) Call `unpin()` on the target participant.
 
    If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.
 
@@ -1453,7 +1455,7 @@ Unpin a participant when you need to undo the highlight and return the session t
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds:
    - The target participant's `isPinned` becomes `false`.
@@ -1478,7 +1480,7 @@ Unpin a participant when you need to undo the highlight and return the session t
    });
    ```
 
-4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:
+4) On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:
 
    ```ts
    meeting.self.on("unpinned", (selfParticipant) => {
@@ -1544,7 +1546,7 @@ Unpin a participant when you need to undo the highlight and return the session t
    });
    ```
 
-1. Check that the local participant has permission to unpin participants.
+1) Check that the local participant has permission to unpin participants.
 
 ```kotlin
 val canPinParticipant = meeting.localUser.permissions.host.canPinParticipant
@@ -1685,7 +1687,7 @@ To remove a specific participant from the session:
    });
    ```
 
-1. Check that the local participant has permission to remove participants.
+1) Check that the local participant has permission to remove participants.
 
    ```ts
    const canKickParticipant = meeting.self.permissions.kickParticipant === true;
@@ -1694,7 +1696,7 @@ To remove a specific participant from the session:
    }
    ```
 
-2. Call `kick()` on the target participant.
+2) Call `kick()` on the target participant.
 
    If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.
 
@@ -1710,7 +1712,7 @@ To remove a specific participant from the session:
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds:
    - The kicked participant is removed from `meeting.participants.joined`.
@@ -1724,7 +1726,7 @@ To remove a specific participant from the session:
    ```
 
    Other participants in the session also observe the participant leaving through `participantLeft`.
-4. On the removed participant's side, the session disconnects and `meeting.self` emits `roomLeft` event with state set to `kicked`.
+4) On the removed participant's side, the session disconnects and `meeting.self` emits `roomLeft` event with state set to `kicked`.
 
    ```ts
    meeting.self.on("roomLeft", ({ state }) => {
@@ -1783,7 +1785,7 @@ To remove a specific participant from the session:
    });
    ```
 
-1. Check that the local participant has permission to remove participants.
+1) Check that the local participant has permission to remove participants.
 
 ```kotlin
 val canKickParticipant = meeting.localUser.permissions.host.canKickParticipant
@@ -1914,7 +1916,7 @@ To remove all participants from the session:
    });
    ```
 
-1. Check that the local participant has permission to remove participants.
+1) Check that the local participant has permission to remove participants.
 
    ```ts
    const canKickParticipant = meeting.self.permissions.kickParticipant === true;
@@ -1923,7 +1925,7 @@ To remove all participants from the session:
    }
    ```
 
-2. Call `kickAll()`.
+2) Call `kickAll()`.
 
    If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.
 
@@ -1939,7 +1941,7 @@ To remove all participants from the session:
    }
    ```
 
-3. Handle the result by listening for updates.
+3) Handle the result by listening for updates.
 
    After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.
 
@@ -1988,7 +1990,7 @@ To remove all participants from the session:
    });
    ```
 
-1. Check that the local participant has permission to remove participants.
+1) Check that the local participant has permission to remove participants.
 
 ```kotlin
 val canKickParticipant = meeting.localUser.permissions.host.canKickParticipant

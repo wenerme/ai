@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Independent MFA in Access.
 title: Independent MFA
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/og.png?v=38cb3f0d41820c23
@@ -42,7 +44,7 @@ Before you can [enforce independent MFA on applications and policies](https://de
    The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) is exempt from the global MFA requirement. Users must be able to access the App Launcher without MFA to enroll their authenticators.
 6. Select **Save**.
 
-1. Get your existing Zero Trust organization configuration:<details><summary>
+1) Get your existing Zero Trust organization configuration:<details><summary>
 
    Required API token permissions</summary>
 
@@ -61,7 +63,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-2. Send a `PUT` request to update your organization's MFA settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
+2) Send a `PUT` request to update your organization's MFA settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
 
@@ -277,7 +279,7 @@ Access ignores AMR values that do not map to a supported authenticator type (for
 3. Under **Authentication Method Reference (AMR) matching duration**, set how long a successful IdP MFA remains valid. During this period, users can log in to Access without an additional MFA prompt. You can set a custom duration (default 24 hours) or check for a [valid AMR value](#supported-amr-values) on every login.
 4. Select **Save**.
 
-1. Get your existing Zero Trust organization configuration:<details><summary>
+1) Get your existing Zero Trust organization configuration:<details><summary>
 
    Required API token permissions</summary>
 
@@ -296,7 +298,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-2. Send a `PUT` request to update your organization's AMR matching settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
+2) Send a `PUT` request to update your organization's AMR matching settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
 

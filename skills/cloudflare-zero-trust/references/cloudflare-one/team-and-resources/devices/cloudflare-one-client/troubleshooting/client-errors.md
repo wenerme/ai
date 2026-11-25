@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Reference information for Client errors in Zero Trust.
 title: Client errors
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/og.png?v=ef947ab86cd3e080
@@ -295,12 +297,12 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 5. If this does not resolve the error, select **Logout** and then [re-enroll your device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/). Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device.
 6. If the issue persists, contact your administrator for assistance.
 
-7. Launch the Cloudflare One Client.
-8. Select the gear icon and go to **Preferences** > **Account**.
-9. Select **Re-Authenticate Session**.
-10. Complete the authentication steps required by your organization.
-11. If this does not resolve the error, select **Logout from Cloudflare Zero Trust** and then log back in. Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device.
-12. If the issue persists, contact your administrator for assistance.
+7) Launch the Cloudflare One Client.
+8) Select the gear icon and go to **Preferences** > **Account**.
+9) Select **Re-Authenticate Session**.
+10) Complete the authentication steps required by your organization.
+11) If this does not resolve the error, select **Logout from Cloudflare Zero Trust** and then log back in. Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device.
+12) If the issue persists, contact your administrator for assistance.
 
 ### CF\_REGISTRATION\_MISSING (Revoked)
 

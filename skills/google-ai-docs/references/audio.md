@@ -589,18 +589,43 @@ timestamps, speaker diarization, and emotion detection using
         "type": "object",
         "properties": {
           "summary": {"type": "string"},
-          "segments": {"type": "array", "items": {"type": "object", "properties": {
-            "speaker": {"type": "string"},
-            "timestamp": {"type": "string"},
-            "content": {"type": "string"},
-            "emotion": {"type": "string", "enum": ["happy", "sad", "angry", "neutral"]}
-          }}}
-        }
+          "segments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "speaker": {"type": "string"},
+                "timestamp": {"type": "string"},
+                "content": {"type": "string"},
+                "language": {"type": "string"},
+                "emotion": {
+                  "type": "string",
+                  "enum": ["happy", "sad", "angry", "neutral"]
+                }
+              },
+              "required": ["speaker", "timestamp", "content", "emotion"]
+            }
+          }
+        },
+        "required": ["summary", "segments"]
       }
     }
   }
   JSON
-  gemini-api generate "Transcribe with speaker diarization and emotion detection." \
+  PROMPT=$(cat <<'EOF'
+  Process the audio file and generate a detailed transcription.
+  
+  Requirements:
+  
+  1. Identify distinct speakers (e.g., Speaker 1, Speaker 2).
+  2. Provide accurate timestamps for each segment (Format: MM:SS).
+  3. Detect the primary language of each segment.
+  4. If not English, provide the English translation.
+  5. Identify the primary emotion: Happy, Sad, Angry, or Neutral.
+  6. Provide a brief summary at the beginning.
+  EOF
+  )
+  gemini-api generate "$PROMPT" \
     -i "https://www.youtube.com/watch?v=ku-N-eS1lgM" \
     --body @transcribe.json
   ```
@@ -1160,6 +1185,7 @@ To get a transcript, ask for it in the prompt:
   ```bash
   FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
   gemini-api analyze "Generate a transcript of the speech." -i "$FILE"
+  # Or use gemini-api transcribe -i "$FILE" (gemini-3.5-transcribe) for built-in diarized Markdown, JSON, or SRT captions.
   ```
 
   {% /tab %}

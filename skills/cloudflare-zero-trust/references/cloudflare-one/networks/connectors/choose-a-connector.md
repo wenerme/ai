@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Compare Cloudflare connectors and pick the right one. Cloudflare Mesh is the default for private access and private networks, Cloudflare Tunnel publishes HTTP applications on the public Internet, Workers VPC connects code on Cloudflare, and Cloudflare WAN connects whole sites.
 title: Connector selection
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/choose-a-connector/og.png?v=07cf2c37f1e4bedb
