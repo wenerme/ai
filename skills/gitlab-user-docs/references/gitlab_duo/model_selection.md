@@ -70,8 +70,6 @@ The following tables list the models you can select for each feature.
 |------------|--------------|------------------|-----------------|---------------|----------|---------------------|
 | Claude Haiku 4.5 | Yes | No | | | No | |
 | Claude Sonnet 3 | No | | | No | | Yes |
-| Claude Sonnet 4.5 | Yes | Yes | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.5 Gemini Enterprise Agent Platform | Yes | Yes | Yes | Yes | Yes |  |
 | Claude Sonnet 4.6 | Yes | Yes | Yes | Yes | Yes | Yes |
 | Claude Sonnet 4.6 Gemini Enterprise Agent Platform | Yes | Yes | Yes | Yes | Yes |  |
 
@@ -79,7 +77,6 @@ The following tables list the models you can select for each feature.
 
 | Model | Merge Commit Message Generation | Merge Request Summary | Code Review Summary | Non-Agentic Code Review |
 |------------|--------------------------------|------------------------|---------------------|-------------|
-| Claude Sonnet 4.5 | Yes | Yes | Yes | No |
 | Claude Sonnet 4.5 Bedrock | No | No | No | Yes |
 | Claude Sonnet 4.6 | No | No | No | Yes |
 | Claude Sonnet 4.6 Gemini Enterprise Agent Platform | No | No | No | Yes |
@@ -89,8 +86,6 @@ The following tables list the models you can select for each feature.
 | Model | Vulnerability Explanation | Vulnerability Resolution | GitLab Duo for CLI | Discussion Summary |
 |------------|----------------------------|--------------------------|-------------------|---------------------|
 | Claude Haiku 4.5 | No | | Yes | No |
-| Claude Sonnet 4.5 | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.5 Gemini Enterprise Agent Platform | Yes |  |  | Yes |
 | Claude Sonnet 4.6 | Yes | Yes | Yes | Yes |
 | Claude Sonnet 4.6 Gemini Enterprise Agent Platform | Yes |  |  | Yes |
 

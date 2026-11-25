@@ -24,6 +24,18 @@ When a custom rule matches, payload logging stores the extracted prompt. If no p
 
 This workflow replaces the previous AI Security Log Mode Ruleset procedure. For more information, refer to [Log prompts for matching rules](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#7-optional-log-prompts-for-matching-rules).
 
+## 2026-11-24
+
+
+**WAF Emergency Release - 2026-11-24**
+
+This release introduces two new detections in the Cloudflare Free Ruleset.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Free Ruleset | ...63c3ebd4 | N/A | Anomaly - Embedded Application Request | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...8a1681fb | N/A | Generic Rules - Authentication Bypass | N/A | Block | This is a new detection. |
+
 ## 2026-11-20
 
 
@@ -432,27 +444,6 @@ This release introduces a new detection to mitigate a heap-based buffer overflow
 | Cloudflare Managed Ruleset | ...a056caff | N/A | Command Injection - Generic 8 - uri - Beta | Log | Block | This rule is merged into the original rule "Command Injection - Generic 8 - uri" (ID: ...ee159e2e). |
 | Cloudflare Managed Ruleset | ...7206c737 | N/A | F5 BIG-IP - UnAuth Heap-Overflow - CVE: [CVE-2026-94127 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-94127) | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...549f7356 | N/A | Next.js - Cache Poisoning - CVE: [CVE-2026-94543 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-94543) | Block | Block | Rule metadata description refined. Detection unchanged. |
-
-## 2026-10-01
-
-
-**WAF Release - 2026-10-01 - Emergency**
-
-This update provides immediate defense against a vulnerability affecting Citrix NetScaler ADC and Gateway appliances, deploying protection against improper input validation vectors.
-
-**Key Findings**
-
-- [CVE-2026-88771 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-88771): An improper input validation vulnerability affecting Citrix NetScaler ADC and Gateway allows an unauthenticated attacker to execute arbitrary commands.
-
-**Impact**
-
-We strongly recommend that administrators apply the latest versions to fully secure origin servers. Additionally, customers should review configurations against applicable preconditions and follow standard incident response processes if signs of compromise are identified.
-
-Detailed Rule Changes
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...827ab216 | N/A | Citrix Netscaler ADC and Gateway - Improper input validation - CVE: [CVE-2026-88771 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-88771) | N/A | Block | This is a new detection. |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

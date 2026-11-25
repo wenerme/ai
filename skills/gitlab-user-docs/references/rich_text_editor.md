@@ -147,17 +147,10 @@ To insert a diagram:
 
 ## Embed external content
 
-- Offering: GitLab.com, GitLab Self-Managed
-- Status: Experiment
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231412) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231412) as an [experiment](../policy/development_stages_support.md#experiment) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
 - Inserting embedded content from the editor toolbar [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/282443) in GitLab 19.6.
 - Option to turn a link into embedded content [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265667) in GitLab 19.6.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/596742) in GitLab 19.7. Feature flag `allow_iframes_in_markdown` removed.
 
 Insert content, like a YouTube video or a Figma design, from an
 [embed provider](markdown.md#embedded-content) that your administrator allows.

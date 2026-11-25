@@ -2722,6 +2722,46 @@ if err := os.WriteFile("vase.png", result, 0o600); err != nil {
 }
 ```
 
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.MultipartField;
+import com.openai.models.images.*;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
+
+// Use your configured OpenAIClient named client.
+try (var image = Files.newInputStream(Path.of("kitchen.webp"));
+    var markup = Files.newInputStream(Path.of("markup-vase-overlay-gpt-image-2-6.png"))) {
+  var result =
+      client
+          .images()
+          .edit(
+              ImageEditParams.builder()
+                  .model("gpt-image-2.6-flare")
+                  .image(
+                      MultipartField.<ImageEditParams.Image>builder()
+                          .value(ImageEditParams.Image.ofInputStream(image))
+                          .filename("kitchen.webp")
+                          .contentType("image/webp")
+                          .build())
+                  .markup(
+                      MultipartField.<InputStream>builder()
+                          .value(markup)
+                          .filename("markup-vase-overlay-gpt-image-2-6.png")
+                          .contentType("image/png")
+                          .build())
+                  .quality(ImageEditParams.Quality.MEDIUM)
+                  .prompt(
+                      "Recolor the striped vase inside the red circle to solid cobalt blue ceramic. Keep its shape, the dried stems, and the rest of the kitchen unchanged. Remove the red circle from the finished photo.")
+                  .build());
+  Files.write(
+      Path.of("vase.png"),
+      Base64.getDecoder().decode(result.data().orElseThrow().get(0).b64Json().orElseThrow()));
+}
+```
+
 ```ruby
 require "openai"
 require "pathname"
@@ -3435,6 +3475,34 @@ func main() {
 		panic(err)
 	}
 }
+```
+
+```java
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+
+var mask = ImageIO.read(new File("mask.png"));
+var rgba = new BufferedImage(mask.getWidth(), mask.getHeight(), BufferedImage.TYPE_INT_ARGB);
+for (int y = 0; y < mask.getHeight(); y++) {
+  for (int x = 0; x < mask.getWidth(); x++) {
+    int gray;
+    if (mask.getColorModel().getColorSpace().getType() == java.awt.color.ColorSpace.TYPE_GRAY
+        && mask.getRaster().getNumBands() == 1) {
+      // Preserve grayscale intensities while normalizing their bit depth.
+      long maximum = (1L << mask.getSampleModel().getSampleSize(0)) - 1;
+      gray = (int) Math.round(mask.getRaster().getSampleDouble(x, y, 0) * 255 / maximum);
+    } else {
+      // Indexed PNG samples are palette indices, not grayscale intensities.
+      int rgb = mask.getRGB(x, y);
+      gray =
+          (299 * ((rgb >>> 16) & 255) + 587 * ((rgb >>> 8) & 255) + 114 * (rgb & 255) + 500)
+              / 1000;
+    }
+    rgba.setRGB(x, y, (gray << 24) | (gray << 16) | (gray << 8) | gray);
+  }
+}
+ImageIO.write(rgba, "png", new File("mask_alpha.png"));
 ```
 
 ```ruby

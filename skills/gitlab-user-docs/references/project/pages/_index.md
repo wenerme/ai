@@ -85,6 +85,16 @@ If you're using a GitLab Self-Managed instance, your websites are published on y
 own server, according to the [Pages settings](../../../administration/pages/_index.md)
 chosen by your sysadmin, who can make them public or internal.
 
+## Maximum size of a Pages site
+
+The maximum size of a Pages site depends on where your site is hosted:
+
+- On GitLab.com, the maximum size is 1 GB.
+  The maximum artifact size also limits the size of a site.
+  For more information, see [GitLab Pages on GitLab.com](../../gitlab_com/_index.md#gitlab-pages).
+- On GitLab Self-Managed and GitLab Dedicated, the default maximum size is 100 MiB.
+  On GitLab Self-Managed, administrators can [change this limit](../../../administration/pages/_index.md#configurable-limits).
+
 ## Pages examples
 
 These GitLab Pages website examples can teach you advanced techniques to use

@@ -30,6 +30,12 @@ tensors and CUDA operations.
 // Previous device is restored
 ```
 
+## Generator Class
+
+```{doxygenclass} torch::stable::Generator
+:members:
+```
+
 ## InferenceMode Class
 
 ```{doxygenclass} torch::stable::InferenceMode
@@ -338,4 +344,9 @@ in the PyTorch source tree.
 ```
 
 ```{doxygenfunction} torch::stable::get_num_threads
+```
+
+## CPU Capability Queries
+
+```{doxygenfunction} torch::stable::cpu::get_cpu_capability
 ```

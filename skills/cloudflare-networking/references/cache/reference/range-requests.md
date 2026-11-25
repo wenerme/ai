@@ -85,9 +85,15 @@ Otherwise, an `If-Range` value that exactly matches the cached `ETag` or `Last-M
 
 ### Decompression
 
-If Cloudflare must decompress a complete encoded response, it ignores `Range`. Cloudflare sends the complete, uncompressed body as `200 OK`. This applies to cached responses and responses received from the origin.
+Cloudflare serves a range of a cached file encoded with gzip or Brotli (`br`) only if the client accepts that encoding. The client's `Accept-Encoding` header must explicitly name `gzip` or `br` without a quality value of `0` ([RFC 9110, section 12.4.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.4.2) and [section 12.5.3 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.3)). An absent `Accept-Encoding` header, `*`, or `x-gzip` does not qualify. A Brotli range also requires HTTPS, and a Workers subrequest without the [`brotli_content_encoding`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#brotli-content-encoding-support) compatibility flag does not receive a Brotli range. When these conditions are met, Cloudflare sends `206 Partial Content` with the cached `Content-Encoding`. Per [RFC 9110, section 14.1.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-14.1.2) and [section 8.4 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-8.4), the byte range counts bytes of the encoded file, not of the decompressed content.
 
-A range request for an empty, encoded response returns an empty `200 OK`, not `416 Range Not Satisfiable`.
+Otherwise, Cloudflare ignores `Range` and sends the complete file as `200 OK` using normal content negotiation. Cloudflare decompresses or recompresses the `200 OK` response as needed for the client's `Accept-Encoding`, or keeps the cached encoding when the client accepts it. Cloudflare always sends the complete `200 OK` file for a cached file encoded with Zstandard (`zstd`) or `deflate`. HTTP allows a server to ignore `Range` ([RFC 9110, section 14.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-14.2)).
+
+A cached file without `Content-Encoding` keeps the range behavior described on this page. So does a file with an encoding Cloudflare does not decompress (any encoding other than `gzip`, `br`, `zstd`, or `deflate`).
+
+If Cloudflare must decompress a complete encoded response from the origin, it also ignores `Range` and sends the complete response as `200 OK`.
+
+When Cloudflare decompresses or ignores `Range` for an empty, encoded response, it returns an empty `200 OK`, not `416 Range Not Satisfiable`.
 
 ## Origin request behavior
 
@@ -123,6 +129,21 @@ Origin Range Requests do not make an otherwise ineligible request or response ca
 
 Origin Range Requests are not supported with [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#limits).
 
+## Uncached range requests
+
+If caching is bypassed or the request is not eligible for caching, Cloudflare forwards the client's `Range` header to your origin. For `GET` requests over HTTPS ([RFC 9110, section 14.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-14.2) defines `Range` for `GET` only), Cloudflare also forwards the client's own `Accept-Encoding` header instead of its [default header](https://developers.cloudflare.com/speed/optimization/content/compression/#content-compression-from-origin-servers-to-the-cloudflare-network). Your origin can then return a range in an encoding the client accepts. Over HTTP, Cloudflare continues to send `Accept-Encoding: gzip`, and non-`GET` requests (such as `HEAD`) keep Cloudflare's default header.
+
+Cloudflare passes a byte-range `206 Partial Content` response (`bytes` unit) from your origin to the client without decoding it, even if a [Compression Rule](https://developers.cloudflare.com/rules/compression-rules/) applies. Cloudflare also does not compress a `206 Partial Content` response. Changing the content encoding of a byte range would invalidate its `Content-Range` offsets and total length ([RFC 9110, section 14.1.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-14.1.2) and [section 14.4 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-14.4)). Partial responses that use a non-`bytes` range unit are still decoded as usual.
+
+The forwarded `Accept-Encoding` header has these exceptions:
+
+- **No header from the client**: Your origin receives no `Accept-Encoding` header, or an empty one on Orange-to-Orange requests.
+- **Shared dictionaries**: Cloudflare removes `dcb` and `dcz` unless [shared dictionaries](https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/) are enabled on the zone and the request includes a valid `Available-Dictionary` header ([RFC 9842, section 2.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9842.html#section-2.2) and [section 6.1 ↗︎](https://www.rfc-editor.org/rfc/rfc9842.html#section-6.1)). If removing those encodings leaves the header empty, Cloudflare sends an empty `Accept-Encoding` header rather than omitting it.
+- **Workers subrequests**: Subrequests from Workers without the [`brotli_content_encoding`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#brotli-content-encoding-support) compatibility flag send `Accept-Encoding: gzip` instead of the client's header so the origin does not return a Brotli range the Worker cannot decode.
+- **Origin Range Requests**: Requests handled by Origin Range Requests send `Accept-Encoding: identity`, as described in [Origin request behavior](#origin-request-behavior). On a zone with Origin Range Requests enabled, requests that bypass caching or are ineligible for caching are not handled by the feature and still forward the client's `Accept-Encoding`.
+
+Under [RFC 9110, section 12.5.3 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.3), omitting `Accept-Encoding` means any content coding is acceptable, whereas an empty `Accept-Encoding` header means the client accepts no encoding. Your origin should answer an empty `Accept-Encoding` header with an unencoded response, not `406 Not Acceptable`.
+
 Was this helpful?
 
 YesNo
@@ -132,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/reference/range-requests/#page","headline":"Range request behavior","description":"Learn how Cloudflare processes HTTP range requests and what origin responses must include.","url":"https://developers.cloudflare.com/cache/reference/range-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/reference/range-requests/og.png?v=ed9b3d289f26e59e","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/reference/range-requests/#page","headline":"Range request behavior","description":"Learn how Cloudflare processes HTTP range requests and what origin responses must include.","url":"https://developers.cloudflare.com/cache/reference/range-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/reference/range-requests/og.png?v=ed9b3d289f26e59e","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

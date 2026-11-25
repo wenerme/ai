@@ -62,6 +62,26 @@ To normalize the body, GitLab does the following:
 As a result, the `body` returned by later requests might not match the `body` you sent.
 Notes on snippets and wiki pages are saved as sent.
 
+## Comments and system notes
+
+Notes in this API can be user comments or [system notes](../user/project/system_notes.md)
+about changes to an object, for example when the title changes.
+The `system` attribute is `true` for system notes.
+
+To return only comments or only system notes, use the `activity_filter` parameter
+on list endpoints. Valid values are:
+
+- `all_notes` (default): Returns all notes.
+- `only_comments`: Returns only user comments.
+- `only_activity`: Returns only system notes.
+
+The GraphQL API documents the same filter values as
+[`NotesFilterType`](graphql/reference/enums.md#notesfiltertype).
+
+For the difference between notes, discussions, and discussion notes, see
+[Understand note types in the API](discussions.md#understand-note-types-in-the-api)
+in the Discussions API.
+
 ## Issues
 
 ### List all issue notes
@@ -243,12 +263,14 @@ Lists all notes for a specified snippet. Snippet notes are comments users can po
 ```plaintext
 GET /projects/:id/snippets/:snippet_id/notes
 GET /projects/:id/snippets/:snippet_id/notes?sort=asc&order_by=updated_at
+GET /projects/:id/snippets/:snippet_id/notes?activity_filter=only_comments
 ```
 
 | Attribute    | Type              | Required | Description |
 |--------------|-------------------|----------|-------------|
 | `id`         | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
 | `snippet_id` | integer           | yes      | The ID of a project snippet |
+| `activity_filter` | string      | no       | Filter notes by activity type. Valid values: `all_notes`, `only_comments`, `only_activity`. Default is `all_notes` |
 | `sort`       | string            | no       | Return snippet notes sorted in `asc` or `desc` order. Default is `desc` |
 | `order_by`   | string            | no       | Return snippet notes ordered by `created_at` or `updated_at` fields. Default is `created_at` |
 
@@ -380,12 +402,14 @@ Lists all notes for a specified merge request.
 ```plaintext
 GET /projects/:id/merge_requests/:merge_request_iid/notes
 GET /projects/:id/merge_requests/:merge_request_iid/notes?sort=asc&order_by=updated_at
+GET /projects/:id/merge_requests/:merge_request_iid/notes?activity_filter=only_comments
 ```
 
 | Attribute           | Type              | Required | Description |
 |---------------------|-------------------|----------|-------------|
 | `id`                | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
 | `merge_request_iid` | integer           | yes      | The IID of a project merge request |
+| `activity_filter` | string      | no       | Filter notes by activity type. Valid values: `all_notes`, `only_comments`, `only_activity`. Default is `all_notes` |
 | `sort`              | string            | no       | Return merge request notes sorted in `asc` or `desc` order. Default is `desc` |
 | `order_by`          | string            | no       | Return merge request notes ordered by `created_at` or `updated_at` fields. Default is `created_at` |
 
@@ -540,12 +564,14 @@ Lists all notes for a specified epic. Epic notes are comments users can post to 
 ```plaintext
 GET /groups/:id/epics/:epic_id/notes
 GET /groups/:id/epics/:epic_id/notes?sort=asc&order_by=updated_at
+GET /groups/:id/epics/:epic_id/notes?activity_filter=only_comments
 ```
 
 | Attribute  | Type              | Required | Description |
 |------------|-------------------|----------|-------------|
 | `id`       | integer or string | yes      | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group |
 | `epic_id`  | integer           | yes      | The ID of a group epic |
+| `activity_filter` | string      | no       | Filter notes by activity type. Valid values: `all_notes`, `only_comments`, `only_activity`. Default is `all_notes` |
 | `sort`     | string            | no       | Return epic notes sorted in `asc` or `desc` order. Default is `desc` |
 | `order_by` | string            | no       | Return epic notes ordered by `created_at` or `updated_at` fields. Default is `created_at` |
 
@@ -685,6 +711,7 @@ Lists all notes for a specified project wiki page. Project wiki notes are commen
 ```plaintext
 GET /projects/:id/wiki_pages/:wiki_page_meta_id/notes
 GET /projects/:id/wiki_pages/:wiki_page_meta_id/notes?sort=asc&order_by=updated_at
+GET /projects/:id/wiki_pages/:wiki_page_meta_id/notes?activity_filter=only_comments
 ```
 
 Parameters:
@@ -693,6 +720,7 @@ Parameters:
 |------------|-------------------|----------|-------------|
 | `id`       | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
 | `wiki_page_meta_id`  | integer           | yes      | The ID of a wiki page meta |
+| `activity_filter` | string      | no       | Filter notes by activity type. Valid values: `all_notes`, `only_comments`, `only_activity`. Default is `all_notes` |
 | `sort`     | string            | no       | Return wiki page notes sorted in `asc` or `desc` order. Default is `desc` |
 | `order_by` | string            | no       | Return wiki page notes ordered by `created_at` or `updated_at` fields. Default is `created_at` |
 
@@ -831,12 +859,14 @@ Lists all notes for a specified group wiki page. Group wiki notes are comments u
 ```plaintext
 GET /groups/:id/wiki_pages/:wiki_page_meta_id/notes
 GET /groups/:id/wiki_pages/:wiki_page_meta_id/notes?sort=asc&order_by=updated_at
+GET /groups/:id/wiki_pages/:wiki_page_meta_id/notes?activity_filter=only_comments
 ```
 
 | Attribute  | Type              | Required | Description |
 |------------|-------------------|----------|-------------|
 | `id`       | integer or string | yes      | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group |
 | `wiki_page_meta_id`  | integer           | yes      | The ID of a wiki page meta |
+| `activity_filter` | string      | no       | Filter notes by activity type. Valid values: `all_notes`, `only_comments`, `only_activity`. Default is `all_notes` |
 | `sort`     | string            | no       | Return wiki page notes sorted in `asc` or `desc` order. Default is `desc` |
 | `order_by` | string            | no       | Return wiki page notes ordered by `created_at` or `updated_at` fields. Default is `created_at` |
 

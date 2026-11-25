@@ -333,6 +333,7 @@ Type of domain setting to retrieve for AI features.
 | ----- | ----------- |
 | `ALLOWED` | Domains that are allowed. |
 | `DENIED` | Domains that are denied. |
+| `WEB_SEARCH_DENIED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Domains that GitLab Duo web search does not search or read. |
 
 ## `AiExternalAgentType`
 
@@ -3869,6 +3870,7 @@ Licensed features that can be checked for availability on a namespace or project
 | `UNPROTECTION_RESTRICTIONS` | Unprotection restrictions feature. |
 | `VULNERABILITY_FINDING_SIGNATURES` | Vulnerability finding signatures feature. |
 | `WIP_LIMITS` | Wip limits feature. |
+| `WORKFORCE_HIERARCHIES` | Workforce hierarchies feature. |
 | `WORK_ITEM_STATUS` | Work item status feature. |
 | `ZENTAO_ISSUES_INTEGRATION` | Zentao issues integration feature. |
 

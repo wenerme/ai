@@ -21,7 +21,7 @@ We recommend that all Cloudflare user account holders enable two-factor authenti
 
 Note
 
-If you signed up using a social login provider (such as Google or Apple), your account does not have a Cloudflare password. Before you can enroll in 2FA, you must set a password by going through the [password reset process](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-password). Once your password is set, you can enable 2FA as normal.
+If you signed up using a social login provider (such as Apple, GitHub, or Google), your account does not have a Cloudflare password. When the dashboard asks you to confirm your identity during 2FA setup, Cloudflare sends a verification code to your email address instead.
 
 Caution
 
@@ -37,6 +37,13 @@ To enable two-factor authentication for your Cloudflare login:
 Note
 
 Cloudflare recommends that users enable at least two different 2FA factors, as well as safely store [backup codes](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#regenerate-backup-codes)) to prevent lockouts.
+
+## Confirm your identity
+
+Before you add a 2FA method or generate backup codes, the dashboard asks you to confirm your identity. This protects your account if you leave it signed in on a shared or public computer.
+
+- If your profile has a Cloudflare password, enter it when prompted.
+- If you sign in with social login and do not have a password, enter the verification code sent to your email address.
 
 ## Configure security key authentication for two-factor Cloudflare login
 
@@ -55,10 +62,10 @@ After [enabling 2FA on your Cloudflare account](https://developers.cloudflare.co
 You can configure a built-in authenticator such as Apple Touch ID, Android fingerprint, or Windows Hello.
 
 1. In **Security Key Authentication**, select **Add**.
-2. On the **Add a Security Key**, enter your Cloudflare password and select **Next**.
+2. On the **Add a Security Key** screen, [confirm your identity](#confirm-your-identity) and select **Next**.
 3. Interact with your built-in authenticator to add it to your Cloudflare account.
 4. Enter a name for the built-in authenticator. If this is the initial setup, you will be prompted to generate backup codes. If not, skip to Step 8.
-5. Enter your Cloudflare password.
+5. [Confirm your identity](#confirm-your-identity).
 6. Select **Next** to review your backup codes. Backup codes can be used to access your user account without your mobile device.
 7. Select **Download**, **Print**, or **Copy** to save your backup codes in a secure location.
 8. Select **Next** to finish the configuration.
@@ -72,10 +79,10 @@ On a Windows device, you may need to set up Windows Hello or register your secur
 1. Once your security key is plugged in, go to **Profile** > **Authentication**.
 2. From **Two-Factor Authentication**, select **Set up**.
 3. From **Security Key Authentication**, select **Add**.
-4. Enter your Cloudflare password on the **Add a Security Key** screen, then select **Next**.
+4. On the **Add a Security Key** screen, [confirm your identity](#confirm-your-identity), then select **Next**.
 5. Interact with your security key to add it to your Cloudflare account. Ensure that the dialog is for the security key setup. If the Windows Hello dialog appears on a Windows device, select **Cancel**. The security key dialog box will then appear. Depending on your system, you may be required to register a PIN for the security key.
 6. Enter a name for the security key. If this is the initial setup, you will be prompted to generate backup codes. If not, skip to Step 8.
-7. Enter your Cloudflare password.
+7. [Confirm your identity](#confirm-your-identity).
 8. Select **Next** to review your backup codes. Backup codes can be used to access your user account without your mobile device.
 9. Select **Download**, **Print**, or **Copy** to save your backup codes in a secure location.
 10. Select **Next** to finish the configuration.
@@ -88,11 +95,11 @@ Time-based one-time password (TOTP) authentication works by using an authenticat
 2. From **Two-Factor Authentication**, select **Set up**.
 3. Under **Mobile App Authentication**, select **Add**.
 4. Scan the QR code with your mobile device and enter the code from your authenticator application.
-5. Enter your Cloudflare password, then select **Next**. If you cannot scan the QR code, select **Can't scan QR code, Follow alternative steps** to configure your authenticator application manually.
+5. [Confirm your identity](#confirm-your-identity), then select **Next**. If you cannot scan the QR code, select **Can't scan QR code, Follow alternative steps** to configure your authenticator application manually.
 
 ![You can enable 2FA by scanning a QR code with your mobile device.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=467,height=856,format=webp/_astro/2FA_scan_QR_code.t5BNYUYn.png)
 
-6. Enter your Cloudflare password again.
+6. [Confirm your identity](#confirm-your-identity) again.
 7. Select **Next** to review your backup codes. You can use backup codes to access your account without your mobile device.
 8. Select **Download**, **Print**, or **Copy** to save your backup codes in a secure location.
 
@@ -121,7 +128,7 @@ Email 2FA works by sending you a TOTP code to your email address. This is a good
 1. Navigate to **User Profile**, then **Authentication**.
 2. Under **Two-Factor Authentication**, select **Set up**.
 3. Under **Email Authentication**, select **Enable**.
-4. You will be prompted to enter your password twice, and then be shown recovery codes. Save these somewhere safe like a password manager.
+4. [Confirm your identity](#confirm-your-identity) when prompted. You will then be shown recovery codes. Save these somewhere safe like a password manager.
 
 ## Regenerate backup codes
 
@@ -192,5 +199,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#page","headline":"Two-factor authentication","description":"Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/og.png?v=98099c9ce29684d0","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#page","headline":"Two-factor authentication","description":"Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/og.png?v=98099c9ce29684d0","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

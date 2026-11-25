@@ -24,6 +24,10 @@ Not all discussion types are equally available in the API:
 GitLab might change a note body before saving it.
 For more information, see [note body normalization](notes.md#note-body-normalization).
 
+To filter comments and system notes, use the [`activity_filter`](notes.md#comments-and-system-notes)
+parameter in the Notes API.
+The Discussions API does not support this filter.
+
 ## Discussions pagination
 
 By default, `GET` requests return 20 results at a time because the API results are paginated.

@@ -16,8 +16,8 @@ Because the connection stays open and each turn sends only incremental input, We
 
 Install the WebSocket dependencies with `pip install "openai[realtime]>=3.8.0"` for Python, `npm install openai@^7.10.0 ws` for JavaScript, or `gem install openai async-websocket` for Ruby.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.103.0`.
-For Java, add the Maven dependency `com.openai:openai-java:4.105.0` and use Java 17 or later for these examples.
+For Go, run `go get github.com/openai/openai-go/v3@v3.105.0`.
+For Java, add the Maven dependency `com.openai:openai-java:4.105.0` for these examples.
 These Go and Java SDK versions provide native Responses WebSocket support.
 
 In WebSocket mode, start each turn by sending a `response.create` event from the client. The payload mirrors the normal [Responses create body](https://developers.openai.com/api/reference/resources/responses/methods/create), except that transport-specific fields like `stream` and `background` are not used.
@@ -783,6 +783,62 @@ func main() {
 }
 ```
 
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.JsonValue;
+import com.openai.models.responses.*;
+import java.util.*;
+
+var client = OpenAIOkHttpClient.fromEnv();
+try {
+  var input =
+      List.of(
+          ResponseInputItem.ofEasyInputMessage(
+              EasyInputMessage.builder()
+                  .role(EasyInputMessage.Role.USER)
+                  .content("Find the failing test.")
+                  .build()));
+  var compacted =
+      client
+          .responses()
+          .compact(
+              ResponseCompactParams.builder()
+                  .model("gpt-6.2-astra")
+                  .inputOfResponseInputItems(input)
+                  .build());
+  var next = new ArrayList<ResponseInputItem>();
+  for (var item : compacted.output())
+    next.add(JsonValue.from(item).convert(ResponseInputItem.class));
+  next.add(
+      ResponseInputItem.ofEasyInputMessage(
+          EasyInputMessage.builder()
+              .role(EasyInputMessage.Role.USER)
+              .content("Continue from here.")
+              .build()));
+  try (var connection = client.responses().connect()) {
+    connection.send(
+        ResponsesClientEvent.ofResponseCreate(
+            ResponsesClientEvent.ResponseCreate.builder()
+                .model("gpt-6.2-astra")
+                .streamId("main")
+                .store(false)
+                .inputOfResponse(next)
+                .tools(List.of())
+                .build()));
+    var result = connection.finalResponse();
+    if (result.status().filter(ResponseStatus.COMPLETED::equals).isEmpty())
+      throw new IllegalStateException("Response did not complete");
+    result.output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(text -> System.out.print(text.text()));
+  }
+} finally {
+  client.close();
+}
+```
+
 ```ruby
 require "async"
 require "openai"
@@ -1209,6 +1265,74 @@ func main() {
 	if err := json.NewEncoder(os.Stdout).Encode(latest); err != nil {
 		log.Fatal(err)
 	}
+}
+```
+
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.http.ResponseConnection;
+import com.openai.models.responses.*;
+import java.util.*;
+
+var client = OpenAIOkHttpClient.fromEnv();
+try (var connection = client.responses().connect();
+    var planner = connection.lane("planner");
+    var research = connection.lane("research");
+    var critic = connection.lane("critic")) {
+  send(planner, "planner", "Draft a deployment plan for a stateless API service.", null);
+  send(research, "research", "List common deployment risks for a stateless API service.", null);
+  var first = completed(planner);
+  completed(research);
+  send(critic, "critic", "Find gaps in this deployment plan.", first.id());
+  // Let the fork load its parent before advancing the original lane's cache.
+  while (true) {
+    var event = critic.receive();
+    if (event.error().isPresent()
+        || event.responseFailed().isPresent()
+        || event.responseIncomplete().isPresent())
+      throw new IllegalStateException("Critic failed");
+    if (event.responseInProgress().isPresent()) break;
+  }
+  send(planner, "planner", "Add rollback and monitoring steps to the plan.", first.id());
+  completed(critic);
+  completed(planner);
+} finally {
+  client.close();
+}
+
+static void send(ResponseConnection.Lane lane, String streamId, String text, String previous)
+    throws Exception {
+  var builder =
+      ResponsesClientEvent.ResponseCreate.builder()
+          .streamId(streamId)
+          .model("gpt-6.2-astra")
+          .store(false)
+          .inputOfResponse(
+              List.of(
+                  ResponseInputItem.ofEasyInputMessage(
+                      EasyInputMessage.builder()
+                          .role(EasyInputMessage.Role.USER)
+                          .content(text)
+                          .build())));
+  if (previous != null) builder.previousResponseId(previous);
+  var event = ResponsesClientEvent.ofResponseCreate(builder.build());
+  long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(10);
+  while (true) {
+    try {
+      lane.send(event);
+      return;
+    } catch (com.openai.core.http.WebSocketWriteNotAttempted.Busy busy) {
+      if (System.nanoTime() >= deadline) throw busy;
+      Thread.sleep(10);
+    }
+  }
+}
+
+static Response completed(ResponseConnection.Lane lane) {
+  var response = lane.finalResponse();
+  if (response.status().filter(ResponseStatus.COMPLETED::equals).isEmpty())
+    throw new IllegalStateException("Response did not complete");
+  return response;
 }
 ```
 

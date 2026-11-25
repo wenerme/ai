@@ -272,6 +272,22 @@ To maintain the indentation when you press the <kbd>Enter</kbd> key:
 1. On the **Editing** tab, in the **Markdown** section, select the **Maintain indentation** checkbox.
 1. Select **Save changes**.
 
+### Insert line breaks instead of new paragraphs
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/427590) in GitLab 19.7.
+
+Insert a line break when you press <kbd>Shift</kbd>+<kbd>Enter</kbd> in the rich text editor.
+By default, this shortcut starts a new paragraph.
+
+To insert line breaks:
+
+1. In the upper-right corner, select your avatar.
+1. Select .
+1. On the  tab,
+   in the  section,
+   select the  checkbox.
+1. Select .
+
 ### Turn off emoji autocomplete
 
 By default, when you type a colon (`:`) in a description or comment box, GitLab suggests

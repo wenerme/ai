@@ -215,6 +215,117 @@ func transcribeTurn(ctx context.Context, conn *realtime.RealtimeConnection, audi
 }
 ```
 
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.ClientOptions;
+import com.openai.helpers.RealtimeConnection;
+import com.openai.helpers.RealtimeWebSocketOptions;
+import com.openai.models.realtime.*;
+import java.nio.file.*;
+import java.util.Base64;
+
+var http = OkHttpClient.builder().build();
+var options =
+    ClientOptions.builder()
+        .fromEnv()
+        .httpClient(http)
+        .putHeader("OpenAI-Safety-Identifier", "hashed-user-id")
+        .build();
+try (http;
+    var connection =
+        RealtimeConnection.connect(
+            options, RealtimeWebSocketOptions.builder().transcription().build())) {
+  send(
+      connection,
+      RealtimeClientEvent.ofSessionUpdate(
+          SessionUpdateEvent.builder()
+              .session(
+                  RealtimeTranscriptionSessionCreateRequest.builder()
+                      .audio(
+                          RealtimeTranscriptionSessionAudio.builder()
+                              .input(
+                                  RealtimeTranscriptionSessionAudioInput.builder()
+                                      .format(
+                                          RealtimeAudioFormats.AudioPcm.builder()
+                                              .type(
+                                                  RealtimeAudioFormats.AudioPcm.Type.AUDIO_PCM)
+                                              .rate(RealtimeAudioFormats.AudioPcm.Rate._24000)
+                                              .build())
+                                      .turnDetection(com.openai.core.JsonValue.from(null))
+                                      .transcription(
+                                          AudioTranscription.builder()
+                                              .model("gpt-live-transcribe")
+                                              .build())
+                                      .build())
+                              .build())
+                      .build())
+              .build()));
+  while (true) {
+    var event = connection.receive();
+    if (event.error().isPresent())
+      throw new IllegalStateException(event.error().orElseThrow().toString());
+    if (event.sessionUpdated().isPresent()) break;
+  }
+  byte[] audio = Files.readAllBytes(Path.of("speech.pcm"));
+  if (audio.length == 0 || audio.length % 2 != 0)
+    throw new IllegalArgumentException("Expected mono PCM16 at 24 kHz");
+  for (int start = 0; start < audio.length; start += 9600) {
+    var chunk =
+        java.util.Arrays.copyOfRange(audio, start, Math.min(start + 9600, audio.length));
+    send(
+        connection,
+        RealtimeClientEvent.ofInputAudioBufferAppend(
+            InputAudioBufferAppendEvent.builder()
+                .audio(Base64.getEncoder().encodeToString(chunk))
+                .build()));
+  }
+  send(
+      connection,
+      RealtimeClientEvent.ofInputAudioBufferCommit(
+          InputAudioBufferCommitEvent.builder().build()));
+  String itemId = null;
+  while (true) {
+    var event = connection.receive();
+    if (event.error().isPresent())
+      throw new IllegalStateException(event.error().orElseThrow().toString());
+    if (event.inputAudioBufferCommitted().isPresent())
+      itemId = event.inputAudioBufferCommitted().orElseThrow().itemId();
+    if (event.conversationItemInputAudioTranscriptionDelta().isPresent()) {
+      var delta = event.conversationItemInputAudioTranscriptionDelta().orElseThrow();
+      if (delta.itemId().equals(itemId))
+        System.err.println(
+            "Partial transcript (" + delta.itemId() + "): " + delta.delta().orElse(""));
+    }
+    if (event.conversationItemInputAudioTranscriptionCompleted().isPresent()) {
+      var completed = event.conversationItemInputAudioTranscriptionCompleted().orElseThrow();
+      if (completed.itemId().equals(itemId)) {
+        System.out.println("Final transcript: " + completed.transcript());
+        break;
+      }
+    }
+    if (event.conversationItemInputAudioTranscriptionFailed().isPresent()
+        && event
+            .conversationItemInputAudioTranscriptionFailed()
+            .orElseThrow()
+            .itemId()
+            .equals(itemId)) throw new IllegalStateException("Transcription failed");
+  }
+}
+
+static void send(RealtimeConnection connection, RealtimeClientEvent event) throws Exception {
+  long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(10);
+  while (true) {
+    try {
+      connection.send(event);
+      return;
+    } catch (com.openai.core.http.WebSocketWriteNotAttempted.Busy busy) {
+      if (System.nanoTime() >= deadline) throw busy;
+      Thread.sleep(10);
+    }
+  }
+}
+```
+
 ```csharp
 using OpenAI.Realtime;
 #pragma warning disable OPENAI002

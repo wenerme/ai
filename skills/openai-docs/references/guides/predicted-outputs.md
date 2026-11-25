@@ -8,7 +8,7 @@ Predicted Outputs are available today using the latest `gpt-4o`, `gpt-4o-mini`, 
 
 ## Code refactoring example
 
-Predicted Outputs are particularly useful for regenerating text documents and code files with small modifications. Let's say you want the [GPT-4o model](https://developers.openai.com/api/docs/models#gpt-4o) to refactor a piece of JavaScript code, and convert the `username` property of the `User` class to be `email` instead:
+Predicted Outputs are particularly useful for regenerating text documents and code files with small modifications. Let's say you want the [GPT-4o model](https://developers.openai.com/api/docs/models#gpt-4o) to refactor a piece of JavaScript or Java code, and convert the `username` property of the `User` class to be `email` instead:
 
 ```typescript
 class User {
@@ -20,10 +20,18 @@ class User {
 export default User;
 ```
 
+```java
+public static final class User {
+  public String firstName = "";
+  public String lastName = "";
+  public String username = "";
+}
+```
 
-Most of the file will be unchanged, except for line 4 above. If you use the current text of the code file as your prediction, you can regenerate the entire file with lower latency. These time savings add up quickly for larger files.
 
-Below is an example of using the `prediction` parameter in our SDKs to predict that the final output of the model will be very similar to our original code file, which we use as the prediction text.
+Most of the file will be unchanged, except for the property declaration. If you use the current text of the code file as your prediction, you can regenerate the entire file with lower latency. These time savings add up quickly for larger files.
+
+Below is an example of using the `prediction` parameter in our SDKs to predict that the final output of the model will be similar to our original code file, which we use as the prediction text.
 
 Refactor a JavaScript class with a Predicted Output
 
@@ -571,7 +579,7 @@ stream.text.each { |text| print(text) }
 
 ## Position of predicted text in response
 
-When providing prediction text, your prediction can appear anywhere within the generated response, and still provide latency reduction for the response. Let's say your predicted text is the simple [Hono](https://hono.dev/) server shown below:
+When providing prediction text, your prediction can appear anywhere within the generated response, and still provide latency reduction for the response. Let's say your predicted text is the [JavaScript web server](https://hono.dev/) shown below:
 
 ```typescript
 import { serve } from "@hono/node-server";

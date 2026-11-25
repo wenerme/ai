@@ -473,6 +473,13 @@ In Ruby, run those steps in the block passed to `with_browser`.
 
 
 
+
+
+Add `com.microsoft.playwright:playwright:1.61.0` to your Maven dependencies. Run `com.microsoft.playwright.CLI` with the arguments `install chromium` from your IDE or build tool, using the same dependency classpath. Run subsequent browser actions and capture screenshots inside the setup’s `try` block before the setup closes the browser and Playwright resources.
+
+
+
+
 Start a browser instance
 
 ```typescript
@@ -501,6 +508,30 @@ with sync_playwright() as p:
         args=["--disable-extensions", "--disable-file-system"],
     )
     page = browser.new_page(viewport={"width": 1280, "height": 720})
+```
+
+```java
+import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.*;
+import com.openai.core.ObjectMappers;
+import java.nio.file.*;
+import java.util.*;
+
+try (var playwright = Playwright.create();
+    var browser =
+        playwright
+            .chromium()
+            .launch(
+                new BrowserType.LaunchOptions()
+                    .setHeadless(true)
+                    .setChromiumSandbox(true)
+                    .setEnv(Map.of())
+                    .setArgs(List.of("--disable-extensions", "--disable-file-system")))) {
+  var page = browser.newPage(new Browser.NewPageOptions().setViewportSize(1280, 720));
+
+}
+
+
 ```
 
 ```ruby
@@ -673,6 +704,49 @@ class VM:
 
 
 vm = VM(display=":99", container_name="cua-image")
+```
+
+```java
+import com.openai.core.ObjectMappers;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+record VM(String display, String containerName) {}
+
+static byte[] dockerExec(
+    String containerName,
+    String executable,
+    List<String> arguments,
+    Map<String, String> environment)
+    throws Exception {
+  var command = new ArrayList<String>(List.of("docker", "exec"));
+  environment.forEach(
+      (name, value) -> {
+        command.add("--env");
+        command.add(name + "=" + value);
+      });
+  command.add(containerName);
+  command.add(executable);
+  command.addAll(arguments);
+
+var process =
+      new ProcessBuilder(command).redirectError(ProcessBuilder.Redirect.INHERIT).start();
+  process.getOutputStream().close();
+  try (var output = process.getInputStream()) {
+    byte[] result = output.readAllBytes();
+    if (process.waitFor() != 0) throw new IllegalStateException("Container command failed");
+    return result;
+  } finally {
+    process.destroy();
+  }
+}
+
+static void xdotool(VM vm, String... arguments) throws Exception {
+  dockerExec(vm.containerName(), "xdotool", List.of(arguments), Map.of("DISPLAY", vm.display()));
+}
 ```
 
 ```ruby
@@ -890,6 +964,54 @@ def normalize_playwright_button(button="left"):
 def normalize_drag_path(path):
     """Convert the Python SDK's drag-path points to coordinate pairs."""
     return [(point.x, point.y) for point in path]
+```
+
+```java
+import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.*;
+import com.openai.core.ObjectMappers;
+import com.openai.models.responses.ComputerAction;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+static String normalizeKey(String key) {
+  return switch (key) {
+    case "ENTER", "RETURN" -> "Enter";
+    case "ESC", "ESCAPE" -> "Escape";
+    case "TAB" -> "Tab";
+    case "SPACE" -> "Space";
+    case "BACKSPACE" -> "Backspace";
+    case "DELETE", "DEL" -> "Delete";
+    case "HOME" -> "Home";
+    case "END" -> "End";
+    case "PAGEUP" -> "PageUp";
+    case "PAGEDOWN" -> "PageDown";
+    case "UP", "ARROWUP" -> "ArrowUp";
+    case "DOWN", "ARROWDOWN" -> "ArrowDown";
+    case "LEFT", "ARROWLEFT" -> "ArrowLeft";
+    case "RIGHT", "ARROWRIGHT" -> "ArrowRight";
+    case "CTRL", "CONTROL" -> "Control";
+    case "SHIFT" -> "Shift";
+    case "ALT", "OPTION" -> "Alt";
+    case "META", "CMD", "COMMAND" -> "Meta";
+    default -> key;
+  };
+}
+
+static MouseButton normalizeButton(String button) {
+  return switch (button) {
+    case "left" -> MouseButton.LEFT;
+    case "wheel" -> MouseButton.MIDDLE;
+    case "right" -> MouseButton.RIGHT;
+    default -> throw new IllegalArgumentException("Unsupported mouse button: " + button);
+  };
+}
+
+static List<List<Long>> normalizeDragPath(List<ComputerAction.Drag.Path> path) {
+  return path.stream().map(point -> List.of(point.x(), point.y())).toList();
+}
 ```
 
 ```ruby
@@ -1160,6 +1282,65 @@ def normalize_drag_path(path):
     return [(point.x, point.y) for point in path]
 ```
 
+```java
+import com.openai.core.ObjectMappers;
+import com.openai.models.responses.ComputerAction;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+static String normalizeKey(String key) {
+  return switch (key) {
+    case "ENTER", "RETURN" -> "Return";
+    case "ESC", "ESCAPE" -> "Escape";
+    case "TAB" -> "Tab";
+    case "SPACE" -> "space";
+    case "BACKSPACE" -> "BackSpace";
+    case "DELETE", "DEL" -> "Delete";
+    case "HOME" -> "Home";
+    case "END" -> "End";
+    case "PAGEUP" -> "Page_Up";
+    case "PAGEDOWN" -> "Page_Down";
+    case "UP", "ARROWUP" -> "Up";
+    case "DOWN", "ARROWDOWN" -> "Down";
+    case "LEFT", "ARROWLEFT" -> "Left";
+    case "RIGHT", "ARROWRIGHT" -> "Right";
+    case "CTRL", "CONTROL" -> "ctrl";
+    case "SHIFT" -> "shift";
+    case "ALT", "OPTION" -> "alt";
+    case "META", "CMD", "COMMAND" -> "super";
+    default -> key;
+  };
+}
+
+static int normalizeButton(String button) {
+  return switch (button) {
+    case "left" -> 1;
+    case "wheel" -> 2;
+    case "right" -> 3;
+    case "back" -> 8;
+    case "forward" -> 9;
+    default -> throw new IllegalArgumentException("Unsupported mouse button: " + button);
+  };
+}
+
+static List<List<Long>> normalizeDragPath(List<ComputerAction.Drag.Path> path) {
+  return path.stream().map(point -> List.of(point.x(), point.y())).toList();
+}
+
+static List<Integer> scrollButtons(long x, long y) {
+  var buttons = new ArrayList<Integer>();
+  for (long[] direction : new long[][] {{y, 4, 5}, {x, 6, 7}}) {
+    if (direction[0] == 0) continue;
+    int button = (int) (direction[0] < 0 ? direction[1] : direction[2]);
+    int clicks = Math.max(1, (int) Math.abs(Math.rint(direction[0] / 100.0)));
+    for (int i = 0; i < clicks; i++) buttons.add(button);
+  }
+  return buttons;
+}
+```
+
 ```ruby
 def normalize_xdotool_key(key)
   names = {
@@ -1392,6 +1573,86 @@ def handle_computer_actions(page, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```java
+import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.*;
+import com.openai.core.ObjectMappers;
+import com.openai.models.responses.ComputerAction;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+static void handleComputerActions(Page page, List<ComputerAction> actions) {
+  for (var action : actions) {
+    List<String> keys = List.of();
+    Runnable operation;
+    if (action.isClick()) {
+      var click = action.asClick();
+      keys = click.keys().orElse(List.of());
+      operation =
+          () ->
+              page.mouse()
+                  .click(
+                      click.x(),
+                      click.y(),
+                      new Mouse.ClickOptions()
+                          .setButton(normalizeButton(click.button().toString())));
+    } else if (action.isDoubleClick()) {
+      var click = action.asDoubleClick();
+      keys = click.keys().orElse(List.of());
+      operation = () -> page.mouse().dblclick(click.x(), click.y());
+    } else if (action.isMove()) {
+      var move = action.asMove();
+      keys = move.keys().orElse(List.of());
+      operation = () -> page.mouse().move(move.x(), move.y());
+    } else if (action.isDrag()) {
+      var drag = action.asDrag();
+      keys = drag.keys().orElse(List.of());
+      var path = normalizeDragPath(drag.path());
+      if (path.size() < 2)
+        throw new IllegalArgumentException("Drag requires at least two points");
+      operation =
+          () -> {
+            page.mouse().move(path.get(0).get(0), path.get(0).get(1));
+            page.mouse().down();
+            try {
+              for (var point : path.subList(1, path.size()))
+                page.mouse().move(point.get(0), point.get(1));
+            } finally {
+              page.mouse().up();
+            }
+          };
+    } else if (action.isScroll()) {
+      var scroll = action.asScroll();
+      keys = scroll.keys().orElse(List.of());
+      operation =
+          () -> {
+            page.mouse().move(scroll.x(), scroll.y());
+            page.mouse().wheel(scroll.scrollX(), scroll.scrollY());
+          };
+    } else if (action.isKeypress()) {
+      page.keyboard()
+          .press(
+              String.join(
+                  "+",
+                  action.asKeypress().keys().stream().map(key -> normalizeKey(key)).toList()));
+      continue;
+    } else if (action.isType()) {
+      page.keyboard().type(action.asType().text());
+      continue;
+    } else if (action.isWait()) {
+      page.waitForTimeout(2000);
+      continue;
+    } else if (action.isScreenshot()) {
+      continue; // The caller captures the page after processing actions.
+    } else throw new IllegalArgumentException("Unsupported computer action");
+    if (!keys.isEmpty()) throw new IllegalArgumentException("Use the modifier-aware handler");
+    operation.run();
+  }
+}
 ```
 
 ```ruby
@@ -1684,6 +1945,116 @@ def handle_computer_actions(vm, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
+```java
+import com.openai.core.ObjectMappers;
+import com.openai.models.responses.ComputerAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+interface Operation {
+  void run() throws Exception;
+}
+
+static void handleComputerActions(VM vm, List<ComputerAction> actions) throws Exception {
+  for (var action : actions) {
+    List<String> keys = List.of();
+    Operation operation;
+    if (action.isClick()) {
+      var click = action.asClick();
+      keys = click.keys().orElse(List.of());
+      operation =
+          () ->
+              xdotool(
+                  vm,
+                  "mousemove",
+                  "--sync",
+                  Long.toString(click.x()),
+                  Long.toString(click.y()),
+                  "click",
+                  Integer.toString(normalizeButton(click.button().toString())));
+    } else if (action.isDoubleClick()) {
+      var click = action.asDoubleClick();
+      keys = click.keys().orElse(List.of());
+      operation =
+          () ->
+              xdotool(
+                  vm,
+                  "mousemove",
+                  "--sync",
+                  Long.toString(click.x()),
+                  Long.toString(click.y()),
+                  "click",
+                  "--repeat",
+                  "2",
+                  "--delay",
+                  "100",
+                  "1");
+    } else if (action.isMove()) {
+      var move = action.asMove();
+      keys = move.keys().orElse(List.of());
+      operation =
+          () ->
+              xdotool(
+                  vm, "mousemove", "--sync", Long.toString(move.x()), Long.toString(move.y()));
+    } else if (action.isDrag()) {
+      var drag = action.asDrag();
+      keys = drag.keys().orElse(List.of());
+      var path = normalizeDragPath(drag.path());
+      if (path.size() < 2)
+        throw new IllegalArgumentException("Drag requires at least two points");
+      operation =
+          () -> {
+            xdotool(
+                vm,
+                "mousemove",
+                "--sync",
+                path.get(0).get(0).toString(),
+                path.get(0).get(1).toString(),
+                "mousedown",
+                "1");
+            try {
+              for (var point : path.subList(1, path.size()))
+                xdotool(
+                    vm, "mousemove", "--sync", point.get(0).toString(), point.get(1).toString());
+            } finally {
+              xdotool(vm, "mouseup", "1");
+            }
+          };
+    } else if (action.isScroll()) {
+      var scroll = action.asScroll();
+      keys = scroll.keys().orElse(List.of());
+      operation =
+          () -> {
+            xdotool(
+                vm, "mousemove", "--sync", Long.toString(scroll.x()), Long.toString(scroll.y()));
+            for (int button : scrollButtons(scroll.scrollX(), scroll.scrollY()))
+              xdotool(vm, "click", Integer.toString(button));
+          };
+    } else if (action.isKeypress()) {
+      xdotool(
+          vm,
+          "key",
+          String.join(
+              "+", action.asKeypress().keys().stream().map(key -> normalizeKey(key)).toList()));
+      continue;
+    } else if (action.isType()) {
+      xdotool(vm, "type", "--clearmodifiers", "--", action.asType().text());
+      continue;
+    } else if (action.isWait()) {
+      Thread.sleep(2000);
+      continue;
+    } else if (action.isScreenshot()) {
+      continue;
+    } else throw new IllegalArgumentException("Unsupported computer action");
+    if (!keys.isEmpty()) throw new IllegalArgumentException("Use the modifier-aware handler");
+    operation.run();
+  }
+}
+```
+
 ```ruby
 def run_xdotool(vm, *args)
   docker_exec(vm.container_name, "xdotool", args, env: { "DISPLAY" => vm.display })
@@ -1747,7 +2118,7 @@ For mouse interactions that need held modifiers, use the mouse action's `keys` a
 
 
 
-Mouse actions can include an optional `keys` array for modifier-assisted workflows such as `Ctrl`+click to open a link in a new tab or `Shift`+click to extend a selection. When `keys` is present on `click`, `double_click`, `drag`, `move`, or `scroll`, hold those modifiers for the duration of the mouse action, then release them before continuing to the next action.
+Mouse actions can include an optional `keys` array for modifier-assisted workflows such as `Ctrl`+click to open a link in a new tab or `Shift`+click to extend a selection. When `keys` is present on `click`, `double_click`, `drag`, `move`, or `scroll`, hold those modifiers throughout the mouse action, then release them before continuing to the next action.
 
 You may also need to map model-emitted key names such as `CTRL`, `ALT`, `META`, and `ARROWLEFT` to the names your runtime expects.
 
@@ -1962,6 +2333,100 @@ def handle_computer_actions(page, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```java
+import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.*;
+import com.openai.core.ObjectMappers;
+import com.openai.models.responses.ComputerAction;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+static void withModifiers(Page page, List<String> keys, Runnable callback) {
+  var pressed = new ArrayList<String>();
+  try {
+    for (String key : keys) {
+      String normalized = normalizeKey(key);
+      page.keyboard().down(normalized);
+      pressed.add(normalized);
+    }
+    callback.run();
+  } finally {
+    Collections.reverse(pressed);
+    for (String key : pressed) page.keyboard().up(key);
+  }
+}
+
+static void handleComputerActions(Page page, List<ComputerAction> actions) {
+  for (var action : actions) {
+    List<String> keys = List.of();
+    Runnable operation;
+    if (action.isClick()) {
+      var click = action.asClick();
+      keys = click.keys().orElse(List.of());
+      operation =
+          () ->
+              page.mouse()
+                  .click(
+                      click.x(),
+                      click.y(),
+                      new Mouse.ClickOptions()
+                          .setButton(normalizeButton(click.button().toString())));
+    } else if (action.isDoubleClick()) {
+      var click = action.asDoubleClick();
+      keys = click.keys().orElse(List.of());
+      operation = () -> page.mouse().dblclick(click.x(), click.y());
+    } else if (action.isMove()) {
+      var move = action.asMove();
+      keys = move.keys().orElse(List.of());
+      operation = () -> page.mouse().move(move.x(), move.y());
+    } else if (action.isDrag()) {
+      var drag = action.asDrag();
+      keys = drag.keys().orElse(List.of());
+      var path = normalizeDragPath(drag.path());
+      if (path.size() < 2)
+        throw new IllegalArgumentException("Drag requires at least two points");
+      operation =
+          () -> {
+            page.mouse().move(path.get(0).get(0), path.get(0).get(1));
+            page.mouse().down();
+            try {
+              for (var point : path.subList(1, path.size()))
+                page.mouse().move(point.get(0), point.get(1));
+            } finally {
+              page.mouse().up();
+            }
+          };
+    } else if (action.isScroll()) {
+      var scroll = action.asScroll();
+      keys = scroll.keys().orElse(List.of());
+      operation =
+          () -> {
+            page.mouse().move(scroll.x(), scroll.y());
+            page.mouse().wheel(scroll.scrollX(), scroll.scrollY());
+          };
+    } else if (action.isKeypress()) {
+      page.keyboard()
+          .press(
+              String.join(
+                  "+",
+                  action.asKeypress().keys().stream().map(key -> normalizeKey(key)).toList()));
+      continue;
+    } else if (action.isType()) {
+      page.keyboard().type(action.asType().text());
+      continue;
+    } else if (action.isWait()) {
+      page.waitForTimeout(2000);
+      continue;
+    } else if (action.isScreenshot()) {
+      continue; // The caller captures the page after processing actions.
+    } else throw new IllegalArgumentException("Unsupported computer action");
+    withModifiers(page, keys, operation);
+  }
+}
 ```
 
 ```ruby
@@ -2286,6 +2751,130 @@ def handle_computer_actions(vm, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```java
+import com.openai.core.ObjectMappers;
+import com.openai.models.responses.ComputerAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+interface Operation {
+  void run() throws Exception;
+}
+
+static void withModifiers(VM vm, List<String> keys, Operation callback) throws Exception {
+  var pressed = new ArrayList<String>();
+  try {
+    for (String key : keys) {
+      String normalized = normalizeKey(key);
+      xdotool(vm, "keydown", normalized);
+      pressed.add(normalized);
+    }
+    callback.run();
+  } finally {
+    Collections.reverse(pressed);
+    for (String key : pressed) xdotool(vm, "keyup", key);
+  }
+}
+
+static void handleComputerActions(VM vm, List<ComputerAction> actions) throws Exception {
+  for (var action : actions) {
+    List<String> keys = List.of();
+    Operation operation;
+    if (action.isClick()) {
+      var click = action.asClick();
+      keys = click.keys().orElse(List.of());
+      operation =
+          () ->
+              xdotool(
+                  vm,
+                  "mousemove",
+                  "--sync",
+                  Long.toString(click.x()),
+                  Long.toString(click.y()),
+                  "click",
+                  Integer.toString(normalizeButton(click.button().toString())));
+    } else if (action.isDoubleClick()) {
+      var click = action.asDoubleClick();
+      keys = click.keys().orElse(List.of());
+      operation =
+          () ->
+              xdotool(
+                  vm,
+                  "mousemove",
+                  "--sync",
+                  Long.toString(click.x()),
+                  Long.toString(click.y()),
+                  "click",
+                  "--repeat",
+                  "2",
+                  "--delay",
+                  "100",
+                  "1");
+    } else if (action.isMove()) {
+      var move = action.asMove();
+      keys = move.keys().orElse(List.of());
+      operation =
+          () ->
+              xdotool(
+                  vm, "mousemove", "--sync", Long.toString(move.x()), Long.toString(move.y()));
+    } else if (action.isDrag()) {
+      var drag = action.asDrag();
+      keys = drag.keys().orElse(List.of());
+      var path = normalizeDragPath(drag.path());
+      if (path.size() < 2)
+        throw new IllegalArgumentException("Drag requires at least two points");
+      operation =
+          () -> {
+            xdotool(
+                vm,
+                "mousemove",
+                "--sync",
+                path.get(0).get(0).toString(),
+                path.get(0).get(1).toString(),
+                "mousedown",
+                "1");
+            try {
+              for (var point : path.subList(1, path.size()))
+                xdotool(
+                    vm, "mousemove", "--sync", point.get(0).toString(), point.get(1).toString());
+            } finally {
+              xdotool(vm, "mouseup", "1");
+            }
+          };
+    } else if (action.isScroll()) {
+      var scroll = action.asScroll();
+      keys = scroll.keys().orElse(List.of());
+      operation =
+          () -> {
+            xdotool(
+                vm, "mousemove", "--sync", Long.toString(scroll.x()), Long.toString(scroll.y()));
+            for (int button : scrollButtons(scroll.scrollX(), scroll.scrollY()))
+              xdotool(vm, "click", Integer.toString(button));
+          };
+    } else if (action.isKeypress()) {
+      xdotool(
+          vm,
+          "key",
+          String.join(
+              "+", action.asKeypress().keys().stream().map(key -> normalizeKey(key)).toList()));
+      continue;
+    } else if (action.isType()) {
+      xdotool(vm, "type", "--clearmodifiers", "--", action.asType().text());
+      continue;
+    } else if (action.isWait()) {
+      Thread.sleep(2000);
+      continue;
+    } else if (action.isScreenshot()) {
+      continue;
+    } else throw new IllegalArgumentException("Unsupported computer action");
+    withModifiers(vm, keys, operation);
+  }
+}
 ```
 
 ```ruby
@@ -2738,6 +3327,20 @@ def capture_screenshot(page):
     return page.screenshot(type="png")
 ```
 
+```java
+import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.*;
+import com.openai.core.ObjectMappers;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+static byte[] captureScreenshot(Page page) {
+  return page.screenshot(new Page.ScreenshotOptions().setType(ScreenshotType.PNG));
+}
+```
+
 ```ruby
 def capture_screenshot(page)
   page.screenshot(type: "png")
@@ -2778,6 +3381,22 @@ def capture_screenshot(vm):
     )
 ```
 
+```java
+import com.openai.core.ObjectMappers;
+import java.nio.file.*;
+import java.util.*;
+
+
+
+static byte[] captureScreenshot(VM vm) throws Exception {
+  return dockerExec(
+      vm.containerName(),
+      "import",
+      List.of("-window", "root", "png:-"),
+      Map.of("DISPLAY", vm.display()));
+}
+```
+
 ```ruby
 def capture_screenshot(vm)
   docker_exec(
@@ -2813,7 +3432,7 @@ A code-execution tool accepts a script and runs it in a runtime you provide. Thi
 
 The examples here use ordinary function tools named `exec_js` and `exec_py`. Their `code` argument contains the generated script. Your application sends that script to your execution service, then returns its text and image outputs to the model. If the model asks for clarification instead of returning a tool call, surface that question to the user before continuing.
 
-The code runtime can be temporary or persistent. If you need to resume the same browser session, preserve that session separately from individual scripts. A persistent runtime can also retain variables between tool calls. Tell the model which objects, helpers, and state are available.
+The code runtime can be temporary or persistent. If you need to continue the same browser session, preserve that session separately from individual scripts. A persistent runtime can also retain variables between tool calls. Tell the model which objects, helpers, and state are available.
 
 Provide only the capabilities the task requires:
 
@@ -2852,7 +3471,7 @@ go mod init example.com/computer-use
 go get github.com/openai/openai-go/v3@v3.70.0
 ```
 
-For Java 17 or later, add these dependencies to your Maven `pom.xml`:
+For Java, add these dependencies to your Maven `pom.xml`:
 
 ```xml
 <dependencies>
@@ -3232,7 +3851,7 @@ Apply confirmation and consent rules in your application and execution environme
 
 Check permissions before executing an action. For an action batch, stop before the first action that needs confirmation. For generated code, enforce permissions in the exposed helpers and runtime; a single script can perform many actions. Instructions to the model complement these controls but do not replace them.
 
-Let the agent complete safe work before pausing at the point of risk. Explain the proposed action, obtain any required consent, and resume only the approved work. If the user declines, do not execute the request. Your integration must communicate what did and did not run before asking the model to continue.
+Let the agent complete safe work before pausing at the point of risk. Explain the proposed action, obtain any required consent, and continue only the approved work. If the user declines, do not execute the request. Your integration must communicate what did and did not run before asking the model to continue.
 
 <a id="keep-a-human-in-the-loop"></a>
 

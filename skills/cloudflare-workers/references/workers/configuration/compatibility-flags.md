@@ -138,6 +138,16 @@ When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
 
+### Keep import caches in Python dedicated snapshots
+
+| **Default as of** | 2026-12-10 |
+| --- | --- |
+| **Flag to enable** | `python_dedicated_snapshot_keep_import_caches` |
+
+When this flag is set, Python Workers do not call `importlib.invalidate_caches()` when the snapshot is loaded.
+
+This reduces the cold start time of Python Workers.
+
 ### Enable the Temporal API
 
 | **Default as of** | 2026-12-01 |

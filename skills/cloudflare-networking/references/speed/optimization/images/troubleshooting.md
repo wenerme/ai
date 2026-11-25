@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/speed/optimization/images/troubleshooti
 # Troubleshooting
 
 - [Image optimization on optimized images](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/)
-- [Polish statuses](https://developers.cloudflare.com/images/polish/cf-polished-statuses/)
+- [Polish statuses](https://developers.cloudflare.com/images/polish/troubleshooting-polish/)
 - [Troubleshoot missing images](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/troubleshooting-missing-images/)
 
 Was this helpful?

@@ -5,7 +5,7 @@ description: "Browse Chutes model IDs, capabilities, context windows, and pricin
 
 # [Chutes logo]Chutes
 
-Access 20 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
+Access 19 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
 
 Learn more in the [Chutes documentation](https://llm.chutes.ai).
 
@@ -84,8 +84,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 393216,
-    "inputCost": 0.3,
-    "outputCost": 1.2
+    "inputCost": 0.195,
+    "outputCost": 0.78
   },
   {
     "model": "chutes/google/gemma-4-31B-turbo-TEE",
@@ -220,18 +220,6 @@ for await (const chunk of stream) {
     "outputCost": 4.5
   },
   {
-    "model": "chutes/tencent/Hy4",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": 0.525,
-    "outputCost": 1.5625
-  },
-  {
     "model": "chutes/zai-org/GLM-5.1-TEE",
     "imageInput": false,
     "audioInput": false,
@@ -276,8 +264,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 1.225,
-    "outputCost": 3.85
+    "inputCost": 0.8,
+    "outputCost": 2.5
   }
 ]}
 />

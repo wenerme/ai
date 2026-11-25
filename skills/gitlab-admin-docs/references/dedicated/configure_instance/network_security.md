@@ -302,8 +302,22 @@ GitLab Dedicated supports two types of PrivateLink connections:
   runners connect privately to services running in your VPC. Use this for webhooks,
   project mirroring, secrets managers, or deployments into your infrastructure.
 
-PrivateLink connections must be in the same AWS region as your GitLab Dedicated instance,
-and you can create endpoint services only in your primary and secondary AWS regions.
+You can create endpoint services only in your primary and secondary AWS regions.
+By default, PrivateLink connections must be in the same AWS region as your GitLab Dedicated
+instance. Use cross-region connections for other AWS regions:
+
+- [Cross-region inbound PrivateLink connections](#cross-region-inbound-privatelink-connections):
+  Connect from other AWS regions to your instance.
+- [Cross-region outbound PrivateLink connections](#cross-region-outbound-privatelink-connections):
+  Connect your instance to services in other AWS regions.
+
+Before creating cross-region connections, note:
+
+- AWS does not support cross-region connections in some regions and Availability Zones (AZs).
+  For more information, see AWS documentation for
+  [cross-region considerations](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#endpoint-service-cross-region)
+- AWS charges for cross-region connections. For more information, see
+  [AWS PrivateLink pricing](https://aws.amazon.com/privatelink/pricing/).
 
 For more information about AWS PrivateLink, see
 [what is AWS PrivateLink?](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html).
@@ -452,6 +466,83 @@ To configure DNS for GitLab Pages:
    1. Create an apex `A` alias record for the VPC endpoint.
    1. Create a wildcard `CNAME` for `*.<tenant_name>.gitlab-dedicated.site` that points
       to `<tenant_name>.gitlab-dedicated.site`.
+
+### Cross-region inbound PrivateLink connections
+
+By default, only VPCs in the same AWS region as an endpoint service can connect to it.
+With cross-region inbound PrivateLink connections, VPCs in other AWS regions can connect
+privately to your GitLab Dedicated instance.
+
+Use cross-region inbound PrivateLink connections to:
+
+- Connect workloads that run in AWS regions other than your primary and secondary regions.
+- Keep private access to your instance after a failover to your secondary region, without
+  moving your workloads. For example, a VPC in your primary region can connect to the
+  endpoint service in your secondary region.
+
+Before you add a region, consider:
+
+- Cost: AWS charges for each cross-region VPC endpoint and for data transferred between
+  regions. These charges apply to the VPC endpoints in your AWS account.
+- IAM permissions: Each IAM principal that connects from an added region needs the
+  `vpce:AllowMultiRegion` permission. In your AWS account, add this permission to the IAM
+  policy that you attached in
+  [create an inbound PrivateLink connection](#create-an-inbound-privatelink-connection).
+  Connections from your primary and secondary regions do not need this permission.
+- Region availability: Switchboard lists only the regions that support cross-region
+  PrivateLink connections.
+- Private DNS: In a VPC, only one VPC endpoint can have private DNS turned on for a DNS name.
+  If one VPC has VPC endpoints for both your primary and secondary region endpoint services,
+  turn on private DNS for the primary region endpoint only. After a failover, GitLab Support
+  notifies you, and you must move private DNS to the secondary region endpoint.
+
+#### Add a region to an inbound PrivateLink connection
+
+Prerequisites:
+
+- You have configured inbound PrivateLink connections.
+- You have an IAM principal with the `vpce:AllowMultiRegion` permission.
+
+To add a region:
+
+1. Sign in to [Switchboard](https://console.gitlab-dedicated.com/).
+1. In the left sidebar, select **Configuration**.
+1. Expand **Inbound PrivateLink connections**.
+1. If the endpoint service does not exist yet,
+   [create an inbound PrivateLink connection](#create-an-inbound-privatelink-connection).
+1. Select the endpoint service you want to update.
+1. In the **Supported regions** section, select **Add region**.
+1. From the **Region** dropdown list, select a region.
+1. Select **Save**.
+
+Then, for each region you added, complete the AWS setup:
+
+1. In your AWS account, create an endpoint interface in a VPC in that region.
+1. Configure the endpoint interface with these settings:
+   - **Service endpoint name**: Use the endpoint service name from the **Configuration**
+     page in Switchboard.
+   - **Service Region**: Select **Enable Cross Region endpoint**, then select the region
+     of the endpoint service.
+   - **Subnets**: Select all matching subnets.
+
+If the IAM principal does not have the `vpce:AllowMultiRegion` permission, AWS returns the
+error `Service name could not be verified`.
+
+#### Remove a region from an inbound PrivateLink connection
+
+When you remove a region, VPC endpoints in that region that already connect to your
+instance keep working. You cannot create new VPC endpoints in that region.
+You cannot remove your primary region, or your secondary region if you have one.
+
+To remove a region:
+
+1. Sign in to [Switchboard](https://console.gitlab-dedicated.com/).
+1. In the left sidebar, select **Configuration**.
+1. Expand **Inbound PrivateLink connections**.
+1. Select the endpoint service you want to update.
+1. In the **Supported regions** section, next to the region you want to remove, select
+   **Delete** ().
+1. Select **Delete supported region**.
 
 ### Private S3 access for object storage
 
@@ -782,6 +873,76 @@ To delete a VPC endpoint:
 1. Go to the endpoint you want to delete, then select
    **Delete** ().
 1. Select **Delete**.
+
+### Cross-region outbound PrivateLink connections
+
+By default, the VPC endpoints that GitLab creates for a service connection connect to
+endpoint services in the same AWS region as the VPC endpoint. With cross-region outbound
+PrivateLink connections, your GitLab Dedicated instance can connect privately to endpoint
+services in other AWS regions.
+
+Use cross-region outbound PrivateLink connections to:
+
+- Connect to services that run in AWS regions other than your primary and secondary regions.
+- Keep outbound connections available after a failover to your secondary region, with one
+  endpoint service in one region. For example, the VPC endpoint in your secondary region
+  can connect to the endpoint service in your primary region.
+
+The service region is the AWS region where your endpoint service runs. Switchboard reads the
+service region from the endpoint service name. When the service region differs from the
+region of the VPC endpoint, Switchboard labels the VPC endpoint **Cross-region**.
+
+A cross-region connection depends on the service region. If the service region becomes
+unavailable, the connection fails, even after your instance fails over to your secondary
+region.
+
+Before you create a cross-region connection, consider:
+
+- Endpoint service configuration: Your endpoint service must accept connections from the
+  regions of your GitLab Dedicated instance. Add your primary region, and your secondary
+  region if you use one, to the supported regions of your endpoint service.
+- IAM permissions: The IAM principal that adds supported regions to your endpoint service
+  needs the `vpce:AllowMultiRegion` permission. GitLab manages this permission for the VPC
+  endpoints that GitLab creates.
+- AZs: Same-region endpoint services must have a Network Load Balancer in the AZs of your
+  instance. Cross-region endpoint services do not have this requirement.
+- Region availability: Switchboard accepts only endpoint services in regions that support
+  cross-region PrivateLink connections.
+- Cost: AWS charges for data transferred between regions.
+
+#### Create a cross-region service connection
+
+Prerequisites:
+
+- An endpoint service in your AWS account that lists the regions of your GitLab Dedicated
+  instance as supported regions.
+
+To create a cross-region service connection, follow the steps to
+[create a service connection](#create-a-service-connection), with these differences:
+
+- For **Endpoint service name**, enter the name of an endpoint service in another region.
+  Switchboard shows the region in **Service region**.
+- For **DNS**, select **GitLab-managed DNS**. **Private DNS** is not available for endpoint
+  services in another region.
+
+#### Change the service region of a VPC endpoint
+
+You cannot change the endpoint service name of a VPC endpoint after GitLab creates it,
+so you cannot change its service region. Before you apply your changes, you can still
+edit the endpoint service name of a new VPC endpoint.
+
+To connect to an endpoint service in another region, replace the VPC endpoint:
+
+1. Sign in to [Switchboard](https://console.gitlab-dedicated.com/).
+1. In the left sidebar, select **Configuration**.
+1. Expand **Outbound PrivateLink connections**, then select **Outbound PrivateLink connections**.
+1. On the **Service connections** tab, next to a service connection that uses the VPC
+   endpoint, select **Edit** ().
+1. Under the region, select **New VPC endpoint** and enter the new endpoint service name.
+1. Select **Save**.
+1. For each other service connection that uses the previous VPC endpoint, edit the
+   connection, select **Existing VPC endpoint**, and select the new VPC endpoint.
+1. [Delete the previous VPC endpoint](#delete-an-outbound-privatelink-connection).
 
 ## Static IP addresses
 

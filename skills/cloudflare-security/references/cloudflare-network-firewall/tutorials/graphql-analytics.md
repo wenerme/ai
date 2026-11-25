@@ -19,6 +19,8 @@ Use the GraphQL Analytics API to review data for Cloudflare Network Firewall (fo
 
 Before you begin, you must have an [API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/). For additional help getting started with GraphQL Analytics, refer to [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/).
 
+For GraphQL nodes by ruleset phase, refer to [Network Firewall analytics](https://developers.cloudflare.com/cloudflare-network-firewall/about/analytics/#graphql-nodes-by-phase).
+
 ## Obtain Cloudflare Account ID
 
 To construct a Network Firewall GraphQL query for an object, you will need a Cloudflare Account ID
@@ -117,7 +119,7 @@ query MagicFirewallObtainRules(
 
 Use the example below to display the total number of packets and bits for the top 10 traffic streams that Network Firewall IDS has detected in the last hour.
 
-By setting `verdict` to `drop` and `outcome` as `pass`, we are filtering for traffic that was marked as a detection (i.e. verdict was drop) but was not dropped (for example, outcome was `pass`). This is because currently, Network Firewall IDS only detects malicious traffic but does not drop the traffic.
+By setting `verdict` to `drop` and `outcome` as `pass`, we are filtering for traffic that was marked as a detection (that is, verdict was drop) but was not dropped (for example, outcome was `pass`). This is because currently, Network Firewall IDS only detects malicious traffic but does not drop the traffic.
 
 For each stream, display the:
 
@@ -133,8 +135,8 @@ query MagicFirewallObtainIDS($accountTag: string!, $start: Time, $end: Time) {
 				filter: {
 					datetime_geq: $start
 					datetime_leq: $end
-					verdict: drop
-					outcome: pass
+					verdict: "drop"
+					outcome: "pass"
 				}
 				limit: 10
 				orderBy: [avg_packetRateFiveMinutes_DESC]
@@ -181,6 +183,42 @@ query MagicFirewallTraffic($accountTag: string!, $start: Time, $end: Time) {
 }
 ```
 
+### Obtain rate limiting analytics
+
+Note
+
+For Cloudflare Advanced Network Firewall customers, rate limiting (beta) is available by request through the account team.
+
+Use this query to estimate packets that pass rate limiting per data center. It uses default samples to avoid double counting and returns up to 10 data centers, ordered by packet count.
+
+In GraphiQL, provide your account ID as `accountTag` and the time range as `start` and `end` in the query variables.
+
+```graphql
+query MagicFirewallRateLimit($accountTag: string!, $start: Time, $end: Time) {
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups(
+				filter: {
+					datetime_geq: $start
+					datetime_leq: $end
+					outcome: "pass"
+					ruleId: ""
+				}
+				limit: 10
+				orderBy: [sum_packets_DESC]
+			) {
+				sum {
+					packets
+				}
+				dimensions {
+					coloName
+				}
+			}
+		}
+	}
+}
+```
+
 Was this helpful?
 
 YesNo
@@ -190,5 +228,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/#page","headline":"GraphQL Analytics","description":"Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/og.png?v=2176dc48e0324686","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/#page","headline":"GraphQL Analytics","description":"Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/og.png?v=2176dc48e0324686","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

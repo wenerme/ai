@@ -154,12 +154,20 @@ Download and extract the [TypeScript samples and locked dependencies](https://de
 
 
 
+
+
+
+The Java version uses `org.bouncycastle:bcprov-jdk18on:1.83`, `io.github.erdtman:java-json-canonicalization:1.1`, and `com.fasterxml.jackson.core:jackson-databind:2.18.11`.
+
+
+
+
 Pass these inputs to the recovery function:
 
 - `bundle_json`: The inner record bundle as UTF-8 JSON bytes.
 - `capsule`: The bytes returned by your cloud key-management service.
 - `original_key_id`: The original key registration ID from step 2.
-- `original_public_key_pem`: That cloud key version's RSA public key in PEM format, as bytes.
+- `original_public_key_pem`: That cloud key version's RSA public key in PEM format, as bytes in Python or a string in Java.
 
 The function returns the decrypted content as a UTF-8 string. A failed check stops recovery.
 
@@ -532,6 +540,175 @@ func recoverRecord(bundleJSON, capsule []byte, originalKeyID string, publicPEM [
 		return "", fmt.Errorf("plaintext is not UTF-8")
 	}
 	return string(plaintext), nil
+}
+```
+
+```java
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.math.BigInteger;
+import java.nio.*;
+import java.nio.charset.*;
+import java.nio.file.*;
+import java.security.*;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.*;
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import org.bouncycastle.asn1.sec.SECNamedCurves;
+import org.bouncycastle.crypto.hpke.HPKE;
+import org.erdtman.jcs.JsonCanonicalizer;
+
+
+
+static final ObjectMapper JSON =
+    new ObjectMapper(new JsonFactory().enable(JsonParser.Feature.STRICT_DUPLICATE_DETECTION));
+
+static String recoverRecord(byte[] bundleBytes, byte[] capsule, String keyId, String publicPem)
+    throws Exception {
+  try {
+    var bundle = JSON.readTree(bundleBytes);
+    require(
+        bundle.path("bundle_version").isIntegralNumber()
+            && bundle.path("bundle_version").bigIntegerValue().equals(BigInteger.ONE),
+        "Unsupported bundle version");
+    var record = (ObjectNode) bundle.required("protected_record");
+    var access = (ObjectNode) bundle.required("customer_access");
+    require(
+        "v4".equals(record.path("version").asText())
+            && "HPKE-v1-DHKEM_P256_HKDF_SHA256-EXPORT_ONLY-AES256_GCM"
+                .equals(record.path("algorithm").asText()),
+        "Unsupported record");
+    require(
+        access.path("version").isIntegralNumber()
+            && access.path("version").bigIntegerValue().equals(BigInteger.ONE)
+            && "RSA-OAEP-256".equals(access.path("algorithm").asText()),
+        "Unsupported recovery capsule");
+    require(keyId.equals(access.path("customer_key_id").asText()), "Wrong key registration");
+    require(
+        decode(access.required("recovery_secret").asText()).length == 384, "Wrong RSA length");
+    byte[] der =
+        Base64.getMimeDecoder()
+            .decode(
+                publicPem
+                    .replace("-----BEGIN PUBLIC KEY-----", "")
+                    .replace("-----END PUBLIC KEY-----", ""));
+    var publicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(der));
+    require(
+        publicKey instanceof RSAPublicKey rsa && rsa.getModulus().bitLength() == 3072,
+        "Expected RSA-3072");
+    require(
+        MessageDigest.isEqual(
+            decode(access.required("customer_public_key_fingerprint").asText()),
+            sha(publicKey.getEncoded())),
+        "Wrong key");
+    byte[] runtime = decode(record.required("safety_review_runtime_public_key").asText());
+    require(runtime.length == 65 && runtime[0] == 4, "Invalid P-256 encoding");
+    var curve = SECNamedCurves.getByName("secp256r1");
+    var point = curve.getCurve().decodePoint(runtime);
+    require(point.isValid() && !point.isInfinity(), "Invalid P-256 point");
+    var jwk =
+        Map.of(
+            "crv",
+            "P-256",
+            "kty",
+            "EC",
+            "x",
+            encode(Arrays.copyOfRange(runtime, 1, 33)),
+            "y",
+            encode(Arrays.copyOfRange(runtime, 33, 65)));
+    require(
+        record.required("key_thumbprint").asText().equals(encode(sha(canonical(jwk)))),
+        "Wrong runtime key");
+    byte[] nonce = decode(record.required("nonce").asText()),
+        ciphertext = decode(record.required("ciphertext").asText());
+    require(nonce.length == 12 && ciphertext.length >= 16, "Invalid AES-GCM encoding");
+    var header = access.deepCopy();
+    header.remove("recovery_secret");
+    byte[] binding =
+        sha(
+            canonical(
+                Map.of(
+                    "purpose",
+                    "OpenAI-PSP-v4/customer-recovery-binding",
+                    "bundle_version",
+                    1,
+                    "record",
+                    record,
+                    "recovery_header",
+                    header)));
+    require(
+        capsule.length == 72
+            && Arrays.equals(
+                Arrays.copyOfRange(capsule, 0, 8), new byte[] {80, 83, 80, 118, 52, 0, 0, 1})
+            && MessageDigest.isEqual(Arrays.copyOfRange(capsule, 40, 72), binding),
+        "Invalid recovery capsule binding");
+    byte[] scalar = Arrays.copyOfRange(capsule, 8, 40);
+    var e = new BigInteger(1, scalar);
+    require(e.signum() > 0 && e.compareTo(curve.getN()) < 0, "Invalid P-256 private scalar");
+    var suite =
+        new HPKE(
+            HPKE.mode_base, HPKE.kem_P256_SHA256, HPKE.kdf_HKDF_SHA256, HPKE.aead_EXPORT_ONLY);
+    byte[] ephemeralPublic = curve.getG().multiply(e).getEncoded(false);
+    var pair = suite.deserializePrivateKey(scalar, ephemeralPublic);
+    var sender =
+        suite.setupBaseS(
+            suite.deserializePublicKey(runtime),
+            "OpenAI-PSP-v4/HPKE-export".getBytes(StandardCharsets.UTF_8),
+            pair);
+    require(
+        MessageDigest.isEqual(
+            sender.getEncapsulation(), decode(record.required("encrypted_dek").asText())),
+        "Wrong recovered scalar");
+    var aadRecord = record.deepCopy();
+    aadRecord.remove("ciphertext");
+    byte[] aad = canonical(aadRecord);
+    byte[] prefix = "OpenAI-PSP-v4/payload-key".getBytes(StandardCharsets.UTF_8);
+    byte[] context = ByteBuffer.allocate(prefix.length + 32).put(prefix).put(sha(aad)).array();
+    byte[] key = sender.export(context, 32);
+    try {
+      var cipher = Cipher.getInstance("AES/GCM/NoPadding");
+      cipher.init(
+          Cipher.DECRYPT_MODE, new SecretKeySpec(key, "AES"), new GCMParameterSpec(128, nonce));
+      cipher.updateAAD(aad);
+      return StandardCharsets.UTF_8
+          .newDecoder()
+          .onMalformedInput(CodingErrorAction.REPORT)
+          .decode(ByteBuffer.wrap(cipher.doFinal(ciphertext)))
+          .toString();
+    } finally {
+      Arrays.fill(key, (byte) 0);
+      Arrays.fill(scalar, (byte) 0);
+    }
+  } catch (AEADBadTagException error) {
+    throw error;
+  } catch (Exception error) {
+    throw new IllegalArgumentException("Invalid recovery bundle or capsule", error);
+  }
+}
+
+static byte[] canonical(Object value) throws Exception {
+  return new JsonCanonicalizer(JSON.writeValueAsString(value)).getEncodedUTF8();
+}
+
+static byte[] sha(byte[] value) throws Exception {
+  return MessageDigest.getInstance("SHA-256").digest(value);
+}
+
+static String encode(byte[] value) {
+  return Base64.getUrlEncoder().withoutPadding().encodeToString(value);
+}
+
+static byte[] decode(String value) {
+  byte[] decoded = Base64.getUrlDecoder().decode(value);
+  require(encode(decoded).equals(value), "Noncanonical base64url");
+  return decoded;
+}
+
+static void require(boolean condition, String message) {
+  if (!condition) throw new IllegalArgumentException(message);
 }
 ```
 

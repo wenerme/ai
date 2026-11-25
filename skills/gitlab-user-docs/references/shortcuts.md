@@ -189,7 +189,7 @@ These shortcuts are available when editing a file with the
 | <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>v</kbd> | <kbd>Control</kbd>+<kbd>Alt</kbd>+<kbd>v</kbd> | In a table cell, paste a copied table as a nested table inside the cell |
 | <kbd>Command</kbd>+<kbd>z</kbd> | <kbd>Control</kbd>+<kbd>z</kbd> | Undo |
 | <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd> | <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd> | Redo |
-| <kbd>Shift</kbd>+<kbd>Enter</kbd> | <kbd>Shift</kbd>+<kbd>Enter</kbd> | Add a line break |
+| <kbd>Shift</kbd>+<kbd>Enter</kbd> | <kbd>Shift</kbd>+<kbd>Enter</kbd> | Start a new paragraph, or [add a line break](profile/preferences.md#insert-line-breaks-instead-of-new-paragraphs) if turned on |
 
 #### Formatting
 

@@ -22,15 +22,20 @@ stream results back to the client. The snippets below highlight the main compone
 
 ### 1. Install the server package
 
+Server: install the Python ChatKit SDK
+
 ```bash
 pip install openai-chatkit
 ```
+
 
 ### 2. Implement a server class
 
 `ChatKitServer` drives the conversation. Override `respond` to stream events whenever a
 user message or client tool output arrives. Helpers like `stream_agent_response` connect
 the server to the Agents SDK.
+
+Python server SDK: implement a ChatKit server
 
 ```python
 class MyChatKitServer(ChatKitServer[RequestContext]):
@@ -68,6 +73,8 @@ class MyChatKitServer(ChatKitServer[RequestContext]):
 Use your framework of choice to forward HTTP requests to the server instance. For
 example, with FastAPI:
 
+Python server SDK: expose the endpoint with FastAPI
+
 ```python
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import StreamingResponse
@@ -104,6 +111,8 @@ thumbnails and handle deletions when threads are removed.
 
 Client tools must be registered both in the client options and on your agent. Use
 `ctx.context.client_tool_call` to enqueue a call from an Agents SDK tool.
+
+Python server SDK: trigger a client tool
 
 ```python
 @function_tool(description_override="Add an item to the user's todo list.")
@@ -145,6 +154,8 @@ propagate user identity through your store and file store implementations.
 Widgets let agents surface rich UI inside the chat surface. Use them for cards, forms,
 text blocks, lists, and other layouts. The helper `stream_widget` can render a widget
 immediately or stream updates as they arrive.
+
+Python server SDK: stream an interactive widget
 
 ```python
 async def respond(
@@ -205,6 +216,8 @@ Use the following resources and reference to complete your integration.
 ### Events reference
 
 ChatKit emits `CustomEvent` instances from the Web Component. Listen for lifecycle events and read payload data from `event.detail`:
+
+Client: listen for ChatKit events
 
 ```typescript
 chatkit.addEventListener("chatkit.error", (event) => {

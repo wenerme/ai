@@ -812,7 +812,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
-Adds or removes domains from the allowed or denied list for flows running in a sandboxed environment.
+Adds or removes domains from an AI domain list: the network access allowlist or denylist for flows running in a sandboxed environment, or the GitLab Duo web search denylist.
 
 **Input type:** `AiDomainSettingsInstanceUpdateInput`
 
@@ -838,7 +838,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
-Adds or removes domains from the allowed or denied list for flows running in a sandboxed environment.
+Adds or removes domains from an AI domain list: the network access allowlist or denylist for flows running in a sandboxed environment, or the GitLab Duo web search denylist.
 
 **Input type:** `AiDomainSettingsNamespaceUpdateInput`
 

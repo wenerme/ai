@@ -52,7 +52,45 @@ authenticate your application's users and pass a unique identifier for them in t
 
 1. On your server, generate a client token.
 
-   This example starts a service that creates a ChatKit session through the OpenAI API and returns the session's client secret:
+   Create a ChatKit session through the OpenAI API and return its client secret. The Python and Ruby examples include an authenticated HTTP endpoint; the TypeScript, Go, and Java examples provide the session-creation helper for your endpoint:
+
+   Server: create a ChatKit session
+
+```typescript
+export default async function getChatKitSessionToken(deviceId: string) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is required");
+  }
+
+  const response = await fetch("https://api.openai.com/v1/chatkit/sessions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "OpenAI-Beta": "chatkit_beta=v1",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      workflow: { id: "wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1" },
+      user: deviceId,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to create a ChatKit session: ${response.status} ${await response.text()}`
+    );
+  }
+
+  const { client_secret } = await response.json();
+
+  if (!client_secret) {
+    throw new Error("ChatKit session response did not include client_secret");
+  }
+
+  return client_secret;
+}
+```
 
 ```python
 # Replace the illustrative IDs and URLs below with your own resource values.
@@ -115,6 +153,50 @@ def create_chatkit_session(
     response.raise_for_status()
     session = ChatKitSession.model_validate(response.json())
     return {"client_secret": session.client_secret}
+```
+
+```go
+// Call after authenticating the request. Pass the user's stable ID from your
+// server-side authentication context, never a client-supplied device ID.
+func getChatKitSessionToken(ctx context.Context, client openai.Client, authenticatedUserID string) (string, error) {
+	// Replace this illustrative workflow ID with your published workflow.
+	session, err := client.Beta.ChatKit.Sessions.New(ctx, openai.BetaChatKitSessionNewParams{
+		User: authenticatedUserID,
+		Workflow: openai.ChatSessionWorkflowParam{
+			ID: "wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1",
+		},
+	})
+	if err != nil {
+		return "", err
+	}
+	return session.ClientSecret, nil
+}
+```
+
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.beta.chatkit.sessions.*;
+import com.openai.models.beta.chatkit.threads.ChatSessionWorkflowParam;
+
+// Call after authenticating the request. Pass the user's stable ID from your
+// server-side authentication context, never a client-supplied device ID.
+static String getChatKitSessionToken(OpenAIClient client, String authenticatedUserId) {
+  // Replace this illustrative workflow ID with your published workflow.
+  return client
+      .beta()
+      .chatkit()
+      .sessions()
+      .create(
+          SessionCreateParams.builder()
+              .user(authenticatedUserId)
+              .workflow(
+                  ChatSessionWorkflowParam.builder()
+                      .id("wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1")
+                      .build())
+              .build())
+      .clientSecret();
+}
 ```
 
 ```ruby
@@ -180,104 +262,23 @@ server.start
 
    For Ruby, install WEBrick with `gem install webrick`.
 
-   Before starting the service, replace `wf_123` with your workflow ID and set `OPENAI_API_KEY` and `CHATKIT_AUTHENTICATED_USERS`. The latter value is a JSON map from your application's bearer tokens to stable user IDs. In production, replace this environment-backed map with your application's authentication or session lookup.
+   For Go, run `go get github.com/openai/openai-go/v3@v3.105.0`. For Java, add the Maven dependency `com.openai:openai-java:4.105.0`.
 
-2. In your server-side code, pass in your workflow ID and secret key to the session endpoint.
+   Set `OPENAI_API_KEY` and use your workflow ID. For the Python and Ruby services, also set `CHATKIT_AUTHENTICATED_USERS`. The latter value is a JSON map from your application's bearer tokens to stable user IDs. In production, replace this environment-backed map with your application's authentication or session lookup.
+
+2. Return the client secret from your server endpoint to your frontend.
 
    The client secret is the credential that your ChatKit frontend uses to open or refresh the chat session. You don't store it; you immediately hand it off to the ChatKit client library.
 
    See the [chatkit-js repo](https://github.com/openai/chatkit-js) on GitHub.
 
-   For Go, run `go get github.com/openai/openai-go/v3@v3.70.0`. For Java, add the Maven dependency `com.openai:openai-java:4.75.1`.
-
-   Create a ChatKit session token
-
-```typescript
-export default async function getChatKitSessionToken(deviceId: string) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is required");
-  }
-
-  const response = await fetch("https://api.openai.com/v1/chatkit/sessions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "OpenAI-Beta": "chatkit_beta=v1",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      workflow: { id: "wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1" },
-      user: deviceId,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to create a ChatKit session: ${response.status} ${await response.text()}`
-    );
-  }
-
-  const { client_secret } = await response.json();
-
-  if (!client_secret) {
-    throw new Error("ChatKit session response did not include client_secret");
-  }
-
-  return client_secret;
-}
-```
-
-```go
-// Call after authenticating the request. Pass the user's stable ID from your
-// server-side authentication context, never a client-supplied device ID.
-func getChatKitSessionToken(ctx context.Context, client openai.Client, authenticatedUserID string) (string, error) {
-	// Replace this illustrative workflow ID with your published workflow.
-	session, err := client.Beta.ChatKit.Sessions.New(ctx, openai.BetaChatKitSessionNewParams{
-		User: authenticatedUserID,
-		Workflow: openai.ChatSessionWorkflowParam{
-			ID: "wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1",
-		},
-	})
-	if err != nil {
-		return "", err
-	}
-	return session.ClientSecret, nil
-}
-```
-
-```java
-import com.openai.client.OpenAIClient;
-import com.openai.client.okhttp.OpenAIOkHttpClient;
-import com.openai.models.beta.chatkit.sessions.*;
-import com.openai.models.beta.chatkit.threads.ChatSessionWorkflowParam;
-
-// Call after authenticating the request. Pass the user's stable ID from your
-// server-side authentication context, never a client-supplied device ID.
-static String getChatKitSessionToken(OpenAIClient client, String authenticatedUserId) {
-  // Replace this illustrative workflow ID with your published workflow.
-  return client
-      .beta()
-      .chatkit()
-      .sessions()
-      .create(
-          SessionCreateParams.builder()
-              .user(authenticatedUserId)
-              .workflow(
-                  ChatSessionWorkflowParam.builder()
-                      .id("wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1")
-                      .build())
-              .build())
-      .clientSecret();
-}
-```
-
-
 3. In your project directory, install the ChatKit React bindings:
 
-   ```bash
-   npm install @openai/chatkit-react
-   ```
+   Install the ChatKit React bindings
+
+```bash
+npm install @openai/chatkit-react
+```
 
 
 4. Add the ChatKit JS script to your page. Drop this snippet into your page’s `<head>` or wherever you load scripts, and the browser will fetch and run ChatKit for you.

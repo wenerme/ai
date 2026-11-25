@@ -162,6 +162,30 @@ func main() {
 }
 ```
 
+```java
+import java.util.*;
+
+System.out.println(countChatMessageTokens(List.of(Map.of("role", "user", "content", "Hi"))));
+
+// Maven dependency: com.knuddels:jtokkit:1.1.0
+static final com.knuddels.jtokkit.api.Encoding ENCODING =
+    com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
+        .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
+
+static int countChatMessageTokens(List<Map<String, String>> messages) {
+  // This estimate follows gpt-3.5-turbo-0613 message framing, not all models.
+  int tokens = 3;
+  for (var message : messages) {
+    tokens += 3;
+    for (var entry : message.entrySet()) {
+      tokens += ENCODING.countTokens(entry.getValue());
+      if (entry.getKey().equals("name")) tokens++;
+    }
+  }
+  return tokens;
+}
+```
+
 ```ruby
 require "tiktoken_ruby"
 
@@ -308,6 +332,69 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%d prompt tokens counted.\n", count)
+}
+```
+
+```java
+import java.util.*;
+
+List<Map<String, String>> messages =
+    List.of(
+        Map.of(
+            "role",
+            "system",
+            "content",
+            "You are a helpful, pattern-following assistant that translates corporate jargon into plain English."),
+        Map.of(
+            "role",
+            "system",
+            "name",
+            "example_user",
+            "content",
+            "New synergies will help drive top-line growth."),
+        Map.of(
+            "role",
+            "system",
+            "name",
+            "example_assistant",
+            "content",
+            "Things working well together will increase revenue."),
+        Map.of(
+            "role",
+            "system",
+            "name",
+            "example_user",
+            "content",
+            "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage."),
+        Map.of(
+            "role",
+            "system",
+            "name",
+            "example_assistant",
+            "content",
+            "Let's talk later when we're less busy about how to do better."),
+        Map.of(
+            "role",
+            "user",
+            "content",
+            "This late pivot means we don't have time to boil the ocean for the client deliverable."));
+System.out.println(countChatMessageTokens(messages) + " prompt tokens counted.");
+
+static final com.knuddels.jtokkit.api.Encoding ENCODING =
+    com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
+        .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
+
+static int countChatMessageTokens(List<Map<String, String>> messages) {
+  // This estimate follows gpt-3.5-turbo-0613 message framing, not all models.
+  int tokens = 3;
+  for (var message : messages) {
+    tokens += 3;
+    for (var entry : message.entrySet()) {
+      tokens += ENCODING.countTokens(entry.getValue());
+      if (entry.getKey().equals("name")) tokens++;
+    }
+  }
+  return tokens;
 }
 ```
 
@@ -482,6 +569,13 @@ mu[j] -= counts[j] * frequency
 if counts[j] > 0 {
 	mu[j] -= presence
 }
+```
+
+```java
+
+
+mu[j] = mu[j] - counts[j] * frequencyPenalty - (counts[j] > 0 ? presencePenalty : 0);
+System.out.println(mu[j]);
 ```
 
 ```csharp

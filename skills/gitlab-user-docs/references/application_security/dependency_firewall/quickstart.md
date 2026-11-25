@@ -163,3 +163,5 @@ account that must keep publishing.
 
 - Add rules for [licenses](_index.md#license-rules), or tune the
   [risk severity thresholds](_index.md#risk-severity-rules).
+- If a package is blocked unexpectedly, or the CLI does not evaluate packages, see
+  [Troubleshooting the dependency firewall](troubleshooting.md).

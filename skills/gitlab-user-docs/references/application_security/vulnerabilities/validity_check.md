@@ -65,6 +65,7 @@ mutation {
 - Feature flag `secret_detection_partner_token_verification` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/619506) in GitLab 19.4.
 - [Expanded](https://gitlab.com/gitlab-org/gitlab/-/work_items/624216) validity checks to more GitHub token types in GitLab 19.4.
 - [Expanded](https://gitlab.com/gitlab-org/gitlab/-/work_items/628281) validity checks to more OpenAI token types in GitLab 19.5.
+- [Expanded](https://gitlab.com/gitlab-org/gitlab/-/work_items/642381) validity checks to more GitLab token types in GitLab 19.7.
 
 Validity checks support the following secret types:
 
@@ -73,9 +74,11 @@ Validity checks support the following secret types:
 - GitLab personal access tokens
 - Routable GitLab personal access tokens
 - GitLab deploy tokens
+- Routable GitLab deploy tokens
 - GitLab Runner authentication tokens
 - Routable GitLab Runner authentication tokens
 - GitLab Kubernetes agent tokens
+- Routable GitLab Kubernetes agent tokens
 - GitLab SCIM OAuth tokens
 - GitLab CI/CD job tokens
 - GitLab incoming email tokens

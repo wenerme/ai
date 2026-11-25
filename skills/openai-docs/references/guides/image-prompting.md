@@ -1533,6 +1533,65 @@ func saveImage(filename, encoded string) {
 }
 ```
 
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.MultipartField;
+import com.openai.models.images.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
+
+// Use your configured OpenAIClient named client.
+String model = args[0];
+String suffix = ".png";
+String logoPrompt =
+    "Create an original, non-infringing logo for a company called Field & Flour, a local bakery.\nThe logo should feel warm, simple, and timeless. Use clean, vector-like shapes, a strong silhouette, and balanced negative space.\nFavor simplicity over detail so it reads clearly at small and large sizes. Flat design, minimal strokes, no gradients unless essential.\nFully transparent background. Deliver a single centered logo with generous padding, clean alpha edges, and no solid backdrop, scenery, checkerboard, or watermark.";
+var logos =
+    client
+        .images()
+        .generate(
+            ImageGenerateParams.builder()
+                .model(model)
+                .prompt(logoPrompt)
+                .size(ImageGenerateParams.Size._1024X1536)
+                .quality(ImageGenerateParams.Quality.MEDIUM)
+                .background(ImageGenerateParams.Background.TRANSPARENT)
+                .outputFormat(ImageGenerateParams.OutputFormat.PNG)
+                .n(4)
+                .build());
+var images = logos.data().orElseThrow();
+for (int i = 0; i < images.size(); i++) {
+  Files.write(
+      Path.of("logo-generation-" + (i + 1) + suffix),
+      Base64.getDecoder().decode(images.get(i).b64Json().orElseThrow()));
+}
+String cutoutPrompt =
+    "Extract the product from the input image and isolate it on a fully transparent background.\nOutput: centered product, crisp silhouette, no halos/fringing.\nPreserve product geometry and label legibility exactly.\nAdd only light polishing. Do not add a solid backdrop, checkerboard, scenery, or shadow.\nDo not restyle the product; remove the background and preserve clean alpha transparency.";
+try (var image = Files.newInputStream(Path.of("input_images/shampoo.webp"))) {
+  var cutout =
+      client
+          .images()
+          .edit(
+              ImageEditParams.builder()
+                  .model(model)
+                  .prompt(cutoutPrompt)
+                  .image(
+                      MultipartField.<ImageEditParams.Image>builder()
+                          .value(ImageEditParams.Image.ofInputStream(image))
+                          .filename("shampoo.webp")
+                          .contentType("image/webp")
+                          .build())
+                  .size(ImageEditParams.Size._1024X1536)
+                  .quality(ImageEditParams.Quality.MEDIUM)
+                  .background(ImageEditParams.Background.TRANSPARENT)
+                  .outputFormat(ImageEditParams.OutputFormat.PNG)
+                  .build());
+  Files.write(
+      Path.of("extract-product" + suffix),
+      Base64.getDecoder().decode(cutout.data().orElseThrow().get(0).b64Json().orElseThrow()));
+}
+```
+
 ```ruby
 require "base64"
 require "openai"
@@ -3124,6 +3183,65 @@ func saveImage(filename, encoded string) {
 	if err := os.WriteFile(filename, data, 0600); err != nil {
 		panic(err)
 	}
+}
+```
+
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.MultipartField;
+import com.openai.models.images.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
+
+// Use your configured OpenAIClient named client.
+String model = "gpt-image-2.5-sunburst";
+String suffix = "-gpt-image-2.5-sunburst.png";
+String logoPrompt =
+    "Create an original, non-infringing logo for a company called Field & Flour, a local bakery.\nThe logo should feel warm, simple, and timeless. Use clean, vector-like shapes, a strong silhouette, and balanced negative space.\nFavor simplicity over detail so it reads clearly at small and large sizes. Flat design, minimal strokes, no gradients unless essential.\nFully transparent background. Deliver a single centered logo with generous padding, clean alpha edges, and no solid backdrop, scenery, checkerboard, or watermark.";
+var logos =
+    client
+        .images()
+        .generate(
+            ImageGenerateParams.builder()
+                .model(model)
+                .prompt(logoPrompt)
+                .size(ImageGenerateParams.Size._1024X1536)
+                .quality(ImageGenerateParams.Quality.MEDIUM)
+                .background(ImageGenerateParams.Background.TRANSPARENT)
+                .outputFormat(ImageGenerateParams.OutputFormat.PNG)
+                .n(4)
+                .build());
+var images = logos.data().orElseThrow();
+for (int i = 0; i < images.size(); i++) {
+  Files.write(
+      Path.of("logo-generation-" + (i + 1) + suffix),
+      Base64.getDecoder().decode(images.get(i).b64Json().orElseThrow()));
+}
+String cutoutPrompt =
+    "Extract the product from the input image and isolate it on a fully transparent background.\nOutput: centered product, crisp silhouette, no halos/fringing.\nPreserve product geometry and label legibility exactly.\nAdd only light polishing. Do not add a solid backdrop, checkerboard, scenery, or shadow.\nDo not restyle the product; remove the background and preserve clean alpha transparency.";
+try (var image = Files.newInputStream(Path.of("input_images/shampoo.webp"))) {
+  var cutout =
+      client
+          .images()
+          .edit(
+              ImageEditParams.builder()
+                  .model(model)
+                  .prompt(cutoutPrompt)
+                  .image(
+                      MultipartField.<ImageEditParams.Image>builder()
+                          .value(ImageEditParams.Image.ofInputStream(image))
+                          .filename("shampoo.webp")
+                          .contentType("image/webp")
+                          .build())
+                  .size(ImageEditParams.Size._1024X1536)
+                  .quality(ImageEditParams.Quality.MEDIUM)
+                  .background(ImageEditParams.Background.TRANSPARENT)
+                  .outputFormat(ImageEditParams.OutputFormat.PNG)
+                  .build());
+  Files.write(
+      Path.of("extract-product" + suffix),
+      Base64.getDecoder().decode(cutout.data().orElseThrow().get(0).b64Json().orElseThrow()));
 }
 ```
 

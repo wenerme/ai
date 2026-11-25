@@ -763,6 +763,14 @@ Install `ffmpeg` and `ffprobe` and ensure both commands are on your `PATH`. Save
 
 
 
+
+
+
+The Java example uses audio streams for uncompressed WAV files. It writes a single chunk containing at most ten minutes of audio and totaling less than 25 MB, so stereo recordings or recordings with higher sample rates produce shorter chunks.
+
+
+
+
 Split a long audio file
 
 ```typescript
@@ -867,6 +875,29 @@ func main() {
 	if err := json.NewEncoder(os.Stdout).Encode(map[string]int64{"input_ms": inputMS, "output_ms": outputMS}); err != nil {
 		panic(err)
 	}
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.*;
+import java.util.*;
+import javax.sound.sampled.*;
+
+try (var song = AudioSystem.getAudioInputStream(Path.of("good_morning.wav").toFile())) {
+  var format = song.getFormat();
+  if (format.getFrameSize() <= 0 || format.getFrameRate() <= 0)
+    throw new IllegalArgumentException("WAV must have a known frame size and rate");
+  // Keep headroom below the 25 MB upload limit, including WAV headers.
+  long byteLimitedFrames = (24_000_000L - 1024) / format.getFrameSize();
+  long frames = Math.min(byteLimitedFrames, (long) (600 * format.getFrameRate()));
+  if (song.getFrameLength() != AudioSystem.NOT_SPECIFIED)
+    frames = Math.min(frames, song.getFrameLength());
+  try (var firstTenMinutes = new AudioInputStream(song, format, frames)) {
+    AudioSystem.write(
+        firstTenMinutes, AudioFileFormat.Type.WAVE, Path.of("good_morning_10.wav").toFile());
+
+}
 }
 ```
 

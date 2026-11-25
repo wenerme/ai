@@ -111,7 +111,6 @@ For Code Review Flow, see the previous table.
 | Claude Fable 5.2[^model-subject-limited] | Yes             | No           | No                   | No               | Yes      |
 | Claude Mythos 5.1[^model-subject-limited], [^mythos-availability] | No              | No           | Yes                  | No               | No       |
 | Claude Mythos 5.2[^model-subject-limited], [^mythos-availability] | No              | No           | Yes                  | No               | No       |
-| Claude Sonnet 4.5           | Yes             | Yes          | No                   | No               | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes          | Yes                  | No               | Yes      |
 | Claude Sonnet 5             | Yes             | No           | Yes                  | Yes              | Yes      |
 | Claude Sonnet 5.5           | Yes             | No           | Yes                  | Yes              | Yes      |

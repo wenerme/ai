@@ -3038,7 +3038,7 @@ Immediately cancel a fine-tune job.
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -3898,7 +3898,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -4818,7 +4818,7 @@ Content type: `application/json`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -6098,7 +6098,7 @@ List your organization's fine-tuning jobs
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -7170,7 +7170,7 @@ Pause a fine-tune job.
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -8117,7 +8117,7 @@ Resume a fine-tune job.
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -9066,7 +9066,7 @@ Get info about a fine-tuning job.
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -10007,7 +10007,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.

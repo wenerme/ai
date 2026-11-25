@@ -351,7 +351,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -417,7 +417,7 @@ Content type: `application/json`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
-      format, and querying for objects via API or the dashboard.
+      format.
 
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
@@ -441,7 +441,7 @@ Content type: `application/json`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
-      format, and querying for objects via API or the dashboard.
+      format.
 
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
@@ -450,7 +450,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -967,7 +967,7 @@ List evaluations for a project.
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -991,7 +991,7 @@ List evaluations for a project.
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -1000,7 +1000,7 @@ List evaluations for a project.
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -1447,7 +1447,7 @@ Get an evaluation by ID.
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
-      format, and querying for objects via API or the dashboard.
+      format.
 
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
@@ -1471,7 +1471,7 @@ Get an evaluation by ID.
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
-      format, and querying for objects via API or the dashboard.
+      format.
 
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
@@ -1480,7 +1480,7 @@ Get an evaluation by ID.
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -1831,7 +1831,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -1897,7 +1897,7 @@ Content type: `application/json`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
-      format, and querying for objects via API or the dashboard.
+      format.
 
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
@@ -1921,7 +1921,7 @@ Content type: `application/json`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
-      format, and querying for objects via API or the dashboard.
+      format.
 
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
@@ -1930,7 +1930,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -2331,7 +2331,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -2355,7 +2355,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -2364,7 +2364,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -2737,7 +2737,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -2761,7 +2761,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -2770,7 +2770,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -3112,7 +3112,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -3136,7 +3136,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -3145,7 +3145,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -3441,7 +3441,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -3513,7 +3513,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -3537,7 +3537,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -3546,7 +3546,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -3959,7 +3959,7 @@ Cancel an ongoing evaluation run.
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
-          format, and querying for objects via API or the dashboard.
+          format.
 
           Keys are strings with a maximum length of 64 characters. Values are strings
           with a maximum length of 512 characters.
@@ -6098,7 +6098,7 @@ Cancel an ongoing evaluation run.
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -6472,7 +6472,7 @@ Content type: `application/json`
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
-          format, and querying for objects via API or the dashboard.
+          format.
 
           Keys are strings with a maximum length of 64 characters. Values are strings
           with a maximum length of 512 characters.
@@ -8595,7 +8595,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -8724,7 +8724,7 @@ Content type: `application/json`
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
-          format, and querying for objects via API or the dashboard.
+          format.
 
           Keys are strings with a maximum length of 64 characters. Values are strings
           with a maximum length of 512 characters.
@@ -10863,7 +10863,7 @@ Content type: `application/json`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -11241,7 +11241,7 @@ Get a list of runs for an evaluation.
 
             Set of 16 key-value pairs that can be attached to an object. This can be
             useful for storing additional information about the object in a structured
-            format, and querying for objects via API or the dashboard.
+            format.
 
             Keys are strings with a maximum length of 64 characters. Values are strings
             with a maximum length of 512 characters.
@@ -13380,7 +13380,7 @@ Get a list of runs for an evaluation.
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -13718,7 +13718,7 @@ Get an evaluation run by ID.
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
-          format, and querying for objects via API or the dashboard.
+          format.
 
           Keys are strings with a maximum length of 64 characters. Values are strings
           with a maximum length of 512 characters.
@@ -15857,7 +15857,7 @@ Get an evaluation run by ID.
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  format.
 
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
@@ -16172,7 +16172,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
+        format.
 
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
@@ -16885,7 +16885,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Set of 16 key-value pairs that can be attached to an object. This can be
             useful for storing additional information about the object in a structured
-            format, and querying for objects via API or the dashboard.
+            format.
 
             Keys are strings with a maximum length of 64 characters. Values are strings
             with a maximum length of 512 characters.
@@ -19024,7 +19024,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -19241,7 +19241,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Set of 16 key-value pairs that can be attached to an object. This can be
             useful for storing additional information about the object in a structured
-            format, and querying for objects via API or the dashboard.
+            format.
 
             Keys are strings with a maximum length of 64 characters. Values are strings
             with a maximum length of 512 characters.
@@ -21380,7 +21380,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -21607,7 +21607,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Set of 16 key-value pairs that can be attached to an object. This can be
             useful for storing additional information about the object in a structured
-            format, and querying for objects via API or the dashboard.
+            format.
 
             Keys are strings with a maximum length of 64 characters. Values are strings
             with a maximum length of 512 characters.
@@ -23746,7 +23746,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
@@ -23963,7 +23963,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Set of 16 key-value pairs that can be attached to an object. This can be
             useful for storing additional information about the object in a structured
-            format, and querying for objects via API or the dashboard.
+            format.
 
             Keys are strings with a maximum length of 64 characters. Values are strings
             with a maximum length of 512 characters.
@@ -26102,7 +26102,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    format.
 
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.

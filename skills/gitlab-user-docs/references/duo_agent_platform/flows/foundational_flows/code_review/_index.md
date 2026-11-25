@@ -10,6 +10,7 @@
 - On GitLab.com, [select a different model](../../../model_selection.md#select-a-model-for-a-feature) using the **Agentic Code Review** settings.
 - On GitLab Self-Managed and GitLab Dedicated, [select a different model](../../../../../administration/gitlab_duo/model_selection.md#select-a-model-for-code-review-flow) using the setting appropriate for your GitLab version.
 - Available on [GitLab Duo with self-hosted models](../../../../../administration/gitlab_duo_self_hosted/_index.md) for Lite reviews only.
+  You can select [model families that GitLab does not test with Code Review Flow](../../../../../administration/gitlab_duo_self_hosted/supported_models_and_hardware_requirements.md#code-review-flow).
 
 - Introduced as [a beta](../../../../../policy/development_stages_support.md) in GitLab [18.7](https://gitlab.com/groups/gitlab-org/-/epics/18645) [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_on_agent_platform`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8. Feature flag `duo_code_review_on_agent_platform` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217209).
@@ -17,6 +18,7 @@
 - LLM [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/5555) to Claude Sonnet 4.6 Vertex on May 20, 2026.
 - LLM [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6422) to Claude Sonnet 5 Vertex on August 6, 2026.
 - LLM [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7238) to Claude Sonnet 5.5 Gemini Enterprise Agent Platform on October 5, 2026.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273964) in GitLab 19.7 to check the **Agentic Code Review** setting for self-hosted models instead of **Agents & flows**. Code Review Flow now runs with every model family that setting accepts, not just General, GPT, Claude, or Qwen.
 
 > [!note]
 > Depending on your add-on and group settings, GitLab runs one of two code review features:

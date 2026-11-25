@@ -173,6 +173,7 @@ Example response:
 ## List organization users
 
 - Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+- In GitLab 19.7, the `id` response attribute was renamed to `user_id`, and the `order_by` value `id` was renamed to `user_id`.
 
 Lists the users of an organization.
 
@@ -190,7 +191,7 @@ Supported attributes:
 |-----------|---------|----------|-------------|
 | `id`      | integer | Yes      | The ID of the organization. |
 | `cursor`  | string  | No       | Cursor for the next page of results. |
-| `order_by` | string | No       | Field to sort by. Only `id` is supported. Default is `id`. |
+| `order_by` | string | No       | Field to sort by. Only `user_id` is supported. Default is `user_id`. |
 | `per_page` | integer | No      | Number of items per page, from 1 to 100. Default is 20. |
 | `sort`    | string  | No       | Sort order, either `asc` or `desc`. Default is `asc`. |
 
@@ -204,7 +205,7 @@ response attributes:
 |----------------|---------|-------------|
 | `access_level` | string  | Access level of the user in the organization, either `default` or `owner`. Users with the `owner` access level are organization administrators. |
 | `bot`          | boolean | If `true`, the user is a bot. |
-| `id`           | integer | ID of the user. |
+| `user_id`      | integer | ID of the user. |
 | `username`     | string  | Username of the user. |
 
 Example request:
@@ -220,7 +221,7 @@ Example response:
 ```json
 [
   {
-    "id": 1001,
+    "user_id": 1001,
     "username": "jsmith",
     "bot": false,
     "access_level": "default"
@@ -231,6 +232,7 @@ Example response:
 ## Add a user to an organization
 
 - Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+- In GitLab 19.7, the `id` response attribute was renamed to `user_id`, and the `user_id` request attribute was added.
 
 Adds a user to an organization.
 
@@ -244,11 +246,12 @@ POST /organizations/:id/users
 
 Supported attributes:
 
-| Attribute      | Type    | Required | Description |
-|----------------|---------|----------|-------------|
-| `id`           | integer | Yes      | The ID of the organization. |
-| `username`     | string  | Yes      | The username of the user to add. |
-| `access_level` | string  | No       | The access level of the user, either `default` or `owner`. Users with the `owner` access level are organization administrators. Default is `default`. |
+| Attribute      | Type    | Required    | Description |
+|----------------|---------|-------------|-------------|
+| `id`           | integer | Yes         | The ID of the organization. |
+| `access_level` | string  | No          | The access level of the user, either `default` or `owner`. Users with the `owner` access level are organization administrators. Default is `default`. |
+| `user_id`      | integer | Conditional | The ID of the user to add. Required if `username` is not provided. Cannot be used with `username`. |
+| `username`     | string  | Conditional | The username of the user to add. Required if `user_id` is not provided. Cannot be used with `user_id`. |
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the
 attributes listed in [List organization users](#list-organization-users).
@@ -261,7 +264,7 @@ Example request:
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --data "username=jsmith" \
+  --data "user_id=1001" \
   --data "access_level=owner" \
   --url "https://gitlab.example.com/api/v4/organizations/42/users"
 ```
@@ -270,16 +273,62 @@ Example response:
 
 ```json
 {
-  "id": 1001,
+  "user_id": 1001,
   "username": "jsmith",
   "bot": false,
   "access_level": "owner"
 }
 ```
 
+## Retrieve an organization user
+
+- Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.7.
+
+Retrieves a user of an organization.
+
+Prerequisites:
+
+- Instance or organization administrator access.
+
+```plaintext
+GET /organizations/:id/users/:user_id
+```
+
+Supported attributes:
+
+| Attribute | Type              | Required | Description |
+|-----------|-------------------|----------|-------------|
+| `id`      | integer           | Yes      | The ID of the organization. |
+| `user_id` | integer or string | Yes      | The ID or username of the user. |
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
+attributes listed in [List organization users](#list-organization-users).
+
+Returns `404 Not Found` if the user does not exist or is not a member of the organization.
+
+Example request:
+
+```shell
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/organizations/42/users/1001"
+```
+
+Example response:
+
+```json
+{
+  "user_id": 1001,
+  "username": "jsmith",
+  "bot": false,
+  "access_level": "default"
+}
+```
+
 ## Update an organization user
 
 - Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+- In GitLab 19.7, the `id` response attribute was renamed to `user_id`, and the `user_id` path attribute was changed to also accept a username.
 
 Changes the access level of a user in an organization. For example, you can make a member an organization administrator.
 
@@ -293,18 +342,18 @@ PUT /organizations/:id/users/:user_id
 
 Supported attributes:
 
-| Attribute      | Type    | Required | Description |
-|----------------|---------|----------|-------------|
-| `id`           | integer | Yes      | The ID of the organization. |
-| `user_id`      | integer | Yes      | The ID of the user to update. |
-| `access_level` | string  | Yes      | The access level of the user, either `default` or `owner`. Users with the `owner` access level are organization administrators. |
+| Attribute      | Type              | Required | Description |
+|----------------|-------------------|----------|-------------|
+| `id`           | integer           | Yes      | The ID of the organization. |
+| `user_id`      | integer or string | Yes      | The ID or username of the user. |
+| `access_level` | string            | Yes      | The access level of the user, either `default` or `owner`. Users with the `owner` access level are organization administrators. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 attributes listed in [List organization users](#list-organization-users).
 
 Returns `400 Bad Request` if the change would leave the organization without an active organization administrator.
 
-Returns `404 Not Found` if the user is not a member of the organization.
+Returns `404 Not Found` if the user does not exist or is not a member of the organization.
 
 Example request:
 
@@ -319,7 +368,7 @@ Example response:
 
 ```json
 {
-  "id": 1001,
+  "user_id": 1001,
   "username": "jsmith",
   "bot": false,
   "access_level": "owner"
@@ -329,6 +378,7 @@ Example response:
 ## Remove a user from an organization
 
 - Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+- In GitLab 19.7, the `user_id` path attribute was changed to also accept a username.
 
 Removes a user from an organization. Removal from an organization
 also removes the user as a member from any groups or projects
@@ -344,10 +394,10 @@ DELETE /organizations/:id/users/:user_id
 
 Supported attributes:
 
-| Attribute | Type    | Required | Description |
-|-----------|---------|----------|-------------|
-| `id`      | integer | Yes      | The ID of the organization. |
-| `user_id` | integer | Yes      | The ID of the user to remove. |
+| Attribute | Type              | Required | Description |
+|-----------|-------------------|----------|-------------|
+| `id`      | integer           | Yes      | The ID of the organization. |
+| `user_id` | integer or string | Yes      | The ID or username of the user. |
 
 If successful, returns [`204 No Content`](rest/troubleshooting.md#status-codes).
 

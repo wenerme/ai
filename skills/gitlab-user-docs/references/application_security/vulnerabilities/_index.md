@@ -66,6 +66,8 @@ request with context-aware code fixes. For more information, see
 - Status: Beta
 
 - Introduced in [epic 17885](https://gitlab.com/groups/gitlab-org/-/work_items/20152) in GitLab 18.10 as a [beta](../../../policy/development_stages_support.md#beta) feature with a [feature flag](../../../administration/feature_flags/_index.md) named `duo_secret_detection_false_positive`. [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227074).
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/21233) in GitLab 19.1.
+- Feature flag `duo_secret_detection_false_positive` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/593648) in GitLab 19.7.
 
 GitLab Duo automatically analyzes secret detection findings to identify potential false positives. Dismissing false positives reduces noise in your vulnerability report by flagging findings that are likely not actual security risks.
 
