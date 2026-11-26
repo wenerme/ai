@@ -5113,7 +5113,7 @@ function calling.
 
 {% /tabs %}
 
-## [Gemma 4](https://ai.google.dev/gemma/docs/core/model_card_4) {% id="gemma-4" %}
+## [Gemma 4](https://gemma.ai/models/gemma-4/model-card/) {% id="gemma-4" %}
 
 {% hr /%}
 

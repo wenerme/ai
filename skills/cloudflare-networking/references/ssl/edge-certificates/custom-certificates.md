@@ -41,11 +41,11 @@ Before deploying custom certificates to Cloudflare's global network, Cloudflare 
 
 A certificate pack is a group of certificates that share the same set of hostnames — for example, `example.com` and `*.example.com` — but use different signature algorithms.
 
-Each pack can include up to three certificates, one from each of the following signature algorithms:
+Each pack can include up to three certificates, one from each of the following signature algorithm categories:
 
-- `SHA-2/RSA`
-- `SHA-2/ECDSA`
-- `SHA-1/RSA`
+- `SHA-2/RSA`: RSA with SHA-256, SHA-384, or SHA-512
+- `SHA-2/ECDSA`: ECDSA with SHA-256, SHA-384, or SHA-512
+- `SHA-1/RSA`: RSA with SHA-1
 
 Each pack only counts as one SSL certificate against your custom certificate quota.
 

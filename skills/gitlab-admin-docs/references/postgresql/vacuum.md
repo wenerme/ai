@@ -181,6 +181,7 @@ Both sections read from the primary database, because autovacuum runs only there
 - Menu removed for a single check [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257133) in GitLab 19.5.
 - Planner statistics check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265314) in GitLab 19.6.
 - Tables restored from a backup [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/636988) to the planner statistics check in GitLab 19.7.
+- Tables outside the GitLab schemas [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/274702) from the planner statistics check in GitLab 19.7.
 
 Use the Rake task when you have no access to the UI, or when you want the report from a script.
 
@@ -253,7 +254,9 @@ autovacuum disabled.
 
 The [Database diagnostics page](../admin_area.md#planner-statistics-check) and the Rake task
 report the same two findings. Both concern tables of 10 MiB or more, measured by heap size
-without indexes.
+without indexes. The checks cover only the schemas in the `search_path` of the GitLab database
+role and the GitLab partition schemas. Tables that other tools create in the same database, such
+as the `ash` schema of pg_ash, are not reported.
 
 | Finding            | Severity | Reported when                                                                                                                                                                                                                                                                                                           | Action                                                                                                                                                                                                                                                                                             |
 |--------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

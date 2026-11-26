@@ -1814,3 +1814,15 @@ An example `WorkItemsStatusesStatusID` is: `"gid://gitlab/WorkItems::Statuses::S
 A `WorkItemsTypeID` is a global ID. It is encoded as a string.
 
 An example `WorkItemsTypeID` is: `"gid://gitlab/WorkItems::Type/1"`.
+
+## `WorkforceHierarchyID`
+
+A `WorkforceHierarchyID` is a global ID. It is encoded as a string.
+
+An example `WorkforceHierarchyID` is: `"gid://gitlab/Workforce::Hierarchy/1"`.
+
+## `WorkforceUnitID`
+
+A `WorkforceUnitID` is a global ID. It is encoded as a string.
+
+An example `WorkforceUnitID` is: `"gid://gitlab/Workforce::Unit/1"`.

@@ -111,13 +111,30 @@ Splunk Enterprise 10.2 and later accept tokens from an external OAuth 2.0 author
 
    - **Issuer URL** and **JSON Web Key Set URI** must use HTTPS, and the issuer must match the `iss` claim of the tokens.
    - Splunk blocks private and loopback addresses for the **JSON Web Key Set URI** by default. If your identity provider runs on a private network, a Splunk administrator must allow it in the `[oauth2_restricted_endpoints]` stanza of `authentication.conf`.
-   - **Audience** must match the `aud` claim of the access token. If the tokens that your identity provider issues to Grafana have no `aud` claim, configure the identity provider to add one.
+   - **Audience** must match the `aud` claim of the access token. If the tokens that your identity provider issues to Grafana have no `aud` claim, configure the identity provider to add one, or [exchange the ID token](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure/#exchange-the-id-token-instead-of-the-access-token) instead.
    - **Client ID claim** identifies the Splunk user. Use a per-user claim such as `preferred_username` so that each Grafana user gets their own Splunk identity.
    - **Group claim** is the claim that lists the user’s groups, for example `groups`.
 2. In Splunk, map identity provider groups to Splunk roles under **Role Mapping**.
 3. In the data source configuration, select **Forward OAuth Identity** and set **Splunk client ID claim** to the same claim as the Splunk **Client ID claim**.
 
 The data source then exchanges the forwarded token at the Splunk `/oauth2/v1/token` endpoint and uses the Splunk token for all requests. Splunk assigns roles based on the group mapping. If **Splunk client ID claim** is empty, the data source forwards the identity provider token unchanged.
+
+##### Exchange the ID token instead of the access token
+
+Splunk rejects the exchange with `aud: required JWT attribute not found` when the access token has no `aud` claim. Some identity providers only add an audience to access tokens after extra configuration. OpenID Connect ID tokens always carry an `aud` claim, which is the client ID that Grafana uses for login.
+
+To exchange the ID token, enable **Exchange ID token** in the data source configuration, and in Splunk:
+
+- Set **Audience** to the client ID that Grafana uses for login.
+- Make sure the **Client ID claim** and **Group claim** are present in the ID token. Identity providers can put different claims in ID tokens and access tokens.
+
+Grafana only forwards an ID token when the identity provider returns one, which requires the `openid` scope in the Grafana login configuration.
+
+> Caution
+>
+> ID tokens are meant for the application that signs the user in, not for API access. With this option, Splunk accepts every ID token issued for Grafana login and receives the profile claims in it, such as name and email. Use it only when your identity provider can’t add an audience to the access token, and use a login client that is dedicated to Grafana.
+
+When the token exchange is on, the data source sends the identity provider tokens only to the Splunk `/oauth2/v1/token` endpoint. All other requests carry the Splunk token.
 
 ### TLS configuration
 

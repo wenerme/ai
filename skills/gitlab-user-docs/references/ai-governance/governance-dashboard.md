@@ -49,6 +49,11 @@ Prerequisites:
 - On GitLab Self-Managed and GitLab Dedicated, [ClickHouse is configured and enabled for analytics](../../integration/clickhouse.md#enable-clickhouse-for-analytics).
   Without it, the **Total number of tool calls** tile, the tool call cards, and the
   **Agents by provider** card show an empty state.
+- [](ai-audit-events.md#enable-ai-audit-event-storage) turned on
+  for the group or project.
+  The setting is off by default.
+  Without it, the **Total number of tool calls** tile, the tool call cards, and the audit event count
+  on the **Recent agent sessions** card show no data.
 
 ## View the dashboard
 

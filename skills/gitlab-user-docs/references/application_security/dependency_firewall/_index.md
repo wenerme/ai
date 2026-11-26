@@ -130,8 +130,6 @@ Configure your egress proxy or gateway to allow HTTPS traffic to package registr
 that header is present. A package manager that runs outside `glab df` sends no such header, so
 the request is refused at the network boundary rather than quietly succeeding.
 
-Only package manager traffic is routed through the `glab df` proxy.
-
 This control needs:
 
 - An egress control point that inspects HTTPS traffic. The header travels inside the TLS

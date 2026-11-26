@@ -3505,6 +3505,106 @@ for (int y = 0; y < mask.getHeight(); y++) {
 ImageIO.write(rgba, "png", new File("mask_alpha.png"));
 ```
 
+```csharp
+using System.Diagnostics;
+
+namespace OpenAI.Docs.Examples.Images.AddAlphaChannelSample;
+
+internal static class AddAlphaChannel
+{
+    private static readonly string[] ProbeArguments =
+    [
+        "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=pix_fmt",
+        "-of", "default=noprint_wrappers=1:nokey=1", "mask.png",
+    ];
+
+    internal static async Task RunAsync()
+    {
+        // Install FFmpeg (including ffprobe) and place the input mask at mask.png.
+        string pixelFormat = (await RunToolAsync("ffprobe", ProbeArguments)).Trim();
+        string temporaryPath = $"mask_alpha-{Guid.NewGuid():N}.png";
+        try
+        {
+            _ = await RunToolAsync("ffmpeg", CreateConversionArguments(pixelFormat, temporaryPath));
+            File.Move(temporaryPath, "mask_alpha.png", overwrite: true);
+        }
+        finally
+        {
+            // Remove only this invocation's temporary artifact, including on failure.
+            File.Delete(temporaryPath);
+        }
+    }
+
+    internal static string[] CreateConversionArguments(string pixelFormat, string temporaryPath)
+    {
+        // Normalize high-bit-depth grayscale before RGB conversion to avoid
+        // FFmpeg's different gray16-to-RGBA rounding. Ignore the input alpha.
+        string normalization = pixelFormat switch
+        {
+            "gray16be" or "gray16le" => "format=gray,",
+            "gray" or "ya8" or "pal8" or "monob" or "monow"
+                or "rgb24" or "bgr24" or "rgba" or "bgra" or "argb" or "abgr"
+                or "rgb0" or "bgr0" or "0rgb" or "0bgr" or "rgb8" or "bgr8"
+                or "yuv420p" or "yuv422p" or "yuv444p" or "yuv440p"
+                or "yuvj420p" or "yuvj422p" or "yuvj444p" or "yuvj440p" => "",
+            _ => throw new NotSupportedException(
+                $"Normalize mask pixel format '{pixelFormat}' to 8-bit grayscale first."),
+        };
+        const string luminance = "floor((299*r(X,Y)+587*g(X,Y)+114*b(X,Y)+500)/1000)";
+        string filter = $"{normalization}format=rgba,"
+            + $"geq=r='{luminance}':g='{luminance}':b='{luminance}':a='{luminance}':interpolation=nearest,"
+            + "format=rgba";
+        return
+        [
+            "-nostdin", "-hide_banner", "-loglevel", "error", "-y",
+            "-filter_threads", "1", "-i", "mask.png", "-frames:v", "1",
+            "-vf", filter, "-pix_fmt", "rgba", "-update", "1", temporaryPath,
+        ];
+    }
+
+    private static async Task<string> RunToolAsync(string executable, IEnumerable<string> arguments)
+    {
+        ProcessStartInfo start = new(executable)
+        {
+            UseShellExecute = false,
+            RedirectStandardError = true,
+            RedirectStandardOutput = true,
+            CreateNoWindow = true,
+        };
+        foreach (string argument in arguments)
+        {
+            start.ArgumentList.Add(argument);
+        }
+        using Process process = Process.Start(start)
+            ?? throw new InvalidOperationException($"Could not start {executable}.");
+        Task<string> output = process.StandardOutput.ReadToEndAsync();
+        Task<string> diagnostics = process.StandardError.ReadToEndAsync();
+        using CancellationTokenSource timeout = new(TimeSpan.FromSeconds(30));
+        try
+        {
+            await process.WaitForExitAsync(timeout.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            if (!process.HasExited)
+            {
+                process.Kill(entireProcessTree: true);
+            }
+            await process.WaitForExitAsync();
+            await Task.WhenAll(output, diagnostics);
+            throw new TimeoutException($"{executable} exceeded 30 seconds.");
+        }
+        string error = await diagnostics;
+        string result = await output;
+        if (process.ExitCode != 0)
+        {
+            throw new InvalidOperationException($"{executable} failed: {error}");
+        }
+        return result;
+    }
+}
+```
+
 ```ruby
 require "chunky_png"
 

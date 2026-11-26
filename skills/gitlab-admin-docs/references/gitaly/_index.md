@@ -151,6 +151,9 @@ Gitaly comes pre-configured with a Linux package installation, which is a config
 - Linux package installations for up to 40 RPS / 2,000 users, see [specific Gitaly configuration instructions](../reference_architectures/2k_users.md#configure-gitaly).
 - Self-compiled installations or custom Gitaly installations, see [Configure Gitaly](configure_gitaly.md).
 
+For how Gitaly authenticates and protects connections, see
+[Gitaly connections in a Zero Trust architecture](zero-trust.md).
+
 GitLab installations for more than 2000 active users performing daily Git write operations might be
 best suited to Gitaly Cluster (Praefect).
 

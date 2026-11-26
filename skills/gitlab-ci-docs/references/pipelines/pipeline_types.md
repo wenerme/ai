@@ -31,6 +31,8 @@ Branch pipelines:
   and [protected runners](../runners/configure_runners.md#prevent-runners-from-revealing-sensitive-information)
   when the branch is a [protected branch](../../user/project/repository/branches/protected.md).
 
+Branch pipelines do not run when you [use a CI/CD job token to authenticate a Git push](../jobs/ci_job_token.md#allow-git-push-requests-to-your-project-repository).
+
 ## Tag pipeline
 
 A pipeline can run every time you create or push a new [tag](../../user/project/repository/tags/_index.md).
@@ -47,6 +49,8 @@ Tag pipelines:
 - Have access to [protected variables](../variables/_index.md#protect-a-cicd-variable)
   and [protected runners](../runners/configure_runners.md#prevent-runners-from-revealing-sensitive-information)
   when the tag is a [protected tag](../../user/project/protected_tags.md).
+
+Tag pipelines do not run when you [use a CI/CD job token to authenticate a Git push](../jobs/ci_job_token.md#allow-git-push-requests-to-your-project-repository).
 
 ## Merge request pipeline
 

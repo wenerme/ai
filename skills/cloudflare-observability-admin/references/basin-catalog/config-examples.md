@@ -20,6 +20,7 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/og.png?v=
 Below are configuration examples to connect various Iceberg engines to [Basin Catalog](https://developers.cloudflare.com/basin-catalog/):
 
 - [DuckDB](https://developers.cloudflare.com/basin-catalog/config-examples/duckdb/)
+- [Polars](https://developers.cloudflare.com/basin-catalog/config-examples/polars/)
 - [PyIceberg](https://developers.cloudflare.com/basin-catalog/config-examples/pyiceberg/)
 - [Snowflake](https://developers.cloudflare.com/basin-catalog/config-examples/snowflake/)
 - [Spark (PySpark)](https://developers.cloudflare.com/basin-catalog/config-examples/spark-python/)

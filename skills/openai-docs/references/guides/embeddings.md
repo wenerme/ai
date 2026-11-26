@@ -675,6 +675,89 @@ try (var csv =
 System.out.println(vectors.get(0));
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+namespace OpenAI.Docs.Examples.Embeddings.LoadSavedEmbeddingsSample;
+
+internal static class LoadSavedEmbeddings
+{
+
+internal static List<double[]> LoadVectors()
+    {
+        // Use the CSV saved by the review-embedding example.
+        List<double[]> vectors = [];
+        foreach (Dictionary<string, string> row in ReadCsv("output/embedded_1k_reviews.csv", "ada_embedding"))
+        {
+            double[] vector = DecodeVector(row["ada_embedding"]);
+            if (vectors.Count > 0 && vector.Length != vectors[0].Length)
+            {
+                throw new InvalidDataException("Embedding dimensions differ.");
+            }
+            vectors.Add(vector);
+        }
+        if (vectors.Count == 0)
+        {
+            throw new InvalidDataException("The CSV contains no embeddings.");
+        }
+
+        Console.WriteLine(JsonSerializer.Serialize(vectors[0]));
+        return vectors;
+    }
+    private static IEnumerable<Dictionary<string, string>> ReadCsv(string path, params string[] requiredColumns)
+    {
+        using TextFieldParser parser = new(path)
+        {
+            TextFieldType = FieldType.Delimited,
+            HasFieldsEnclosedInQuotes = true,
+            TrimWhiteSpace = false,
+        };
+        parser.SetDelimiters(",");
+        string[] headers = parser.ReadFields()
+            ?? throw new InvalidDataException("The CSV has no header.");
+        if (headers.Distinct(StringComparer.Ordinal).Count() != headers.Length
+            || requiredColumns.Any(column => !headers.Contains(column, StringComparer.Ordinal)))
+        {
+            throw new InvalidDataException("The CSV has duplicate headers or missing required columns.");
+        }
+
+        while (!parser.EndOfData)
+        {
+            string[] fields = parser.ReadFields()
+                ?? throw new InvalidDataException("The CSV record is missing.");
+            if (fields.Length != headers.Length)
+            {
+                throw new InvalidDataException($"CSV record near line {parser.LineNumber} has the wrong field count.");
+            }
+
+            Dictionary<string, string> row = new(StringComparer.Ordinal);
+            for (int i = 0; i < headers.Length; i++)
+            {
+                row.Add(headers[i], fields[i]);
+            }
+            yield return row;
+        }
+    }
+
+    private static double[] DecodeVector(string json)
+    {
+        double[] vector = JsonSerializer.Deserialize<double[]>(json)
+            ?? throw new InvalidDataException("An embedding is null.");
+        if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)))
+        {
+            throw new InvalidDataException("Embeddings must contain finite numbers and at least one dimension.");
+        }
+        return vector;
+    }
+}
+```
+
 ```ruby
 # standard:disable Lint/UselessAssignment -- Preserve named results for the next workflow step.
 require "csv"
@@ -2179,6 +2262,319 @@ try {
 javax.imageio.ImageIO.write(image, "png", Path.of("local-plot.png").toFile());
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+// The included illustrative CSV has been retaining Score, UserId and ProductId
+// beside each corresponding ada_embedding. The basic embedding producer has
+// been writing only combined and ada_embedding to a different output file.
+// Real-data preparation has been preserving these review fields when attaching
+// each generated vector; this example has been reading that labeled schema.
+
+var (matrix, scores) = ReadReviews("data/illustrative-review-embeddings.csv");
+// Exact t-SNE uses all pairwise affinities. Its quadratic cost is suitable
+// for this 1,000-review tutorial, rather than very large datasets.
+double[][] points = FitTsne(matrix, perplexity: 15, seed: 42, learningRate: 200);
+
+WritePlot(points, scores, "local-plot.svg");
+
+static double[][] FitTsne(double[][] matrix, double perplexity, int seed, double learningRate)
+{
+    int n = matrix.Length;
+    if (perplexity < 1 || n <= perplexity || !double.IsFinite(perplexity) ||
+        learningRate <= 0 || !double.IsFinite(learningRate))
+    {
+        throw new ArgumentException("Perplexity must be at least one and smaller than the row count; learning rate must be positive and finite.");
+    }
+
+    double[,] probabilities = JointProbabilities(matrix, perplexity);
+    Random random = new(seed);
+    double[][] points = Enumerable.Range(0, n).Select(_ => new[]
+    {
+        Gaussian(random) * 1e-4, Gaussian(random) * 1e-4,
+    }).ToArray();
+    double[,] velocity = new double[n, 2];
+    double[,] gains = new double[n, 2];
+    for (int i = 0; i < n; i++)
+    {
+        gains[i, 0] = gains[i, 1] = 1;
+    }
+
+    double[,] numerators = new double[n, n];
+    double[,] gradient = new double[n, 2];
+    for (int iteration = 0; iteration < 1000; iteration++)
+    {
+        Array.Clear(gradient);
+        double normalization = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                double dx = points[i][0] - points[j][0];
+                double dy = points[i][1] - points[j][1];
+                double numerator = 1 / (1 + dx * dx + dy * dy);
+                numerators[i, j] = numerator;
+                normalization += 2 * numerator;
+            }
+        }
+
+        if (!double.IsFinite(normalization) || normalization <= 0)
+        {
+            throw new InvalidOperationException("The t-SNE affinity normalization is not finite and positive.");
+        }
+
+        // Student-t affinities and the exact gradient of KL(P || Q).
+        // Early exaggeration and momentum follow the common t-SNE schedule.
+        double exaggeration = iteration < 250 ? 12 : 1;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                double numerator = numerators[i, j];
+                double q = numerator / normalization;
+                double factor = 4 * (exaggeration * probabilities[i, j] - q) * numerator;
+                for (int d = 0; d < 2; d++)
+                {
+                    double contribution = factor * (points[i][d] - points[j][d]);
+                    gradient[i, d] += contribution;
+                    gradient[j, d] -= contribution;
+                }
+            }
+        }
+
+        double momentum = iteration < 250 ? 0.5 : 0.8;
+        for (int i = 0; i < n; i++)
+        {
+            for (int d = 0; d < 2; d++)
+            {
+                gains[i, d] = Math.Sign(gradient[i, d]) != Math.Sign(velocity[i, d])
+                    ? gains[i, d] + 0.2 : Math.Max(0.01, gains[i, d] * 0.8);
+                velocity[i, d] = momentum * velocity[i, d] - learningRate * gains[i, d] * gradient[i, d];
+                points[i][d] += velocity[i, d];
+                if (!double.IsFinite(points[i][d]))
+                {
+                    throw new InvalidOperationException("The t-SNE optimization produced nonfinite coordinates.");
+                }
+            }
+        }
+
+        for (int d = 0; d < 2; d++)
+        {
+            double center = points.Average(point => point[d]);
+            foreach (double[] point in points)
+            {
+                point[d] -= center;
+            }
+        }
+    }
+
+    return points;
+}
+
+// Binary-search a Gaussian precision per input vector until each conditional
+// distribution has entropy log(perplexity), then symmetrize over both directions.
+static double[,] JointProbabilities(double[][] matrix, double perplexity)
+{
+    int n = matrix.Length;
+    double[,] conditional = new double[n, n];
+    double targetEntropy = Math.Log(perplexity);
+    for (int i = 0; i < n; i++)
+    {
+        double[] distances = new double[n];
+        double minimum = double.PositiveInfinity;
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+            {
+                continue;
+            }
+
+            double distance = 0;
+            for (int d = 0; d < matrix[i].Length; d++)
+            {
+                double delta = matrix[i][d] - matrix[j][d];
+                distance += delta * delta;
+            }
+
+            if (!double.IsFinite(distance))
+            {
+                throw new InvalidDataException("Embedding distances overflowed; rescale the input.");
+            }
+
+            distances[j] = distance;
+            minimum = Math.Min(minimum, distance);
+        }
+
+        // Subtract the nearest distance before exponentiation to avoid
+        // underflow of every affinity when the Gaussian is very narrow.
+        double beta = 1, lower = 0, upper = double.PositiveInfinity;
+        bool converged = false;
+        for (int attempt = 0; attempt < 100; attempt++)
+        {
+            double total = 0;
+            for (int j = 0; j < n; j++)
+            {
+                conditional[i, j] = i == j ? 0 : Math.Exp(-beta * (distances[j] - minimum));
+                total += conditional[i, j];
+            }
+
+            double entropy = 0;
+            for (int j = 0; j < n; j++)
+            {
+                conditional[i, j] /= total;
+                double p = conditional[i, j];
+                if (p > 0)
+                {
+                    entropy -= p * Math.Log(p);
+                }
+            }
+
+            double error = entropy - targetEntropy;
+            if (Math.Abs(error) < 1e-5)
+            {
+                converged = true;
+                break;
+            }
+
+            if (error > 0)
+            {
+                lower = beta;
+                beta = double.IsPositiveInfinity(upper) ? beta * 2 : (beta + upper) / 2;
+            }
+            else
+            {
+                upper = beta;
+                beta = (beta + lower) / 2;
+            }
+        }
+
+        if (!converged)
+        {
+            throw new InvalidDataException("Cannot achieve perplexity 15 for these distances; inspect duplicate or degenerate embeddings.");
+        }
+    }
+
+    double[,] joint = new double[n, n];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            joint[i, j] = joint[j, i] = (conditional[i, j] + conditional[j, i]) / (2 * n);
+        }
+    }
+
+    return joint;
+}
+
+static double Gaussian(Random random)
+{
+    double radius = Math.Sqrt(-2 * Math.Log(1 - random.NextDouble()));
+    return radius * Math.Cos(2 * Math.PI * random.NextDouble());
+}
+
+static void WritePlot(double[][] points, int[] scores, string path)
+{
+    // SVG keeps the plot portable across Linux, macOS, and Windows without
+    // a platform-specific graphics package. Preserve labels in the artifact.
+    System.Xml.Linq.XNamespace svg = "http://www.w3.org/2000/svg";
+    System.Xml.Linq.XElement image = new(svg + "svg",
+        new System.Xml.Linq.XAttribute("width", 640),
+        new System.Xml.Linq.XAttribute("height", 480),
+        new System.Xml.Linq.XAttribute("viewBox", "0 0 640 480"),
+        new System.Xml.Linq.XElement(svg + "title", "Review embeddings colored by score"),
+        new System.Xml.Linq.XElement(svg + "rect",
+            new System.Xml.Linq.XAttribute("width", 640),
+            new System.Xml.Linq.XAttribute("height", 480),
+            new System.Xml.Linq.XAttribute("fill", "white")));
+    string[] palette = ["#e41a1c", "#ff7f00", "#d4af00", "#00a6ca", "#238b45"];
+    double minX = points.Min(point => point[0]), maxX = points.Max(point => point[0]);
+    double minY = points.Min(point => point[1]), maxY = points.Max(point => point[1]);
+    for (int i = 0; i < points.Length; i++)
+    {
+        double x = 20 + 600 * (points[i][0] - minX) / Math.Max(1e-12, maxX - minX);
+        double y = 440 - 400 * (points[i][1] - minY) / Math.Max(1e-12, maxY - minY);
+        image.Add(new System.Xml.Linq.XElement(svg + "circle",
+            new System.Xml.Linq.XAttribute("cx", x.ToString("R", CultureInfo.InvariantCulture)),
+            new System.Xml.Linq.XAttribute("cy", y.ToString("R", CultureInfo.InvariantCulture)),
+            new System.Xml.Linq.XAttribute("r", 3),
+            new System.Xml.Linq.XAttribute("fill", palette[scores[i] - 1]),
+            new System.Xml.Linq.XAttribute("data-score", scores[i]),
+            new System.Xml.Linq.XAttribute("data-review", i)));
+    }
+
+    for (int rating = 1; rating <= 5; rating++)
+    {
+        image.Add(new System.Xml.Linq.XElement(svg + "text",
+            new System.Xml.Linq.XAttribute("x", 20 + (rating - 1) * 120),
+            new System.Xml.Linq.XAttribute("y", 470),
+            new System.Xml.Linq.XAttribute("fill", palette[rating - 1]),
+            new System.Xml.Linq.XAttribute("font-size", 14),
+            $"Score {rating}"));
+    }
+
+    new System.Xml.Linq.XDocument(image).Save(path);
+}
+
+// Read the CSV produced by the review-embedding workflow. TextFieldParser
+// handles quoted JSON vectors, commas, escaped quotes, and multiline reviews.
+static (double[][] Vectors, int[] Scores) ReadReviews(string path)
+{
+    using TextFieldParser csv = new(path);
+    csv.TextFieldType = FieldType.Delimited;
+    csv.SetDelimiters(",");
+    csv.HasFieldsEnclosedInQuotes = true;
+    string[] header = csv.ReadFields() ?? throw new InvalidDataException("The CSV is empty.");
+    int embeddingColumn = Array.IndexOf(header, "ada_embedding");
+    int scoreColumn = Array.IndexOf(header, "Score");
+    if (embeddingColumn < 0 || scoreColumn < 0)
+    {
+        throw new InvalidDataException("Expected ada_embedding and Score columns.");
+    }
+
+    List<double[]> vectors = [];
+    List<int> scores = [];
+    while (!csv.EndOfData)
+    {
+        string[] row = csv.ReadFields() ?? throw new InvalidDataException("Missing CSV row.");
+        if (row.Length != header.Length)
+        {
+            throw new InvalidDataException("The CSV row does not match its header.");
+        }
+
+        double[] vector = JsonSerializer.Deserialize<double[]>(row[embeddingColumn])
+            ?? throw new InvalidDataException("A review has no embedding.");
+        if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)) ||
+            (vectors.Count > 0 && vector.Length != vectors[0].Length))
+        {
+            throw new InvalidDataException("Embeddings must be finite vectors of equal nonzero length.");
+        }
+
+        int score = int.Parse(row[scoreColumn], CultureInfo.InvariantCulture);
+        if (score is < 1 or > 5)
+        {
+            throw new InvalidDataException("Review scores must be integers from 1 through 5.");
+        }
+
+        vectors.Add(vector);
+        scores.Add(score);
+    }
+
+    if (vectors.Count == 0)
+    {
+        throw new InvalidDataException("The CSV has no reviews.");
+    }
+
+    return (vectors.ToArray(), scores.ToArray());
+}
+```
+
 ```ruby
 require "csv"
 require "json"
@@ -2434,6 +2830,111 @@ System.out.println("Test examples: " + xTest.length);
 
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+var (yTrain, yTest, xTrain, xTest) = SplitDataset();
+
+// The included illustrative CSV has been retaining Score, UserId and ProductId
+// beside each corresponding ada_embedding. The basic embedding producer has
+// been writing only combined and ada_embedding to a different output file.
+// Real-data preparation has been preserving these review fields when attaching
+// each generated vector; this example has been reading that labeled schema.
+static (int[] Train, int[] Test, double[][] TrainVectors, double[][] TestVectors) SplitDataset()
+{
+    List<double[]> vectors = [];
+    List<int> scores = [];
+    foreach (Dictionary<string, string> row in ReadCsv(
+        "data/illustrative-review-embeddings.csv", "ada_embedding", "Score"))
+    {
+        double[] vector = DecodeVector(row["ada_embedding"]);
+        if (vectors.Count > 0 && vector.Length != vectors[0].Length)
+        {
+            throw new InvalidDataException("Embedding dimensions differ.");
+        }
+        int score = int.Parse(row["Score"], NumberStyles.Integer, CultureInfo.InvariantCulture);
+        vectors.Add(vector);
+        scores.Add(score);
+    }
+    if (vectors.Count < 2)
+    {
+        throw new InvalidDataException("Splitting requires at least two reviews.");
+    }
+
+    // Shuffle row indices once to preserve vector/score alignment.
+    // Seed 42 is repeatable in this .NET runtime, not identical to Python's permutation.
+    int[] indices = Enumerable.Range(0, vectors.Count).ToArray();
+    Random random = new(42);
+    for (int i = indices.Length - 1; i > 0; i--)
+    {
+        int j = random.Next(i + 1);
+        (indices[i], indices[j]) = (indices[j], indices[i]);
+    }
+    int testSize = (int)Math.Ceiling(vectors.Count * 0.2);
+    int[] testIndices = indices[..testSize];
+    int[] trainIndices = indices[testSize..];
+    double[][] xTrain = trainIndices.Select(index => vectors[index]).ToArray();
+    double[][] xTest = testIndices.Select(index => vectors[index]).ToArray();
+    int[] yTrain = trainIndices.Select(index => scores[index]).ToArray();
+    int[] yTest = testIndices.Select(index => scores[index]).ToArray();
+    Console.WriteLine($"Training examples: {xTrain.Length}");
+    Console.WriteLine($"Test examples: {xTest.Length}");
+    return (yTrain, yTest, xTrain, xTest);
+}
+static IEnumerable<Dictionary<string, string>> ReadCsv(string path, params string[] requiredColumns)
+{
+    using TextFieldParser parser = new(path)
+    {
+        TextFieldType = FieldType.Delimited,
+        HasFieldsEnclosedInQuotes = true,
+        TrimWhiteSpace = false,
+    };
+    parser.SetDelimiters(",");
+    string[] headers = parser.ReadFields()
+        ?? throw new InvalidDataException("The CSV has no header.");
+    if (headers.Distinct(StringComparer.Ordinal).Count() != headers.Length
+        || requiredColumns.Any(column => !headers.Contains(column, StringComparer.Ordinal)))
+    {
+        throw new InvalidDataException("The CSV has duplicate headers or missing required columns.");
+    }
+
+    while (!parser.EndOfData)
+    {
+        string[] fields = parser.ReadFields()
+            ?? throw new InvalidDataException("The CSV record is missing.");
+        if (fields.Length != headers.Length)
+        {
+            throw new InvalidDataException($"CSV record near line {parser.LineNumber} has the wrong field count.");
+        }
+
+        Dictionary<string, string> row = new(StringComparer.Ordinal);
+        for (int i = 0; i < headers.Length; i++)
+        {
+            row.Add(headers[i], fields[i]);
+        }
+        yield return row;
+    }
+}
+
+static double[] DecodeVector(string json)
+{
+    double[] vector = JsonSerializer.Deserialize<double[]>(json)
+        ?? throw new InvalidDataException("An embedding is null.");
+    if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)))
+    {
+        throw new InvalidDataException("Embeddings must contain finite numbers and at least one dimension.");
+    }
+    return vector;
+}
+```
+
 ```ruby
 vectors = rows.map { |row| row.fetch("ada_embedding") }
 scores = rows.map { |row| Integer(row.fetch("Score")) }
@@ -2683,6 +3184,207 @@ var test = DataFrame.of(xTest, columns);
 var predictions = new ArrayList<Number>();
 for (int i = 0; i < test.nrow(); i++) predictions.add(forest.predict(test.get(i)));
 System.out.println(predictions);
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+// The included illustrative CSV has been retaining Score, UserId and ProductId
+// beside each corresponding ada_embedding. The basic embedding producer has
+// been writing only combined and ada_embedding to a different output file.
+// Real-data preparation has been preserving these review fields when attaching
+// each generated vector; this example has been reading that labeled schema.
+
+var (vectors, scores) = ReadReviews("data/illustrative-review-embeddings.csv");
+var (trainIndices, testIndices) = Split(vectors.Length, testFraction: 0.2, seed: 42);
+double[][] xTrain = trainIndices.Select(i => vectors[i]).ToArray();
+int[] yTrain = trainIndices.Select(i => scores[i]).ToArray();
+double[][] xTest = testIndices.Select(i => vectors[i]).ToArray();
+int[] yTest = testIndices.Select(i => scores[i]).ToArray();
+Node[] forest = FitForest(xTrain, yTrain);
+double[] predictions = Predict(forest, xTest);
+double meanSquaredError = predictions.Zip(yTest)
+    .Average(pair => Math.Pow(pair.First - pair.Second, 2));
+Console.WriteLine(JsonSerializer.Serialize(predictions));
+
+static Node[] FitForest(double[][] xTrain, int[] yTrain)
+{
+    Random random = new(42);
+    return Enumerable.Range(0, 100).Select(treeIndex =>
+    {
+        int[] bootstrap = Enumerable.Range(0, xTrain.Length)
+            .Select(rowIndex => random.Next(xTrain.Length)).ToArray();
+        return GrowTree(xTrain, yTrain, bootstrap, random);
+    }).ToArray();
+}
+
+static double[] Predict(Node[] forest, double[][] vectors) =>
+    vectors.Select(row => forest.Average(tree => Leaf(tree, row).Value)).ToArray();
+
+
+static Node Leaf(Node tree, double[] row)
+{
+    while (tree.Feature >= 0)
+    {
+        tree = row[tree.Feature] <= tree.Threshold ? tree.Left! : tree.Right!;
+    }
+
+    return tree;
+}
+
+// Bootstrap CART trees: search exact thresholds between distinct feature
+// values. The split criterion is the sum of squared residuals.
+static Node GrowTree(double[][] x, int[] y, int[] rows, Random random)
+{
+    double mean = rows.Average(row => (double)y[row]);
+    if (rows.Length < 2 || rows.All(row => y[row] == y[rows[0]]))
+    {
+        return new Node { Value = mean };
+    }
+
+    int[] features = Enumerable.Range(0, x[0].Length).ToArray();
+    random.Shuffle(features);
+    int featureCount = features.Length;
+    int bestFeature = -1;
+    double bestThreshold = 0;
+    double bestLoss = double.PositiveInfinity;
+    // If all randomly selected features are constant, inspect further
+    // features until at least one valid partition has been found.
+    for (int f = 0; f < features.Length && (f < featureCount || bestFeature < 0); f++)
+    {
+        int feature = features[f];
+        int[] ordered = rows.OrderBy(row => x[row][feature]).ToArray();
+        double leftSum = 0, leftSquaredSum = 0;
+        double rightSum = rows.Sum(row => (double)y[row]);
+        double rightSquaredSum = rows.Sum(row => (double)y[row] * y[row]);
+        for (int split = 1; split < ordered.Length; split++)
+        {
+            int score = y[ordered[split - 1]];
+            leftSum += score;
+            rightSum -= score;
+            leftSquaredSum += score * score;
+            rightSquaredSum -= score * score;
+            double lower = x[ordered[split - 1]][feature];
+            double upper = x[ordered[split]][feature];
+            if (lower == upper)
+            {
+                continue;
+            }
+
+            int rightCount = ordered.Length - split;
+            double loss = leftSquaredSum - leftSum * leftSum / split
+                + rightSquaredSum - rightSum * rightSum / rightCount;
+            if (loss < bestLoss)
+            {
+                bestLoss = loss;
+                bestFeature = feature;
+                // A rounded midpoint must remain strictly below upper.
+                bestThreshold = lower / 2 + upper / 2;
+                if (bestThreshold >= upper)
+                {
+                    bestThreshold = lower;
+                }
+            }
+        }
+    }
+
+    if (bestFeature < 0)
+    {
+        return new Node { Value = mean };
+    }
+
+    int[] left = rows.Where(row => x[row][bestFeature] <= bestThreshold).ToArray();
+    int[] right = rows.Where(row => x[row][bestFeature] > bestThreshold).ToArray();
+    return new Node
+    {
+        Feature = bestFeature,
+        Threshold = bestThreshold,
+        Left = GrowTree(x, y, left, random),
+        Right = GrowTree(x, y, right, random),
+    };
+}
+
+static (int[] Train, int[] Test) Split(int count, double testFraction, int seed)
+{
+    int testCount = (int)Math.Ceiling(count * testFraction);
+    if (testCount < 1 || testCount >= count)
+    {
+        throw new ArgumentException("Provide enough reviews for nonempty training and test sets.", nameof(count));
+    }
+
+    int[] indices = Enumerable.Range(0, count).ToArray();
+    Random random = new(seed);
+    random.Shuffle(indices);
+    return (indices[testCount..], indices[..testCount]);
+}
+
+// Read the CSV produced by the review-embedding workflow. TextFieldParser
+// handles quoted JSON vectors, commas, escaped quotes, and multiline reviews.
+static (double[][] Vectors, int[] Scores) ReadReviews(string path)
+{
+    using TextFieldParser csv = new(path);
+    csv.TextFieldType = FieldType.Delimited;
+    csv.SetDelimiters(",");
+    csv.HasFieldsEnclosedInQuotes = true;
+    string[] header = csv.ReadFields() ?? throw new InvalidDataException("The CSV is empty.");
+    int embeddingColumn = Array.IndexOf(header, "ada_embedding");
+    int scoreColumn = Array.IndexOf(header, "Score");
+    if (embeddingColumn < 0 || scoreColumn < 0)
+    {
+        throw new InvalidDataException("Expected ada_embedding and Score columns.");
+    }
+
+    List<double[]> vectors = [];
+    List<int> scores = [];
+    while (!csv.EndOfData)
+    {
+        string[] row = csv.ReadFields() ?? throw new InvalidDataException("Missing CSV row.");
+        if (row.Length != header.Length)
+        {
+            throw new InvalidDataException("The CSV row does not match its header.");
+        }
+
+        double[] vector = JsonSerializer.Deserialize<double[]>(row[embeddingColumn])
+            ?? throw new InvalidDataException("A review has no embedding.");
+        if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)) ||
+            (vectors.Count > 0 && vector.Length != vectors[0].Length))
+        {
+            throw new InvalidDataException("Embeddings must be finite vectors of equal nonzero length.");
+        }
+
+        int score = int.Parse(row[scoreColumn], CultureInfo.InvariantCulture);
+        if (score is < 1 or > 5)
+        {
+            throw new InvalidDataException("Review scores must be integers from 1 through 5.");
+        }
+
+        vectors.Add(vector);
+        scores.Add(score);
+    }
+
+    if (vectors.Count == 0)
+    {
+        throw new InvalidDataException("The CSV has no reviews.");
+    }
+
+    return (vectors.ToArray(), scores.ToArray());
+}
+
+sealed class Node
+{
+    internal int Feature { get; init; } = -1;
+    internal double Threshold { get; init; }
+    internal double Value { get; init; }
+    internal Node? Left { get; init; }
+    internal Node? Right { get; init; }
+}
 ```
 
 ```ruby
@@ -2963,6 +3665,211 @@ var test = DataFrame.of(xTest, columns);
 var predictions = new ArrayList<Number>();
 for (int i = 0; i < test.nrow(); i++) predictions.add(forest.predict(test.get(i)));
 System.out.println(predictions);
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+// The included illustrative CSV has been retaining Score, UserId and ProductId
+// beside each corresponding ada_embedding. The basic embedding producer has
+// been writing only combined and ada_embedding to a different output file.
+// Real-data preparation has been preserving these review fields when attaching
+// each generated vector; this example has been reading that labeled schema.
+
+var (vectors, scores) = ReadReviews("data/illustrative-review-embeddings.csv");
+var (trainIndices, testIndices) = Split(vectors.Length, testFraction: 0.2, seed: 42);
+double[][] xTrain = trainIndices.Select(i => vectors[i]).ToArray();
+int[] yTrain = trainIndices.Select(i => scores[i]).ToArray();
+double[][] xTest = testIndices.Select(i => vectors[i]).ToArray();
+int[] yTest = testIndices.Select(i => scores[i]).ToArray();
+Node[] forest = FitForest(xTrain, yTrain);
+int[] classes = yTrain.Distinct().Order().ToArray();
+int[] predictions = Predict(forest, xTest, classes);
+double accuracy = predictions.Zip(yTest).Count(pair => pair.First == pair.Second) / (double)yTest.Length;
+Console.WriteLine(JsonSerializer.Serialize(predictions));
+
+static Node[] FitForest(double[][] xTrain, int[] yTrain)
+{
+    Random random = new(42);
+    return Enumerable.Range(0, 100).Select(treeIndex =>
+    {
+        int[] bootstrap = Enumerable.Range(0, xTrain.Length)
+            .Select(rowIndex => random.Next(xTrain.Length)).ToArray();
+        return GrowTree(xTrain, yTrain, bootstrap, random);
+    }).ToArray();
+}
+
+// Average the fitted multiclass leaf probabilities, then choose the largest.
+static int[] Predict(Node[] forest, double[][] vectors, int[] classes) =>
+    vectors.Select(row => classes.MaxBy(label =>
+        forest.Sum(tree => Leaf(tree, row).Probabilities[label - 1]))).ToArray();
+
+
+static Node Leaf(Node tree, double[] row)
+{
+    while (tree.Feature >= 0)
+    {
+        tree = row[tree.Feature] <= tree.Threshold ? tree.Left! : tree.Right!;
+    }
+
+    return tree;
+}
+
+// Bootstrap CART trees: search exact thresholds between distinct feature
+// values. The split criterion is weighted multiclass Gini impurity.
+static Node GrowTree(double[][] x, int[] y, int[] rows, Random random)
+{
+    double[] counts = new double[5];
+    foreach (int row in rows)
+    {
+        counts[y[row] - 1]++;
+    }
+
+    if (rows.Length < 2 || rows.All(row => y[row] == y[rows[0]]))
+    {
+        return new Node { Probabilities = counts.Select(count => count / rows.Length).ToArray() };
+    }
+
+    int[] features = Enumerable.Range(0, x[0].Length).ToArray();
+    random.Shuffle(features);
+    int featureCount = Math.Max(1, (int)Math.Sqrt(features.Length));
+    int bestFeature = -1;
+    double bestThreshold = 0;
+    double bestLoss = double.PositiveInfinity;
+    // If all randomly selected features are constant, inspect further
+    // features until at least one valid partition has been found.
+    for (int f = 0; f < features.Length && (f < featureCount || bestFeature < 0); f++)
+    {
+        int feature = features[f];
+        int[] ordered = rows.OrderBy(row => x[row][feature]).ToArray();
+        double[] leftCounts = new double[5];
+        double[] rightCounts = (double[])counts.Clone();
+        for (int split = 1; split < ordered.Length; split++)
+        {
+            int score = y[ordered[split - 1]];
+            leftCounts[score - 1]++;
+            rightCounts[score - 1]--;
+            double lower = x[ordered[split - 1]][feature];
+            double upper = x[ordered[split]][feature];
+            if (lower == upper)
+            {
+                continue;
+            }
+
+            int rightCount = ordered.Length - split;
+            double loss = split - leftCounts.Sum(count => count * count) / split
+                + rightCount - rightCounts.Sum(count => count * count) / rightCount;
+            if (loss < bestLoss)
+            {
+                bestLoss = loss;
+                bestFeature = feature;
+                // A rounded midpoint must remain strictly below upper.
+                bestThreshold = lower / 2 + upper / 2;
+                if (bestThreshold >= upper)
+                {
+                    bestThreshold = lower;
+                }
+            }
+        }
+    }
+
+    if (bestFeature < 0)
+    {
+        return new Node { Probabilities = counts.Select(count => count / rows.Length).ToArray() };
+    }
+
+    int[] left = rows.Where(row => x[row][bestFeature] <= bestThreshold).ToArray();
+    int[] right = rows.Where(row => x[row][bestFeature] > bestThreshold).ToArray();
+    return new Node
+    {
+        Feature = bestFeature,
+        Threshold = bestThreshold,
+        Left = GrowTree(x, y, left, random),
+        Right = GrowTree(x, y, right, random),
+    };
+}
+
+static (int[] Train, int[] Test) Split(int count, double testFraction, int seed)
+{
+    int testCount = (int)Math.Ceiling(count * testFraction);
+    if (testCount < 1 || testCount >= count)
+    {
+        throw new ArgumentException("Provide enough reviews for nonempty training and test sets.", nameof(count));
+    }
+
+    int[] indices = Enumerable.Range(0, count).ToArray();
+    Random random = new(seed);
+    random.Shuffle(indices);
+    return (indices[testCount..], indices[..testCount]);
+}
+
+// Read the CSV produced by the review-embedding workflow. TextFieldParser
+// handles quoted JSON vectors, commas, escaped quotes, and multiline reviews.
+static (double[][] Vectors, int[] Scores) ReadReviews(string path)
+{
+    using TextFieldParser csv = new(path);
+    csv.TextFieldType = FieldType.Delimited;
+    csv.SetDelimiters(",");
+    csv.HasFieldsEnclosedInQuotes = true;
+    string[] header = csv.ReadFields() ?? throw new InvalidDataException("The CSV is empty.");
+    int embeddingColumn = Array.IndexOf(header, "ada_embedding");
+    int scoreColumn = Array.IndexOf(header, "Score");
+    if (embeddingColumn < 0 || scoreColumn < 0)
+    {
+        throw new InvalidDataException("Expected ada_embedding and Score columns.");
+    }
+
+    List<double[]> vectors = [];
+    List<int> scores = [];
+    while (!csv.EndOfData)
+    {
+        string[] row = csv.ReadFields() ?? throw new InvalidDataException("Missing CSV row.");
+        if (row.Length != header.Length)
+        {
+            throw new InvalidDataException("The CSV row does not match its header.");
+        }
+
+        double[] vector = JsonSerializer.Deserialize<double[]>(row[embeddingColumn])
+            ?? throw new InvalidDataException("A review has no embedding.");
+        if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)) ||
+            (vectors.Count > 0 && vector.Length != vectors[0].Length))
+        {
+            throw new InvalidDataException("Embeddings must be finite vectors of equal nonzero length.");
+        }
+
+        int score = int.Parse(row[scoreColumn], CultureInfo.InvariantCulture);
+        if (score is < 1 or > 5)
+        {
+            throw new InvalidDataException("Review scores must be integers from 1 through 5.");
+        }
+
+        vectors.Add(vector);
+        scores.Add(score);
+    }
+
+    if (vectors.Count == 0)
+    {
+        throw new InvalidDataException("The CSV has no reviews.");
+    }
+
+    return (vectors.ToArray(), scores.ToArray());
+}
+
+sealed class Node
+{
+    internal int Feature { get; init; } = -1;
+    internal double Threshold { get; init; }
+    internal double[] Probabilities { get; init; } = new double[5];
+    internal Node? Left { get; init; }
+    internal Node? Right { get; init; }
+}
 ```
 
 ```ruby
@@ -3433,6 +4340,133 @@ static Map<String, double[]> averageBy(String[] groups, double[][] vectors) {
 }
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+namespace OpenAI.Docs.Examples.Embeddings.AverageUserAndProductEmbeddingsSample;
+
+internal static class AverageUserAndProductEmbeddings
+{
+
+// The included illustrative CSV has been retaining Score, UserId and ProductId
+    // beside each corresponding ada_embedding. The basic embedding producer has
+    // been writing only combined and ada_embedding to a different output file.
+    // Real-data preparation has been preserving these review fields when attaching
+    // each generated vector; this example has been reading that labeled schema.
+    internal static (Dictionary<string, double[]> Users, Dictionary<string, double[]> Products) AverageReviews()
+    {
+        // Preserve the user and product columns alongside each saved review vector.
+        List<Review> reviews = [];
+        foreach (Dictionary<string, string> row in ReadCsv(
+            "data/illustrative-review-embeddings.csv", "UserId", "ProductId", "ada_embedding"))
+        {
+            if (string.IsNullOrWhiteSpace(row["UserId"]) || string.IsNullOrWhiteSpace(row["ProductId"]))
+            {
+                throw new InvalidDataException("Each review needs a user ID and product ID.");
+            }
+            reviews.Add(new Review(row["UserId"], row["ProductId"], DecodeVector(row["ada_embedding"])));
+        }
+        if (reviews.Count == 0)
+        {
+            throw new InvalidDataException("The CSV contains no reviews.");
+        }
+
+        Dictionary<string, double[]> users = AverageBy(reviews, review => review.UserId);
+        Dictionary<string, double[]> products = AverageBy(reviews, review => review.ProductId);
+        Console.WriteLine(JsonSerializer.Serialize(users));
+        Console.WriteLine(JsonSerializer.Serialize(products));
+        return (users, products);
+    }
+    internal sealed record Review(string UserId, string ProductId, double[] Vector);
+
+    internal static Dictionary<string, double[]> AverageBy(
+        List<Review> reviews, Func<Review, string> groupKey)
+    {
+        int dimensions = reviews[0].Vector.Length;
+        Dictionary<string, double[]> means = new(StringComparer.Ordinal);
+        foreach (IGrouping<string, Review> group in reviews.GroupBy(groupKey, StringComparer.Ordinal))
+        {
+            double[] mean = new double[dimensions];
+            int count = 0;
+            foreach (Review review in group)
+            {
+                if (review.Vector.Length != dimensions)
+                {
+                    throw new InvalidDataException("Embedding dimensions differ.");
+                }
+                count++;
+                for (int dimension = 0; dimension < dimensions; dimension++)
+                {
+                    mean[dimension] += review.Vector[dimension];
+                    if (!double.IsFinite(mean[dimension]))
+                    {
+                        throw new InvalidDataException("The grouped sum exceeds the numeric range.");
+                    }
+                }
+            }
+            for (int dimension = 0; dimension < dimensions; dimension++)
+            {
+                mean[dimension] /= count;
+            }
+            means.Add(group.Key, mean);
+        }
+        return means;
+    }
+
+    private static IEnumerable<Dictionary<string, string>> ReadCsv(string path, params string[] requiredColumns)
+    {
+        using TextFieldParser parser = new(path)
+        {
+            TextFieldType = FieldType.Delimited,
+            HasFieldsEnclosedInQuotes = true,
+            TrimWhiteSpace = false,
+        };
+        parser.SetDelimiters(",");
+        string[] headers = parser.ReadFields()
+            ?? throw new InvalidDataException("The CSV has no header.");
+        if (headers.Distinct(StringComparer.Ordinal).Count() != headers.Length
+            || requiredColumns.Any(column => !headers.Contains(column, StringComparer.Ordinal)))
+        {
+            throw new InvalidDataException("The CSV has duplicate headers or missing required columns.");
+        }
+
+        while (!parser.EndOfData)
+        {
+            string[] fields = parser.ReadFields()
+                ?? throw new InvalidDataException("The CSV record is missing.");
+            if (fields.Length != headers.Length)
+            {
+                throw new InvalidDataException($"CSV record near line {parser.LineNumber} has the wrong field count.");
+            }
+
+            Dictionary<string, string> row = new(StringComparer.Ordinal);
+            for (int i = 0; i < headers.Length; i++)
+            {
+                row.Add(headers[i], fields[i]);
+            }
+            yield return row;
+        }
+    }
+
+    private static double[] DecodeVector(string json)
+    {
+        double[] vector = JsonSerializer.Deserialize<double[]>(json)
+            ?? throw new InvalidDataException("An embedding is null.");
+        if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)))
+        {
+            throw new InvalidDataException("Embeddings must contain finite numbers and at least one dimension.");
+        }
+        return vector;
+    }
+}
+```
+
 ```ruby
 vectors = rows.map { |row| row.fetch("ada_embedding") }
 user_ids = rows.map { |row| row.fetch("UserId") }
@@ -3725,6 +4759,185 @@ var clusters = KMeans.fit(matrix, 4);
 System.out.println(Arrays.toString(clusters.y));
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+
+// The included illustrative CSV has been retaining Score, UserId and ProductId
+// beside each corresponding ada_embedding. The basic embedding producer has
+// been writing only combined and ada_embedding to a different output file.
+// Real-data preparation has been preserving these review fields when attaching
+// each generated vector; this example has been reading that labeled schema.
+
+var (matrix, _) = ReadReviews("data/illustrative-review-embeddings.csv");
+var (labels, centers) = FitKMeans(matrix, clusterCount: 4, seed: 42);
+Console.WriteLine(JsonSerializer.Serialize(labels));
+
+// K-means++ initialization followed by Lloyd's algorithm, with squared
+// Euclidean distance and explicit recovery of empty clusters.
+static (int[] Labels, double[][] Centers) FitKMeans(
+    double[][] matrix, int clusterCount, int seed)
+{
+    if (matrix.Length < clusterCount || clusterCount < 1)
+    {
+        throw new ArgumentException("Provide at least one row per cluster.", nameof(matrix));
+    }
+
+    Random random = new(seed);
+    List<double[]> centers = [(double[])matrix[random.Next(matrix.Length)].Clone()];
+    while (centers.Count < clusterCount)
+    {
+        double[] distances = matrix.Select(row => centers.Min(center => SquaredDistance(row, center))).ToArray();
+        double total = distances.Sum();
+        if (!double.IsFinite(total) || total <= 0)
+        {
+            throw new ArgumentException("Provide at least four distinct, bounded embeddings.", nameof(matrix));
+        }
+
+        double target = random.NextDouble() * total;
+        int chosen = 0;
+        while (chosen < distances.Length - 1 && target >= distances[chosen])
+        {
+            target -= distances[chosen++];
+        }
+
+        centers.Add((double[])matrix[chosen].Clone());
+    }
+
+    int[] labels = Enumerable.Repeat(-1, matrix.Length).ToArray();
+    for (int iteration = 0; iteration < 1000; iteration++)
+    {
+        bool changed = false;
+        int[] counts = new int[clusterCount];
+        double[][] sums = Enumerable.Range(0, clusterCount).Select(_ => new double[matrix[0].Length]).ToArray();
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            int closest = Enumerable.Range(0, clusterCount)
+                .MinBy(cluster => SquaredDistance(matrix[i], centers[cluster]));
+            changed |= labels[i] != closest;
+            labels[i] = closest;
+            counts[closest]++;
+        }
+
+        // Move the worst represented member of a nonsingleton cluster to
+        // each empty cluster. Recompute means from these exact assignments.
+        for (int empty = 0; empty < clusterCount; empty++)
+        {
+            if (counts[empty] != 0)
+            {
+                continue;
+            }
+
+            int moved = Enumerable.Range(0, matrix.Length)
+                .Where(i => counts[labels[i]] > 1)
+                .MaxBy(i => SquaredDistance(matrix[i], centers[labels[i]]));
+            counts[labels[moved]]--;
+            labels[moved] = empty;
+            counts[empty]++;
+            changed = true;
+        }
+
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            for (int d = 0; d < matrix[i].Length; d++)
+            {
+                sums[labels[i]][d] += matrix[i][d];
+            }
+        }
+
+        for (int cluster = 0; cluster < clusterCount; cluster++)
+        {
+            for (int d = 0; d < matrix[0].Length; d++)
+            {
+                centers[cluster][d] = sums[cluster][d] / counts[cluster];
+            }
+        }
+
+        if (!changed)
+        {
+            return (labels, centers.ToArray());
+        }
+    }
+
+    throw new InvalidOperationException("K-means did not converge within 1000 iterations.");
+}
+
+static double SquaredDistance(double[] a, double[] b)
+{
+    double distance = 0;
+    for (int d = 0; d < a.Length; d++)
+    {
+        double delta = a[d] - b[d];
+        distance += delta * delta;
+    }
+
+    if (!double.IsFinite(distance))
+    {
+        throw new InvalidDataException("Embedding distances overflowed; rescale the input.");
+    }
+
+    return distance;
+}
+
+// Read the CSV produced by the review-embedding workflow. TextFieldParser
+// handles quoted JSON vectors, commas, escaped quotes, and multiline reviews.
+static (double[][] Vectors, int[] Scores) ReadReviews(string path)
+{
+    using TextFieldParser csv = new(path);
+    csv.TextFieldType = FieldType.Delimited;
+    csv.SetDelimiters(",");
+    csv.HasFieldsEnclosedInQuotes = true;
+    string[] header = csv.ReadFields() ?? throw new InvalidDataException("The CSV is empty.");
+    int embeddingColumn = Array.IndexOf(header, "ada_embedding");
+    int scoreColumn = Array.IndexOf(header, "Score");
+    if (embeddingColumn < 0 || scoreColumn < 0)
+    {
+        throw new InvalidDataException("Expected ada_embedding and Score columns.");
+    }
+
+    List<double[]> vectors = [];
+    List<int> scores = [];
+    while (!csv.EndOfData)
+    {
+        string[] row = csv.ReadFields() ?? throw new InvalidDataException("Missing CSV row.");
+        if (row.Length != header.Length)
+        {
+            throw new InvalidDataException("The CSV row does not match its header.");
+        }
+
+        double[] vector = JsonSerializer.Deserialize<double[]>(row[embeddingColumn])
+            ?? throw new InvalidDataException("A review has no embedding.");
+        if (vector.Length == 0 || vector.Any(value => !double.IsFinite(value)) ||
+            (vectors.Count > 0 && vector.Length != vectors[0].Length))
+        {
+            throw new InvalidDataException("Embeddings must be finite vectors of equal nonzero length.");
+        }
+
+        int score = int.Parse(row[scoreColumn], CultureInfo.InvariantCulture);
+        if (score is < 1 or > 5)
+        {
+            throw new InvalidDataException("Review scores must be integers from 1 through 5.");
+        }
+
+        vectors.Add(vector);
+        scores.Add(score);
+    }
+
+    if (vectors.Count == 0)
+    {
+        throw new InvalidDataException("The CSV has no reviews.");
+    }
+
+    return (vectors.ToArray(), scores.ToArray());
+}
+```
+
 ```ruby
 require "rumale/clustering"
 
@@ -3815,6 +5028,25 @@ System.out.println(ENCODING.countTokens("tiktoken is great!"));
 static final com.knuddels.jtokkit.api.Encoding ENCODING =
     com.knuddels.jtokkit.Encodings.newDefaultEncodingRegistry()
         .getEncoding(com.knuddels.jtokkit.api.EncodingType.CL100K_BASE);
+```
+
+```csharp
+using System;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.ML.Tokenizers;
+
+static int NumberOfTokens(string text, string encodingName)
+{
+    ArgumentNullException.ThrowIfNull(text);
+    ArgumentException.ThrowIfNullOrWhiteSpace(encodingName);
+    TiktokenTokenizer encoding = TiktokenTokenizer.CreateForEncoding(encodingName);
+    return encoding.CountTokens(text);
+}
+
+int tokens = NumberOfTokens("tiktoken is great!", "cl100k_base");
+Console.WriteLine(tokens);
 ```
 
 ```ruby

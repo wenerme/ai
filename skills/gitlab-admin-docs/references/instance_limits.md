@@ -274,6 +274,22 @@ comment fails.
 
 - **Max limit**: 5,000 comments.
 
+## Number of comments per thread
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272385) in GitLab 19.7 [with a feature flag](feature_flags/_index.md) named `limit_notes_per_discussion`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+There's a limit to the number of comments in a comment thread.
+The limit counts the first comment, every reply, and any system
+notes in the thread.
+When a thread reaches the limit, new replies fail, but GitLab
+can still add system notes.
+
+- **Max limit**: 500 comments.
+
 ## Size of comments and descriptions of issues, merge requests, and epics
 
 There is a limit to the size of comments and descriptions of issues, merge requests, and epics.

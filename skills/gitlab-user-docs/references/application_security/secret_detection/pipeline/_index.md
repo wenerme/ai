@@ -67,12 +67,32 @@ This method requires you to manually edit an existing `.gitlab-ci.yml` file.
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Build** > **Pipeline editor**.
-1. Copy and paste the following to the bottom of the `.gitlab-ci.yml` file:
+1. At the bottom of the `.gitlab-ci.yml` file, add either the pipeline secret detection CI/CD template
+   or CI/CD component.
+
+   To use the template, add the following lines:
 
    ```yaml
    include:
      - template: Jobs/Secret-Detection.gitlab-ci.yml
    ```
+
+   To use the [secret detection CI/CD component](https://gitlab.com/explore/catalog/components/secret-detection),
+   add the following lines, where `<version>` is a [released version](https://gitlab.com/components/secret-detection/-/releases)
+   of the component:
+
+   ```yaml
+   include:
+     - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@<version>
+   ```
+
+   If you use the component:
+
+   - The component's job runs in the `test` stage. To use a different stage, set
+     the `stage` input.
+   - For the full list of inputs, see the component's page in the CI/CD Catalog.
+   - Before you use the component on GitLab Self-Managed, review the
+     [limitations](../../../../ci/components/_index.md#use-a-gitlabcom-component-on-gitlab-self-managed).
 
 1. Select the **Validate** tab, then select **Validate pipeline**.
    The message **Simulation completed successfully** indicates the file is valid.

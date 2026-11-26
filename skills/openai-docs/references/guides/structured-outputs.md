@@ -4149,6 +4149,47 @@ const finalSchema = z.discriminatedUnion("status", [
 const json = zodResponseFormat(finalSchema, "final_schema");
 ```
 
+```python
+import json
+from typing import Annotated, Literal
+
+from pydantic import BaseModel, ConfigDict, Field, RootModel
+
+
+class BaseResponseSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    status: Literal["success"]
+    data: str
+
+
+class UnsuccessfulResponseSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    status: Literal["error"]
+    error: str
+
+
+class FinalSchema(
+    RootModel[
+        Annotated[
+            BaseResponseSchema | UnsuccessfulResponseSchema,
+            Field(discriminator="status"),
+        ]
+    ]
+):
+    model_config = ConfigDict(title="FinalSchema")
+
+
+def main() -> None:
+    # Invalid for Structured Outputs: the root is a union, not an object.
+    # Pydantic can describe it locally; schema generation does not establish
+    # service acceptance. This example makes no API request.
+    print(json.dumps(FinalSchema.model_json_schema()))
+
+
+if __name__ == "__main__":
+    main()
+```
+
 ```go
 package main
 

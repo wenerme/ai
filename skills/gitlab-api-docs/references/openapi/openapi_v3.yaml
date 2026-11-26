@@ -99960,6 +99960,8 @@ components:
           type: string
         epic_move_list_limit:
           type: string
+        preview_billable_user_change_limit:
+          type: string
         insights_query_limit:
           type: string
         issues_analytics_limit:
@@ -122947,6 +122949,13 @@ components:
             make every minute in a group or project. For unauthenticated requests,
             the limit applies to each IP address. Default: `60`. Set to `0` to disable
             the rate limit.'
+          nullable: true
+        preview_billable_user_change_limit:
+          type: integer
+          description: 'Maximum number of `gitlabSubscriptionsPreviewBillableUserChange`
+            GraphQL requests per minute per user. Default: `0`, which disables the
+            rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271586)
+            in GitLab 19.7.'
           nullable: true
         merge_train_removal_limit_per_user:
           type: integer
