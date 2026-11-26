@@ -5,7 +5,7 @@ description: "Browse Kenari model IDs, capabilities, context windows, and pricin
 
 # [Kenari logo]Kenari
 
-Access 83 Kenari models through Mastra's model router. Authentication is handled automatically using the `KENARI_API_KEY` environment variable.
+Access 82 Kenari models through Mastra's model router. Authentication is handled automatically using the `KENARI_API_KEY` environment variable.
 
 Learn more in the [Kenari documentation](https://kenari.id/docs).
 
@@ -770,18 +770,6 @@ for await (const chunk of stream) {
     "maxOutput": 524288,
     "inputCost": 0.1143,
     "outputCost": 0.5714
-  },
-  {
-    "model": "kenari/muse-glimmer-30b:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "kenari/muse-spark-1-2",

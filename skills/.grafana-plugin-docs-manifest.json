@@ -2296,8 +2296,8 @@
   },
   "grafana-splunk-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure.md",
-    "size": 24133,
-    "updatedAt": "2026-11-24T20:50:59.008Z"
+    "size": 25687,
+    "updatedAt": "2026-11-26T08:11:40.248Z"
   },
   "grafana-splunk-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest.md",

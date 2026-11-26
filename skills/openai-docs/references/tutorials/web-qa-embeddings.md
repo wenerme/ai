@@ -1164,6 +1164,32 @@ static String removeNewlines(String text) {
 }
 ```
 
+```csharp
+using System.Text.Json;
+using System.Text.RegularExpressions;
+
+namespace OpenAI.Docs.Examples.TutorialCrawlWebsiteEmbeddings.RemoveNewlines;
+
+internal static class RemoveNewlinesSample
+{
+
+internal static void ShowExample()
+    {
+        Console.WriteLine(RemoveNewlines("first\nsecond"));
+    }
+    internal static string RemoveNewlines(string text)
+    {
+        ArgumentNullException.ThrowIfNull(text);
+        return Regex.Replace(
+            text.Replace("\r\n", " ", StringComparison.Ordinal)
+                .Replace("\r", " ", StringComparison.Ordinal)
+                .Replace("\n", " ", StringComparison.Ordinal)
+                .Replace(@"\n", " ", StringComparison.Ordinal),
+            " {2,}", " ");
+    }
+}
+```
+
 ```ruby
 def remove_newlines(texts)
   texts.map { |text| text.tr("\n", " ").gsub('\n', " ").gsub("  ", " ").gsub("  ", " ") }
@@ -1373,6 +1399,77 @@ try (var writer =
         .print(Files.newBufferedWriter(Path.of("processed/scraped.csv")))) {
   for (int i = 0; i < rows.size(); i++)
     writer.printRecord(i, rows.get(i).get("fname"), rows.get(i).get("text"));
+}
+```
+
+```csharp
+using System.Globalization;
+using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+
+namespace OpenAI.Docs.Examples.TutorialCrawlWebsiteEmbeddings.BuildScrapedDataframe;
+
+internal static class BuildScrapedDataframeSample
+{
+    internal static async Task RunAsync()
+    {
+        // Replace this illustrative domain with the domain used by the crawler.
+        string domain = new Uri("https://example.com/").Authority;
+        List<Dictionary<string, string>> rows = [];
+        string[] files = Directory.GetFiles(Path.Combine("text", domain), "*.txt");
+        Array.Sort(files, StringComparer.Ordinal);
+        foreach (string file in files)
+        {
+            string title = TitleFromFilename(Path.GetFileName(file), domain);
+            string text = RemoveNewlines(await File.ReadAllTextAsync(file));
+            rows.Add(new() { ["fname"] = title, ["text"] = title + ". " + text });
+        }
+
+        Directory.CreateDirectory("processed");
+        using (StreamWriter output = new("processed/scraped.csv", false, new UTF8Encoding(false)))
+        {
+            await output.WriteLineAsync("id,fname,text");
+            for (int index = 0; index < rows.Count; index++)
+            {
+                await output.WriteLineAsync(string.Join(",", index.ToString(CultureInfo.InvariantCulture),
+                    QuoteCsv(rows[index]["fname"]), QuoteCsv(rows[index]["text"])));
+            }
+        }
+
+}
+    internal static string TitleFromFilename(string filename, string domain)
+    {
+        string title = Regex.Replace(Path.GetFileNameWithoutExtension(filename), "#[0-9a-f]{64}$", "");
+        if (title.StartsWith(domain + "_", StringComparison.Ordinal))
+        {
+            title = title[(domain.Length + 1)..];
+        }
+        else if (title == domain)
+        {
+            title = "index";
+        }
+        if (title.Length == 0)
+        {
+            title = "index";
+        }
+        return title.Replace("-", " ", StringComparison.Ordinal)
+            .Replace("_", " ", StringComparison.Ordinal)
+            .Replace("#update", "", StringComparison.Ordinal);
+    }
+
+    private static string QuoteCsv(string value) => "\"" + value.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
+
+    internal static string RemoveNewlines(string text)
+    {
+        ArgumentNullException.ThrowIfNull(text);
+        return Regex.Replace(
+            text.Replace("\r\n", " ", StringComparison.Ordinal)
+                .Replace("\r", " ", StringComparison.Ordinal)
+                .Replace("\n", " ", StringComparison.Ordinal)
+                .Replace(@"\n", " ", StringComparison.Ordinal),
+            " {2,}", " ");
+    }
 }
 ```
 
@@ -1622,6 +1719,87 @@ static int histogram(List<Integer> counts) throws Exception {
   }
   javax.imageio.ImageIO.write(image, "png", Path.of("local-plot.png").toFile());
   return bins.values().stream().mapToInt(Integer::intValue).sum();
+}
+```
+
+```csharp
+using System.Text.Json;
+using Microsoft.ML.Tokenizers;
+using Microsoft.VisualBasic.FileIO;
+
+var (counts, total) = SaveTokenHistogram();
+
+static (int[] Counts, int Total) SaveTokenHistogram()
+{
+    List<string> texts = ReadColumn("processed/scraped.csv", "text");
+    int[] counts = texts.Select(CountTokens).ToArray();
+    int total = SaveHistogram(counts);
+    return (counts, total);
+}
+
+
+static int CountTokens(string text) => TokenCounter.Encoding.CountTokens(text);
+
+static int SaveHistogram(IReadOnlyList<int> counts)
+{
+    // Exact integer token counts form the bins; every row contributes once.
+    var bins = counts.GroupBy(count => count).OrderBy(group => group.Key).ToArray();
+    ScottPlot.Bar[] bars = bins.Select(group => new ScottPlot.Bar
+    {
+        Position = group.Key,
+        Value = group.Count()
+    }).ToArray();
+    ScottPlot.Plot plot = new();
+    if (bins.Length > 0)
+    {
+        plot.Add.Bars(bars);
+    }
+    plot.Title("Token count distribution");
+    plot.XLabel("Tokens per text");
+    plot.YLabel("Number of texts");
+    plot.Axes.Bottom.Min = -1;
+    plot.Axes.Left.Min = 0;
+    plot.SavePng("token-histogram.png", 640, 400);
+    return bins.Sum(group => group.Count());
+}
+
+// TextFieldParser handles quoted commas, escaped quotes, and multiline fields.
+// Empty physical lines are ignored; quoted empty fields remain values.
+static List<string> ReadColumn(string path, string column)
+{
+    using TextFieldParser parser = new(path, System.Text.Encoding.UTF8, true)
+    {
+        TextFieldType = FieldType.Delimited,
+        HasFieldsEnclosedInQuotes = true,
+        TrimWhiteSpace = false
+    };
+    parser.SetDelimiters(",");
+    string[] header = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV header.");
+    if (header.Distinct(StringComparer.Ordinal).Count() != header.Length)
+    {
+        throw new InvalidDataException("Duplicate CSV column.");
+    }
+    int columnIndex = Array.IndexOf(header, column);
+    if (columnIndex < 0)
+    {
+        throw new InvalidDataException($"Missing CSV column: {column}.");
+    }
+    List<string> values = [];
+    while (!parser.EndOfData)
+    {
+        string[] fields = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV record.");
+        if (fields.Length != header.Length)
+        {
+            throw new InvalidDataException("CSV record length differs from its header.");
+        }
+        values.Add(fields[columnIndex]);
+    }
+    return values;
+}
+// The data package supplies this cached vocabulary without a network request.
+static class TokenCounter
+{
+    internal static readonly TiktokenTokenizer Encoding = TiktokenTokenizer.CreateForEncoding("cl100k_base");
 }
 ```
 
@@ -1926,6 +2104,108 @@ static List<String> splitIntoMany(String text, int maxTokens) {
 }
 ```
 
+```csharp
+using System.Globalization;
+using System.Text;
+using System.Text.Json;
+using Microsoft.ML.Tokenizers;
+using Microsoft.VisualBasic.FileIO;
+
+List<string> texts = ReadColumn("processed/scraped.csv", "text");
+List<string> chunks = texts.SelectMany(text => SplitIntoMany(text, 500)).ToList();
+Directory.CreateDirectory("processed");
+using (StreamWriter output = new("processed/chunks.csv", false, new UTF8Encoding(false)))
+{
+    await output.WriteLineAsync("text,n_tokens");
+    foreach (string chunk in chunks)
+    {
+        string quoted = "\"" + chunk.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
+        await output.WriteLineAsync(quoted + "," + CountTokens(chunk).ToString(CultureInfo.InvariantCulture));
+    }
+}
+// The embedding producer can consume the same chunks without CSV parsing.
+await File.WriteAllTextAsync("processed/chunks.json", JsonSerializer.Serialize(chunks));
+
+static int CountTokens(string text) => TokenCounter.Encoding.CountTokens(text);
+
+static List<string> SplitIntoMany(string text, int maxTokens)
+{
+    ArgumentNullException.ThrowIfNull(text);
+    ArgumentOutOfRangeException.ThrowIfLessThan(maxTokens, 1);
+    List<string> chunks = [];
+    if (string.IsNullOrWhiteSpace(text))
+    {
+        return chunks;
+    }
+    string chunk = "";
+    string[] sentences = text.Split(". ", StringSplitOptions.None);
+    for (int index = 0; index < sentences.Length; index++)
+    {
+        string sentence = sentences[index] + (index < sentences.Length - 1 ? "." : "");
+        if (CountTokens(sentence) > maxTokens)
+        {
+            throw new ArgumentException("Split the overlong sentence before chunking.", nameof(text));
+        }
+        string candidate = chunk.Length == 0 ? sentence : chunk + " " + sentence;
+        // Recount the complete candidate, including separators, at every step.
+        if (CountTokens(candidate) > maxTokens)
+        {
+            chunks.Add(chunk);
+            chunk = sentence;
+        }
+        else
+        {
+            chunk = candidate;
+        }
+    }
+    if (chunk.Length > 0)
+    {
+        chunks.Add(chunk);
+    }
+    return chunks;
+}
+
+// TextFieldParser handles quoted commas, escaped quotes, and multiline fields.
+// Empty physical lines are ignored; quoted empty fields remain values.
+static List<string> ReadColumn(string path, string column)
+{
+    using TextFieldParser parser = new(path, System.Text.Encoding.UTF8, true)
+    {
+        TextFieldType = FieldType.Delimited,
+        HasFieldsEnclosedInQuotes = true,
+        TrimWhiteSpace = false
+    };
+    parser.SetDelimiters(",");
+    string[] header = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV header.");
+    if (header.Distinct(StringComparer.Ordinal).Count() != header.Length)
+    {
+        throw new InvalidDataException("Duplicate CSV column.");
+    }
+    int columnIndex = Array.IndexOf(header, column);
+    if (columnIndex < 0)
+    {
+        throw new InvalidDataException($"Missing CSV column: {column}.");
+    }
+    List<string> values = [];
+    while (!parser.EndOfData)
+    {
+        string[] fields = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV record.");
+        if (fields.Length != header.Length)
+        {
+            throw new InvalidDataException("CSV record length differs from its header.");
+        }
+        values.Add(fields[columnIndex]);
+    }
+    return values;
+}
+
+// The data package supplies this cached vocabulary without a network request.
+static class TokenCounter
+{
+    internal static readonly TiktokenTokenizer Encoding = TiktokenTokenizer.CreateForEncoding("cl100k_base");
+}
+```
+
 ```ruby
 require "csv"
 require "json"
@@ -2128,6 +2408,87 @@ static int histogram(List<Integer> counts) throws Exception {
   }
   javax.imageio.ImageIO.write(image, "png", Path.of("local-plot.png").toFile());
   return bins.values().stream().mapToInt(Integer::intValue).sum();
+}
+```
+
+```csharp
+using System.Text.Json;
+using Microsoft.ML.Tokenizers;
+using Microsoft.VisualBasic.FileIO;
+
+var (counts, total) = SaveTokenHistogram();
+
+static (int[] Counts, int Total) SaveTokenHistogram()
+{
+    List<string> texts = ReadColumn("processed/chunks.csv", "text");
+    int[] counts = texts.Select(CountTokens).ToArray();
+    int total = SaveHistogram(counts);
+    return (counts, total);
+}
+
+
+static int CountTokens(string text) => TokenCounter.Encoding.CountTokens(text);
+
+static int SaveHistogram(IReadOnlyList<int> counts)
+{
+    // Exact integer token counts form the bins; every row contributes once.
+    var bins = counts.GroupBy(count => count).OrderBy(group => group.Key).ToArray();
+    ScottPlot.Bar[] bars = bins.Select(group => new ScottPlot.Bar
+    {
+        Position = group.Key,
+        Value = group.Count()
+    }).ToArray();
+    ScottPlot.Plot plot = new();
+    if (bins.Length > 0)
+    {
+        plot.Add.Bars(bars);
+    }
+    plot.Title("Token count distribution");
+    plot.XLabel("Tokens per text");
+    plot.YLabel("Number of texts");
+    plot.Axes.Bottom.Min = -1;
+    plot.Axes.Left.Min = 0;
+    plot.SavePng("token-histogram.png", 640, 400);
+    return bins.Sum(group => group.Count());
+}
+
+// TextFieldParser handles quoted commas, escaped quotes, and multiline fields.
+// Empty physical lines are ignored; quoted empty fields remain values.
+static List<string> ReadColumn(string path, string column)
+{
+    using TextFieldParser parser = new(path, System.Text.Encoding.UTF8, true)
+    {
+        TextFieldType = FieldType.Delimited,
+        HasFieldsEnclosedInQuotes = true,
+        TrimWhiteSpace = false
+    };
+    parser.SetDelimiters(",");
+    string[] header = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV header.");
+    if (header.Distinct(StringComparer.Ordinal).Count() != header.Length)
+    {
+        throw new InvalidDataException("Duplicate CSV column.");
+    }
+    int columnIndex = Array.IndexOf(header, column);
+    if (columnIndex < 0)
+    {
+        throw new InvalidDataException($"Missing CSV column: {column}.");
+    }
+    List<string> values = [];
+    while (!parser.EndOfData)
+    {
+        string[] fields = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV record.");
+        if (fields.Length != header.Length)
+        {
+            throw new InvalidDataException("CSV record length differs from its header.");
+        }
+        values.Add(fields[columnIndex]);
+    }
+    return values;
+}
+// The data package supplies this cached vocabulary without a network request.
+static class TokenCounter
+{
+    internal static readonly TiktokenTokenizer Encoding = TiktokenTokenizer.CreateForEncoding("cl100k_base");
 }
 ```
 
@@ -2544,6 +2905,94 @@ try (var csv =
   }
 }
 System.out.println(vectors.get(0));
+```
+
+```csharp
+using System.Text;
+using System.Text.Json;
+using Microsoft.VisualBasic.FileIO;
+
+namespace OpenAI.Docs.Examples.TutorialCrawlWebsiteEmbeddings.LoadEmbeddings;
+
+internal static class LoadEmbeddingsSample
+{
+
+internal static double[] LoadEmbeddings()
+    {
+        // Run the embedding producer first; this program never invents missing input.
+        List<double[]> vectors = ReadColumn("processed/embeddings.csv", "embeddings")
+            .Select(ParseVector).ToList();
+        if (vectors.Count == 0)
+        {
+            throw new InvalidDataException("The CSV must contain at least one embedding.");
+        }
+        int dimensions = vectors[0].Length;
+        if (vectors.Any(vector => vector.Length != dimensions))
+        {
+            throw new InvalidDataException("All embeddings must have the same dimensions.");
+        }
+        double[] first = vectors[0];
+        Console.WriteLine(JsonSerializer.Serialize(first));
+        return first;
+    }
+    internal static double[] ParseVector(string json)
+    {
+        using JsonDocument document = JsonDocument.Parse(json);
+        if (document.RootElement.ValueKind != JsonValueKind.Array)
+        {
+            throw new InvalidDataException("An embedding must be a JSON array.");
+        }
+        List<double> values = [];
+        foreach (JsonElement item in document.RootElement.EnumerateArray())
+        {
+            if (item.ValueKind != JsonValueKind.Number || !item.TryGetDouble(out double value)
+                || !double.IsFinite(value))
+            {
+                throw new InvalidDataException("Embedding values must be finite JSON numbers.");
+            }
+            values.Add(value);
+        }
+        if (values.Count == 0)
+        {
+            throw new InvalidDataException("An embedding must not be empty.");
+        }
+        return values.ToArray();
+    }
+
+    // TextFieldParser handles quoted commas, escaped quotes, and multiline fields.
+    // Empty physical lines are ignored; quoted empty fields remain values.
+    private static List<string> ReadColumn(string path, string column)
+    {
+        using TextFieldParser parser = new(path, Encoding.UTF8, true)
+        {
+            TextFieldType = FieldType.Delimited,
+            HasFieldsEnclosedInQuotes = true,
+            TrimWhiteSpace = false
+        };
+        parser.SetDelimiters(",");
+        string[] header = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV header.");
+        if (header.Distinct(StringComparer.Ordinal).Count() != header.Length)
+        {
+            throw new InvalidDataException("Duplicate CSV column.");
+        }
+        int columnIndex = Array.IndexOf(header, column);
+        if (columnIndex < 0)
+        {
+            throw new InvalidDataException($"Missing CSV column: {column}.");
+        }
+        List<string> values = [];
+        while (!parser.EndOfData)
+        {
+            string[] fields = parser.ReadFields() ?? throw new InvalidDataException("Missing CSV record.");
+            if (fields.Length != header.Length)
+            {
+                throw new InvalidDataException("CSV record length differs from its header.");
+            }
+            values.Add(fields[columnIndex]);
+        }
+        return values;
+    }
+}
 ```
 
 ```ruby

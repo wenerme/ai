@@ -455,6 +455,27 @@ For Ruby, run the installation commands in your project directory. Before runnin
 
 
 
+
+
+
+Use Go 1.26 or later and `playwright-go` v0.5200.1 from the [Go sample module](https://github.com/openai/developers-website/tree/main/src/content/platform/go-examples). Start at the repository root to install the driver and Chromium.
+
+```bash
+cd src/content/platform/go-examples
+go run github.com/playwright-community/playwright-go/cmd/playwright@v0.5200.1 install chromium
+```
+
+If Linux system libraries are missing, run the same versioned command with `install --with-deps chromium`. You need permission to install operating-system packages.
+
+Browser actions and screenshots belong inside the callback passed to `withBrowserPage`, before its cleanup.
+
+**Runtime helper requirement**
+
+The runtime helper requires a preinstalled matching driver and browser. It does not download them.
+
+
+
+
 Then launch a browser instance. Keep the browser and page alive while you run the remaining steps.
 
 
@@ -508,6 +529,62 @@ with sync_playwright() as p:
         args=["--disable-extensions", "--disable-file-system"],
     )
     page = browser.new_page(viewport={"width": 1280, "height": 720})
+```
+
+```go
+import (
+	"errors"
+	"fmt"
+	"time"
+
+	"github.com/playwright-community/playwright-go"
+)
+
+// withBrowserPage owns the browser lifecycle around your application's page operations.
+// For example, the callback can call page.SetContent with application-owned HTML.
+func withBrowserPage(visit func(playwright.Page) error) (err error) {
+	// Runtime prerequisites must be installed separately; this sample never downloads browsers.
+	pw, err := playwright.Run()
+	if err != nil {
+		return err
+	}
+	defer func() { err = errors.Join(err, pw.Stop()) }()
+	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
+		Headless: playwright.Bool(true), ChromiumSandbox: playwright.Bool(true),
+		Env: map[string]string{}, Timeout: playwright.Float(30000),
+		Args: []string{"--disable-extensions", "--disable-file-system"},
+	})
+	if err != nil {
+		return err
+	}
+	defer func() { err = errors.Join(err, browser.Close()) }()
+	deadlineResult := make(chan error, 1)
+	deadline := time.AfterFunc(5*time.Minute, func() {
+		deadlineResult <- errors.Join(fmt.Errorf("browser page lifetime exceeded five minutes"), browser.Close())
+	})
+	defer func() {
+		if !deadline.Stop() {
+			err = errors.Join(err, <-deadlineResult)
+		}
+	}()
+
+	context, err := browser.NewContext(playwright.BrowserNewContextOptions{
+		Viewport: &playwright.Size{
+			Width:  1280,
+			Height: 720,
+		},
+	})
+	if err != nil {
+		return err
+	}
+	defer func() { err = errors.Join(err, context.Close()) }()
+	page, err := context.NewPage()
+	if err != nil {
+		return err
+	}
+	page.SetDefaultTimeout(10000)
+	return visit(page)
+}
 ```
 
 ```java
@@ -704,6 +781,54 @@ class VM:
 
 
 vm = VM(display=":99", container_name="cua-image")
+```
+
+```go
+import (
+	"bytes"
+	"context"
+	"fmt"
+	"os/exec"
+	"sort"
+	"time"
+)
+
+type VM struct {
+	Display       string
+	ContainerName string
+	Executions    int
+}
+
+// dockerExec preserves argument boundaries and returns stdout as bytes, including PNGs.
+func (vm *VM) dockerExec(executable string, arguments []string, environment map[string]string) ([]byte, error) {
+	args := []string{"exec"}
+	names := make([]string, 0, len(environment))
+	for name := range environment {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		args = append(args, "--env", name+"="+environment[name])
+	}
+	args = append(args, vm.ContainerName, executable)
+	args = append(args, arguments...)
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+	command := exec.CommandContext(ctx, "docker", args...)
+	var stderr bytes.Buffer
+	command.Stderr = &stderr
+	vm.Executions++
+	output, err := command.Output()
+	if err != nil {
+		return nil, fmt.Errorf("docker exec %s: %w: %s", executable, err, stderr.String())
+	}
+	return output, nil
+}
+
+func (vm *VM) xdotool(arguments ...string) error {
+	_, err := vm.dockerExec("xdotool", arguments, map[string]string{"DISPLAY": vm.Display})
+	return err
+}
 ```
 
 ```java
@@ -964,6 +1089,79 @@ def normalize_playwright_button(button="left"):
 def normalize_drag_path(path):
     """Convert the Python SDK's drag-path points to coordinate pairs."""
     return [(point.x, point.y) for point in path]
+```
+
+```go
+import (
+	"fmt"
+
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/playwright-community/playwright-go"
+)
+
+func normalizeKey(key string) string {
+	switch key {
+	case "ENTER", "RETURN":
+		return "Enter"
+	case "ESC", "ESCAPE":
+		return "Escape"
+	case "TAB":
+		return "Tab"
+	case "SPACE":
+		return "Space"
+	case "BACKSPACE":
+		return "Backspace"
+	case "DELETE", "DEL":
+		return "Delete"
+	case "HOME":
+		return "Home"
+	case "END":
+		return "End"
+	case "PAGEUP":
+		return "PageUp"
+	case "PAGEDOWN":
+		return "PageDown"
+	case "UP", "ARROWUP":
+		return "ArrowUp"
+	case "DOWN", "ARROWDOWN":
+		return "ArrowDown"
+	case "LEFT", "ARROWLEFT":
+		return "ArrowLeft"
+	case "RIGHT", "ARROWRIGHT":
+		return "ArrowRight"
+	case "CTRL", "CONTROL":
+		return "Control"
+	case "SHIFT":
+		return "Shift"
+	case "ALT", "OPTION":
+		return "Alt"
+	case "META", "CMD", "COMMAND":
+		return "Meta"
+	default:
+		return key
+	}
+}
+
+func normalizeButton(button string) (playwright.MouseButton, error) {
+	switch button {
+	case "left":
+		return playwright.MouseButton("left"), nil
+	case "wheel":
+		return playwright.MouseButton("middle"), nil
+	case "right":
+		return playwright.MouseButton("right"), nil
+	default:
+		return "", fmt.Errorf("unsupported mouse button: %s", button)
+	}
+}
+
+func normalizeDragPath(path []responses.ComputerActionDragPath) [][2]int64 {
+	result := make([][2]int64, len(path))
+	for i, point := range path {
+		result[i] = [2]int64{point.X, point.Y}
+	}
+	return result
+}
 ```
 
 ```java
@@ -1282,6 +1480,105 @@ def normalize_drag_path(path):
     return [(point.x, point.y) for point in path]
 ```
 
+```go
+import (
+	"github.com/openai/openai-go/v3/responses"
+	"math"
+)
+
+type InvalidInputError struct{ Message string }
+
+func (e *InvalidInputError) Error() string { return e.Message }
+
+func normalizeKey(key string) string {
+	switch key {
+	case "ENTER", "RETURN":
+		return "Return"
+	case "ESC", "ESCAPE":
+		return "Escape"
+	case "TAB":
+		return "Tab"
+	case "SPACE":
+		return "space"
+	case "BACKSPACE":
+		return "BackSpace"
+	case "DELETE", "DEL":
+		return "Delete"
+	case "HOME":
+		return "Home"
+	case "END":
+		return "End"
+	case "PAGEUP":
+		return "Page_Up"
+	case "PAGEDOWN":
+		return "Page_Down"
+	case "UP", "ARROWUP":
+		return "Up"
+	case "DOWN", "ARROWDOWN":
+		return "Down"
+	case "LEFT", "ARROWLEFT":
+		return "Left"
+	case "RIGHT", "ARROWRIGHT":
+		return "Right"
+	case "CTRL", "CONTROL":
+		return "ctrl"
+	case "SHIFT":
+		return "shift"
+	case "ALT", "OPTION":
+		return "alt"
+	case "META", "CMD", "COMMAND":
+		return "super"
+	default:
+		return key
+	}
+}
+
+func normalizeButton(button string) (int, error) {
+	switch button {
+	case "left":
+		return 1, nil
+	case "wheel":
+		return 2, nil
+	case "right":
+		return 3, nil
+	case "back":
+		return 8, nil
+	case "forward":
+		return 9, nil
+	default:
+		return 0, &InvalidInputError{"Unsupported mouse button: " + button}
+	}
+}
+
+func normalizeDragPath(path []responses.ComputerActionDragPath) [][2]int64 {
+	result := make([][2]int64, 0, len(path))
+	for _, point := range path {
+		result = append(result, [2]int64{point.X, point.Y})
+	}
+	return result
+}
+
+func scrollButtons(x, y int64) []int {
+	buttons := []int{}
+	for _, direction := range [][3]int64{{y, 4, 5}, {x, 6, 7}} {
+		delta := direction[0]
+		if delta == 0 {
+			continue
+		}
+		button := direction[2]
+		if delta < 0 {
+			button = direction[1]
+		}
+		// Python round and Java rint use ties-to-even (Go math.Round does not).
+		clicks := max(1, int(math.Abs(math.RoundToEven(float64(delta)/100))))
+		for i := 0; i < clicks; i++ {
+			buttons = append(buttons, int(button))
+		}
+	}
+	return buttons
+}
+```
+
 ```java
 import com.openai.core.ObjectMappers;
 import com.openai.models.responses.ComputerAction;
@@ -1573,6 +1870,160 @@ def handle_computer_actions(page, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```go
+import (
+	"errors"
+	"fmt"
+	"strings"
+	"time"
+
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/playwright-community/playwright-go"
+)
+
+func normalizeKey(key string) string {
+	switch key {
+	case "ENTER", "RETURN":
+		return "Enter"
+	case "ESC", "ESCAPE":
+		return "Escape"
+	case "TAB":
+		return "Tab"
+	case "SPACE":
+		return "Space"
+	case "BACKSPACE":
+		return "Backspace"
+	case "DELETE", "DEL":
+		return "Delete"
+	case "HOME":
+		return "Home"
+	case "END":
+		return "End"
+	case "PAGEUP":
+		return "PageUp"
+	case "PAGEDOWN":
+		return "PageDown"
+	case "UP", "ARROWUP":
+		return "ArrowUp"
+	case "DOWN", "ARROWDOWN":
+		return "ArrowDown"
+	case "LEFT", "ARROWLEFT":
+		return "ArrowLeft"
+	case "RIGHT", "ARROWRIGHT":
+		return "ArrowRight"
+	case "CTRL", "CONTROL":
+		return "Control"
+	case "SHIFT":
+		return "Shift"
+	case "ALT", "OPTION":
+		return "Alt"
+	case "META", "CMD", "COMMAND":
+		return "Meta"
+	default:
+		return key
+	}
+}
+
+func normalizeButton(button string) (playwright.MouseButton, error) {
+	switch button {
+	case "left":
+		return playwright.MouseButton("left"), nil
+	case "wheel":
+		return playwright.MouseButton("middle"), nil
+	case "right":
+		return playwright.MouseButton("right"), nil
+	default:
+		return "", fmt.Errorf("unsupported mouse button: %s", button)
+	}
+}
+
+func normalizeDragPath(path []responses.ComputerActionDragPath) [][2]int64 {
+	result := make([][2]int64, len(path))
+	for i, point := range path {
+		result[i] = [2]int64{point.X, point.Y}
+	}
+	return result
+}
+
+func handleComputerActions(page playwright.Page, actions []responses.ComputerActionUnion) error {
+	for _, action := range actions {
+		var operation func() error
+		switch action.Type {
+		case "click":
+			button, err := normalizeButton(action.Button)
+			if err != nil {
+				return err
+			}
+			operation = func() error {
+				return page.Mouse().Click(float64(action.X), float64(action.Y), playwright.MouseClickOptions{Button: &button})
+			}
+		case "double_click":
+			operation = func() error { return page.Mouse().Dblclick(float64(action.X), float64(action.Y)) }
+		case "move":
+			operation = func() error { return page.Mouse().Move(float64(action.X), float64(action.Y)) }
+		case "drag":
+			path := normalizeDragPath(action.Path)
+			if len(path) < 2 {
+				return fmt.Errorf("drag requires at least two points")
+			}
+			operation = func() (err error) {
+				if err = page.Mouse().Move(float64(path[0][0]), float64(path[0][1])); err != nil {
+					return err
+				}
+				if err = page.Mouse().Down(); err != nil {
+					return err
+				}
+				defer func() { err = errors.Join(err, page.Mouse().Up()) }()
+				for _, point := range path[1:] {
+					if err = page.Mouse().Move(float64(point[0]), float64(point[1])); err != nil {
+						return err
+					}
+				}
+				return nil
+			}
+		case "scroll":
+			operation = func() error {
+				if err := page.Mouse().Move(float64(action.X), float64(action.Y)); err != nil {
+					return err
+				}
+				return page.Mouse().Wheel(float64(action.ScrollX), float64(action.ScrollY))
+			}
+		case "keypress":
+			keys := make([]string, len(action.Keys))
+			for i, key := range action.Keys {
+				keys[i] = normalizeKey(key)
+			}
+			if len(keys) == 0 {
+				return fmt.Errorf("keypress requires at least one key")
+			}
+			if err := page.Keyboard().Press(strings.Join(keys, "+")); err != nil {
+				return err
+			}
+			continue
+		case "type":
+			if err := page.Keyboard().InsertText(action.Text); err != nil {
+				return err
+			}
+			continue
+		case "wait":
+			time.Sleep(2 * time.Second)
+			continue
+		case "screenshot":
+			continue // The caller captures the page after the batch.
+		default:
+			return fmt.Errorf("unsupported computer action: %s", action.Type)
+		}
+		if len(action.Keys) != 0 {
+			return fmt.Errorf("use the modifier-aware handler")
+		}
+		if err := operation(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 ```
 
 ```java
@@ -1943,6 +2394,121 @@ def handle_computer_actions(vm, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```go
+import (
+	"errors"
+	"fmt"
+	"github.com/openai/openai-go/v3/responses"
+	"time"
+)
+
+func withModifiers(vm *VM, keys []string, operation func() error) (err error) {
+	pressed := []string{}
+	defer func() {
+		// Attempt every release even if one release fails, retaining the original failure.
+		for i := len(pressed) - 1; i >= 0; i-- {
+			if releaseErr := vm.xdotool("keyup", pressed[i]); releaseErr != nil {
+				err = errors.Join(err, releaseErr)
+			}
+		}
+	}()
+	for _, key := range keys {
+		normalized := normalizeKey(key)
+		pressed = append(pressed, normalized)
+		if err = vm.xdotool("keydown", normalized); err != nil {
+			return err
+		}
+	}
+	return operation()
+}
+
+func handleComputerActions(vm *VM, actions responses.ComputerActionList) error {
+	for _, action := range actions {
+		var operation func() error
+		switch action.Type {
+		case "click":
+			button, err := normalizeButton(action.Button)
+			if err != nil {
+				return err
+			}
+			operation = func() error {
+				return vm.xdotool("mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y), "click", fmt.Sprint(button))
+			}
+		case "double_click":
+			operation = func() error {
+				return vm.xdotool(
+					"mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y),
+					"click", "--repeat", "2", "--delay", "100", "1",
+				)
+			}
+		case "move":
+			operation = func() error { return vm.xdotool("mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y)) }
+		case "drag":
+			path := normalizeDragPath(action.Path)
+			if len(path) < 2 {
+				return &InvalidInputError{"Drag requires at least two points"}
+			}
+			operation = func() (err error) {
+				if err = vm.xdotool("mousemove", "--sync", fmt.Sprint(path[0][0]), fmt.Sprint(path[0][1])); err != nil {
+					return err
+				}
+				defer func() { err = errors.Join(err, vm.xdotool("mouseup", "1")) }()
+				if err = vm.xdotool("mousedown", "1"); err != nil {
+					return err
+				}
+				for _, point := range path[1:] {
+					if err = vm.xdotool("mousemove", "--sync", fmt.Sprint(point[0]), fmt.Sprint(point[1])); err != nil {
+						return err
+					}
+				}
+				return nil
+			}
+		case "scroll":
+			operation = func() error {
+				if err := vm.xdotool("mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y)); err != nil {
+					return err
+				}
+				for _, button := range scrollButtons(action.ScrollX, action.ScrollY) {
+					if err := vm.xdotool("click", fmt.Sprint(button)); err != nil {
+						return err
+					}
+				}
+				return nil
+			}
+		case "keypress":
+			if len(action.Keys) == 0 {
+				return &InvalidInputError{"Keypress requires keys"}
+			}
+			// Keydown/up provides finally-based release for combinations, too.
+			if err := withModifiers(vm, action.Keys, func() error { return nil }); err != nil {
+				return err
+			}
+			continue
+		case "type":
+			if err := vm.xdotool("type", "--clearmodifiers", "--", action.Text); err != nil {
+				return err
+			}
+			continue
+		case "wait":
+			time.Sleep(2 * time.Second)
+			continue
+		case "screenshot":
+			// The caller captures once after the batch, including screenshot-only batches.
+			continue
+		default:
+			return &InvalidInputError{"Unsupported computer action: " + action.Type}
+		}
+		if len(action.Keys) != 0 {
+			return &InvalidInputError{"Use the modifier-aware handler"}
+		}
+		if err := operation(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 ```
 
 ```java
@@ -2333,6 +2899,182 @@ def handle_computer_actions(page, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```go
+import (
+	"errors"
+	"fmt"
+	"strings"
+	"time"
+
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/playwright-community/playwright-go"
+)
+
+func normalizeKey(key string) string {
+	switch key {
+	case "ENTER", "RETURN":
+		return "Enter"
+	case "ESC", "ESCAPE":
+		return "Escape"
+	case "TAB":
+		return "Tab"
+	case "SPACE":
+		return "Space"
+	case "BACKSPACE":
+		return "Backspace"
+	case "DELETE", "DEL":
+		return "Delete"
+	case "HOME":
+		return "Home"
+	case "END":
+		return "End"
+	case "PAGEUP":
+		return "PageUp"
+	case "PAGEDOWN":
+		return "PageDown"
+	case "UP", "ARROWUP":
+		return "ArrowUp"
+	case "DOWN", "ARROWDOWN":
+		return "ArrowDown"
+	case "LEFT", "ARROWLEFT":
+		return "ArrowLeft"
+	case "RIGHT", "ARROWRIGHT":
+		return "ArrowRight"
+	case "CTRL", "CONTROL":
+		return "Control"
+	case "SHIFT":
+		return "Shift"
+	case "ALT", "OPTION":
+		return "Alt"
+	case "META", "CMD", "COMMAND":
+		return "Meta"
+	default:
+		return key
+	}
+}
+
+func normalizeButton(button string) (playwright.MouseButton, error) {
+	switch button {
+	case "left":
+		return playwright.MouseButton("left"), nil
+	case "wheel":
+		return playwright.MouseButton("middle"), nil
+	case "right":
+		return playwright.MouseButton("right"), nil
+	default:
+		return "", fmt.Errorf("unsupported mouse button: %s", button)
+	}
+}
+
+func normalizeDragPath(path []responses.ComputerActionDragPath) [][2]int64 {
+	result := make([][2]int64, len(path))
+	for i, point := range path {
+		result[i] = [2]int64{point.X, point.Y}
+	}
+	return result
+}
+
+// withModifiers releases every successfully pressed key, even after an error.
+func withModifiers(page playwright.Page, keys []string, operation func() error) (err error) {
+	pressed := make([]string, 0, len(keys))
+	defer func() {
+		for i := len(pressed) - 1; i >= 0; i-- {
+			err = errors.Join(err, page.Keyboard().Up(pressed[i]))
+		}
+	}()
+	for _, key := range keys {
+		key = normalizeKey(key)
+		if err = page.Keyboard().Down(key); err != nil {
+			return err
+		}
+		pressed = append(pressed, key)
+	}
+	return operation()
+}
+
+func handleComputerActions(page playwright.Page, actions []responses.ComputerActionUnion) error {
+	for _, action := range actions {
+		var operation func() error
+		switch action.Type {
+		case "click":
+			button, err := normalizeButton(action.Button)
+			if err != nil {
+				return err
+			}
+			operation = func() error {
+				return page.Mouse().Click(
+					float64(action.X), float64(action.Y),
+					playwright.MouseClickOptions{Button: &button},
+				)
+			}
+		case "double_click":
+			operation = func() error {
+				return page.Mouse().Dblclick(float64(action.X), float64(action.Y))
+			}
+		case "move":
+			operation = func() error {
+				return page.Mouse().Move(float64(action.X), float64(action.Y))
+			}
+		case "drag":
+			path := normalizeDragPath(action.Path)
+			if len(path) < 2 {
+				return fmt.Errorf("drag requires at least two points")
+			}
+			operation = func() (err error) {
+				if err = page.Mouse().Move(float64(path[0][0]), float64(path[0][1])); err != nil {
+					return err
+				}
+				if err = page.Mouse().Down(); err != nil {
+					return err
+				}
+				defer func() { err = errors.Join(err, page.Mouse().Up()) }()
+				for _, point := range path[1:] {
+					if err = page.Mouse().Move(float64(point[0]), float64(point[1])); err != nil {
+						return err
+					}
+				}
+				return nil
+			}
+		case "scroll":
+			operation = func() error {
+				if err := page.Mouse().Move(float64(action.X), float64(action.Y)); err != nil {
+					return err
+				}
+				return page.Mouse().Wheel(float64(action.ScrollX), float64(action.ScrollY))
+			}
+		case "keypress":
+			keys := make([]string, len(action.Keys))
+			for i, key := range action.Keys {
+				keys[i] = normalizeKey(key)
+			}
+			if len(keys) == 0 {
+				return fmt.Errorf("keypress requires at least one key")
+			}
+			if err := page.Keyboard().Press(strings.Join(keys, "+")); err != nil {
+				return err
+			}
+			continue
+		case "type":
+			if err := page.Keyboard().InsertText(action.Text); err != nil {
+				return err
+			}
+			continue
+		case "wait":
+			time.Sleep(2 * time.Second)
+			continue
+		case "screenshot":
+			continue // The caller captures the page after the batch.
+		default:
+			return fmt.Errorf("unsupported computer action: %s", action.Type)
+		}
+		if err := withModifiers(page, action.Keys, operation); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 ```
 
 ```java
@@ -2751,6 +3493,118 @@ def handle_computer_actions(vm, actions):
                 continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
+```
+
+```go
+import (
+	"errors"
+	"fmt"
+	"github.com/openai/openai-go/v3/responses"
+	"time"
+)
+
+func withModifiers(vm *VM, keys []string, operation func() error) (err error) {
+	pressed := []string{}
+	defer func() {
+		// Attempt every release even if one release fails, retaining the original failure.
+		for i := len(pressed) - 1; i >= 0; i-- {
+			if releaseErr := vm.xdotool("keyup", pressed[i]); releaseErr != nil {
+				err = errors.Join(err, releaseErr)
+			}
+		}
+	}()
+	for _, key := range keys {
+		normalized := normalizeKey(key)
+		pressed = append(pressed, normalized)
+		if err = vm.xdotool("keydown", normalized); err != nil {
+			return err
+		}
+	}
+	return operation()
+}
+
+func handleComputerActions(vm *VM, actions responses.ComputerActionList) error {
+	for _, action := range actions {
+		var operation func() error
+		switch action.Type {
+		case "click":
+			button, err := normalizeButton(action.Button)
+			if err != nil {
+				return err
+			}
+			operation = func() error {
+				return vm.xdotool("mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y), "click", fmt.Sprint(button))
+			}
+		case "double_click":
+			operation = func() error {
+				return vm.xdotool(
+					"mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y),
+					"click", "--repeat", "2", "--delay", "100", "1",
+				)
+			}
+		case "move":
+			operation = func() error { return vm.xdotool("mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y)) }
+		case "drag":
+			path := normalizeDragPath(action.Path)
+			if len(path) < 2 {
+				return &InvalidInputError{"Drag requires at least two points"}
+			}
+			operation = func() (err error) {
+				if err = vm.xdotool("mousemove", "--sync", fmt.Sprint(path[0][0]), fmt.Sprint(path[0][1])); err != nil {
+					return err
+				}
+				defer func() { err = errors.Join(err, vm.xdotool("mouseup", "1")) }()
+				if err = vm.xdotool("mousedown", "1"); err != nil {
+					return err
+				}
+				for _, point := range path[1:] {
+					if err = vm.xdotool("mousemove", "--sync", fmt.Sprint(point[0]), fmt.Sprint(point[1])); err != nil {
+						return err
+					}
+				}
+				return nil
+			}
+		case "scroll":
+			operation = func() error {
+				if err := vm.xdotool("mousemove", "--sync", fmt.Sprint(action.X), fmt.Sprint(action.Y)); err != nil {
+					return err
+				}
+				for _, button := range scrollButtons(action.ScrollX, action.ScrollY) {
+					if err := vm.xdotool("click", fmt.Sprint(button)); err != nil {
+						return err
+					}
+				}
+				return nil
+			}
+		case "keypress":
+			if len(action.Keys) == 0 {
+				return &InvalidInputError{"Keypress requires keys"}
+			}
+			// Keydown/up provides finally-based release for combinations, too.
+			if err := withModifiers(vm, action.Keys, func() error { return nil }); err != nil {
+				return err
+			}
+			continue
+		case "type":
+			if err := vm.xdotool("type", "--clearmodifiers", "--", action.Text); err != nil {
+				return err
+			}
+			continue
+		case "wait":
+			time.Sleep(2 * time.Second)
+			continue
+		case "screenshot":
+			// The caller captures once after the batch, including screenshot-only batches.
+			continue
+		default:
+			return &InvalidInputError{"Unsupported computer action: " + action.Type}
+		}
+		if err := withModifiers(vm, action.Keys, operation); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 ```
 
 ```java
@@ -3327,6 +4181,15 @@ def capture_screenshot(page):
     return page.screenshot(type="png")
 ```
 
+```go
+import "github.com/playwright-community/playwright-go"
+
+func captureScreenshot(page playwright.Page) ([]byte, error) {
+	format := playwright.ScreenshotType("png")
+	return page.Screenshot(playwright.PageScreenshotOptions{Type: &format})
+}
+```
+
 ```java
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.*;
@@ -3379,6 +4242,29 @@ def capture_screenshot(vm):
         env={"DISPLAY": vm.display},
         decode=False,
     )
+```
+
+```go
+import (
+	"bytes"
+	"fmt"
+	"image/png"
+)
+
+func captureScreenshot(vm *VM) ([]byte, error) {
+	data, err := vm.dockerExec(
+		"import",
+		[]string{"-window", "root", "png:-"},
+		map[string]string{"DISPLAY": vm.Display},
+	)
+	if err != nil {
+		return nil, err
+	}
+	if _, err := png.DecodeConfig(bytes.NewReader(data)); err != nil {
+		return nil, fmt.Errorf("invalid screenshot PNG: %w", err)
+	}
+	return data, nil
+}
 ```
 
 ```java

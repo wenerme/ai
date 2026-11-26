@@ -2450,6 +2450,65 @@ static String formatResults(List<VectorStoreSearchResponse> results) {
 }
 ```
 
+```csharp
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+
+namespace OpenAI.Docs.Examples.RetrievalExamples.ResultFormatting;
+
+internal static class SampleResultFormattingFunction
+{
+    // Application-owned data: formatting does not require a vector-search client.
+    internal sealed record SearchContent(string Text);
+
+    internal sealed record SearchResult(
+        string FileId,
+        string Filename,
+        IReadOnlyList<SearchContent> Content
+    );
+
+    internal static string FormatResults(IEnumerable<SearchResult> results)
+    {
+        XElement sources = new("sources");
+        foreach (SearchResult result in results)
+        {
+            XElement element = new(
+                "result",
+                new XAttribute("file_id", result.FileId),
+                new XAttribute("file_name", result.Filename)
+            );
+            foreach (SearchContent part in result.Content)
+            {
+                element.Add(new XElement("content", part.Text));
+            }
+            sources.Add(element);
+        }
+        StringBuilder output = new();
+        // Entitize whitespace that XML parsers would otherwise normalize.
+        using XmlWriter writer = XmlWriter.Create(
+            output,
+            new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                Indent = false,
+                NewLineHandling = NewLineHandling.Entitize,
+                CheckCharacters = true,
+            }
+        );
+        writer.WriteStartElement("sources");
+        foreach (XElement result in sources.Elements())
+        {
+            result.WriteTo(writer);
+        }
+        writer.WriteFullEndElement();
+        writer.Flush();
+        return output.ToString();
+    }
+
+}
+```
+
 ```ruby
 def format_results(results)
   sources = results.map do |result|

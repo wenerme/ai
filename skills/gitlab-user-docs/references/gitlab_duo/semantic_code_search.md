@@ -41,6 +41,8 @@ Semantic code search is available through multiple interfaces:
 
 ## Ad-hoc initial indexing
 
+- Ad-hoc initial indexing [restricted](https://gitlab.com/gitlab-org/gitlab/-/work_items/640554) on GitLab.com to members of the project, its top-level group, or any of its subgroups in GitLab 19.7.
+
 When you first use semantic code search in a GitLab project:
 
 - Your repository code is indexed and converted into vector embeddings.
@@ -48,3 +50,7 @@ When you first use semantic code search in a GitLab project:
 - Updates are processed incrementally when code is pushed to the default branch.
 
 Initial indexing can take time for large repositories.
+
+On GitLab.com, you can trigger ad-hoc indexing only if you are a member of the project,
+or of its top-level group or any of its subgroups, or if you have access through a shared group or project.
+If you do not have this access, semantic code search returns a message that the project is not indexed.

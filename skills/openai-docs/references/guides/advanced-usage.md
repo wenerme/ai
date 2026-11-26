@@ -186,6 +186,46 @@ static int countChatMessageTokens(List<Map<String, String>> messages) {
 }
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.ML.Tokenizers;
+
+// This estimate uses cl100k_base and gpt-3.5-turbo-0613 message framing.
+// Other models, tools, and multimodal inputs need different accounting.
+static int CountChatMessageTokens(IReadOnlyList<Dictionary<string, string>> messages)
+{
+    ArgumentNullException.ThrowIfNull(messages);
+    TiktokenTokenizer encoding = TiktokenTokenizer.CreateForEncoding("cl100k_base");
+    int tokens = 3; // Final assistant reply overhead.
+    checked
+    {
+        foreach (Dictionary<string, string> message in messages)
+        {
+            tokens += 3; // Per-message framing.
+            foreach (KeyValuePair<string, string> field in message)
+            {
+                tokens += encoding.CountTokens(field.Value);
+                if (field.Key == "name")
+                {
+                    tokens += 1;
+                }
+            }
+        }
+    }
+    return tokens;
+}
+
+Dictionary<string, string>[] messages =
+[
+    new() { ["role"] = "user", ["content"] = "Hi" },
+];
+Console.WriteLine(CountChatMessageTokens(messages));
+```
+
 ```ruby
 require "tiktoken_ruby"
 
@@ -396,6 +436,80 @@ static int countChatMessageTokens(List<Map<String, String>> messages) {
   }
   return tokens;
 }
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.ML.Tokenizers;
+
+// This estimate uses cl100k_base and gpt-3.5-turbo-0613 message framing.
+// Other models, tools, and multimodal inputs need different accounting.
+static int CountChatMessageTokens(IReadOnlyList<Dictionary<string, string>> messages)
+{
+    ArgumentNullException.ThrowIfNull(messages);
+    TiktokenTokenizer encoding = TiktokenTokenizer.CreateForEncoding("cl100k_base");
+    int tokens = 3; // Final assistant reply overhead.
+    checked
+    {
+        foreach (Dictionary<string, string> message in messages)
+        {
+            tokens += 3; // Per-message framing.
+            foreach (KeyValuePair<string, string> field in message)
+            {
+                tokens += encoding.CountTokens(field.Value);
+                if (field.Key == "name")
+                {
+                    tokens += 1;
+                }
+            }
+        }
+    }
+    return tokens;
+}
+
+Dictionary<string, string>[] messages =
+[
+    new()
+    {
+        ["role"] = "system",
+        ["content"] = "You are a helpful, pattern-following assistant that translates corporate jargon into plain English.",
+    },
+    new()
+    {
+        ["role"] = "system",
+        ["name"] = "example_user",
+        ["content"] = "New synergies will help drive top-line growth.",
+    },
+    new()
+    {
+        ["role"] = "system",
+        ["name"] = "example_assistant",
+        ["content"] = "Things working well together will increase revenue.",
+    },
+    new()
+    {
+        ["role"] = "system",
+        ["name"] = "example_user",
+        ["content"] = "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage.",
+    },
+    new()
+    {
+        ["role"] = "system",
+        ["name"] = "example_assistant",
+        ["content"] = "Let's talk later when we're less busy about how to do better.",
+    },
+    new()
+    {
+        ["role"] = "user",
+        ["content"] = "This late pivot means we don't have time to boil the ocean for the client deliverable.",
+    },
+];
+int promptTokens = CountChatMessageTokens(messages);
+Console.WriteLine($"{promptTokens} prompt tokens counted.");
 ```
 
 ```ruby

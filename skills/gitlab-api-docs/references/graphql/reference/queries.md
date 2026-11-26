@@ -2622,6 +2622,16 @@ Find work items by their reference. This field is a [connection](objects.md#conn
 | `contextNamespacePath` | [`ID`](scalars.md#id) | Full path of the context namespace (project or group). |
 | `refs` | [`[String!]!`](scalars.md#string) | Work item references. Can be either a short reference or URL. |
 
+## `workforceHierarchies`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.
+
+Workforce hierarchies of the current organization that the user can read. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
+
+**Returns:** [`WorkforceHierarchyConnection`](objects.md#workforcehierarchyconnection)
+
 ## `workspace`
 
 Find a workspace.

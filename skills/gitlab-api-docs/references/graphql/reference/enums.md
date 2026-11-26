@@ -513,6 +513,26 @@ Source that recorded an AI governance session.
 | `GITLAB_DUO` | Session run on the GitLab Duo Agent Platform. |
 | `MCP` | Session inferred from tool calls made through the GitLab MCP server. |
 
+## `AiGovernanceSessionUsageStatus`
+
+Whether usage is available for an AI governance session.
+
+| Value | Description |
+| ----- | ----------- |
+| `AVAILABLE` | Usage is recorded for the session. |
+| `PENDING` | No usage recorded yet. Billing has not finished a sync late enough to include the session. |
+| `UNAVAILABLE` | No usage is recorded for the session. `unavailableReason` says why. |
+
+## `AiGovernanceSessionUsageUnavailableReason`
+
+Why usage is unavailable for an AI governance session.
+
+| Value | Description |
+| ----- | ----------- |
+| `ANALYTICS_OFF` | ClickHouse is not enabled for analytics, so usage cannot be read. |
+| `NOT_BILLED` | Billing recorded no billed credits for the session, for example because its usage was promotional or beta. |
+| `NO_RECENT_SYNC` | No credits sync has finished in the last 90 days for the top-level group, or for the instance on self-managed. The sync only visits groups billed in that time. |
+
 ## `AiGovernanceToolRisk`
 
 Risk level of a tool, taken from its action type in the tool registry.
@@ -3238,6 +3258,19 @@ Verdict a policy evaluation produced.
 | `ALLOW` | Evaluation produced a `allow` verdict. |
 | `DENY` | Evaluation produced a `deny` verdict. |
 | `REQUIRE_APPROVAL` | Evaluation produced a `require_approval` verdict. |
+
+## `GovernPolicyImpactUnavailableReason`
+
+Reason the impact of a policy cannot be analyzed before it is saved.
+
+| Value | Description |
+| ----- | ----------- |
+| `EMPTY_SCOPE` | Scope declares an inclusion that names nothing. |
+| `MIXED_RULE_TYPES` | Rules mix several kinds. |
+| `MULTI_DIMENSION_SCOPE` | Scope combines several inclusion dimensions without matching any of them. |
+| `REGO_SCOPE` | Scope is written in Rego. |
+| `SECURITY_ATTRIBUTE_SCOPE` | Scope uses security attributes. |
+| `UNSUPPORTED_RULE_TYPE` | Rules are not setting validation rules. Other rule kinds need the policy engine. |
 
 ## `GroupMemberRelation`
 

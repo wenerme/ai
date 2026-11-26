@@ -1359,6 +1359,7 @@ AI session recorded for AI governance, from GitLab Duo or an external agent.
 | `sessionStartedAt` | [`Time!`](scalars.md#time) | Timestamp of when the session started. |
 | `source` | [`AiGovernanceSessionSource!`](enums.md#aigovernancesessionsource) | Source that recorded the session. |
 | `triggeredBy` | [`UserCore`](#usercore) | User who initiated the session. |
+| `usage` | [`AiGovernanceSessionUsage`](#aigovernancesessionusage) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.GitLab Credits used by the session, synced from billing about every six hours. Null for sessions from sources other than GitLab Duo, and for GitLab Duo sessions without a workflow. Returns `null` if the `ai_governance_session_usage` feature flag is disabled for the top-level group. |
 | `webPath` | [`String`](scalars.md#string) | Path of the session page. Null for sessions from sources other than GitLab Duo, and for GitLab Duo sessions without a project. |
 | `workItemLinks` | [`AiGovernanceSessionWorkItemLinkConnection`](#aigovernancesessionworkitemlinkconnection) | Links to work items the session was started from or created. Empty for sessions from sources other than GitLab Duo. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 
@@ -1431,6 +1432,20 @@ Link between an AI governance session and a note.
 ## `AiGovernanceSessionNoteLinkConnection`
 
 Paginated collection of [`AiGovernanceSessionNoteLink`](#aigovernancesessionnotelink). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
+## `AiGovernanceSessionUsage`
+
+GitLab Credits used by an AI governance session, as synced from billing.
+
+### `AiGovernanceSessionUsage` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `credits` | [`Float`](scalars.md#float) | GitLab Credits used by the session. Null unless `status` is `AVAILABLE`. |
+| `primaryModel` | [`String`](scalars.md#string) | Model billing reported for the session. Null when billing reported none. |
+| `status` | [`AiGovernanceSessionUsageStatus!`](enums.md#aigovernancesessionusagestatus) | Whether usage is available for the session. |
+| `unavailableReason` | [`AiGovernanceSessionUsageUnavailableReason`](enums.md#aigovernancesessionusageunavailablereason) | Why usage is unavailable. Null unless `status` is `UNAVAILABLE`. |
+| `updatedAt` | [`Time`](scalars.md#time) | Timestamp of the latest billing update for the session. |
 
 ## `AiGovernanceSessionWorkItemLink`
 
@@ -2371,6 +2386,7 @@ Manifest of a container image in an Artifact Registry repository (Docker and OCI
 | `createdBy` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.User who published the manifest, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
 | `digest` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Content-addressable digest of the manifest. |
 | `id` | [`ID!`](scalars.md#id) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the manifest in Artifact Registry. |
+| `job` | [`CiJob`](#cijob) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.CI/CD job that published the manifest, resolved from the reference Artifact Registry stores. Null when it stored none, the job no longer exists, `project` is null, the job is not in `project`, or the viewer cannot read the job. |
 | `mediaType` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Media type of the manifest. |
 | `os` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Operating system an image manifest targets. Null on an index, per value on an image whose config did not carry it, and always null on a remote repository. |
 | `osVariant` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.CPU variant an image manifest targets. Null on an index, on most images, and always null on a remote repository. |
@@ -2416,6 +2432,7 @@ Single container manifest in an Artifact Registry repository, reached by digest 
 | `createdBy` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.User who published the manifest, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
 | `digest` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Content-addressable digest of the manifest. |
 | `id` | [`ID!`](scalars.md#id) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the manifest in Artifact Registry. |
+| `job` | [`CiJob`](#cijob) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.CI/CD job that published the manifest, resolved from the reference Artifact Registry stores. Null when it stored none, the job no longer exists, `project` is null, the job is not in `project`, or the viewer cannot read the job. |
 | `mediaType` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Media type of the manifest. |
 | `os` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Operating system an image manifest targets. Null on an index, per value on an image whose config did not carry it, and always null on a remote repository. |
 | `osVariant` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.CPU variant an image manifest targets. Null on an index, on most images, and always null on a remote repository. |
@@ -2791,6 +2808,7 @@ Version of a package in an Artifact Registry repository (Maven and npm).
 | `createdBy` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.User who published the version, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
 | `distTags` | [`[String!]!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Names of the npm dist-tags bound to the version, in ascending name order. Empty for Maven versions. |
 | `id` | [`ID!`](scalars.md#id) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the version in Artifact Registry. |
+| `job` | [`CiJob`](#cijob) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.CI/CD job that published the version, resolved from the reference Artifact Registry stores. Null when it stored none, the job no longer exists, `project` is null, the job is not in `project`, or the viewer cannot read the job. |
 | `project` | [`Project`](#project) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
 | `sizeBytes` | [`BigInt`](scalars.md#bigint) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
 | `version` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Version string of the package. |
@@ -2814,6 +2832,7 @@ Single version of a package in an Artifact Registry repository, reached by ID an
 | `distTags` | [`[String!]!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Names of the npm dist-tags bound to the version, in ascending name order. Empty for Maven versions. |
 | `files` | [`ArtifactRegistryVersionFileConnection`](#artifactregistryversionfileconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Files the version holds, ordered by file name. Reads at most 20 rows per page and can be selected once per operation. Returns `null` for a version that is gone, and when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, any other 4xx, or a 403 that names a namespace state. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `id` | [`ID!`](scalars.md#id) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the version in Artifact Registry. |
+| `job` | [`CiJob`](#cijob) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.CI/CD job that published the version, resolved from the reference Artifact Registry stores. Null when it stored none, the job no longer exists, `project` is null, the job is not in `project`, or the viewer cannot read the job. |
 | `project` | [`Project`](#project) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
 | `sizeBytes` | [`BigInt`](scalars.md#bigint) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
 | `statistics` | [`ArtifactRegistryVersionStatistics`](#artifactregistryversionstatistics) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Read-time statistics for the version. Hosted repositories only, so `null` without a read on a virtual or remote repository and on a container repository. Can be selected once per operation. `null` when Artifact Registry does not serve the statistics route, and when it rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, any other 5xx, any other 4xx, or a 403 that names a namespace state. |
@@ -10738,6 +10757,35 @@ This connection has additional fields beyond the [standard connection fields](#s
 | ---- | ---- | ----------- |
 | `count` | [`Int!`](scalars.md#int) | Total count of collection. Returns limit + 1 for counts greater than the limit.  <strong>Arguments for `count`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit applied to the count query, returns limit + 1. When not provided, returns the exact count.</dd></dl> |
 
+## `GovernPolicyImpact`
+
+Projects in the scope of an unsaved policy that violate its rules today, as the first scheduled check after saving the policy would find them.
+
+### `GovernPolicyImpact` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `complete` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates every project in the scope was checked. False when the project cap or the time budget stopped the check, or when the analysis is unavailable for the policy. |
+| `compliantCount` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Number of checked projects that comply with the policy. |
+| `projectsInScopeCount` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Number of projects in the scope of the policy that were checked. At most 1000. `complete` is false when the scope holds more. |
+| `unavailableReason` | [`GovernPolicyImpactUnavailableReason`](enums.md#governpolicyimpactunavailablereason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Reason the analysis is unavailable for the policy, such as a custom rule or a custom scope. Null when the check ran. |
+| `violatingCount` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Number of checked projects that violate the policy. |
+| `violatingProjects` | [`[GovernPolicyImpactProject!]!`](#governpolicyimpactproject) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.First 20 violating projects, in ID order. `violatingCount` gives the total. |
+
+## `GovernPolicyImpactProject`
+
+Project an unsaved policy finds in violation.
+
+### `GovernPolicyImpactProject` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `fullPath` | [`ID!`](scalars.md#id) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Full path of the project. |
+| `id` | [`ProjectID!`](scalars.md#projectid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Global ID of the project. |
+| `name` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Name of the project. |
+| `webPath` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Web path of the project. |
+| `webUrl` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Web URL of the project. |
+
 ## `GovernPolicyViolation`
 
 Violation a policy evaluation produced.
@@ -10908,7 +10956,7 @@ GPG signature for a signed commit.
 | `fullName` | [`String`](scalars.md#string) | Full name of the group. |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the group. |
 | `gitlabSubscription` | [`GitlabSubscription`](#gitlabsubscription) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.GitLab.com subscription of the group. Returns `null` when the group has no subscription or on GitLab Self-Managed. |
-| `gitlabSubscriptionsPreviewBillableUserChange` | [`PreviewBillableUserChange`](#previewbillableuserchange) | Preview Billable User Changes.  <strong>Arguments for `gitlabSubscriptionsPreviewBillableUserChange`:</strong> <dl><dt>`addGroupId` ([`Int`](scalars.md#int))</dt><dd>Group ID to add.</dd><dt>`addUserEmails` ([`[String!]`](scalars.md#string))</dt><dd>User emails to add.</dd><dt>`addUserIds` ([`[Int!]`](scalars.md#int))</dt><dd>User IDs to add.</dd><dt>`memberRoleId` ([`Int`](scalars.md#int))</dt><dd>Custom role assigned to the users.</dd><dt>`role` ([`GitlabSubscriptionsUserRole!`](enums.md#gitlabsubscriptionsuserrole))</dt><dd>Role of users being added to group.</dd></dl> |
+| `gitlabSubscriptionsPreviewBillableUserChange` | [`PreviewBillableUserChange`](#previewbillableuserchange) | Preview Billable User Changes. Rate limited per user. Requests over the limit are only logged unless the `preview_billable_user_change_rate_limit` feature flag is enabled.  <strong>Arguments for `gitlabSubscriptionsPreviewBillableUserChange`:</strong> <dl><dt>`addGroupId` ([`Int`](scalars.md#int))</dt><dd>Group ID to add.</dd><dt>`addUserEmails` ([`[String!]`](scalars.md#string))</dt><dd>User email addresses to add.</dd><dt>`addUserIds` ([`[Int!]`](scalars.md#int))</dt><dd>User IDs to add.</dd><dt>`memberRoleId` ([`Int`](scalars.md#int))</dt><dd>Custom role assigned to the users.</dd><dt>`role` ([`GitlabSubscriptionsUserRole!`](enums.md#gitlabsubscriptionsuserrole))</dt><dd>Role of users being added to group.</dd></dl> |
 | `googleCloudLoggingConfigurations` | [`GoogleCloudLoggingConfigurationTypeConnection`](#googlecloudloggingconfigurationtypeconnection) | Deprecated in GitLab 18.10. Use `externalAuditEventStreamingDestinations` with `gcpLogging` category instead. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `groupMembers` | [`GroupMemberConnection`](#groupmemberconnection) | A membership of a user within this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `groupMembers`:</strong> <dl><dt>`accessLevels` ([`[AccessLevelEnum!]`](enums.md#accesslevelenum))</dt><dd>Filter members by the given access levels.</dd><dt>`enterprise` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter members by enterprise users.</dd><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>List of group members IDs.</dd><dt>`relations` ([`[GroupMemberRelation!]`](enums.md#groupmemberrelation))</dt><dd>Filter members by the given member relations.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search query.</dd><dt>`sort` ([`MemberSort`](enums.md#membersort))</dt><dd>sort query.</dd></dl> |
 | `groupMembersCount` | [`Int!`](scalars.md#int) | Count of direct members of the group. |
@@ -16626,6 +16674,7 @@ Catalogs available when creating a policy in the policy store.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `actions` | [`[PolicyStoreAction!]!`](#policystoreaction) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Actions available when creating a policy in the policy store. |
+| `impact` | [`GovernPolicyImpact`](#governpolicyimpact) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Impact of a policy before it is saved: the projects in its scope that violate its rules today. Available for an organization or a group; a project returns an error. Returns `null` when the current user cannot read the policies of the container. This field can be requested only once in any single query.  <strong>Arguments for `impact`:</strong> <dl><dt>`policyScope` ([`JSON`](scalars.md#json))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Authored scope of the policy. Mutually exclusive with scopeRego.</dd><dt>`rules` ([`[JSON!]!`](scalars.md#json))</dt><dd>Rules of the policy, at least one. No more than 1000 rules.</dd><dt>`scopeRego` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Rego expression scoping the policy. Mutually exclusive with policyScope.</dd></dl> |
 | `policies` | [`GovernPolicyConnection`](#governpolicyconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Policies stored in the policy store for the organization, group, or project. For a group, organization-wide, ancestor, and descendant groups' policies are included. For a project, organization-wide policies and its ancestor groups' policies are included. Policies are not filtered by their scope. Only `first` and `after` are supported; page with `pageInfo.endCursor`. Cursor offsets are capped at 100000, so policies past that window cannot be paged. The `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policies`:</strong> <dl><dt>`ids` ([`[Int!]`](scalars.md#int))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the policies with these IDs. Unknown IDs are ignored; an empty list returns no policies. Maximum is 1000 IDs.</dd><dt>`triggerType` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog.</dd></dl> |
 | `policyEvaluations` | [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Recorded evaluations of the policies stored in the policy store for the organization, group, or project, newest first. For a group, evaluations of its own and descendant groups' policies are returned, plus evaluations of inherited policies recorded against the group's projects. Empty for a project. Pages are capped at 50 evaluations, because each evaluation carries an unpaginated list of violations. Returns `null` when the current user cannot read the policies of the container. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policyEvaluations`:</strong> <dl><dt>`evaluatedAfter` ([`Time`](scalars.md#time))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran at or after the given timestamp.</dd><dt>`evaluatedBefore` ([`Time`](scalars.md#time))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran at or before the given timestamp.</dd><dt>`mode` ([`GovernPolicyEvaluationMode`](enums.md#governpolicyevaluationmode))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran in the given enforcement mode.</dd><dt>`policyId` ([`Int`](scalars.md#int))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations of the policy with the given ID.</dd><dt>`verdict` ([`GovernPolicyEvaluationVerdict`](enums.md#governpolicyevaluationverdict))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that produced the given verdict.</dd></dl> |
 | `rules` | [`[PolicyStoreRule!]!`](#policystorerule) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Rule kinds available when creating a policy in the policy store. |
@@ -16863,7 +16912,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `forkingAccessLevel` | [`ProjectFeatureAccess`](#projectfeatureaccess) | Access level required for forking access. |
 | `forksCount` | [`Int!`](scalars.md#int) | Number of times the project has been forked. |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the project. |
-| `gitlabSubscriptionsPreviewBillableUserChange` | [`PreviewBillableUserChange`](#previewbillableuserchange) | Preview Billable User Changes.  <strong>Arguments for `gitlabSubscriptionsPreviewBillableUserChange`:</strong> <dl><dt>`addGroupId` ([`Int`](scalars.md#int))</dt><dd>Group ID to add.</dd><dt>`addUserEmails` ([`[String!]`](scalars.md#string))</dt><dd>User emails to add.</dd><dt>`addUserIds` ([`[Int!]`](scalars.md#int))</dt><dd>User IDs to add.</dd><dt>`memberRoleId` ([`Int`](scalars.md#int))</dt><dd>Custom role assigned to the users.</dd><dt>`role` ([`GitlabSubscriptionsUserRole!`](enums.md#gitlabsubscriptionsuserrole))</dt><dd>Role of users being added to group.</dd></dl> |
+| `gitlabSubscriptionsPreviewBillableUserChange` | [`PreviewBillableUserChange`](#previewbillableuserchange) | Preview Billable User Changes. Rate limited per user. Requests over the limit are only logged unless the `preview_billable_user_change_rate_limit` feature flag is enabled.  <strong>Arguments for `gitlabSubscriptionsPreviewBillableUserChange`:</strong> <dl><dt>`addGroupId` ([`Int`](scalars.md#int))</dt><dd>Group ID to add.</dd><dt>`addUserEmails` ([`[String!]`](scalars.md#string))</dt><dd>User email addresses to add.</dd><dt>`addUserIds` ([`[Int!]`](scalars.md#int))</dt><dd>User IDs to add.</dd><dt>`memberRoleId` ([`Int`](scalars.md#int))</dt><dd>Custom role assigned to the users.</dd><dt>`role` ([`GitlabSubscriptionsUserRole!`](enums.md#gitlabsubscriptionsuserrole))</dt><dd>Role of users being added to group.</dd></dl> |
 | `googleCloudArtifactRegistryRepository` | [`GoogleCloudArtifactRegistryRepository`](#googlecloudartifactregistryrepository) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.10.Google Artifact Registry repository. Returns `null` if the GitLab instance is not a SaaS instance. |
 | `grafanaIntegration` | [`GrafanaIntegration`](#grafanaintegration) | Deprecated in GitLab 18.3. Feature was removed in 16.0. Always returns null. |
 | `group` | [`Group`](#group) | Group of the project. |
@@ -16955,7 +17004,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `pipelineScheduleStatusCounts` | [`PipelineScheduleStatusCount`](#pipelineschedulestatuscount) | Counts of pipeline schedules by status. |
 | `pipelineSchedules` | [`PipelineScheduleConnection`](#pipelinescheduleconnection) | Pipeline schedules of the project. This field can only be resolved for one project per request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `pipelineSchedules`:</strong> <dl><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter pipeline schedules by IDs.</dd><dt>`sort` ([`PipelineScheduleSort`](enums.md#pipelineschedulesort))</dt><dd>List pipeline schedules by sort order. Default is `id_desc`.</dd><dt>`status` ([`PipelineScheduleStatus`](enums.md#pipelineschedulestatus))</dt><dd>Filter pipeline schedules by active status.</dd></dl> |
 | `pipelineTriggers` | [`PipelineTriggerConnection`](#pipelinetriggerconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.3.List of pipeline trigger tokens. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `pipelines` | [`PipelineConnection`](#pipelineconnection) | Pipelines of the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter pipelines by their Global IDs. Maximum 20 IDs per request. Child pipelines are included when requested by ID.</dd><dt>`ref` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the ref they are run for.</dd><dt>`refType` ([`RefType`](enums.md#reftype))</dt><dd>Type of ref.</dd><dt>`scope` ([`PipelineScopeEnum`](enums.md#pipelinescopeenum))</dt><dd>Filter pipelines by scope.</dd><dt>`sha` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the sha of the commit they are run for.</dd><dt>`source` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by their source.</dd><dt>`status` ([`PipelineStatusEnum`](enums.md#pipelinestatusenum))</dt><dd>Filter pipelines by their status.</dd><dt>`updatedAfter` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated after the date.</dd><dt>`updatedBefore` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated before the date.</dd><dt>`username` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the user that triggered the pipeline.</dd></dl> |
+| `pipelines` | [`PipelineConnection`](#pipelineconnection) | Pipelines of the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter pipelines by their Global IDs. Maximum 20 IDs per request. Child pipelines are included when requested by ID.</dd><dt>`name` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Filter pipelines by exact, case-sensitive name. Ignored when the `pipeline_name_filter` feature flag is disabled. Filtering by name requires permission to read builds. Name-filtered counts require an explicit limit between 1 and 1000.</dd><dt>`ref` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the ref they are run for.</dd><dt>`refType` ([`RefType`](enums.md#reftype))</dt><dd>Type of ref.</dd><dt>`scope` ([`PipelineScopeEnum`](enums.md#pipelinescopeenum))</dt><dd>Filter pipelines by scope.</dd><dt>`sha` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the sha of the commit they are run for.</dd><dt>`source` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by their source.</dd><dt>`status` ([`PipelineStatusEnum`](enums.md#pipelinestatusenum))</dt><dd>Filter pipelines by their status.</dd><dt>`updatedAfter` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated after the date.</dd><dt>`updatedBefore` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated before the date.</dd><dt>`username` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the user that triggered the pipeline.</dd></dl> |
 | `policyStore` | [`PolicyStore`](#policystore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Policy store catalogs and the policies that apply to the project, read-only. Returns `null` when the policy store experiment is not active for the project's top-level group, or for a project in a personal namespace. This field can be resolved for only one project in any single request. |
 | `preReceiveSecretDetectionEnabled` | [`Boolean`](scalars.md#boolean) | Indicates whether secret push protection is on or not for the project. |
 | `preventMergeWithoutJiraIssueEnabled` | [`Boolean!`](scalars.md#boolean) | Indicates if an associated issue from Jira is required. |
@@ -17421,7 +17470,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 | `deletePathLock` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `delete_path_lock` on this resource. |
 | `destroyDesign` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `destroy_design` on this resource. |
 | `destroyPages` | [`Boolean!`](scalars.md#boolean) | Always `false`. No role has this permission. |
-| `destroyWiki` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `destroy_wiki` on this resource. |
+| `destroyWiki` | [`Boolean!`](scalars.md#boolean) | Always `false`. No role has this permission. |
 | `downloadCode` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `download_code` on this resource. |
 | `downloadWikiCode` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `download_wiki_code` on this resource. |
 | `forkProject` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `fork_project` on this resource. |
@@ -19232,6 +19281,7 @@ A configuration variable that a scan profile of a given type can set.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `ciKeyword` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.CI/CD job keyword the configuration field sets on the scan jobs, such as `tags`. |
 | `description` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Translated description of the configuration field. |
 | `envVar` | [`String`](scalars.md#string) | CI/CD variable the configuration field is passed to the scan as. |
 | `key` | [`String!`](scalars.md#string) | Name of the configuration field, as used in the scan profile configuration input. |
@@ -22595,6 +22645,8 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `archived` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.5.Whether the work item belongs to an archived project or group. |
 | `author` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.9.User that created the work item. |
 | `availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the work item. |
+| `blockedByCount` | [`Int!`](scalars.md#int) | Count of items blocking the work item. |
+| `blockingCount` | [`Int!`](scalars.md#int) | Count of items the work item is blocking. |
 | `closedAt` | [`Time`](scalars.md#time) | Timestamp of when the work item was closed. |
 | `closedBy` | [`UserCore`](#usercore) | User that closed the work item. |
 | `commentTemplatesPaths` | [`[CommentTemplatePathType!]!`](#commenttemplatepathtype) | Paths of the comment templates. |
@@ -23808,6 +23860,39 @@ Represents a weight widget.
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 | `weight` | [`Int`](scalars.md#int) | Weight of the work item. |
 | `widgetDefinition` | [`WorkItemWidgetDefinitionWeight`](#workitemwidgetdefinitionweight) | Deprecated in GitLab 18.11. All work item types with weight widget now support editing and rolled up weight. |
+
+## `WorkforceHierarchy`
+
+The workforce hierarchy of a tenant.
+
+### `WorkforceHierarchy` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `group` | [`Group`](#group) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Tenant root group that owns the hierarchy. |
+| `id` | [`WorkforceHierarchyID!`](scalars.md#workforcehierarchyid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Global ID of the workforce hierarchy. |
+| `units` | [`WorkforceUnitConnection`](#workforceunitconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Units of the hierarchy as a flat list, ordered by ID. Build the tree from `parentId`. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `units`:</strong> <dl><dt>`type` ([`String!`](scalars.md#string))</dt><dd>Unit type to filter by.</dd></dl> |
+
+## `WorkforceHierarchyConnection`
+
+Paginated collection of [`WorkforceHierarchy`](#workforcehierarchy). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
+## `WorkforceUnit`
+
+A unit in a workforce hierarchy, such as a supervisory organization.
+
+### `WorkforceUnit` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `id` | [`WorkforceUnitID!`](scalars.md#workforceunitid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Global ID of the workforce unit. |
+| `name` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Name of the workforce unit, as set in the HR system. |
+| `parentId` | [`WorkforceUnitID`](scalars.md#workforceunitid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Global ID of the parent unit. Null for a root unit. The parent can be a unit of another type when the source tree mixes types; such a parent is not in a type-filtered list. |
+| `type` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Type of the workforce unit. |
+
+## `WorkforceUnitConnection`
+
+Paginated collection of [`WorkforceUnit`](#workforceunit). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `Workspace`
 

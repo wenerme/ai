@@ -130,6 +130,51 @@ If a pipeline fails because of a database migration:
   of attempting a fix.
 ```
 
+### Customize the comment on new merge requests
+
+- [Introduced](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6348) in GitLab 19.3.
+
+When the flow creates a merge request, the flow posts one comment on that merge request.
+The comment mentions the assignee, explains why the merge request exists, and suggests next steps.
+
+To change the comment, add instructions to `AGENTS.md`.
+You can customize the following:
+
+- Whether the flow posts the comment.
+- The next steps, to match the review and merge process for your project.
+- The wording, tone, and language.
+- Extra content, such as a checklist, more sections, or links to a contribution guide
+  or an escalation process.
+
+Instructions in `AGENTS.md` cannot change the following:
+
+- The flow posts no more than one comment, and only on the merge request the flow created.
+- The comment explains why the merge request exists and does not summarize the code changes.
+- The comment links to the failed pipeline and, if the pipeline is associated with
+  a merge request, to that merge request.
+- The comment ends with the `Powered by Duo Fix Pipeline` footer.
+- The comment mentions only the assignee of the merge request.
+
+For example, to match the comment to your review process:
+
+```markdown
+## Fix pipeline merge request comment
+
+When the Fix Pipeline flow comments on a merge request it opens:
+
+- Replace the "What to do next" guidance with: "Review the fix, then request a review from
+  a maintainer of the affected area. Do not merge your own fix."
+- Add a link to the contribution guide: https://gitlab.example.com/my-group/my-project/-/blob/main/CONTRIBUTING.md
+```
+
+To turn off the comment:
+
+```markdown
+## Fix pipeline merge request comment
+
+Do not post a comment on merge requests that the Fix Pipeline flow opens.
+```
+
 ## Known issues
 
 - The AI gateway processes only the last 150 KiB of job logs. If your job produces extensive

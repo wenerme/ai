@@ -46,6 +46,8 @@ Prerequisites:
 - You have the Owner or Security Manager role for the top-level group or project, or a custom role
   with the `read_agent_artifacts` permission.
   Without it, the **Audit events** tab shows a message instead of the events.
+- [](#enable-ai-audit-event-storage) turned on for the group or project.
+  Without it, new AI audit events are not stored and do not appear in the tab.
 
 To view AI audit events for a group:
 

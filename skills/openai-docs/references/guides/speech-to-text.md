@@ -901,6 +901,135 @@ try (var song = AudioSystem.getAudioInputStream(Path.of("good_morning.wav").toFi
 }
 ```
 
+```csharp
+using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace OpenAI.Docs.Examples.SpeechToTextLongerInputs;
+
+internal static class SpeechToTextLongerInputs
+{
+    internal static async Task RunAsync()
+    {
+        // Install FFmpeg and ffprobe on PATH. Supply a PCM WAV at this path.
+        // Retain the first ten minutes (or the entire file when shorter).
+        // Ten minutes does not guarantee a file below the transcription upload limit.
+        const string inputPath = "good_morning.wav";
+        const string outputPath = "good_morning_10.wav";
+        using CancellationTokenSource timeout = new(TimeSpan.FromMinutes(2));
+        AudioInfo input = await ProbeAsync(inputPath, timeout.Token);
+        string temporaryPath = Path.GetFullPath(outputPath) + $".{Guid.NewGuid():N}.tmp.wav";
+        try
+        {
+            // Match the input codec, rate and channels: retain PCM samples without
+            // resampling or reducing their precision, including high-bitrate stereo.
+            // Trimming by sample count gives exactly 600 seconds for longer files.
+            await RunToolAsync("ffmpeg", CreateTrimArguments(input, inputPath, temporaryPath), timeout.Token);
+            AudioInfo output = await ProbeAsync(temporaryPath, timeout.Token);
+            if (Math.Abs(output.DurationMilliseconds - Math.Min(input.DurationMilliseconds, 600_000L)) > 1)
+                throw new InvalidDataException("The trimmed audio duration does not match the requested interval.");
+            File.Move(temporaryPath, outputPath, overwrite: true);
+            string durations = JsonSerializer.Serialize(new
+            {
+                input_ms = input.DurationMilliseconds,
+                output_ms = output.DurationMilliseconds
+            });
+            Console.WriteLine(durations);
+
+}
+        finally
+        {
+            File.Delete(temporaryPath);
+        }
+    }
+    internal sealed record AudioInfo(string Codec, int SampleRate, long DurationMilliseconds);
+
+    private static async Task<AudioInfo> ProbeAsync(string path, CancellationToken cancellationToken)
+    {
+        string json = await RunToolAsync("ffprobe",
+            ["-v", "error", "-select_streams", "a:0", "-show_entries",
+             "stream=codec_name,sample_rate:format=duration,format_name", "-of", "json", path],
+            cancellationToken);
+        return ParseAudioInfo(json);
+    }
+
+    internal static AudioInfo ParseAudioInfo(string json)
+    {
+        using JsonDocument document = JsonDocument.Parse(json);
+        JsonElement format = document.RootElement.GetProperty("format");
+        if (format.GetProperty("format_name").GetString() != "wav")
+            throw new InvalidDataException("Supply a PCM WAV file.");
+        JsonElement streams = document.RootElement.GetProperty("streams");
+        if (streams.GetArrayLength() != 1)
+            throw new InvalidDataException("No audio stream was found.");
+        JsonElement stream = streams[0];
+        string codec = stream.GetProperty("codec_name").GetString()
+            ?? throw new InvalidDataException("Missing WAV codec.");
+        if (codec is not ("pcm_u8" or "pcm_s16le" or "pcm_s24le" or "pcm_s32le" or
+            "pcm_f32le" or "pcm_f64le"))
+            throw new InvalidDataException($"This sample requires uncompressed little-endian PCM WAV; received {codec}.");
+        int sampleRate = int.Parse(stream.GetProperty("sample_rate").GetString()!, CultureInfo.InvariantCulture);
+        double seconds = double.Parse(format.GetProperty("duration").GetString()!, CultureInfo.InvariantCulture);
+        if (sampleRate <= 0 || !double.IsFinite(seconds) || seconds < 0)
+            throw new InvalidDataException("Invalid audio sample rate or duration.");
+        return new AudioInfo(codec, sampleRate,
+            checked((long)Math.Round(seconds * 1000, MidpointRounding.AwayFromZero)));
+    }
+
+    internal static string[] CreateTrimArguments(AudioInfo input, string inputPath, string temporaryPath)
+    {
+        long retainedFrames = checked(600L * input.SampleRate);
+        return
+        [
+            "-v", "error", "-nostdin", "-n", "-i", inputPath, "-map", "0:a:0",
+            "-af", $"atrim=end_sample={retainedFrames.ToString(CultureInfo.InvariantCulture)}",
+            "-c:a", input.Codec, "-flags:a", "+bitexact", "-fflags", "+bitexact",
+            "-map_metadata", "-1", temporaryPath,
+        ];
+    }
+
+    private static async Task<string> RunToolAsync(
+        string executable, string[] arguments, CancellationToken cancellationToken)
+    {
+        ProcessStartInfo startInfo = new(executable)
+        {
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+        foreach (string argument in arguments)
+            startInfo.ArgumentList.Add(argument);
+        using Process process = Process.Start(startInfo)
+            ?? throw new InvalidOperationException($"Could not start {executable}.");
+        Task<string> stdout = process.StandardOutput.ReadToEndAsync(CancellationToken.None);
+        Task<string> stderr = process.StandardError.ReadToEndAsync(CancellationToken.None);
+        try
+        {
+            await process.WaitForExitAsync(cancellationToken);
+        }
+        catch (OperationCanceledException)
+        {
+            if (!process.HasExited)
+                process.Kill(entireProcessTree: true);
+            await process.WaitForExitAsync(CancellationToken.None);
+            await Task.WhenAll(stdout, stderr);
+            throw;
+        }
+        string output = await stdout;
+        string diagnostic = await stderr;
+        if (process.ExitCode != 0)
+            throw new InvalidOperationException($"{executable} exited with {process.ExitCode}: {diagnostic}");
+        return output;
+    }
+}
+```
+
 ```ruby
 # standard:disable Lint/UselessAssignment -- Preserve named results for the next workflow step.
 require "open3"

@@ -392,6 +392,9 @@ string. Both single quotes and double quotes are valid. The variable has to be o
 - `if: $VARIABLE == "some value"`
 - `if: $VARIABLE != "some value"`
 
+Comparisons with `==` and `!=` are case-sensitive. To compare values without matching case,
+use a [regular expression](#compare-a-variable-to-a-regular-expression).
+
 You can compare the values of two variables. For example:
 
 - `if: $VARIABLE_1 == $VARIABLE_2`
