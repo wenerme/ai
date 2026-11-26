@@ -116,6 +116,26 @@ Important
 
 For information on the available functions, refer to [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
 
+## Date and signing functions
+
+Use [`format_date()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#format_date) to format `http.request.timestamp.sec` as UTC text. This function is available on all plans without an additional entitlement. You can set a timestamp header and calculate a signature from the same timestamp in one rule.
+
+The [HMAC functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac_sha256) and [`sign_sigv4_hmac_sha256()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#sign_sigv4_hmac_sha256) are available on Pro, Business, and Enterprise plans.
+
+The following limits apply to each header value expression:
+
+| Function | Maximum calls |
+| --- | --- |
+| `concat()` | 3 |
+| `encode_hex()` | 4 |
+| `format_date()` | 4 |
+| Each of `hmac_md5()`, `hmac_sha1()`, `hmac_sha256()`, and `hmac_sha512()` | 5 |
+| `sign_sigv4_hmac_sha256()` | 1 |
+
+Signing and hash functions accept a narrower set of fields than the complete header rewrite field list. Supported inputs include request headers, the method, URI fields, and `http.request.timestamp.sec`. Do not pass `http.host` or request body fields to these functions. For storage signing, put the expected origin hostname in the canonical request as a literal.
+
+For complete expressions, refer to [Sign requests to private S3 and GCS buckets](https://developers.cloudflare.com/rules/transform/examples/sign-private-storage-requests/).
+
 Was this helpful?
 
 YesNo
@@ -125,5 +145,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/#page","headline":"Available fields and functions","description":"Available fields and functions for request header modification rules.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/og.png?v=7fefbbb932af71a1","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/#page","headline":"Available fields and functions","description":"Available fields and functions for request header modification rules.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/og.png?v=7fefbbb932af71a1","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

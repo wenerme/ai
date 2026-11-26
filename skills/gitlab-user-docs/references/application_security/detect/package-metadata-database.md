@@ -22,6 +22,7 @@ The Package Metadata Database is licensed under the
 - Malware advisories [introduced](https://gitlab.com/groups/gitlab-org/-/epics/20876) as a [beta](../../../policy/development_stages_support.md#beta) in GitLab 19.3 [with flags](../../../administration/feature_flags/_index.md) named `sync_malware_advisories` and `ingest_malware_advisories`. Enabled by default.
 - v3 license data [introduced](https://gitlab.com/groups/gitlab-org/-/epics/22880) in GitLab 19.4 with a flag named `sync_v3_license_expressions`. Enabled by default.
 - Malware advisories [generally available](https://gitlab.com/groups/gitlab-org/-/epics/20876) in GitLab 19.5. Feature flags `sync_malware_advisories` and `ingest_malware_advisories` removed.
+- v3 advisory data [introduced](https://gitlab.com/groups/gitlab-org/-/epics/23045) in GitLab 19.6 with a flag named `sync_v3_advisories`. Disabled by default.
 - v3 license data [generally available](https://gitlab.com/groups/gitlab-org/-/epics/22880) in GitLab 19.7. Feature flag `sync_v3_license_expressions` removed.
 
 The Package Metadata Database holds four datasets:
@@ -44,19 +45,21 @@ These are versions of the data format, not GitLab versions.
 
 | Format version | Datasets | Distributed from |
 |----------------|----------|------------------|
-| v2             | Licenses for GitLab 19.3 and earlier, advisories, and CVE enrichment. | Public Google Cloud Storage buckets, readable without credentials. |
-| v3             | Licenses for GitLab 19.4 and later, and malware advisories. | The Package Metadata Database distribution service, an authenticated GitLab service. |
+| v2             | Licenses for GitLab 19.3 and earlier, advisories for GitLab 19.5 and earlier or with the `sync_v3_advisories` flag disabled, and CVE enrichment. | Public Google Cloud Storage buckets, readable without credentials. |
+| v3             | Licenses for GitLab 19.4 and later, malware advisories, and advisories for GitLab 19.6 and later with the `sync_v3_advisories` flag enabled. | The Package Metadata Database distribution service, an authenticated GitLab service. |
 
 v3 license data carries Software Package Data Exchange (SPDX) license expressions instead of
 single license identifiers. For example, `MIT OR Apache-2.0`.
 
-You do not choose the format version. Your GitLab version determines which one it reads:
+You do not choose the format version. Your GitLab version determines which one it reads, and for
+advisories, the `sync_v3_advisories` flag:
 
 | GitLab version   | Licenses | Advisories | CVE enrichment | Malware advisories |
 |------------------|----------|------------|----------------|--------------------|
 | 19.2 and earlier | v2       | v2         | v2             | Not available      |
 | 19.3             | v2       | v2         | v2             | v3                 |
-| 19.4 and later   | v3       | v2         | v2             | v3                 |
+| 19.4 and 19.5    | v3       | v2         | v2             | v3                 |
+| 19.6 and later   | v3       | v2, or v3 with the `sync_v3_advisories` flag enabled | v2 | v3 |
 
 ## Synchronization
 
@@ -68,7 +71,15 @@ that is newer than what the instance already holds.
 
 An instance with internet access downloads v2 data from the public buckets and v3 data from the
 distribution service.
-To download v2 data, the instance needs outbound network access to `storage.googleapis.com`.
+Allow outbound network access to the hosts for each format version:
+
+| Format version | Datasets | Hosts |
+|----------------|----------|-------|
+| v2             | Licenses for GitLab 19.3 and earlier, advisories for GitLab 19.5 and earlier or with the `sync_v3_advisories` flag disabled, and CVE enrichment. | `storage.googleapis.com` |
+| v3             | Licenses for GitLab 19.4 and later, malware advisories, and advisories for GitLab 19.6 and later with the `sync_v3_advisories` flag enabled. | `pmdb-dist-svc.runway.gitlab.net` and `852e9d53d0f8adbd9205389356f2303d.r2.cloudflarestorage.com` |
+
+For v3 data, the instance requests the archives from the distribution service, which returns a
+download link on `852e9d53d0f8adbd9205389356f2303d.r2.cloudflarestorage.com` for each one.
 
 ### Offline instances
 

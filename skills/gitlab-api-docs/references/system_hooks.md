@@ -163,6 +163,7 @@ POST /hooks
 | `signing_token`             | string  | No       | HMAC signing token used to compute the `webhook-signature` header. Must be in `whsec_<base64>` format encoding a 32-byte key. Not returned in the response. |
 | `tag_push_events`           | boolean | No       | When true, the hook fires on new tags being pushed. |
 | `token`                     | string  | No       | Secret token to validate received payloads. Not returned in the response. |
+| `url_variables`             | array   | No       | URL variables for the hook. Each item has a `key` and a `value`. Reference a variable in `url` with `{key}`. |
 
 Example request:
 
@@ -233,6 +234,7 @@ PUT /hooks/:hook_id
 | `tag_push_events`           | boolean | No       | When true, the hook fires on new tags being pushed. |
 | `token`                     | string  | No       | Secret token to validate received payloads. Not returned in the response. |
 | `url`                       | string  | No       | The hook URL. |
+| `url_variables`             | array   | No       | URL variables for the hook. Each item has a `key` and a `value`. Reference a variable in `url` with `{key}`. Merged with the existing URL variables. If the hook has URL variables and the update changes the resulting URL, GitLab clears all URL variables, even the ones in the request. |
 
 ## Test system hook
 

@@ -20,6 +20,7 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/functions
 The Cloudflare Rules language provides functions for manipulating and validating values in an expression:
 
 - [Transformation functions](#transformation-functions) manipulate values extracted from an HTTP request.
+- [HMAC signing functions](#hmac_sha256) compute keyed message authentication codes. The [SigV4 signer](#sign_sigv4_hmac_sha256) derives a signing key and signs a string in one call.
 - The [HMAC validation function](#hmac-validation) tests the validity of an HMAC token. Use it to write expressions that target requests based on the presence of a valid HMAC token.
 
 ## Transformation functions
@@ -87,7 +88,7 @@ encode_base64("hello world", "up")    will return "aGVsbG8gd29ybGQ="
 You can combine `encode_base64()` with other functions to create signed request headers:
 
 ```txt
-encode_base64(sha256(concat(to_string(ip.src), http.host, "my-secret")))
+encode_base64(hmac_sha256(http.request.uri.path, "<SECRET_KEY>"))
 ```
 
 Note
@@ -172,6 +173,20 @@ Note
 
 You can only use the `decode_base64()` function in [Transform Rules](https://developers.cloudflare.com/rules/transform/), [custom rules](https://developers.cloudflare.com/waf/custom-rules/), and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
+### `encode_hex`
+
+`encode_hex(input String | Bytes)`: `Bytes`
+
+Encodes `input` as lowercase hexadecimal text, with two characters per byte. The input must be a field or a function result, not a literal.
+
+For example, to encode a SHA-256 digest:
+
+```txt
+encode_hex(sha256("hello world"))
+```
+
+If `input` is nil, the function returns nil.
+
 ### `ends_with`
 
 `ends_with(source String, substring String)`: `Boolean`
@@ -179,6 +194,42 @@ You can only use the `decode_base64()` function in [Transform Rules](https://dev
 Returns `true` when the source ends with a given substring. Returns `false` otherwise. The source cannot be a literal value (like `"foo"`).
 
 For example, if `http.request.uri.path` is `"/welcome.html"`, then `ends_with(http.request.uri.path, ".html")` will return `true`.
+
+### `format_date`
+
+`format_date(timestamp Integer, format String)`: `Bytes`
+
+Formats Unix time in seconds as UTC text. Use `http.request.timestamp.sec` to generate a date from the request timestamp. You can also provide a literal integer.
+
+The `format` argument must be a literal UTF-8 string. It supports the following directives:
+
+| Directive | Output |
+| --- | --- |
+| `%Y` | Calendar year, zero-padded to at least four digits |
+| `%m` | Month (`01`–`12`) |
+| `%d` | Day of the month (`01`–`31`) |
+| `%H` | Hour (`00`–`23`) |
+| `%M` | Minute (`00`–`59`) |
+| `%S` | Second (`00`–`59`) |
+| `%%` | Literal percent sign |
+
+Other text is copied unchanged. An empty format returns an empty value. Unsupported directives and a trailing `%` are rejected when the expression is validated.
+
+Examples:
+
+```txt
+format_date(1704164645, "%Y%m%dT%H%M%SZ")
+```
+
+This expression returns `"20240102T030405Z"`. To generate a credential-scope date, use `format_date(http.request.timestamp.sec, "%Y%m%d")`.
+
+Negative timestamps represent times before the Unix epoch. The supported UTC years range from `-999999` through `999999`. Negative years include a minus sign, and years above `9999` include a plus sign. A nil or out-of-range timestamp returns nil.
+
+Note
+
+The `format_date()` function is available on all plans without an additional entitlement. Use it in URI, request header, and response header rewrite expressions of [Transform Rules](https://developers.cloudflare.com/rules/transform/), not filter expressions.
+
+It can appear up to four times per rewrite expression. The only supported field argument is `http.request.timestamp.sec`. Other fields, including `http.request.timestamp.msec`, and computed timestamps are not supported.
 
 ### `hash_in_range`
 
@@ -209,6 +260,68 @@ If `rollout_pct` is missing, `coalesce()` supplies `0`. The rule then matches no
 Hash algorithm
 
 The hash algorithm may change at any time without prior notice. Do not rely on a specific result for a fixed seed. Use `cf.random_seed` to get fresh random bytes for each request.
+
+### `hmac_md5`
+
+`hmac_md5(input String | Bytes, key String | Bytes)`: `Bytes`
+
+Computes the HMAC-MD5 of `input` using `key`. Returns a raw 16-byte digest.
+
+Caution
+
+MD5 is not considered a cryptographically secure hash algorithm. Although its known collision weaknesses do not directly break HMAC-MD5, avoid HMAC-MD5 when possible. Use [`hmac_sha256()`](#hmac_sha256) for new integrations.
+
+Use this function only when an existing protocol requires HMAC-MD5. For argument behavior, access requirements, and encoding examples, refer to [`hmac_sha256()`](#hmac_sha256).
+
+### `hmac_sha1`
+
+`hmac_sha1(input String | Bytes, key String | Bytes)`: `Bytes`
+
+Computes the HMAC-SHA1 of `input` using `key`. Returns a raw 20-byte digest.
+
+Caution
+
+SHA-1 is not considered a cryptographically secure hash algorithm. Although its known collision weaknesses do not directly break HMAC-SHA1, avoid HMAC-SHA1 when possible. Use [`hmac_sha256()`](#hmac_sha256) for new integrations.
+
+Use this function only when an existing protocol requires HMAC-SHA1. For argument behavior, access requirements, and encoding examples, refer to [`hmac_sha256()`](#hmac_sha256).
+
+### `hmac_sha256`
+
+`hmac_sha256(input String | Bytes, key String | Bytes)`: `Bytes`
+
+Computes a hash-based message authentication code (HMAC) using SHA-256. Returns a raw 32-byte digest, not hexadecimal or Base64 text.
+
+Both arguments are required. The message is first and the key is second. Either argument can be a literal, a supported field, or a function result. The key is used as supplied, without implicit Base64 decoding.
+
+To produce lowercase hexadecimal text:
+
+```txt
+encode_hex(hmac_sha256(http.request.uri.path, "<SECRET_KEY>"))
+```
+
+To produce padded Base64 text:
+
+```txt
+encode_base64(hmac_sha256(http.request.uri.path, "<SECRET_KEY>"), "p")
+```
+
+If either argument is nil, the function returns nil. Empty input and empty keys are accepted, but use a strong, non-empty secret key for authentication.
+
+These argument and encoding rules also apply to `hmac_md5()`, `hmac_sha1()`, and `hmac_sha512()`.
+
+Note
+
+The HMAC signing functions are available on Pro, Business, and Enterprise plans. In request and response header rewrite expressions, each HMAC function can appear up to five times. Arguments remain subject to the phase's field restrictions.
+
+For Signature Version 4, use [`sign_sigv4_hmac_sha256()`](#sign_sigv4_hmac_sha256) instead of nesting HMAC calls. To validate Cloudflare timed tokens, use [`is_timed_hmac_valid_v0()`](#hmac-validation).
+
+### `hmac_sha512`
+
+`hmac_sha512(input String | Bytes, key String | Bytes)`: `Bytes`
+
+Computes the HMAC-SHA512 of `input` using `key`. Returns a raw 64-byte digest.
+
+For argument behavior, access requirements, and encoding examples, refer to [`hmac_sha256()`](#hmac_sha256).
 
 ### `join`
 
@@ -387,6 +500,10 @@ For example, if `http.host` is `"WWW.cloudflare.com"`, then `lower(http.host) ==
 
 Computes the MD5 hash of the `input` string or byte array. Returns a 16-byte hash value.
 
+Caution
+
+MD5 is not considered cryptographically secure because of known collision attacks. Avoid it for security-sensitive uses. Use [`sha256()`](#sha256) instead where possible.
+
 To encode the hash as a string, combine `md5()` with [`encode_base64()`](#encode_base64):
 
 ```txt
@@ -472,6 +589,10 @@ You can only use the `remove_query_args()` function in [rewrite expressions of T
 
 Computes the SHA-1 hash of the `input` string or byte array. Returns a 20-byte hash value.
 
+Caution
+
+SHA-1 is not considered cryptographically secure because of known collision attacks. Avoid it for security-sensitive uses. Use [`sha256()`](#sha256) instead where possible.
+
 To encode the hash as a string, combine `sha1()` with [`encode_base64()`](#encode_base64):
 
 ```txt
@@ -484,7 +605,7 @@ encode_base64(sha1("hello world"))
 
 Computes the SHA-256 cryptographic hash of the `input` string or byte array. Returns a 32-byte hash value.
 
-Use this function to generate signed request headers, validate request integrity, or create secure tokens directly in rule expressions.
+Use this function to hash a canonical request before signing it. For keyed message authentication, use [`hmac_sha256()`](#hmac_sha256).
 
 Examples:
 
@@ -492,23 +613,23 @@ Examples:
 sha256("my-token")
 ```
 
-The example above returns a 32-byte hash that your origin can validate to authenticate requests.
+The example returns a 32-byte hash. A hash alone does not authenticate a request.
 
-You can combine `sha256()` with [`encode_base64()`](#encode_base64) to create Base64-encoded signatures:
+You can combine `sha256()` with [`encode_base64()`](#encode_base64) to create Base64-encoded hashes:
 
 ```txt
 encode_base64(sha256("my-token"))
 ```
 
-To create a signed header value from request attributes:
+To create an HMAC-signed header value from the URI path:
 
 ```txt
-encode_base64(sha256(concat(to_string(ip.src), to_string(http.request.timestamp.sec), "my-secret-key")))
+encode_base64(hmac_sha256(http.request.uri.path, "<SECRET_KEY>"))
 ```
 
 Notes
 
-The `sha256()` function is available as an Enterprise add-on and requires a specific entitlement. Contact your account team to enable it.
+The `sha256()` function is available on Pro, Business, and Enterprise plans.
 
 You can only use the `sha256()` function in rewrite expressions of [Transform Rules](https://developers.cloudflare.com/rules/transform/).
 
@@ -523,6 +644,45 @@ To encode the hash as a string, combine `sha512()` with [`encode_base64()`](#enc
 ```txt
 encode_base64(sha512("hello world"))
 ```
+
+### `sign_sigv4_hmac_sha256`
+
+`sign_sigv4_hmac_sha256(input String | Bytes, secret String | Bytes, timestamp Integer, region String | Bytes, service String | Bytes, prefix String | Bytes, terminator String | Bytes)`: `Bytes`
+
+Derives a Signature Version 4 (SigV4) signing key and signs `input` using HMAC-SHA256. Returns 64 lowercase hexadecimal characters. Do not wrap the result in `encode_hex()`.
+
+All seven arguments are required:
+
+| Argument | Description |
+| --- | --- |
+| `input` | Complete provider-defined string to sign, used verbatim, not the raw request |
+| `secret` | Secret access key, without the key prefix |
+| `timestamp` | Unix seconds used to derive the UTC credential date (`%Y%m%d`) |
+| `region` | Region or location in the credential scope |
+| `service` | Service in the credential scope |
+| `prefix` | Key prefix, such as `"AWS4"` or `"GOOG4"` |
+| `terminator` | Scope suffix, such as `"aws4_request"` or `"goog4_request"` |
+
+Starting with `concat(prefix, secret)`, the function applies HMAC-SHA256 to the UTC date, region, service, and terminator in sequence. Each raw digest becomes the next key. The final derived key signs `input`.
+
+You must construct the canonical request and complete string to sign. The function does not canonicalize requests, set headers, insert session tokens, or construct the `Authorization` header. Use the same date and scope in the string to sign, the function arguments, and the credential scope.
+
+Common scope values are:
+
+| Provider | `region` | `service` | `prefix` | `terminator` |
+| --- | --- | --- | --- | --- |
+| Amazon S3 | Bucket Region | `"s3"` | `"AWS4"` | `"aws4_request"` |
+| Google Cloud Storage | `"auto"` | `"storage"` | `"GOOG4"` | `"goog4_request"` |
+
+String and byte arguments accept literals, supported fields, or function results. Empty byte literals are rejected. Empty values produced by expressions are accepted. A missing argument returns nil, except that a missing `prefix` is skipped, as in `concat()`. Always supply an explicit prefix for the intended provider.
+
+The timestamp has the same supported range as [`format_date()`](#format_date). An out-of-range timestamp returns nil.
+
+Note
+
+This function is available on Pro, Business, and Enterprise plans, with the same access requirements as the [HMAC signing functions](#hmac_sha256). In request and response header rewrite expressions, it can appear once per expression.
+
+For complete request header expressions, refer to [Sign requests to private S3 and GCS buckets](https://developers.cloudflare.com/rules/transform/examples/sign-private-storage-requests/).
 
 ### `split`
 
@@ -930,5 +1090,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -79,19 +79,19 @@ Example response:
 
 ```json
 {
-  "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gdk.test:3010",
+  "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gitlab.example.com",
   "is_unique_domain_enabled": true,
   "force_https": false,
   "deployments": [
     {
       "created_at": "2024-01-05T18:58:14.916Z",
-      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gdk.test:3010/",
+      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gitlab.example.com/",
       "path_prefix": "",
       "root_directory": null
     },
     {
       "created_at": "2024-01-05T18:58:46.042Z",
-      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gdk.test:3010/mr3",
+      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gitlab.example.com/mr3",
       "path_prefix": "mr3",
       "root_directory": null
     }
@@ -157,19 +157,19 @@ Example response:
 
 ```json
 {
-  "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gdk.test:3010",
+  "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gitlab.example.com",
   "is_unique_domain_enabled": true,
   "force_https": false,
   "deployments": [
     {
       "created_at": "2024-01-05T18:58:14.916Z",
-      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gdk.test:3010/",
+      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gitlab.example.com/",
       "path_prefix": "",
       "root_directory": null
     },
     {
       "created_at": "2024-01-05T18:58:46.042Z",
-      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gdk.test:3010/mr3",
+      "url": "http://html-root-4160ce5f0e9a6c90ccb02755b7fc80f5a2a09ffbb1976cf80b653.pages.gitlab.example.com/mr3",
       "path_prefix": "mr3",
       "root_directory": null
     }

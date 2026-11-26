@@ -238,6 +238,13 @@ for example `rules[0] is invalid: details path "project.settings.visibility" exp
 An update that changes only `trigger_type` checks the stored rules against the new trigger's
 context, so it can be refused the same way.
 
+A policy with a `set_setting` action writes the values its rules expect. Each `violation`
+rule must state its `path` and `expected` value as constants, not computed at run time.
+The request returns `400 Bad Request` when a rule names no expected value for a path, or
+when two rules expect different values for one path, for example
+`rules name no expected value for project.settings.squash_option`.
+An update that adds a `set_setting` action checks the stored rules the same way.
+
 Send `rules` and `actions` as JSON with a `Content-Type: application/json` header.
 A form-encoded body can carry both arrays, but every value in one arrives as a string, so a
 `value` that is not a string cannot be expressed that way.

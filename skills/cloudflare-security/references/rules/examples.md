@@ -141,6 +141,8 @@ Filter resources...
 
 [**Set response header with a static value** Create a response header transform rule (part of Transform Rules) to set an `X-Bot-Score` HTTP header in the response to a static value (`Cloudflare`).](https://developers.cloudflare.com/rules/transform/examples/set-response-header-static-value/)
 
+[**Sign requests to private S3 and GCS buckets** Use Request Header Transform Rules to sign private Amazon S3 and Google Cloud Storage reads with SigV4 and automatic UTC date headers.](https://developers.cloudflare.com/rules/transform/examples/sign-private-storage-requests/)
+
 [**Perform mobile redirects** Create a redirect rule to redirect visitors using mobile devices to a different hostname.](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/)
 
 [**Redirect admin area requests to HTTPS** Create a redirect rule to redirect requests for the administration area of `store.example.com` to HTTPS, keeping the original path and query string.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/)

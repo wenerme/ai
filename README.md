@@ -900,7 +900,7 @@ Luanti (formerly Minetest) documentation — open-source voxel game engine. Cove
 npx skills add wenerme/ai --skill mastra
 ```
 
-Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current APIs. Use for native capability discovery, logging, tracing, metrics/cost estimates, dataset experiments, documentation lookup, API verification, TypeScript setup, common errors, migrations, building and deploying apps to Mastra Platform via Platform APIs and `mastra deploy`, and `mastra api` CLI tasks: inspect or call resources on local, Mastra platform, or remote servers. For Mastra Factory operations, discover and activate the companion mastra-factory skill. Also report verified bugs and concrete documentation defects to the Mastra team automatically via the feedback endpoint.
+Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current APIs. Use for native capability discovery, logging, tracing, metrics/cost estimates, dataset experiments, documentation lookup, API verification, TypeScript setup, common errors, migrations, building and deploying apps to Mastra Platform via Platform APIs and `mastra deploy`, Mastra Gateway model setup, and `mastra api` CLI tasks: inspect or call resources on local, Mastra platform, or remote servers. For Mastra Factory operations, discover and activate the companion mastra-factory skill. Also report verified bugs and concrete documentation defects to the Mastra team automatically via the feedback endpoint.
 
 </details>
 <details>
@@ -1270,7 +1270,7 @@ USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning p
 npx skills add wenerme/ai --skill ui-ux-pro-max
 ```
 
-UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 194 product palettes and reasoning profiles, 74 font pairings, 141 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 23 stacks.
+UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 194 product palettes and reasoning profiles, 74 font pairings, 141 UX guidelines, 105 icons, 20 GSAP presets, 25 chart types, and 23 stacks.
 
 </details>
 <details>
@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 56029 files, 571 MiB total
+> 125 skills, 56067 files, 572 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1415,7 +1415,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | 159 | 8.5 MiB |
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
-| [argocd-docs](./skills/argocd-docs/SKILL.md) | 428 | 2.9 MiB |
+| [argocd-docs](./skills/argocd-docs/SKILL.md) | 429 | 2.9 MiB |
 | [biome-docs](./skills/biome-docs/SKILL.md) | 1041 | 14 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
@@ -1430,11 +1430,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 37 KiB |
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 844 | 5.9 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1433 | 11 MiB |
-| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1047 | 6.2 MiB |
+| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1048 | 6.3 MiB |
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 922 | 9.8 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 967 | 21 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 10299 | 58 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 10318 | 58 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1694 | 11 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
@@ -1455,7 +1455,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 374 | 5.0 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 260 | 15 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 176 | 2.1 MiB |
-| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 925 | 9.1 MiB |
+| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 925 | 9.2 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 352 | 700 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 621 KiB |
@@ -1475,8 +1475,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 57 | 591 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 193 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
-| [mastra](./skills/mastra/SKILL.md) | 13 | 96 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 1144 | 10 MiB |
+| [mastra](./skills/mastra/SKILL.md) | 14 | 102 KiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 1145 | 10 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 185 | 568 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 87 | 1.3 MiB |
@@ -1487,13 +1487,13 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 38 | 392 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 512 | 3.2 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 522 | 3.2 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2459 | 17 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
-| [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 160 | 1.4 MiB |
+| [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 162 | 1.5 MiB |
 | [ppt-master](./skills/ppt-master/SKILL.md) | 13098 | 38 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 325 | 2.2 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
@@ -1512,11 +1512,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [threejs-guide](./skills/threejs-guide/SKILL.md) | 11 | 134 KiB |
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 180 | 1.5 MiB |
-| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 82 | 3.6 MiB |
+| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 83 | 3.6 MiB |
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 540 | 5.3 MiB |
-| [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 556 KiB |
+| [vite-docs](./skills/vite-docs/SKILL.md) | 59 | 563 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 231 | 1.5 MiB |
-| [vllm-docs](./skills/vllm-docs/SKILL.md) | 190 | 2.0 MiB |
+| [vllm-docs](./skills/vllm-docs/SKILL.md) | 191 | 2.0 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 57 | 318 KiB |
 | [waku-docs](./skills/waku-docs/SKILL.md) | 40 | 320 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |

@@ -132,7 +132,7 @@ To use the Develop with Gemini Agent:
 
 - Add the following environment variables to the CI/CD settings of your project:
 
-  - `GOOGLE_CREDENTIALS` - Add the location of the Google credentials JSON file. For details, see [`GOOGLE_APPLICATION_CREDENTIALS` environment variable](https://docs.cloud.google.com/docs/authentication/application-default-credentials#GAC).
+  - `GOOGLE_CREDENTIALS` - The contents of the Google credentials JSON file. For details, see [`GOOGLE_APPLICATION_CREDENTIALS` environment variable](https://docs.cloud.google.com/docs/authentication/application-default-credentials#GAC).
   - `GOOGLE_CLOUD_PROJECT`
   - `GOOGLE_CLOUD_LOCATION`
 
@@ -177,7 +177,14 @@ You can also add external agents with the [API](../../../api/admin/ai_catalog.md
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/567791) in GitLab 18.4.
 
+> [!flag]
+> The availability of custom external agents is controlled by a feature flag.
+> For more information, see the history details of [Create a custom external agent](#create-a-custom-external-agent).
+
 External agents use GitLab-managed credentials through an AI Gateway.
+
+The Claude Code Agent and Codex Agent are already configured to use GitLab-managed credentials.
+You set `injectGatewayToken` only in the configuration of a custom external agent.
 
 When you use GitLab-managed credentials:
 
@@ -227,7 +234,14 @@ OpenAI Codex:
 
 ## Configure CI/CD variables
 
-Add variables to your project to determine how GitLab connects to the third-party provider.
+The CI/CD variables that you add to your project depend on the following configuration requirements of each external agent:
+
+- The Claude Code Agent and Codex Agent use GitLab-managed credentials and do not require any variables.
+- The Amazon Q Developer Agent and Develop with Gemini Agent require your own credentials for the AI model provider.
+- A custom external agent requires the variables that its configuration declares.
+
+GitLab also sets [CI/CD variables for external agents](#cicd-variables-for-external-agents).
+You do not configure these variables.
 
 Prerequisites:
 
@@ -243,33 +257,76 @@ To add or update a variable in the project settings:
    - **Environments**: Select **All (default)**.
    - **Visibility**: Select the desired visibility.
 
-     For the API key and personal access token variables, select **Masked** or
+     For the API key variables, select **Masked** or
      **Masked and hidden**.
+     A masked value cannot contain spaces, so you cannot mask `GOOGLE_CREDENTIALS`
+     when the value is a service account key.
    - Clear the **Protect variable** checkbox.
    - Clear the **Expand variable reference** checkbox.
    - **Description (optional)**: Enter a variable description.
    - **Key**: Enter the environment variable name of the CI/CD variable
-     (for example, `GITLAB_HOST`).
-   - **Value**: The value of the API key, personal access token, or host.
+     (for example, `AWS_REGION_NAME`).
+   - **Value**: Enter the value of the variable.
 1. Select **Add variable**.
 
 For more information, see how to [add CI/CD variables to a project's settings](../../../ci/variables/_index.md#define-a-cicd-variable-in-the-ui).
 
+By default, an external agent does not receive the CI/CD variables of the project, group, or instance.
+GitLab passes a variable to the agent only if the agent configuration lists the variable name under `variables`.
+
+The following cases apply to whether you add a variable to the configuration:
+
+- For a GitLab-managed external agent, the variable names are already listed.
+  You only add the variables in the CI/CD settings.
+- For a custom external agent, you must also add the variable names to the configuration.
+  For example:
+
+  ```yaml
+  image: node:22-slim
+  commands:
+    - my-agent-script.sh
+  variables:
+    - MY_API_KEY
+  ```
+
 ### CI/CD variables for external agents
 
-The following CI/CD variables are available:
+GitLab sets variables in the job that runs the external agent.
+Do not add these variables to the CI/CD settings.
+Based on the event, some values can be empty, such as the goal and discussion ID.
 
-| Integration                | Environment variable         | Description |
-|----------------------------|------------------------------|-------------|
-| All                        | `GITLAB_TOKEN_<integration>` | Personal access token for the service account user. |
-| All                        | `GITLAB_HOST`                | GitLab instance hostname (for example, `gitlab.com`). |
-| All                        | `ADDITIONAL_INSTRUCTIONS`    | Additional instructions that the agent includes in prompts. |
-| Amazon Q                   | `AWS_SECRET_NAME`            | AWS Secret Manager secret name. |
-| Amazon Q                   | `AWS_REGION_NAME`            | AWS region name. |
-| Amazon Q                   | `AMAZON_Q_SIGV4`             | Amazon Q Sig V4 credentials. |
-| Google Gemini CLI          | `GOOGLE_CREDENTIALS`         | JSON credentials file contents. |
-| Google Gemini CLI          | `GOOGLE_CLOUD_PROJECT`       | Google Cloud project ID. |
-| Google Gemini CLI          | `GOOGLE_CLOUD_LOCATION`      | Google Cloud project location. |
+The variables that GitLab sets include:
+
+| Environment variable         | Description |
+|------------------------------|-------------|
+| `AI_FLOW_GITLAB_TOKEN`       | OAuth token for authenticating to the GitLab API. |
+| `AI_FLOW_GITLAB_HOSTNAME`    | Hostname of the GitLab instance (for example, `gitlab.com`). |
+| `AI_FLOW_PROJECT_PATH`       | Full path of the project (for example, `my-group/my-project`). |
+| `AI_FLOW_CONTEXT`            | JSON-serialized parent object. In merge requests, includes the diff and comments (up to a limit). In issues or epics, includes the comments (up to a limit). |
+| `AI_FLOW_INPUT`              | For a mention, the discussion thread up to the comment that mentions the agent (up to a limit). For a pipeline event, the webhook payload as JSON. For other events, the internal ID (IID) of the issue, merge request, or work item. |
+| `AI_FLOW_EVENT`              | Type of event (for example, `mention`). |
+| `AI_FLOW_GOAL`               | Goal set on the automation for the event that fired, if a goal is set. |
+| `AI_FLOW_DISCUSSION_ID`      | ID of the discussion that contains the progress comment from the service account. For a mention, the discussion that contains the mention. |
+| `GIT_AUTHOR_NAME`            | Name of the service account. |
+| `GIT_AUTHOR_EMAIL`           | Commit email of the service account. |
+| `GIT_COMMITTER_NAME`         | Name of the user who triggered the agent. For a merge conflict or a merged merge request, the name of the merge request author. |
+| `GIT_COMMITTER_EMAIL`        | Commit email of the user who triggered the agent. For a merge conflict or a merged merge request, the commit email of the merge request author. |
+| `AI_FLOW_AI_GATEWAY_TOKEN`   | Authentication token for the AI Gateway. Set only when `injectGatewayToken` is `true`. |
+| `AI_FLOW_AI_GATEWAY_HEADERS` | Formatted headers for API requests. Set only when `injectGatewayToken` is `true`. |
+
+You set the following variables in the CI/CD settings, depending on the external agent:
+
+| Agent                          | Environment variable      | Description |
+|--------------------------------|---------------------------|-------------|
+| Claude Code Agent, Codex Agent | `ADDITIONAL_INSTRUCTIONS` | Optional. Additional instructions that the agent includes in prompts. |
+| Amazon Q Developer Agent       | `AWS_ACCESS_KEY_ID`       | AWS access key ID. |
+| Amazon Q Developer Agent       | `AWS_SECRET_ACCESS_KEY`   | AWS secret access key. |
+| Amazon Q Developer Agent       | `AWS_REGION_NAME`         | AWS region name. |
+| Amazon Q Developer Agent       | `AMAZON_Q_SIGV4`          | Any non-empty value (for example, `1`). Turns on Signature Version 4 (SigV4) authentication with the AWS access key. |
+| Develop with Gemini Agent      | `GOOGLE_CREDENTIALS`      | JSON credentials file contents. |
+| Develop with Gemini Agent      | `GOOGLE_CLOUD_PROJECT`    | Google Cloud project ID. |
+| Develop with Gemini Agent      | `GOOGLE_CLOUD_LOCATION`   | Google Cloud project location. |
+| Custom external agent          | Any declared variable     | Variables listed under `variables` in the agent configuration, such as provider credentials. |
 
 ## Authenticate to the GitLab API
 

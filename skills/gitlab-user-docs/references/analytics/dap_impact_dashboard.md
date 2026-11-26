@@ -132,10 +132,70 @@ The **Spend** tab displays metrics on how much Agent Platform features are being
 - **Chat**: Number of credits consumed by Chat sessions.
 - **Credits over time**: Number of credits used over time, stacked by capability.
 
-> [!note]
-> On GitLab Self-Managed, credit data syncs every six hours and requires a paid license.
-> The first sync imports up to 90 days of credit data. On larger instances, the first sync
-> can take several runs to complete.
+## Credit consumption calculation
+
+The dashboard calculates credit consumption from Agent Platform sessions.
+GitLab gets the number of credits each session used from the GitLab billing system,
+the same source as the [GitLab Credits dashboard](../../subscriptions/gitlab_credits_dashboard.md).
+
+The credit metrics on the **Overview**, **Adoption**, and **Spend** tabs are calculated as follows:
+
+- Each session counts all of its credits on the date the session was created,
+  not on the dates the credits were used.
+  For example, a session that starts on May 31 and runs until June 1 counts all of its credits on May 31.
+- The **Period** filter selects sessions by their creation date.
+- The **Scope** filter selects sessions in the selected groups and projects.
+- Sessions of every status count, including failed and canceled sessions.
+- Each session counts toward one model. If a session uses more than one model,
+  **Credits by model, by capability** shows all of its credits under the model
+  that used the most credits in the session.
+- The dashboard does not count usage outside Agent Platform sessions.
+
+### Credit data refresh
+
+Session credits appear on the dashboard later than the sessions themselves:
+
+1. The GitLab billing system records the credits a session used, usually in a few hours.
+1. Every six hours, GitLab gets the latest session credits from the GitLab billing system.
+   On GitLab.com, GitLab spreads these updates for top-level groups across about five and a half hours.
+1. Up to 15 minutes after an update, the dashboard shows the new credits.
+
+As a result, on GitLab.com, credits might appear on the Impact dashboard up to about 12 hours later
+than on the GitLab Credits dashboard in the Customers Portal.
+On GitLab Self-Managed and GitLab Dedicated, credits might appear up to about six hours later.
+
+Until the credits for a session arrive, the session shows zero credits.
+When the GitLab billing system records more credits for a session, or corrects them,
+the dashboard changes the total after the next update.
+Credit totals for recent days might be incomplete.
+
+On GitLab Self-Managed, credit data requires a paid license.
+The first update imports up to 90 days of credit data. On larger instances, the first update
+can take several runs to complete.
+
+### Comparison with the GitLab Credits dashboard
+
+The Impact dashboard and the GitLab Credits dashboard in the Customers Portal both show credit consumption,
+but they have different purposes and calculate credits differently.
+
+| Property | Impact dashboard | GitLab Credits dashboard in the Customers Portal |
+|----------|------------------|--------------------------------------------------|
+| Location | GitLab. | The Customers Portal. |
+| Purpose | Understand how your organization uses Agent Platform, and compare credits by flow type, model, group, and project. | Review billed usage, commitments, and on-demand credits across all credit-based features. |
+| Data source | Agent Platform sessions in GitLab, with credits from the GitLab billing system. | The GitLab billing system. |
+| Credits included | Credits used by Agent Platform sessions. | Billed credits used by all credit-based features, including usage that is not part of an Agent Platform session. |
+| Date credits count on | The date the session was created. | The date the credits were used. |
+| Default period | The last 30 days. | The current month. |
+| Delay | Up to about 12 hours after the GitLab Credits dashboard in the Customers Portal for GitLab.com, and up to about six hours for GitLab Self-Managed and GitLab Dedicated. | Usually a few hours after use. |
+
+For the same period, the totals on the two dashboards can also differ because:
+
+- A session that runs across the start or end of the period counts all of its credits
+  on the Impact dashboard if it was created in the period, and none if it was created before.
+- The **Scope** filter can include only some of the groups and projects in your subscription.
+
+To review billed usage and reconcile it with your invoice, use the
+[GitLab Credits dashboard in the Customers Portal](../../subscriptions/gitlab_credits_dashboard.md#in-customers-portal).
 
 ## View the dashboard
 

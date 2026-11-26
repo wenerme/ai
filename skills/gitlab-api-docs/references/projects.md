@@ -2213,7 +2213,7 @@ Supported general project attributes:
 | `printing_merge_request_link_enabled`              | boolean | No                             | Show link to create/view merge request when pushing from the command line. |
 | `public_builds`                                    | boolean | No                             | _(Deprecated)_ If `true`, jobs can be viewed by non-project members. Use `public_jobs` instead. |
 | `public_jobs`                                      | boolean | No                             | If `true`, jobs can be viewed by non-project members. |
-| `repository_object_format`                         | string  | No                             | Repository object format. Defaults to `sha1`. |
+| `repository_object_format`                         | string  | No                             | Repository object format. Defaults to `sha1`. When `support_sha256_repositories` is enabled, requesting `sha256` for an import or a project created from a template returns `400 Bad Request`. |
 | `remove_source_branch_after_merge`                 | boolean | No                             | Enable `Delete source branch` option by default for all new merge requests. |
 | `repository_storage`                               | string  | No                             | Which storage shard the repository is on. _(administrator only)_ |
 | `request_access_enabled`                           | boolean | No                             | Allow users to request member access. |
@@ -2314,7 +2314,7 @@ Supported general project attributes:
 | `printing_merge_request_link_enabled`              | boolean | No       | Show link to create/view merge request when pushing from the command line. |
 | `public_builds`                                    | boolean | No       | _(Deprecated)_ If `true`, jobs can be viewed by non-project members. Use `public_jobs` instead. |
 | `public_jobs`                                      | boolean | No       | If `true`, jobs can be viewed by non-project members. |
-| `repository_object_format`                         | string  | No       | Repository object format. Defaults to `sha1`. |
+| `repository_object_format`                         | string  | No       | Repository object format. Defaults to `sha1`. When `support_sha256_repositories` is enabled, requesting `sha256` for an import or a project created from a template returns `400 Bad Request`. |
 | `remove_source_branch_after_merge`                 | boolean | No       | Enable `Delete source branch` option by default for all new merge requests. |
 | `repository_storage`                               | string  | No       | Which storage shard the repository is on. _(administrators only)_ |
 | `request_access_enabled`                           | boolean | No       | Allow users to request member access. |

@@ -34,18 +34,18 @@ To run the same flow on an event and on a schedule, create two automations.
 
 Prerequisites:
 
-- You must have at least the Developer role for the project.
+- The Developer, Maintainer, or Owner role for the project.
 
 To view the automations for a project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Automations**.
-1. Select **Scheduled** or **Event**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select  or .
+   These options appear only when the project has at least one automation.
 
 ## Event-based automations
 
-An event-based automation runs a flow when one of its conditions occurs, for example when someone assigns
-the service account as a reviewer.
+An event-based automation runs a flow or external agent when an event occurs.
 An automation can have several event conditions.
 
 ### Create an event-based automation
@@ -55,41 +55,41 @@ An automation can have several event conditions.
 - Trigger creation form [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248807) to add conditions one at a time in GitLab 19.3.
 
 > [!flag]
-> The availability of the **Configuration path** option is controlled by a feature flag.
+> The availability of the  option is controlled by a feature flag.
 > For more information, see the history.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- The Maintainer or Owner role for the project.
 
-To create an automation:
+To create an event-based automation:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Automations**.
-1. If **Scheduled** and **Event** are shown, select **Event**.
-1. Select **New automation**.
-1. In **Name**, enter a name for the automation.
-1. From the **Runs with** dropdown list, select one of the following:
-   - A flow or external agent enabled in the project. If the Developer Flow is enabled,
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. In , enter a name for the automation.
+1. From the  dropdown list, select one of the following:
+   - A flow or external agent turned on in the project. If the Developer Flow is turned on,
      it is selected by default.
-   - **Configuration file**. Then, in **Configuration path**, enter the path to the flow
-     configuration file (for example, `.gitlab/duo/flows/claude.yaml`). From the
-     **Service account** dropdown list, select a user to be [the composite identity](../composite_identity.md).
-     To view this option, the `ai_catalog_create_third_party_flows` flag must be enabled.
-1. If the **Instructions** field is shown, enter what the flow must do.
-   For the Developer Flow, instructions are required. For more information, see
-   [Add instructions](#add-instructions).
-1. Under **Runs when**, if a schedule is open, select **Cancel**.
-   A new automation starts with a schedule when the flow can run on a schedule.
+   - , for an external agent
+     [defined in a configuration file](../agents/external.md#create-an-external-agent-manually)
+     in the project. Then:
+     1. In , enter the path to the
+        configuration file, for example `.gitlab/duo/flows/claude.yaml`.
+     1. From the  dropdown list, select
+        the service account you created for the agent.
+        GitLab uses this account as part of the [composite identity](../composite_identity.md).
+1. If the dialog has an  field, enter what the flow or agent must do.
+   For the Developer Flow, instructions are required.
 1. For each event that should start the automation:
-   1. If no event is open, select **Add condition** > **On an event**.
-   1. From the **Select an event** dropdown list, select an [event type](#event-types).
-   1. If the event type has actions, from the **Run when** dropdown list, select one or
+   1. Under , select  > .
+   1. From the  dropdown list, select an [event type](#event-types).
+   1. If the event type has actions, from the  dropdown list, select one or
       more actions.
-   1. Select **Add event**.
-1. Select **Create**.
+   1. Select .
+1. Select .
 
-The automation now appears in **AI** > **Automations**.
+The automation now appears under .
 
 #### Event types
 
@@ -360,26 +360,26 @@ Prerequisites:
 
 To create a scheduled automation:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Automations**.
-1. If **Scheduled** and **Event** are shown, select **Scheduled**.
-1. Select **New automation**.
-1. In **Name**, enter a name for the automation.
-1. From the **Runs with** dropdown list, select the flow.
-1. If the **Instructions** field is shown, enter what the flow must do on each run.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. In , enter a name for the automation.
+1. From the  dropdown list, select the flow.
+1. If the dialog has an  field, enter what the flow must do on each run.
    For the Developer Flow, instructions are required.
-1. Under **Runs when**, if no schedule is shown, select **Add condition** > **On a schedule**.
+1. Under , select  > .
    The default is a weekly schedule on a random day and time.
 1. From the frequency dropdown list, select how often the flow runs.
 1. Depending on the frequency, select the day and time for the flow to run.
    Hours use the 24-hour clock, and minutes are in 15-minute steps.
    For monthly schedules, you can select a day from 1 to 28, so that every month has the selected day.
 1. Optional. For frequencies other than every 15 or 30 minutes, to change the time zone,
-   select **Change**, then select a time zone.
+   select , then select a time zone.
    The default is the time zone of your profile, or of your browser if your profile has none.
-1. Select **Add schedule**.
-1. Select **Create**.
+1. Select .
+1. Select .
 
+The automation now appears under .
 The flow might run a few minutes after the scheduled time, because GitLab spreads runs over
 time to reduce load.
 

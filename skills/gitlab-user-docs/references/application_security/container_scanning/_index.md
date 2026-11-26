@@ -198,7 +198,7 @@ GitLab provides two approaches for container scanning:
 
 After you are confident in the container scanning results for a single project, you can extend its implementation to additional projects:
 
-- Use [enforced scan execution](../detect/security_configuration.md#create-a-shared-configuration) to apply container scanning settings across groups.
+- Use a [shared configuration](../detect/security_configuration.md#create-a-shared-configuration) to apply container scanning settings across groups.
 - If you have unique requirements, container scanning can be run in [offline environments](#offline-environment).
 
 ## Supported distributions

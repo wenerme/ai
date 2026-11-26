@@ -32,7 +32,7 @@ Before you begin this tutorial, make sure you have the following:
 - Some familiarity with command-line Git.
 
 Additionally, on GitLab Self-Managed only, ensure secret push protection is
-[enabled on the instance](secret_push_protection/_index.md#allow-the-use-of-secret-push-protection-in-your-gitlab-instance).
+[enabled on the instance](secret_push_protection/_index.md#configure-secret-push-protection-for-your-gitlab-instance).
 
 ## Enable secret push protection
 

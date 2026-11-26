@@ -383,14 +383,14 @@ Example response:
     "source": "push",
     "created_at": "2023-02-01T12:19:21.895Z",
     "updated_at": "2023-02-01T14:00:05.922Z",
-    "web_url": "http://gdk.test:3001/feature-testing/composer-repository/-/pipelines/1",
+    "web_url": "http://gitlab.example.com/feature-testing/composer-repository/-/pipelines/1",
     "user": {
       "id": 1,
       "username": "root",
       "name": "Administrator",
       "state": "active",
       "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80\u0026d=identicon",
-      "web_url": "http://gdk.test:3001/root"
+      "web_url": "http://gitlab.example.com/root"
     }
   },
   {
@@ -403,14 +403,14 @@ Example response:
     "source": "push",
     "created_at": "2023-02-01T12:23:23.694Z",
     "updated_at": "2023-02-01T12:26:28.635Z",
-    "web_url": "http://gdk.test:3001/feature-testing/composer-repository/-/pipelines/2",
+    "web_url": "http://gitlab.example.com/feature-testing/composer-repository/-/pipelines/2",
     "user": {
       "id": 1,
       "username": "root",
       "name": "Administrator",
       "state": "active",
       "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80\u0026d=identicon",
-      "web_url": "http://gdk.test:3001/root"
+      "web_url": "http://gitlab.example.com/root"
     }
   }
 ]

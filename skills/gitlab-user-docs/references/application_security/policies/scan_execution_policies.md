@@ -100,9 +100,9 @@ GitLab automatically creates one. You can remove existing policies from the
 editor interface by selecting **Delete policy**
 at the bottom of the editor. This action creates a merge request to remove the policy from your `policy.yml` file.
 
-Most policy changes take effect as soon as the merge request is merged. Any changes
-committed directly to the default branch instead of a merge request require up to 10 minutes
-before the policy changes take effect.
+Policy changes made in a merge request take effect about one minute after the merge request is merged.
+Changes merged within that minute are applied together.
+Any changes committed directly to the default branch might require up to 10 minutes to take effect.
 
 [Scan Execution Policy Editor Rule Mode]
 
@@ -557,8 +557,9 @@ specified projects, groups, or compliance framework labels. For more details, se
 
 When you update a policy, the changes propagate differently depending on how you update the policy:
 
-- With a merge request on the [security policy project](../_index.md): Changes take effect immediately after the merge request is merged.
-- Direct commits to `.gitlab/security-policies/policy.yml`: Changes can take up to 10 minutes to take effect.
+- With a merge request in the [security policy project](../_index.md): Changes take effect about one minute after the merge request is merged.
+  Changes merged within that minute are applied together.
+- Direct commits to `.gitlab/security-policies/policy.yml`: Changes might require up to 10 minutes to take effect.
 
 ### Triggering behavior
 

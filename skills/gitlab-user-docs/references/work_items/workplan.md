@@ -230,6 +230,23 @@ To regenerate a workplan:
 
 GitLab Duo replaces the existing workplan with the new version.
 
+## Resolve all questions from GitLab Duo
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269982) in GitLab 19.7.
+
+When GitLab Duo asks questions while it generates a workplan, you can resolve all open questions at once.
+Use this option when you do not want to answer each question.
+
+Prerequisites:
+
+- The Developer, Maintainer, or Owner role for the project.
+
+To resolve all questions:
+
+1. On the work item, in the Implementation widget, select the vertical ellipsis
+   () > .
+1. To continue the generation, select .
+
 ## Delete a workplan
 
 Prerequisites:

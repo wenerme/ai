@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 512 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 518 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -952,6 +952,30 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
+    "model": "llmgateway-providers/aws-mantle/gpt-5.4",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 921600,
+    "maxOutput": 128000,
+    "inputCost": 2.75,
+    "outputCost": 16.5
+  },
+  {
+    "model": "llmgateway-providers/aws-mantle/gpt-5.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 921600,
+    "maxOutput": 128000,
+    "inputCost": 5.5,
+    "outputCost": 33
+  },
+  {
     "model": "llmgateway-providers/aws-mantle/gpt-5.6-luna",
     "imageInput": true,
     "audioInput": false,
@@ -994,7 +1018,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1050000,
+    "contextWindow": 921600,
     "maxOutput": 128000,
     "inputCost": 10,
     "outputCost": 50
@@ -1046,6 +1070,54 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1,
     "outputCost": 5
+  },
+  {
+    "model": "llmgateway-providers/aws-mantle/gpt-6.2-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 921600,
+    "maxOutput": 128000,
+    "inputCost": 8,
+    "outputCost": 40
+  },
+  {
+    "model": "llmgateway-providers/aws-mantle/gpt-6.2-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 921600,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "llmgateway-providers/aws-mantle/gpt-oss-120b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.6
+  },
+  {
+    "model": "llmgateway-providers/aws-mantle/gpt-oss-20b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.07,
+    "outputCost": 0.3
   },
   {
     "model": "llmgateway-providers/azure-anthropic/claude-fable-5",

@@ -76,7 +76,7 @@ The following metrics are available:
 | `gitlab_cache_operations_total`                                                | Counter   |  12.2 | `controller`, `action`, `operation`, `store`, `endpoint_id`             | Cache operations by controller or action |
 | `gitlab_cache_read_multikey_count`                                             | Histogram |  15.7 | `controller`, `action`, `store`, `endpoint_id`                          | Count of keys in multi-key cache read operations |
 | `gitlab_ci_active_jobs`                                                        | Histogram |  14.2 |                                                                         | Count of active jobs when pipeline is created |
-| `gitlab_ci_artifact_registry_pull_credentials_total`                           | Counter   |  19.6 | `result`, `reason`                                                      | Artifact Central registry credentials issued or skipped for CI/CD job payloads. `result` is `issued` or `skipped`. `reason` is empty when issued, otherwise the condition that skipped it: `not_configured` (no Artifact Central URL), `flag_disabled`, `kubernetes_executor`, `unknown_executor` (the runner reports no executor), `not_activated` (the organization has not activated Artifact Central), `not_member` (the job's user is not a member of the project's organization), or `error` (a check or the token issuer raised an error that is logged in `exceptions_json.log`) |
+| `gitlab_ci_artifact_registry_pull_credentials_total`                           | Counter   |  19.6 | `result`, `reason`                                                      | Artifact Central registry credentials issued or skipped for CI/CD job payloads. `result` is `issued` or `skipped`. `reason` is empty when issued, otherwise the condition that skipped it: `not_configured` (no Artifact Central URL), `flag_disabled`, `kubernetes_executor`, `unknown_executor` (the runner reports no executor), `not_activated` (the organization has not activated Artifact Central), `not_member` (the job's user is not a member of the project's organization), `composite_identity` (the job runs as a service account with composite identity), or `error` (a check or the token issuer raised an error that is logged in `exceptions_json.log`) |
 | `gitlab_ci_build_hook_commit_cache_reads_total`                                | Counter   |  19.6 | `result`                                                                | CI job hook commit cache reads by result (`hit` or `miss`). Misses include invalid entries and Redis read failures. Bypassed lookups are excluded. |
 | `gitlab_ci_build_trace_errors_total`                                           | Counter   |  14.4 | `error_reason`                                                          | Total amount of different error types on a build trace |
 | `gitlab_ci_current_queue_size`                                                 | Gauge     |  16.3 |                                                                         | Current size of initialized CI/CD builds queue |
@@ -478,15 +478,18 @@ The Apdex target for these metrics is `APDEX_THRESHOLD_S` in
 
 ### Zoekt rollout metrics (from Sidekiq)
 
-Sidekiq emits these metrics when `Search::Zoekt::RolloutWorker` cannot place a
-namespace because the Zoekt fleet lacks capacity. Each Sidekiq process starts
-the series at `0` when it boots, so `increase()` detects a first failure that
-happens after the next scrape.
+Sidekiq emits these metrics while Zoekt rolls out replicas to enabled namespaces.
+
+The two counters count when `Search::Zoekt::RolloutWorker` cannot place a
+namespace, for example because the Zoekt fleet lacks capacity. Each Sidekiq
+process starts the counter series at `0` when it boots, so `increase()` detects
+a first failure that happens after the next scrape.
 
 | Metric | Type | Since | Labels | Description |
 |:-------|:-----|------:|:-------|:------------|
 | `search_zoekt_rollout_planning_failures_total` | Counter | 19.6 | **None** | Total number of namespaces that Zoekt rollout could not plan a replica for because the fleet lacks capacity, counted once per namespace in each rollout run. A namespace counts when it needs more indices than one replica allows, or when no node has room for a project or every node with room already holds an index for the namespace. Adding Zoekt nodes resolves both. |
-| `search_zoekt_rollout_no_available_nodes_total` | Counter | 19.7 | **None** | Total number of Zoekt rollout runs that needed to add or remove a namespace replica but found no available node and planned no changes. A node is available when it is online and has unclaimed storage. Namespaces without a replica get no exact code search until a node is available. To resolve this issue, add Zoekt nodes. |
+| `search_zoekt_rollout_no_available_nodes_total` | Counter | 19.7 | **None** | Total number of Zoekt rollout runs that needed to add or remove a namespace replica but found no available node and planned no changes. A node is available when it is online and has unclaimed storage. On GitLab.com, a node that GitLab recently evicted indices from is also unavailable until the node has no indices pending removal, for at most 12 hours. Namespaces without a replica get no exact code search until a node is available. If nodes are offline, bring them back online. If every online node is out of unclaimed storage, add Zoekt nodes. Nodes that are unavailable only because of a recent eviction become available again without action. |
+| `search_zoekt_replica_time_to_ready_seconds` | Histogram | 19.7 | **None** | Seconds from a namespace's enablement for Zoekt to its replica first becoming ready, recorded once per replica. A replica that becomes ready again after returning to pending is not recorded. A replica created more than 3 days after enablement is not recorded either, because it replaces an earlier replica, for example after node eviction. |
 
 ### Audit event streaming SLI metrics
 

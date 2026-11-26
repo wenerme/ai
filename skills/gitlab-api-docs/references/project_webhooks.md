@@ -442,6 +442,7 @@ Supported attributes:
 | `signing_token`                | string            | No       | HMAC signing token used to compute the `webhook-signature` header. Must be in `whsec_<base64>` format encoding a 32-byte key. Not returned in the response. |
 | `tag_push_events`              | boolean           | No       | Trigger project webhook on tag push events. |
 | `token`                        | string            | No       | Secret token to validate received payloads. Not returned in the response. |
+| `url_variables`                | array             | No       | URL variables for the project webhook. Each item has a `key` and a `value`. Reference a variable in `url` with `{key}`. |
 | `wiki_page_events`             | boolean           | No       | Trigger project webhook on wiki events. |
 | `resource_deploy_token_events` | boolean           | No       | Trigger project webhook on project deploy token expiry events. |
 
@@ -495,6 +496,7 @@ Supported attributes:
 | `signing_token`                | string            | No       | HMAC signing token used to compute the `webhook-signature` header. Must be in `whsec_<base64>` format encoding a 32-byte key. Not returned in the response. |
 | `tag_push_events`              | boolean           | No       | Trigger project webhook on tag push events. |
 | `token`                        | string            | No       | Secret token to validate received payloads. Not returned in the response. When you change the webhook URL, the secret token is reset and not retained. |
+| `url_variables`                | array             | No       | URL variables for the project webhook. Each item has a `key` and a `value`. Reference a variable in `url` with `{key}`. Merged with the existing URL variables. If the webhook has URL variables and the update changes the resulting URL, GitLab clears all URL variables, even the ones in the request. |
 | `wiki_page_events`             | boolean           | No       | Trigger project webhook on wiki page events. |
 | `resource_deploy_token_events` | boolean           | No       | Trigger project webhook on project deploy token expiry events. |
 
@@ -608,12 +610,25 @@ On success, this endpoint returns the response code `204 No Content`.
 Setting the variable value does not automatically replace a literal value in the existing URL
 with the placeholder.
 
-To use a URL variable in a webhook URL, make two API calls:
+To create a webhook that uses a URL variable, call
+[`POST /projects/:id/hooks`](#add-a-webhook-to-a-project) with both the `url` attribute,
+including the `{key}` placeholder, and the `url_variables` attribute.
+To add URL variables to an existing webhook that has none, call
+[`PUT /projects/:id/hooks/:hook_id`](#update-a-project-webhook) with the same attributes.
 
-1. Call `PUT /projects/:id/hooks/:hook_id/url_variables/:key` with the `value` attribute to set the
-   variable value.
-1. Call `PUT /projects/:id/hooks/:hook_id` with the `url` attribute to update the webhook URL to
-   include the `{key}` placeholder.
+When an update changes the resulting URL, including the value of a URL variable the URL
+references, GitLab clears the custom headers. If the webhook has URL variables, GitLab also clears
+all URL variables, even the ones in the request. In this case, if the URL still contains a
+placeholder, the request returns `422 Unprocessable Entity`.
+
+To change the URL or a URL variable value of a webhook that has URL variables:
+
+1. Call `PUT /projects/:id/hooks/:hook_id` with a `url` attribute that has no placeholders.
+1. Call `PUT /projects/:id/hooks/:hook_id` with the new `url` attribute and a `url_variables` entry
+   for each placeholder. If the webhook uses a secret token, include the `token` attribute,
+   because changing the URL resets it.
+1. If the webhook uses custom headers, call `PUT /projects/:id/hooks/:hook_id` with the
+   `custom_headers` attribute to set them again.
 
 ## Delete a URL variable
 

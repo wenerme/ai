@@ -25,6 +25,9 @@ When you turn off a feature, the following additional features are also unavaila
 - If you turn off the **Work items** feature, project users cannot use:
   - **Issue Boards**
   - **Service Desk**
+  - **Test cases**
+  - **Incidents**
+  - **Issue analytics**
   - Project users can still access **Milestones** from merge requests.
 - If you turn off **Work items** and **Merge Requests**, project users cannot use:
   - **Labels**

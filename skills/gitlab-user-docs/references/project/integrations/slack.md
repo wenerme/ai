@@ -172,7 +172,7 @@ The following triggers are available for Slack notifications:
 ## Trigger notifications for group mentions
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/417751) in GitLab 16.4.
-- Restrictions on notification triggers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/134677) in GitLab 18.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `group_mention_access_check`. Disabled by default.
+- Restrictions on notification triggers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/134677) in GitLab 18.3.
 
 To trigger a [notification event](#triggers-for-slack-notifications) for a group mention, use `@<group_name>` in:
 

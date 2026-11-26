@@ -206,6 +206,33 @@ static List<String> hyperlinks(String html) {
 }
 ```
 
+```csharp
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
+
+// Paste the four C# steps into Program.cs in a .NET 10 console project.
+// Add the parser with: dotnet add package HtmlAgilityPack --version 1.11.71
+
+const int MaxPages = 100;
+const int MaxRedirects = 5;
+const int MaxPageBytes = 1_048_576;
+const int MaxLinksPerPage = 2_000;
+
+// Redirects are checked before sending another request. TLS uses normal OS trust.
+static HttpClient CreateClient() => new(new HttpClientHandler
+{
+    AllowAutoRedirect = false,
+    UseCookies = false,
+    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+})
+{
+    Timeout = TimeSpan.FromSeconds(10)
+};
+```
+
 ```ruby
 require "net/http"
 require "uri"
@@ -453,6 +480,102 @@ static List<String> getHyperlinks(URI url) throws Exception {
 }
 ```
 
+```csharp
+static async Task<IReadOnlyList<string>> GetHyperlinksAsync(
+    HttpClient client, Uri url, HtmlDocument? fetchedDocument = null)
+{
+    // Reuse the already fetched HTML when calling this helper from a crawl.
+    if (fetchedDocument is not null) return Hyperlinks(fetchedDocument);
+    HtmlPage? page = await FetchHtmlAsync(client, url, url);
+    return page is null ? [] : Hyperlinks(page.Document);
+}
+
+static string[] Hyperlinks(HtmlDocument document) =>
+    document.DocumentNode.Descendants("a")
+        .Where(node => node.Attributes["href"] is not null)
+        .Take(MaxLinksPerPage)
+        .Select(node => HtmlEntity.DeEntitize(node.GetAttributeValue("href", "")))
+        .ToArray();
+
+static async Task<HtmlPage?> FetchHtmlAsync(
+    HttpClient client, Uri initial, Uri origin, HashSet<string>? fetched = null)
+{
+    Uri current = initial;
+    HashSet<string> redirects = new(StringComparer.Ordinal);
+    using CancellationTokenSource deadline = new(TimeSpan.FromSeconds(10));
+    for (int hop = 0; hop <= MaxRedirects; hop++)
+    {
+        if (!SameAuthority(origin, current))
+        {
+            Console.Error.WriteLine($"Skipping redirect outside the same-authority boundary: {current}");
+            return null;
+        }
+        if (!redirects.Add(current.AbsoluteUri))
+        {
+            Console.Error.WriteLine($"Skipping redirect loop: {current}");
+            return null;
+        }
+        // Shared across the traversal, so redirect targets are fetched only once.
+        if (fetched is not null && !fetched.Add(current.AbsoluteUri))
+        {
+            return null;
+        }
+        using HttpRequestMessage request = new(HttpMethod.Get, current);
+        using HttpResponseMessage response = await client.SendAsync(
+            request, HttpCompletionOption.ResponseHeadersRead, deadline.Token);
+        int status = (int)response.StatusCode;
+        if (status is 301 or 302 or 303 or 307 or 308)
+        {
+            Uri? location = response.Headers.Location;
+            Uri? target = location is null ? null : ResolveLink(current, location.OriginalString);
+            if (hop == MaxRedirects || target is null)
+            {
+                Console.Error.WriteLine($"Skipping invalid redirect or redirect limit: {current}");
+                return null;
+            }
+            current = target;
+            continue;
+        }
+        if (response.StatusCode != HttpStatusCode.OK)
+        {
+            Console.Error.WriteLine($"Skipping HTTP {status}: {current}");
+            return null;
+        }
+        if (!string.Equals(response.Content.Headers.ContentType?.MediaType,
+            "text/html", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.Error.WriteLine($"Skipping non-HTML content: {current}");
+            return null;
+        }
+        if (response.Content.Headers.ContentLength is > MaxPageBytes)
+        {
+            throw new InvalidDataException($"HTML page exceeds {MaxPageBytes} bytes: {current}");
+        }
+        await using Stream input = await response.Content.ReadAsStreamAsync(deadline.Token);
+        using MemoryStream body = new();
+        byte[] buffer = new byte[8192];
+        int count;
+        while ((count = await input.ReadAsync(buffer.AsMemory(), deadline.Token)) != 0)
+        {
+            if (body.Length + count > MaxPageBytes)
+            {
+                throw new InvalidDataException($"HTML page exceeds {MaxPageBytes} bytes: {current}");
+            }
+            body.Write(buffer, 0, count);
+        }
+        string? charset = response.Content.Headers.ContentType?.CharSet?.Trim('"');
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        Encoding encoding = string.IsNullOrWhiteSpace(charset) ? Encoding.UTF8 : Encoding.GetEncoding(charset);
+        body.Position = 0;
+        using StreamReader reader = new(body, encoding, detectEncodingFromByteOrderMarks: true);
+        HtmlDocument document = new();
+        document.LoadHtml(await reader.ReadToEndAsync(deadline.Token));
+        return new HtmlPage(current, document);
+    }
+    throw new InvalidOperationException("Unreachable redirect state.");
+}
+```
+
 ```ruby
 def fetch_page(url, local_domain = nil)
   uri = URI.parse(url)
@@ -608,6 +731,61 @@ static Set<URI> domainHyperlinks(String domain, URI url, List<String> hrefs) {
     }
   }
   return links;
+}
+```
+
+```csharp
+static async Task<IReadOnlyList<string>> GetDomainHyperlinksAsync(
+    HttpClient client, Uri origin, Uri url, IReadOnlyList<string>? fetchedHyperlinks = null)
+{
+    if (!SameAuthority(origin, url))
+    {
+        throw new ArgumentException("The page must have the same authority as the crawl origin.", nameof(url));
+    }
+    if (fetchedHyperlinks is not null)
+        return DomainHyperlinks(origin, url, fetchedHyperlinks).Select(link => link.AbsoluteUri).ToArray();
+    HtmlPage? page = await FetchHtmlAsync(client, url, origin);
+    return page is null ? [] : DomainHyperlinks(origin, page.Url, Hyperlinks(page.Document))
+        .Select(link => link.AbsoluteUri).ToArray();
+}
+
+static List<Uri> DomainHyperlinks(Uri origin, Uri page, IEnumerable<string> hrefs)
+{
+    HashSet<string> seen = new(StringComparer.Ordinal);
+    List<Uri> links = [];
+    foreach (string href in hrefs)
+    {
+        string reference = href.Trim();
+        if (reference.Length == 0 || reference.StartsWith('#'))
+        {
+            continue;
+        }
+        Uri? link = ResolveLink(page, reference);
+        if (link is not null && SameAuthority(origin, link) && seen.Add(link.AbsoluteUri))
+        {
+            links.Add(link);
+        }
+    }
+    return links;
+}
+
+static bool SameAuthority(Uri origin, Uri candidate) =>
+    candidate.IsAbsoluteUri && candidate.Scheme is "http" or "https"
+    && candidate.UserInfo.Length == 0
+    && string.Equals(origin.Authority, candidate.Authority, StringComparison.OrdinalIgnoreCase);
+
+static Uri? ResolveLink(Uri page, string reference)
+{
+    // System.Uri preserves the current path for query-only references.
+    if (!Uri.TryCreate(page, reference, out Uri? resolved)
+        || resolved.Scheme is not ("http" or "https") || resolved.UserInfo.Length != 0)
+    {
+        return null;
+    }
+    // Slice the escaped absolute URI so query escapes keep their identity.
+    string absolute = resolved.AbsoluteUri;
+    int fragment = absolute.IndexOf('#', StringComparison.Ordinal);
+    return fragment < 0 ? resolved : new Uri(absolute[..fragment]);
 }
 ```
 
@@ -1031,6 +1209,142 @@ static void crawl(URI initial) throws Exception {
 }
 ```
 
+```csharp
+// Replace this with a website you own or have permission to crawl.
+Uri start = new("https://example.com/");
+using HttpClient client = CreateClient();
+IReadOnlyList<LinkObservation> observations = await CrawlAsync(client, start);
+
+static async Task<IReadOnlyList<LinkObservation>> CrawlAsync(HttpClient client, Uri start)
+{
+    List<LinkObservation> observations = [];
+    if (!SameAuthority(start, start))
+    {
+        throw new ArgumentException("Use an HTTP or HTTPS URL without embedded credentials.", nameof(start));
+    }
+    start = new UriBuilder(start) { Fragment = "" }.Uri;
+    string directory = Path.Combine("text", OutputDirectoryName(start));
+    Directory.CreateDirectory(directory);
+    Directory.CreateDirectory("processed");
+    Queue<Uri> queue = new();
+    queue.Enqueue(start);
+    HashSet<string> scheduled = new(StringComparer.Ordinal) { start.AbsoluteUri };
+    HashSet<string> fetched = new(StringComparer.Ordinal);
+    int saved = 0;
+    while (queue.TryDequeue(out Uri? url))
+    {
+        HtmlPage? page = await FetchHtmlAsync(client, url, start, fetched);
+        if (page is null)
+        {
+            continue;
+        }
+        // Redirect aliases can share a final page; FetchHtmlAsync deduplicates requests.
+        string path = Path.Combine(directory, PageFilename(page.Url));
+        await File.WriteAllTextAsync(path, VisibleText(page.Document.DocumentNode), new UTF8Encoding(false));
+        Console.WriteLine(page.Url.AbsoluteUri);
+        saved++;
+        IReadOnlyList<string> hyperlinks = await GetHyperlinksAsync(client, page.Url, page.Document);
+        IReadOnlyList<string> domainHyperlinks = await GetDomainHyperlinksAsync(client, start, page.Url, hyperlinks);
+        observations.Add(new(page.Url, hyperlinks, domainHyperlinks));
+        foreach (string address in domainHyperlinks)
+        {
+            Uri link = new(address);
+            if (scheduled.Contains(link.AbsoluteUri))
+            {
+                continue;
+            }
+            if (scheduled.Count == MaxPages)
+            {
+                Console.Error.WriteLine($"Crawl limited to {MaxPages} scheduled pages.");
+                break;
+            }
+            scheduled.Add(link.AbsoluteUri);
+            queue.Enqueue(link);
+        }
+    }
+    Console.Error.WriteLine($"Saved {saved} HTML pages.");
+    return observations;
+}
+
+static string OutputDirectoryName(Uri origin)
+{
+    string host = origin.IdnHost;
+    bool ordinaryHost = origin.IsDefaultPort && host.Length <= 200
+        && host.All(character => char.IsAsciiLetterOrDigit(character) || character is '.' or '-')
+        && !host.EndsWith('.')
+        && !Regex.IsMatch(host, @"^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+    // Keep the guide's text/example.com layout; ports, IPv6 and device names use ASCII.
+    return ordinaryHost ? host : "site-" + Convert.ToHexString(
+        SHA256.HashData(Encoding.UTF8.GetBytes(origin.Authority))).ToLowerInvariant();
+}
+
+static string PageFilename(Uri url)
+{
+    string digest = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(url.AbsoluteUri)))
+        .ToLowerInvariant();
+    string suffix = "#" + digest + ".txt";
+    string readable = Uri.UnescapeDataString(url.Authority + url.AbsolutePath);
+    StringBuilder prefix = new();
+    int bytes = 0;
+    // Windows reserves device basenames even before an extension, such as con.example.
+    if (Regex.IsMatch(readable, @"^(con|prn|aux|nul|com[1-9¹²³]|lpt[1-9¹²³])(?:\.|$)",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+    {
+        prefix.Append('_');
+        bytes++;
+    }
+    foreach (Rune rune in readable.EnumerateRunes())
+    {
+        bool invalid = rune.Value < 32 || rune.Value is '/' or '\\' or ':' or '*' or '?' or '"' or '<' or '>' or '|';
+        string part = invalid ? "_" : rune.ToString();
+        int length = Encoding.UTF8.GetByteCount(part);
+        if (bytes + length > 255 - suffix.Length)
+        {
+            break;
+        }
+        prefix.Append(part);
+        bytes += length;
+    }
+    return prefix.ToString() + suffix;
+}
+
+static string VisibleText(HtmlNode root)
+{
+    StringBuilder text = new();
+    AppendText(root, text);
+    return Regex.Replace(HtmlEntity.DeEntitize(text.ToString()), @"\s+", " ").Trim();
+}
+
+static void AppendText(HtmlNode node, StringBuilder text)
+{
+    if (node.Name is "script" or "style" || node.NodeType == HtmlNodeType.Comment)
+    {
+        return;
+    }
+    if (node.NodeType == HtmlNodeType.Text)
+    {
+        text.Append(node.InnerText);
+        return;
+    }
+    bool block = node.Name is "address" or "article" or "aside" or "blockquote" or "br"
+        or "dd" or "div" or "dl" or "dt" or "fieldset" or "figcaption" or "figure"
+        or "footer" or "form" or "h1" or "h2" or "h3" or "h4" or "h5" or "h6"
+        or "header" or "hr" or "li" or "main" or "nav" or "ol" or "p" or "pre"
+        or "section" or "table" or "td" or "th" or "tr" or "ul";
+    if (block) text.Append(' ');
+    foreach (HtmlNode child in node.ChildNodes)
+    {
+        AppendText(child, text);
+    }
+    if (block) text.Append(' ');
+}
+internal sealed record LinkObservation(
+    Uri Url, IReadOnlyList<string> Hyperlinks, IReadOnlyList<string> DomainHyperlinks);
+
+sealed record HtmlPage(Uri Url, HtmlDocument Document);
+```
+
 ```ruby
 def crawl(full_url)
   initial = URI.parse(full_url)
@@ -1403,73 +1717,96 @@ try (var writer =
 ```
 
 ```csharp
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace OpenAI.Docs.Examples.TutorialCrawlWebsiteEmbeddings.BuildScrapedDataframe;
+// Use the same origin and working directory as the crawler.
+Uri origin = new("https://example.com/");
+string workingDirectory = ".";
 
-internal static class BuildScrapedDataframeSample
+string domain = origin.Authority;
+List<Dictionary<string, string>> rows = [];
+string[] files = Directory.GetFiles(Path.Combine(workingDirectory, "text", OutputDirectoryName(origin)), "*.txt");
+Array.Sort(files, StringComparer.Ordinal);
+foreach (string file in files)
 {
-    internal static async Task RunAsync()
-    {
-        // Replace this illustrative domain with the domain used by the crawler.
-        string domain = new Uri("https://example.com/").Authority;
-        List<Dictionary<string, string>> rows = [];
-        string[] files = Directory.GetFiles(Path.Combine("text", domain), "*.txt");
-        Array.Sort(files, StringComparer.Ordinal);
-        foreach (string file in files)
-        {
-            string title = TitleFromFilename(Path.GetFileName(file), domain);
-            string text = RemoveNewlines(await File.ReadAllTextAsync(file));
-            rows.Add(new() { ["fname"] = title, ["text"] = title + ". " + text });
-        }
-
-        Directory.CreateDirectory("processed");
-        using (StreamWriter output = new("processed/scraped.csv", false, new UTF8Encoding(false)))
-        {
-            await output.WriteLineAsync("id,fname,text");
-            for (int index = 0; index < rows.Count; index++)
-            {
-                await output.WriteLineAsync(string.Join(",", index.ToString(CultureInfo.InvariantCulture),
-                    QuoteCsv(rows[index]["fname"]), QuoteCsv(rows[index]["text"])));
-            }
-        }
-
+    string title = TitleFromFilename(Path.GetFileName(file), domain);
+    string text = RemoveNewlines(await File.ReadAllTextAsync(file));
+    rows.Add(new() { ["fname"] = title, ["text"] = title + ". " + text });
 }
-    internal static string TitleFromFilename(string filename, string domain)
-    {
-        string title = Regex.Replace(Path.GetFileNameWithoutExtension(filename), "#[0-9a-f]{64}$", "");
-        if (title.StartsWith(domain + "_", StringComparison.Ordinal))
-        {
-            title = title[(domain.Length + 1)..];
-        }
-        else if (title == domain)
-        {
-            title = "index";
-        }
-        if (title.Length == 0)
-        {
-            title = "index";
-        }
-        return title.Replace("-", " ", StringComparison.Ordinal)
-            .Replace("_", " ", StringComparison.Ordinal)
-            .Replace("#update", "", StringComparison.Ordinal);
-    }
 
-    private static string QuoteCsv(string value) => "\"" + value.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
-
-    internal static string RemoveNewlines(string text)
+Directory.CreateDirectory(Path.Combine(workingDirectory, "processed"));
+using (StreamWriter output = new(Path.Combine(workingDirectory, "processed", "scraped.csv"), false, new UTF8Encoding(false)))
+{
+    await output.WriteLineAsync("id,fname,text");
+    for (int index = 0; index < rows.Count; index++)
     {
-        ArgumentNullException.ThrowIfNull(text);
-        return Regex.Replace(
-            text.Replace("\r\n", " ", StringComparison.Ordinal)
-                .Replace("\r", " ", StringComparison.Ordinal)
-                .Replace("\n", " ", StringComparison.Ordinal)
-                .Replace(@"\n", " ", StringComparison.Ordinal),
-            " {2,}", " ");
+        await output.WriteLineAsync(string.Join(",", index.ToString(CultureInfo.InvariantCulture),
+            QuoteCsv(rows[index]["fname"]), QuoteCsv(rows[index]["text"])));
     }
+}
+
+static string OutputDirectoryName(Uri origin)
+{
+    string host = origin.IdnHost;
+    bool ordinaryHost = origin.IsDefaultPort && host.Length <= 200
+        && host.All(character => char.IsAsciiLetterOrDigit(character) || character is '.' or '-')
+        && !host.EndsWith('.')
+        && !Regex.IsMatch(host, @"^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+    // Match the crawler's portable folder, preserving text/example.com for ordinary DNS.
+    return ordinaryHost ? host : "site-" + Convert.ToHexString(
+        SHA256.HashData(Encoding.UTF8.GetBytes(origin.Authority))).ToLowerInvariant();
+}
+
+static string TitleFromFilename(string filename, string domain)
+{
+    // PageFilename replaces these authority characters before writing the file.
+    domain = Regex.Replace(domain, @"[\x00-\x1f/\\:*?""<>|]", "_");
+    string title = Regex.Replace(Path.GetFileNameWithoutExtension(filename), "#[0-9a-f]{64}$", "");
+    // Remove only the crawler's Windows-device escape for this authority.
+    if (Regex.IsMatch(domain, @"^(con|prn|aux|nul|com[1-9¹²³]|lpt[1-9¹²³])(?:\.|$)",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)
+        && title.StartsWith("_" + domain, StringComparison.Ordinal))
+    {
+        title = title[1..];
+    }
+    if (title.StartsWith(domain + "_", StringComparison.Ordinal))
+    {
+        title = title[(domain.Length + 1)..];
+    }
+    else if (title == domain)
+    {
+        title = "index";
+    }
+    if (title.Length == 0)
+    {
+        title = "index";
+    }
+    return title.Replace("-", " ", StringComparison.Ordinal)
+        .Replace("_", " ", StringComparison.Ordinal)
+        .Replace("#update", "", StringComparison.Ordinal);
+}
+
+static string QuoteCsv(string value) => "\"" + value.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
+
+static string RemoveNewlines(string text)
+{
+    ArgumentNullException.ThrowIfNull(text);
+    return Regex.Replace(
+        text.Replace("\r\n", " ", StringComparison.Ordinal)
+            .Replace("\r", " ", StringComparison.Ordinal)
+            .Replace("\n", " ", StringComparison.Ordinal)
+            .Replace(@"\n", " ", StringComparison.Ordinal),
+        " {2,}", " ");
 }
 ```
 

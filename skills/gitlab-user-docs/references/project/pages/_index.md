@@ -12,7 +12,8 @@ These websites:
 
 - Deploy automatically with GitLab CI/CD pipelines.
 - Support any static site generator (like Hugo, Jekyll, or Gatsby) or plain HTML, CSS, JavaScript, and Wasm.
-- On GitLab.com, run on GitLab-provided infrastructure at no additional cost.
+- Are available in every tier at no additional cost.
+  On GitLab.com and GitLab Dedicated, GitLab hosts them.
 - Connect with custom domains and SSL/TLS certificates.
 - Control access through built-in authentication.
 - Scale reliably for personal, business, or project documentation sites.

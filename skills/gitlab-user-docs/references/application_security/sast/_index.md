@@ -349,7 +349,7 @@ For more information about configuration options, see [Available CI/CD variables
 
 After you are confident in the SAST results for a single project, you can extend its implementation to additional projects:
 
-- Use [enforced scan execution](../detect/security_configuration.md#create-a-shared-configuration) to apply SAST settings across groups.
+- Use a [shared configuration](../detect/security_configuration.md#create-a-shared-configuration) to apply SAST settings across groups.
 - Share and reuse a central ruleset by [specifying a remote configuration file](customize_rulesets.md#use-a-remote-ruleset-file).
 - If you have unique requirements, SAST can be run in an offline environment or under SELinux constraints.
 

@@ -508,6 +508,76 @@ You can now start a new chat and ask a question depending on the [available tool
 > You're responsible for guarding against prompt injection when you use these tools.
 > Exercise extreme caution or use MCP tools only on GitLab objects you trust.
 
+## Connect a Claude organization to the GitLab MCP server
+
+If you are an owner of a Claude Team or Claude Enterprise organization,
+you can add the GitLab MCP server as a custom connector for your organization.
+Members then connect to GitLab from Claude without editing configuration files.
+
+When you add the connector, the GitLab MCP server is available immediately to the members of your
+Claude organization in Claude Desktop and Claude on the web.
+The connector does not connect members automatically.
+Each member signs in to GitLab once and gets their own token that is limited to their own permissions.
+
+The connector is not a central configuration for Claude Code.
+Members who sign in to Claude Code with their Claude account can use the connector
+after they connect it in Claude.
+Members who sign in to Claude Code another way, for example with an API key, must
+[connect Claude Code to the GitLab MCP server](#connect-claude-code-to-the-gitlab-mcp-server) themselves.
+
+Prerequisites:
+
+- The owner role for the Claude organization.
+- Access to the MCP server must be allowed. For more information, see [Prerequisites](#prerequisites).
+- The Owner role for the GitLab group, if you create a group-owned OAuth application.
+- On GitLab Self-Managed and GitLab Dedicated, your instance must be reachable from the internet,
+  or allow the Anthropic IP addresses.
+  Claude connects to the GitLab MCP server from the Anthropic cloud.
+  If your instance is not reachable, each user must set up the GitLab MCP server locally.
+
+> [!warning]
+> You're responsible for guarding against prompt injection when you use these tools.
+> Exercise extreme caution or use MCP tools only on GitLab objects you trust.
+
+To connect a Claude organization to the GitLab MCP server:
+
+1. Create a group-owned OAuth application if either of the following applies:
+   - An administrator has [turned off OAuth dynamic client registration](../../administration/settings/account_and_limit_settings.md#turn-off-oauth-dynamic-client-registration).
+     In this case, the application is required.
+   - Many members share an IP address and might exceed the registration rate limit.
+
+   Otherwise, skip this step.
+   For more information, see [reuse a single OAuth application](#reuse-a-single-oauth-application).
+   To create the application:
+   1. In the top bar, select  and find your group.
+   1. In the left sidebar, select  > .
+   1. Create the application with these values:
+      - Name: A name for the application, for example `Claude`.
+      - Redirect URI: `https://claude.ai/api/mcp/auth_callback`
+      - Scopes: Select **mcp**.
+      - : Clear the checkbox for a non-confidential application,
+        or keep it selected for a confidential application.
+   1. Save the application, and then copy the application ID.
+      For a confidential application, also copy the secret.
+1. In Claude, add the custom connector:
+   1. Go to  > .
+   1. Select  >  > .
+   1. For the name, enter `GitLab`.
+   1. For the URL, enter `https://<gitlab.example.com>/api/v4/mcp`.
+      Replace `<gitlab.example.com>` with:
+      - On GitLab.com, `gitlab.com`.
+      - On GitLab Self-Managed and GitLab Dedicated, your GitLab instance URL.
+   1. If you created an OAuth application, expand the advanced settings and enter the application ID
+      as the OAuth client ID.
+      For a confidential application, enter the secret as the OAuth client secret.
+      For a non-confidential application, leave the client secret blank.
+1. Ask each member of your Claude organization to connect to GitLab.
+   In Claude, each member goes to
+    >  > ,
+   selects , and signs in to GitLab.
+
+You can now start a new chat and ask a question depending on the [available tools](mcp_server_tools.md).
+
 ## Connect Gemini Code Assist and Gemini CLI to the GitLab MCP server
 
 Gemini Code Assist and Gemini CLI use HTTP transport
@@ -656,16 +726,15 @@ To configure the GitLab MCP server in OpenAI Codex:
    codex mcp add GitLab --url "https://<gitlab.example.com>/api/v4/mcp"
    ```
 
-1. Edit `~/.codex/config.toml` and, in the `[features]` section,
-   enable the `rmcp_client` feature flag.
+1. Optional. Verify that `codex mcp add` added the GitLab MCP server to `~/.codex/config.toml`:
 
    ```toml
-   [features]
-   "rmcp_client" = true
-
    [mcp_servers.GitLab]
    url = "https://<gitlab.example.com>/api/v4/mcp"
    ```
+
+   If the file has more than one `[mcp_servers.GitLab]` table, remove the extra one.
+   Codex cannot load a `config.toml` file with duplicate tables.
 
 1. Run the login flow and authenticate with the GitLab instance.
 

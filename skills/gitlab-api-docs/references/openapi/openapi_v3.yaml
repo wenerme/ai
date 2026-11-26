@@ -3662,8 +3662,8 @@ paths:
     post:
       operationId: postApiV4AiDuoWorkflowsToolsRiskAssessmentResults
       summary: Submit risk assessment results for a merge request
-      description: Submits the categorical claims and summary produced by the risk
-        assessment tool.
+      description: Submits the risk level and reason for each area produced by the
+        risk assessment flow.
       tags:
       - GitLab Duo workflows
       responses:
@@ -4680,6 +4680,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: workflow_id
         required: true
@@ -16592,10 +16594,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesBoard"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -16668,8 +16674,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesBoard"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
+        '412':
+          description: Precondition failed
         '400':
           description: Bad Request
       parameters:
@@ -16762,8 +16774,12 @@ paths:
       responses:
         '200':
           description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -16794,8 +16810,12 @@ paths:
       responses:
         '200':
           description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -17557,10 +17577,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMlMlflowGetMetricHistory"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: run_id
         required: true
@@ -20993,10 +21017,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesTodo"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -23686,8 +23714,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesBurndownEvent"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
+        '405':
+          description: Method not allowed
         '400':
           description: Bad Request
       parameters:
@@ -26545,8 +26579,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesBurndownEvent"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
+        '405':
+          description: Method not allowed
         '400':
           description: Bad Request
       parameters:
@@ -33138,6 +33178,23 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                  - "$ref": "#/components/schemas/APIEntitiesBlob"
+                  - "$ref": "#/components/schemas/APIEntitiesCommitDetail"
+                  - "$ref": "#/components/schemas/APIEntitiesNote"
+                  - "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+                  - "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
+                  - "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesWorkItem"
+                  - "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesMilestone"
+                  - "$ref": "#/components/schemas/APIEntitiesSnippet"
+                  - "$ref": "#/components/schemas/APIEntitiesUserBasic"
         '400':
           description: Bad Request
       parameters:
@@ -33388,6 +33445,22 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                  - "$ref": "#/components/schemas/APIEntitiesBlob"
+                  - "$ref": "#/components/schemas/APIEntitiesCommitDetail"
+                  - "$ref": "#/components/schemas/APIEntitiesNote"
+                  - "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+                  - "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
+                  - "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesWorkItem"
+                  - "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesMilestone"
+                  - "$ref": "#/components/schemas/APIEntitiesUserBasic"
         '404':
           description: Not Found
         '400':
@@ -33647,6 +33720,20 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                  - "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesWorkItem"
+                  - "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                  - "$ref": "#/components/schemas/APIEntitiesMilestone"
+                  - "$ref": "#/components/schemas/APIEntitiesNote"
+                  - "$ref": "#/components/schemas/APIEntitiesBlob"
+                  - "$ref": "#/components/schemas/APIEntitiesCommitDetail"
+                  - "$ref": "#/components/schemas/APIEntitiesUserBasic"
         '404':
           description: Not Found
         '400':
@@ -40392,10 +40479,16 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesAuditEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: created_after
         required: false
@@ -40460,10 +40553,16 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesAuditEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: audit_event_id
         required: true
@@ -45018,10 +45117,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesPackageFile"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -47356,10 +47459,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesNamespace"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -47417,8 +47524,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesGitlabSubscription"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -51920,10 +52033,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMember"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -51952,10 +52069,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMember"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -51980,10 +52101,14 @@ paths:
       responses:
         '200':
           description: OK
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -52008,10 +52133,14 @@ paths:
       responses:
         '201':
           description: Created
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -52040,10 +52169,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesPendingMember"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -52087,10 +52220,16 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesMember"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -52155,10 +52294,16 @@ paths:
       responses:
         '200':
           description: OK
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
       parameters:
       - name: id
         required: true
@@ -52198,10 +52343,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesBillableMembership"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -52253,10 +52402,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesBillableMembership"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -52302,10 +52455,16 @@ paths:
       responses:
         '204':
           description: Resource deleted
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -56412,8 +56571,12 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -56446,10 +56609,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesIssuableMetricImage"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -56486,8 +56653,12 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesIssuableMetricImage"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -56519,10 +56690,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesIssuableMetricImage"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -56563,10 +56738,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesIssuableMetricImage"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -64599,8 +64778,14 @@ paths:
             text/csv:
               schema:
                 type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
+        '422':
+          description: Unprocessable entity
         '400':
           description: Bad Request
       parameters:
@@ -64619,10 +64804,18 @@ paths:
       responses:
         '201':
           description: Created
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -64648,8 +64841,12 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -68076,8 +68273,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesErrorTrackingProjectSetting"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -68177,8 +68378,12 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesErrorTrackingClientKey"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -68204,8 +68409,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesErrorTrackingClientKey"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -69672,10 +69881,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesDeploymentsApproval"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -83271,8 +83484,12 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -83301,10 +83518,16 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesAuditEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: created_after
         required: false
@@ -83367,10 +83590,16 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesAuditEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: audit_event_id
         required: true
@@ -83405,10 +83634,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesUserPublic"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: username
         required: false
@@ -83501,10 +83734,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesUserPublic"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: username
         required: false
@@ -101431,6 +101668,194 @@ components:
           type: boolean
           description: If `true`, the details were submitted to Akismet for spam detection.
           example: false
+    APIEntitiesBlob:
+      type: object
+      properties:
+        basename:
+          type: string
+          example: README
+        data:
+          type: string
+          example: |-
+            ---
+            title: Page
+            ---
+        path:
+          type: string
+          example: README.md
+        filename:
+          type: string
+          example: README.md
+        id:
+          type: string
+          example: 2695effb5807a22ff3d138d593fd856244e155e7
+        ref:
+          type: string
+          example: main
+        startline:
+          type: integer
+          example: 1
+        project_id:
+          type: integer
+          format: int64
+          example: 1
+        group_id:
+          type: integer
+          format: int64
+          example: 1
+    APIEntitiesWorkItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 84
+        iid:
+          type: integer
+          example: 14
+        project_id:
+          type: integer
+          format: int64
+          example: 4
+        title:
+          type: string
+          example: Impedit et ut et dolores vero provident ullam est
+        description:
+          type: string
+          example: Repellendus impedit et vel velit dignissimos.
+        state:
+          type: string
+          example: closed
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-08-17T12:46:35.053Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-14T17:22:01.470Z'
+        closed_at:
+          type: string
+          format: date-time
+          example: '2022-11-15T08:30:55.232Z'
+        closed_by:
+          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+        labels:
+          type: array
+          example:
+          - bug
+          items:
+            type: string
+        milestone:
+          "$ref": "#/components/schemas/APIEntitiesMilestone"
+        assignees:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
+        author:
+          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+        type:
+          type: string
+          description: One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK",
+            "OBJECTIVE", "KEY_RESULT", "EPIC", "TICKET"]
+          example: TASK
+        assignee:
+          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+        user_notes_count:
+          type: integer
+        merge_requests_count:
+          type: integer
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        start_date:
+          type: string
+          format: date
+          example: '2022-11-18'
+        due_date:
+          type: string
+          format: date
+          example: '2022-11-20'
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+          example: issue
+        web_url:
+          type: string
+          example: http://example.com/example/example/issues/14
+        time_stats:
+          "$ref": "#/components/schemas/APIEntitiesIssuableTimeStats"
+        task_completion_status:
+          "$ref": "#/components/schemas/APIEntitiesTaskCompletionStatus"
+        weight:
+          type: integer
+          example: 5
+        blocking_issues_count:
+          type: integer
+          example: 2
+        has_tasks:
+          type: boolean
+          example: true
+        task_status:
+          type: string
+          example: 2 of 4 tasks completed
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2
+            notes:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/notes
+            award_emoji:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/award_emoji
+            project:
+              type: string
+              example: http://example.com/api/v4/projects/1
+            closed_as_duplicate_of:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/75
+        references:
+          "$ref": "#/components/schemas/APIEntitiesIssuableReferences"
+        severity:
+          type: string
+          description: The severity of the issue.
+          enum:
+          - UNKNOWN
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+        subscribed:
+          type: boolean
+          example: false
+        moved_to_id:
+          type: integer
+          format: int64
+          example: 1
+        imported:
+          type: boolean
+          example: false
+        imported_from:
+          type: string
+          example: github
+        service_desk_reply_to:
+          type: string
+          example: user@example.com
+        epic_iid:
+          type: string
+        epic:
+          "$ref": "#/components/schemas/EpicBaseEntity"
+        iteration:
+          "$ref": "#/components/schemas/APIEntitiesIteration"
+        health_status:
+          type: string
     APIEntitiesResourceMilestoneEvent:
       type: object
       properties:
@@ -112985,55 +113410,50 @@ components:
           type: integer
           description: The IID of the merge request
           nullable: true
-        diff_sha:
-          type: string
-          description: The full SHA of the diff revision the claims were assessed
-            against
-          pattern: "^[0-9a-f]{40}(?:[0-9a-f]{24})?$"
-          nullable: true
         workflow_id:
           type: integer
-          description: ID of the Duo workflow session that produced these claims
+          description: ID of the Duo workflow session that produced the assessment
           nullable: true
-        claims:
+        diff_sha:
+          type: string
+          description: The full SHA of the diff revision the areas were assessed against
+          pattern: "^[0-9a-f]{40}(?:[0-9a-f]{24})?$"
+          minLength: 1
+        areas:
           type: array
-          description: Categorical claims about the merge request
+          description: The risk level and reason for each area the merge request touches
           items:
             type: object
             properties:
               name:
                 type: string
-                description: Name of the claim, for example authorization
-                pattern: "^[a-z0-9_]+$"
+                description: Name of the area, as the area definition spells it
                 minLength: 1
-                maxLength: 64
-              value:
+                maxLength: 255
+              level:
                 type: string
-                description: Categorical answer, for example true, false, or behavioral.
-                  Never a score.
+                enum:
+                - low
+                - medium
+                - high
+                - critical
+                description: Risk level of the change in this area
                 minLength: 1
-                maxLength: 256
-              evidence:
+              reason:
                 type: string
-                description: Where the claim was observed, as a path:line reference
-                nullable: true
-                maxLength: 256
+                description: The file or the change that decided the risk level
+                minLength: 1
+                maxLength: 1024
             required:
             - name
-            - value
-          nullable: true
-        summary:
-          type: string
-          description: Plain-language explanation of the change and where its risk
-            lies
-          nullable: true
-          maxLength: 2048
+            - level
+            - reason
       required:
       - project_id
       - merge_request_iid
-      - diff_sha
       - workflow_id
-      - claims
+      - diff_sha
+      - areas
     postApiV4AiDuoWorkflowsCodeReviewAddCommentsRequest:
       type: object
       properties:
@@ -113535,6 +113955,7 @@ components:
           - web_chat
           - vulnerability_leaked_token_rotation
           - mobile_chat
+          - work_item_update_implementation
           description: 'Where the session was triggered from: a GitLab feature entry
             point, such as `merge_request_code_conflict`, or the client surface that
             created the session, such as `duo_cli_run` or `ide_extension`. Stored
@@ -129522,16 +129943,13 @@ components:
         duo_sast_fp_detection_enabled:
           type: boolean
           description: Enable GitLab Duo SAST false positive detection for this project.
-            Requires the Maintainer or Owner role, or the Security Manager role behind
-            a feature flag named `update_false_positive_detection_setting_permission`,
-            disabled by default.
+            Requires the Security Manager, Maintainer, or Owner role.
           nullable: true
         duo_secret_detection_fp_enabled:
           type: boolean
           description: Enable GitLab Duo Secret Detection false positive detection
-            for this project. Requires the Maintainer or Owner role, or the Security
-            Manager role behind a feature flag named `update_false_positive_detection_setting_permission`,
-            disabled by default.
+            for this project. Requires the Security Manager, Maintainer, or Owner
+            role.
           nullable: true
         duo_dependency_bump_breaking_changes_enabled:
           type: boolean

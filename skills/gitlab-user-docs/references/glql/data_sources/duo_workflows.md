@@ -235,6 +235,9 @@ For example, `claude-sonnet-4-5`.
 - The `returningUsersCount`, `joinedUsersCount`, `churnedUsersCount`, and `previousPeriodUsersCount`
   metrics compare each `created` bucket with the preceding one, so they are only valid when the
   `created` dimension is also selected. A `created` filter alone is not enough.
+  The preceding bucket is the latest earlier bucket that has flows, so empty buckets are skipped.
+  The query's filters apply to both buckets, and each combination of the other selected dimensions
+  is compared separately.
 - The `mergedMrCount`, `closedMrCount`, and `openMrCount` metrics count merge requests a flow created that
   were later merged, closed without merging, or are still open. They can lag behind the current state of
   those merge requests, so a merge request merged recently can still be counted as open.

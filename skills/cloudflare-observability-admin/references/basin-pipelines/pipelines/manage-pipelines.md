@@ -21,6 +21,8 @@ Learn how to:
 
 - Create pipelines with SQL transformations
 - View pipeline configuration and SQL
+- Update pipelines after a stream or sink changes
+- Fix a failed pipeline
 - Delete pipelines when no longer needed
 
 ## Create a pipeline
@@ -190,6 +192,38 @@ yarn wrangler basin pipelines list
 pnpm wrangler basin pipelines list
 ```
 
+## Update a pipeline
+
+After a stream or sink changes, for example when you [update a sink's credentials](https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/#update-sink-credentials), a pipeline keeps the earlier version until you update the pipeline. Updating a failed pipeline also retries it.
+
+### Dashboard
+
+1. In the Cloudflare dashboard, go to the **Basin Pipelines** page. [Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+2. Select the pipeline.
+3. Select **Update pipeline**. The button appears only when a stream or sink the pipeline uses has changed.
+
+### API
+
+The [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) for this request must have **Basin Pipelines Edit** permission.
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pipelines/v1/pipelines/$PIPELINE_ID/update_tables" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+To check whether a pipeline needs an update, [get the pipeline](https://developers.cloudflare.com/api/resources/pipelines/methods/get_v1/) and read its `outdated` field.
+
+## Fix a failed pipeline
+
+A failed pipeline stops processing data. Its page in the dashboard shows the reason, and the API returns it in the pipeline's `failure_reason` field.
+
+**Cause**: One cause is that the pipeline can no longer write to its sink, because the sink's credentials expired or were revoked.
+
+**Fix**: [Update the sink's credentials](https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/#update-sink-credentials), then [update the pipeline](#update-a-pipeline). Updating a failed pipeline retries it.
+
+**Verify**: The pipeline's status changes from failed to running.
+
 ## Delete a pipeline
 
 Deleting a pipeline stops data flow from the connected stream to sink.
@@ -234,5 +268,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/#page","headline":"Manage pipelines","description":"Create, configure, and manage SQL transformations between streams and sinks","url":"https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/og.png?v=8092abd8b7123a4d","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/#page","headline":"Manage pipelines","description":"Create, configure, and manage SQL transformations between streams and sinks","url":"https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/og.png?v=8092abd8b7123a4d","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

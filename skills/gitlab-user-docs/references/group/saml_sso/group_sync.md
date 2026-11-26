@@ -75,6 +75,14 @@ After a group sync, users who are not members of a mapped SAML group are removed
 On GitLab.com, users in the top-level group are assigned the
 default membership role instead of being removed.
 
+Group sync does not remove the last Owner of a group, and does not lower their role.
+Each group must always have at least one [human member with the Owner role](../manage.md#change-the-owner-of-a-group).
+Service accounts and bots do not count toward this requirement.
+
+This protection applies only to the last Owner.
+If a group has more than one Owner, group sync can remove an Owner or lower their role
+the next time they sign in, if they do not belong to a SAML group that maps to the Owner role.
+
 For example, in the following diagram:
 
 - Alex Garcia signs into GitLab and is removed from GitLab Group C because they don't belong

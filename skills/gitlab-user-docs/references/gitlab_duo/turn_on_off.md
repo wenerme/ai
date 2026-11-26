@@ -234,6 +234,84 @@ To change GitLab Duo availability for a project:
 For information on how to turn GitLab Duo on or off in earlier GitLab versions, see
 [control GitLab Duo availability for earlier GitLab versions](turn_on_off_earlier.md).
 
+## Turn Code Suggestions on or off
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/638481) in GitLab 19.7.
+
+You can turn off Code Suggestions while the rest of GitLab Duo stays on.
+When you turn off Code Suggestions, code completion and code generation stop working in the IDE,
+and subgroups and projects cannot turn the setting back on.
+GitLab Duo Chat, agents, and flows keep working.
+If GitLab Duo availability is **Always off**, you cannot change this setting.
+
+### On GitLab.com
+
+#### For a top-level group
+
+Prerequisites:
+
+- The Owner role for the top-level group.
+
+To turn Code Suggestions on or off for a top-level group:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings** > **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Code Suggestions**, select or clear the **Allow Code Suggestions** checkbox.
+1. Select **Save changes**.
+
+#### For a subgroup
+
+Prerequisites:
+
+- The Owner role for the subgroup.
+
+To turn Code Suggestions on or off for a subgroup:
+
+1. In the top bar, select **Search or go to** and find your subgroup.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab Duo features**.
+1. Under **Code Suggestions**, select or clear the **Allow Code Suggestions** checkbox.
+1. Select **Save changes**.
+
+If a parent group turned off Code Suggestions, you cannot change this setting.
+
+### On GitLab Self-Managed
+
+#### For an instance
+
+Prerequisites:
+
+- Administrator access.
+
+To turn Code Suggestions on or off for an instance:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Code Suggestions**, select or clear the **Allow Code Suggestions** checkbox.
+1. Select **Save changes**.
+
+#### For a group or subgroup
+
+Prerequisites:
+
+- The Owner role for the group or subgroup.
+
+To turn Code Suggestions on or off for a group or subgroup:
+
+1. In the top bar, select **Search or go to** and find your group or subgroup.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab Duo features**.
+1. Under **Code Suggestions**, select or clear the **Allow Code Suggestions** checkbox.
+1. Select **Save changes**.
+
+If the instance or a parent group turned off Code Suggestions, you cannot change this setting.
+
+On GitLab Self-Managed, the API does not check the group setting.
+Only IDE extensions that check the project setting apply it.
+To block all Code Suggestions requests, turn off the setting for the instance.
+
 ## Turn GitLab Duo Core on or off
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/538857) in GitLab 18.0.

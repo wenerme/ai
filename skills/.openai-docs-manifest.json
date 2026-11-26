@@ -410,10 +410,10 @@
   "openai-docs/guides/agents-api/tools/mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/tools/mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"4d07dfbca9eff083889153989df43443\"",
-    "lastModified": "Wed, 25 Nov 2026 08:03:56 GMT",
-    "size": 14831,
-    "updatedAt": "2026-11-25T08:14:30.611Z"
+    "etag": "W/\"10d0771487c9f89b9a1913ec5f719083\"",
+    "lastModified": "Thu, 26 Nov 2026 17:45:51 GMT",
+    "size": 16783,
+    "updatedAt": "2026-11-26T19:37:04.065Z"
   },
   "openai-docs/guides/agents-api/tools/plugins.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/tools/plugins.md",
@@ -1522,10 +1522,10 @@
   "openai-docs/guides/tools-computer-use-integration.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-computer-use-integration.md",
     "skill": "openai-docs",
-    "etag": "W/\"6372acc5200def2d6b5d4fd2d67f107b\"",
-    "lastModified": "Thu, 26 Nov 2026 08:05:47 GMT",
-    "size": 154021,
-    "updatedAt": "2026-11-26T08:05:47.827Z"
+    "etag": "W/\"407c76dcb3a3bdcc3b28f70d35263ebd\"",
+    "lastModified": "Thu, 26 Nov 2026 18:00:24 GMT",
+    "size": 188646,
+    "updatedAt": "2026-11-26T19:37:34.466Z"
   },
   "openai-docs/guides/tools-computer-use-sdk-drivers.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers.md",
@@ -1578,10 +1578,10 @@
   "openai-docs/guides/tools-shell.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-shell.md",
     "skill": "openai-docs",
-    "etag": "W/\"7d5c584135ea6fd565d6c3cd65b950fc\"",
-    "lastModified": "Wed, 25 Nov 2026 08:15:05 GMT",
-    "size": 66004,
-    "updatedAt": "2026-11-25T08:15:05.704Z"
+    "etag": "W/\"69149e502f9ad497a38d0743bff67195\"",
+    "lastModified": "Thu, 26 Nov 2026 17:58:58 GMT",
+    "size": 72470,
+    "updatedAt": "2026-11-26T19:37:36.003Z"
   },
   "openai-docs/guides/tools-skills.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-skills.md",
@@ -1900,10 +1900,10 @@
   "openai-docs/tutorials/web-qa-embeddings.md": {
     "url": "https://developers.openai.com/api/docs/tutorials/web-qa-embeddings.md",
     "skill": "openai-docs",
-    "etag": "W/\"ef1a705ad6ec0a256dff7c7ba5e81ad8\"",
-    "lastModified": "Thu, 26 Nov 2026 08:06:00 GMT",
-    "size": 111223,
-    "updatedAt": "2026-11-26T08:06:00.473Z"
+    "etag": "W/\"cb49840798fc60d78d25d8f49ecf9a55\"",
+    "lastModified": "Thu, 26 Nov 2026 18:00:25 GMT",
+    "size": 124559,
+    "updatedAt": "2026-11-26T19:37:45.058Z"
   },
   "openai-api/admin.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/index.md",

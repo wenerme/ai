@@ -21,6 +21,7 @@ Learn how to:
 
 - Create and configure sinks for data storage
 - View sink configuration
+- Update sink credentials
 - Delete sinks when no longer needed
 
 ## Create a sink
@@ -110,13 +111,45 @@ yarn wrangler basin pipelines sinks list
 pnpm wrangler basin pipelines sinks list
 ```
 
+## Update sink credentials
+
+Replace a sink's credentials when its token expires or is revoked. Pipelines that use the sink keep its earlier credentials until you [update them](https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/#update-a-pipeline).
+
+### Dashboard
+
+1. In the Cloudflare dashboard, go to **Basin Pipelines** > **Sinks**. [Go to **Sinks** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/sinks)
+2. Select the sink.
+3. In **Destination**, select **Update credentials**.
+4. Select **Create a new API token**, or select **Enter credentials** and enter the credentials of a token you created.
+5. Select **Update credentials**.
+
+### API
+
+The [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) for this request must have **Basin Pipelines Edit** permission.
+
+For a Basin Catalog sink, send `token` instead of `credentials`.
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pipelines/v1/sinks/$SINK_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "config": {
+      "credentials": {
+        "access_key_id": "<ACCESS_KEY_ID>",
+        "secret_access_key": "<SECRET_ACCESS_KEY>"
+      }
+    }
+  }'
+```
+
 ## Delete a sink
 
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to **Basin Pipelines** > **Sinks**.
 2. Select the sink you want to delete.
-3. In the **Settings** tab, go to **General**, and select **Delete**.
+3. On the sink's page, select **Delete**.
 
 ### Wrangler CLI
 
@@ -142,7 +175,7 @@ Deleting a sink stops all data writes to that destination.
 
 ## Limitations
 
-- Sinks cannot be modified after creation. To change sink configuration, you must delete and recreate the sink.
+- Only a sink's credentials and, with the API, its rolling policy can be changed after creation. To change anything else, you must delete and recreate the sink.
 - The Basin Catalog Sink does not currently support writing to R2 buckets into a different jurisdiction.
 
 Was this helpful?
@@ -154,5 +187,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/#page","headline":"Manage sinks","description":"Create, configure, and manage sinks for data storage","url":"https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/og.png?v=33d1041d054e2988","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/#page","headline":"Manage sinks","description":"Create, configure, and manage sinks for data storage","url":"https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/og.png?v=33d1041d054e2988","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

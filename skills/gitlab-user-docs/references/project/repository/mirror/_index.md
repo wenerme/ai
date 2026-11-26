@@ -152,7 +152,7 @@ When you create a mirror, you must configure the authentication method for it.
 GitLab supports these authentication methods:
 
 - [SSH authentication](#ssh-authentication).
-- Username and password.
+- Username and password over HTTP or HTTPS.
 
 For a [project access token](../../settings/project_access_tokens.md) or
 [group access token](../../../group/settings/group_access_tokens.md),
@@ -165,21 +165,19 @@ SSH authentication is mutual:
 - You must prove to the server that you're allowed to access the repository.
 - The server must also prove to you that it's who it claims to be.
 
-For SSH authentication, you provide your credentials as a password or public key.
 The server that the other repository resides on provides its credentials as a host key.
 You must [verify the fingerprint](#verify-a-host-key) of this host key manually.
 
-If you're mirroring over SSH (using an `ssh://` URL), you can authenticate using:
-
-- Password-based authentication, just as over HTTPS.
-- Public key authentication. This method is often more secure than password authentication,
-  especially when the other repository supports [deploy keys](../../deploy_keys/_index.md).
+If you're mirroring over SSH (using an `ssh://` URL), you must authenticate with a public key.
+Mirroring over SSH does not support username and password authentication.
+To use a username and password, use an `https://` URL instead.
 
 ### Get your SSH public key
 
 When you mirror a repository and select the **SSH public key** as your
-authentication method, GitLab generates a public key for you. The non-GitLab server
-needs this key to establish trust with your GitLab repository. To copy your SSH public key:
+authentication method, GitLab generates a public key for you.
+The other server uses this key to establish trust with your GitLab repository.
+To copy your SSH public key:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **Repository**.
@@ -189,6 +187,7 @@ needs this key to establish trust with your GitLab repository. To copy your SSH 
 1. Add the public SSH key to the other repository's configuration:
    - If the other repository is hosted on GitLab, add the public SSH key
      as a [deploy key](../../deploy_keys/_index.md).
+     For push mirrors, select .
    - If the other repository is hosted elsewhere, add the key to
      your user's `authorized_keys` file. Paste the entire public SSH key into the
      file on its own line and save it.

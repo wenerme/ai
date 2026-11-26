@@ -37,8 +37,8 @@ The following table lists the current pinned versions:
 | Base image                            | Red Hat UBI 9 Minimal (`ubi9-minimal:9.7-1776833838`)   |
 | `git`                                 | 2.47.x (UBI 9 stock)                                    |
 | `git-lfs`                             | UBI 9 stock                                             |
-| Node.js                               | 20 (UBI 9 module stream `nodejs:20`)                    |
-| `npm`                                 | Bundled with Node.js 20                                 |
+| Node.js                               | 24 (UBI 9 module stream `nodejs:24`)                    |
+| `npm`                                 | Bundled with Node.js 24                                 |
 | `@gitlab/duo-cli`                     | 10.4.0                                                  |
 | `glab` (GitLab CLI)                   | 1.128.0                                                 |
 | `oras` (OCI registry client)          | 1.2.2 (GitHub release, SHA-256 pinned)                  |
@@ -330,8 +330,8 @@ The following table lists the current pinned versions:
 | Base image                            | Red Hat UBI 9 Minimal (`ubi9-minimal:9.7-1776833838`)    |
 | `git`                                 | 2.47.x (UBI 9 stock)                                     |
 | `git-lfs`                             | UBI 9 stock                                              |
-| Node.js                               | 20 (UBI 9 module stream `nodejs:20`)                     |
-| `npm`                                 | Bundled with Node.js 20                                  |
+| Node.js                               | 24 (UBI 9 module stream `nodejs:24`)                     |
+| `npm`                                 | Bundled with Node.js 24                                  |
 | `@gitlab/duo-cli`                     | 10.4.0                                                   |
 | `glab` (GitLab CLI)                   | 1.128.0                                                  |
 | `oras` (OCI registry client)          | 1.2.2 (GitHub release, SHA-256 pinned)                   |

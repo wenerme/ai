@@ -7,6 +7,7 @@ GitLab Duo Code Suggestions is available for use through an editor extension in 
 ## Prerequisites
 
 - GitLab Duo Core [turned on](../../../gitlab_duo/turn_on_off.md#turn-gitlab-duo-core-on-or-off).
+- Code Suggestions [turned on](../../../gitlab_duo/turn_on_off.md#turn-code-suggestions-on-or-off) for the group or instance.
 - A [supported language and IDE](supported_extensions.md).
 - A [default GitLab Duo namespace](../../../profile/preferences.md#namespace-resolution-in-your-local-environment)
   set, or a project open that has GitLab Duo access.

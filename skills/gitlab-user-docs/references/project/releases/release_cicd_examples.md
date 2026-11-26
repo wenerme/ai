@@ -78,6 +78,9 @@ In this CI/CD example the release preparation is split into separate jobs for gr
   metadata passed to it in the variables file. This job must use the
   `registry.gitlab.com/gitlab-org/cli:latest` image because it contains the `glab` CLI.
 
+The `prepare_job` job reads the version number from a `VERSION` file in the root of the repository.
+To use this example, commit a `VERSION` file that contains the version number, for example `1.0.0`.
+
 ```yaml
 prepare_job:
   stage: prepare                                              # This stage must run before the release stage
