@@ -58,7 +58,7 @@ pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works
 bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord
 ```
 
-The Pi packages are optional peer dependencies of `agents`, at `~1.6.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
+The Pi packages are optional peer dependencies of `agents`, at `~1.6.1`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
 
 Agents SDK 0.34.0 and later support Pi 1.6. A new Pi minor version can store conversations in a format the previous one cannot read. After a conversation runs on Pi 1.6, rolling your Worker back to an Agents SDK version on Pi 1.5 blocks its tool calls and model requests, because Pi 1.6 stores them in versions that Pi 1.5 does not run. Roll forward to fix a bad deploy instead.
 
@@ -70,7 +70,7 @@ The `agents/models/pi-ai` entry point supports AI Gateway and Workers AI models,
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-25",
+	"compatibility_date": "2026-11-26",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -87,7 +87,7 @@ name = "pi-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-25"
+compatibility_date = "2026-11-26"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -513,7 +513,7 @@ A tool call usually ends when its `execute()` returns a result. A Pi tool can in
 
 Think of a tool park as an `await` that survives hibernation. A call cannot keep a promise open while the Durable Object sleeps, so it tells Pi what it is waiting for, and Pi keeps that in storage instead of in memory. While the call is parked, it holds no invocation, so the Durable Object can hibernate or be evicted. Your agent delivers a signal with `harness.signal()`, for example from the request that carries a person's answer.
 
-![A sequence diagram of a tool that asks the user a question. The model calls the tool, and run 1 of execute() starts. readSignal() finds no answer, so the tool shows the question with its task id and returns a tool park naming the signal key it waits for. Run 1 ends there. Pi stores the tool park: the call's task id and the signal key. Between the runs the object can hibernate, with no tool code in memory and only the stored tool park kept. Later your app calls harness.signal() with the task id and the answer. Pi matches the stored tool park and starts run 2 of execute() with the same arguments. This time readSignal() returns the answer, and the tool returns it to the model as its result.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=700,format=svg/_astro/pi-tool-park.0E-4izAQ.svg)
+![A sequence diagram of a tool that asks the user a question. The model calls the tool, and run 1 of execute() starts. readSignal() finds no answer, so the tool shows the question with its task id and returns a tool park naming the signal key it waits for. Run 1 ends there. Pi stores the tool park: the call's task id and the signal key. Between the runs the object can hibernate, with no tool code in memory and only the stored tool park kept. Later your app calls harness.signal() with the task id and the answer. Pi matches the stored tool park and starts run 2 of execute() with the same arguments. This time readSignal() returns the answer, and the tool returns it to the model as its result.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=700,format=svg/_astro/pi-tool-park.gQYZZOy_.svg)
 
 Because Pi runs the whole of `execute()` again after a wake, a tool that waits for a person's answer does three things each time it runs, in this order:
 
@@ -521,7 +521,7 @@ Because Pi runs the whole of `execute()` again after a wake, a tool that waits f
 2. If there is no answer yet, show the question. Send `api.taskId` with it: your agent needs the task id later to deliver the answer.
 3. Return a tool park that names the signal key to wait for.
 
-![The ask\_user tool's execute() code, with two gutters marking which lines each run reaches. Run 1, before the answer: readSignal() returns nothing, the if is skipped, the tool shows the question and returns the tool park. Run 2, after the wake, starts again from the top with the same arguments: readSignal() returns the answer, and the tool returns it as its result, so the question is not shown again.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=414,format=svg/_astro/pi-tool-park-runs.D02fGJXe.svg)
+![The ask\_user tool's execute() code, with two gutters marking which lines each run reaches. Run 1, before the answer: readSignal() returns nothing, the if is skipped, the tool shows the question and returns the tool park. Run 2, after the wake, starts again from the top with the same arguments: readSignal() returns the answer, and the tool returns it as its result, so the question is not shown again.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=414,format=svg/_astro/pi-tool-park-runs.ChkqzTyp.svg)
 
 The whole example, with the signal it waits on and the call your agent makes later:
 
@@ -538,30 +538,30 @@ const Answer = defineSignal({
 // In the tool's execute(args, api, context):
 // 1. Check for the answer. After the wake, it is there.
 const answer = await api.readSignal(Answer, "answer", context);
-if (answer !== undefined && "value" in answer) {
+if (answer?.kind === "value") {
 	return { output: [{ type: "text", text: answer.value.text }] };
 }
 // 2. No answer yet: show the question, with the task id to answer it with.
 // showQuestion() is your code, for example a message to the user's client.
 await showQuestion(api.taskId, args.question);
 // 3. Park until a value arrives for the "answer" key.
-return { sleep: { signals: [Answer.key("answer")] } };
+return { kind: "sleep", signals: [Answer.key("answer")] };
 
 // Later, in your agent, with the task id the question was shown with:
 await this.harness.signal(taskId, Answer, "answer", { text: "Yes" });
 ```
 
-The signal key (`"answer"` here) ties the three calls together: `readSignal()`, `Answer.key()` in the tool park, and `harness.signal()` must use the same one. A tool park can also set `until`, a time on Pi's clock such as `api.now()` plus two hours, to stop waiting at a deadline. After the deadline, `readSignal()` returns `{ expired: true }` instead of a value, so handle that case before showing the question again.
+The signal key (`"answer"` here) ties the three calls together: `readSignal()`, `Answer.key()` in the tool park, and `harness.signal()` must use the same one. A tool park can also set `until`, a time on Pi's clock such as `api.now()` plus two hours, to stop waiting at a deadline. After the deadline, `readSignal()` returns `{ kind: "expired" }` instead of a value, so handle that case before showing the question again.
 
 `harness.signal()` returns Pi's result: `delivered`, or `duplicate`, `invalid`, `closed`, or `not_found` when the call did not take the value. It schedules the harness's wake-up job before it hands Pi the value, so if the object dies while the woken call runs, the job's alarm restarts it. Deliver signals through `harness.signal()`, not through `harness.pi()`.
 
-A tool park takes one of two shapes: `{ sleep: { signals, until } }` to wait for a signal, a deadline, or both, or `{ wait: { on, policy } }` to wait for tasks the call owns. Either can also carry a `checkpoint`, which the next run of `execute()` reads as `api.checkpoint`.
+A tool park takes one of two shapes: `{ kind: "sleep", signals, until }` to wait for a signal, a deadline, or both, or `{ kind: "wait", on, policy }` to wait for tasks the call owns. Either can also carry a `checkpoint`, which the next run of `execute()` reads as `api.checkpoint`. A result has no `kind`, so check `kind` to tell a tool park from a result.
 
 - **Cancelling:** a tool can have a `cancel()` function, which Pi runs when a parked call is aborted, for example to cancel the work it was waiting on.
-- **Gates:** a `beforeTool` hook can return `{ sleep: { signals, until } }` to park a call before it runs, for example until a person approves it. Pi runs the hook again on every wake and whenever the harness reopens, so keep it idempotent.
-- **Waiting on nested calls:** start them with `api.executeTool(name, args, context, { key, wait: false })`, park with `{ wait: { on: [taskId], policy: "any" } }`, and read `api.wake.ended` after the wake. For the other policies, refer to [Child Tasks ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable#child-tasks).
+- **Gates:** a `beforeTool` hook can return `{ sleep: { signals, until } }` to park a call before it runs, for example until a person approves it. A hook's result nests `signals` and `until` under `sleep`, unlike a tool park. Pi runs the hook again on every wake and whenever the harness reopens, so keep it idempotent.
+- **Waiting on nested calls:** start them with `api.executeTool(name, args, context, { key, wait: false })`, park with `{ kind: "wait", on: [taskId], policy: "any" }`, and read `api.wake.ended` after the wake. For the other policies, refer to [Child Tasks ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable#child-tasks).
 - **What a parked call shows:** its slot in `pi.live` is `sleeping` or `waiting`. The operation that made the call stays `running` in `pending()`, and `busy()` is `true`.
-- **Invalid parks:** a tool park that breaks a rule ends the call with an `invalid_park` error. Examples are setting both `sleep` and `wait`, a `sleep` with no `signals` and no `until`, a signal key that already woke the call or expired, and a `wait` on a task the call doesn't own.
+- **Invalid parks:** a tool park that breaks a rule ends the call with an `invalid_park` error. Examples are an object whose `kind` is not `sleep` or `wait`, a `sleep` with no `signals` and no `until`, a signal key that already woke the call or expired, and a `wait` on a task the call does not own.
 
 A tool park is not the `parked` status that `pending()` showed in Agents SDK 0.31.0 and 0.32.0. That status marked a task stopped by Pi's restart limit, and it was removed in 0.33.0.
 
@@ -577,7 +577,7 @@ import { SubmissionSettled } from "@earendil-works/pi-durable";
 
 // Inside a tool's execute({ task }, api, context):
 const state = await api.readSignal(SubmissionSettled, "answered", context);
-if (state !== undefined && "value" in state) {
+if (state?.kind === "value") {
 	const settled = state.value;
 	if (settled.status !== "done" || settled.type === "write") {
 		return {
@@ -615,7 +615,7 @@ await conversation?.submit(
 	},
 	context,
 );
-return { sleep: { signals: [SubmissionSettled.key("answered")] } };
+return { kind: "sleep", signals: [SubmissionSettled.key("answered")] };
 ```
 
 When the child's input settles, Pi delivers the settled record to the call in the same commit, and the tool runs again with it. Because the call owns the child, aborting the parent session stops the child too, and a rerun before the tool park was stored finds the same child instead of creating another. The `requestId` makes a rerun find the same submission. If the task to notify has ended or does not exist, the input still settles as usual. `session.submit()` and `session.continue()` take the same `notify` option, for a child session that your own code created.
@@ -687,5 +687,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/pi/#page","headline":"Pi","description":"Run the Pi Durable harness on Cloudflare with the Agents SDK. PiHarness keeps your agent's work durable inside a Durable Object, even if it is interrupted mid-turn.","url":"https://developers.cloudflare.com/agents/harnesses/pi/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a3bfbc9","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/pi/#page","headline":"Pi","description":"Run the Pi Durable harness on Cloudflare with the Agents SDK. PiHarness keeps your agent's work durable inside a Durable Object, even if it is interrupted mid-turn.","url":"https://developers.cloudflare.com/agents/harnesses/pi/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a3bfbc9","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

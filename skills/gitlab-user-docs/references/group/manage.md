@@ -34,6 +34,9 @@ To add a group README:
 You can change the Owner of a group. Each group must always have at least one
 human member with the Owner role. Internal users ("bots") and service accounts cannot be the only Owner of a group.
 
+GitLab does not remove the last Owner of a group. SAML group sync also does not lower the role of the last Owner.
+For more information, see [Automatic member removal](saml_sso/group_sync.md#automatic-member-removal).
+
 - As an administrator:
   1. In the top bar, select **Search or go to** and find your group.
   1. Select **Manage** > **Members**.

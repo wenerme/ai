@@ -1221,10 +1221,6 @@ Find a group.
 
 ## `groupSecret`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
-
 View a specific group secret.
 
 **Returns:** [`GroupSecret`](objects.md#groupsecret)
@@ -1238,10 +1234,6 @@ View a specific group secret.
 
 ## `groupSecrets`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
-
 List group secrets. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
 **Returns:** [`GroupSecretConnection`](objects.md#groupsecretconnection)
@@ -1253,10 +1245,6 @@ List group secrets. This field is a [connection](objects.md#connections-and-pagi
 | `groupPath` | [`ID!`](scalars.md#id) | Group the secrets belong to. |
 
 ## `groupSecretsCount`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Total number of secrets in a group.
 
@@ -1270,10 +1258,6 @@ Total number of secrets in a group.
 
 ## `groupSecretsManager`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
-
 Find a group secrets manager.
 
 **Returns:** [`GroupSecretsManager`](objects.md#groupsecretsmanager)
@@ -1286,10 +1270,6 @@ Find a group secrets manager.
 
 ## `groupSecretsNeedingRotation`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
-
 List group secrets that need to be rotated. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
 **Returns:** [`GroupSecretConnection`](objects.md#groupsecretconnection)
@@ -1301,10 +1281,6 @@ List group secrets that need to be rotated. This field is a [connection](objects
 | `groupPath` | [`ID!`](scalars.md#id) | Group the secrets belong to. |
 
 ## `groupSecretsPermissions`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 List group secrets permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1636,6 +1612,22 @@ Find a milestone.
 | ---- | ---- | ----------- |
 | `id` | [`MilestoneID!`](scalars.md#milestoneid) | Find a milestone by its ID. |
 
+## `mlCandidate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.
+
+Find a machine learning candidate. Returns `null` if the `ml_candidate_metrics_pagination` feature flag is disabled.
+
+**Returns:** [`MlCandidate`](objects.md#mlcandidate)
+
+### `mlCandidate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `id` | [`MlCandidateID!`](scalars.md#mlcandidateid) | ID of the candidate. |
+
 ## `mlExperiment`
 
 Find a machine learning experiment.
@@ -1732,10 +1724,6 @@ Find a note.
 | `id` | [`NoteID!`](scalars.md#noteid) | Global ID of the note. |
 
 ## `openbaoHealth`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Check if OpenBao instance is healthy and reachable.
 
@@ -1874,10 +1862,6 @@ Find a project compliance violation.
 
 ## `projectSecret`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
-
 View a specific project secret.
 
 **Returns:** [`ProjectSecret`](objects.md#projectsecret)
@@ -1891,10 +1875,6 @@ View a specific project secret.
 
 ## `projectSecrets`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.8.
-
 List project secrets. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
 **Returns:** [`ProjectSecretConnection`](objects.md#projectsecretconnection)
@@ -1906,10 +1886,6 @@ List project secrets. This field is a [connection](objects.md#connections-and-pa
 | `projectPath` | [`ID!`](scalars.md#id) | Project the secrets belong to. |
 
 ## `projectSecretsCount`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Total number of secrets in a project.
 
@@ -1923,10 +1899,6 @@ Total number of secrets in a project.
 
 ## `projectSecretsManager`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.4.
-
 Find a project secrets manager.
 
 **Returns:** [`ProjectSecretsManager`](objects.md#projectsecretsmanager)
@@ -1939,10 +1911,6 @@ Find a project secrets manager.
 
 ## `projectSecretsNeedingRotation`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
-
 List project secrets that need to be rotated. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
 **Returns:** [`ProjectSecretConnection`](objects.md#projectsecretconnection)
@@ -1954,10 +1922,6 @@ List project secrets that need to be rotated. This field is a [connection](objec
 | `projectPath` | [`ID!`](scalars.md#id) | Project the secrets belong to. |
 
 ## `projectSecretsPermissions`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 List project secrets permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 

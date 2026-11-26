@@ -127,6 +127,9 @@ Use range operators to define a time window.
 - The `returningUsersCount` and `previousPeriodUsersCount` metrics compare each `timestamp`
   bucket with the preceding one, so the `timestamp` dimension must also be selected. Without it,
   the query returns an error. A `timestamp` filter alone is not enough.
+  The preceding bucket is the latest earlier bucket that has events, so empty buckets are skipped.
+  The query's filters apply to both buckets, and each combination of the other selected dimensions
+  is compared separately.
 
 ## Sort fields
 

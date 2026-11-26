@@ -21,7 +21,7 @@ image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab6
 
 ## Install
 
-The provider needs `@earendil-works/pi-ai@~1.6.0`, an optional peer dependency of `agents`:
+The provider needs `@earendil-works/pi-ai@~1.6.1`, an optional peer dependency of `agents`:
 
 npmyarnpnpmbun
 
@@ -194,7 +194,9 @@ await session.setModel(ai("anthropic/claude-opus-5.5"));
 
 A Pi session stores only its model's provider and id, then looks the model up in the `Models` registry. Use the `@cf/`, `dynamic/`, and `<provider>/<id>` forms there. They belong to the `cloudflare` provider (`CLOUDFLARE_PROVIDER_ID`) that you registered. A model object keeps its vendor's provider id, which this registry does not know. Options passed to `ai(model, options)` do not reach a session. Set them on `createAI` instead.
 
-A model stream that is cut off, or that sends nothing for `streamIdleTimeoutMs`, ends in an error that Pi AI's `isRetryableAssistantError()` treats as transient. The Pi harness retries the turn under its retry settings instead of failing it.
+A model stream that is cut off, or that sends nothing for `streamIdleTimeoutMs`, ends in an error that Pi AI's `isRetryableAssistantError()` treats as transient. So does a chat completions stream that ends with `finish_reason: "error"`, and an OpenRouter stream that stops with no output for a reason that marks a failure. The Pi harness retries the turn under its retry settings instead of failing it.
+
+The message's `rawStopReason` records the finish reason the provider sent. For OpenRouter, it adds the upstream provider's own reason, for example `stop.MALFORMED_RESPONSE`.
 
 The provider's model list is every Workers AI model Pi AI knows, plus every `<provider>/<id>` in Pi AI's AI Gateway catalog, so `models.getModel("cloudflare", "anthropic/claude-opus-5.5")` resolves.
 
@@ -255,7 +257,7 @@ const cloudflare = message.diagnostics?.find(
 //   step?, traceId?, runId? }
 ```
 
-A failed request ends the stream with an `error` event. Its message has a `cloudflare-error` diagnostic with `status`, `code`, and `logId`. `onResponse` receives the status and headers of every request.
+A failed request ends the stream with an `error` event. Its message has a `cloudflare-error` diagnostic with `status`, `code`, and `logId`. `onResponse` receives the status and headers of every response, including a vendor's error response and the gateway's own failure, so you can read headers such as `retry-after` from a failed request.
 
 The gateway's own failures, such as a missing gateway or an unpaid account, become a `CloudflareAIError`. Errors from the vendor come back as the vendor sent them.
 
@@ -324,5 +326,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

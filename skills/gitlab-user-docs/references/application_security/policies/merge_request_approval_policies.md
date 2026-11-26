@@ -152,9 +152,9 @@ If a security policy project doesn't link to your project, GitLab creates such a
 Existing policies can also be removed from the editor interface by selecting **Delete policy** at
 the bottom of the editor.
 
-Most policy changes take effect as soon as the merge request is merged. Any changes that
-do not go through a merge request and are committed directly to the default branch may require up to 10 minutes
-before the policy changes take effect.
+Policy changes made in a merge request take effect about one minute after the merge request is merged.
+Changes merged within that minute are applied together.
+Any changes committed directly to the default branch might require up to 10 minutes to take effect.
 
 The [policy editor](_index.md#policy-editor) supports YAML mode and rule mode.
 
@@ -347,10 +347,7 @@ The interaction between the malware rule and [warn mode](#warn-mode) is proposed
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264451) in GitLab 19.6 as a [beta](../../../policy/development_stages_support.md#beta) [with a feature flag](../../../administration/feature_flags/_index.md) named `approval_policy_dependency_scanning_filters`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `approval_policy_dependency_scanning_filters` removed in GitLab 19.7.
 
 A new advisory for an existing dependency can make a merge request require approval,
 even when the merge request did not change that dependency.

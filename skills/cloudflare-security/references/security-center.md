@@ -44,11 +44,6 @@ The frequency of automatic security scans depends on your Cloudflare plan, rangi
 
 If you have any comments, questions, or bugs to report, create a post in the [Cloudflare Community forum ↗︎](https://community.cloudflare.com/c/security/security-center/65).
 
-## Limitations
-
-- Users with an [Administrator Read Only](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles) role cannot access the Cloudflare Security Center.
-- Only Cloudflare accounts with at least one Business or Enterprise zone (domain on your account), or accounts on the Teams Standard or Teams Enterprise plans, can manually start a new scan.
-
 Was this helpful?
 
 YesNo
@@ -58,5 +53,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/#page","headline":"Cloudflare Security Center","description":"Review security insights, investigate threats, and protect your brand from impersonation.","url":"https://developers.cloudflare.com/security-center/","inLanguage":"en","image":"https://developers.cloudflare.com/security-center/og.png?v=e590e55f0a5b9cfd","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/#page","headline":"Cloudflare Security Center","description":"Review security insights, investigate threats, and protect your brand from impersonation.","url":"https://developers.cloudflare.com/security-center/","inLanguage":"en","image":"https://developers.cloudflare.com/security-center/og.png?v=e590e55f0a5b9cfd","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

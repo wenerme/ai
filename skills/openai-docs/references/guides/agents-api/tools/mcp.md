@@ -308,6 +308,64 @@ try {
 }
 ```
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using ModelContextProtocol.Server;
+
+HostApplicationBuilder builder = Host.CreateApplicationBuilder();
+// Stdout is reserved for MCP messages, including during host startup.
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(options => options.LogToStandardErrorThreshold = LogLevel.Trace);
+builder.Services
+    .AddMcpServer(options =>
+    {
+        options.ServerInfo = new() { Name = "customer-lookup", Version = "1.0.0" };
+    })
+    .WithStdioServerTransport()
+    .WithTools<CustomerLookupTools>();
+
+using IHost host = builder.Build();
+await host.RunAsync();
+
+[McpServerToolType]
+public sealed class CustomerLookupTools
+{
+    // Example data only; replace this collection with your customer data source.
+    private static readonly Dictionary<string, Customer> Customers =
+        new Dictionary<string, Customer>(StringComparer.Ordinal)
+        {
+            ["123"] = new("Example Customer", "pro"),
+        };
+
+    // The parameter name is the public MCP schema key.
+#pragma warning disable CA1707
+    [McpServerTool(Name = "get_customer")]
+    [Description("Look up a customer in the example data.")]
+    public static string GetCustomer(
+        [Description("The customer ID to look up.")] string customer_id
+    )
+    {
+        ArgumentNullException.ThrowIfNull(customer_id);
+        Customers.TryGetValue(customer_id, out Customer? customer);
+        return JsonSerializer.Serialize(new { customer });
+    }
+
+#pragma warning restore CA1707
+
+    private sealed record Customer(
+        [property: System.Text.Json.Serialization.JsonPropertyName("name")] string Name,
+        [property: System.Text.Json.Serialization.JsonPropertyName("plan")] string Plan
+    );
+}
+```
+
 ```ruby
 require "mcp"
 require "json"

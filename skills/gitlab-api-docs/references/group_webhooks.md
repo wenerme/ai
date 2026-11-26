@@ -530,6 +530,7 @@ Supported attributes:
 | `subgroup_events`              | Boolean           | No       | Trigger hook on subgroup events. |
 | `tag_push_events`              | Boolean           | No       | Trigger hook on tag push events. |
 | `token`                        | String            | No       | Secret token to validate received payloads. Not returned in the response. |
+| `url_variables`                | Array             | No       | URL variables for the hook. Each item has a `key` and a `value`. Reference a variable in `url` with `{key}`. |
 | `wiki_page_events`             | Boolean           | No       | Trigger hook on wiki page events. |
 
 Example request:
@@ -637,6 +638,7 @@ Supported attributes:
 | `subgroup_events`                           | Boolean           | No       | Trigger hook on subgroup events. |
 | `tag_push_events`                           | Boolean           | No       | Trigger hook on tag push events. |
 | `token`                                     | String            | No       | Secret token to validate received payloads. Not returned in the response. When you change the webhook URL, the secret token is reset and not retained. |
+| `url_variables`                             | Array             | No       | URL variables for the hook. Each item has a `key` and a `value`. Reference a variable in `url` with `{key}`. Merged with the existing URL variables. If the hook has URL variables and the update changes the resulting URL, GitLab clears all URL variables, even the ones in the request. |
 | `wiki_page_events`                          | Boolean           | No       | Trigger hook on wiki page events. |
 
 Example request:

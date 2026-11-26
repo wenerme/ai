@@ -436,8 +436,6 @@ For example:
 
 Additionally:
 
-- Single-character regular expressions, like `/./`, are not supported and
-  produce an `invalid expression syntax` error.
 - Pattern matching is case-sensitive by default. Use the `i` flag modifier to make a
   pattern case-insensitive. For example: `/pattern/i`.
 - Only the tag or branch name can be matched by a regular expression.

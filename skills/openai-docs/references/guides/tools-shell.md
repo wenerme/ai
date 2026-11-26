@@ -2113,6 +2113,164 @@ static String readOutput(Path path) throws Exception {
 }
 ```
 
+```csharp
+using System.Diagnostics;
+using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.Json;
+
+namespace OpenAI.Docs.Examples.Tools.ShellExecutor;
+
+internal static class ShellExecutor
+{
+    internal static async Task RunAsync()
+    {
+        // Linux host with util-linux setsid and /bin/sh installed. Only run commands
+        // approved by the application. Process groups are not a security sandbox.
+        string[] arguments = Environment.GetCommandLineArgs().Skip(1).ToArray();
+        // The project runner adds its selector before this sample's arguments.
+        if (arguments is ["tools-shell-executor", ..])
+        {
+            arguments = arguments[1..];
+        }
+        if (arguments.Length > 2)
+        {
+            throw new ArgumentException("Expected [command] [timeoutSeconds].");
+        }
+        string command = arguments.Length > 0 ? arguments[0] : "printf shell-executor-ready";
+        double timeoutSeconds = arguments.Length > 1
+            ? double.Parse(arguments[1], CultureInfo.InvariantCulture) : 1.0;
+        Console.WriteLine(JsonSerializer.Serialize(await ExecuteAsync(command, timeoutSeconds)));
+    }
+    internal static async Task<ShellResult> ExecuteAsync(string command, double timeoutSeconds = 1.0)
+    {
+        if (!OperatingSystem.IsLinux())
+        {
+            throw new PlatformNotSupportedException("This executor requires Linux process groups.");
+        }
+        ArgumentNullException.ThrowIfNull(command);
+        if (!double.IsFinite(timeoutSeconds) || timeoutSeconds <= 0 || timeoutSeconds > 86400)
+        {
+            throw new ArgumentOutOfRangeException(nameof(timeoutSeconds), "Use 0 < timeout <= 86400 seconds.");
+        }
+
+        ProcessStartInfo start = new("setsid")
+        {
+            UseShellExecute = false,
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            StandardOutputEncoding = Encoding.UTF8,
+            StandardErrorEncoding = Encoding.UTF8,
+        };
+        // ArgumentList preserves the whole command, including shell quotes, as one argument.
+        start.ArgumentList.Add("/bin/sh");
+        start.ArgumentList.Add("-c");
+        start.ArgumentList.Add(command);
+        using Process process = Process.Start(start)
+            ?? throw new InvalidOperationException("Unable to start setsid.");
+        process.StandardInput.Close();
+
+        TaskCompletionSource<bool> outputLimit = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        // Drain both pipes concurrently so a full stderr pipe cannot deadlock stdout.
+        Task<string> stdout = DrainAsync(process.StandardOutput, outputLimit);
+        Task<string> stderr = DrainAsync(process.StandardError, outputLimit);
+        Task exited = process.WaitForExitAsync();
+        Task finished = Task.WhenAll(exited, stdout, stderr);
+        using CancellationTokenSource deadlineCancellation = new();
+        Task deadline = Task.Delay(TimeSpan.FromSeconds(timeoutSeconds), deadlineCancellation.Token);
+        bool timedOut;
+        bool exceededOutput;
+        try
+        {
+            Task winner = await Task.WhenAny(finished, deadline, outputLimit.Task);
+            timedOut = winner == deadline;
+            exceededOutput = outputLimit.Task.IsCompleted;
+        }
+        finally
+        {
+            await deadlineCancellation.CancelAsync();
+            // Clean up even when the shell exits first: descendants can retain its
+            // pipes, or can close them and continue running in the background.
+            // The process tree handles startup before setsid has created the group.
+            try
+            {
+                if (!process.HasExited)
+                {
+                    process.Kill(entireProcessTree: true);
+                }
+            }
+            catch (InvalidOperationException) when (process.HasExited)
+            {
+                // The process exited between the check and Kill.
+            }
+            finally
+            {
+                KillGroup(process.Id);
+            }
+            await exited;
+        }
+
+        // A child deliberately creating another session escapes the owned group.
+        // Bound pipe cleanup as well; use an OS sandbox for adversarial commands.
+        try
+        {
+            await finished.WaitAsync(TimeSpan.FromSeconds(2));
+        }
+        catch (TimeoutException)
+        {
+            throw new IOException("A process outside the owned group retained an output pipe.");
+        }
+        return new ShellResult(await stdout, await stderr,
+            timedOut ? -1 : exceededOutput ? 1 : process.ExitCode, timedOut);
+    }
+
+    private static async Task<string> DrainAsync(StreamReader reader, TaskCompletionSource<bool> limit)
+    {
+        const int maximumCharacters = 1024 * 1024;
+        StringBuilder captured = new();
+        char[] buffer = new char[4096];
+        int count;
+        while ((count = await reader.ReadAsync(buffer.AsMemory())) != 0)
+        {
+            int retained = Math.Min(count, maximumCharacters - captured.Length);
+            captured.Append(buffer, 0, retained);
+            if (retained != count)
+            {
+                limit.TrySetResult(true);
+            }
+        }
+        return captured.ToString();
+    }
+
+    private static void KillGroup(int processId)
+    {
+        const int noSuchProcess = 3;
+        if (Kill(-processId, 9) != 0)
+        {
+            int error = Marshal.GetLastPInvokeError();
+            if (error != noSuchProcess)
+            {
+                throw new System.ComponentModel.Win32Exception(error, "Unable to terminate the owned process group.");
+            }
+        }
+    }
+
+    // DllImport keeps this standalone example usable without enabling unsafe compilation.
+#pragma warning disable SYSLIB1054
+    [DllImport("libc", EntryPoint = "kill", SetLastError = true)]
+    private static extern int Kill(int processId, int signal);
+#pragma warning restore SYSLIB1054
+
+    internal sealed record ShellResult(
+        [property: System.Text.Json.Serialization.JsonPropertyName("stdout")] string Stdout,
+        [property: System.Text.Json.Serialization.JsonPropertyName("stderr")] string Stderr,
+        [property: System.Text.Json.Serialization.JsonPropertyName("exit_code")] int ExitCode,
+        [property: System.Text.Json.Serialization.JsonPropertyName("timed_out")] bool TimedOut);
+}
+```
+
 ```ruby
 require "open3"
 

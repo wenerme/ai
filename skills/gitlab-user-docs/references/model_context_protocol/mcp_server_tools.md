@@ -862,7 +862,7 @@ the latest commits.
 | `verdict`           | string  | No       | For `submit_review`, an overall verdict prefixed to the summary note. |
 | `summary`           | string  | No       | For `submit_review`, a summary note posted after the diff comments. |
 | `summary_internal`  | boolean | No       | For `submit_review`, marks the summary note as internal. |
-| `sha`               | string  | No       | For `approve`, a head SHA guard. When given and it no longer matches the merge request head, or the diff changed since a version with that head, the approval is refused. Pass the full 40-character `diff_head_sha` returned by `get_merge_request`. |
+| `sha`               | string  | No       | For `approve`, a head SHA guard. When given and it no longer matches the merge request head, or the diff changed since a version with that head, the approval is refused. Pass the full 40-character `diffHeadSha` returned by `get_merge_request`. |
 
 Example:
 
@@ -1032,7 +1032,7 @@ status `already_scheduled`.
 | `url`                         | string  | No       | GitLab URL of the merge request. Provide this, or `project_id` and `merge_request_iid`. |
 | `project_id`                  | string  | No       | ID or path of the project. Required if `url` is missing. |
 | `merge_request_iid`           | integer | No       | Internal ID of the merge request. Required if `url` is missing. |
-| `sha`                         | string  | Yes      | Head SHA guard. When it no longer matches the merge request head, the merge is refused. Pass the `diff_head_sha` returned by `get_merge_request`. |
+| `sha`                         | string  | Yes      | Head SHA guard. When it no longer matches the merge request head, the merge is refused. Pass the `diffHeadSha` returned by `get_merge_request`. |
 | `strategy`                    | string  | No       | Auto-merge strategy, for example `merge_when_checks_pass`. When given, arms auto-merge instead of merging immediately. |
 | `squash`                      | boolean | No       | Squash the commits into a single commit on merge. |
 | `commit_message`              | string  | No       | Custom merge commit message. |
@@ -1375,11 +1375,14 @@ List the most recent tags for the gitlab-org/gitlab project
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605853) in GitLab 19.3.
 - `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
 - Support for child pipeline IDs [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632987) in GitLab 19.6.
+- `poll_after_seconds` hint [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635912) in GitLab 19.7.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a pipeline, and optionally its jobs, downstream pipelines, bridge (trigger) jobs, or the
-artifacts its jobs produced.
+artifacts its jobs produced. For pipelines in an active state (`created`, `canceling`, `scheduled`,
+`preparing`, `pending`, `running`, `waiting_for_callback`, or `waiting_for_resource`), the response
+includes a `poll_after_seconds: 30` hint indicating when callers should poll again.
 
 | Parameter     | Type    | Required | Description |
 |---------------|---------|----------|-------------|

@@ -12,9 +12,9 @@ you want to enforce the policies on. A security policy project can contain multi
 enforced together. A security policy project enforced on a group or subgroup applies to everything
 below in the hierarchy, including all subgroups and their projects.
 
-Policy changes made in a merge request take effect as soon as the merge request is merged. Those
-that do not go through a merge request, but instead are committed directly to the default branch,
-may require up to 10 minutes before the policy changes take effect.
+Policy changes made in a merge request take effect about one minute after the merge request is merged.
+Changes merged within that minute are applied together.
+Any changes committed directly to the default branch might require up to 10 minutes to take effect.
 
 Policies are stored in the `.gitlab/security-policies/policy.yml` YAML file.
 

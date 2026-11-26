@@ -21,6 +21,8 @@ The field value is 10 digits long.
 
 When validating HMAC tokens in an expression, pass this field as the `currentTimestamp` argument to the [`is_timed_hmac_valid_v0()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) validation function.
 
+In Transform Rule rewrite expressions, use [`format_date()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#format_date) to format this timestamp as UTC text. Use the same timestamp with [`sign_sigv4_hmac_sha256()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#sign_sigv4_hmac_sha256) to derive the signing date.
+
 To obtain the timestamp milliseconds, use the [`http.request.timestamp.msec`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.timestamp.msec/) field.
 
 Example value:

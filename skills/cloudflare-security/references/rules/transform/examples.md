@@ -51,6 +51,8 @@ image: https://developers.cloudflare.com/rules/transform/examples/og.png?v=9acc8
 
 [**Set response header with a static value** Create a response header transform rule (part of Transform Rules) to set an `X-Bot-Score` HTTP header in the response to a static value (`Cloudflare`).](https://developers.cloudflare.com/rules/transform/examples/set-response-header-static-value/)
 
+[**Sign requests to private S3 and GCS buckets** Use Request Header Transform Rules to sign private Amazon S3 and Google Cloud Storage reads with SigV4 and automatic UTC date headers.](https://developers.cloudflare.com/rules/transform/examples/sign-private-storage-requests/)
+
 Was this helpful?
 
 YesNo

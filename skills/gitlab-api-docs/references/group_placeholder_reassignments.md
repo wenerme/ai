@@ -73,7 +73,7 @@ Example request:
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --form "file=@placeholder_reassignments_for_group_2_1741253695.csv" \
-  --url "http://gdk.test:3000/api/v4/groups/2/placeholder_reassignments"
+  --url "http://gitlab.example.com/api/v4/groups/2/placeholder_reassignments"
 ```
 
 Example response:

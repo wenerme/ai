@@ -14,7 +14,7 @@ GitLab maintains two advisory feeds for software dependencies and synchronizes t
 
 The GitLab advisory database (GLAD) aggregates security advisories for software dependencies from public data feeds,
 such as the [National Vulnerability Database](https://nvd.nist.gov/) (NVD) and [GitHub Security Advisories](https://github.com/advisories) (GHSA),
-and from proprietary advisories.
+from commercial data feeds, and from GitLab security research.
 
 Advisories identify vulnerabilities by their [CVE](../terminology/_index.md#cve) identifier.
 When a vulnerability has no CVE identifier, advisories use another identifier, such as a GHSA ID.
@@ -67,7 +67,7 @@ Components with other package types, such as `conan` or container scanning types
 ## Legacy GitLab advisory database
 
 Dependency scanning with Gemnasium uses the legacy GitLab advisory database, a subset of GLAD
-without the proprietary advisories added from September 29, 2026.
+without the commercial feed and GitLab research advisories added from September 29, 2026.
 To browse it, go to [`advisories.gitlab.com`](https://advisories.gitlab.com).
 
 ## Look up advisories with the GraphQL API

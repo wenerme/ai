@@ -452,7 +452,7 @@ Response for `AgentPlatformSessions` aggregation engine.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `completionRate` | [`Float`](scalars.md#float) | Session completion rate. |
+| `completionRate` | [`Float`](scalars.md#float) | Share of sessions that finished. |
 | `dimensions` | [`AgentPlatformSessionsAggregationResponseDimensions`](#agentplatformsessionsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | `duration` | [`AgentPlatformSessionsAggregationResponseDurationMetrics`](#agentplatformsessionsaggregationresponsedurationmetrics) | Aggregated `duration` metrics. |
 | `durationQuantile` | [`Float`](scalars.md#float) | Session duration quantile in seconds.  <strong>Arguments for `durationQuantile`:</strong> <dl><dt>`quantile` ([`Float`](scalars.md#float))</dt><dd></dd></dl> |
@@ -483,7 +483,7 @@ Response dimensions for `AgentPlatformSessions` aggregation engine.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `createdEventAt` | [`Date`](scalars.md#date) | Session creation date.  <strong>Arguments for `createdEventAt`:</strong> <dl><dt>`granularity` ([`String`](scalars.md#string))</dt><dd>Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d).</dd><dt>`origin` ([`Time`](scalars.md#time))</dt><dd>Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity.</dd></dl> |
-| `flowType` | [`String`](scalars.md#string) | Type of session. |
+| `flowType` | [`String`](scalars.md#string) | Flow type of the session. |
 | `project` | [`Project`](#project) | Project the session ran in. |
 | `user` | [`UserCore`](#usercore) | Session owner. |
 
@@ -2327,6 +2327,21 @@ Artifact Registry an organization is activated for.
 | `status` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Status Artifact Registry returned, one of `active`, `suspended`, `disabled`, `blocked`, `deleted`, or `purged`, or `unknown` when the mapped namespace did not resolve. Deliberately a string rather than an enum so a status Artifact Registry adds within its API version reaches the response instead of raising. |
 | `userPermissions` | [`ArtifactRegistryNamespacePermissions!`](#artifactregistrynamespacepermissions) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Permissions Artifact Registry grants the current user on the namespace, read from the namespace details as the user when this field is selected. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 
+## `ArtifactRegistryAssignableUser`
+
+An organization user who can be given a role on an Artifact Registry repository.
+
+### `ArtifactRegistryAssignableUser` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `inheritedRole` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Role the user holds on the Artifact Registry namespace of the organization, which applies to every repository in it. `null` when they hold none. `null` for a fine-grained access token without the `read_artifact_registry_role_assignment` permission. The current user is answered for every viewer. For other users, `null` unless the current user is an organization owner or an Artifact Admin on the namespace. On failure a top-level error carries `extensions.code`: `denied`, `unavailable`, `invalid_request`, or `unknown`. When the current user can read other users' roles, an operation that reads the field for more than 999 users fails with `invalid_request`. |
+| `user` | [`UserCore!`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.User who can be given a role. |
+
+## `ArtifactRegistryAssignableUserConnection`
+
+Paginated collection of [`ArtifactRegistryAssignableUser`](#artifactregistryassignableuser). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
 ## `ArtifactRegistryAssignedRole`
 
 Role held through a direct role assignment.
@@ -2347,7 +2362,6 @@ Access the current user has to an Artifact Registry repository apart from their 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `canReadInheritedRoles` | [`Boolean!`](scalars.md#boolean) | Indicates the current user can read the inherited roles of other members: an organization owner, or a user with an inherited Artifact Admin role. |
-| `inheritedRole` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Role the current user holds on the Artifact Registry namespace of the organization, which applies to every repository in it. `null` when they hold none. |
 | `remainsAdmin` | [`Boolean!`](scalars.md#boolean) | Indicates the current user can still administer the repository without a direct Artifact Admin role on it, through an inherited Artifact Admin role or as an organization owner. |
 | `retainsAccess` | [`Boolean!`](scalars.md#boolean) | Indicates the current user can still access the repository without a direct role on it, through an inherited role or as an organization owner. Covers role-based access only: it ignores repository visibility, so it is the same for every repository in the organization. |
 
@@ -2664,7 +2678,7 @@ Repository in Artifact Registry, with the packages or images it holds.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `artifactsCount` | [`BigInt!`](scalars.md#bigint) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of artifacts the repository holds. Buffered, so it can lag. |
-| `assignableUsers` | [`OrganizationUserConnection`](#organizationuserconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Organization users who match the search and hold no direct role on the repository. Users whose only role is on the namespace are included. Can be selected once per operation. When the role lookup fails, the list is `null` and a top-level error carries `extensions.code`: `denied`, `unavailable`, `invalid_request`, `unknown`, or `limit_exceeded` when the repository has more than 4995 direct role assignments. Other errors carry no code. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `assignableUsers`:</strong> <dl><dt>`search` ([`String!`](scalars.md#string))</dt><dd>Search query for the name, username, or public email of the user. Must not be blank. Partial matches require at least 3 characters.</dd></dl> |
+| `assignableUsers` | [`ArtifactRegistryAssignableUserConnection`](#artifactregistryassignableuserconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Users of the organization who match the search and hold no direct role on the repository. Users whose only role is on the namespace are included, and `inheritedRole` carries that role. Can be selected once per operation. When the role lookup fails, the list is `null` and a top-level error carries `extensions.code`: `denied`, `unavailable`, `invalid_request`, `unknown`, or `limit_exceeded` when the repository has more than 4995 direct role assignments. Other errors carry no code. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `assignableUsers`:</strong> <dl><dt>`search` ([`String!`](scalars.md#string))</dt><dd>Search query for the name, username, or public email of the user. Must not be blank. Partial matches require at least 3 characters.</dd></dl> |
 | `createdAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Timestamp of when the repository was created. Null when the time is unknown. |
 | `createdBy` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.User who created the repository. Null when the creator is unknown or no longer exists. |
 | `currentUserAccess` | [`ArtifactRegistryCurrentUserAccess`](#artifactregistrycurrentuseraccess) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Access the current user has to the repository apart from their direct role on it. Can be selected once per operation. On failure the value is `null` and a top-level error carries `extensions.code`: `denied`, `unavailable`, `invalid_request`, or `unknown`. |
@@ -2724,7 +2738,7 @@ Read-time statistics for a hosted repository in Artifact Registry.
 
 ## `ArtifactRegistryRoleAssignment`
 
-A direct role assignment. A user, the Artifact Registry role they hold, and the resource it is assigned on. Does not represent inherited access.
+A direct role assignment. A user, the Artifact Registry role they hold, and the resource it is assigned on. Inherited access is not a row of its own: `inheritedRole` carries the role the assignee inherits, and is `null` for an assignment that is not on a repository.
 
 ### `ArtifactRegistryRoleAssignment` fields {.no_toc}
 
@@ -2734,6 +2748,7 @@ A direct role assignment. A user, the Artifact Registry role they hold, and the 
 | `assignee` | [`UserCore`](#usercore) | User the role is assigned to. |
 | `createdAt` | [`Time`](scalars.md#time) | Time the assignment was created. |
 | `grantedBy` | [`UserCore`](#usercore) | User who granted the role. Null when unknown, for example for grants made before this field existed or by a user who was deleted. |
+| `inheritedRole` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Role the user holds on the Artifact Registry namespace of the organization, which applies to every repository in it. `null` when they hold none. A fine-grained access token cannot read role assignments, so it gets `null` for the whole assignment. The current user is answered for every viewer. For other users, `null` unless the current user is an organization owner or an Artifact Admin on the namespace. On failure a top-level error carries `extensions.code`: `denied`, `unavailable`, `invalid_request`, or `unknown`. When the current user can read other users' roles, an operation that reads the field for more than 999 users fails with `invalid_request`. |
 | `resourceId` | [`String!`](scalars.md#string) | UUID of the Artifact Registry resource the role is assigned on. |
 | `role` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Assigned Artifact Registry role. Null for platform roles such as Organization Administrator, which `assignedRole` covers. |
 | `userPermissions` | [`ArtifactRegistryRoleAssignmentPermissions!`](#artifactregistryroleassignmentpermissions) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Actions the current user can take on the assignment. |
@@ -7707,13 +7722,13 @@ Aggregate dependency firewall enforcement activity totals for a group or project
 | `allowed` | [`Int!`](scalars.md#int) | Total allowed (pass-through) enforcement events in the window. |
 | `blocked` | [`Int!`](scalars.md#int) | Total blocked enforcement events in the window. |
 | `blockingRules` | [`Int!`](scalars.md#int) | Number of active rules in enforce (blocking) mode. |
-| `licenseRisksPrevented` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions blocked by license rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when the `dependency_firewall_group_prevented_stats` feature flag is enabled and `from` is 6 or 29 days before the current UTC date. Null when not available. |
-| `licenseRisksWarnedOnly` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions warned but never blocked by license rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when the `dependency_firewall_group_prevented_stats` feature flag is enabled and `from` is 6 or 29 days before the current UTC date. Null when not available. |
-| `maliciousPackagesPrevented` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions blocked by malicious-package rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when the `dependency_firewall_group_prevented_stats` feature flag is enabled and `from` is 6 or 29 days before the current UTC date. Null when not available. |
-| `maliciousPackagesWarnedOnly` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions warned but never blocked by malicious-package rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when the `dependency_firewall_group_prevented_stats` feature flag is enabled and `from` is 6 or 29 days before the current UTC date. Null when not available. |
+| `licenseRisksPrevented` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions blocked by license rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when `from` is 6 or 29 days before the current UTC date. Null when not available. |
+| `licenseRisksWarnedOnly` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions warned but never blocked by license rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when `from` is 6 or 29 days before the current UTC date. Null when not available. |
+| `maliciousPackagesPrevented` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions blocked by malicious-package rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when `from` is 6 or 29 days before the current UTC date. Null when not available. |
+| `maliciousPackagesWarnedOnly` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions warned but never blocked by malicious-package rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when `from` is 6 or 29 days before the current UTC date. Null when not available. |
 | `totalTriggers` | [`Int!`](scalars.md#int) | Total enforcement events (blocked + warned + allowed) in the window. |
-| `vulnerabilitiesPrevented` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions blocked by risk-severity rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when the `dependency_firewall_group_prevented_stats` feature flag is enabled and `from` is 6 or 29 days before the current UTC date. Null when not available. |
-| `vulnerabilitiesPreventedBySeverity` | [`[DependencyFirewallSeverityCount!]`](#dependencyfirewallseveritycount) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Breakdown of prevented packages by their highest carried severity. Sums to the prevented total. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when the `dependency_firewall_group_prevented_stats` feature flag is enabled and `from` is 6 or 29 days before the current UTC date. Null when not available. |
+| `vulnerabilitiesPrevented` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of distinct package versions blocked by risk-severity rules. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when `from` is 6 or 29 days before the current UTC date. Null when not available. |
+| `vulnerabilitiesPreventedBySeverity` | [`[DependencyFirewallSeverityCount!]`](#dependencyfirewallseveritycount) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Breakdown of prevented packages by their highest carried severity. Sums to the prevented total. Counts from `from` up to now; `to` does not apply. For groups, values come from a periodically refreshed summary and are returned only when `from` is 6 or 29 days before the current UTC date. Null when not available. |
 | `warned` | [`Int!`](scalars.md#int) | Total warned enforcement events in the window. |
 | `warningRules` | [`Int!`](scalars.md#int) | Number of active rules in warn mode. |
 
@@ -8783,7 +8798,7 @@ Response for `DuoCodeSuggestions` aggregation engine.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `acceptanceRate` | [`Float`](scalars.md#float) | Acceptance rate (accepted / shown). |
+| `acceptanceRate` | [`Float`](scalars.md#float) | Share of shown suggestions that were accepted. |
 | `acceptedCount` | [`Int`](scalars.md#int) | Number of accepted suggestions. |
 | `dimensions` | [`DuoCodeSuggestionsAggregationResponseDimensions`](#duocodesuggestionsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | `rejectedCount` | [`Int`](scalars.md#int) | Number of rejected suggestions. |
@@ -8955,8 +8970,8 @@ Response for `DuoUsageEvents` aggregation engine.
 | ---- | ---- | ----------- |
 | `dimensions` | [`DuoUsageEventsAggregationResponseDimensions`](#duousageeventsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | `featuresCount` | [`Int`](scalars.md#int) | Number of unique features. |
-| `previousPeriodUsersCount` | [`Int`](scalars.md#int) | Number of unique users in the previous period. |
-| `returningUsersCount` | [`Int`](scalars.md#int) | Number of users who also used this feature in the previous period. |
+| `previousPeriodUsersCount` | [`Int`](scalars.md#int) | Number of unique users in the previous time bucket with data, within the same filters and values of the other selected dimensions. |
+| `returningUsersCount` | [`Int`](scalars.md#int) | Number of unique users also counted in the previous time bucket with data, within the same filters and values of the other selected dimensions. |
 | `totalCount` | [`Int`](scalars.md#int) | Total number of events, optionally filtered by event name.  <strong>Arguments for `totalCount`:</strong> <dl><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Only count the given events. Up to 1000 values.</dd></dl> |
 | `usersCount` | [`Int`](scalars.md#int) | Number of unique users. |
 
@@ -9184,7 +9199,7 @@ Events that describe the history and progress of a GitLab Duo Agent Platform ses
 | `executionStatus` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.Granular status of the session's execution. |
 | `lastDuoMessage` | [`DuoMessage`](#duomessage) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Most recent message from the ui_chat_log for the checkpoint. Cheaper than duoMessages for list previews: it reads only the latest message instead of the full chat log. |
 | `latestTodoDuoMessage` | [`DuoMessage`](#duomessage) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Most recent `todo_write` tool message with todos from the ui_chat_log for the checkpoint. Returns one message instead of the full chat log. |
-| `messages` | [`DuoMessageConnection`](#duomessageconnection) | Messages from the ui_chat_log for the checkpoint, oldest first. Pass `last` to read the newest messages, then `before` with `startCursor` to page back to older ones. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `messages`:</strong> <dl><dt>`includePendingRequests` ([`Boolean`](scalars.md#boolean))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Also return the approval requests the session is still waiting on, whatever `kinds` are given, so a filtered view keeps the approve and deny controls. Has no effect without `kinds`.</dd><dt>`kinds` ([`[DuoMessageKind!]`](enums.md#duomessagekind))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Return only messages of these kinds. Requires the `session_details_enhancements` feature flag.</dd></dl> |
+| `messages` | [`DuoMessageConnection`](#duomessageconnection) | Messages from the ui_chat_log for the checkpoint, oldest first. Pass `last` to read the newest messages, then `before` with `startCursor` to page back to older ones. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `messages`:</strong> <dl><dt>`includePendingRequests` ([`Boolean`](scalars.md#boolean))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Also return the approval requests the session is still waiting on, whatever `kinds` and `search` are given, so a filtered view keeps the approve and deny controls. Has no effect without `kinds` or `search`.</dd><dt>`kinds` ([`[DuoMessageKind!]`](enums.md#duomessagekind))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Return only messages of these kinds. Requires the `session_details_enhancements` feature flag.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Return only messages whose content, tool name or tool arguments contain the term, ignoring case. Maximum 255 characters; a blank term returns the whole log. Requires the `session_details_enhancements` feature flag.</dd></dl> |
 | `metadata` | [`JsonString`](scalars.md#jsonstring) | Metadata associated with the event. |
 | `parentTs` | [`String`](scalars.md#string) | UUID v7 timestamp identifier of the parent message for branched conversations or responses. |
 | `threadTs` | [`String`](scalars.md#string) | UUID v7 timestamp identifier for the conversation thread/session in LangGraph state management. |
@@ -9385,19 +9400,19 @@ Response for `DuoWorkflows` aggregation engine.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `churnedUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in the previous period but not in this one. |
+| `churnedUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in the previous time bucket with data but not in this one, within the same filters and values of the other selected dimensions. |
 | `closedMrCount` | [`DuoWorkflowsAggregationResponseClosedMrCountMetrics`](#duoworkflowsaggregationresponseclosedmrcountmetrics) | Aggregated `closed_mr_count` metrics. |
 | `createdMrCount` | [`DuoWorkflowsAggregationResponseCreatedMrCountMetrics`](#duoworkflowsaggregationresponsecreatedmrcountmetrics) | Aggregated `created_mr_count` metrics. |
 | `creditsPerMergedMrRatio` | [`Float`](scalars.md#float) | Credits used per Duo-created merge request that was later merged. |
 | `creditsUsed` | [`DuoWorkflowsAggregationResponseCreditsUsedMetrics`](#duoworkflowsaggregationresponsecreditsusedmetrics) | Aggregated `credits_used` metrics. |
 | `dimensions` | [`DuoWorkflowsAggregationResponseDimensions`](#duoworkflowsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | `flowTypesCount` | [`Int`](scalars.md#int) | Number of unique flow types. |
-| `joinedUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in this period but not in the previous one. |
+| `joinedUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in this time bucket but not in the previous time bucket with data, within the same filters and values of the other selected dimensions. |
 | `mergedMrCount` | [`DuoWorkflowsAggregationResponseMergedMrCountMetrics`](#duoworkflowsaggregationresponsemergedmrcountmetrics) | Aggregated `merged_mr_count` metrics. |
 | `openMrCount` | [`DuoWorkflowsAggregationResponseOpenMrCountMetrics`](#duoworkflowsaggregationresponseopenmrcountmetrics) | Aggregated `open_mr_count` metrics. |
-| `previousPeriodUsersCount` | [`Int`](scalars.md#int) | Number of unique users in the previous period. |
-| `projectsCount` | [`Int`](scalars.md#int) | Number of unique projects. |
-| `returningUsersCount` | [`Int`](scalars.md#int) | Number of unique users who also ran a flow in the previous period. |
+| `previousPeriodUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in the previous time bucket with data, within the same filters and values of the other selected dimensions. |
+| `projectsCount` | [`Int`](scalars.md#int) | Number of unique projects. Flows not scoped to a project are not counted. |
+| `returningUsersCount` | [`Int`](scalars.md#int) | Number of unique users who also ran a flow in the previous time bucket with data, within the same filters and values of the other selected dimensions. |
 | `totalCount` | [`Int`](scalars.md#int) | Total number of flows, optionally filtered by status.  <strong>Arguments for `totalCount`:</strong> <dl><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Only count flows with the given statuses (created, running, finished, failed, ...). Up to 1000 values.</dd></dl> |
 | `usersCount` | [`Int`](scalars.md#int) | Number of unique users. |
 
@@ -13016,6 +13031,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 | `targetProjectId` | [`Int!`](scalars.md#int) | ID of the merge request target project. |
 | `taskCompletionStatus` | [`TaskCompletionStatus!`](#taskcompletionstatus) | Completion status of tasks. |
 | `timeEstimate` | [`Int!`](scalars.md#int) | Time estimate of the merge request. |
+| `timeToMerge` | [`Int`](scalars.md#int) | Time in seconds from creation to merge. Null if the merge request is not merged or its merge time was not recorded. |
 | `timelogs` | [`TimelogConnection!`](#timelogconnection) | Timelogs on the merge request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `title` | [`String!`](scalars.md#string) | Title of the merge request. |
 | `titleHtml` | [`String`](scalars.md#string) | HTML rendering of `title`. |
@@ -13238,7 +13254,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `count` | [`Int!`](scalars.md#int) | Total count of collection. Returns limit + 1 for counts greater than the limit.  <strong>Arguments for `count`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit applied to the count query, returns limit + 1. When not provided, returns the exact count.</dd></dl> |
-| `timeLimitedCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Total count of the collection. Returns `null` when the count exceeds the time limit, which applies on GitLab.com only. |
+| `timeLimitedCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Total count of the collection, or `null` when the count exceeds the time limit.  <strong>Arguments for `timeLimitedCount`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit applied to the count query, returns limit + 1. When not provided, returns the exact count.</dd></dl> |
 | `totalTimeToMerge` | [`Float`](scalars.md#float) | Total sum of time to merge, in seconds, for the collection of merge requests. |
 
 ## `MergeRequestDiff`
@@ -13913,8 +13929,9 @@ Candidate for a model version in the model registry.
 | `eid` | [`String!`](scalars.md#string) | MLflow uuid for the candidate. |
 | `id` | [`MlCandidateID!`](scalars.md#mlcandidateid) | ID of the candidate. |
 | `iid` | [`Int!`](scalars.md#int) | IID of the candidate scoped to project. |
+| `latestMetrics` | [`MlCandidateLatestMetricConnection!`](#mlcandidatelatestmetricconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Latest value of each metric of the candidate, ordered by metric name. Returns at most 50 metrics per page. This field can only be resolved for one candidate per operation. Returns no metrics if the `ml_candidate_metrics_pagination` feature flag is disabled. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `metadata` | [`MlCandidateMetadataConnection!`](#mlcandidatemetadataconnection) | Metadata entries for the candidate. When the `limit_ml_candidate_graphql_fields` feature flag is enabled for the candidate's project, this field can only be resolved for one candidate per operation. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `metrics` | [`MlCandidateMetricConnection!`](#mlcandidatemetricconnection) | Metrics for the candidate. When the `limit_ml_candidate_graphql_fields` feature flag is enabled for the candidate's project, this field can only be resolved for one candidate per operation. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `metrics` | [`MlCandidateMetricConnection!`](#mlcandidatemetricconnection) | Metrics for the candidate. When the `limit_ml_candidate_graphql_fields` feature flag is enabled for the candidate's project, this field can only be resolved for one candidate per operation. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `metrics`:</strong> <dl><dt>`name` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Return only the values of the metric with the name. Returns no values if the `ml_candidate_metrics_pagination` feature flag is disabled.</dd></dl> |
 | `name` | [`String`](scalars.md#string) | Name of the candidate. |
 | `params` | [`MlCandidateParamConnection!`](#mlcandidateparamconnection) | Parameters for the candidate. When the `limit_ml_candidate_graphql_fields` feature flag is enabled for the candidate's project, this field can only be resolved for one candidate per operation. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `status` | [`String`](scalars.md#string) | Candidate status. |
@@ -13930,6 +13947,24 @@ This connection has additional fields beyond the [standard connection fields](#s
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `count` | [`Int!`](scalars.md#int) | Returns the number of items in the connection up to a limit. If the number is greater than the limit, returns `limit + 1`.  <strong>Arguments for `count`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit value to be applied to the count query. Default is 1000.</dd></dl> |
+
+## `MlCandidateLatestMetric`
+
+Latest value of a metric of a candidate, with the recent values of the metric.
+
+### `MlCandidateLatestMetric` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `history` | [`[MlCandidateMetric!]!`](#mlcandidatemetric) | Most recent values of the metric, newest first. Returns at most 100 values.  <strong>Arguments for `history`:</strong> <dl><dt>`first` ([`Int`](scalars.md#int))</dt><dd>Number of values to return. Maximum is 100.</dd></dl> |
+| `id` | [`MlCandidateMetricID!`](scalars.md#mlcandidatemetricid) | ID of the metric. |
+| `name` | [`String`](scalars.md#string) | Name of the metric. |
+| `step` | [`Int!`](scalars.md#int) | Step at which the metric was measured. |
+| `value` | [`Float!`](scalars.md#float) | Value set for the metric. |
+
+## `MlCandidateLatestMetricConnection`
+
+Paginated collection of [`MlCandidateLatestMetric`](#mlcandidatelatestmetric). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `MlCandidateMetadata`
 
@@ -14417,7 +14452,9 @@ Paginated collection of [`NestedEnvironment`](#nestedenvironment). See [Standard
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `agentPresence` | [`DuoWorkflowAgentPresence`](#duoworkflowagentpresence) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Agent attribution for a note posted by a GitLab Duo Agent Platform session. Available to anyone who can read the note; `userPermissions.readDuoWorkflow` tells whether the session itself can be opened. Returns null for system notes, when no session posted the note, or when the `agent_presence_consolidation` feature flag is disabled. |
+| `agentPresence` | [`DuoWorkflowAgentPresence`](#duoworkflowagentpresence) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Agent attribution for a note posted by a GitLab Duo Agent Platform session. Available to anyone who can read the note; `userPermissions.readDuoWorkflow` tells whether the session itself can be opened. Returns null when no session posted the note, including system notes not linked to a session, or when the `agent_presence_consolidation` feature flag is disabled. |
+| `agentSessionAction` | [`DuoWorkflowAgentSessionAction`](enums.md#duoworkflowagentsessionaction) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.System note about what happened during a GitLab Duo Agent Platform session. Shows next to the agent actor line instead of the note text. Returns null for other notes or when the `agent_presence_consolidation` feature flag is disabled. |
+| `agentSessionFailureReason` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Why the session failed. Returns null when the system note for a `FAILED` session records no reason, for other notes, or when the `agent_presence_consolidation` feature flag is disabled. |
 | `author` | [`UserCore`](#usercore) | User who wrote the note. |
 | `authorIsContributor` | [`Boolean`](scalars.md#boolean) | Indicates whether the note author is a contributor. |
 | `awardEmoji` | [`AwardEmojiConnection`](#awardemojiconnection) | List of emoji reactions associated with the note. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -15434,7 +15471,7 @@ Represents an identifier for a package metadata advisory.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `destroyPackage` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `destroy_package` on this resource. |
+| `destroyPackage` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `delete_package` on this resource. |
 
 ## `PackageSettings`
 
@@ -16412,7 +16449,7 @@ Response for `Pipelines` aggregation engine.
 | `dimensions` | [`PipelinesAggregationResponseDimensions`](#pipelinesaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | `duration` | [`PipelinesAggregationResponseDurationMetrics`](#pipelinesaggregationresponsedurationmetrics) | Aggregated `duration` metrics. |
 | `durationQuantile` | [`Float`](scalars.md#float) | Pipeline duration quantile in seconds.  <strong>Arguments for `durationQuantile`:</strong> <dl><dt>`quantile` ([`Float`](scalars.md#float))</dt><dd></dd></dl> |
-| `outcomeRate` | [`Float`](scalars.md#float) | Rate of pipelines with the given status among completed pipelines.  <strong>Arguments for `outcomeRate`:</strong> <dl><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Up to 1000 values.</dd></dl> |
+| `outcomeRate` | [`Float`](scalars.md#float) | Share of completed pipelines (success, failed, canceled, skipped) that ended with the given status.  <strong>Arguments for `outcomeRate`:</strong> <dl><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Up to 1000 values.</dd></dl> |
 | `totalCount` | [`Int`](scalars.md#int) | Total number of pipelines, optionally filtered by source or status.  <strong>Arguments for `totalCount`:</strong> <dl><dt>`source` ([`[String!]`](scalars.md#string))</dt><dd>Only count pipelines with the given sources. Up to 1000 values.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Only count pipelines with the given statuses. Up to 1000 values.</dd></dl> |
 
 ## `PipelinesAggregationResponseConnection`
@@ -16436,7 +16473,7 @@ Response dimensions for `Pipelines` aggregation engine.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `finishedAt` | [`Date`](scalars.md#date) | Pipeline finish date.  <strong>Arguments for `finishedAt`:</strong> <dl><dt>`granularity` ([`String`](scalars.md#string))</dt><dd>Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d).</dd><dt>`origin` ([`Time`](scalars.md#time))</dt><dd>Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity.</dd></dl> |
-| `project` | [`Project`](#project) | Project. |
+| `project` | [`Project`](#project) | Project the pipeline ran in. |
 | `ref` | [`String`](scalars.md#string) | Pipeline ref. |
 | `source` | [`String`](scalars.md#string) | Pipeline source. |
 | `startedAt` | [`Date`](scalars.md#date) | Pipeline start date.  <strong>Arguments for `startedAt`:</strong> <dl><dt>`granularity` ([`String`](scalars.md#string))</dt><dd>Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d).</dd><dt>`origin` ([`Time`](scalars.md#time))</dt><dd>Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity.</dd></dl> |
@@ -16523,6 +16560,7 @@ Represents bypass status of a merge request for a security policy.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `allowBypass` | [`Boolean!`](scalars.md#boolean) | Indicates if bypass is allowed for the policy. |
+| `automaticallyBypassed` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates if the policy was bypassed automatically. Returns `false` if the `merge_request_approval_policy_auto_bypass` feature flag is disabled. |
 | `bypassed` | [`Boolean!`](scalars.md#boolean) | Indicates if the policy has been bypassed. |
 | `id` | [`ID!`](scalars.md#id) | ID of the security policy. |
 | `name` | [`String!`](scalars.md#string) | Name of the security policy. |
@@ -23180,7 +23218,7 @@ Represents an agent plan widget.
 | `readinessScore` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan` feature flag is enabled. |
 | `readinessScoreFeedback` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Markdown feedback explaining the readiness score. Null when no feedback is available. Only available when the `workplan` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | `readinessScoreFeedbackHtml` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.GitLab Flavored Markdown rendering of `readiness_score_feedback`. Only available when the `workplan` feature flag is enabled. This field can only be resolved for one work item in any single request. |
-| `readinessScoreStatus` | [`WorkItemAgentPlanReadinessScoreStatus`](enums.md#workitemagentplanreadinessscorestatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Status of the readiness score evaluation, derived from the score and the most recent `workplan/v1` Duo Agent Platform workflow. Null when the `workplan` feature flag is disabled. |
+| `readinessScoreStatus` | [`WorkItemAgentPlanReadinessScoreStatus`](enums.md#workitemagentplanreadinessscorestatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Status of the readiness score evaluation, derived from the score and the most recent `workplan/v1` Duo Agent Platform workflow. `EVALUATING` is returned only after the running workflow has written its plan. Null when the `workplan` feature flag is disabled. |
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 | `updatedAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Timestamp of when the agent plan was last updated. Also changes when the readiness score or AI planning setting changes. Null when the agent plan has no content. |
 

@@ -37,7 +37,7 @@ To choose the packages you want to synchronize with the GitLab Package Metadata 
    package registries that you want to sync.
 1. Select **Save changes**.
 
-For this data synchronization to work, you must allow outbound network traffic from your GitLab instance to the domain `storage.googleapis.com`. See also the offline setup instructions described in [Package Metadata Database for offline instances](../../topics/offline/package-metadata-database.md).
+For this data synchronization to work, you must allow outbound network traffic from your GitLab instance to the domains `storage.googleapis.com`, `pmdb-dist-svc.runway.gitlab.net`, and `852e9d53d0f8adbd9205389356f2303d.r2.cloudflarestorage.com`. See also the offline setup instructions described in [Package Metadata Database for offline instances](../../topics/offline/package-metadata-database.md).
 
 ### Security considerations
 

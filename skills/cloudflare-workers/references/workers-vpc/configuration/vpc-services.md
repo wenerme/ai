@@ -81,7 +81,7 @@ If your origin service presents a certificate that is not issued by one of these
 
 ### TLS certificate verification mode
 
-You can configure how the connection to your origin service verifies TLS certificates by setting the `--cert-verification-mode` option when creating or updating a VPC Service. This applies to both HTTP and TCP service types.
+You can configure how the connection to your origin service verifies TLS certificates by setting the `--cert-verification-mode` option when creating or updating a VPC Service, or by choosing a **TLS certificate verification** option in the dashboard. This applies to both HTTP and TCP service types.
 
 | Mode | Description |
 | --- | --- |
@@ -98,11 +98,24 @@ Private services often use certificates issued by a private certificate authorit
 
 You can configure a custom CA, a client certificate, or both. For `http` services, these settings apply to connections that use the `https` scheme, not plaintext HTTP. For `tcp` services, they apply to the TLS connection to your service, including PostgreSQL databases used with [Hyperdrive](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/).
 
-You can configure custom CA and client certificates with Wrangler, the [API](https://developers.cloudflare.com/api/resources/connectivity/subresources/directory/subresources/services/), or [Terraform](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#custom-ca-and-client-certificates).
+You can configure custom CA and client certificates in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc), with Wrangler, the [API](https://developers.cloudflare.com/api/resources/connectivity/subresources/directory/subresources/services/), or [Terraform](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#custom-ca-and-client-certificates).
 
 ### Upload certificates
 
 Upload the CA certificate and the client certificate to your account. Each upload returns a certificate ID that you reference from the VPC Service.
+
+You can upload certificates without leaving the VPC Service form, when you create a VPC Service or edit its TLS settings:
+
+1. In the **TLS settings** of the VPC Service, select **Upload custom CA** next to **Custom certificate authority**, or **Upload client certificate** next to **Client certificate**.
+2. Enter a **Certificate name**.
+3. Add the certificate file:
+   - For a custom CA, add a **PEM certificate** ( `.pem` or `.crt` file).
+   - For a client certificate, add a **PEM certificate** and its **PEM private key** ( `.pem` or `.key` file).
+4. Select **Upload certificate authority** or **Upload client certificate**.
+
+The dashboard uploads the certificate to your account and selects it in the VPC Service form. Certificates uploaded with Wrangler or the API also appear in the **Custom certificate authority** and **Client certificate** lists.
+
+If you do not have permission to upload certificates, the dashboard shows a link to these instructions instead of the upload buttons. You can still select certificates that are already uploaded to the account.
 
 ```sh
 npx wrangler cert upload certificate-authority --ca-cert ./ca.pem --name private-ca
@@ -172,6 +185,26 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mtls_certificate
 
 Reference the certificate IDs in the TLS settings of the VPC Service. When you provide a custom CA or a client certificate, you must also set the certificate verification mode explicitly.
 
+To add certificates when you create a VPC Service:
+
+1. In the Cloudflare dashboard, go to the **Workers VPC** page. [Go to **VPC** ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc)
+2. Select the **Services** tab, then select **Create** to create a new VPC Service.
+3. Enter the service name, tunnel, host, service type, and ports.
+4. Under **TLS certificate verification**, select **Full verification (default)** or **CA verification only**. If you only add a client certificate, you can also select **Disabled**.
+5. Select a certificate from **Custom certificate authority**, **Client certificate**, or both.
+6. Select **Create service**.
+
+To add or change certificates on an existing VPC Service:
+
+1. In the Cloudflare dashboard, go to the **Workers VPC** page. [Go to **VPC** ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc)
+2. Select the **Services** tab, then select your VPC Service.
+3. Select the **Settings** tab.
+4. In **TLS settings**, select **Edit**.
+5. Select a verification mode, then select a **Custom certificate authority**, a **Client certificate**, or both.
+6. Select **Save**.
+
+The **TLS settings** section shows the verification mode and the names of the certificates attached to the service.
+
 ```sh
 npx wrangler vpc service create private-api \
   --type http \
@@ -210,13 +243,22 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/connectivity/dir
 The following rules apply:
 
 - `cert_verification_mode` is required whenever you set `certificate_authority` or `client_certificate`.
-- A custom CA cannot be combined with `disabled`, because the CA is only used to verify the origin certificate. Use `verify_full` or `verify_ca`.
+- A custom CA cannot be combined with `disabled`, because the CA is only used to verify the origin certificate. Use `verify_full` or `verify_ca`. In the dashboard, the **Custom certificate authority** field is hidden when **Disabled** is selected.
 - A client certificate can be used without a custom CA, with any verification mode.
 - TLS settings are configured on each VPC Service. The `network` or `resolver_network` of the service host has no TLS settings of its own.
 
 ### Rotate or remove certificates
 
 To rotate a certificate, upload the new certificate, then update the VPC Service to reference the new certificate ID. Changes can take a few seconds to apply.
+
+1. In the Cloudflare dashboard, go to the **Workers VPC** page. [Go to **VPC** ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc)
+2. Select the **Services** tab, then select your VPC Service.
+3. Select the **Settings** tab.
+4. In **TLS settings**, select **Edit**.
+5. To rotate a certificate, select the new certificate in **Custom certificate authority** or **Client certificate**, or select **Upload custom CA** or **Upload client certificate** to upload it. To remove a certificate, clear its field.
+6. Select **Save**.
+
+The dashboard keeps the settings you do not change. For example, replacing the client certificate keeps the custom CA and the verification mode. Editing the name, host, or ports of a VPC Service also keeps its TLS settings.
 
 Updating a VPC Service replaces its complete configuration, including TLS settings. Include every TLS setting the service should keep. Certificate references and the verification mode that you omit are cleared, and an update without TLS settings returns the service to the default verification (`verify_full` with publicly trusted CAs and Cloudflare Origin CA).
 
@@ -233,6 +275,8 @@ npx wrangler vpc service update <SERVICE_ID> \
   --client-certificate <NEW_CLIENT_CERTIFICATE_ID> \
   --cert-verification-mode verify_full
 ```
+
+Updating a VPC Service with the [API](https://developers.cloudflare.com/api/resources/connectivity/subresources/directory/subresources/services/) replaces its complete configuration, including TLS settings. Send the complete `tls_settings` object, including the certificate IDs and verification mode the service should keep. Certificate references and the verification mode that you omit are cleared, and an update without `tls_settings` returns the service to the default verification (`verify_full` with publicly trusted CAs and Cloudflare Origin CA).
 
 Removing a certificate reference from a VPC Service, or deleting the VPC Service, does not delete the uploaded certificate. To delete it, use `wrangler cert delete` or the [Delete mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls_certificates/methods/delete/).
 
@@ -468,5 +512,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#page","headline":"VPC Services","description":"Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/og.png?v=2c2633353a7f0d7f","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#page","headline":"VPC Services","description":"Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/og.png?v=2c2633353a7f0d7f","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

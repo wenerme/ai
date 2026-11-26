@@ -7,7 +7,7 @@ You can query for branch rules in a given project by using:
 
 - GraphiQL.
 - [`cURL`](getting_started.md#command-line).
-- [The GitLab Development Kit (GDK)](#use-the-gdk).
+- A [Caproni-managed](#use-caproni) development environment.
 
 ## Use GraphiQL
 
@@ -104,15 +104,15 @@ If no branch rules are displayed, it might be because:
 - No branch rules are configured.
 - Your role doesn't have permission to view branch rules. Administrators have access to all resources.
 
-## Use the GDK
+## Use Caproni
 
-Instead of requesting access, it may be easier for you to run the query in the
-[GitLab Development Kit (GDK)](https://gitlab.com/gitlab-org/gitlab-development-kit).
+Instead of requesting access, it may be easier for you to run the query using
+[Caproni](https://gitlab-org.gitlab.io/caproni/gitlab/).
 
 1. Sign in as the default admin, `root`, with the credentials from
-   [the GDK documentation](https://gitlab-org.gitlab.io/gitlab-development-kit/gdk_commands/#get-the-login-credentials).
+   [the Caproni documentation](https://gitlab-org.gitlab.io/caproni/gitlab/fragments/gitlab/).
 1. Ensure you have some branch rules configured for the `flightjs/Flight` project.
-1. In your GDK instance, open GraphiQL: `http://gdk.test:3000/-/graphql-explorer`.
+1. In your Caproni instance, open GraphiQL: `http://gitlab.caproni.test/-/graphql-explorer`.
 1. Copy the query and paste it in the left window.
 1. Replace the full path with the following path:
 

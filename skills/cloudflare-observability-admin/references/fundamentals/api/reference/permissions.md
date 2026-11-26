@@ -117,8 +117,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Account Firewall Access Rules Edit | Grants write access to account firewall access rules. |
 | Account Rulesets Read | Grants read access to [Account Rulesets](https://developers.cloudflare.com/ruleset-engine/about/rulesets/). |
 | Account Rulesets Edit | Grants write access to [Account Rulesets](https://developers.cloudflare.com/ruleset-engine/about/rulesets/). |
-| Account Security Center Insights | Grants read access to [Security Center Insights](https://developers.cloudflare.com/security/security-insights/). |
-| Account Security Center Insights Edit | Grants write access to [Security Center Insights](https://developers.cloudflare.com/security/security-insights/). |
+| Account Security Center Insights Read | Grants read access to account-level [Security Insights and scan settings](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions). |
+| Account Security Center Insights Edit | Grants read and write access to account-level [Security Insights and scan settings](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions). |
 | Account Settings Read | Grants read access to [Account resources, account membership, and account level features](https://developers.cloudflare.com/fundamentals/account/). |
 | Account Settings Edit | Grants write access to [Account resources, account membership, and account level features](https://developers.cloudflare.com/fundamentals/account/). |
 | Account: SSL and Certificates Read | Grants read access to [SSL and Certificates](https://developers.cloudflare.com/ssl/). |
@@ -293,8 +293,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Account Firewall Access Rules Write | Grants write access to account firewall access rules. |
 | Account Rulesets Read | Grants read access to [Account Rulesets](https://developers.cloudflare.com/ruleset-engine/about/rulesets/). |
 | Account Rulesets Write | Grants write access to [Account Rulesets](https://developers.cloudflare.com/ruleset-engine/about/rulesets/). |
-| Account Security Center Insights | Grants read access to [Security Center Insights](https://developers.cloudflare.com/security/security-insights/). |
-| Account Security Center Insights Write | Grants write access to [Security Center Insights](https://developers.cloudflare.com/security/security-insights/). |
+| Account Security Center Insights Read | Grants read access to account-level [Security Insights and scan settings](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions). |
+| Account Security Center Insights Write | Grants read and write access to account-level [Security Insights and scan settings](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions). |
 | Account Settings Read | Grants read access to [Account resources, account membership, and account level features](https://developers.cloudflare.com/fundamentals/account/). |
 | Account Settings Write | Grants write access to [Account resources, account membership, and account level features](https://developers.cloudflare.com/fundamentals/account/). |
 | Account: SSL and Certificates Read | Grants read access to [SSL and Certificates](https://developers.cloudflare.com/ssl/). |
@@ -492,8 +492,8 @@ The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 | Zaraz Edit | Grants write access to [Zaraz](https://developers.cloudflare.com/zaraz/) zone level settings. |
 | Zone Read | Grants read access to zone management. |
 | Zone Edit | Grants write access to zone management. |
-| Zone Security Center Insights | Grants read access to zone level [Security Center Insights](https://developers.cloudflare.com/security/security-insights/). |
-| Zone Security Center Insights Edit | Grants write access to zone level [Security Center Zone Insights](https://developers.cloudflare.com/security/security-insights/). |
+| Zone Security Center Insights Read | Grants read access to zone-level [Security Insights](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions). |
+| Zone Security Center Insights Edit | Grants read and write access to zone-level [Security Insights](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions), but not account-wide scan settings. |
 | Zone Settings Read | Grants read access to zone settings. |
 | Zone Settings Edit | Grants write access to zone settings. |
 | Zone Versioning Read | Grants read access to [Zone Versioning](https://developers.cloudflare.com/version-management/) at zone level. |
@@ -571,8 +571,8 @@ The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 | Zaraz Write | Grants write access to [Zaraz](https://developers.cloudflare.com/zaraz/) zone level settings. |
 | Zone Read | Grants read access to zone management. |
 | Zone Write | Grants write access to zone management. |
-| Zone Security Center Insights | Grants read access to zone level [Security Center Insights](https://developers.cloudflare.com/security/security-insights/). |
-| Zone Security Center Insights Write | Grants write access to zone level [Security Center Zone Insights](https://developers.cloudflare.com/security/security-insights/). |
+| Zone Security Center Insights Read | Grants read access to zone-level [Security Insights](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions). |
+| Zone Security Center Insights Write | Grants read and write access to zone-level [Security Insights](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#api-token-permissions), but not account-wide scan settings. |
 | Zone Settings Read | Grants read access to zone settings. |
 | Zone Settings Write | Grants write access to zone settings. |
 | Zone Versioning Read | Grants read access to [Zone Versioning](https://developers.cloudflare.com/version-management/) at zone level. |
@@ -589,5 +589,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/og.png?v=d5142d1f6e167ad8","dateModified":"2026-11-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/og.png?v=d5142d1f6e167ad8","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

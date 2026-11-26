@@ -290,10 +290,7 @@ Alternatively, with Git 2.10 or later, use the `ci.skip`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256546) in GitLab 19.5
   [with a feature flag](../../administration/feature_flags/_index.md) named `ci_skip_pipeline_from_mr_title`. Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/630098) in GitLab 19.7. Feature flag `ci_skip_pipeline_from_mr_title` removed.
 
 To skip merge request pipelines, add `[ci skip]` or `[skip ci]`, using any capitalization, to the
 merge request title. This skips basic merge request pipelines, merged results pipelines, and merge

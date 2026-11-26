@@ -75,13 +75,13 @@ This example shows the format of a GitLab-generated provenance statement:
     "buildDefinition": {
       "buildType": "<Link to Build Type>",
       "externalParameters": {
-        "source": "http://gdk.test:3000/root/repo_name",
+        "source": "http://gitlab.example.com/root/repo_name",
         "entryPoint": "build-job",
         "variables": {
           "CI_PIPELINE_ID": "576",
-          "CI_PIPELINE_URL": "http://gdk.test:3000/root/repo_name/-/pipelines/576",
+          "CI_PIPELINE_URL": "http://gitlab.example.com/root/repo_name/-/pipelines/576",
           "CI_JOB_ID": "412",
-          "CI_JOB_URL": "http://gdk.test:3000/root/repo_name/-/jobs/987",
+          "CI_JOB_URL": "http://gitlab.example.com/root/repo_name/-/jobs/987",
           "CI_JOB_NAME": "job_name",
           "CI_PROJECT_ID": "123",
           "CI_PROJECT_NAME": "repo_name",
@@ -95,7 +95,7 @@ This example shows the format of a GitLab-generated provenance statement:
       },
       "resolvedDependencies": [
         {
-          "uri": "http://gdk.test:3000/root/repo_name",
+          "uri": "http://gitlab.example.com/root/repo_name",
           "digest": {
             "gitCommit": "a288201509dd9a85da4141e07522bad412938dbe"
           }
@@ -104,7 +104,7 @@ This example shows the format of a GitLab-generated provenance statement:
     },
     "runDetails": {
       "builder": {
-        "id": "http://gdk.test:3000/groups/user/-/runners/33",
+        "id": "http://gitlab.example.com/groups/user/-/runners/33",
         "version": {
           "gitlab-runner": "4d7093e1"
         }

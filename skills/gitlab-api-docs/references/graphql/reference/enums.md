@@ -2695,6 +2695,17 @@ Kind of a message in a GitLab Duo Agent Platform session chat log.
 | `TOOL` | Tool call. |
 | `UNKNOWN` | Message type the classifier does not recognize yet. |
 
+## `DuoWorkflowAgentSessionAction`
+
+System note about what happened during a GitLab Duo Agent Platform session.
+
+| Value | Description |
+| ----- | ----------- |
+| `COMPLETED` | Session completed. |
+| `FAILED` | Session failed. |
+| `STARTED` | Session started. |
+| `STOPPED` | Session stopped. |
+
 ## `DuoWorkflowDropReason`
 
 Reason a GitLab Duo Agent Platform session was failed.
@@ -2740,6 +2751,7 @@ Type of link between a GitLab Duo Agent Platform session and a note.
 | Value | Description |
 | ----- | ----------- |
 | `CREATED` | Link of type `created` between a session and a note. |
+| `SESSION_EVENT` | Link of type `session_event` between a session and a note. |
 | `TRIGGERED` | Link of type `triggered` between a session and a note. |
 
 ## `DuoWorkflowPipelineLinkType`
@@ -2775,6 +2787,7 @@ Where a Duo Workflow session was initiated from.
 | `WEB_CHAT` | Session initiated from GitLab Duo Chat in the web UI. |
 | `WORK_ITEM_PLAN_TO_MERGE_REQUEST` | Session initiated from creating a merge request from an existing workplan for a work item. |
 | `WORK_ITEM_TO_MERGE_REQUEST` | Session initiated from creating a merge request from a work item. |
+| `WORK_ITEM_UPDATE_IMPLEMENTATION` | Session initiated from updating the implementation of a work item. |
 | `WORK_ITEM_WORKPLAN` | Session initiated from generating a workplan for a work item. |
 
 ## `DuoWorkflowStatus`
@@ -6878,10 +6891,10 @@ Status of the readiness score evaluation for a work item.
 | Value | Description |
 | ----- | ----------- |
 | `CANCELED` | Indicates the flow was canceled before a score was saved. |
-| `EVALUATED` | Indicates a readiness score is available. |
-| `EVALUATING` | Indicates the workplan flow is running and a new score is expected. |
+| `EVALUATED` | Indicates a readiness score is available. While the workplan flow is running and has not written its plan yet, the previous score is still reported as `EVALUATED`. |
+| `EVALUATING` | Indicates the workplan flow is running, has already written its plan, and a new score is expected. |
 | `FAILED` | Indicates the flow failed after the plan was written, before a score was saved. |
-| `NOT_EVALUATED` | Indicates there is no score and the flow is not running. |
+| `NOT_EVALUATED` | Indicates there is no score and the flow is not running, or it is running but has not written its plan yet. |
 
 ## `WorkItemAvailabilityAction`
 

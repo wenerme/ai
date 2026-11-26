@@ -537,18 +537,24 @@ view a list of all pages, select  in the sidebar.
 ### Customize sidebar
 
 You can manually edit the contents of the sidebar navigation.
+This process creates a wiki page named `_sidebar`.
+The sidebar then displays the content of this page.
+The list of pages, the search box, and the table of contents are collapsed by default.
 
 Prerequisites:
 
 - You must have the Developer, Maintainer, or Owner role.
 
-This process creates a wiki page named `_sidebar` that fully
-replaces the default sidebar navigation:
+To create the page:
 
 1. In the top bar, select  and find your project or group.
 1. In the left sidebar, select  > .
 1. In the upper-left corner of the page, select  ().
 1. When complete, select .
+
+To show the list of pages, select  at the top of the sidebar.
+GitLab displays the list above the custom sidebar content.
+GitLab saves this choice in your browser.
 
 A `_sidebar` example, formatted with Markdown:
 

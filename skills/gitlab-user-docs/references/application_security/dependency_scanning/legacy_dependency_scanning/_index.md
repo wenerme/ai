@@ -260,7 +260,7 @@ Then the Gemnasium scanner generates the following CycloneDX SBOMs:
 
 After you are confident in the dependency scanning results for a single project, you can extend its implementation to additional projects:
 
-- Use [enforced scan execution](../../detect/security_configuration.md#create-a-shared-configuration) to apply dependency scanning settings across groups.
+- Use a [shared configuration](../../detect/security_configuration.md#create-a-shared-configuration) to apply dependency scanning settings across groups.
 - If you have unique requirements, dependency scanning with SBOM can be run in [offline environments](../../offline_deployments/_index.md).
 
 ## Supported languages and package managers

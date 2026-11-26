@@ -357,6 +357,8 @@ see [OpenID Connect (OIDC) authentication using ID tokens](../../../../ci/secret
 
 ## Configure runners to execute flows
 
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269262) in GitLab 19.7 to clone the repository with native `git clone`, which can start from [Git bundles](../../../../administration/gitaly/bundle_uris.md).
+
 Flows that use CI/CD run on runners.
 
 On GitLab.com, flows can use [hosted runners](../../../../ci/runners/hosted_runners/_index.md), which GitLab provides. These are enabled by default.
