@@ -24,8 +24,8 @@ To create an OAuth application for VS Code:
    - To specify additional IDEs like Code Insiders or Cursor,
      add multiple redirect URIs separated by newlines.
 1. Select the `api` scope.
-1. Select **Submit**.
-1. Copy the **Application ID**. Use this for the `gitlab.authentication.oauthClientIds` setting in your VS Code configuration.
+1. Select .
+1. Copy the . Use this for the `gitlab.authentication.oauthClientIds` setting in your VS Code configuration.
 
 ### JetBrains IDEs
 
@@ -34,8 +34,8 @@ To create an OAuth application for JetBrains IDEs:
 1. Create an [instance-wide application](../../integration/oauth_provider.md#create-an-instance-wide-application).
 1. In **Redirect URI**, enter `http://127.0.0.1/api/oauth/gitlab/authorization`.
 1. Select the `api` scope.
-1. Select **Submit**.
-1. Copy the **Application ID**. Use this when configuring the GitLab Duo plugin
+1. Select .
+1. Copy the . Use this when configuring the GitLab Duo plugin
    in your JetBrains IDE.
 
 ## Require a minimum language server version
@@ -66,19 +66,19 @@ Prerequisites:
 
 To enforce a minimum GitLab Language Server version:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Editor Extensions**.
-1. Check **Language Server restrictions enabled**.
-1. Under **Minimum GitLab Language Server client version**, enter a valid GitLab Language Server version.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Check .
+1. Under , enter a valid GitLab Language Server version.
 
 To allow any GitLab Language Server clients:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Editor Extensions**.
-1. Uncheck **Language Server restrictions enabled**.
-1. Under **Minimum GitLab Language Server client version**, enter a valid GitLab Language Server version.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Uncheck .
+1. Under , enter a valid GitLab Language Server version.
 
 > [!note]
 > Allowing all requests is not recommended. It can cause incompatibility if your

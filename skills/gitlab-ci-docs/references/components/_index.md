@@ -611,12 +611,12 @@ For a click-through demo, see [the CI/CD Catalog beta Product Tour](https://gitl
 
 To access the CI/CD Catalog and view the published components that are available to you:
 
-1. In the top bar, select **Search or go to**.
-1. Select **Explore**.
-1. Select **CI/CD Catalog**.
+1. In the top bar, select .
+1. Select .
+1. Select .
 
 Alternatively, if you are already in the [pipeline editor](../pipeline_editor/_index.md)
-in your project, you can select **CI/CD Catalog**.
+in your project, you can select .
 
 Visibility of components in the CI/CD catalog follows the component source project's
 [visibility setting](../../user/public_access.md). Components with source projects set to:
@@ -644,16 +644,16 @@ Prerequisites:
 
 To view catalog resource analytics:
 
-1. In the top bar, select **Search or go to** > **Explore**.
-1. Select **CI/CD Catalog**.
-1. Select the **Analytics** tab.
+1. In the top bar, select  > .
+1. Select .
+1. Select the  tab.
 
 The Analytics view displays the catalog resources where you have the Maintainer or Owner role.
 This view shows:
 
-- **Projects**: The catalog resource name and its latest released version.
-- **Usage statistics**: The number of unique projects that used a component from this catalog resource in a pipeline in the last 30 days.
-- **Components**: A list of components available in the latest version of the catalog resource.
+- : The catalog resource name and its latest released version.
+- : The number of unique projects that used a component from this catalog resource in a pipeline in the last 30 days.
+- : A list of components available in the latest version of the catalog resource.
 
 For example:
 
@@ -686,21 +686,21 @@ Prerequisites:
 
 To view component usage details:
 
-1. In the top bar, select **Search or go to** > **Explore**.
-1. Select **CI/CD Catalog**.
+1. In the top bar, select  > .
+1. Select .
 1. Select a component project from the catalog.
-1. On the detail page, select the **Usage** tab.
+1. On the detail page, select the  tab.
 
 This tab lists the projects that included any of this project's component in a pipeline in the last 30 days.
 The list only includes projects that you have permission to view.
 
 The details include:
 
-- **Project path**: The full path of the project, with a link to the project.
-- **Status**: If the project used the latest version of the component, it is labeled as **Up to date**. Otherwise, it is **Outdated**.
-- **Components used**: The names and versions of the components used by the project.
+- : The full path of the project, with a link to the project.
+- : If the project used the latest version of the component, it is labeled as . Otherwise, it is .
+- : The names and versions of the components used by the project.
 
-Projects not visible to you are displayed as **Private project** without a link.
+Projects not visible to you are displayed as  without a link.
 
 You can use this information to:
 
@@ -726,10 +726,10 @@ Prerequisites:
 
 To set the project as a catalog project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. Turn on the **CI/CD Catalog project** toggle.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Turn on the  toggle.
 
 The project only becomes findable in the catalog after you publish a new release.
 
@@ -790,7 +790,7 @@ For example, `1.0.0`, `2.3.4`, and `1.0.0-alpha` are all valid semantic versions
 
 ### Unpublish a component project
 
-To remove a component project from the catalog, turn off the [**CI/CD Catalog resource**](#set-a-component-project-as-a-catalog-project)
+To remove a component project from the catalog, turn off the [](#set-a-component-project-as-a-catalog-project)
 toggle in the project settings.
 
 > [!warning]
@@ -850,7 +850,7 @@ A GitLab administrator can set a CI/CD component as created and maintained by a 
    ```
 
 After the query completes, all components in projects in the root namespace are verified.
-The **Verified creator** badge displays next to the component names in the CI/CD catalog.
+The  badge displays next to the component names in the CI/CD catalog.
 
 To remove the badge from a component, repeat the query with `UNVERIFIED` for `verificationLevel`.
 
@@ -941,7 +941,7 @@ you deliver to users, follow these best practices:
     for component project releases.
   - Protect the default branch, and protect all release branches [using wildcard rules](../../user/project/repository/branches/protected.md#use-wildcard-rules).
   - Require everyone to submit merge requests for changes to protected branches. Set the
-    **Allowed to push and merge** option to `No one` for protected branches.
+     option to `No one` for protected branches.
   - Block force pushes to protected branches.
 - **Sign all commits**: [Sign all commits](../../user/project/repository/signed_commits/_index.md) to the component project.
 - **Discourage using `latest`**: Avoid including examples in your `README.md` that use `@latest`.

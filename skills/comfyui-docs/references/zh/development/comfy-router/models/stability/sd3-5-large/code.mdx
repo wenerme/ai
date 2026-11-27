@@ -1,12 +1,12 @@
 ---
 title: "通过 Comfy Router 使用 Sd3.5 Large"
 description: "通过 Comfy Router 调用 stability/sd3.5-large：端点、请求结构以及 Router 返回的响应。"
-translationSourceHash: eeeae888
+translationSourceHash: 9605aacb
 translationFrom: development/comfy-router/models/stability/sd3-5-large/code.mdx
 translationBlockHashes:
   "_intro": 0cefb85f
   "Quick start": 4d396c75
-  "Schema": 7bc13fc4
+  "Schema": ef4a277e
   "Examples": cfbf5d5e
 ---
 
@@ -18,9 +18,9 @@ translationBlockHashes:
 
 在[你的 Comfy 工作区](https://platform.comfy.org/profile/api-keys?onboarding=router)中创建一个密钥，并将其导出为 `COMFY_API_KEY`。Python 和 TypeScript 代码片段使用 Comfy SDK（`pip install comfy-sdk` 与 `npm install @comfyorg/sdk`）；cURL 代码片段则是通过原始 HTTP 发起的同一次调用。
 
-**模型 ID：**`stability/sd3.5-large`
+**模型 ID：** `stability/sd3.5-large`
 
-**端点：**`POST https://api.comfy.org/v2/models/stability/sd3.5-large`
+**端点：** `POST https://api.comfy.org/v2/models/stability/sd3.5-large`
 
   
 
@@ -175,9 +175,9 @@ curl https://api.comfy.org/v2/models/stability/sd3.5-large/requests/$REQUEST_ID 
 </ParamField>
 
 <ParamField body="output_format" type="string">
-  仅返回 `png`。
+  省略时为 `png`。只有当部署的 stability output-format 开关开启时，才会提供 `jpeg` 和 `webp`；否则它们会在任何作业运行前以 400 被拒绝。该格式不会改变价格。
 
-  可选值：`png`
+  可选值：`png`, `jpeg`, `webp`
 </ParamField>
 
 <ParamField body="prompt" type="string" required>

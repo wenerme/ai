@@ -5,7 +5,7 @@ description: "Browse Deep Infra model IDs, capabilities, context windows, and pr
 
 # [Deep Infra logo]Deep Infra
 
-Access 75 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 77 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -314,6 +314,18 @@ for await (const chunk of stream) {
     "outputCost": 0.18
   },
   {
+    "model": "deepinfra/inclusionAI/LingSante-3.1-air-VL",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.06,
+    "outputCost": 0.18
+  },
+  {
     "model": "deepinfra/meta-llama/Llama-3.3-70B-Instruct-Turbo",
     "imageInput": false,
     "audioInput": false,
@@ -492,6 +504,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.06,
     "outputCost": 0.16
+  },
+  {
+    "model": "deepinfra/nvidia/NVIDIA-Nemotron-3.5-Super-VL",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 8192,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "deepinfra/openai/gpt-oss-120b",

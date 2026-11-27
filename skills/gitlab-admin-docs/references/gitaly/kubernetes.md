@@ -303,7 +303,7 @@ gitlab:
 
 #### Gitaly graceful shutdown timeout
 
-By default, when terminating, Gitaly grants a 1 minute timeout for in-flight requests to complete.
+By default, when terminating, the Helm chart grants Gitaly a 25 second timeout (`gracefulRestartTimeout`) for in-flight requests to complete.
 While beneficial at first glance, this timeout:
 
 - Slows down pod rotation.
@@ -317,6 +317,9 @@ gitlab:
   gitaly:
     gracefulRestartTimeout: 1
 ```
+
+For more information about what happens when Gitaly receives a shutdown signal, see
+[Gitaly shutdown and restart behavior](configure_gitaly.md#gitaly-shutdown-and-restart-behavior).
 
 ### Monitor disk usage
 

@@ -324,6 +324,12 @@ Specifies the protocol used to establish a connection between `cloudflared` and 
 
 The `auto` value will automatically configure the `quic` protocol. If `cloudflared` is unable to establish UDP connections, it will fallback to using the `http2` protocol.
 
+Protocol selection and performance
+
+Cloudflare applies the same request concurrency and rate limits to tunnels regardless of whether `cloudflared` connects over `quic` or `http2`. Throughput differences between the two protocols stem from transport behavior (such as TCP head-of-line blocking under packet loss on `http2` versus independent streams on `quic`) and network path conditions rather than Cloudflare throttling.
+
+To inspect connection-level transport metrics, refer to [Tunnel metrics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/metrics/).
+
 ### `region`
 
 | Syntax | Environment Variable |

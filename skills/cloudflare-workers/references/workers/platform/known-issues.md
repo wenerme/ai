@@ -61,33 +61,7 @@ return await fetch(request);
 
 ## Fetch API in CNAME setup
 
-When you make a subrequest using [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from a Worker, the Cloudflare DNS resolver is used. When a zone has a [Partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), all hostnames that the Worker needs to be able to resolve require a dedicated DNS entry in Cloudflare's DNS setup. Otherwise the Fetch API call will fail with status code [530 (1016)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/).
-
-Setup with missing DNS records in Cloudflare DNS
-
-```plaintext
-// Zone in partial setup: example.com
-// DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...
-// DNS records at Cloudflare DNS: sub1.example.com
-
-"sub1.example.com/"
-// -> Can be resolved by Fetch API
-"sub2.example.com/"
-// -> Cannot be resolved by Fetch API, will lead to 530 status code
-```
-
-After adding `sub2.example.com` to Cloudflare DNS
-
-```plaintext
-// Zone in partial setup: example.com
-// DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...
-// DNS records at Cloudflare DNS: sub1.example.com, sub2.example.com
-
-"sub1.example.com/"
-// -> Can be resolved by Fetch API
-"sub2.example.com/"
-// -> Can be resolved by Fetch API
-```
+If a Worker subrequest to a hostname in its own Partial (CNAME) zone returns HTTP `530` with Cloudflare error `1016`, refer to [Fetch a hostname in a Partial (CNAME) zone](https://developers.cloudflare.com/workers/runtime-apis/fetch/#fetch-a-hostname-in-a-partial-cname-zone).
 
 ## Fetch to IP addresses
 
@@ -114,5 +88,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/known-issues/#page","headline":"Known issues","description":"Known issues and bugs to be aware of when using Workers.","url":"https://developers.cloudflare.com/workers/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/known-issues/og.png?v=a1b1f93e8b0c7037","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/known-issues/#page","headline":"Known issues","description":"Known issues and bugs to be aware of when using Workers.","url":"https://developers.cloudflare.com/workers/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/known-issues/og.png?v=a1b1f93e8b0c7037","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

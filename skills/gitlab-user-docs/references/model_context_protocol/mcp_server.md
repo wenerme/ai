@@ -182,9 +182,9 @@ Both are Ultimate features. On GitLab.com, the tools are listed if you belong to
 on the Ultimate plan, including Ultimate trials. Access to a project in that group also counts.
 On GitLab Self-Managed and GitLab Dedicated, the tools are listed if the instance license includes the feature.
 
-The `orbit` toolset has one tool for each Orbit command, for example `query_graph`.
+The `orbit` toolset has one tool for each Orbit command, for example `query_graph`, and the `get_orbit_context` tool.
 For more information, see [Orbit tools](mcp_server_tools.md#orbit-tools).
-The Orbit server sets the tool names, descriptions, and input schemas.
+The Orbit server sets the names, descriptions, and input schemas of the command tools.
 The tools are listed and run only when you meet the [Orbit requirements](https://docs.gitlab.com/orbit/).
 
 Orbit tools are listed only when you request the `orbit` toolset or set the header to `all`.

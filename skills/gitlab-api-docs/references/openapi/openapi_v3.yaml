@@ -20605,8 +20605,8 @@ paths:
       summary: Upload an avatar
       description: Uploads an avatar for the currently authenticated user. The file
         must be 200 KB or smaller. The ideal image size is 192 x 192 pixels. Supported
-        file types are `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`, `.tiff`, and
-        `.webp`. This feature was introduced in GitLab 17.0.
+        file types are `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`, `.tiff`,
+        and `.webp`. This feature was introduced in GitLab 17.0.
       tags:
       - Avatars
       responses:
@@ -45295,7 +45295,13 @@ paths:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesOrganizationsOrganization"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests
       requestBody:
         required: true
         content:
@@ -64597,10 +64603,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCiVariable"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -67552,6 +67562,10 @@ paths:
       responses:
         '204':
           description: Resource deleted
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
           description: Not Found
         '400':
@@ -77198,10 +77212,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCiVariable"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -79410,10 +79428,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCiSecureFile"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -81639,7 +81661,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiJob"
+                "$ref": "#/components/schemas/APIEntitiesCiAllowedAgents"
         '400':
           description: Bad request
         '401':
@@ -87902,7 +87924,11 @@ paths:
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
       parameters:
       - name: page
         required: false
@@ -90636,6 +90662,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -97122,6 +97149,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -102624,6 +102652,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -103388,6 +103417,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -104169,6 +104199,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -104937,6 +104968,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -106055,6 +106087,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -106241,6 +106274,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -106723,6 +106757,7 @@ components:
           type: string
           description: Description of the project.
           example: desc
+          nullable: true
         name:
           type: string
           description: Name of the project.
@@ -111477,7 +111512,10 @@ components:
         command:
           type: string
         variables:
-          type: string
+          type: array
+          items:
+            type: object
+          nullable: true
     APIEntitiesCiJobRequestArtifacts:
       type: object
       properties:
@@ -111531,6 +111569,24 @@ components:
           type: string
         password:
           type: string
+    APIEntitiesCiJobRequestDependency:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the job.
+          format: int64
+          example: 1
+        name:
+          type: string
+          description: Name of the job.
+          example: build
+        token:
+          type: string
+          description: Token of the running job, to download the artifacts.
+          example: glcbt-64_abc
+        artifacts_file:
+          "$ref": "#/components/schemas/APIEntitiesCiJobArtifactFile"
     APIEntitiesCiJobRequestResponse:
       type: object
       properties:
@@ -111579,7 +111635,9 @@ components:
         features:
           type: string
         dependencies:
-          type: string
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestDependency"
         run:
           type: string
         suspend_options:
@@ -111686,6 +111744,80 @@ components:
             ci_job_token_scope_enabled:
               type: string
               example: false
+    APIEntitiesClustersAgentsAuthorizationsCiAccess:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        config_project:
+          "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
+        configuration:
+          type: object
+    APIEntitiesCiAllowedAgents:
+      type: object
+      properties:
+        allowed_agents:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesClustersAgentsAuthorizationsCiAccess"
+        job:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+        pipeline:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+            groups:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 1
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+            username:
+              type: string
+              example: root
+            roles_in_project:
+              type: array
+              example:
+              - guest
+              - developer
+              items:
+                type: string
+        environment:
+          type: object
+          properties:
+            tier:
+              type: string
+              example: production
+            slug:
+              type: string
+              example: production
     APIEntitiesAiSettings:
       type: object
       properties:
@@ -128543,8 +128675,8 @@ components:
           type: string
           format: binary
           description: 'Avatar image for project. The file must be 200 KB or smaller,
-            and one of these types: `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`,
-            `.tiff`, or `.webp`.'
+            and one of these types: `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`,
+            `.png`, `.tiff`, or `.webp`.'
           nullable: true
         printing_merge_request_link_enabled:
           type: boolean
@@ -129168,8 +129300,8 @@ components:
           type: string
           format: binary
           description: 'Avatar image for project. The file must be 200 KB or smaller,
-            and one of these types: `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`,
-            `.tiff`, or `.webp`.'
+            and one of these types: `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`,
+            `.png`, `.tiff`, or `.webp`.'
           nullable: true
         printing_merge_request_link_enabled:
           type: boolean
@@ -129794,8 +129926,8 @@ components:
           type: string
           format: binary
           description: 'Avatar image for project. The file must be 200 KB or smaller,
-            and one of these types: `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`,
-            `.tiff`, or `.webp`.'
+            and one of these types: `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`,
+            `.png`, `.tiff`, or `.webp`.'
           nullable: true
         printing_merge_request_link_enabled:
           type: boolean
@@ -130969,8 +131101,8 @@ components:
               type: string
               format: binary
               description: 'Avatar image for project. The file must be 200 KB or smaller,
-                and one of these types: `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`,
-                `.tiff`, or `.webp`.'
+                and one of these types: `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`,
+                `.jpg`, `.png`, `.tiff`, or `.webp`.'
               nullable: true
             printing_merge_request_link_enabled:
               type: boolean
@@ -131650,8 +131782,8 @@ components:
               type: string
               format: binary
               description: 'Avatar image for project. The file must be 200 KB or smaller,
-                and one of these types: `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`,
-                `.tiff`, or `.webp`.'
+                and one of these types: `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`,
+                `.jpg`, `.png`, `.tiff`, or `.webp`.'
               nullable: true
             printing_merge_request_link_enabled:
               type: boolean
@@ -132354,8 +132486,8 @@ components:
               type: string
               format: binary
               description: 'Avatar image for project. The file must be 200 KB or smaller,
-                and one of these types: `.bmp`, `.gif`, `.ico`, `.jpeg`, `.jpg`, `.png`,
-                `.tiff`, or `.webp`.'
+                and one of these types: `.avif`, `.bmp`, `.gif`, `.ico`, `.jpeg`,
+                `.jpg`, `.png`, `.tiff`, or `.webp`.'
               nullable: true
             printing_merge_request_link_enabled:
               type: boolean

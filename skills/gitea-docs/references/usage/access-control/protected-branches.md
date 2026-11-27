@@ -93,6 +93,35 @@ Enable status checks to require one or more CI jobs to succeed before merging:
 
 When the option is active, Gitea requires at least one context that matches each pattern to report success on the pull request head commit. An empty list is not allowed; use `*` to require the latest commit to be successful regardless of the context name.
 
+## Merge queue
+
+**Require merge queue** sends every merge into matching branches through a queue, which tests each pull request together with the ones ahead of it before merging.
+
+- **Merge when ready** adds the pull request to the queue, right away or once all requirements are met.
+- The queue tests it on a `gitea-merge-queue/<base>/pr-<number>-<sha>` branch and merges it when the required checks pass. Pull requests that fail, time out or conflict are removed.
+- Queued pull requests can't be updated or retargeted.
+- Only users who can bypass branch protection can push to the branch directly or merge with **Merge without waiting for requirements to be met (bypass rules)**.
+
+The queue page at `/{owner}/{repo}/queue/{branch}` lists the queued pull requests, and lets administrators move one to the front or clear the queue.
+
+Run the required checks on `merge_group`. A required Gitea Actions check like `ci / test (pull_request)` is satisfied in the queue by the same job's `merge_group` run:
+
+```yaml
+on:
+  pull_request:
+  merge_group:
+```
+
+Exclude `gitea-merge-queue/**` from push workflows to avoid duplicate runs. The prefix can be changed with [`MERGE_QUEUE_BRANCH_PREFIX`](../../administration/config-cheat-sheet.md#repository---pull-request-repositorypull-request).
+
+The queue settings:
+
+- **Merge method** for all queued pull requests.
+- **Build concurrency** limits how many pull requests are tested at once, `0` pauses the queue.
+- **Minimum group size** and **Maximum group size** set how many pull requests merge together. The queue waits up to **Wait time to meet minimum group size** for enough of them.
+- **Require all queue entries to pass required checks**: when disabled, only the last commit of a group must pass.
+- **Status check timeout** counts checks without a result after this time as failed.
+
 ## Signed commits and other safeguards
 
 - **Require signed commits** rejects pushes that contain unsigned or unverifiable commits. The check runs inside the server hook before the push is accepted.

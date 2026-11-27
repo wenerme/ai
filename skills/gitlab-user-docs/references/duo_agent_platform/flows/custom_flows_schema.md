@@ -24,17 +24,9 @@ For more information, see [restricted fields](#restricted-fields).
 The YAML configuration also has a maximum size. For more information, see
 [configuration size limits](../ai_catalog.md#configuration-size-limits).
 
-## Goal values by trigger type
+## Goal values
 
-When you design a custom flow, the goal value depends on which
-event type starts the flow. A flow can have multiple event
-types configured, and each event type passes a different value
-as `context:goal`. Your flow must handle the goal format for
-each event type you configure.
-
-For more information, see
-[event types](../automations/_index.md#event-types).
-
+A custom flow receives a goal as `context:goal` when it runs.
 Components access the goal through the `inputs` field:
 
 ```yaml
@@ -46,6 +38,56 @@ components:
       - from: "context:project_id"
         as: "project_id"
       - "context:goal"
+```
+
+When a flow starts from a slash command in
+[GitLab Duo Agentic Chat](../../gitlab_duo_chat/agentic_chat.md#trigger-a-flow-with-a-slash-command),
+the goal is the text after the command.
+If no text follows the command, the goal is the description of the flow.
+
+When an [automation](../automations/_index.md) runs a flow, the goal format depends on the automation's schedule or event.
+Your flow must handle each format.
+
+If the automation has instructions, GitLab changes the goal in two ways:
+
+- It adds the instructions to the start of the goal.
+- For every event except a mention, it replaces the IID or webhook payload with a context block.
+
+```plaintext
+<trigger_instructions>
+<instructions>
+</trigger_instructions>
+
+Context:
+<resource_type>: <resource_web_url>
+```
+
+For merge request and work item events, the context block also includes the action.
+
+If the flow doesn't pass `context:goal` to a component, it doesn't use the instructions.
+
+### Scheduled runs
+
+- Status: Beta
+
+- Project URL as the goal [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257218) in GitLab 19.5.
+- Schedule description [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262841) from the goal in GitLab 19.6.
+
+When a [scheduled automation](../automations/_index.md#scheduled-automations) runs the flow,
+the project URL is passed as the goal:
+
+```plaintext
+Context:
+Project: <project_web_url>
+```
+
+The resource type is always `Project`.
+
+For example, if a scheduled automation runs the flow in the `my-group/my-project` project, the goal is:
+
+```plaintext
+Context:
+Project: https://gitlab.example.com/my-group/my-project
 ```
 
 ### Mention events

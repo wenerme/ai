@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 56067 files, 572 MiB total
+> 125 skills, 56072 files, 572 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1434,7 +1434,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 922 | 9.8 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 967 | 21 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 10318 | 58 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 10323 | 58 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1694 | 11 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
@@ -1451,13 +1451,13 @@ Use when implementing React state management with Zustand, including context-sco
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 91 | 828 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 104 | 625 KiB |
-| [gitea-docs](./skills/gitea-docs/SKILL.md) | 104 | 722 KiB |
+| [gitea-docs](./skills/gitea-docs/SKILL.md) | 104 | 725 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 374 | 5.0 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 260 | 15 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 176 | 2.1 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 925 | 9.2 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 352 | 700 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 352 | 702 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 621 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 108 | 3.4 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 646 | 7.1 MiB |
@@ -1472,7 +1472,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
 | [linear-docs](./skills/linear-docs/SKILL.md) | 137 | 2.0 MiB |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
-| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 57 | 591 KiB |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 57 | 593 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 193 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 14 | 102 KiB |
@@ -1516,7 +1516,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 540 | 5.3 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 59 | 563 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 231 | 1.5 MiB |
-| [vllm-docs](./skills/vllm-docs/SKILL.md) | 191 | 2.0 MiB |
+| [vllm-docs](./skills/vllm-docs/SKILL.md) | 191 | 2.1 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 57 | 318 KiB |
 | [waku-docs](./skills/waku-docs/SKILL.md) | 40 | 320 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |

@@ -214,18 +214,26 @@ To run the resulting Wasm binary on Workers, `workers-rs` includes a build tool 
 
 `worker-build` is invoked by default in the template project using a custom build command specified in the `wrangler.toml` file.
 
-### Binary Size (`wasm-opt`)
+### Binary size (`wasm-opt`)
 
-Unoptimized Rust Wasm binaries can be large and may exceed Worker bundle size limits or experience long startup times. The template project pre-configures several useful size optimizations in your `Cargo.toml` file:
+Unoptimized Rust Wasm binaries can be large and may exceed Worker bundle size limits or experience long startup times. To reduce binary size, add these settings to the release profile in your `Cargo.toml` file:
 
 ```toml
 [profile.release]
 lto = true
-strip = true
 codegen-units = 1
 ```
 
-Finally, `worker-bundle` automatically invokes [`wasm-opt` ↗︎](https://github.com/brson/wasm-opt-rs) to further optimize binary size before upload.
+Do not set `strip = true`. The linker removes the `target_features` custom section, which `wasm-bindgen` uses to detect enabled Wasm features. For example, `wasm-bindgen` 0.2.125 could fail with `externref table required for catch wrappers` when this section was missing.
+
+For release builds targeting `wasm32-unknown-unknown`, `worker-build` runs Binaryen's [`wasm-opt` ↗︎](https://github.com/WebAssembly/binaryen) to optimize the binary. By default, it keeps Wasm function names so CPU profiles and stack traces stay readable. With `worker-build` 0.9.0 or later, use `wasm-opt = ["-O"]` to remove function names, or specify your own `wasm-opt` arguments in `Cargo.toml`:
+
+```toml
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-O"]
+```
+
+To skip this optimization step, set `wasm-opt = false` in the same section or pass `--no-opt` to `worker-build`. Neither option controls the optimizer that Emscripten runs during linking.
 
 ## Related resources
 
@@ -240,5 +248,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/rust/#page","headline":"Rust","description":"Write Workers in 100% Rust using the workers-rs crate","url":"https://developers.cloudflare.com/workers/languages/rust/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/languages/rust/og.png?v=b1c2c49819ce8228","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/rust/#page","headline":"Rust","description":"Write Workers in 100% Rust using the workers-rs crate","url":"https://developers.cloudflare.com/workers/languages/rust/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/languages/rust/og.png?v=b1c2c49819ce8228","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

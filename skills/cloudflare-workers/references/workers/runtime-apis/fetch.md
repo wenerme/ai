@@ -118,6 +118,20 @@ export default {
 };
 ```
 
+## Fetch a hostname in a Partial (CNAME) zone
+
+With default routing, a global `fetch()` request to a hostname in the Worker's own [Partial (CNAME) zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) can return HTTP `530` with [Cloudflare error `1016`](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/#workers). This can happen when the hostname resolves publicly through your authoritative DNS provider but has no matching record in Cloudflare DNS.
+
+If you are calling another Worker in the same Cloudflare account, use an [HTTP service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/) and call `env.BACKEND.fetch(request)`. The binding selects the target Worker, so the call does not require a DNS record or the `global_fetch_strictly_public` flag.
+
+To keep using global `fetch()`, [add a matching DNS record in Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) and set its proxy status to **DNS only**. Leave the record at your authoritative DNS provider unchanged. If the authoritative record's target changes, update the Cloudflare record to match.
+
+If you cannot add the record and the hostname resolves publicly, enable [`global_fetch_strictly_public`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public) on the Worker that makes the network request. For Workers for Platforms, set the flag on the user Worker, or on the [Outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) if it forwards the request using its own global `fetch()`.
+
+Caution
+
+This flag applies to all global `fetch()` calls in the Worker, not just requests to the affected hostname. It does not change requests made through bindings. Requests to proxied hostnames in the same zone can be subject to Cloudflare rules or loop back to the same Worker. Test your other same-zone requests on a deployed Worker before enabling the flag in production. The flag has no effect in local `workerd`.
+
 ## Related resources
 
 - [Example: use `fetch` to respond with another site](https://developers.cloudflare.com/workers/examples/respond-with-another-site/)
@@ -126,7 +140,6 @@ export default {
 - [Example: cache using Fetch](https://developers.cloudflare.com/workers/examples/cache-using-fetch/)
 - Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 - [Error 526](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/#error-526-in-the-workers-context)
-- [Fetch API in a partial setup](https://developers.cloudflare.com/workers/platform/known-issues/#fetch-api-in-cname-setup)
 
 Was this helpful?
 
@@ -137,5 +150,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/fetch/og.png?v=1475ba548190f898","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/fetch/og.png?v=1475ba548190f898","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

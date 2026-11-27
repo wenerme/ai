@@ -175,6 +175,7 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
   - `first-commit`: Uses the oldest commit's summary as the title. If there are multiple commits, still uses the first commit's message.
   - `auto`: Uses the commit's summary when the PR contains a single commit; when there are multiple commits, converts the branch name into a human-readable title by normalizing separators and casing.
   - `branch-name`: Always uses the PR's branch name.
+- `MERGE_QUEUE_BRANCH_PREFIX`: **gitea-merge-queue/**: Prefix of the temporary branches merge queues test pull requests on, GitHub uses `gh-readonly-queue/`.
 
 ### Repository - Issue (`repository.issue`)
 
@@ -635,7 +636,6 @@ And the following unique queues:
   - spec - use one or more special characters as ``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~``
   - off - do not check password complexity
 - `PASSWORD_CHECK_PWN`: **false**: Check [HaveIBeenPwned](https://haveibeenpwned.com/Passwords) to see if a password has been exposed.
-- `SUCCESSFUL_TOKENS_CACHE_SIZE`: **20**: Cache successful token hashes. API tokens are stored in the DB as pbkdf2 hashes however, this means that there is a potentially significant hashing load when there are multiple API operations. This cache will store the successfully hashed tokens in a LRU cache as a balance between performance and security.
 - `DISABLE_QUERY_AUTH_TOKEN`: **false**: Reject API tokens sent in URL query string (Accept Header-based API tokens only). This setting will default to `true` in Gitea 1.23 and be deprecated in Gitea 1.24.
 - `TWO_FACTOR_AUTH`: **_empty_**: set to enforced to enforce two factor authentication. Only available in Gitea 1.24 and later.
 - `EGRESS_MODE`: **lax**: Egress mode toggles between strictness of outgoing requests:
@@ -942,7 +942,7 @@ Release attachment has its own config options in `[repository.release]` section.
 - `ALLOWED_TYPES`: **.avif,.cpuprofile,.csv,.dmp,.docx,.fodg,.fodp,.fods,.fodt,.gif,.gz,.jpeg,.jpg,.json,.jsonc,.log,.md,.mov,.mp4,.odf,.odg,.odp,.ods,.odt,.patch,.pdf,.png,.pptx,.svg,.tgz,.txt,.webm,.webp,.xls,.xlsx,.zip**: Comma-separated list of allowed issue/pull-request attachment file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
 - `MAX_SIZE`: **100**: Max size of each issue/pull-request attachment file in MB.
 - `MAX_FILES`: **5**: Maximum number of issue/pull-request attachments that can be uploaded at once.
-- `STORAGE_TYPE`: **local**: Storage type for attachments, it could be `<blank>`, `local`, `minio`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
+- `STORAGE_TYPE`: **local**: Storage type for attachments, it could be `<blank>`, `local`, `s3`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
 
   For `STORAGE_TYPE = ` or there is no this configuration item, all storages will be derived from `[storage]` if configured or defult values.
 
@@ -950,14 +950,14 @@ Release attachment has its own config options in `[repository.release]` section.
 
   - `PATH`: **attachments**: Path to store attachments only available when STORAGE_TYPE is `local`, relative paths will be resolved to `{AppDataPath}/{attachment.PATH}`.
 
-  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#minio-storage-configuration-storage_minio), you can override some configurations like below.
+  For `STORAGE_TYPE = s3`, the configurations can be found at [S3 Storage Configuration](#s3-storage-configuration-storages3), you can override some configurations like below.
 
-  - `MINIO_BASE_PATH`: **attachments/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
+  - `S3_BASE_PATH`: **attachments/**: S3 base path on the bucket only available when STORAGE_TYPE is `s3`
 
   For `STORAGE_TYPE = xxx`, the configuration will be derived from `[storage.xxx]` and some configurations can be overrided list below.
 
   - `PATH`: the same as above
-  - `MINIO_BASE_PATH`: the same as above
+  - `S3_BASE_PATH`: the same as above
 
 ## Log (`log`)
 
@@ -1037,6 +1037,15 @@ Release attachment has its own config options in `[repository.release]` section.
 - `NOTICE_ON_SUCCESS`: **false**: Whether to emit notice on successful execution too
 - `SCHEDULE`: **@midnight**: Cron syntax for scheduling repository archive cleanup, e.g. `@every 1h`.
 - `OLDER_THAN`: **24h**: Archives created more than `OLDER_THAN` ago are subject to deletion, e.g. `12h`.
+
+#### Cron - Check merge queues (`cron.check_merge_queues`)
+
+Enforce merge queue check timeouts and minimum group wait times.
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Whether to emit notice on successful execution too
+- `SCHEDULE`: **@every 1m**: Cron syntax for scheduling the merge queue check.
 
 #### Cron - Update Mirrors (`cron.update_mirrors`)
 
@@ -1483,9 +1492,9 @@ These lists are enforced on direct connections only. When a proxy is configured 
 
 Storage configuration for lfs data. It will be derived from default `[storage]` or
 `[storage.xxx]` when set `STORAGE_TYPE` to `xxx`. When derived, the default of `PATH`
-is `data/lfs` and the default of `MINIO_BASE_PATH` is `lfs/`.
+is `data/lfs` and the default of `S3_BASE_PATH` is `lfs/`.
 
-- `STORAGE_TYPE`: **local**: Storage type for lfs, it could be `<blank>`, `local`, `minio`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
+- `STORAGE_TYPE`: **local**: Storage type for lfs, it could be `<blank>`, `local`, `s3`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
 
   For `STORAGE_TYPE = ` or there is no this configuration item, all storages will be derived from `[storage]` if configured or defult values.
 
@@ -1493,14 +1502,14 @@ is `data/lfs` and the default of `MINIO_BASE_PATH` is `lfs/`.
 
 - `PATH`: **./data/lfs**: Where to store LFS files, only available when `STORAGE_TYPE` is `local`. If not set it fall back to deprecated LFS_CONTENT_PATH value in [server] section.
 
-  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#minio-storage-configuration-storage_minio), you can also define configurations like below to override derived or default values.
+  For `STORAGE_TYPE = s3`, the configurations can be found at [S3 Storage Configuration](#s3-storage-configuration-storages3), you can also define configurations like below to override derived or default values.
 
-  - `MINIO_BASE_PATH`: **attachments/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
+  - `S3_BASE_PATH`: **lfs/**: override the S3 base path if storage type is s3
 
   For `STORAGE_TYPE = xxx`, the configuration will be derived from `[storage.xxx]` and some configurations can be overrided list below.
 
 - `PATH`: the same as above
-- `MINIO_BASE_PATH`: the same as above
+- `S3_BASE_PATH`: the same as above
 
 ## LFS Client (`lfs_client`)
 
@@ -1510,59 +1519,64 @@ is `data/lfs` and the default of `MINIO_BASE_PATH` is `lfs/`.
 ## Storage (`storage`)
 
 Default storage configuration for `attachments`, `lfs`, `avatars`, `repo-avatars`, `repo-archive`, `packages`, `actions_log`, `actions_artifact`. It's recommended to only configure this section and let other section derive from this one if all storages
-are under the same parent directory or minio bucket.
+are under the same parent directory or S3 bucket.
 
-- `STORAGE_TYPE`: **local**: Storage type, `local` for local disk, `minio` for s3 compatible object storage service, `azureblob` for azure blob storage service.
+- `STORAGE_TYPE`: **local**: Storage type, `local` for local disk, `s3` for S3-compatible object storage service, `azureblob` for azure blob storage service.
 
-### Minio Storage Configuration (`storage_minio`)
+### S3 Storage Configuration (`storage.s3`)
 
-- `SERVE_DIRECT`: **false**: Allows the storage driver to redirect to authenticated URLs to serve files directly. Currently, only Minio/S3 is supported via signed URLs, local does nothing.
-- `MINIO_ENDPOINT`: **localhost:9000**: Minio endpoint to connect only available when `STORAGE_TYPE` is `minio`
-- `MINIO_ACCESS_KEY_ID`: Minio accessKeyID to connect only available when STORAGE_TYPE is `minio`. If not provided and STORAGE_TYPE is `minio`, will search for credentials in known environment variables (MINIO_ACCESS_KEY_ID, AWS_ACCESS_KEY_ID), credentials files (~/.mc/config.json, ~/.aws/credentials), and EC2 instance metadata.
-- `MINIO_SECRET_ACCESS_KEY`: Minio secretAccessKey to connect only available when `STORAGE_TYPE is` `minio`
-- `MINIO_IAM_ENDPOINT`: Preferred IAM Endpoint to override Minio's default IAM Endpoint resolution only available when STORAGE_TYPE is `minio`. If not provided and STORAGE_TYPE is `minio`, will search for and derive endpoint from known environment variables (AWS_CONTAINER_AUTHORIZATION_TOKEN, AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE, AWS_CONTAINER_CREDENTIALS_RELATIVE_URI, AWS_CONTAINER_CREDENTIALS_FULL_URI, AWS_WEB_IDENTITY_TOKEN_FILE, AWS_ROLE_ARN, AWS_ROLE_SESSION_NAME, AWS_REGION), or the DefaultIAMRoleEndpoint if not provided otherwise.
-- `MINIO_BUCKET`: **gitea**: Minio bucket to store the data only available when `STORAGE_TYPE` is `minio`
-- `MINIO_LOCATION`: **us-east-1**: Minio location to create bucket only available when `STORAGE_TYPE` is `minio`
-- `MINIO_USE_SSL`: **false**: Minio enabled ssl only available when `STORAGE_TYPE` is `minio`
-- `MINIO_INSECURE_SKIP_VERIFY`: **false**: Minio skip SSL verification available when STORAGE_TYPE is `minio`
-- `MINIO_BUCKET_LOOKUP_TYPE`: **auto**: Minio bucket lookup method defaults to auto mode; set it to `dns` for virtual host style or `path` for path style, only available when STORAGE_TYPE is `minio`
+Gitea still accepts the deprecated `MINIO_*` keys, `STORAGE_TYPE = minio` and `[storage.minio]`.
 
-The recommended storage configuration for minio like below:
+- `SERVE_DIRECT`: **false**: Allows the storage driver to redirect to authenticated URLs to serve files directly. Currently, only `s3` and `azureblob` is supported.
+- `S3_ENDPOINT`: **localhost:9000**: S3 endpoint to connect only available when STORAGE_TYPE is `s3`
+- `S3_ACCESS_KEY_ID`: **_empty_**: S3 access key ID to connect only available when STORAGE_TYPE is `s3`. If not provided and STORAGE_TYPE is `s3`, will search for credentials in known environment variables (AWS_ACCESS_KEY_ID, MINIO_ROOT_USER), credentials files (~/.aws/credentials, ~/.mc/config.json), and EC2 instance metadata.
+- `S3_SECRET_ACCESS_KEY`: **_empty_**: S3 secret access key to connect only available when STORAGE_TYPE is `s3`
+- `S3_IAM_ENDPOINT`: **_empty_**: Preferred IAM Endpoint to override the underlying S3 client's default IAM Endpoint resolution only available when STORAGE_TYPE is `s3`. If not provided and STORAGE_TYPE is `s3`, will search for and derive endpoint from known environment variables (AWS_CONTAINER_AUTHORIZATION_TOKEN, AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE, AWS_CONTAINER_CREDENTIALS_RELATIVE_URI, AWS_CONTAINER_CREDENTIALS_FULL_URI, AWS_WEB_IDENTITY_TOKEN_FILE, AWS_ROLE_ARN, AWS_ROLE_SESSION_NAME, AWS_REGION), or the DefaultIAMRoleEndpoint if not provided otherwise.
+- `S3_BUCKET`: **gitea**: S3 bucket to store the attachments only available when STORAGE_TYPE is `s3`
+- `S3_LOCATION`: **us-east-1**: S3 location to create bucket only available when STORAGE_TYPE is `s3`
+- `S3_USE_SSL`: **false**: S3 enabled ssl only available when STORAGE_TYPE is `s3`
+- `S3_INSECURE_SKIP_VERIFY`: **false**: S3 skip SSL verification available when STORAGE_TYPE is `s3`
+- `S3_CHECKSUM_ALGORITHM`: **default**: S3 checksum algorithm: default (for MinIO or AWS S3) or md5 (for Cloudflare or Backblaze)
+- `S3_BUCKET_LOOKUP_TYPE`: **auto**: S3 bucket lookup method defaults to auto mode; set it to `dns` for virtual host style or `path` for path style, only available when STORAGE_TYPE is `s3`
+
+The following example sets S3 as the default storage.
 
 ```ini
 [storage]
-STORAGE_TYPE = minio
-; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
-MINIO_ENDPOINT = localhost:9000
-; Minio accessKeyID to connect only available when STORAGE_TYPE is `minio`.
-; If not provided and STORAGE_TYPE is `minio`, will search for credentials in known
-; environment variables (MINIO_ACCESS_KEY_ID, AWS_ACCESS_KEY_ID), credentials files
-; (~/.mc/config.json, ~/.aws/credentials), and EC2 instance metadata.
-MINIO_ACCESS_KEY_ID =
-; Minio secretAccessKey to connect only available when STORAGE_TYPE is `minio`
-MINIO_SECRET_ACCESS_KEY =
-; Preferred IAM Endpoint to override Minio's default IAM Endpoint resolution only available when STORAGE_TYPE is `minio`.
-; If not provided and STORAGE_TYPE is `minio`, will search for and derive endpoint from known environment variables
+STORAGE_TYPE = s3
+; S3 endpoint to connect only available when STORAGE_TYPE is `s3`
+S3_ENDPOINT = localhost:9000
+; S3 access key ID to connect only available when STORAGE_TYPE is `s3`.
+; If not provided and STORAGE_TYPE is `s3`, will search for credentials in known
+; environment variables (AWS_ACCESS_KEY_ID, MINIO_ROOT_USER), credentials files
+; (~/.aws/credentials, ~/.mc/config.json), and EC2 instance metadata.
+S3_ACCESS_KEY_ID =
+; S3 secret access key to connect only available when STORAGE_TYPE is `s3`
+S3_SECRET_ACCESS_KEY =
+; Preferred IAM Endpoint to override the underlying S3 client's default IAM Endpoint resolution only available when STORAGE_TYPE is `s3`.
+; If not provided and STORAGE_TYPE is `s3`, will search for and derive endpoint from known environment variables
 ; (AWS_CONTAINER_AUTHORIZATION_TOKEN, AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE, AWS_CONTAINER_CREDENTIALS_RELATIVE_URI,
-; AWS_CONTAINER_CREDENTIALS_FULL_URI, AWS_WEB_IDENTITY_TOKEN_FILE, AWS_ROLE_ARN, AWS_ROLE_SESSION_NAME, AWS_REGION), or
-; the DefaultIAMRoleEndpoint if not provided otherwise.
-MINIO_IAM_ENDPOINT =
-; Minio bucket to store the attachments only available when STORAGE_TYPE is `minio`
-MINIO_BUCKET = gitea
-; Minio location to create bucket only available when STORAGE_TYPE is `minio`
-MINIO_LOCATION = us-east-1
-; Minio enabled ssl only available when STORAGE_TYPE is `minio`
-MINIO_USE_SSL = false
-; Minio skip SSL verification available when STORAGE_TYPE is `minio`
-MINIO_INSECURE_SKIP_VERIFY = false
+; AWS_CONTAINER_CREDENTIALS_FULL_URI, AWS_WEB_IDENTITY_TOKEN_FILE, AWS_ROLE_ARN, AWS_ROLE_SESSION_NAME, AWS_REGION),
+; or the DefaultIAMRoleEndpoint if not provided otherwise.
+S3_IAM_ENDPOINT =
+; S3 bucket to store the attachments only available when STORAGE_TYPE is `s3`
+S3_BUCKET = gitea
+; S3 location to create bucket only available when STORAGE_TYPE is `s3`
+S3_LOCATION = us-east-1
+; S3 enabled ssl only available when STORAGE_TYPE is `s3`
+S3_USE_SSL = false
+; S3 skip SSL verification available when STORAGE_TYPE is `s3`
+S3_INSECURE_SKIP_VERIFY = false
 SERVE_DIRECT = true
-; Minio bucket lookup method defaults to auto mode; set it to `dns` for virtual host style or `path` for path style, only available when STORAGE_TYPE is `minio`
-MINIO_BUCKET_LOOKUP_TYPE = auto
+; S3 checksum algorithm: default (for MinIO or AWS S3) or md5 (for Cloudflare or Backblaze)
+S3_CHECKSUM_ALGORITHM = default
+; S3 bucket lookup method defaults to auto mode; set it to `dns` for virtual host style or `path` for path style, only available when STORAGE_TYPE is `s3`
+S3_BUCKET_LOOKUP_TYPE = auto
 ```
 
 ### Azure Blob Storage Configuration (`storage_azureblob`)
 
-- `SERVE_DIRECT`: **false**: Allows the storage driver to redirect to authenticated URLs to serve files directly. Currently, only Minio/S3 is supported via signed URLs, local does nothing.
+- `SERVE_DIRECT`: **false**: Allows the storage driver to redirect to authenticated URLs to serve files directly. Currently, only `s3` and `azureblob` is supported.
 - `AZURE_BLOB_ENDPOINT`: **_empty_**: Azure Blob endpoint to connect only available when STORAGE_TYPE is `azureblob`,
  e.g. https://accountname.blob.core.windows.net or http://127.0.0.1:10000/devstoreaccount1
 - `AZURE_BLOB_ACCOUNT_NAME`: **_empty_**: Azure Blob account name to connect only available when STORAGE_TYPE is `azureblob`
@@ -1590,53 +1604,55 @@ And bucket, basepath or `SERVE_DIRECT` could be special or overridden, if you wa
 
 ```ini
 [storage.actions_log]
-MINIO_BUCKET = gitea_actions_log
+S3_BUCKET = gitea_actions_log
 SERVE_DIRECT = true
-MINIO_BASE_PATH = my_actions_log/ ; default is actions_log/ if blank
+S3_BASE_PATH = my_actions_log/ ; default is actions_log/ if blank
 ```
 
 If you want to customerize a different storage for `lfs` if above default storage defined
 
 ```ini
 [lfs]
-STORAGE_TYPE = my_minio
+STORAGE_TYPE = my_s3
 
-[storage.my_minio]
-STORAGE_TYPE = minio
-; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
-MINIO_ENDPOINT = localhost:9000
-; Minio accessKeyID to connect only available when STORAGE_TYPE is `minio`.
-; If not provided and STORAGE_TYPE is `minio`, will search for credentials in known
-; environment variables (MINIO_ACCESS_KEY_ID, AWS_ACCESS_KEY_ID), credentials files
-; (~/.mc/config.json, ~/.aws/credentials), and EC2 instance metadata.
-MINIO_ACCESS_KEY_ID =
-; Minio secretAccessKey to connect only available when STORAGE_TYPE is `minio`
-MINIO_SECRET_ACCESS_KEY =
-; Preferred IAM Endpoint to override Minio's default IAM Endpoint resolution only available when STORAGE_TYPE is `minio`.
-; If not provided and STORAGE_TYPE is `minio`, will search for and derive endpoint from known environment variables
+[storage.my_s3]
+STORAGE_TYPE = s3
+; S3 endpoint to connect only available when STORAGE_TYPE is `s3`
+S3_ENDPOINT = localhost:9000
+; S3 access key ID to connect only available when STORAGE_TYPE is `s3`.
+; If not provided and STORAGE_TYPE is `s3`, will search for credentials in known
+; environment variables (AWS_ACCESS_KEY_ID, MINIO_ROOT_USER), credentials files
+; (~/.aws/credentials, ~/.mc/config.json), and EC2 instance metadata.
+S3_ACCESS_KEY_ID =
+; S3 secret access key to connect only available when STORAGE_TYPE is `s3`
+S3_SECRET_ACCESS_KEY =
+; Preferred IAM Endpoint to override the underlying S3 client's default IAM Endpoint resolution only available when STORAGE_TYPE is `s3`.
+; If not provided and STORAGE_TYPE is `s3`, will search for and derive endpoint from known environment variables
 ; (AWS_CONTAINER_AUTHORIZATION_TOKEN, AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE, AWS_CONTAINER_CREDENTIALS_RELATIVE_URI,
-; AWS_CONTAINER_CREDENTIALS_FULL_URI, AWS_WEB_IDENTITY_TOKEN_FILE, AWS_ROLE_ARN, AWS_ROLE_SESSION_NAME, AWS_REGION), or
-; the DefaultIAMRoleEndpoint if not provided otherwise.
-MINIO_IAM_ENDPOINT =
-; Minio bucket to store the attachments only available when STORAGE_TYPE is `minio`
-MINIO_BUCKET = gitea
-; Minio location to create bucket only available when STORAGE_TYPE is `minio`
-MINIO_LOCATION = us-east-1
-; Minio enabled ssl only available when STORAGE_TYPE is `minio`
-MINIO_USE_SSL = false
-; Minio skip SSL verification available when STORAGE_TYPE is `minio`
-MINIO_INSECURE_SKIP_VERIFY = false
-; Minio bucket lookup method defaults to auto mode; set it to `dns` for virtual host style or `path` for path style, only available when STORAGE_TYPE is `minio`
-MINIO_BUCKET_LOOKUP_TYPE = auto
+; AWS_CONTAINER_CREDENTIALS_FULL_URI, AWS_WEB_IDENTITY_TOKEN_FILE, AWS_ROLE_ARN, AWS_ROLE_SESSION_NAME, AWS_REGION),
+; or the DefaultIAMRoleEndpoint if not provided otherwise.
+S3_IAM_ENDPOINT =
+; S3 bucket to store the attachments only available when STORAGE_TYPE is `s3`
+S3_BUCKET = gitea
+; S3 location to create bucket only available when STORAGE_TYPE is `s3`
+S3_LOCATION = us-east-1
+; S3 enabled ssl only available when STORAGE_TYPE is `s3`
+S3_USE_SSL = false
+; S3 skip SSL verification available when STORAGE_TYPE is `s3`
+S3_INSECURE_SKIP_VERIFY = false
+; S3 checksum algorithm: default (for MinIO or AWS S3) or md5 (for Cloudflare or Backblaze)
+S3_CHECKSUM_ALGORITHM = default
+; S3 bucket lookup method defaults to auto mode; set it to `dns` for virtual host style or `path` for path style, only available when STORAGE_TYPE is `s3`
+S3_BUCKET_LOOKUP_TYPE = auto
 ```
 
 ## Repository Archive Storage (`storage.repo-archive`)
 
 Configuration for repository archive storage. It will inherit from default `[storage]` or
 `[storage.xxx]` when set `STORAGE_TYPE` to `xxx`. The default of `PATH`
-is `data/repo-archive` and the default of `MINIO_BASE_PATH` is `repo-archive/`.
+is `data/repo-archive` and the default of `S3_BASE_PATH` is `repo-archive/`.
 
-- `STORAGE_TYPE`: **local**: Storage type for repo archive, it could be `<blank>`, `local`, `minio`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
+- `STORAGE_TYPE`: **local**: Storage type for repo archive, it could be `<blank>`, `local`, `s3`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
 
   For `STORAGE_TYPE = ` or there is no this configuration item, all storages will be derived from `[storage]` if configured or defult values.
 
@@ -1644,19 +1660,19 @@ is `data/repo-archive` and the default of `MINIO_BASE_PATH` is `repo-archive/`.
 
   - `PATH`: **./data/repo-archive**: Where to store archive files, only available when `STORAGE_TYPE` is `local`.
 
-  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#minio-storage-configuration-storage_minio), you can override some configurations like below.
+  For `STORAGE_TYPE = s3`, the configurations can be found at [S3 Storage Configuration](#s3-storage-configuration-storages3), you can override some configurations like below.
 
-  - `MINIO_BASE_PATH`: **repo-archive/**: Minio base path on the bucket only available when `STORAGE_TYPE` is `minio`
+  - `S3_BASE_PATH`: **repo-archive/**: override the S3 base path if storage type is s3
 
   For `STORAGE_TYPE = xxx`, the configuration will be derived from `[storage.xxx]` and some configurations can be overrided list below.
 
   - `PATH`: the same as above
-  - `MINIO_BASE_PATH`: the same as above
+  - `S3_BASE_PATH`: the same as above
 
 ## Repository Archives (`repo-archive`)
 
-- `STORAGE_TYPE`: **local**: Storage type for actions logs, `local` for local disk or `minio` for s3 compatible object storage service, default is `local` or other name defined with `[storage.xxx]`
-- `MINIO_BASE_PATH`: **repo-archive/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
+- `STORAGE_TYPE`: **local**: Storage type for repo archive, `local` for local disk or `s3` for S3-compatible object storage service, default is `local` or other name defined with `[storage.xxx]`
+- `S3_BASE_PATH`: **repo-archive/**: override the S3 base path if storage type is s3
 
 ## Proxy (`proxy`)
 
@@ -1678,8 +1694,6 @@ PROXY_HOSTS = *.github.com
 
 - `ENABLED`: **true**: Enable/Disable actions capabilities
 - `DEFAULT_ACTIONS_URL`: **github**: Default platform to get action plugins, `github` for `https://github.com`, `self` for the current Gitea instance.
-- `STORAGE_TYPE`: **local**: Storage type for actions logs, `local` for local disk or `minio` for s3 compatible object storage service, default is `local` or other name defined with `[storage.xxx]`
-- `MINIO_BASE_PATH`: **actions_log/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
 - `LOG_RETENTION_DAYS`: **365**: Days to keep logs. Old logs will be deleted after this period. 0 means keep forever.
 - `LOG_COMPRESSION`: **zstd**: Log compression type, `none` for no compression, `zstd` for zstd compression.
   Other compression types like `gzip` are NOT supported, since seekable stream is required for log view.
@@ -1702,6 +1716,11 @@ PROXY_HOSTS = *.github.com
 `DEFAULT_ACTIONS_URL` sets where runners download actions without a host.
 With `github`, `uses: actions/checkout@v4` resolves to `https://github.com/actions/checkout@v4`, with `self` to `<ROOT_URL>/actions/checkout@v4`.
 `self` requires mirroring every action you use to your instance, so prefer naming the host per action instead: `uses: self:owner/repo@ref` for your instance, or a full URL like `uses: https://gitea.com/actions/checkout@v4` for any other host.
+
+### Actions Log Storage (`storage.actions_log`)
+
+- `STORAGE_TYPE`: **local**: Storage type for actions logs, `local` for local disk or `s3` for S3-compatible object storage service, default is `local` or other name defined with `[storage.xxx]`
+- `S3_BASE_PATH`: **actions_log/**: S3 base path on the bucket only available when STORAGE_TYPE is `s3`
 
 ## Other (`other`)
 

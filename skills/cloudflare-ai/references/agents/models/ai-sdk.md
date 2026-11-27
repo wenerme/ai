@@ -404,7 +404,7 @@ const result = streamText({
 
 AI Gateway names each streamed run in the `cf-aig-run-id` header and keeps its events. If the connection drops mid-stream, the provider reconnects through the binding and replays the run from the last complete event. Your stream continues with nothing lost or repeated. The run keeps going on the gateway while the connection is down, so the resumed stream continues the same answer.
 
-The provider gives up and throws a `CloudflareAIError` after five drops in one stream, or once the gateway no longer holds the run. The gateway keeps a run for a few minutes after it ends. Aborting the call never resumes it.
+The provider reconnects up to five times in one stream. The stream fails if the connection drops again after the fifth reconnect. It also fails if a reconnect request fails, such as when the gateway no longer holds the run. The gateway keeps a run for a few minutes after it ends. Aborting the call never resumes it.
 
 Workers AI `@cf/` streams and model objects have no run id, so they do not resume. The run id is in `providerMetadata.cloudflare.runId`.
 
@@ -584,7 +584,7 @@ Only `model` is always present. Check for the other fields before you use them.
 
 ## Handle errors
 
-The provider throws `CloudflareAIError`, which extends the AI SDK's `APICallError`, for Workers AI failures, AI Gateway failures, failed stream resumes, and a fallback chain where every model failed. The AI SDK's retry loop reads its `isRetryable` flag:
+The provider throws `CloudflareAIError`, which extends the AI SDK's `APICallError`, for Workers AI and AI Gateway request failures and when every model in a fallback chain fails. The AI SDK's retry loop reads its `isRetryable` flag:
 
 ```ts
 import { CloudflareAIError } from "agents/models/ai-sdk";
@@ -594,10 +594,11 @@ try {
 } catch (error) {
 	if (error instanceof CloudflareAIError) {
 		console.log(error.status, error.code, error.logId, error.model);
-		// error.attempts lists every fallback model that failed.
 	}
 }
 ```
+
+When every model in a fallback chain fails before producing output, `error.attempts` lists the failed attempts in order, starting with the primary model. If you call a model without fallbacks, `error.attempts` is `undefined`.
 
 `code` is one of `"auth"`, `"rate-limit"`, `"not-found"`, `"bad-request"`, `"provider-error"`, `"gateway-error"`, or `"unknown"`.
 
@@ -711,5 +712,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```
