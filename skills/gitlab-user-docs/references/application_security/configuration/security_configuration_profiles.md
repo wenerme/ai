@@ -412,9 +412,11 @@ Prerequisites:
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259962) in GitLab 19.5.
 - Dependency scanning scan profile configuration [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/629403) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment), available through the GraphQL API only.
 - Dependency scanning custom profiles in the UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634032) in GitLab 19.6.
+- `runnerTags` setting for SAST, dependency scanning, and secret detection profiles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636166) in GitLab 19.7 as an [experiment](../../../policy/development_stages_support.md#experiment).
 
 Custom profiles override the configuration a scanner uses when it runs.
-Each setting maps to an existing CI/CD variable for that scanner.
+Most settings map to an existing CI/CD variable for that scanner.
+The `runnerTags` setting sets the job `tags` keyword instead.
 
 Create a custom profile when the default configuration does not fit your projects. For example,
 use a custom profile to:
@@ -491,6 +493,7 @@ For more information about each setting, see [secret detection](../secret_detect
 | `logOptions` | **Log options** | Options passed to `git log` to control the commit range scanned. | `SECRET_DETECTION_LOG_OPTIONS` |
 | `excludedPaths` | **Paths to exclude** | Glob paths excluded from the scan. | `SECRET_DETECTION_EXCLUDED_PATHS` |
 | `rulesetGitReference` | **Ruleset Git reference** | Git reference of the remote ruleset configuration to use. | `SECRET_DETECTION_RULESET_GIT_REFERENCE` |
+| `runnerTags` | **Runner tags** | Runner tags for the jobs the profile adds to pipelines. Overrides [`default:tags`](../../../ci/yaml/_index.md#default). | None. Sets the job [`tags`](../../../ci/yaml/_index.md#tags) keyword. |
 
 For example, to create a secret detection profile with a customized merge request pipeline trigger:
 
@@ -537,6 +540,7 @@ For more information about each setting, see [SAST](../sast/_index.md).
 | `excludedPaths` | **Paths to exclude** | Glob paths excluded from the scan. | `SAST_EXCLUDED_PATHS` |
 | `advancedSastPartialScan` | **Advanced SAST partial scanning** (Enabled, Disabled) | Controls [diff-based scanning](../sast/gitlab_advanced_sast.md) for GitLab Advanced SAST. Set to `DIFFERENTIAL` or `DISABLED`. | `ADVANCED_SAST_PARTIAL_SCAN` |
 | `gitlabAdvSastIncrScan` | **Advanced SAST incremental scanning** | Whether [incremental scanning](../sast/gitlab_advanced_sast.md) is enabled for GitLab Advanced SAST. | `GITLAB_ADV_SAST_INCR_SCAN` |
+| `runnerTags` | **Runner tags** | Runner tags for the jobs the profile adds to pipelines. Overrides [`default:tags`](../../../ci/yaml/_index.md#default). | None. Sets the job [`tags`](../../../ci/yaml/_index.md#tags) keyword. |
 
 For example, to create a SAST profile with a customized merge request pipeline trigger:
 
@@ -602,6 +606,7 @@ For more information about each setting, see [dependency scanning](../dependency
 | `pipIndexUrl` | **pip index URL** | Base URL of the Python Package Index. | `PIP_INDEX_URL` |
 | `pipExtraIndexUrl` | **pip extra index URLs** | Additional URLs of Python package indexes to use in addition to `pipIndexUrl`. | `PIP_EXTRA_INDEX_URL` |
 | `searchIgnoreHiddenDirs` | **Ignore hidden directories** | Whether to ignore hidden directories when the analyzer searches for supported files. | `SEARCH_IGNORE_HIDDEN_DIRS` |
+| `runnerTags` | **Runner tags** | Runner tags for the jobs the profile adds to pipelines. Overrides [`default:tags`](../../../ci/yaml/_index.md#default). | None. Sets the job [`tags`](../../../ci/yaml/_index.md#tags) keyword. |
 
 For example, to create a dependency scanning profile with a customized merge request pipeline trigger:
 

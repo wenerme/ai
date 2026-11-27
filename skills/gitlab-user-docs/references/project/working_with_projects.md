@@ -534,7 +534,12 @@ A project transfer includes:
   - Direct project members and their roles
   - Pending membership invitations
 - Automated adjustments:
-  - New project labels are created if matching group labels do not exist
+  - Group labels and milestones that the project uses are copied to the project
+    - The copies are project labels and milestones, with the same descriptions.
+      Any user who can view the project can view them,
+      even without access to the group they came from.
+    - If the destination hierarchy has a label or milestone with the same title,
+      the project uses the existing one instead of a copy.
   - Epic copies are created in the destination group if necessary, with separate copies per project
     - When you transfer multiple projects
       with issues assigned to the same epic, separate copies of that epic are created in the destination

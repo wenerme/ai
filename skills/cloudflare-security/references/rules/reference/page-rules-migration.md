@@ -23,9 +23,9 @@ For a quick start, explore the one-click templates available in the Cloudflare d
 
 ## Page Rules migration
 
-To make the transition seamless, Cloudflare will handle the migration of your existing Page Rules automatically. This process is planned for late 2025 or beyond, with no action required on your part. You will receive advance notification before any changes are made.
+Your existing Page Rules continue to work, and no action is required on your part.
 
-If you wish to explore the benefits of modern Rules features sooner, you can begin adopting them today. Doing so allows you to:
+If you want to use the benefits of modern Rules features, you can begin adopting them today. Doing so allows you to:
 
 - Take advantage of modern features and capabilities sooner.
 - Customize and refine your rules to match your evolving needs.
@@ -49,7 +49,8 @@ Improvements in modern Rules features include:
 
 The evaluation and execution order of Rules features is different from Page Rules:
 
-- **Rule matching logic**: Page Rules apply the first matching rule (first match wins). In contrast, modern Rules are stackable, meaning multiple matching rules can combine and apply to the same request (last match wins). For example, if multiple cache rules match the same URL, the features in those rules will all apply in order.
+- **Rule matching logic**: Page Rules apply the first matching rule (first match wins). In contrast, modern Rules are stackable, meaning multiple matching rules can combine and apply to the same request (last match wins). For example, if multiple cache rules match the same URL, the features in those rules will all apply in order. Rules with a terminating action, such as redirect rules, are an exception: the first matching redirect rule wins, and Cloudflare does not evaluate the remaining redirect rules.
+- **Rule order**: Keep redirect rules in the same order as your Page Rules, with the most specific rule first. For Cache Rules, Configuration Rules, and other products where the last match wins, place the most specific rule last.
 - **Action separation**: A Page Rule may include multiple actions for different products that are applied in a sequence selected by the customer within the Page Rule itself. Modern Rules features are evaluated [in a fixed sequence](https://developers.cloudflare.com/rules/origin-rules/#execution-order), with customers defining the rule order within a product [phase](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/).
 - **Precedence**: Modern Rules features take precedence over Page Rules. For instance, if both define caching settings for the same path, Cache Rules will override Page Rules.
 - **Caching behavior**: In Cache Rules, selecting **Eligible for cache** automatically enables **Cache Everything** by default. To maintain the exact behavior of Page Rules, you may need to [adjust your configuration](https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/).
@@ -119,6 +120,8 @@ Also, to streamline common configurations, the Cloudflare dashboard now includes
 | Web Application Firewall | N/A (deprecated) | N/A |
 
 ### Migrate Always Use HTTPS
+
+If every hostname in your zone should use HTTPS, you can turn on [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) instead of creating a redirect rule.
 
 **Context:**
 
@@ -654,39 +657,25 @@ You configured a Page Rule permanently redirecting `www.example.com` to `example
 
 **How to migrate**:
 
-1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests from `https://www.example.com` to `https://example.com`. You can select the **Redirect from WWW to Root** rule template or enter the following rule configuration:
+1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests from `www.example.com` to `example.com`. Enter the following configuration, or start from the **Redirect from WWW to root** template and change the **Request URL** and **Target URL** to these values. The template matches only HTTPS requests.
    - **If incoming requests match**: Wildcard pattern
-     - **Request URL**: `https://www.example.com/*`
+     - **Request URL**: `http*://www.example.com/*`
    - **Then**:
-     - **Target URL**: `https://example.com/${1}`
+     - **Target URL**: `https://example.com/${2}`
      - **Status code**: *301*
      - **Preserve query string**: Enabled
+
+   The `*` in `http*` matches both HTTP and HTTPS requests, like the original Page Rule. Because the `*` in `http*` is `${1}`, the path is `${2}`. Refer to [How wildcard references are numbered](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/#how-wildcard-references-are-numbered).
+
+   To redirect only HTTPS requests, use the request URL `https://www.example.com/*` and the target URL `https://example.com/${1}` instead.
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-<details>
-
-<summary>
-
-Notes about the rule equivalence
-
-</summary>
-
-The provided example using Single Redirects is not an exact match for the previously existing Page Rule in the same example.
-
-The exact equivalent would need to match both HTTP and HTTPS incoming requests, which you could achieve using a wildcard pattern like the following (notice the extra <code>*</code> after <code>http</code>):
-
-- **Request URL**: <code>http*://www.example.com/*</code>
-
-This would require you to also change the **Target URL** to use the second wildcard capture group instead of the first one (corresponding to the text captured by second <code>*</code> in the wildcard pattern above):
-
-- **Target URL**: <code>https://example.com/${2}</code>
-
-</details>
+The single redirect screenshot shows the HTTPS-only configuration, with a request URL that starts with `https://` and `${1}` in the target URL. To match both HTTP and HTTPS requests, use the configuration in the **Dashboard** tab.
 
 | Page Rules configuration | Migrate to a single redirect |
 | --- | --- |
-| ![Example Page Rule #1 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=782,format=webp/_astro/pr-forwarding-url.DyV2zs8N.png) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #1](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=790,height=1031,format=webp/_astro/pr-forwarding-url-new.FfZIMpof.png) |
+| ![Example Page Rule #1 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=782,format=webp/_astro/pr-forwarding-url.DyV2zs8N.png) | ![Single redirect (HTTPS-only configuration) for the 'Forwarding URL' setting of the example Page Rule #1](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=790,height=1031,format=webp/_astro/pr-forwarding-url-new.FfZIMpof.png) |
 
 **Example #2: Redirect all pages under old path to new path**
 
@@ -703,37 +692,23 @@ You configured a Page Rule permanently redirecting `example.com/old-path` to `ex
 
 1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests for `example.com/old-path` to `example.com/new-path`:
    - **If incoming requests match**: Wildcard pattern
-     - **Request URL**: `https://example.com/old-path/*`
+     - **Request URL**: `http*://example.com/old-path/*`
    - **Then**:
-     - **Target URL**: `https://example.com/new-path/${1}`
+     - **Target URL**: `https://example.com/new-path/${2}`
      - **Status code**: *301*
      - **Preserve query string**: Enabled
+
+   The `*` in `http*` matches both HTTP and HTTPS requests, like the original Page Rule. Because the `*` in `http*` is `${1}`, the path is `${2}`. Refer to [How wildcard references are numbered](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/#how-wildcard-references-are-numbered).
+
+   To redirect only HTTPS requests, use the request URL `https://example.com/old-path/*` and the target URL `https://example.com/new-path/${1}` instead.
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-<details>
-
-<summary>
-
-Notes about the rule equivalence
-
-</summary>
-
-The provided example using Single Redirects is not an exact match for the previously existing Page Rule in the same example.
-
-The exact equivalent would need to match both HTTP and HTTPS incoming requests, which you could achieve using a wildcard pattern like the following (notice the extra <code>*</code> after <code>http</code>):
-
-- **Request URL**: <code>http*://example.com/old-path/*</code>
-
-This would require you to also change the **Target URL** to use the second wildcard capture group instead of the first one (corresponding to the text captured by second <code>*</code> in the wildcard pattern above):
-
-- **Target URL**: <code>https://example.com/new-path/${2}</code>
-
-</details>
+The single redirect screenshot shows the HTTPS-only configuration, with a request URL that starts with `https://` and `${1}` in the target URL. To match both HTTP and HTTPS requests, use the configuration in the **Dashboard** tab.
 
 | Page Rules configuration | Migrate to a single redirect |
 | --- | --- |
-| ![Example Page Rule #2 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=921,format=webp/_astro/pr-forwarding-url-2.CNt6YZ_U.png) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=1032,format=webp/_astro/pr-forwarding-url-2-new.CP3zl46U.png) |
+| ![Example Page Rule #2 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=921,format=webp/_astro/pr-forwarding-url-2.CNt6YZ_U.png) | ![Single redirect (HTTPS-only configuration) for the 'Forwarding URL' setting of the example Page Rule #2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=1032,format=webp/_astro/pr-forwarding-url-2-new.CP3zl46U.png) |
 
 ### Migrate Host Header Override
 
@@ -1112,8 +1087,6 @@ The following Page Rules settings will not be migrated to other types of rules:
 - **Response Buffering** (this setting is deprecated)
 - **Web Application Firewall** (this setting is deprecated, since the previous version of WAF managed rules is deprecated)
 
-All other Page Rules settings will be migrated during 2025.
-
 ## More resources
 
 If you have feedback to share, refer to our [Community thread ↗︎](https://community.cloudflare.com/t/important-page-rules-deprecation/656021).
@@ -1127,5 +1100,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/reference/page-rules-migration/og.png?v=222e17aa1267d01c","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/reference/page-rules-migration/og.png?v=222e17aa1267d01c","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

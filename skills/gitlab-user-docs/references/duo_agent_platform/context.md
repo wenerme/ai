@@ -99,6 +99,7 @@ The exclusions for a project can be up to 64 KiB in total.
 | Case-insensitive file systems, like the defaults on Windows and macOS | A path with different capitalization might not match an exclusion. |
 | `get_merge_request` tool in the [GitLab MCP server](../model_context_protocol/mcp_server.md) | The tool might return commit diffs that include content from excluded files. The server does not check for exclusions when it fetches diffs. |
 | `add_commit` tool in the GitLab MCP server | The `move` action does not apply the exclusion check to the source path. An agent with push access could move an excluded file to a non-excluded path and then read it. |
+| `search` tool in the GitLab MCP server | The tool applies exclusions only when you search in a single project. A code search in a group or across the instance might return content from excluded files. |
 
 The GitLab MCP server limitations are tracked in
 [issue 628141](https://gitlab.com/gitlab-org/gitlab/-/work_items/628141).

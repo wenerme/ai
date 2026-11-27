@@ -385,6 +385,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | `REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | `REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
 | `REVIEW_MERGE_REQUEST_DAP_STANDARD` | Review merge request dap standard feature setting. |
+| `RISK_ASSESSMENT` | Risk assessment feature setting. |
 | `RISK_CLASSIFICATION` | Risk classification feature setting. |
 | `SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | `SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
@@ -592,6 +593,7 @@ AI features that can be configured through the Model Selection feature settings.
 | `REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | `REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
 | `REVIEW_MERGE_REQUEST_DAP_STANDARD` | Review merge request dap standard feature setting. |
+| `RISK_ASSESSMENT` | Risk assessment feature setting. |
 | `RISK_CLASSIFICATION` | Risk classification feature setting. |
 | `SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | `SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
@@ -1190,6 +1192,27 @@ Artifact Registry role that can be assigned to a user.
 | `ARTIFACT_CONTRIBUTOR` | Publish artifacts in addition to consuming them. |
 | `ARTIFACT_MANAGER` | Manage artifacts and repository configuration. |
 | `ARTIFACT_VIEWER` | Consume artifacts and browse the registry. |
+
+## `ArtifactRegistryTrialNotEligibleReason`
+
+Reason an organization cannot start an Artifact Registry trial.
+
+| Value | Description |
+| ----- | ----------- |
+| `MULTIPLE_TOP_LEVEL_GROUPS` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Organization has more than one top-level group, so the group to bill is unknown. |
+| `NOT_OFFERED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.CustomersDot does not offer a trial, for example because the subscription already used one. |
+| `NO_TOP_LEVEL_GROUP` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Organization has no top-level group to bill the trial to. |
+
+## `ArtifactRegistryTrialState`
+
+State of the Artifact Registry trial of an organization.
+
+| Value | Description |
+| ----- | ----------- |
+| `ACTIVE` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Trial is active. |
+| `ELIGIBLE` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Organization can start a trial. |
+| `ENDED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Trial expired or used all its credits. |
+| `NOT_ELIGIBLE` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Organization cannot start a trial. |
 
 ## `ArtifactRegistryUpstreamRepositoryKind`
 
@@ -3286,6 +3309,7 @@ Reason the impact of a policy cannot be analyzed before it is saved.
 | `REGO_SCOPE` | Scope is written in Rego. |
 | `SECURITY_ATTRIBUTE_SCOPE` | Scope uses security attributes. |
 | `UNSUPPORTED_RULE_TYPE` | Rules are not setting validation rules. Other rule kinds need the policy engine. |
+| `VIOLATION_DETAILS_UNAVAILABLE` | Policy engine could not derive violation details for the rules. |
 
 ## `GroupMemberRelation`
 
@@ -7151,6 +7175,33 @@ The environment of a workflow.
 | `EXTERNAL` | External environment. |
 | `IDE` | Deprecated in GitLab 18.6. Renamed. Use `CHAT` instead. |
 | `WEB` | Deprecated in GitLab 18.6. Renamed. Use `AMBIENT` instead. |
+
+## `WorkforceSyncDefectReason`
+
+Reason a record could not be processed cleanly by a workforce hierarchy sync.
+
+| Value | Description |
+| ----- | ----------- |
+| `DUPLICATE_EMAIL` | Email is used by more than one person. |
+| `DUPLICATE_IDENTIFIER` | Identifier is used by more than one record. |
+| `MANAGER_NOT_FOUND` | Manager of the workforce unit is not in the report. |
+| `MISSING_IDENTIFIER` | Record has no identifier. |
+| `MISSING_NAME` | Record has no name. |
+| `MISSING_UNIT` | Person has no workforce unit. |
+| `PARENT_CYCLE` | Workforce unit is its own ancestor. |
+| `PARENT_NOT_FOUND` | Parent workforce unit is not in the report. |
+| `UNIT_NOT_FOUND` | Workforce unit of the person is not in the report. |
+| `VALUE_TOO_LONG` | Value is longer than the limit. |
+
+## `WorkforceSyncDefectSubjectKind`
+
+Kind of record a workforce hierarchy sync defect is about.
+
+| Value | Description |
+| ----- | ----------- |
+| `MEMBERSHIP` | Membership of a person in a workforce unit. |
+| `PERSON` | Person. |
+| `WORKFORCE_UNIT` | Workforce unit. |
 
 ## `WorkspaceVariableInputType`
 

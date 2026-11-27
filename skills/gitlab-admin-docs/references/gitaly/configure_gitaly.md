@@ -129,8 +129,8 @@ To configure Gitaly servers, you must:
 
 The `git` user must be able to read, write, and set permissions on the configured storage path.
 
-To avoid downtime while rotating the Gitaly token, you can temporarily disable authentication using the `gitaly['auth_transitioning']` setting. For more information, see
-[enable auth transitioning mode](#enable-auth-transitioning-mode).
+To avoid downtime while rotating the Gitaly token, you can temporarily turn off authentication with
+[auth transitioning mode](#enable-auth-transitioning-mode).
 
 #### Configure authentication
 

@@ -6,7 +6,7 @@ Configure tool-level approval policies for AI agents to gate sensitive actions w
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md#beta) [with a feature flag](../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
-- Added for background flows, such as the Developer Flow, in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
+- Added for the Developer Flow in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
 - Feature flag `gitlab_duo_governance_settings` removed in GitLab 19.4.
 - Default for local file reads [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256385) from **Always Ask** to **Always Allow** in GitLab 19.5.
 - Per-tab permissions [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264808) in GitLab 19.6.
@@ -30,7 +30,7 @@ consults the configured rules for the user's role and the tool's action
 category, then enforces the resulting mode.
 
 > [!flag]
-> Enforcement for background flows is controlled by a feature flag.
+> Background access rules for the Developer Flow are controlled by a feature flag.
 > For more information, see the history.
 
 Tools are classified into three action categories:
@@ -53,8 +53,9 @@ This feature applies to Agentic Chat and IDE extensions. For flows, governance
 enforcement depends on where the flow runs:
 
 - For flows that run in an IDE extension, GitLab enforces governance rules.
-- For background flows, such as the Developer Flow, GitLab enforces governance rules
-  if the `duo_workflow_background_tool_governance` feature flag is enabled.
+- For background flows, GitLab enforces **Cloud access** rules.
+  If the `duo_workflow_background_tool_governance` feature flag is enabled,
+  GitLab enforces **Background access** rules for the Developer Flow instead.
 
 ## Access types
 
@@ -71,7 +72,8 @@ Local access
 
 Background access
 : Runs on GitLab as a service account, without waiting for anyone.
-  For example, flows started by an automation or a mention, and code review.
+  For example, the Developer Flow.
+  Other background flows, such as code review, use **Cloud access** rules.
 
 > [!note]
 > Local access modes apply only to calls to the GitLab MCP server. They don't apply
@@ -489,6 +491,10 @@ ancestor.
 - [Background access](#access-types) supports only **Always Allow** and **Always Deny**.
   **Always Ask** does not apply, because no user is present to respond to an approval prompt
   in a background flow. A tool with no configured background access rule defaults to **Always Allow**.
+- When the `duo_workflow_background_tool_governance` feature flag is enabled,
+  **Cloud access** rules do not apply to the Developer Flow.
+  A tool set to **Always Deny** or **Always Ask** for **Cloud access** follows its **Background access** setting instead.
+  To keep blocking the tool for the Developer Flow, also set it to **Always Deny** for **Background access**.
 - The `search` tool served by the GitLab MCP server aggregates what the GitLab Duo Agent Platform
   exposes as separate, narrower search tools, and replaces those tools in the toolset.
   Rules configured on the narrower tools have no effect while `search` is available, including

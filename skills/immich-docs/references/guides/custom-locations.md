@@ -1,6 +1,6 @@
 # Files custom locations
 
-This guide explains how to store generated and raw files with docker's volume mount in different locations.
+This guide explains how to store generated and raw files with Docker's volume mount in different locations.
 
 <ComposeBuilder query="storage.customFolders=true" />
 
@@ -43,7 +43,7 @@ Then restart Immich to register the changes:
 docker compose up -d
 ```
 
-> **note**: Because of the underlying properties of docker bind mounts, it is not recommended to mount the `upload/` and `library/` folders as separate bind mounts if they are on the same device.
+> **note**: Because of the underlying properties of Docker bind mounts, it is not recommended to mount the `upload/` and `library/` folders as separate bind mounts if they are on the same device.
 For this reason, we mount the HDD or the network storage (NAS) to `/data` and then mount the folders we want to access under that folder.
 
 The `thumbs/` folder contains both the small thumbnails displayed in the timeline and the larger previews shown when clicking into an image. These cannot be separated.

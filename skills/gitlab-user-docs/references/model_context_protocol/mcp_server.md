@@ -60,14 +60,13 @@ The GitLab MCP server accepts the following tokens:
 - A [fine-grained personal access token](../../auth/tokens/fine_grained_access_tokens.md) with the
   [MCP tool resource and the Execute permission](../../auth/tokens/fine_grained_access_tokens_rest.md#mcp-tool).
 
-These tokens cannot have the `mcp` scope, so the GitLab MCP server rejects them, even with scopes such as `api`:
+The GitLab MCP server does not accept the following tokens, even if their scope is set to `mcp` or `api`:
 
 - Legacy personal access tokens
 - Project access tokens
 - Group access tokens
 
 If you use one of these tokens, the GitLab MCP server returns `403 Forbidden` with the `insufficient_scope` error.
-The response names the `mcp` scope, which you can't add to these tokens.
 Support for these authentication methods is proposed in [issue 586184](https://gitlab.com/gitlab-org/gitlab/-/work_items/586184).
 
 ## Connect a client to the GitLab MCP server

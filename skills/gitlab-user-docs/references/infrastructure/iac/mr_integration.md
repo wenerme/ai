@@ -25,7 +25,7 @@ modifies, or destroys.
 
 ### Permissions to view OpenTofu plan information
 
-- [Changed](https://about.gitlab.com/releases/2026/10/12/patch-release-gitlab-19-4-2-released/) in GitLab 19.5, 19.4.2, 19.3.5, and 19.2.8 to show only the reports you can download.
+- [Changed](https://about.gitlab.com/releases/2026/10/12/patch-release-gitlab-19-4-2-released/) to show only the reports you can download in GitLab 19.2.8, 19.3.5, 19.4.2, and 19.5.
 
 The merge request widget shows plan information only from OpenTofu report artifacts
 that you can download.

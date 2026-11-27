@@ -207,6 +207,26 @@ To view pipeline test results:
 
 You can also retrieve test reports with the [Pipelines API](../../api/pipelines.md#retrieve-a-test-report-for-a-pipeline).
 
+### Search test results in a pipeline
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/213691) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `junit_test_report_search`. Disabled by default.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/631716) in GitLab 19.7. Feature flag `junit_test_report_search` removed.
+
+Search for a test case by name or class across the jobs in a pipeline, instead of opening each job's test suite individually.
+
+To search test results:
+
+1. Go to the pipeline details page.
+1. Select the  tab.
+1. Enter a test name or class in the search box.
+
+When you search from the summary view, results come from all jobs in the pipeline.
+When you search after selecting a job's test suite, results are scoped to that job.
+Select  to expand the search to every job in the pipeline.
+
+Pipelines with more than 20 jobs show a confirmation prompt before searching across all jobs,
+because each job's test results are fetched individually.
+
 ### Test timing metrics
 
 Test results display different timing metrics:

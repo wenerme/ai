@@ -500,15 +500,17 @@ For example, if `http.host` is `"WWW.cloudflare.com"`, then `lower(http.host) ==
 
 Computes the MD5 hash of the `input` string or byte array. Returns a 16-byte hash value.
 
-Caution
-
-MD5 is not considered cryptographically secure because of known collision attacks. Avoid it for security-sensitive uses. Use [`sha256()`](#sha256) instead where possible.
+The `input` must be a field or a function result. It cannot be a literal value.
 
 To encode the hash as a string, combine `md5()` with [`encode_base64()`](#encode_base64):
 
 ```txt
-encode_base64(md5("hello world"))
+encode_base64(md5(http.request.uri.path))
 ```
+
+Notes
+
+Access to the `md5()` function requires a Cloudflare Pro, Business, or Enterprise plan.
 
 ### `regex_replace`
 
@@ -589,6 +591,8 @@ You can only use the `remove_query_args()` function in [rewrite expressions of T
 
 Computes the SHA-1 hash of the `input` string or byte array. Returns a 20-byte hash value.
 
+The `input` must be a field or a function result. It cannot be a literal value.
+
 Caution
 
 SHA-1 is not considered cryptographically secure because of known collision attacks. Avoid it for security-sensitive uses. Use [`sha256()`](#sha256) instead where possible.
@@ -596,8 +600,12 @@ SHA-1 is not considered cryptographically secure because of known collision atta
 To encode the hash as a string, combine `sha1()` with [`encode_base64()`](#encode_base64):
 
 ```txt
-encode_base64(sha1("hello world"))
+encode_base64(sha1(http.request.uri.path))
 ```
+
+Notes
+
+Access to the `sha1()` function requires a Cloudflare Pro, Business, or Enterprise plan.
 
 ### `sha256`
 
@@ -605,12 +613,14 @@ encode_base64(sha1("hello world"))
 
 Computes the SHA-256 cryptographic hash of the `input` string or byte array. Returns a 32-byte hash value.
 
-Use this function to hash a canonical request before signing it. For keyed message authentication, use [`hmac_sha256()`](#hmac_sha256).
+The `input` must be a field or a function result. It cannot be a literal value.
+
+Use this function to generate signed request headers, validate request integrity, or create secure tokens directly in rule expressions.
 
 Examples:
 
 ```txt
-sha256("my-token")
+sha256(http.request.uri.path)
 ```
 
 The example returns a 32-byte hash. A hash alone does not authenticate a request.
@@ -618,7 +628,7 @@ The example returns a 32-byte hash. A hash alone does not authenticate a request
 You can combine `sha256()` with [`encode_base64()`](#encode_base64) to create Base64-encoded hashes:
 
 ```txt
-encode_base64(sha256("my-token"))
+encode_base64(sha256(http.request.uri.path))
 ```
 
 To create an HMAC-signed header value from the URI path:
@@ -639,10 +649,12 @@ You can only use the `sha256()` function in rewrite expressions of [Transform Ru
 
 Computes the SHA-512 hash of the `input` string or byte array. Returns a 64-byte hash value.
 
+The `input` must be a field or a function result. It cannot be a literal value.
+
 To encode the hash as a string, combine `sha512()` with [`encode_base64()`](#encode_base64):
 
 ```txt
-encode_base64(sha512("hello world"))
+encode_base64(sha512(http.request.uri.path))
 ```
 
 ### `sign_sigv4_hmac_sha256`
@@ -916,6 +928,10 @@ To perform case-sensitive wildcard matching, set the `flags` parameter to `"s"`.
 
 This function uses lazy matching, that is, it tries to match each `*` metacharacter with the shortest possible string.
 
+The function numbers capture group references by the position of each `*` in `wildcard_pattern`, from left to right, starting at `${1}`. Every `*` in `wildcard_pattern` counts, including a `*` in the URI scheme. For example, in the pattern `http*://example.com/*`, `${1}` captures the `*` in `http*`, and `${2}` captures the path.
+
+In the **Wildcard pattern** view of the dashboard, Single Redirects use the **Request URL** as `wildcard_pattern`. URL Rewrite Rules use the **Target path** or **Target query** instead, so the function ignores `*` characters in a rewrite rule's **Request URL**.
+
 You can only use the `wildcard_replace()` function once in an expression, and you cannot nest it with the [`regex_replace()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#regex_replace) function.
 
 Examples:
@@ -1090,5 +1106,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-11-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

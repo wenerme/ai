@@ -219,9 +219,10 @@ Sample response:
 ## Track internal events
 
 - Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264988) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `rate_limit_track_internal_events`. Disabled by default.
+- Rejection of AI events when a write buffer reaches 80% of its capacity [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273892) in GitLab 19.7 [with a flag](../administration/feature_flags/_index.md) named `ai_usage_events_buffer_admission`. Disabled by default.
 
 > [!flag]
-> The availability of the rate limit is controlled by a feature flag.
+> The availability of the rate limit and of the AI event rejection is controlled by feature flags.
 > For more information, see the history.
 
 Tracks internal events in the GitLab instance.
@@ -232,6 +233,12 @@ Each event counts toward the limit individually,
 so a `/track_events` request counts one unit for each event in the array.
 When you exceed the limit, the endpoint returns
 [`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
+
+Requests that contain at least one AI usage event can also return `429 Too Many Requests`.
+This happens when any write buffer for AI usage events reaches 80% of its capacity.
+The response has a `Retry-After` header of 180 seconds.
+No event in the request is recorded, so you can resend the whole request after the delay.
+Requests without AI usage events are not affected.
 
 Prerequisites:
 

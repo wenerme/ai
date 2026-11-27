@@ -28,24 +28,24 @@ First, make sure that:
 - Vitest and `@cloudflare/vitest-plugin` are installed in your project as dev dependenciesnpmyarnpnpmbun
 
   ```
-  npm i -D vitest@^4.1.0 @cloudflare/vitest-plugin
+  npm i -D vitest @cloudflare/vitest-plugin
   ```
 
   ```
-  yarn add -D vitest@^4.1.0 @cloudflare/vitest-plugin
+  yarn add -D vitest @cloudflare/vitest-plugin
   ```
 
   ```
-  pnpm add -D vitest@^4.1.0 @cloudflare/vitest-plugin
+  pnpm add -D vitest @cloudflare/vitest-plugin
   ```
 
   ```
-  bun add -d vitest@^4.1.0 @cloudflare/vitest-plugin
+  bun add -d vitest @cloudflare/vitest-plugin
   ```
 
   Note
 
-  The `@cloudflare/vitest-plugin` package requires Vitest 4.1 or later.
+  The `@cloudflare/vitest-plugin` package supports Vitest 4.1+ and Vitest 5 ( `^4.1.0 || ^5.0.0`). Vitest 5 requires `@cloudflare/vitest-plugin` `1.4.0` or later.
 
 ## Define Vitest configuration
 
@@ -270,5 +270,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/og.png?v=4f540ef29b4b992d","dateModified":"2026-10-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/og.png?v=4f540ef29b4b992d","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -176,34 +176,32 @@ curl --request POST \
 Example response:
 
 ```json
-[
-  {
-    "id":1,
-    "url":"https://gitlab.example.com/hook",
-    "name": "Hook name",
-    "description": "Hook description",
-    "created_at":"2016-10-31T12:32:15.192Z",
-    "push_events":true,
-    "tag_push_events":false,
-    "merge_requests_events": true,
-    "repository_update_events": true,
-    "enable_ssl_verification":true,
-    "organization_id": 1,
-    "alert_status": "executable",
-    "disabled_until": null,
-    "url_variables": [],
-    "push_events_branch_filter": "",
-    "branch_filter_strategy": "wildcard",
-    "custom_webhook_template": "{\"event\":\"{{object_kind}}\"}",
-    "custom_headers": [
-      {
-        "key": "X-Custom-Header"
-      }
-    ],
-    "token_present": false,
-    "signing_token_present": false
-  }
-]
+{
+  "id":1,
+  "url":"https://gitlab.example.com/hook",
+  "name": "Hook name",
+  "description": "Hook description",
+  "created_at":"2016-10-31T12:32:15.192Z",
+  "push_events":true,
+  "tag_push_events":false,
+  "merge_requests_events": true,
+  "repository_update_events": true,
+  "enable_ssl_verification":true,
+  "organization_id": 1,
+  "alert_status": "executable",
+  "disabled_until": null,
+  "url_variables": [],
+  "push_events_branch_filter": "",
+  "branch_filter_strategy": "wildcard",
+  "custom_webhook_template": "{\"event\":\"{{object_kind}}\"}",
+  "custom_headers": [
+    {
+      "key": "X-Custom-Header"
+    }
+  ],
+  "token_present": false,
+  "signing_token_present": false
+}
 ```
 
 ## Update system hook

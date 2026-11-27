@@ -709,7 +709,22 @@ Prerequisites:
 - On GitLab.com, you must have the Owner role for the top-level group.
 - On GitLab Self-Managed and GitLab Dedicated, you must have administrator access.
 
-To block domains, set `domainSettingType` to `WEB_SEARCH_DENIED` in one of these GraphQL mutations:
+To block domains on GitLab.com:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings** > **GitLab Duo**.
+1. Select **Change configuration**.
+1. In the  section, under , in , add or remove domains.
+
+To block domains on GitLab Self-Managed and GitLab Dedicated:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. In the  section, under , in , add or remove domains.
+
+You can also block domains with the API.
+Set `domainSettingType` to `WEB_SEARCH_DENIED` in one of these GraphQL mutations:
 
 - On GitLab.com, [`aiDomainSettingsNamespaceUpdate`](../../api/graphql/reference/mutations.md#aidomainsettingsnamespaceupdate)
   for the top-level group.

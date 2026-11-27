@@ -98,6 +98,13 @@ Prerequisites:
 
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the project or group.
 
+> [!note]
+> Do not add sensitive information to label descriptions.
+> Users who can view a label can view its description.
+> When you transfer a project, the group labels it uses can be copied to the project.
+> Any user who can view the destination project can view the copies.
+> For more information, see [what data gets transferred](working_with_projects.md#what-data-gets-transferred).
+
 ### Create a project label
 
 To create a project label:

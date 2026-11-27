@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 460 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 459 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -107,8 +107,8 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
-    "inputCost": 0.25,
+    "maxOutput": 393216,
+    "inputCost": 0.0999,
     "outputCost": 5
   },
   {
@@ -911,9 +911,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 0.44,
-    "outputCost": 1.32
+    "maxOutput": 262144,
+    "inputCost": 0.2156,
+    "outputCost": 0.6468
   },
   {
     "model": "kilo/deepseek/deepseek-v4-pro",
@@ -925,7 +925,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 393216,
     "inputCost": 0.888188,
-    "outputCost": 1.5039
+    "outputCost": 1.5082
   },
   {
     "model": "kilo/deepseek/deepseek-v4-pro-0813",
@@ -936,7 +936,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 393216,
-    "inputCost": 0.25,
+    "inputCost": 0.0999,
     "outputCost": 5
   },
   {
@@ -1379,7 +1379,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 117964,
+    "maxOutput": 16384,
     "inputCost": 0.064,
     "outputCost": 0.128
   },
@@ -1404,8 +1404,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 235929,
-    "inputCost": 0.05,
-    "outputCost": 0.18
+    "inputCost": 0.047,
+    "outputCost": 0.169
   },
   {
     "model": "kilo/google/gemma-4-31b-it",
@@ -1562,18 +1562,6 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.3,
     "outputCost": 0.9
-  },
-  {
-    "model": "kilo/inclusionai/ling-3.2-flash:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "kilo/inclusionai/lingsante-3.1-air-vl",
@@ -4357,7 +4345,7 @@ for await (const chunk of stream) {
     "contextWindow": 262144,
     "maxOutput": 235929,
     "inputCost": 0.05,
-    "outputCost": 0.7
+    "outputCost": 0.69
   },
   {
     "model": "kilo/qwen/qwen3.6-flash",

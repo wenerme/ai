@@ -19,7 +19,81 @@ image: https://developers.cloudflare.com/rules/changelog/og.png?v=0e682d94f4e7c3
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
-## 2026-11-25
+## 2026-11-27
+
+
+**Use IP and ASN lists in response-side and other CDN rule filters**
+
+Custom IP and autonomous system number (ASN) lists are supported in response-side filters, including Response Header Transform Rules and rate-limit response-counting expressions. You can reuse network groups on both the request and response sides.
+
+Support extends across customer-owned CDN rule filters, including WAF custom rules, Cache Rules, Redirect Rules, and Request Header Transform Rules.
+
+For example, reference an ASN list named `partner_networks`:
+
+```txt
+ip.src.asnum in $partner_networks
+```
+
+For an IP list named `office_network`, use:
+
+```txt
+ip.src in $office_network
+```
+
+This expands where you can reference existing lists. It does not change plan availability, quotas, or dynamic action-value expression support. ASN lists remain Enterprise-only, and hostname lists retain their product-specific restrictions.
+
+For details, refer to [IP and ASN lists across Rules products](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-and-asn-lists-across-rules-products).
+
+## 2026-11-27
+
+
+**Inspect multipart part headers, preambles, and empty parts**
+
+Five new Rules fields provide more detail about multipart request bodies:
+
+| Field | Contents |
+| --- | --- |
+| `http.request.body.multipart.headers` | Standard and custom headers grouped by lowercase name for each part. |
+| `http.request.body.multipart.headers.names` | Header names in original case and occurrence order for each part. |
+| `http.request.body.multipart.headers.values` | Header values aligned with the names for each part. |
+| `http.request.body.multipart.preamble` | Original bytes before the first boundary delimiter. |
+| `http.request.body.multipart.empty_parts_count` | Headerless, empty-body parts skipped during parsing. |
+
+For example, match a custom header on the first parsed part:
+
+```txt
+http.request.body.multipart.headers[0]["x-upload-tag"][0] eq "review"
+```
+
+Header arrays preserve part association and duplicate headers. The preamble includes the line ending before the first delimiter. The empty-part count includes only parts encountered before parsing stops.
+
+These fields require an Enterprise plan. Request body inspection and multipart parsing limits apply.
+
+For details, refer to the [multipart headers](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.headers/), [preamble](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.preamble/), and [empty-part count](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.empty_parts_count/) field references.
+
+## 2026-11-27
+
+
+**Match response cookies by name in Rules expressions**
+
+Rules expressions can inspect response cookies by name using two fields:
+
+- `http.response.set_cookies`: Parsed cookies from the current response headers.
+- `raw.http.response.set_cookies`: Parsed cookies from the original response headers.
+
+For example, use this expression in a Response Header Transform Rule to match a response that sets an `app` cookie to `preview`:
+
+```txt
+http.response.set_cookies["app"][0] eq "preview"
+```
+
+Both fields map URL-decoded cookie names to arrays of values. Duplicate names retain multiple values. Cookie attributes such as `Path` and `HttpOnly` are excluded.
+
+The current field reflects changes from earlier phases. The raw field preserves the original cookies. Normal within-phase field immutability still applies.
+
+For details, refer to the [`http.response.set_cookies`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.set_cookies/) and [`raw.http.response.set_cookies`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/raw.http.response.set_cookies/) field references.
+
+## 2026-11-27
 
 
 **Sign storage requests with HMAC and automatic UTC dates**

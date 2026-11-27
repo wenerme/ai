@@ -1821,6 +1821,12 @@ A `WorkforceHierarchyID` is a global ID. It is encoded as a string.
 
 An example `WorkforceHierarchyID` is: `"gid://gitlab/Workforce::Hierarchy/1"`.
 
+## `WorkforceSyncDefectID`
+
+A `WorkforceSyncDefectID` is a global ID. It is encoded as a string.
+
+An example `WorkforceSyncDefectID` is: `"gid://gitlab/Workforce::SyncDefect/1"`.
+
 ## `WorkforceUnitID`
 
 A `WorkforceUnitID` is a global ID. It is encoded as a string.
