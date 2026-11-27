@@ -461,13 +461,13 @@ This event occurs when a comment on an issue is created, edited, or deleted.
 
 ### Pull Request Events
 
-- `pull_request`, `pull_request_assign`, `pull_request_label`, `pull_request_milestone`, `pull_request_comment`, `pull_request_review`, `pull_request_review_approved`, `pull_request_review_rejected`, `pull_request_review_comment`, `pull_request_sync`, `pull_request_review_request`
+- `pull_request`, `pull_request_assign`, `pull_request_label`, `pull_request_milestone`, `pull_request_comment`, `pull_request_review`, `pull_request_review_approved`, `pull_request_review_rejected`, `pull_request_review_comment`, `pull_request_sync`, `pull_request_review_request`, `merge_group`
 
 #### `pull_request`
 
-This event occurs when a pull request is opened, closed, reopened, edited, or deleted.
+This event occurs when a pull request is opened, closed, reopened, edited, or deleted, or added to or removed from a merge queue.
 
-**Action type:** `opened`, `closed`, `reopened`, `edited`, `deleted`
+**Action type:** `opened`, `closed`, `reopened`, `edited`, `deleted`, `enqueued`, `dequeued`
 
 ##### Payload parameters
 
@@ -482,6 +482,7 @@ This event occurs when a pull request is opened, closed, reopened, edited, or de
 | `sender` | `object` | **Required.** The user who performed the action. |
 | `commit_id` | `string` | The commit SHA associated with the pull request action, if applicable. |
 | `review` | `object` | Present for pull request review events. |
+| `reason` | `string` | Present for `dequeued`. Why the pull request left the merge queue, for example `MERGE` or `CI_FAILURE`. |
 
 #### `pull_request_assign`
 
@@ -670,6 +671,22 @@ This event occurs when a reviewer is requested or a review request is removed.
 | `sender` | `object` | **Required.** The user who performed the action. |
 | `commit_id` | `string` | The commit SHA associated with the pull request action, if applicable. |
 | `review` | `object` | Present for pull request review events. |
+
+#### `merge_group`
+
+This event occurs when a merge queue requests checks for a group of pull requests, or discards the group.
+
+**Action type:** `checks_requested`, `destroyed`
+
+##### Payload parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `action` | `string` | **Required.** The merge group action. |
+| `reason` | `string` | Present for `destroyed`: `merged`, `invalidated` or `dequeued`. |
+| `merge_group` | `object` | **Required.** The group's `head_sha`, `head_ref`, `base_sha`, `base_ref` and `head_commit`. |
+| `repository` | `object` | **Required.** The repository containing the merge queue. |
+| `sender` | `object` | **Required.** The user who performed the action. |
 
 ### Workflow Events
 

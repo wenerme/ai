@@ -112,6 +112,7 @@ requests are rejected but the gRPC server keeps processing in-flight requests un
 - The shutdown timeout lapses.
 
 This graceful shutdown timeout can play a role in how long Gitaly remains unavailable for new requests.
+For more information, see [Gitaly shutdown and restart behavior](../gitaly/configure_gitaly.md#gitaly-shutdown-and-restart-behavior).
 
 You should configure client retry with a `max_backoff` that is equal to or greater than the sum of the graceful shutdown +
 the (re)start time.

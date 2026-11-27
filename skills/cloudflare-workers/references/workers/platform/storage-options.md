@@ -97,23 +97,25 @@ To get started with R2:
 
 ### Durable Objects
 
-Durable Objects provide low-latency coordination and consistent storage for the Workers platform through global uniqueness and a transactional storage API.
+Durable Objects combine stateful serverless compute with storage on the Workers platform. Each object has a unique ID. The runtime routes new requests for that ID to a single current instance, which can move between locations. Only the current instance can access the object's storage.
 
-- Global Uniqueness guarantees that there will be a single instance of a Durable Object class with a given ID running at once, across the world. Requests for a Durable Object ID are routed by the Workers runtime to the Cloudflare data center that owns the Durable Object.
-- The transactional storage API provides strongly consistent key-value storage to the Durable Object. Each Object can only read and modify keys associated with that Object. Execution of a Durable Object is single-threaded, but multiple request events may still be processed out-of-order from how they arrived at the Object.
+Each object has private, strongly consistent, transactional storage. [SQLite-backed Durable Objects](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) are recommended for new classes and provide both SQL and key-value APIs. Durable storage persists across restarts, but in-memory state does not.
 
-It is ideal for projects that require:
+Each Durable Object is single-threaded, but requests can interleave while a handler awaits non-storage I/O, such as an outbound `fetch()` call.
 
-- Real-time collaboration (such as a chat application or a game server).
-- Consistent storage.
-- Data locality.
+Durable Objects are ideal for projects that require:
+
+- Real-time collaboration, such as chat rooms, multiplayer games, and collaborative documents
+- Per-user, per-tenant, or per-resource databases with application logic
+- Strongly consistent coordination, such as bookings or per-user rate limits
+- Stateful AI agents built with the [Agents SDK](https://developers.cloudflare.com/agents/)
 
 To get started with Durable Objects:
 
-- Read the [introductory blog post ↗︎](https://blog.cloudflare.com/introducing-workers-durable-objects/).
-- Review the [Durable Objects documentation](https://developers.cloudflare.com/durable-objects/).
-- Get started with [Durable Objects](https://developers.cloudflare.com/durable-objects/get-started/).
-- Learn about Durable Objects [Limits](https://developers.cloudflare.com/durable-objects/platform/limits/).
+- Read [What are Durable Objects?](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/).
+- Review the [Rules of Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/).
+- Follow the [Durable Objects getting started guide](https://developers.cloudflare.com/durable-objects/get-started/).
+- Review [Durable Objects limits](https://developers.cloudflare.com/durable-objects/platform/limits/).
 
 ### D1
 
@@ -263,5 +265,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/storage-options/#page","headline":"Choose a data or storage product","description":"Storage and database options available on Cloudflare's developer platform.","url":"https://developers.cloudflare.com/workers/platform/storage-options/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/storage-options/og.png?v=abca508978294b6c","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/storage-options/#page","headline":"Choose a data or storage product","description":"Storage and database options available on Cloudflare's developer platform.","url":"https://developers.cloudflare.com/workers/platform/storage-options/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/storage-options/og.png?v=abca508978294b6c","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -167,7 +167,7 @@ build-job:
 
 If a merge request displays `Checking pipeline status.`, but the message never goes
 away (the "spinner" never stops spinning), it might be due to `workflow:rules`.
-This issue can happen if a project has [**Pipelines must succeed**](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
+This issue can happen if a project has [](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
 enabled, but the `workflow:rules` prevent a pipeline from running for the merge request.
 
 For example, with this workflow, merge requests cannot be merged, because no

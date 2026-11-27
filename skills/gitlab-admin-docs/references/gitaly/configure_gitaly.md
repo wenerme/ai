@@ -699,6 +699,117 @@ duration = '30m'
 storages = ["default"]
 ```
 
+## Gitaly shutdown and restart behavior
+
+When Gitaly receives a shutdown signal, it logs `starting grace period` and stops its gRPC servers gracefully.
+During the grace period:
+
+- Gitaly rejects new RPCs.
+- In-flight RPCs continue until they complete or until `graceful_restart_timeout` elapses.
+  After the timeout, Gitaly force stops the servers.
+- A second shutdown signal forces an immediate stop.
+  Gitaly logs `wait: second signal received; force shutdown`.
+
+Gitaly treats `SIGTERM` and `SIGINT` as shutdown signals.
+`SIGHUP` depends on how Gitaly is started:
+
+- Linux package instances run Gitaly through `gitaly-wrapper` by default.
+  The wrapper sets `GITALY_UPGRADES_ENABLED=true`, so `SIGHUP` triggers a zero-downtime upgrade instead of a shutdown.
+  Gitaly starts a new process that takes over the existing listeners.
+  When the new process is ready, the old one stops accepting requests, finishes in-flight RPCs, and exits.
+- Helm chart instances and self-compiled instances that start the Gitaly binary directly don't use `gitaly-wrapper`.
+  For these installations, `SIGHUP` is also a shutdown signal.
+
+How you change the timeout depends on the type of instance.
+
+### Linux package (Omnibus)
+
+1. Edit `/etc/gitlab/gitlab.rb` and add:
+
+   ```ruby
+   gitaly['configuration'] = {
+     # ...
+     graceful_restart_timeout: '1m',
+   }
+   ```
+
+1. Save the file and reconfigure GitLab.
+
+### Helm chart (Kubernetes)
+
+1. Edit your Helm values file and set the timeout in seconds:
+
+   ```yaml
+   gitlab:
+     gitaly:
+       gracefulRestartTimeout: 60
+   ```
+
+1. Upgrade your Helm release.
+
+For more information, see [Gitaly graceful shutdown timeout](kubernetes.md#gitaly-graceful-shutdown-timeout).
+
+### Self-compiled (source)
+
+1. Edit `/home/git/gitaly/config.toml` and add:
+
+   ```toml
+   graceful_restart_timeout = "1m"
+   ```
+
+1. Save the file and restart GitLab.
+
+### Set the process supervisor stop timeout
+
+The stop timeout of the process supervisor must be at least as long as `graceful_restart_timeout`.
+Otherwise, the supervisor can stop Gitaly during the grace period before Gitaly finishes its own shutdown.
+
+### Linux package (Omnibus)
+
+The runit service for Gitaly sets its stop timeout to the value of `graceful_restart_timeout` plus
+the value of `gitaly['sv_timeout_buffer']`, which defaults to 5 seconds.
+You don't have to configure the runit timeout separately.
+
+### Helm chart (Kubernetes)
+
+The chart sets `terminationGracePeriodSeconds` on the Gitaly pod to the value of
+`gracefulRestartTimeout` plus 5 seconds.
+
+### Self-compiled (source)
+
+If you run Gitaly under systemd, set `TimeoutStopSec` in the Gitaly unit file to a value greater than or equal to
+the value of `graceful_restart_timeout`.
+For example, for a `graceful_restart_timeout` of `1m`:
+
+```ini
+[Service]
+TimeoutStopSec=90
+```
+
+### Shutdown behavior in a Gitaly Cluster (Praefect)
+
+When a Gitaly node in a Gitaly Cluster (Praefect) stops:
+
+- Gitaly does not notify Praefect that it is stopping.
+  Praefect marks the node as unhealthy only through its health checks.
+- Praefect [elects a new primary](praefect/configure.md#automatic-failover-and-primary-election)
+  only when a request must be served, and only from healthy replicas that are fully up to date.
+  If no such replica exists, the repository is unavailable until the node returns.
+- Replicas that are behind cannot catch up from the node.
+  Replication catch-up fetches from the up-to-date node, which is not available while the node shuts down.
+
+Before you restart a node, see [Before you restart a Gitaly node](praefect/recovery.md#before-you-restart-a-gitaly-node).
+
+### Use client retries during a restart
+
+Gitaly clients can retry requests that fail between the signal and the point at which Praefect marks the node as unhealthy:
+
+- Retries cover this window only when `gitaly_client_max_backoff` is at least the graceful shutdown timeout
+  plus the restart time.
+- Retries do not help with replicas that are behind.
+
+For more information, see [Gitaly client retries](../settings/gitaly_timeouts.md#gitaly-client-retries).
+
 ## Rotate Gitaly authentication token
 
 Rotating credentials in a production environment often requires downtime, causes outages, or both.

@@ -441,6 +441,7 @@ Status of the last run of a flow trigger.
 | `NEVER` | Flow trigger has never run. |
 | `PENDING` | Run has been created and has not started. |
 | `RUNNING` | Run is in progress. |
+| `SKIPPED` | Scheduled run was skipped before it started, and no session was created. |
 | `SUCCEEDED` | Run finished successfully. |
 
 ## `AiFlowTriggerRunStatus`
@@ -454,6 +455,7 @@ Status of a flow trigger run.
 | `FAILED` | Run failed. |
 | `PENDING` | Run has been created and has not started. |
 | `RUNNING` | Run is in progress. |
+| `SKIPPED` | Scheduled run was skipped before it started, and no session was created. |
 | `SUCCEEDED` | Run finished successfully. |
 
 ## `AiFlowTriggerSort`

@@ -1772,7 +1772,7 @@ job:
 - The expiration time period begins when the artifact is uploaded and stored on GitLab.
   If the expiry time is not defined, it defaults to the [instance wide setting](../../administration/settings/continuous_integration.md#set-default-artifacts-expiration).
 - To override the expiration date and protect artifacts from being automatically deleted:
-  - Select **Keep** on the job page.
+  - Select  on the job page.
   - Set the value of `expire_in` to `never`.
 - If the expiry time is too short, jobs in later stages of a long pipeline might try to fetch
   expired artifacts from earlier jobs. If the artifacts are expired, jobs that try to fetch
@@ -1872,7 +1872,7 @@ with the GitLab UI and API by anonymous users, or Guest and Reporter roles.
 > This option only affects GitLab UI and API access. CI/CD jobs using job tokens
 > could still access artifacts with the runner API, regardless of this setting. To restrict
 > job token access, configure your project's [CI/CD visibility settings](../../user/project/settings/_index.md#configure-project-features-and-permissions)
-> to **Only project members**.
+> to .
 
 **Keyword type**: Job keyword. You can use it only as part of a job or in the
 [`default` section](#default).
@@ -1906,7 +1906,7 @@ You cannot use [`artifacts:public`](#artifactspublic) and `artifacts:access` in 
 > This option only affects GitLab UI and API access. CI/CD jobs using job tokens
 > could still access artifacts with the runner API, regardless of this setting. To restrict
 > job token access, configure your project's [CI/CD visibility settings](../../user/project/settings/_index.md#configure-project-features-and-permissions)
-> to **Only project members**.
+> to .
 
 **Keyword type**: Job keyword. You can use it only as part of a job.
 
@@ -3741,9 +3741,9 @@ Use `interruptible` to configure the [auto-cancel redundant pipelines](../pipeli
 feature. This feature cancels a job before it completes if a pipeline starts on the same ref for a new commit.
 If disabled, the keyword has no effect.
 
-For example, if you rerun a pipeline for the same commit with **New pipeline**, the keyword has no effect.
+For example, if you rerun a pipeline for the same commit with , the keyword has no effect.
 
-The behavior of the **Auto-cancel redundant pipelines** feature can be controlled by
+The behavior of the  feature can be controlled by
 the [`workflow:auto_cancel:on_new_commit`](#workflowauto_cancelon_new_commit) setting.
 
 **Keyword type**: Job keyword. You can use it only as part of a job or in the
@@ -3836,7 +3836,7 @@ In this example, a new pipeline causes a running pipeline to cancel `step-1` and
 - You can add an optional manual job with `interruptible: false` in the first stage of
   a pipeline to allow users to manually prevent a pipeline from being automatically
   canceled. After a user starts the job, the pipeline cannot be canceled by the
-  **Auto-cancel redundant pipelines** feature.
+   feature.
 - When using `interruptible` with a [trigger job](#trigger):
   - The triggered downstream pipeline is never affected by the trigger job's `interruptible` configuration.
   - If [`workflow:auto_cancel`](#workflowauto_cancelon_new_commit) is set to `conservative`,
@@ -4664,7 +4664,7 @@ release_job:
 This example creates a release:
 
 - When you push a Git tag.
-- When you add a Git tag in the UI at **Code** > **Tags**.
+- When you add a Git tag in the UI at  > .
 
 **Additional details**:
 
@@ -7162,7 +7162,7 @@ In this example, the `deploy_production` job starts 30 minutes after the previou
 **Additional details**:
 
 - The timer starts when the job's stage begins, not when the previous job finishes.
-- To manually start a delayed job immediately, select **Play** () in the pipeline view.
+- To manually start a delayed job immediately, select  () to stop the timer, then select  ().
 - The minimum delay period is one second and the maximum delay is one week.
 - `start_in` only works when [`when`](#when) is set to `delayed`. If you use any other value for `when`, the configuration is invalid.
   If a job uses `rules`, `start_in` and `when` must be defined in the `rules`, not at the job level.

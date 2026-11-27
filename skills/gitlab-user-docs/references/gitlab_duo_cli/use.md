@@ -257,7 +257,8 @@ Where your settings allow it, GitLab Duo can perform the following actions:
 
 Auto mode does not override [agent tool governance](../ai-governance/tool-governance.md).
 If tool governance for local access is turned on for your top-level group, tools set to
-**Always deny** do not run, and tools set to **Always ask** still prompt for approval.
+ do not run, and tools set to
+ still prompt for approval.
 For more information, see
 [auto mode in the GitLab Duo CLI](../ai-governance/tool-governance.md#auto-mode-in-the-gitlab-duo-cli).
 
@@ -276,7 +277,7 @@ For more information, see
 
 #### Turn on auto mode
 
-The **Auto mode** setting is off by default.
+The  setting is off by default.
 Auto mode must be turned on for your instance, group, or project before you can use it.
 Groups inherit the setting from the instance, and subgroups and projects inherit the setting from their parent group.
 
@@ -288,14 +289,14 @@ Prerequisites:
 
 To turn on auto mode for an instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **GitLab Duo**.
-1. Select **Change configuration**.
-1. From the **Auto mode** dropdown list, select one of the following options:
-   - **On by default**: Auto mode is available. Groups and subgroups can turn it off.
-   - **Off by default**: Auto mode is not available. Groups and subgroups can turn it on.
-   - **Always off**: Auto mode is not available. Groups and subgroups cannot turn it on.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select .
+1. Select .
+1. From the  dropdown list, select one of the following options:
+   - : Auto mode is available. Groups and subgroups can turn it off.
+   - : Auto mode is not available. Groups and subgroups can turn it on.
+   - : Auto mode is not available. Groups and subgroups cannot turn it on.
+1. Select .
 
 ### Group
 
@@ -305,18 +306,18 @@ Prerequisites:
 
 To turn on auto mode for a group:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. Select **Settings** > **GitLab Duo**.
-1. Select **Change configuration**.
-1. From the **Auto mode** dropdown list, select one of the following options:
-   - **On by default**: Auto mode is available. Subgroups and projects can turn it off.
-   - **Off by default**: Auto mode is not available. Subgroups and projects can turn it on.
-   - **Always off**: Auto mode is not available. Subgroups and projects cannot turn it on.
-1. Select **Save changes**.
+1. In the top bar, select  and find your group.
+1. Select  > .
+1. Select .
+1. From the  dropdown list, select one of the following options:
+   - : Auto mode is available. Subgroups and projects can turn it off.
+   - : Auto mode is not available. Subgroups and projects can turn it on.
+   - : Auto mode is not available. Subgroups and projects cannot turn it on.
+1. Select .
 
 ### Project
 
-If a parent group has set auto mode to **Always off**, the project setting is locked and cannot be turned on.
+If a parent group has set auto mode to , the project setting is locked and cannot be turned on.
 
 Prerequisites:
 
@@ -324,11 +325,11 @@ Prerequisites:
 
 To turn on auto mode for a project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. Select **Settings** > **General**.
-1. Expand **GitLab Duo**.
-1. Turn on the **Auto mode** toggle.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. Select  > .
+1. Expand .
+1. Turn on the  toggle.
+1. Select .
 
 #### Use auto mode
 
@@ -353,8 +354,8 @@ Each new or resumed session starts in build mode unless you set a different [def
 
 If `auto` does not appear when you press <kbd>Tab</kbd>:
 
-1. Confirm that the **Auto mode** setting is turned on for your project.
-1. Confirm that no parent group is set to **Always off**.
+1. Confirm that the  setting is turned on for your project.
+1. Confirm that no parent group is set to .
 1. Restart the GitLab Duo CLI.
 
 ## Headless mode

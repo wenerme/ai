@@ -36,6 +36,7 @@ information, see the [GraphQL input types documentation](https://graphql.org/lea
 | ---- | ---- | ----------- |
 | `groupFullPaths` | [`[ID!]`](scalars.md#id) | Full paths of groups to aggregate data for. Combined with `projectFullPaths`, at most 20 sources can be requested. |
 | `projectFullPaths` | [`[ID!]`](scalars.md#id) | Full paths of projects to aggregate data for. Combined with `groupFullPaths`, at most 20 sources can be requested. |
+| `workforceUnitIds` | [`[WorkforceUnitID!]`](scalars.md#workforceunitid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Workforce units to aggregate data for. Narrows the data to the members of the units and of their descendant units, at most 1000 users. Applies on top of `groupFullPaths` and `projectFullPaths`. Units are not accessible unless the workforce unit filter is enabled for the user or the tenant. A granular personal access token also needs the `read_workforce_hierarchy` permission on the tenant group of every unit. |
 
 ## `AiAdditionalContextInput`
 

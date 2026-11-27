@@ -25,7 +25,7 @@ check whether its toolset is enabled.
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request), [`apply_suggestion`](#apply_suggestion) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
-| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`save_pipeline_job`](#save_pipeline_job), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
+| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`save_pipeline_job`](#save_pipeline_job), [`delete_pipeline`](#delete_pipeline), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
 | `duo_agent_platform` | [`list_duo_agents_and_flows`](#list_duo_agents_and_flows), [`start_duo_session`](#start_duo_session), [`list_duo_sessions`](#list_duo_sessions), [`get_duo_session`](#get_duo_session), [`send_duo_session_input`](#send_duo_session_input) |
 | `wikis` | [`list_wiki_pages`](#list_wiki_pages), [`get_wiki_page`](#get_wiki_page) |
 | `code_security` | [`list_vulnerabilities`](#list_vulnerabilities), [`get_vulnerability`](#get_vulnerability), [`save_vulnerability`](#save_vulnerability), [`attach_scan_profile`](#attach_scan_profile) |
@@ -262,6 +262,7 @@ Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/639870) to return reviewers, labels, `diffHeadSha`, and `detailedMergeStatus` in the base response, in GitLab 19.7.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/640199) to return the suggestions on each note in GitLab 19.7.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/636668) to return `diffsOverflow` and a `system_instruction` when the merge request diff exceeds the diff size limits in GitLab 19.7.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -292,6 +293,14 @@ Additional associated data is returned when you request it with the `include` pa
 
 The `diffs` facet returns change statistics by default: overall totals and per-file additions and
 deletions. To get patch text, set `detail` to `full_patch`.
+
+When `diffsOverflow` is `true`, the merge request diff exceeds the diff size limits and some changed
+files have no patch text.
+With `detail: "full_patch"`, page through the diffs with `diffs_after` set to `diffs.pageInfo.endCursor`
+until `diffs.pageInfo.hasNextPage` is `false`.
+The response's `system_instruction` explains how to read files that appear in `stats` but in no
+`full_patch` page.
+Deleted files cannot be read at `diffHeadSha`.
 
 The `commits` and `pipelines` facets return up to 100 entries per call. Each response carries
 `pageInfo.hasNextPage` and `pageInfo.endCursor`. Pass that cursor back as `commits_after` or
@@ -1776,43 +1785,70 @@ Example:
 Check job 12345 in project example/my-project, then play it with DEPLOY_ENV set to staging
 ```
 
+## `delete_pipeline`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631276) in GitLab 19.7.
+
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+> [!warning]
+> Deleting a pipeline expires all pipeline caches
+> and deletes all immediately related objects, such as jobs, logs, artifacts, and triggers. This
+> action cannot be undone. Deleting a pipeline does not delete its child pipelines, but it can cancel
+> their running jobs.
+
+Prerequisites:
+
+- You must have the Owner role for the project.
+
+Deletes a specified pipeline in a GitLab project.
+
+Pipeline deletion is [rate limited](../../administration/cicd/limits.md#pipeline-deletion-rate-limits).
+
+To create, retry, cancel, or rename a pipeline, use the [`save_pipeline`](#save_pipeline) tool
+instead. To list pipelines, use the [`list_pipelines`](#list_pipelines) tool instead.
+
+| Parameter     | Type    | Required | Description |
+|---------------|---------|----------|-------------|
+| `id`          | string  | Yes      | ID or full path of the project. |
+| `pipeline_id` | integer | Yes      | ID of the pipeline to delete. |
+
+Example:
+
+```plaintext
+Delete pipeline 12345 in project gitlab-org/gitlab
+```
+
 ## `manage_pipeline`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/583826) in GitLab 18.10.
 - [Removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/247806) the `list` action in favor of the `list_pipelines` tool in GitLab 19.3.
 - [Removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605855) the `create`, `retry`, and `cancel` actions in favor of the `save_pipeline` tool in GitLab 19.3.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/631276) in GitLab 19.5. To rename a pipeline, use [`save_pipeline`](#save_pipeline) with `action: "update"`.
+- [Removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631276) pipeline deletion in favor of the [`delete_pipeline`](#delete_pipeline) tool in GitLab 19.7.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 > [!warning]
 > This tool is no longer listed but remains callable by agents that have an outdated tools list
 > or have stored the tool name. To rename a pipeline, use [`save_pipeline`](#save_pipeline) with
-> `action: "update"` instead. Pipeline deletion has no replacement yet.
+> `action: "update"` instead. To delete a pipeline, use [`delete_pipeline`](#delete_pipeline).
 
-Updates pipeline metadata or deletes a pipeline in a GitLab project. To create, retry, or cancel a
-pipeline, use the `save_pipeline` tool instead. To list pipelines, use the `list_pipelines` tool
-instead.
+Renames a pipeline in a GitLab project. To create, retry, or cancel a pipeline, use the
+`save_pipeline` tool instead. To list pipelines, use the `list_pipelines` tool instead. To delete a
+pipeline, use the `delete_pipeline` tool.
 
 | Parameter     | Type    | Required    | Description |
 |---------------|---------|-------------|-------------|
 | `id`          | string  | Yes         | ID or full path of the project. |
-| `pipeline_id` | integer | Yes         | ID of the pipeline. If only this parameter is set, deletes a pipeline and all related data. |
-| `name`        | string  | No          | Name of the pipeline. If this parameter and `pipeline_id` are set, updates the pipeline metadata. |
+| `pipeline_id` | integer | Yes         | ID of the pipeline to update. |
+| `name`        | string  | Yes         | New name of the pipeline. |
 
-Examples:
+Example:
 
-- Update a pipeline:
-
-  ```plaintext
-  Rename pipeline 12345 to "My deploy pipeline" in project gitlab-org/gitlab
-  ```
-
-- Delete a pipeline:
-
-  ```plaintext
-  Delete pipeline 12345 in project gitlab-org/gitlab
-  ```
+```plaintext
+Rename pipeline 12345 to "My deploy pipeline" in project gitlab-org/gitlab
+```
 
 ## `get_work_item`
 
@@ -2513,11 +2549,26 @@ Attach `gid://gitlab/Security::ScanProfile/1` to all projects under `gid://gitla
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261207) in GitLab 19.6.
+- `get_orbit_context` tool [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272178) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md) named `orbit_get_context_tool`. Disabled by default.
 
 The `orbit` toolset has one tool for each GitLab Orbit command, for example `query_graph`.
-The Orbit server sets the tool names, descriptions, and input schemas.
+The Orbit server sets the names, descriptions, and input schemas of the command tools.
 Your MCP client gets the current list of tools from the GitLab MCP server.
 For the commands and what they do, see [GitLab Orbit endpoint tools](https://docs.gitlab.com/orbit/agents/mcp/#endpoint-tools).
+
+> [!flag]
+> The availability of the `get_orbit_context` tool is controlled by a feature flag.
+> For more information, see the history.
+
+The toolset also has the `get_orbit_context` tool, which GitLab provides.
+The tool reads one entity, such as an issue or merge request, from an Orbit token, and optionally its graph neighborhood.
+Use a `Type[id]` token built from the type and ID columns of a `query_graph` row, or a reference as GitLab writes it, for example `group/project#7`.
+The `Type` can be `MergeRequest`, `WorkItem`, `Issue`, `Epic`, `Job`, or `Pipeline`.
+Other types, such as `Project` or `User`, are not supported.
+The tool counts toward the Orbit query rate limit and requires Orbit turned on for at least one of your groups.
+With `expand`, `get_orbit_context` returns `outside_graph_scope` for an entity in a group that does not have Orbit turned on.
+[Tool rules](mcp_server.md#apply-tool-rules-from-a-group-or-project) for `get_orbit_context` apply to the project or group the token names, not to linked items or expanded neighbors.
+You still see only what you can read.
 
 These tools are listed only when you request the `orbit` toolset and meet the [Orbit requirements](https://docs.gitlab.com/orbit/).
 For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).

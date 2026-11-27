@@ -152,6 +152,24 @@ Gitaly Cluster (Praefect):
 - If no fully up to date secondary is available, elects the secondary with the least unreplicated writes from the primary as the new primary.
 - The repository becomes unavailable if there are no fully up to date copies of it on healthy secondaries. Use the [Praefect `dataloss` subcommand](#check-for-data-loss) to detect it.
 
+### Before you restart a Gitaly node
+
+For information about how Praefect responds when a Gitaly node stops, see
+[Shutdown behavior in a Gitaly Cluster (Praefect)](../configure_gitaly.md#shutdown-behavior-in-a-gitaly-cluster-praefect).
+
+Before you restart a node:
+
+1. Use the [`dataloss`](#check-for-data-loss) subcommand with the `-partially-unavailable` flag to confirm that
+   the node is not the only up-to-date copy of any repository:
+
+   ```shell
+   sudo -u git -- /opt/gitlab/embedded/bin/praefect -config /var/opt/gitlab/praefect/config.toml dataloss -partially-unavailable
+   ```
+
+1. If the node holds the only up-to-date copy of a repository, wait for replication to other nodes to complete.
+1. Set the process supervisor stop timeout to at least `graceful_restart_timeout`.
+   For more information, see [Set the process supervisor stop timeout](../configure_gitaly.md#set-the-process-supervisor-stop-timeout).
+
 ### Unavailable repositories
 
 A repository is unavailable if all of its up to date replicas are unavailable. Unavailable repositories are

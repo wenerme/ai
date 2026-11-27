@@ -26,12 +26,12 @@ configuration added with the [`includes` keyword](_index.md#include).
 
 To check CI/CD configuration with the CI lint tool:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline editor**.
-1. Select the **Validate** tab.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the  tab.
 1. Select **Lint CI/CD sample**.
 1. Paste a copy of the CI/CD configuration you want to check into the text box.
-1. Select **Validate**.
+1. Select .
 
 ## Simulate a pipeline
 
@@ -46,10 +46,10 @@ Prerequisites:
 
 To simulate a pipeline:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipeline editor**.
-1. Select the **Validate** tab.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the  tab.
 1. Select **Lint CI/CD sample**.
 1. Paste a copy of the CI/CD configuration you want to check into the text box.
-1. Select **Simulate pipeline creation for the default branch**.
-1. Select **Validate**.
+1. Select .
+1. Select .

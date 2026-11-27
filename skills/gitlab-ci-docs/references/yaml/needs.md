@@ -165,8 +165,8 @@ You can view the dependencies between jobs on the pipeline graph.
 
 To enable this view, from the pipeline details page:
 
-- Select **Job dependencies**.
-- Optional. Toggle **Show dependencies** to display lines that show which jobs are linked together.
+- Select .
+- Optional. Toggle  to display lines that show which jobs are linked together.
 
 [A pipeline graph showing 5 jobs and their dependencies]
 
@@ -443,7 +443,7 @@ package:
   script: echo "Packaging..."
 ```
 
-To view the structure of this pipeline, [select **Job dependencies**](#view-dependencies-between-jobs)
+To view the structure of this pipeline, [select ](#view-dependencies-between-jobs)
 from the pipeline details page. If you use the default view, all jobs are grouped together in the `test` stage.
 
 ## Optional dependencies

@@ -69,11 +69,11 @@ Prerequisites:
 
 - You must be an administrator.
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **GitLab Duo**.
-1. Select **Change configuration**.
-1. Under **GitLab Duo CLI**, select or clear the **Turn on GitLab Duo CLI access** checkbox.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select .
+1. Select .
+1. Under , select or clear the  checkbox.
+1. Select .
 
 To enforce GitLab Duo CLI settings on users' machines, see [managed settings file](settings.md#managed-settings-file).
 

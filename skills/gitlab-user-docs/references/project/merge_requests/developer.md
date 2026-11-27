@@ -116,6 +116,7 @@ When you assign the flow, the merge request
 [closes the issue when it merges](../issues/managing_issues.md#closing-issues-automatically).
 The flow adds a `Closes` line to the merge request description.
 If the line is missing, GitLab still links the merge request as closing the issue.
+If the description has the `Closes` line and someone removes it later, the merge request no longer closes the issue.
 When you select **Implement**, the merge request does not close the issue.
 
 ### Start the flow when a work item status changes

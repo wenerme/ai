@@ -50,6 +50,7 @@ Most of this middleware leverages external libraries.
 ### Monitoring / Tracing
 
 - [Apitally (API monitoring & analytics)](https://docs.apitally.io/frameworks/hono)
+- [Auditstream (Database audit trail context)](https://auditstream.dev/docs/typescript/http/) ([GitHub](https://github.com/auditstream/auditstream-js))
 - [Highlight.io](https://www.highlight.io/docs/getting-started/backend-sdk/js/hono)
 - [LogTape (Logging)](https://logtape.org/manual/integrations#hono)
 - [OpenTelemetry](https://github.com/honojs/middleware/tree/main/packages/otel)
@@ -89,7 +90,6 @@ Most of this middleware leverages external libraries.
 ### Utilities
 
 - [Bun Compress](https://github.com/honojs/middleware/tree/main/packages/bun-compress)
-- [Cap Checkpoint](https://capjs.js.org/guide/middleware/hono.html)
 - [Event Emitter](https://github.com/honojs/middleware/tree/main/packages/event-emitter)
 - [Geo](https://github.com/ktkongtong/hono-geo-middleware/tree/main/packages/middleware)
 - [Guard Core (IP filtering, rate limiting, attack detection)](https://github.com/Guard-Core/guard-core-ts/tree/master/packages/hono)

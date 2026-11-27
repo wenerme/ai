@@ -264,13 +264,29 @@ cloudflared metrics
 | <code>cloudflared_udp_active_sessions</code> | Concurrent number of UDP sessions that are being proxied to any origin. | GAUGE | |
 | <code>cloudflared_udp_total_sessions</code> | Total number of UDP sessions that have been proxied to any origin. | COUNTER | |
 | <code>coredns_panics_total</code> | Number of panics. | COUNTER | |
+| <code>quic_client_buffered_packets</code> | Number of packets buffered on a connection. | COUNTER | <code>conn_index</code>, <code>packet_type</code> |
 | <code>quic_client_closed_connections</code> | Number of connections that have been closed. | COUNTER | |
+| <code>quic_client_congestion_state</code> | Current congestion control state (<code>0</code> = slow start, <code>1</code> = congestion avoidance, <code>2</code> = application limited, <code>3</code> = recovery, <code>-1</code> = unknown). | GAUGE | <code>conn_index</code> |
+| <code>quic_client_congestion_window</code> | Current congestion window size in bytes. | GAUGE | <code>conn_index</code> |
+| <code>quic_client_dropped_packets</code> | Number of bytes from packets dropped on a connection. | COUNTER | <code>conn_index</code>, <code>packet_type</code>, <code>reason</code> |
 | <code>quic_client_latest_rtt</code> | Latest round-trip time (RTT) measured on a connection. | GAUGE | <code>conn_index</code> |
 | <code>quic_client_lost_packets</code> | Number of packets that have been lost from a connection. | COUNTER | <code>conn_index</code>, <code>reason</code> |
+| <code>quic_client_max_udp_payload</code> | Maximum UDP payload size in bytes for a QUIC packet. | GAUGE | <code>conn_index</code> |
 | <code>quic_client_min_rtt</code> | Lowest RTT measured on a connection in ms. | GAUGE | <code>conn_index</code> |
+| <code>quic_client_mtu</code> | Current maximum transmission unit (MTU) of a connection. | GAUGE | <code>conn_index</code> |
 | <code>quic_client_packet_too_big_dropped</code> | Number of packets received from origin that are too big to send to Cloudflare and are dropped as a result. | COUNTER | |
+| <code>quic_client_receive_bytes</code> | Number of bytes received through a connection. | COUNTER | <code>conn_index</code> |
+| <code>quic_client_received_frames</code> | Number of QUIC frames received through a connection, labeled by frame type (for example, <code>Ack</code> or <code>Stream</code>). | COUNTER | <code>conn_index</code>, <code>frame_type</code> |
+| <code>quic_client_sent_bytes</code> | Number of bytes sent through a connection. | COUNTER | <code>conn_index</code> |
+| <code>quic_client_sent_frames</code> | Number of QUIC frames sent through a connection, labeled by frame type (for example, <code>Ack</code> or <code>Stream</code>). | COUNTER | <code>conn_index</code>, <code>frame_type</code> |
 | <code>quic_client_smoothed_rtt</code> | Smoothed RTT calculated for a connection in ms. | GAUGE | <code>conn_index</code> |
 | <code>quic_client_total_connections</code> | Number of connections initiated. For all QUIC metrics, client means the side initiating the connection. | COUNTER | |
+
+Transport visibility by protocol
+
+<code>cloudflared</code> exports per-connection (<code>conn_index</code>) packet loss (<code>quic_client_lost_packets</code>), frame counts including <code>Ack</code> frames (<code>quic_client_sent_frames</code> and <code>quic_client_received_frames</code>), RTT, and congestion metrics for <code>quic</code> connections.
+
+When <code>cloudflared</code> connects over <code>http2</code>, it does not expose TCP-level packet loss, retransmission, or ACK metrics — use host OS networking tools (such as <code>ss</code> or packet captures) to inspect the underlying TCP connection. Cloudflare does not expose edge-side tunnel transport metrics.
 
 </details>
 
