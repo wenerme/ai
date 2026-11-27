@@ -17,13 +17,38 @@ image: https://developers.cloudflare.com/rules/url-forwarding/og.png?v=a9d28067c
 
 # Redirects
 
-URL forwarding, also known as URL redirection, navigates the user from a source URL to a target URL with a specific HTTP status code.
+A redirect sends visitors from one URL to another URL with an HTTP status code, such as `301`. Redirects are also known as URL forwarding. Single Redirects and Bulk Redirects replace the *Forwarding URL* setting in Page Rules.
 
-Use the following Cloudflare products to perform URL redirects, according to your use case:
+In the Cloudflare dashboard, Single Redirects appear as **Redirect Rules**.
 
-- [**Single Redirects**](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/): Allow you to create static or dynamic redirects at the zone level (a single domain or subdomain). A [wildcard-based](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) interface allows you to define source and target URL patterns without complex functions or regular expressions, efficiently covering thousands of URLs with a single rule.
-- [**Bulk Redirects**](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/): Allow you to define a large number of redirects at the account level, which can apply across domains in your account. These URL redirects are essentially static — they do not support string replacement operations or regular expressions. However, you can configure parameters that affect how source URLs are matched and how the redirect is performed.
-- [**Snippets**](https://developers.cloudflare.com/rules/snippets/): Use short pieces of JavaScript code for a more flexible way to define complex redirect functionality. Consider a few [examples](https://developers.cloudflare.com/rules/snippets/examples/?operation=Redirect) to get started.
+## Choose a redirect product
+
+Use the following table to choose a redirect product for your use case:
+
+| Goal | Product | Refer to |
+| --- | --- | --- |
+| Move a whole domain or subdomain to a new hostname, keeping the path | Single Redirects | [Redirect requests to a different hostname](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname/) |
+| Send every page of an old domain to the homepage of a new domain | Single Redirects | [Redirect requests for a domain to a new domain](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/) |
+| Redirect one page to another page | Single Redirects | [Redirect visitors to a new page URL](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-new-url/) |
+| Redirect a section of a website, such as `/blog/*` to `blog.example.com/*` | Single Redirects | [Redirect a website section to a subdomain](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-section-to-subdomain/) |
+| Redirect all HTTP requests to HTTPS | Always Use HTTPS (recommended) | [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) |
+| Redirect HTTP to HTTPS for some hostnames or paths only | Single Redirects | [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) |
+| Redirect `www` to the root domain, or the root domain to `www` | Single Redirects | [Redirect from WWW to root](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/), [Redirect from root to WWW](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-root-to-www/) |
+| Redirect visitors based on country | Single Redirects | [Redirect local visitors to specific subdomains](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/), [Redirect visitors from one country to a subdomain](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-single-country-subdomain/) |
+| Redirect visitors based on device, such as mobile phones | Single Redirects | [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/) |
+| Redirect using regular expressions (Business and Enterprise plans) | Single Redirects | [Remove locale from URL path](https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/), [Single Redirects availability](#single-redirects) |
+| Replace a Page Rule that uses the *Forwarding URL* setting | Single Redirects | [Migrate Forwarding URL](https://developers.cloudflare.com/rules/reference/page-rules-migration/#migrate-forwarding-url) |
+| Redirect a list of specific URLs, such as old and new URLs from a migration | Bulk Redirects | [Create Bulk Redirects in the dashboard](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/) |
+| Redirect the same path prefix on several domains (one URL redirect per hostname) | Bulk Redirects | [Subpath matching](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#subpath-matching), [CSV file format](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/) |
+| Redirect with custom logic that rules cannot express (Pro plan and above) | Snippets | [Bulk redirect based on a map object](https://developers.cloudflare.com/rules/snippets/examples/bulk-redirect-map/), [Country code redirect](https://developers.cloudflare.com/rules/snippets/examples/country-code-redirect/) |
+
+To create a redirect, refer to [Create a redirect rule in the dashboard](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) or [Create Bulk Redirects in the dashboard](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/).
+
+## Redirect products
+
+- [**Single Redirects**](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/): Static or dynamic redirects for one zone (a domain you added to Cloudflare, including its subdomains). With a [wildcard pattern](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/#wildcard-url-redirect), one rule can cover thousands of URLs without functions or regular expressions. You can also match requests by country, device, header, or cookie with a [custom filter expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
+- [**Bulk Redirects**](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/): Lists of source and target URLs at the account level, which can apply across domains in your account. Each URL redirect maps one source URL to one target URL. Bulk Redirects do not support wildcards or regular expressions, but [URL redirect parameters](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/), such as **Subpath matching** and **Include subdomains**, control how source URLs match.
+- [**Snippets**](https://developers.cloudflare.com/rules/snippets/): Short pieces of JavaScript code for complex redirect logic. Refer to the [Snippets examples](https://developers.cloudflare.com/rules/snippets/examples/) to get started.
 
 Note
 
@@ -38,11 +63,15 @@ Cloudflare provides you with rules templates for common use cases.
 
 You can also refer to the [Examples gallery](https://developers.cloudflare.com/rules/examples/) in the developer docs.
 
+Redirect templates include **Redirect from HTTP to HTTPS**, **Redirect from WWW to root**, and **Redirect from root to WWW**. The **Redirect from HTTP to HTTPS** template uses the request URL `http://*` and the target URL `https://${1}`.
+
+The **Redirect from WWW to root** and **Redirect from root to WWW** templates match HTTPS requests only. To also redirect HTTP requests, turn on [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/), or change the request URL to start with `http*://` and update the wildcard references in the target URL. Refer to [How wildcard references are numbered](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/#how-wildcard-references-are-numbered).
+
 ## Availability
 
 Single Redirects and Bulk Redirects are available on all Cloudflare plans. The exact quotas and features depend on your plan.
 
-### Bulk redirects
+### Bulk Redirects
 
 |  | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
@@ -106,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/#page","headline":"Redirects","description":"Redirect visitors to different URLs with Single Redirects and Bulk Redirects.","url":"https://developers.cloudflare.com/rules/url-forwarding/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/url-forwarding/og.png?v=a9d28067c0d5afbc","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/#page","headline":"Redirects","description":"Redirect visitors to different URLs with Single Redirects and Bulk Redirects.","url":"https://developers.cloudflare.com/rules/url-forwarding/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/url-forwarding/og.png?v=a9d28067c0d5afbc","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

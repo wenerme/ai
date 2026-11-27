@@ -1707,6 +1707,20 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minItems: 0`, `maxItems: 2000`
 
+      - `access_programs: optional object { cyber }`
+
+        Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+        - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+          The cyber access program explicitly selected for this session.
+
+          - `"standard"`
+
+          - `"daybreak_blue"`
+
+          - `"daybreak_red"`
+
       - `prompt_cache_options: optional object { ttl }  or null`
 
         Default prompt cache lifetime for turns in this session, when configured.

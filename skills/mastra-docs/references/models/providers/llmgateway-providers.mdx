@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 518 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 519 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1932,8 +1932,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 1.4,
-    "outputCost": 4.4
+    "inputCost": 0.84,
+    "outputCost": 2.64
   },
   {
     "model": "llmgateway-providers/canopywave/glm-5.3-flash",
@@ -4682,6 +4682,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.11,
     "outputCost": 0.3
+  },
+  {
+    "model": "llmgateway-providers/reka-ai/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "llmgateway-providers/reka-ai/reka-edge-2603",

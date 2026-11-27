@@ -14,7 +14,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 12 more }`
+- `AgentSession object { id, agent, created_at, 13 more }`
 
   A Managed Agents session.
 
@@ -1050,6 +1050,20 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `access_programs: optional object { cyber }`
+
+    Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+    - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+      The cyber access program explicitly selected for this session.
+
+      - `"standard"`
+
+      - `"daybreak_blue"`
+
+      - `"daybreak_red"`
+
   - `prompt_cache_options: optional object { ttl }  or null`
 
     Default prompt cache lifetime for turns in this session, when configured.
@@ -1163,6 +1177,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "vault_ids": [
     "string"
   ],
+  "access_programs": {
+    "cyber": "standard"
+  },
   "prompt_cache_options": {
     "ttl": "30m"
   },

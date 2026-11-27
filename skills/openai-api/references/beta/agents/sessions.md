@@ -318,6 +318,20 @@ Content type: `application/json`
 
       `minItems: 0`, `maxItems: 16384`
 
+- `access_programs: optional object { cyber }`
+
+  Cyber access program for all turns in this session. Omit to use the model default.
+
+  - `cyber: optional "standard" or "daybreak_blue" or "daybreak_red"`
+
+    Selects a cyber access program compatible with the model. Daybreak requires access to the selected tier. Omit to use the model default.
+
+    - `"standard"`
+
+    - `"daybreak_blue"`
+
+    - `"daybreak_red"`
+
 - `agent: optional object { compaction, experimental, instructions, 6 more }`
 
   Agent configuration. With `agent_id`, supplied fields override the saved agent for this session. Without `agent_id`, `model` is required.
@@ -480,7 +494,7 @@ Content type: `application/json`
 
   - `tools: optional array of AgentToolParam or null`
 
-    Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
+    Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 8 MiB (8,388,608 bytes) of compact UTF-8 JSON.
 
     `minItems: 0`, `maxItems: 16384`
 
@@ -878,7 +892,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 12 more }`
+- `AgentSession object { id, agent, created_at, 13 more }`
 
   A Managed Agents session.
 
@@ -1914,6 +1928,20 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `access_programs: optional object { cyber }`
+
+    Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+    - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+      The cyber access program explicitly selected for this session.
+
+      - `"standard"`
+
+      - `"daybreak_blue"`
+
+      - `"daybreak_red"`
+
   - `prompt_cache_options: optional object { ttl }  or null`
 
     Default prompt cache lifetime for turns in this session, when configured.
@@ -2033,6 +2061,9 @@ curl https://api.openai.com/v1/agents/sessions \
   "vault_ids": [
     "string"
   ],
+  "access_programs": {
+    "cyber": "standard"
+  },
   "prompt_cache_options": {
     "ttl": "30m"
   },
@@ -3177,6 +3208,20 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `access_programs: optional object { cyber }`
+
+    Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+    - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+      The cyber access program explicitly selected for this session.
+
+      - `"standard"`
+
+      - `"daybreak_blue"`
+
+      - `"daybreak_red"`
+
   - `prompt_cache_options: optional object { ttl }  or null`
 
     Default prompt cache lifetime for turns in this session, when configured.
@@ -3314,6 +3359,9 @@ curl https://api.openai.com/v1/agents/sessions \
       "vault_ids": [
         "string"
       ],
+      "access_programs": {
+        "cyber": "standard"
+      },
       "prompt_cache_options": {
         "ttl": "30m"
       },
@@ -3343,7 +3391,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 12 more }`
+- `AgentSession object { id, agent, created_at, 13 more }`
 
   A Managed Agents session.
 
@@ -4379,6 +4427,20 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `access_programs: optional object { cyber }`
+
+    Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+    - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+      The cyber access program explicitly selected for this session.
+
+      - `"standard"`
+
+      - `"daybreak_blue"`
+
+      - `"daybreak_red"`
+
   - `prompt_cache_options: optional object { ttl }  or null`
 
     Default prompt cache lifetime for turns in this session, when configured.
@@ -4492,6 +4554,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "vault_ids": [
     "string"
   ],
+  "access_programs": {
+    "cyber": "standard"
+  },
   "prompt_cache_options": {
     "ttl": "30m"
   },
@@ -4516,6 +4581,20 @@ Updates session tools, vaults, metadata, model, reasoning effort, service tier, 
 ### Body Parameters
 
 Content type: `application/json`
+
+- `access_programs: optional object { cyber }  or null`
+
+  Cyber program for subsequent turns. Send null to restore the model default.
+
+  - `cyber: optional "standard" or "daybreak_blue" or "daybreak_red" or null`
+
+    Cyber access program for subsequent turns. Omit to keep the current selection or send null to restore the model default.
+
+    - `"standard"`
+
+    - `"daybreak_blue"`
+
+    - `"daybreak_red"`
 
 - `agent: optional object { model, reasoning, service_tier, tools }`
 
@@ -4897,7 +4976,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 12 more }`
+- `AgentSession object { id, agent, created_at, 13 more }`
 
   A Managed Agents session.
 
@@ -5933,6 +6012,20 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `access_programs: optional object { cyber }`
+
+    Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+    - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+      The cyber access program explicitly selected for this session.
+
+      - `"standard"`
+
+      - `"daybreak_blue"`
+
+      - `"daybreak_red"`
+
   - `prompt_cache_options: optional object { ttl }  or null`
 
     Default prompt cache lifetime for turns in this session, when configured.
@@ -6047,6 +6140,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "vault_ids": [
     "string"
   ],
+  "access_programs": {
+    "cyber": "standard"
+  },
   "prompt_cache_options": {
     "ttl": "30m"
   },
@@ -8189,6 +8285,20 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         The IDs of vaults made available to the session.
 
         `minItems: 0`, `maxItems: 2000`
+
+      - `access_programs: optional object { cyber }`
+
+        Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+        - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+          The cyber access program explicitly selected for this session.
+
+          - `"standard"`
+
+          - `"daybreak_blue"`
+
+          - `"daybreak_red"`
 
       - `prompt_cache_options: optional object { ttl }  or null`
 

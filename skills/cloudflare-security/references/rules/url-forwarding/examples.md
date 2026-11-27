@@ -29,11 +29,15 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/og.png?v=
 
 [**Redirect requests to a different hostname** Create a redirect rule to redirect all requests for `smallshop.example.com` to a different hostname using HTTPS, keeping the original path and query string.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname/)
 
-[**Redirect local visitors to specific subdomains** Create a redirect rule to redirect United Kingdom and France visitors from the `example.com` website's root path (`/`) to their localized subdomains `https://gb.example.com` and `https://fr.example.com`, respectively.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/)
+[**Redirect local visitors to specific subdomains** Create a redirect rule to send visitors from specific countries to localized subdomains, such as `gb.example.com` and `fr.example.com`.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/)
 
 [**Redirect visitors to a new page URL** Create a redirect rule to redirect visitors from `/contact-us/` to the page's new path `/contacts/`.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-new-url/)
 
 [**Redirect from root to WWW** Create a redirect rule to forward HTTPS requests from the root (also known as the “apex” or “naked” domain) to the WWW subdomain.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-root-to-www/)
+
+[**Redirect a website section to a subdomain** Redirect requests for a section of your website, such as `/blog/`, to a subdomain while keeping the rest of the path and the query string.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-section-to-subdomain/)
+
+[**Redirect visitors from one country to a subdomain** Create a redirect rule with the Expression Builder to temporarily redirect visitors from one country to a localized subdomain.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-single-country-subdomain/)
 
 [**Redirect from WWW to root** Create a redirect rule to forward HTTPS requests from the WWW subdomain to the root (also known as the “apex” or “naked” domain).](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/)
 

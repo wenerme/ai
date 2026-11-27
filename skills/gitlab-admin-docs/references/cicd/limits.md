@@ -223,6 +223,11 @@ then return the error `job can only need 0 others`.
 ## Limit job variables
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254701) in GitLab 19.6.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271800) in GitLab 19.7 [with a feature flag](../feature_flags/_index.md) named `ci_job_variable_limits`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 You can limit the number of [job variables](../../ci/jobs/job_control.md#job-variable-limits)
 in a job. This limit is checked every time a user runs or retries a manual job with variables.

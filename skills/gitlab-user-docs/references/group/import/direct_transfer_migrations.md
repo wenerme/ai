@@ -20,7 +20,7 @@ If there are any problems, you can:
 
 ## Prerequisites
 
-- Renaming milestone titles to avoid clashes on destination instances [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/221447) in GitLab 18.6.7 and later, 18.7.5 and later, and 18.8.5 and later.
+- Renaming milestone titles to avoid clashes on destination instances [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/221447) in GitLab 18.6.7, 18.7.5, 18.8.5, and 18.9.
 
 Before migrating by using direct transfer, see the following prerequisites.
 

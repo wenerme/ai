@@ -939,6 +939,34 @@ The maximum allowed [push size](settings/account_and_limit_settings.md#max-push-
 
 Not set by default on GitLab Self-Managed. For GitLab.com, see [Account and limit settings](../user/gitlab_com/_index.md#account-and-limit-settings)
 
+### Number of refs in a push
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271573) in GitLab 19.7 [with a feature flag](feature_flags/_index.md) named `git_push_ref_limit_enforce`. Disabled by default.
+
+> [!flag]
+> Enforcement of this limit is controlled by a feature flag.
+> For more information, see the history.
+
+The maximum number of refs (branches or tags) that a single push can create, update, or delete.
+GitLab rejects a push that changes more refs than this limit.
+The rejection message tells the user to push the refs in smaller batches.
+Each ref in a push adds permission checks before GitLab accepts the push, and more work after.
+One very large push can therefore consume resources that other users need.
+
+To set the limit:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the **Max refs per push** text box, enter a value.
+   The default, `0`, means no limit.
+1. Select .
+
+You can also set the limit with the [application settings API](../api/settings.md)
+attribute `max_refs_per_push`.
+
+While the feature flag is disabled, GitLab logs a push over the limit instead of rejecting it.
+
 ### Webhooks and Project Services
 
 Total number of changes (branches or tags) in a single push. If changes are more

@@ -47,7 +47,7 @@ If you have an existing Immich installation:
 If you're setting up Immich on a fresh installation and want to restore from an existing backup:
 
 1. Download and populate `.env` and `docker-compose.yml` as per the [installation instructions](/install/docker-compose).
-2. Move the previous's instance data directories containing `backups`, `encoded-video`, `library`, `profile`, `thumbs` and `upload` into the new `UPLOAD_LOCATION`
+2. Move the previous instance's data directories containing `backups`, `encoded-video`, `library`, `profile`, `thumbs` and `upload` into the new `UPLOAD_LOCATION`
 3. **(For external libraries)** If you used external library feature in your previous instance, make sure that the mount settings in your new `docker-compose.yml` reflect the same structure. You may need to move files accordingly.
 
 > **info**: Example
@@ -195,7 +195,7 @@ for more info read the [release notes](https://github.com/immich-app/immich/rele
 **1. User-specific folders:**
 
 - Each user has a unique string representing them.
-- You can find your user ID in Account Account Settings -> Account -> User ID.
+- You can find your user ID in User -> Account Settings -> Account -> User ID.
 
 **2. Asset types and storage locations:**
 
@@ -231,7 +231,7 @@ When you turn off the storage template engine, it will leave the assets in `UPLO
 - Each user has a unique string representing them.
   - The administrator can set a Storage Label for a user, which will be used instead of `<userID>` for the `library/` folder.
   - The Admin has a default storage label of `admin`.
-- You can find your user ID and Storage Label in Account Account Settings -> Account -> User ID.
+- You can find your user ID and Storage Label in User -> Account Settings -> Account -> User ID.
 
 **2. Asset types and storage locations:**
 

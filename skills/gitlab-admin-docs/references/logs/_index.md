@@ -948,8 +948,8 @@ This file contains the JSON version of the logs in `auth.log`, for example:
 
 ### `Rate_Limit_Block` messages
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258338) in GitLab 19.5 and backported to GitLab 19.4.8.
-- `remote_ip`, `path`, and `method` fields [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265941) in GitLab 19.6 and backported to GitLab 19.5.6 and 19.4.8.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258338) in GitLab 19.4.8 and 19.5.
+- `remote_ip`, `path`, and `method` fields [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265941) in GitLab 19.4.8, 19.5.6, and 19.6.
 
 When the LabKit rate limiter blocks a request, GitLab returns a `429` status code
 before the request reaches a controller or an API endpoint.

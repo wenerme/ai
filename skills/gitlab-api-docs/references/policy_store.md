@@ -239,7 +239,8 @@ An update that changes only `trigger_type` checks the stored rules against the n
 context, so it can be refused the same way.
 
 A policy with a `set_setting` action writes the values its rules expect. Each `violation`
-rule must state its `path` and `expected` value as constants, not computed at run time.
+rule must state its `path` and `expected` value as constants, not computed at run time,
+as described in [Violation details in custom rules](#violation-details-in-custom-rules).
 The request returns `400 Bad Request` when a rule names no expected value for a path, or
 when two rules expect different values for one path, for example
 `rules name no expected value for project.settings.squash_option`.
@@ -248,6 +249,50 @@ An update that adds a `set_setting` action checks the stored rules the same way.
 Send `rules` and `actions` as JSON with a `Content-Type: application/json` header.
 A form-encoded body can carry both arrays, but every value in one arrives as a string, so a
 `value` that is not a string cannot be expressed that way.
+
+#### Violation details in custom rules
+
+Each `violation` entry that a `custom` rule reports can carry a `details` object with these keys:
+
+| Key        | Type   | Required | Description |
+| ---------- | ------ | -------- | ----------- |
+| `path`     | string | No       | Dotted context path the violation is about, for example `project.settings.visibility`. |
+| `expected` | any    | No       | A compliant value for `path`. |
+| `actual`   | any    | No       | Value of `path` when the policy was evaluated. |
+
+For example:
+
+```rego
+package governance
+
+violation contains {"msg": msg, "details": {"path": "project.settings.visibility", "expected": "private", "actual": actual}} if {
+  actual := input.project.settings.visibility
+  actual != "private"
+  msg := "Project visibility must be private"
+}
+```
+
+When you save the policy, GitLab reads `path` and `expected` from the Rego without evaluating it,
+and returns them as `violation_details`.
+GitLab reads a value only when the rule writes it as a literal, or as a variable the rule body
+assigns a literal.
+A rule that computes `path` adds no entry to `violation_details`.
+A rule that computes `expected` adds an entry without `expected`.
+
+A rule does not require `details`.
+On the `project.before_settings_update` trigger, GitLab uses `details.path` to decide which settings a
+violation is about.
+A policy in `warn` or `enforce` mode that evaluates without error acts on a settings change only
+when the change modifies a setting that a violation names:
+
+- A violation whose `details.path` is `project.settings.<setting>` names that setting,
+  whether the rule writes the path as a literal or computes it.
+- A violation without such a path names every `project.settings.<setting>` path in the policy's
+  `violation_details`.
+  When `violation_details` is `null`, the violation names every setting the change modifies.
+
+As a result, a policy never blocks or warns on a settings change when its violations report no
+`project.settings` path and its `violation_details` is an array with no such path.
 
 ### Response attributes
 

@@ -67,6 +67,12 @@ You can associate runs to the CI job that created them, allowing quick links to 
 
 ## View logged metrics
 
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272230) to show every metric of a run, page by page, in GitLab 19.7 [with a feature flag](../../../../administration/feature_flags/_index.md) named `ml_candidate_metrics_pagination`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 When you run an experiment, GitLab logs certain related data, including its metrics, parameters, and metadata. You can view the metrics in a chart for analysis.
 
 To view logged metrics:
@@ -78,5 +84,8 @@ To view logged metrics:
 
 [A graph of an experiment's performance]
 
-The **Performance** tab shows only the 1,000 most recently logged metric values of a run, and an alert appears when a run has more.
+When the `ml_candidate_metrics_pagination` feature flag is enabled, the **Performance** tab shows every metric of a run,
+50 metrics per page, with the 100 most recently logged values of each metric.
+
+When the flag is disabled, the **Performance** tab shows only the 1,000 most recently logged metric values of a run, and an alert appears when a run has more.
 A metric with no values in this range does not appear in the table, but the run list of the experiment still shows its latest value.

@@ -75,6 +75,10 @@ You can manually run false positive detection for existing vulnerabilities:
 
 The GitLab Duo analysis runs and displays the results on the vulnerability details page.
 
+> [!note]
+> You can't trigger this flow by mentioning, assigning, or requesting a review from its service account.
+> The flow runs automatically after security scans complete.
+
 ## Configuration
 
 To use false positive detection, you must have the following requirements:
@@ -84,6 +88,8 @@ To use false positive detection, you must have the following requirements:
 - [A default GitLab Duo namespace set](../../profile/preferences.md#set-a-default-gitlab-duo-namespace) in your user preferences.
 - For automatic runs, [GitLab Duo experiment and beta features turned on](../../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features).
 - GitLab 18.10 or later.
+- The [prerequisites for the GitLab Duo Agent Platform](../../duo_agent_platform/_index.md#prerequisites) met.
+- [Your own runners configured](../../duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows) or [GitLab-hosted runners](../../../ci/runners/hosted_runners/_index.md) turned on for your project.
 
 ### Enable false positive detection
 

@@ -2900,9 +2900,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/APIEntitiesSecurityVulnerabilityScanningSbomScan"
+                "$ref": "#/components/schemas/APIEntitiesSecurityVulnerabilityScanningSbomScan"
         '202':
           description: Sbom Scan in progress
         '400':
@@ -8393,7 +8391,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesManagedLicense"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesManagedLicense"
         '401':
           description: Unauthorized
         '403':
@@ -13530,7 +13530,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesEpic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesEpic"
         '401':
           description: Unauthorized
         '404':
@@ -16851,7 +16853,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetRegisteredModel"
         '404':
           description: Not Found
         '400':
@@ -16885,7 +16887,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetRegisteredModel"
         '404':
           description: Not Found
         '400':
@@ -16921,7 +16923,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetRegisteredModel"
         '404':
           description: Not Found
         '400':
@@ -16955,7 +16957,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetLatestVersions"
         '404':
           description: Not Found
         '400':
@@ -17088,6 +17090,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetModelVersion"
         '404':
           description: Not Found
         '400':
@@ -17424,7 +17430,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetModelVersion"
         '404':
           description: Not Found
         '400':
@@ -17500,7 +17506,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetModelVersion"
         '404':
           description: Not Found
         '400':
@@ -17542,7 +17548,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowGetModelVersion"
         '404':
           description: Not Found
         '400':
@@ -30703,7 +30709,8 @@ paths:
         '401':
           description: Unauthorized
         '429':
-          description: Too many requests
+          description: Too many requests, or an AI usage events write buffer is nearly
+            full
       requestBody:
         required: true
         content:
@@ -31764,9 +31771,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/APIEntitiesTerraformModuleVersions"
+                "$ref": "#/components/schemas/APIEntitiesTerraformModuleVersions"
         '403':
           description: Forbidden
         '404':
@@ -32712,7 +32717,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesSuggestion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSuggestion"
         '400':
           description: Bad Request
       requestBody:
@@ -42963,7 +42970,9 @@ paths:
         is one of `-2` (pending), `0` (started), `1` (finished), or `-1` (failed).
         The instance must meet the direct transfer prerequisites, including the `bulk_import_enabled`
         application setting. If the setting is disabled, a `404` is returned. This
-        endpoint cannot be used with the file-based group import and export API.
+        endpoint cannot be used with the file-based group import and export API. Without
+        `relation`, returns a list with the status of each relation. With `relation`,
+        returns the status of that relation as a single object.
       tags:
       - Project import
       responses:
@@ -42972,9 +42981,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/APIEntitiesBulkImportsExportStatus"
+                anyOf:
+                - type: array
+                  items:
+                    "$ref": "#/components/schemas/APIEntitiesBulkImportsExportStatus"
+                - "$ref": "#/components/schemas/APIEntitiesBulkImportsExportStatus"
         '401':
           description: Unauthorized
         '403':
@@ -65227,7 +65238,9 @@ paths:
       operationId: getApiV4GroupsIdExportRelationsStatus
       summary: Retrieve the status of an relations export for a group
       description: Retrieves the status of a relations export for a group. The status
-        is one of `0` (started), `1` (finished), or `-1` (failed).
+        is one of `0` (started), `1` (finished), or `-1` (failed). Without `relation`,
+        returns a list with the status of each relation. With `relation`, returns
+        the status of that relation as a single object.
       tags:
       - Group import and export
       responses:
@@ -65236,9 +65249,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/APIEntitiesBulkImportsExportStatus"
+                anyOf:
+                - type: array
+                  items:
+                    "$ref": "#/components/schemas/APIEntitiesBulkImportsExportStatus"
+                - "$ref": "#/components/schemas/APIEntitiesBulkImportsExportStatus"
         '401':
           description: Unauthorized
         '403':
@@ -66343,9 +66358,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/APIEntitiesGeoPipelineRefs"
+                "$ref": "#/components/schemas/APIEntitiesGeoPipelineRefs"
         '401':
           description: 401 Unauthorized
         '404':
@@ -88842,7 +88855,8 @@ paths:
         '404':
           description: Not found
         '429':
-          description: Too many requests
+          description: Too many requests, or an AI usage events write buffer is nearly
+            full
         '400':
           description: Bad Request
       requestBody:
@@ -90401,7 +90415,9 @@ components:
         allow_personal_snippets:
           type: string
         duo_namespace_access_rules:
-          type: string
+          type: array
+          items:
+            type: object
         built_in_project_templates_enabled:
           type: boolean
         lock_built_in_project_templates_enabled:
@@ -93927,26 +93943,37 @@ components:
           type: string
         ai_vectorizable_file_uploads_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_checksum_total_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_checksummed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_checksum_failed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_synced_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_failed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_registry_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_verification_total_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_verified_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_verification_failed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_oldest_unsynced_time:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_synced_in_percentage:
           type: string
           example: 0.00%
@@ -95208,26 +95235,37 @@ components:
           type: string
         ai_vectorizable_file_uploads_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_checksum_total_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_checksummed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_checksum_failed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_synced_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_failed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_registry_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_verification_total_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_verified_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_verification_failed_count:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_oldest_unsynced_time:
           type: integer
+          nullable: true
         ai_vectorizable_file_uploads_synced_in_percentage:
           type: string
           example: 0.00%
@@ -95967,9 +96005,11 @@ components:
           type: string
           format: date
           example: '2021-03-01'
+          nullable: true
         value:
           type: number
           example: 3
+          nullable: true
     APIEntitiesProtectedBranch:
       type: object
       properties:
@@ -97444,6 +97484,18 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
+    APIEntitiesMlMlflowGetRegisteredModel:
+      type: object
+      properties:
+        registered_model:
+          "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
+    APIEntitiesMlMlflowGetLatestVersions:
+      type: object
+      properties:
+        model_versions:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
     APIEntitiesMlMlflowListRegisteredModels:
       type: object
       properties:
@@ -97453,6 +97505,11 @@ components:
             "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
         next_page_token:
           type: string
+    APIEntitiesMlMlflowGetModelVersion:
+      type: object
+      properties:
+        model_version:
+          "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
     APIEntitiesMlMlflowRunInfo:
       type: object
       properties:
@@ -99503,6 +99560,8 @@ components:
           type: string
         push_event_activities_limit:
           type: string
+        max_refs_per_push:
+          type: string
         custom_http_clone_url_root:
           type: string
         snippet_size_limit:
@@ -99540,6 +99599,8 @@ components:
         merge_requests_rebase_limit:
           type: string
         draft_notes_create_limit:
+          type: string
+        notes_update_limit:
           type: string
         markdown_upload_limit_megabytes_per_day:
           type: string
@@ -100647,6 +100708,7 @@ components:
         weight:
           type: integer
           example: 2
+          nullable: true
         action:
           type: string
           example: created
@@ -107616,6 +107678,7 @@ components:
             `null` where subscriptions are scoped for each namespace rather than for
             an instance, such as GitLab.com.
           example: ultimate
+          nullable: true
     APIEntitiesMergeRequestDiff:
       type: object
       properties:
@@ -112104,7 +112167,9 @@ components:
         allow_personal_snippets:
           type: string
         duo_namespace_access_rules:
-          type: string
+          type: array
+          items:
+            type: object
         built_in_project_templates_enabled:
           type: boolean
         lock_built_in_project_templates_enabled:
@@ -121047,6 +121112,11 @@ components:
           type: integer
           description: Maximum number of GitLab Pages custom domains per project
           nullable: true
+        max_refs_per_push:
+          type: integer
+          description: Maximum number of refs (branches or tags) a single Git push
+            can update. Set to `0` for unlimited.
+          nullable: true
         max_terraform_state_size_bytes:
           type: integer
           description: Maximum size of the Terraform state file in bytes. Set to `0`
@@ -121089,6 +121159,12 @@ components:
           type: integer
           description: Method call is only tracked if it takes longer than this threshold,
             in milliseconds.
+          nullable: true
+        notes_update_limit:
+          type: integer
+          description: 'Maximum number of note edit requests per minute for each user.
+            Default: `300`. Set to `0` to disable the rate limit. Introduced in GitLab
+            19.7.'
           nullable: true
         o11y_provisioner_api_key:
           type: string
@@ -122526,7 +122602,8 @@ components:
         notes_create_limit_allowlist_raw:
           type: string
           description: 'Raw newline-, comma-, or whitespace-separated list of usernames
-            excluded from the `notes_create_limit` rate limit. Maximum: 100 usernames.'
+            excluded from the `notes_create_limit`, `draft_notes_create_limit`, and
+            `notes_update_limit` rate limits. Maximum: 100 usernames.'
           nullable: true
         notify_on_unknown_sign_in:
           type: string

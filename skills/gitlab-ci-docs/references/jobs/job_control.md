@@ -104,6 +104,11 @@ To retry a manual job with previously-specified variables:
 #### Job variable limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254701) in GitLab 19.6.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271800) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_job_variable_limits`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 Job variables have [limits](../../administration/cicd/limits.md#limit-job-variables).
 The two size limits are shared with every other kind of CI/CD variable.

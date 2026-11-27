@@ -55,6 +55,28 @@ The fields you can use vary according to the list item type:
 
 For more information and examples, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
 
+### IP and ASN lists across Rules products
+
+You can reuse custom IP and ASN lists in customer-owned rule filters across CDN [phases](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/). For example, use the same list in WAF custom rules, Cache Rules, Redirect Rules, and request or response Header Transform Rules.
+
+Response-side support includes Response Header Transform Rules and rate limiting [counting expressions](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#increment-counter-when). You can combine a list reference with response fields to select which responses count toward a rate limit.
+
+Use `ip.src` with an IP list:
+
+```txt
+ip.src in $office_network
+```
+
+Use `ip.src.asnum` with an ASN list:
+
+```txt
+ip.src.asnum in $partner_networks
+```
+
+The list must belong to the account that owns the rule. Existing [plan availability and list limits](https://developers.cloudflare.com/waf/tools/lists/#availability) still apply. ASN lists require an Enterprise plan.
+
+This support applies to filter expressions that determine whether a rule runs. It does not add list support to dynamic action-value expressions. Hostname lists retain their product-specific restrictions.
+
 ---
 
 ## Custom list types
@@ -170,5 +192,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/#page","headline":"Custom lists","description":"Create custom lists of IPs, hostnames, or ASNs for use in rules.","url":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/og.png?v=6e42a08edcac4fbb","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/#page","headline":"Custom lists","description":"Create custom lists of IPs, hostnames, or ASNs for use in rules.","url":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/og.png?v=6e42a08edcac4fbb","dateModified":"2026-11-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

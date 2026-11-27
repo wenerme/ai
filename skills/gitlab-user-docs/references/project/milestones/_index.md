@@ -148,6 +148,13 @@ To create a milestone:
 
 [The form for creating a new milestone, with fields for a title, description, start date, and due date.]
 
+> [!note]
+> Do not add sensitive information to milestone descriptions.
+> Users who can view a milestone can view its description.
+> When you transfer a project, the group milestones it uses can be copied to the project.
+> Any user who can view the destination project can view the copies.
+> For more information, see [what data gets transferred](../working_with_projects.md#what-data-gets-transferred).
+
 ### Milestone title rules
 
 To avoid confusion in group hierarchies, duplicate milestone titles are not permitted.

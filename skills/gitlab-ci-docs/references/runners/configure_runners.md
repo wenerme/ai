@@ -543,7 +543,7 @@ globally or per-job in the [`variables`](../yaml/_index.md#variables) section.
 The three possible values are `none`, `normal`, and `recursive`:
 
 - `none` means that submodules are not included when fetching the project
-  code. This setting matches the default behavior in versions before 1.10.
+  code. This value is the default when `GIT_SUBMODULE_STRATEGY` is not set.
 
 - `normal` means that only the top-level submodules are included. It's
   equivalent to:

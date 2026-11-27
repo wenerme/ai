@@ -1080,6 +1080,20 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `access_programs: optional object { cyber }`
+
+    Access programs explicitly selected for this session. Omitted when the session uses the model default.
+
+    - `cyber: "standard" or "daybreak_blue" or "daybreak_red"`
+
+      The cyber access program explicitly selected for this session.
+
+      - `"standard"`
+
+      - `"daybreak_blue"`
+
+      - `"daybreak_red"`
+
   - `prompt_cache_options: optional object { ttl }  or null`
 
     Default prompt cache lifetime for turns in this session, when configured.
@@ -1217,6 +1231,9 @@ curl https://api.openai.com/v1/agents/sessions \
       "vault_ids": [
         "string"
       ],
+      "access_programs": {
+        "cyber": "standard"
+      },
       "prompt_cache_options": {
         "ttl": "30m"
       },

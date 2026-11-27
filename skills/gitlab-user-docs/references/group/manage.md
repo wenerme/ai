@@ -220,6 +220,11 @@ A group transfer includes:
 - Explicit group memberships and roles
 - Group settings and configurations
 
+Labels from former parent groups are copied into the projects that use them.
+The copies are project labels with the same descriptions.
+Any user who can view the project can view them, even without access to the former parent group.
+If the destination hierarchy has a label with the same title, the project uses that label instead.
+
 ### Known issues
 
 When transferring a group, keep the
@@ -643,7 +648,7 @@ To enable this setting:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244421) in GitLab 19.2. Enabled by default for new groups.
 - Group and instance settings UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243465) in GitLab 19.3.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251669) to disabled by default for new groups in GitLab 19.2.6, GitLab 19.3.2, and GitLab 19.4.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251669) to disabled by default for new groups in GitLab 19.2.6, 19.3.2, and 19.4.
 
 Require a commit SHA on the merge requests API to ensure that only reviewed commits are merged. When this
 setting is enabled, GitLab rejects calls to the

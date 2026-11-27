@@ -9148,6 +9148,27 @@ Removes relations between a merge request and work items.
 | `mergeRequest` | [`MergeRequest`](objects.md#mergerequest) | Merge request after mutation. |
 | `removedRelationIds` | [`[MergeRequestIssueID!]`](scalars.md#mergerequestissueid) | Global IDs of the removed relations. |
 
+## `mergeRequestPipelineCreate`
+
+Creates a pipeline for a merge request in the background. Check the result in `MergeRequest.pipelineCreationRequests`.
+
+**Input type:** `MergeRequestPipelineCreateInput`
+
+### `mergeRequestPipelineCreate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `iid` | [`String!`](scalars.md#string) | IID of the merge request to create the pipeline for. |
+| `inputs` | [`[CiInputsInput!]`](input_objects.md#ciinputsinput) | CI/CD inputs for the pipeline. Maximum of 1000 inputs. |
+| `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
+| `variables` | [`[CiVariableInput!]`](input_objects.md#civariableinput) | CI/CD variables for the pipeline. Maximum of 1000 variables. |
+
+### `mergeRequestPipelineCreate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+
 ## `mergeRequestRequestChanges`
 
 **Input type:** `MergeRequestRequestChangesInput`

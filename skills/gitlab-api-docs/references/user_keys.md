@@ -457,13 +457,11 @@ curl --request POST \
 Example response:
 
 ```json
-[
-  {
-    "id": 1,
-    "key": "<PGP_PUBLIC_KEY_BLOCK>",
-    "created_at": "2017-09-05T09:17:46.264Z"
-  }
-]
+{
+  "id": 1,
+  "key": "<PGP_PUBLIC_KEY_BLOCK>",
+  "created_at": "2017-09-05T09:17:46.264Z"
+}
 ```
 
 ## Add a GPG key for a user
@@ -497,13 +495,11 @@ curl --request POST \
 Example response:
 
 ```json
-[
-  {
-    "id": 1,
-    "key": "<PGP_PUBLIC_KEY_BLOCK>",
-    "created_at": "2017-09-05T09:17:46.264Z"
-  }
-]
+{
+  "id": 1,
+  "key": "<PGP_PUBLIC_KEY_BLOCK>",
+  "created_at": "2017-09-05T09:17:46.264Z"
+}
 ```
 
 ## Delete a GPG key
