@@ -5,7 +5,7 @@ description: "Browse Alibaba (China) model IDs, capabilities, context windows, a
 
 # [Alibaba (China) logo]Alibaba (China)
 
-Access 68 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
+Access 69 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
 
 Learn more in the [Alibaba (China) documentation](https://www.alibabacloud.com/help/en/model-studio/models).
 
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "alibaba-cn/antdigital/Ling-3.1-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 262144,
+    "inputCost": 0.299808,
+    "outputCost": 0.899425
+  },
   {
     "model": "alibaba-cn/deepseek-r1-distill-llama-70b",
     "imageInput": false,
