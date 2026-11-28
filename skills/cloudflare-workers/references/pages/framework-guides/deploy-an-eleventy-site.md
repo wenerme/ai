@@ -17,6 +17,10 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleven
 
 # Eleventy
 
+Note
+
+Starting a new static site? You can also deploy Eleventy sites to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
 [Eleventy ↗︎](https://www.11ty.dev/) is a simple static site generator. In this guide, you will create a new Eleventy site and deploy it using Cloudflare Pages. You will be using the `eleventy` CLI to create a new Eleventy site.
 
 ## Installing Eleventy
@@ -50,7 +54,7 @@ Refer to the [GitHub documentation ↗︎](https://guides.github.com/introductio
 Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, prepare and push your local application to GitHub by running the following command in your terminal:
 
 ```sh
-git remote set-url origin https://github.com/yourgithubusername/githubrepo
+git remote set-url origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>.git
 git branch -M main
 git push -u origin main
 ```
@@ -91,5 +95,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/#page","headline":"Eleventy","description":"Deploy an Eleventy static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/og.png?v=b93883891b20b136","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/#page","headline":"Eleventy","description":"Deploy an Eleventy static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/og.png?v=b93883891b20b136","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

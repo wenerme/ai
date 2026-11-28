@@ -13375,6 +13375,29 @@ Restores a soft-deleted Terraform state. The state is not restored when terrafor
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `timelineEvent` | [`TimelineEventType`](objects.md#timelineeventtype) | Timeline event. |
 
+## `timelogCategoryCreate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.
+
+**Input type:** `TimelogCategoryCreateInput`
+
+### `timelogCategoryCreate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `description` | [`String`](scalars.md#string) | Description of the timelog category. |
+| `name` | [`String!`](scalars.md#string) | Name of the timelog category. |
+| `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Namespace for the timelog category. |
+
+### `timelogCategoryCreate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `timelogCategory` | [`TimeTrackingTimelogCategory`](objects.md#timetrackingtimelogcategory) | Timelog category created. |
+
 ## `timelogCreate`
 
 **Input type:** `TimelogCreateInput`

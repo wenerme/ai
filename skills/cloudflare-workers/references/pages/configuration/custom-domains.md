@@ -17,7 +17,7 @@ image: https://developers.cloudflare.com/pages/configuration/custom-domains/og.p
 
 # Custom domains
 
-When deploying your Pages project, you may wish to point custom domains (or subdomains) to your site.
+When deploying your Pages project, you can point custom domains (or subdomains) to your site. For custom domains on Cloudflare Workers, refer to [Workers Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
 ## Add a custom domain
 
@@ -93,7 +93,7 @@ Some settings are managed separately from your zone:
 | Setting | Pages behavior |
 | --- | --- |
 | Minimum Transport Layer Security (TLS) version and cipher suites | Pages manages these settings for the custom hostname. Your zone's [minimum TLS version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#availability) and [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/#limitations) settings do not apply. You cannot customize these settings for Pages hostnames. |
-| Browser Integrity Check | Pages can block a request even when you turn off or skip Browser Integrity Check in your zone. Refer to [Browser Integrity Check on Pages](https://developers.cloudflare.com/pages/platform/known-issues/#browser-integrity-check). |
+| Browser Integrity Check | Pages can block a request even when you turn off or skip Browser Integrity Check in your zone. Refer to [Browser Integrity Check on Pages](https://developers.cloudflare.com/pages/platform/known-issues/#browser-integrity-check-on-pages). |
 | Early Hints | Pages enables Early Hints independently of your zone's setting. Refer to [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/#disable-early-hints-on-pages). |
 
 With a DNS-only record or an external DNS provider, requests do not pass through your zone's HTTP settings. Pages-managed settings still apply.
@@ -112,7 +112,7 @@ This can cause issues when adding a [custom domain](https://developers.cloudflar
 
 To resolve this, add the necessary CAA records to allow Cloudflare to issue a certificate for your custom domain.
 
-```plaintext
+```txt
 example.com.            300     IN      CAA     0 issue "letsencrypt.org"
 example.com.            300     IN      CAA     0 issue "pki.goog; cansignhttpexchanges=yes"
 example.com.            300     IN      CAA     0 issue "ssl.com"
@@ -125,7 +125,7 @@ Refer to the [Certification Authority Authorization (CAA) FAQ](https://developer
 
 ### Change DNS entry away from Pages and then back again
 
-Once a custom domain is set up, if you change the DNS entry to point to something else (for example, your origin), the custom domain will become inactive. If you then change that DNS entry to point back at your custom domain, anybody using that DNS entry to visit your website will get errors until it becomes active again. If you want to redirect traffic away from your Pages project temporarily instead of changing the DNS entry, it would be better to use an [Origin rule](https://developers.cloudflare.com/rules/origin-rules/) or a [redirect rule](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) instead.
+Once a custom domain is set up, if you change the DNS entry to point to something else (for example, your origin), the custom domain will become inactive. If you then change that DNS entry to point back at your Pages project (`<YOUR_SITE>.pages.dev`), anybody using that DNS entry to visit your website will get errors until it becomes active again. If you want to redirect traffic away from your Pages project temporarily instead of changing the DNS entry, it is better to use an [Origin Rule](https://developers.cloudflare.com/rules/origin-rules/) or a [Redirect Rule](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) instead.
 
 ## Relevant resources
 
@@ -140,5 +140,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/custom-domains/#page","headline":"Custom domains","description":"Add custom domains and subdomains to your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/custom-domains/og.png?v=bfd8711470c042b9","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/custom-domains/#page","headline":"Custom domains","description":"Add custom domains and subdomains to your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/custom-domains/og.png?v=bfd8711470c042b9","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

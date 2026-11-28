@@ -1410,6 +1410,42 @@ Supported attributes:
 | `id`       | integer | yes      | ID of a user |
 | `provider` | string  | yes      | External provider name |
 
+## Delete the phone number of a user
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab.com
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273147) in GitLab 19.7.
+
+Deletes the phone number a user provided for identity verification.
+If phone number verification is required, the user must verify a phone number again.
+This action creates a `phone_number_validation_deleted` [audit event](../user/compliance/audit_event_types.md).
+
+Prerequisites:
+
+- You must be an administrator.
+
+```plaintext
+DELETE /users/:id/phone_number
+```
+
+Supported attributes:
+
+| Attribute | Type    | Required | Description |
+|:----------|:--------|:---------|:------------|
+| `id`      | integer | yes      | ID of a user. |
+
+If successful, returns `204 No Content`.
+Returns `404 Not Found` if the user does not exist or has no phone number.
+
+Example request:
+
+```shell
+curl --request DELETE \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/users/42/phone_number"
+```
+
 ## Create a Support PIN
 
 - Tier: Free, Premium, Ultimate

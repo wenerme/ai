@@ -17,11 +17,11 @@ image: https://developers.cloudflare.com/pages/configuration/git-integration/og.
 
 # Git integration
 
-You can connect each Cloudflare Pages project to a [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration) or [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration) repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
+You can connect each Cloudflare Pages project to a [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/) or [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/) repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
 
 Note
 
-Cloudflare Workers now also supports Git integrations to automatically build and deploy Workers from your connected Git repository. Learn more in [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+Cloudflare Workers supports Git integrations to automatically build and deploy Workers from your connected Git repository. Refer to [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
 
 When you connect a git repository to your Cloudflare Pages project, Cloudflare will also:
 
@@ -38,9 +38,9 @@ If you deploy using the Git integration, you cannot switch to [Direct Upload](ht
 
 ## Supported Git providers
 
-Cloudflare supports connecting Cloudflare Pages to your GitHub and GitLab repositories. Pages does not currently support connecting self-hosted instances of GitHub or GitLab.
+Cloudflare supports connecting Cloudflare Pages to your GitHub and GitLab repositories. Pages does not support connecting self-hosted instances of GitHub or GitLab.
 
-If you using a different Git provider (e.g. Bitbucket) or a self-hosted instance, you can start with a Direct Upload project and deploy using a CI/CD provider (e.g. GitHub Actions) with [Wrangler CLI](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/).
+If you are using a different Git provider (for example, Bitbucket) or a self-hosted instance, you can start with a Direct Upload project and deploy using a CI/CD provider (for example, GitHub Actions) with the [Wrangler CLI](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/).
 
 ## Add a Git integration
 
@@ -48,24 +48,24 @@ If you do not have a Git account linked to your Cloudflare account, you will be 
 
 You can check the following pages to see if your Git integration has been installed:
 
-- [GitHub Applications page ↗︎](https://github.com/settings/installations) (if you're in an organization, select **Switch settings context** to access your GitHub organization settings)
+- [GitHub Applications page ↗︎](https://github.com/settings/installations) (if you are in an organization, select **Switch settings context** to access your GitHub organization settings)
 - [GitLab Authorized Applications page ↗︎](https://gitlab.com/-/profile/applications)
 
-For details on providing access to organization accounts, see the [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#organizational-access) and [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#organizational-access) guides.
+For details on providing access to organization accounts, refer to the [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#organizational-access) and [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#organizational-access) guides.
 
 ## Manage a Git integration
 
-You can manage the Git installation associated with your repository connection by navigating to the Pages project, then going to **Settings** > **Builds** and selecting **Manage** under **Git Repository**.
+You can manage the Git installation associated with your repository connection by going to your Pages project, then going to **Settings** > **Build** and selecting **Manage** under **Git Repository**.
 
 This can be useful for managing repository access or troubleshooting installation issues by reinstalling. For more details, refer to the [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#manage-access) and [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#manage-access) guides.
 
 ## Disable automatic deployments
 
-If you are using a Git-integrated project and do not want to trigger deployments every time you push a commit, you can use [branch control](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to disable/pause builds:
+If you are using a Git-integrated project and do not want to trigger deployments every time you push a commit, you can use [branch control](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to pause builds:
 
-1. Go to **Workers & Pages** in the Cloudflare dashboard. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Navigate to **Build** > edit **Branch control** > turn off **Enable automatic production branch deployments**.
+3. Go to **Settings** > **Build** > **Branch control** and turn off **Enable automatic production branch deployments**.
 4. You can also change your Preview branch to **None (Disable automatic branch deployments)** to pause automatic preview deployments.
 
 Then, you can use Wrangler to deploy directly to your Pages project and make changes to your Git repository without automatically triggering a build.
@@ -79,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/#page","headline":"Git integration","description":"Connect a GitHub or GitLab repository to Cloudflare Pages for automatic build and deploy on push.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/git-integration/og.png?v=3810f30cf057aa14","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/#page","headline":"Git integration","description":"Connect a GitHub or GitLab repository to Cloudflare Pages for automatic build and deploy on push.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/git-integration/og.png?v=3810f30cf057aa14","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

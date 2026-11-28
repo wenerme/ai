@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 56094 files, 572 MiB total
+> 125 skills, 56089 files, 572 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1431,7 +1431,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 844 | 5.9 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1433 | 11 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1057 | 6.3 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 922 | 9.8 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 915 | 9.7 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 967 | 21 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 10329 | 58 MiB |
@@ -1494,8 +1494,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 162 | 1.5 MiB |
-| [ppt-master](./skills/ppt-master/SKILL.md) | 13098 | 38 MiB |
-| [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 325 | 2.2 MiB |
+| [ppt-master](./skills/ppt-master/SKILL.md) | 13099 | 38 MiB |
+| [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 326 | 2.3 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
 | [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 9.2 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 21 | 155 KiB |

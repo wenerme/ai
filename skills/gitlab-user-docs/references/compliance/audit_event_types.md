@@ -600,6 +600,12 @@ Audit event types belong to the following product categories.
 | [`terraform_state_permanently_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262900) | Terraform state permanently deleted before the end of the grace period | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/621470) | Project |
 | [`terraform_state_restored`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259091) | Terraform state restored from soft deletion | Yes | GitLab [19.5](https://gitlab.com/gitlab-org/gitlab/-/work_items/621469) | Project |
 
+### Instance resiliency
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`phone_number_validation_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273147) | An administrator deletes the phone number a user provided for identity verification. | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/642167) | User |
+
 ### Integrations
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |

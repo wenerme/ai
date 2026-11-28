@@ -17,13 +17,19 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs
 
 # MkDocs
 
-[MkDocs ↗︎](https://www.mkdocs.org/) is a modern documentation platform where teams can document products, internal knowledge bases and APIs.
+Note
+
+Starting a new static documentation site? You can also deploy static sites to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
+[MkDocs ↗︎](https://www.mkdocs.org/) is a documentation platform where teams can document products, internal knowledge bases, and APIs.
 
 ## Install MkDocs
 
-MkDocs requires a recent version of Python and the Python package manager, pip, to be installed on your system. To install pip, refer to the [MkDocs Installation guide ↗︎](https://www.mkdocs.org/user-guide/installation/). With pip installed, run:
+MkDocs requires Python 3 and the Python package manager `pip`. To install Python and `pip`, refer to the [MkDocs installation guide ↗︎](https://www.mkdocs.org/user-guide/installation/). With `pip` installed, create a virtual environment and install MkDocs:
 
 ```sh
+python3 -m venv .venv
+source .venv/bin/activate
 pip install mkdocs
 ```
 
@@ -33,12 +39,13 @@ Use the `mkdocs new` command to create a new application:
 
 ```sh
 mkdocs new <PROJECT_NAME>
+cd <PROJECT_NAME>
 ```
 
-Then `cd` into your project, take MkDocs and its dependencies and put them into a `requirements.txt` file:
+Create a `requirements.txt` file listing MkDocs (and any themes or plugins your site uses) so Cloudflare Pages installs them automatically during builds:
 
 ```sh
-pip freeze > requirements.txt
+echo "mkdocs" > requirements.txt
 ```
 
 ## Before you continue
@@ -62,7 +69,7 @@ git branch -M main
 git push -u origin main
 ```
 
-You have successfully created a GitHub repository and pushed your MkDocs project to that repository.
+You have created a GitHub repository and pushed your MkDocs project to that repository.
 
 ## Deploy with Cloudflare Pages
 
@@ -81,7 +88,7 @@ Configuration option | Value
 | Build command | `mkdocs build` |
 | Build directory | `site` |
 
-7. Go to **Environment variables (advanced)** > **Add variable** > and add the variable `PYTHON_VERSION` with a value of `3.7`.
+Cloudflare Pages Build Image v3 includes Python 3.13 by default and automatically installs packages listed in `requirements.txt`. If you need to pin a specific Python version, set `PYTHON_VERSION` under **Environment variables** as described in [Override default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
 After deploying your site, you will receive a unique subdomain for your project on `*.pages.dev`.
 
@@ -102,5 +109,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/#page","headline":"MkDocs","description":"Deploy an MkDocs documentation site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/og.png?v=256655532864fe72","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/#page","headline":"MkDocs","description":"Deploy an MkDocs documentation site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/og.png?v=256655532864fe72","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

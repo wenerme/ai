@@ -282,7 +282,7 @@ Review the definitions for terms used across Cloudflare's documentation.
 | output gate | When a storage write operation is in progress, any new outgoing network messages will be held back until the write has completed. We say that these messages are waiting for the "output gate" to open. If the write ultimately fails, the outgoing network messages will be discarded and replaced with errors, while the Durable Object will be shut down and restarted from scratch. | Durable Objects |
 | PAC file | A file containing a JavaScript function which can instruct a browser to forward traffic to a proxy server instead of directly to the destination server. | Cloudflare One |
 | page load time | The time it takes for a web page to fully load in a user's browser. | Speed |
-| Pages | [Cloudflare Pages](https://developers.cloudflare.com/pages/) is Cloudflare's product offering for building and deploying full-stack applications. | Workers |
+| Pages | [Cloudflare Pages](https://developers.cloudflare.com/pages/) is Cloudflare's product for hosting JAMstack sites and full-stack applications. For new static and full-stack applications, Cloudflare recommends [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/). | Workers |
 | paranoia level | Classifies rules of the OWASP managed ruleset according to their aggressiveness. | WAF |
 | phishing | The practice of trying to acquire sensitive data through fraudulent emails or other means. Usually, the perpetrators try to pass for a legitimate company when asking for sensitive data. | Area 1 |
 | plan | Plans distinguish the breadth of Cloudflare features accessible to a specific domain. Plan options include [Free, Pro, Business, or Enterprise](https://www.cloudflare.com/plans/). | Fundamentals |

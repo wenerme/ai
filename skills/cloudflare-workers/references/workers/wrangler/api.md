@@ -24,6 +24,7 @@ Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 - [`unstable_startWorker`](#unstable_startworker) - Start a server for running integration tests against your Worker.
 - [`unstable_dev`](#unstable_dev) - Start a server for running either end-to-end (e2e) or integration tests against your Worker.
 - [`getPlatformProxy`](#getplatformproxy) - Get proxies and values for emulating the Cloudflare Workers platform in a Node.js process.
+- [Remote bindings proxy API](#remote-bindings-proxy-api) - Programmatic utilities ( `startRemoteProxySession`, `unstable_convertConfigBindingsToStartWorkerBindings`, `maybeStartOrUpdateRemoteProxySession`) for connecting Miniflare to remote bindings.
 
 ## `createTestHarness`
 
@@ -782,6 +783,153 @@ The bindings supported by `getPlatformProxy` are:
     pnpm wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
     ```
 
+## Remote bindings proxy API
+
+Wrangler provides programmatic utilities to help tooling authors support [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) when running Workers code with [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/).
+
+**Key APIs include:**
+
+- [`startRemoteProxySession`](#startremoteproxysession): Starts a proxy session that allows interaction with remote bindings.
+- [`unstable_convertConfigBindingsToStartWorkerBindings`](#unstable_convertconfigbindingstostartworkerbindings): Utility for converting binding definitions.
+- [`maybeStartOrUpdateRemoteProxySession`](#maybestartorupdateremoteproxysession): Convenience function to easily start or update a proxy session.
+
+### `startRemoteProxySession`
+
+This function starts a proxy session for a given set of bindings. It accepts options to control session behavior, including an `auth` option with your Cloudflare account ID and API token for remote binding access.
+
+It returns an object with:
+
+- `ready` `Promise<void>`: Resolves when the session is ready.
+- `dispose` `() => Promise<void>`: Stops the session.
+- `updateBindings` `(bindings: StartDevWorkerInput['bindings']) => Promise<void>`: Updates session bindings.
+- `remoteProxyConnectionString` `remoteProxyConnectionString`: String to pass to Miniflare for remote binding access.
+
+### `unstable_convertConfigBindingsToStartWorkerBindings`
+
+The `unstable_readConfig` utility returns an `Unstable_Config` object which includes the definition of the bindings included in the configuration file. These binding definitions are not directly compatible with `startRemoteProxySession`. To read binding declarations with `unstable_readConfig` and pass them to `startRemoteProxySession`, Wrangler exposes `unstable_convertConfigBindingsToStartWorkerBindings`, which converts the bindings in an `Unstable_Config` object into a structure that can be passed to `startRemoteProxySession`.
+
+Note
+
+This type conversion is temporary. In the future, the types will be unified so you can pass the config object directly to `startRemoteProxySession`.
+
+### `maybeStartOrUpdateRemoteProxySession`
+
+This wrapper simplifies proxy session management. It takes:
+
+- An object that contains either:
+  - the path to a Wrangler configuration and a potential target environment
+  - the name of the Worker and the bindings it is using
+- The current proxy session details (this parameter can be set to `null` or not provided if none).
+- Potentially the auth data to use for the remote proxy session.
+
+It returns an object with the proxy session details if started or updated, or `null` if no proxy session is needed.
+
+The function:
+
+- Based on the first argument, prepares the input arguments for the proxy session.
+- If there are no remote bindings to be used (nor a pre-existing proxy session), returns `null`, signaling that no proxy session is needed.
+- If the details of an existing proxy session have been provided, updates the proxy session accordingly.
+- Otherwise, starts a new proxy session.
+- Returns the proxy session details (that can later be passed as the second argument to `maybeStartOrUpdateRemoteProxySession`).
+
+### Example
+
+Here is a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
+
+```js
+import { Miniflare, MiniflareOptions } from "miniflare";
+import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
+
+let mf;
+
+let remoteProxySessionDetails = null;
+
+async function startOrUpdateDevSession() {
+	remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(
+		{
+			bindings: {
+				MY_KV: {
+					type: "kv_namespace",
+					id: "kv-id",
+					remote: true,
+				},
+			},
+		},
+		remoteProxySessionDetails,
+	);
+
+	const miniflareOptions = {
+		scriptPath: "./worker.js",
+		kvNamespaces: {
+			MY_KV: {
+				id: "kv-id",
+				remoteProxyConnectionString:
+					remoteProxySessionDetails?.session.remoteProxyConnectionString,
+			},
+		},
+	};
+
+	if (!mf) {
+		mf = new Miniflare(miniflareOptions);
+	} else {
+		mf.setOptions(miniflareOptions);
+	}
+}
+
+// ... tool logic that invokes `startOrUpdateDevSession()` ...
+
+// ... once the dev session is no longer needed run
+// `remoteProxySessionDetails?.session.dispose()`
+```
+
+```ts
+import { Miniflare, MiniflareOptions } from "miniflare";
+import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
+
+let mf: Miniflare | null;
+
+let remoteProxySessionDetails: Awaited<
+	ReturnType<typeof maybeStartOrUpdateRemoteProxySession>
+> | null = null;
+
+async function startOrUpdateDevSession() {
+	remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(
+		{
+			bindings: {
+				MY_KV: {
+					type: "kv_namespace",
+					id: "kv-id",
+					remote: true,
+				},
+			},
+		},
+		remoteProxySessionDetails,
+	);
+
+	const miniflareOptions: MiniflareOptions = {
+		scriptPath: "./worker.js",
+		kvNamespaces: {
+			MY_KV: {
+				id: "kv-id",
+				remoteProxyConnectionString:
+					remoteProxySessionDetails?.session.remoteProxyConnectionString,
+			},
+		},
+	};
+
+	if (!mf) {
+		mf = new Miniflare(miniflareOptions);
+	} else {
+		mf.setOptions(miniflareOptions);
+	}
+}
+
+// ... tool logic that invokes `startOrUpdateDevSession()` ...
+
+// ... once the dev session is no longer needed run
+// `remoteProxySessionDetails?.session.dispose()`
+```
+
 Was this helpful?
 
 YesNo
@@ -791,5 +939,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/api/og.png?v=c08a17f641408034","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/api/og.png?v=c08a17f641408034","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

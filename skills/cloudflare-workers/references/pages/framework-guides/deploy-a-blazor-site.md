@@ -17,15 +17,19 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-
 
 # Blazor
 
+Note
+
+Starting a new Blazor WebAssembly project? You can also deploy Blazor WebAssembly apps to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
 [Blazor ↗︎](https://blazor.net) is an SPA framework that can use C# code, rather than JavaScript in the browser. In this guide, you will build a site using Blazor, and deploy it using Cloudflare Pages.
 
 ## Install .NET
 
-Blazor uses C#. You will need the latest version of the [.NET SDK ↗︎](https://dotnet.microsoft.com/download) to continue creating a Blazor project. If you don't have the SDK installed on your system please download and run the installer.
+Blazor uses C#. You will need the latest version of the [.NET SDK ↗︎](https://dotnet.microsoft.com/download) to continue creating a Blazor project. If you do not have the SDK installed on your system, download and run the installer.
 
 ## Creating a new Blazor WASM project
 
-There are two types of Blazor hosting models: [Blazor Server ↗︎](https://learn.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-8.0#blazor-server) which requires a server to serve the Blazor application to the end user, and [Blazor WebAssembly ↗︎](https://learn.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-8.0#blazor-webassembly) which runs in the browser. Blazor Server is incompatible with the Cloudflare edge network model, thus this guide only use Blazor WebAssembly.
+There are two types of Blazor hosting models: [Blazor Server ↗︎](https://learn.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-8.0#blazor-server), which requires a server to serve the Blazor application to the end user, and [Blazor WebAssembly ↗︎](https://learn.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-8.0#blazor-webassembly), which runs in the browser. Blazor Server is incompatible with Cloudflare Pages' static hosting model, so this guide only uses Blazor WebAssembly.
 
 Create a new Blazor WebAssembly (WASM) application by running the following command:
 
@@ -35,9 +39,9 @@ dotnet new blazorwasm -o my-blazor-project
 
 ## Create the build script
 
-To deploy, Cloudflare Pages will need a way to build the Blazor project. In the project's directory root, create a `build.sh` file. Populate the file with this (updating the `.dotnet-install.sh` line appropriately if you're not using the latest .NET SDK):
+To deploy, Cloudflare Pages needs a way to build the Blazor project. In the project's directory root, create a `build.sh` file (adjusting the `-c` channel argument to match the .NET SDK version your project targets):
 
-```plaintext
+```sh
 #!/bin/sh
 curl -sSL https://dot.net/v1/dotnet-install.sh > dotnet-install.sh
 chmod +x dotnet-install.sh
@@ -108,11 +112,11 @@ After deploying your site, you will receive a unique subdomain for your project 
 
 If you receive the error message `Error: Asset "/opt/buildhome/repo/output/wwwroot/_framework/dotnet.wasm" is over the 25MiB limit`, resolve this by doing one of the following actions:
 
-1. Reduce the size of your assets with the following [guide ↗︎](https://docs.microsoft.com/en-us/aspnet/core/blazor/performance?view=aspnetcore-6.0#minimize-app-download-size).
+1. Reduce the size of your assets with the following [guide ↗︎](https://learn.microsoft.com/en-us/aspnet/core/blazor/performance?view=aspnetcore-8.0#minimize-app-download-size).
 
 Or
 
-2. Remove the `*.wasm` files from the output ( `rm output/wwwroot/_framework/*.wasm`) and modify your Blazor application to [load the Brotli compressed files ↗︎](https://docs.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-6.0#compression) instead.
+2. Remove the `*.wasm` files from the output ( `rm output/wwwroot/_framework/*.wasm`) and modify your Blazor application to [load the Brotli compressed files ↗︎](https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-8.0#compression) instead.
 
 ## Learn more
 
@@ -127,5 +131,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/#page","headline":"Blazor","description":"Deploy a Blazor WebAssembly application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/og.png?v=234c34f757e67e37","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/#page","headline":"Blazor","description":"Deploy a Blazor WebAssembly application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/og.png?v=234c34f757e67e37","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

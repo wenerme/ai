@@ -21,19 +21,17 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 23 days ago | Beginner |
-| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 24 days ago | Beginner |
+| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/databases/third-party-integrations/prisma-postgres/) | 25 days ago | Beginner |
+| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 26 days ago | Beginner |
 | [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 2 months ago | Intermediate |
 | [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 2 months ago | Intermediate |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 6 months ago | Beginner |
-| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 8 months ago | Intermediate |
-| [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/) | last year | Advanced |
+| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 9 months ago | Intermediate |
+| [Build an Interactive ChatGPT App](https://developers.cloudflare.com/agents/examples/chatgpt-app/) | last year | Advanced |
 | [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | last year | Beginner |
-| [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/) | last year | Beginner |
 | [Connect to a MongoDB database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/) | last year | Beginner |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |
 | [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/) | 2 years ago | Beginner |
-| [Connect to a MySQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/mysql/) | 2 years ago | Beginner |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | 2 years ago | Beginner |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | 2 years ago | Beginner |
 | [Using BigQuery with Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/) | 2 years ago | Beginner |
@@ -73,6 +71,8 @@ View tutorials to help you get started with Workers.
 | [Capture a screenshot](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/screenshot/) |  | Beginner |
 | [Send a Slack notification](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/slack-notification/) |  | Beginner |
 | [Watermark HTML pages](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/watermark/) |  | Beginner |
+| [Migrate from Firebase Hosting to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/firebase-to-workers/) |  | Beginner |
+| [Migrate from GitHub Pages to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/github-pages-to-workers/) |  | Beginner |
 
 Was this helpful?
 
@@ -83,5 +83,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/tutorials/#page","headline":"Tutorials","description":"Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.","url":"https://developers.cloudflare.com/workers/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/og.png?v=5dfc402ec1d8cac0","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/tutorials/#page","headline":"Tutorials","description":"Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.","url":"https://developers.cloudflare.com/workers/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/og.png?v=5dfc402ec1d8cac0","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

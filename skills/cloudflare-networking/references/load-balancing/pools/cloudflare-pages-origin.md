@@ -23,7 +23,7 @@ The following sections will guide you through setting up an [active-passive fail
 
 ## Use cases
 
-This setup can be useful if you are migrating your production website or application to Pages or if you just want to have a backup or a personalized web page for when your primary origin goes down.
+This setup can be useful if you are migrating your production website or application to Pages, or if you want a backup or personalized web page when your primary origin goes down. For new static and full-stack applications, Cloudflare recommends [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/) with [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
 ## Before you begin
 
@@ -75,7 +75,7 @@ The endpoint pointing to [Cloudflare Pages](https://developers.cloudflare.com/pa
 Failing to add the host header will result in [response code mismatch error](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/#response-code-mismatch-error) for the monitor, and [Error 1000: DNS points to prohibited IP](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1000/) for visitors (if the load balancer is enabled despite the unhealthy monitor status).
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page. [Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
-2. Select the **Pools** tab and then **Create monitor**.
+2. Select the **Pools** tab and then **Create pool**.
 3. For the first pool, start by filling out the fields:
 
 - A name for the pool (must be unique). Suggestion: `primary`
@@ -95,7 +95,7 @@ Failing to add the host header will result in [response code mismatch error](htt
 
   Caution
 
-  If your production website is hosted on a platform like Cloudflare Pages, where you have a default subdomain ( `example.pages.dev`) and then configure a [custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains) ( `my-app.com`), you will need to add a host header to avoid failing the health monitor request.
+  If your production website is hosted on a platform like Cloudflare Pages, where you have a default subdomain ( `example.pages.dev`) and then configure a [custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/) ( `my-app.com`), you will need to add a host header to avoid failing the health monitor request.
 
 6. Finish configuring the first pool with the following information:
 
@@ -147,7 +147,7 @@ After confirming the endpoints and monitors are set up correctly and return the 
    - Do the same for the second pool and reorder them if needed. For the purposes of this tutorial, your production website pool would be the first ( `primary`) and the Cloudflare Pages pool would be the second ( `secondary`).
    - If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools). For the purposes of this tutorial, you can leave this pointing to your secondary pool.
 5. On the **Monitors** page, review the monitors attached to your pools and the expected health status, and select **Next**.
-6. On the **Traffic Steering** page, make sure **Off** is selected. This means the load balancer will follow the order established on the **Add a Pool** section (Step 3 above), achieving an [Active - Passive Failover](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#active---passive-failover) configuration.
+6. On the **Traffic Steering** page, make sure **Off** is selected. This means the load balancer will follow the order established in the **Add a Pool** section (Step 4), achieving an [Active - Passive Failover](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#active---passive-failover) configuration.
 7. For the purposes of this tutorial, leave the [**Custom Rules**](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) option empty.
 8. On the **Review** page, review your configuration and select **Save as Draft**.
 
@@ -187,5 +187,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/#page","headline":"Use Pages as an origin for Load Balancing","description":"This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.","url":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/og.png?v=fd0de310ebbf7a40","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/#page","headline":"Use Pages as an origin for Load Balancing","description":"This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.","url":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/og.png?v=fd0de310ebbf7a40","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

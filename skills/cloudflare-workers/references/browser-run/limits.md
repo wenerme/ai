@@ -105,28 +105,39 @@ Refer to [Browser close reasons](https://developers.cloudflare.com/browser-run/r
 
 ### Error: `429 Too many requests`
 
-When you make too many requests in a short period of time, Browser Run will respond with HTTP status code `429 Too many requests`. You can view your account's rate limits in the [Workers Free](#workers-free) and [Workers Paid](#workers-paid) sections above.
+When you make too many requests in a short period of time, Browser Run responds with HTTP status code `429 Too many requests` and a `Retry-After` response header. Quick Actions REST endpoints return error code `2001` in the JSON body:
 
-The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
+```json
+{
+	"errors": [{ "code": 2001, "message": "Rate limit exceeded" }],
+	"success": false
+}
+```
+
+You can view your account's rate limits in the [Workers Free](#workers-free) and [Workers Paid](#workers-paid) sections.
+
+The following example handles rate limiting by reading the `Retry-After` header and retrying after that delay:
 
 ```js
-const response = await fetch('https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/content', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer <your-token>',
-    },
-    body: JSON.stringify({ url: 'https://example.com' })
-});
+const response = await fetch(
+	"https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/content",
+	{
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: "Bearer <your-token>",
+		},
+		body: JSON.stringify({ url: "https://example.com" }),
+	},
+);
 
 if (response.status === 429) {
-const retryAfter = response.headers.get('Retry-After');
-console.log(`Rate limited. Waiting ${retryAfter} seconds...`);
-await new Promise(resolve => setTimeout(resolve, retryAfter \* 1000));
+	const retryAfter = Number(response.headers.get("Retry-After") ?? "1");
+	console.log(`Rate limited (code 2001). Waiting ${retryAfter} seconds...`);
+	await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
 
-    // Retry the request
-    const retryResponse = await fetch(/* same request as above */);
-
+	// Retry the request
+	const retryResponse = await fetch(/* same request as above */);
 }
 ```
 
@@ -180,5 +191,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/limits/og.png?v=44b84e37b667d122","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/limits/og.png?v=44b84e37b667d122","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

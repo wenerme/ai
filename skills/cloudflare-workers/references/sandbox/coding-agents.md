@@ -49,7 +49,9 @@ Edit a GitHub repository with Pi, which calls models through its built-in AI Gat
 
 ## The vendor runs the agent loop
 
-Devin, Cursor, Claude Managed Agents, and the OpenAI Agents API run their agent loop in their own service. The loop sends commands and file edits to sandboxes in your Cloudflare account. Each vendor template gives every session its own sandbox. In the Devin, Cursor, and OpenAI Agents API templates, the vendor worker process runs inside the sandbox, so the sandbox also holds a vendor credential.
+Devin, Cursor, Claude Managed Agents, Gemini API managed agents, and the OpenAI Agents API run their agent loop in their own service. The loop sends commands and file edits to sandboxes in your Cloudflare account.
+
+Each vendor template assigns a sandbox to a session or environment. Gemini agent runs can share an environment and its sandbox. In the Devin, Cursor, Gemini, and OpenAI Agents API examples, the vendor worker process runs inside the sandbox, so the sandbox also holds a vendor credential.
 
 ### [Devin](https://developers.cloudflare.com/sandbox/coding-agents/devin/)
 
@@ -67,6 +69,10 @@ Run Claude Managed Agents sessions in sandboxes on Containers and Dynamic Worker
 
 Deploy a self-hosted environment that runs each Codex session in its own sandbox on Containers.
 
+### [Gemini API managed agents](https://developers.cloudflare.com/sandbox/coding-agents/gemini-managed-agents/)
+
+Run Gemini API managed agent file and shell tools in a sandbox on Containers with Bring Your Own Sandbox.
+
 ## Build your own agent
 
 To give an agent that runs in a Durable Object a container to run commands in, refer to [Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/) in the Agents SDK documentation.
@@ -80,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/coding-agents/#page","headline":"Run coding agents in a sandbox","description":"Run coding agents such as Claude Code, Devin, and Cursor on a repository in a Linux sandbox that belongs to one task.","url":"https://developers.cloudflare.com/sandbox/coding-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/og.png?v=5789bc681f595744","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/coding-agents/#page","headline":"Run coding agents in a sandbox","description":"Run coding agents such as Claude Code, Devin, and Cursor on a repository in a Linux sandbox that belongs to one task.","url":"https://developers.cloudflare.com/sandbox/coding-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/og.png?v=5789bc681f595744","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

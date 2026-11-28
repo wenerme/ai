@@ -18234,8 +18234,12 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -18261,8 +18265,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -18295,10 +18303,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: key
         required: true
@@ -18329,8 +18341,12 @@ paths:
       responses:
         '204':
           description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -20661,6 +20677,34 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4UserPersonalAccessTokensRequest"
+  "/api/v4/users/{id}/phone_number":
+    delete:
+      operationId: deleteApiV4UsersIdPhoneNumber
+      summary: Delete the phone number of a user
+      description: Deletes the phone number a user provided for identity verification.
+        Administrators only.
+      tags:
+      - Users
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '412':
+          description: Precondition failed
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: ID of the user.
+        schema:
+          type: integer
+        in: path
   "/api/v4/user/applications":
     post:
       operationId: postApiV4UserApplications
@@ -20677,7 +20721,11 @@ paths:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesApplicationWithSecret"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
       requestBody:
         required: true
         content:
@@ -20718,10 +20766,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesApplication"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -20738,10 +20790,14 @@ paths:
       responses:
         '204':
           description: No Content
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -20762,10 +20818,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesApplication"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -20795,10 +20855,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesTodo"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -20828,10 +20892,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesTodo"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -20864,7 +20932,13 @@ paths:
                 items:
                   "$ref": "#/components/schemas/APIEntitiesTodo"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests
       parameters:
       - name: page
         required: false
@@ -20983,10 +21057,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesTodo"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -21005,6 +21083,10 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '400':
           description: Bad Request
   "/api/v4/groups/{id}/epics/{epic_iid}/todo":
@@ -21333,8 +21415,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequest"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21367,8 +21455,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequest"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21400,8 +21494,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesIssue"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21433,8 +21533,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesIssue"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21466,8 +21572,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesProjectLabel"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21500,8 +21612,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesProjectLabel"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21533,8 +21651,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesGroupLabel"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -21567,8 +21691,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesGroupLabel"
+        '304':
+          description: Not modified
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -22021,10 +22151,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22070,10 +22204,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22109,10 +22247,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22158,10 +22300,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22197,10 +22343,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22247,10 +22397,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22287,10 +22441,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22338,8 +22496,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -22379,10 +22541,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22430,8 +22596,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -22471,10 +22641,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -22523,8 +22697,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -22953,10 +23131,16 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenWithToken"
-        '404':
-          description: Not Found
         '400':
           description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable entity
       parameters:
       - name: id
         required: true
@@ -23040,10 +23224,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenWithToken"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -26049,10 +26237,16 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenWithToken"
-        '404':
-          description: Not Found
         '400':
           description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable entity
       parameters:
       - name: id
         required: true
@@ -26136,10 +26330,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenWithToken"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -32686,10 +32884,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesSuggestion"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -32721,7 +32923,13 @@ paths:
                 items:
                   "$ref": "#/components/schemas/APIEntitiesSuggestion"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       requestBody:
         required: true
         content:
@@ -33203,7 +33411,17 @@ paths:
                   - "$ref": "#/components/schemas/APIEntitiesSnippet"
                   - "$ref": "#/components/schemas/APIEntitiesUserBasic"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '408':
+          description: Request timed out
+        '429':
+          description: Too many requests
+        '503':
+          description: Service unavailable
       parameters:
       - name: search
         required: true
@@ -33468,10 +33686,20 @@ paths:
                   - "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
                   - "$ref": "#/components/schemas/APIEntitiesMilestone"
                   - "$ref": "#/components/schemas/APIEntitiesUserBasic"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '408':
+          description: Request timed out
+        '429':
+          description: Too many requests
+        '503':
+          description: Service unavailable
       parameters:
       - name: id
         required: true
@@ -33741,10 +33969,20 @@ paths:
                   - "$ref": "#/components/schemas/APIEntitiesBlob"
                   - "$ref": "#/components/schemas/APIEntitiesCommitDetail"
                   - "$ref": "#/components/schemas/APIEntitiesUserBasic"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '408':
+          description: Request timed out
+        '429':
+          description: Too many requests
+        '503':
+          description: Service unavailable
       parameters:
       - name: id
         required: true
@@ -34334,10 +34572,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceMilestoneEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -34430,10 +34672,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesResourceMilestoneEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -36612,10 +36858,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesRelease"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -38493,8 +38743,12 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -38520,8 +38774,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -38555,10 +38813,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: key
         required: true
@@ -38590,8 +38852,12 @@ paths:
       responses:
         '204':
           description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -41857,6 +42123,10 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '400':
           description: Bad Request
   "/api/v4/projects/import":
@@ -42022,6 +42292,10 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '400':
           description: Bad Request
   "/api/v4/projects/import-relation":
@@ -43032,10 +43306,12 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesEvent"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -44387,8 +44663,10 @@ paths:
               schema:
                 type: string
                 format: binary
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -45666,7 +45944,17 @@ paths:
         '201':
           description: Created
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+        '429':
+          description: Too many requests
       requestBody:
         required: true
         content:
@@ -45689,7 +45977,13 @@ paths:
                 items:
                   "$ref": "#/components/schemas/APIEntitiesImportOfflineExport"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: page
         required: false
@@ -45743,10 +46037,14 @@ paths:
       responses:
         '200':
           description: OK
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -48178,10 +48476,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesMergeRequestDiff"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -53386,10 +53688,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCiLintResult"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -53419,8 +53725,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesSSHKeyWithUser"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -53450,7 +53760,13 @@ paths:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesSSHKeyWithUser"
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: fingerprint
         required: true
@@ -56970,10 +57286,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesInvitation"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -57005,10 +57325,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesInvitation"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -57056,10 +57380,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesInvitation"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -57133,10 +57461,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesInvitation"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -57168,10 +57500,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesInvitation"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -57219,10 +57555,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesInvitation"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -57502,6 +57842,8 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
         '400':
           description: Bad Request
   "/api/v4/integrations/slack/interactions":
@@ -57515,6 +57857,8 @@ paths:
       responses:
         '201':
           description: Created
+        '401':
+          description: Unauthorized
         '400':
           description: Bad Request
   "/api/v4/integrations/slack/events":
@@ -65041,6 +65385,8 @@ paths:
       responses:
         '201':
           description: Created
+        '403':
+          description: Forbidden
         '400':
           description: Bad Request
   "/api/v4/groups/import":
@@ -65941,8 +66287,10 @@ paths:
               schema:
                 type: string
                 format: binary
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -81697,8 +82045,12 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -81724,8 +82076,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -81758,10 +82114,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: key
         required: true
@@ -81792,8 +82152,12 @@ paths:
       responses:
         '204':
           description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
+          description: Not found
         '400':
           description: Bad Request
       parameters:
@@ -88555,10 +88919,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesAccessRequester"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -88603,10 +88971,14 @@ paths:
                 name: Raymond Smith
                 state: active
                 requested_at: '2012-10-22T14:13:35Z'
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -88635,10 +89007,14 @@ paths:
                 state: active
                 created_at: '2012-10-22T14:13:35Z'
                 access_level: '20'
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -88668,10 +89044,16 @@ paths:
       responses:
         '204':
           description: Resource deleted
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '412':
+          description: Precondition failed
       parameters:
       - name: id
         required: true
@@ -88702,10 +89084,14 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/APIEntitiesAccessRequester"
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -88750,10 +89136,14 @@ paths:
                 name: Raymond Smith
                 state: active
                 requested_at: '2012-10-22T14:13:35Z'
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -88782,10 +89172,14 @@ paths:
                 state: active
                 created_at: '2012-10-22T14:13:35Z'
                 access_level: '20'
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
       parameters:
       - name: id
         required: true
@@ -88815,10 +89209,16 @@ paths:
       responses:
         '204':
           description: Resource deleted
-        '404':
-          description: Not Found
         '400':
-          description: Bad Request
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '412':
+          description: Precondition failed
       parameters:
       - name: id
         required: true

@@ -156,8 +156,14 @@ It is recommended to consistently use the same API token across all uploads and 
   - [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
   - [Flask](https://developers.cloudflare.com/workers/languages/python/packages/flask/)
   - [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
-- [AI & agents](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
-  - [Agents SDK](https://developers.cloudflare.com/agents/)
+- [Agent Harnesses](https://developers.cloudflare.com/workers/framework-guides/agent-harnesses/)
+  - [Pi](https://developers.cloudflare.com/agents/harnesses/pi/)
+  - [OpenCode](https://developers.cloudflare.com/agents/harnesses/opencode/)
+  - [Claude Code](https://developers.cloudflare.com/agents/harnesses/claude-code/)
+  - [Codex](https://developers.cloudflare.com/agents/harnesses/codex/)
+  - [Think](https://developers.cloudflare.com/agents/harnesses/think/)
+  - [Nanocode](https://developers.cloudflare.com/agents/harnesses/nanocode/)
+  - [Exo](https://developers.cloudflare.com/agents/harnesses/exo/)
   - [LangChain](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
 
 ## Environment variables

@@ -17,6 +17,10 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-si
 
 # Hexo
 
+Note
+
+Starting a new static site? You can also deploy Hexo sites to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
 [Hexo ↗︎](https://hexo.io/) is a tool for generating static websites, powered by Node.js. Hexo's benefits include speed, simplicity, and flexibility, allowing it to render Markdown files into static web pages via Node.js.
 
 In this guide, you will create a new Hexo application and deploy it using Cloudflare Pages. You will use the `hexo` CLI to create a new Hexo site.
@@ -96,7 +100,7 @@ To deploy your site to Pages:
 | Build command | `npm run build` |
 | Build directory | `public` |
 
-After completing configuration, click the **Save and Deploy** button. You should see Cloudflare Pages installing `hexo` and your project dependencies, and building your site, before deploying it.
+After completing configuration, select **Save and Deploy**. You should see Cloudflare Pages installing `hexo` and your project dependencies, and building your site, before deploying it.
 
 Note
 
@@ -106,11 +110,11 @@ After deploying your site, you will receive a unique subdomain for your project 
 
 ## Using a specific Node.js version
 
-Some Hexo themes or plugins have additional requirements for different Node.js versions. To use a specific Node.js version for Hexo:
+Some Hexo themes or plugins require a specific Node.js version. To override the Build Image v3 default Node.js version for Hexo:
 
 1. Go to your Pages project.
-2. Go to **Settings** > **Environment variables**.
-3. Set the environment variable `NODE_VERSION` and a value of your required Node.js version (for example, `14.3`).
+2. Go to **Settings** > **Variables and Secrets**.
+3. Set the environment variable `NODE_VERSION` to your required Node.js version (for example, `22.23.4`). Refer to [Override default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions) for more options.
 
 ![Follow the instructions above to set up an environment variable in the Pages dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2121,height=948,format=webp/_astro/node-version-pages.19kURO88.png)
 
@@ -127,5 +131,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/#page","headline":"Hexo","description":"Deploy a Hexo static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/og.png?v=5f56880071157e81","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/#page","headline":"Hexo","description":"Deploy a Hexo static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/og.png?v=5f56880071157e81","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

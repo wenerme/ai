@@ -22,6 +22,8 @@ Migrate your existing applications to Cloudflare Workers.
 Take advantage of Cloudflare's global network and migrate your existing applications to Workers.
 
 - [Migrate from Pages to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/)
+- [Migrate from Firebase Hosting to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/firebase-to-workers/)
+- [Migrate from GitHub Pages to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/github-pages-to-workers/)
 - [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/)
 - [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
 

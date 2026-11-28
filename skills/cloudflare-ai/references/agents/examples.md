@@ -24,6 +24,7 @@ End-to-end examples showing how to build complete agents.
 - [Voice agent](https://developers.cloudflare.com/agents/examples/voice-agent/)
 - [Browser agent](https://developers.cloudflare.com/agents/examples/browser-agent/)
 - [Email agent](https://developers.cloudflare.com/agents/examples/email-agent/)
+- [Build an Interactive ChatGPT App](https://developers.cloudflare.com/agents/examples/chatgpt-app/)
 
 Was this helpful?
 

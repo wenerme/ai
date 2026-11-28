@@ -27,14 +27,13 @@ To redirect a `<project>.pages.dev` subdomain to your custom domain:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Custom domains** and make sure that your custom domain is listed. If it is not, add it by clicking **Set up a custom domain**.
-4. Go **Bulk Redirects**.
-5. [Create a bulk redirect list](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#1-create-a-bulk-redirect-list) modeled after the following (but replacing the values as appropriate):
+3. Go to **Custom domains** and make sure that your custom domain is listed. If it is not, add it by selecting **Set up a custom domain**.
+4. In the Cloudflare dashboard, go to the **Bulk Redirects** page. [Go to **Bulk redirects** ↗](https://dash.cloudflare.com/?to=/:account/bulk-redirects)
+5. [Create a bulk redirect list](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#1-create-a-bulk-redirect-list) modeled after the following (replacing the values as appropriate):
 
-| Source URL | Target URL | Status | Parameters |
-| --- | --- | --- | --- |
-| `<project>.pages.dev` | `https://example.com` | `301` | <ul><li>Preserve query string</li><li>Subpath matching</li><li>Preserve path suffix</li><li>Include subdomains</li></ul> |
-
+   | Source URL | Target URL | Status | Parameters |
+   | --- | --- | --- | --- |
+   | `<project>.pages.dev` | `https://example.com` | `301` | <ul><li>Preserve query string</li><li>Subpath matching</li><li>Preserve path suffix</li><li>Include subdomains</li></ul> |
 6. [Create a bulk redirect rule](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#2-create-a-bulk-redirect-rule) using the list you just created.
 
 To test that your redirect worked, go to your `<project>.pages.dev` domain. If the URL is now set to your custom domain, then the rule has propagated.
@@ -53,5 +52,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/#page","headline":"Redirecting *.pages.dev to a Custom Domain","description":"Use Bulk Redirects to redirect your pages.dev subdomain to a custom domain.","url":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/og.png?v=36d847456d6f6efb","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/#page","headline":"Redirecting *.pages.dev to a Custom Domain","description":"Use Bulk Redirects to redirect your pages.dev subdomain to a custom domain.","url":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/og.png?v=36d847456d6f6efb","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

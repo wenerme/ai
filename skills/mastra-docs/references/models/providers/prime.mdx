@@ -5,7 +5,7 @@ description: "Browse Prime Inference model IDs, capabilities, context windows, a
 
 # [Prime Inference logo]Prime Inference
 
-Access 73 Prime Inference models through Mastra's model router. Authentication is handled automatically using the `PRIME_API_KEY` environment variable.
+Access 74 Prime Inference models through Mastra's model router. Authentication is handled automatically using the `PRIME_API_KEY` environment variable.
 
 Learn more in the [Prime Inference documentation](https://docs.primeintellect.ai).
 
@@ -314,6 +314,18 @@ for await (const chunk of stream) {
     "maxOutput": 943718,
     "inputCost": 2,
     "outputCost": 10
+  },
+  {
+    "model": "prime/google/gemini-4-hydrogen",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 943718,
+    "inputCost": 1.5,
+    "outputCost": 7.5
   },
   {
     "model": "prime/google/gemini-4-neon",

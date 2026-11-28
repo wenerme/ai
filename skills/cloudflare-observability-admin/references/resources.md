@@ -21,7 +21,7 @@ Products
 
 [**Conditionally enforce Turnstile** Learn two ways to show Turnstile only for certain requests using a Transform Rule or HTMLRewriter.](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/)
 
-[**Set up and use a Prisma Postgres database** This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)
+[**Set up and use a Prisma Postgres database** This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.](https://developers.cloudflare.com/workers/databases/third-party-integrations/prisma-postgres/)
 
 [**Migrate from Vercel to Cloudflare Workers** Move a Vercel app to one Cloudflare Worker. Pick your framework, then map Vercel KV, Blob, Edge Config, cron jobs, ISR, env vars, and domains to Cloudflare.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
 
@@ -65,7 +65,7 @@ Products
 
 [**Data persistence with R2 (Sandbox SDK 0.x)** Mount R2 buckets as local filesystem paths with the Sandbox SDK 0.x to persist data across sandbox lifecycles.](https://developers.cloudflare.com/sandbox/sdk/tutorials/persistent-storage/)
 
-[**Build an Interactive ChatGPT App** Build and deploy an interactive ChatGPT App on Cloudflare Workers with real-time multiplayer state using MCP.](https://developers.cloudflare.com/workers/demos/chatgpt-app/)
+[**Build an Interactive ChatGPT App** Build and deploy an interactive ChatGPT App on Cloudflare Workers with real-time multiplayer state using MCP.](https://developers.cloudflare.com/agents/examples/chatgpt-app/)
 
 [**Connect to an MCP server** Create a Cloudflare Agent that connects to an external MCP server and uses its tools.](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
 
@@ -86,8 +86,6 @@ Products
 [**Build an end to end data pipeline** This tutorial demonstrates how to build a complete data pipeline using Basin Pipelines, Basin Catalog, and Basin SQL.](https://developers.cloudflare.com/basin-sql/tutorials/end-to-end-pipeline/)
 
 [**Optimize mobile viewing** Lazy loading is an easy way to optimize the images on your webpages for mobile devices, with faster page load times and lower costs.](https://developers.cloudflare.com/images/tutorials/optimize-mobile-viewing/)
-
-[**Connect to a PostgreSQL database with Cloudflare Workers** This tutorial explains how to connect to a Postgres database with Cloudflare Workers. The Workers application you create in this tutorial will interact with a product database inside of Postgres.](https://developers.cloudflare.com/workers/tutorials/postgres/)
 
 [**Connect to a MongoDB database with Cloudflare Workers** This tutorial explains how to connect to a MongoDB database with Cloudflare Workers. The Workers application you create in this tutorial will query a movies database in MongoDB.](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/)
 
@@ -110,8 +108,6 @@ Products
 [**Transform user-uploaded images before uploading to R2** Set up bindings to connect Images, R2, and Assets to your Worker](https://developers.cloudflare.com/images/tutorials/optimize-user-uploaded-image/)
 
 [**Whisper-large-v3-turbo with Cloudflare Workers AI** Learn how to transcribe large audio files using Workers AI.](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)
-
-[**Connect to a MySQL database with Cloudflare Workers** This tutorial explains how to connect to a Cloudflare database using TCP Sockets and Hyperdrive. The Workers application you create in this tutorial will interact with a product database inside of MySQL.](https://developers.cloudflare.com/workers/tutorials/mysql/)
 
 [**Storing user generated content** Store user-generated content in R2 for fast, secure, and cost-effective architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)
 
@@ -222,8 +218,6 @@ Products
 [**Create your first AI Gateway using Workers AI** This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard.](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/)
 
 [**Explore Workers AI Models Using a Jupyter Notebook** This Jupyter notebook explores various models (including Whisper, Distilled BERT, LLaVA, and Meta Llama 3) using Python and the requests library.](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/)
-
-[**Use R2 as static asset storage with Cloudflare Pages** This tutorial will teach you how to use R2 as a static asset storage bucket for your Pages app.](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/)
 
 [**Protect ISP and telecommunications networks from DDoS attacks** Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/)
 
@@ -351,9 +345,7 @@ Products
 
 [**Magic Transit Reference Architecture** This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
 
-[**Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages** Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/)
-
-[**Create a HTML form** This tutorial will briefly touch upon the basics of HTML forms. This tutorial will make heavy use of Cloudflare Pages and its Workers integration.](https://developers.cloudflare.com/pages/tutorials/forms/)
+[**Create an HTML form** This tutorial will briefly touch upon the basics of HTML forms. This tutorial will make heavy use of Cloudflare Pages and its Workers integration.](https://developers.cloudflare.com/pages/tutorials/forms/)
 
 [**Migrating from Netlify to Pages** Learn how to migrate from Netlify to Cloudflare. This guide includes instructions for migrating redirects and headers.](https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/)
 
@@ -365,13 +357,9 @@ Products
 
 [**GraphQL Analytics** Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic.](https://developers.cloudflare.com/cloudflare-one/tutorials/graphql-analytics/)
 
-[**Add a React form with Formspree** Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.](https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/)
-
 [**Add an HTML form with Formspree** Learn how to add an HTML form with Formspree, a back-end service that handles form processing and storage.](https://developers.cloudflare.com/pages/tutorials/add-an-html-form-with-formspree/)
 
 [**Integrate Microsoft MCAS with Cloudflare Zero Trust** With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.](https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/)
-
-[**Migrating a Jekyll-based site from GitHub Pages** Learn how to migrate a Jekyll-based site from GitHub Pages to Cloudflare Pages.](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/)
 
 [**Connect through Cloudflare Access using a CLI** Cloudflare's cloudflared command-line tool allows you to interact with endpoints protected by Cloudflare Access.](https://developers.cloudflare.com/cloudflare-one/tutorials/cli/)
 
@@ -380,8 +368,6 @@ Products
 [**Zero Trust GitLab SSH & HTTP** Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.](https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/)
 
 [**Require U2F with Okta** This tutorial covers how to Integrate Cloudflare Access with Okta. It also covers the steps to set up Cloudflare Access and integrate Okta with Zero Trust.](https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/)
-
-[**Migrating from Firebase** This tutorial explains how to migrate an existing Firebase application to Cloudflare Pages.](https://developers.cloudflare.com/pages/migrations/migrating-from-firebase/)
 
 [**Certificate signing requests (CSRs) — Cloudflare for SaaS** Cloudflare for SaaS allows you to generate a Certificate Signing Request (CSR) A CSR contains information about your domain, common name, and Subject Alternative Names.](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/certificate-signing-requests/)
 
@@ -560,6 +546,10 @@ Products
 [**Get started** Learn how to enable Version Management in the Cloudflare dashboard.](https://developers.cloudflare.com/version-management/get-started/)
 
 [**Test a waiting room** Follow this tutorial to test your waiting room behavior in response to load. To accurately simulate traffic, run your test script or planner for a period of time longer than a minute, ideally more than 2-3 minutes.](https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/)
+
+[**Migrate from Firebase Hosting to Workers** Migrate a static site or single-page application from Firebase Hosting to Cloudflare Workers with Static Assets.](https://developers.cloudflare.com/workers/static-assets/migration-guides/firebase-to-workers/)
+
+[**Migrate from GitHub Pages to Workers** Migrate a static site or Jekyll site from GitHub Pages to Cloudflare Workers with Static Assets.](https://developers.cloudflare.com/workers/static-assets/migration-guides/github-pages-to-workers/)
 
 [**Application Security - Dashboard walkthrough** In this video, learn how to navigate the Cloudflare Application Security dashboard and how to use each page to monitor, investigate, and manage security protections.](https://developers.cloudflare.com/videos/app-sec-dashboard/)
 

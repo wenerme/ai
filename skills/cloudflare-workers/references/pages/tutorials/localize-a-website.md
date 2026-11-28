@@ -41,50 +41,25 @@ If you would like to deploy your own version of the site, you can find the sourc
 
 ## Create a new application
 
-Create a new application using the [`create-cloudflare`](https://developers.cloudflare.com/pages/get-started/c3), a CLI for creating and deploying new applications to Cloudflare.
-
-npmyarnpnpm
-
-```
-npm create cloudflare@latest -- i18n-example
-```
-
-```
-yarn create cloudflare i18n-example
-```
-
-```
-pnpm create cloudflare@latest i18n-example
-```
-
-For setup, select the following options:
-
-- For *What would you like to start with*?, select `Framework Starter`.
-- For *Which development framework do you want to use?*, select `React`.
-- For, *Do you want to deploy your application?*, select `No`.
-
-The newly generated `i18n-example` project will contain two folders: `public` and `src` these contain files for a React application:
+Create a new project directory, initialize `package.json`, and install Wrangler as a development dependency:
 
 ```sh
+mkdir i18n-example
 cd i18n-example
-ls
+npm init -y
+npm install -D wrangler
 ```
 
-```sh
-public src package.json
-```
+Next, download the [release ↗︎](https://github.com/signalnerve/i18n-example-workers/archive/v1.0.zip) (ZIP file) for this project and copy its `public` folder into your `i18n-example` directory. The `public` folder contains the HTML5 UP template shown in the demo screenshot.
 
-We have to make a few adjustments to the generated project, first we want to the replace the content inside of the `public` directory, with the default generated HTML code for the HTML5 UP template seen in the demo screenshot: download a [release ↗︎](https://github.com/signalnerve/i18n-example-workers/archive/v1.0.zip) (ZIP file) of the code for this project and copy the `public` folder to your own project to get started.
-
-Next, let's create a functions directory with an `index.js` file, this will be where the logic of the application will be written.
+Create a `functions` directory with an `index.js` file where the localization logic will live:
 
 ```sh
 mkdir functions
-cd functions
-touch index.js
+touch functions/index.js
 ```
 
-Additionally, we'll remove the `src/` directory since its content isn't necessary for this project. With the static HTML for this project updated, you can focus on the script inside of the `functions` folder, at `index.js`.
+With the static HTML in `public/` and `functions/index.js` created, you can focus on writing the `HTMLRewriter` handler.
 
 ## Understanding `data-i18n-key`
 
@@ -138,7 +113,7 @@ export async function onRequest(context) {
 
 Your `ElementHandler` will receive every element parsed by the `HTMLRewriter` instance, and due to the expressive API, you can query each incoming element for information.
 
-In [How it works](#understanding-data-i18n-key), the documentation describes `data-i18n-key`, a custom data attribute that could be used to find a corresponding translated string for the website’s user interface. In `ElementHandler`, you can define an `element` function, which will be called as each element is parsed. Inside of the `element` function, you can query for the custom data attribute using `getAttribute`:
+In [Understanding `data-i18n-key`](#understanding-data-i18n-key), the documentation describes `data-i18n-key`, a custom data attribute that can be used to find a corresponding translated string for the website's user interface. In `ElementHandler`, you can define an `element` function, which will be called as each element is parsed. Inside of the `element` function, you can query for the custom data attribute using `getAttribute`:
 
 ```js
 class ElementHandler {
@@ -181,15 +156,15 @@ class ElementHandler {
 }
 ```
 
-To review that everything looks as expected, use the preview functionality built into Wrangler. Call [`wrangler pages dev ./public`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to open up a live preview of your project. The command is refreshed after every code change that you make.
+To review that everything looks as expected, use the local development server built into Wrangler. Run [`npx wrangler pages dev ./public`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev) to open a live preview of your project. The server reloads after every code change you make.
 
-You can expand on this translation functionality to provide country-specific translations, based on the incoming request’s `Accept-Language` header. By taking this header, parsing it, and passing the parsed language into your `ElementHandler`, you can retrieve a translated string in your user’s home language, provided that it is defined in `strings`.
+You can expand on this translation functionality to provide country-specific translations, based on the incoming request's `Accept-Language` header. By taking this header, parsing it, and passing the parsed language into your `ElementHandler`, you can retrieve a translated string in your user's home language, provided that it is defined in `strings`.
 
 To implement this:
 
 1. Update the `strings` object, adding a second layer of key-value pairs and allowing strings to be looked up in the format `strings[country][key]`.
-2. Pass a `countryStrings` object into our `ElementHandler`, so that it can be used during the parsing process.
-3. Grab the `Accept-Language` header from an incoming request, parse it, and pass the parsed language to `ElementHandler`.
+2. Pass a `countryStrings` object into your `ElementHandler`, so that it can be used during the parsing process.
+3. Read the `Accept-Language` header from an incoming request, parse it, and pass the parsed language to `ElementHandler`.
 
 To parse the `Accept-Language` header, install the [`accept-language-parser` ↗︎](https://www.npmjs.com/package/accept-language-parser) npm package:
 
@@ -197,12 +172,12 @@ To parse the `Accept-Language` header, install the [`accept-language-parser` ↗
 npm i accept-language-parser
 ```
 
-Once imported into your code, use the package to parse the most relevant language for a client based on `Accept-Language` header, and pass it to `ElementHandler`. Your final code for the project, with an included sample translation for Germany and Japan (using Google Translate) looks like this:
+Once imported into your code, use the package to parse the most relevant language for a client based on the `Accept-Language` header, and pass it to `ElementHandler`. Your final code for `functions/index.js`, with sample translations for German and Japanese, looks like this:
 
 ```js
 import parser from "accept-language-parser";
 
-// do not set to true in production!
+// Do not set to true in production!
 const DEBUG = false;
 
 const strings = {
@@ -249,14 +224,6 @@ class ElementHandler {
 export async function onRequest(context) {
 	const { request, env } = context;
 	try {
-		let options = {};
-		if (DEBUG) {
-			options = {
-				cacheControl: {
-					bypassCache: true,
-				},
-			};
-		}
 		const languageHeader = request.headers.get("Accept-Language");
 		const language = parser.pick(["de", "ja"], languageHeader);
 		const countryStrings = strings[language] || {};
@@ -268,7 +235,7 @@ export async function onRequest(context) {
 	} catch (e) {
 		if (DEBUG) {
 			return new Response(e.message || e.toString(), {
-				status: 404,
+				status: 500,
 			});
 		} else {
 			return env.ASSETS.fetch(request);
@@ -281,7 +248,7 @@ export async function onRequest(context) {
 
 Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it to your domain.
 
-To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
+To deploy your application to a `*.pages.dev` subdomain, specify the directory of static assets to serve by configuring `pages_build_output_dir` in your project's Wrangler file and setting the value to `./public`:
 
 ```jsonc
 {
@@ -289,7 +256,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-11-25"
+	"compatibility_date": "2026-11-28"
 }
 ```
 
@@ -298,10 +265,10 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-11-25"
+compatibility_date = "2026-11-28"
 ```
 
-Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:
+Next, configure a deploy script in `package.json` with the value `wrangler pages deploy`:
 
 ```json
 "scripts": {
@@ -333,5 +300,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/og.png?v=1314db6121d96aa3","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/og.png?v=1314db6121d96aa3","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```
