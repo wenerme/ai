@@ -17,26 +17,35 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican
 
 # Pelican
 
-[Pelican ↗︎](https://docs.getpelican.com) is a static site generator, written in Python. With Pelican, you can write your content directly with your editor of choice in reStructuredText or Markdown formats.
+Note
+
+Starting a new static site? You can also deploy static sites to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
+[Pelican ↗︎](https://docs.getpelican.com) is a static site generator written in Python. With Pelican, you can write your content directly with your editor of choice in reStructuredText or Markdown formats.
 
 ## Create a Pelican project
 
-To begin, create a Pelican project directory. `cd` into your new directory and run:
+To begin, create a Pelican project directory, set up a virtual environment, and install Pelican:
 
 ```sh
+mkdir my-pelican-site
+cd my-pelican-site
+python3 -m venv .venv
+source .venv/bin/activate
 python3 -m pip install pelican
 ```
 
-Then run:
+Record Pelican (and any plugins or themes you use) in `requirements.txt` so Cloudflare Pages installs them automatically during builds:
 
 ```sh
-pip freeze > requirements.txt
+echo "pelican" > requirements.txt
 ```
 
-Create a directory in your project named `content`:
+Create a directory in your project named `content` and add `.venv/` to `.gitignore`:
 
 ```sh
 mkdir content
+echo ".venv/" >> .gitignore
 ```
 
 This is the directory name that you will set in the build command.
@@ -79,7 +88,7 @@ Configuration option | Value
 | Build command | `pelican content` |
 | Build directory | `output` |
 
-7. Select **Environment variables (advanced)** and set the `PYTHON_VERSION` variable with the value of `3.7`.
+Cloudflare Pages Build Image v3 includes Python 3.13 by default and automatically installs packages listed in `requirements.txt`. If you need to pin a specific Python version, set `PYTHON_VERSION` under **Environment variables** as described in [Override default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
 For the complete guide to deploying your first site to Cloudflare Pages, refer to the [Get started guide](https://developers.cloudflare.com/pages/get-started/).
 
@@ -100,5 +109,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/#page","headline":"Pelican","description":"Deploy a Pelican static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/og.png?v=447be9dadec29c45","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/#page","headline":"Pelican","description":"Deploy a Pelican static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/og.png?v=447be9dadec29c45","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

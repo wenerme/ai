@@ -258,6 +258,8 @@ The Work Item API introduces the concept of widgets.
 Widgets represent specific features or attributes of a work item type.
 They can range from attributes like health status or assignees to dates or hierarchy.
 Each work item type has a unique set of available widgets.
+To query widgets, use the `features` field of a work item, which has one field for each widget.
+A widget that the work item type does not support returns `null`.
 
 #### Query epics with widgets
 
@@ -271,7 +273,7 @@ The following example demonstrates how to query an epic's:
 - Health status
 - Start and due dates
 
-For all available widgets, see the [work item widget reference](reference/interfaces.md#workitemwidget).
+For all available widgets, see the [`WorkItemFeatures` reference](reference/objects.md#workitemfeatures).
 
 To query epics with widgets:
 
@@ -427,13 +429,12 @@ query DetailedEpicWorkItem {
         name
       }
       state
-      widgets {
-        ... on WorkItemWidgetColor {
+      features {
+        color {
           color
           textColor
-          __typename
         }
-        ... on WorkItemWidgetHierarchy {
+        hierarchy {
           children {
             nodes {
               id
@@ -443,21 +444,18 @@ query DetailedEpicWorkItem {
           parent {
             title
           }
-          __typename
         }
-        ... on WorkItemWidgetHealthStatus {
-          type
+        healthStatus {
           healthStatus
         }
-        ... on WorkItemWidgetAssignees {
+        assignees {
           assignees {
             nodes {
               name
             }
           }
-          __typename
         }
-        ... on WorkItemWidgetAwardEmoji {
+        awardEmoji {
           downvotes
           upvotes
           awardEmoji {
@@ -465,15 +463,13 @@ query DetailedEpicWorkItem {
               unicode
             }
           }
-          __typename
         }
-        ... on WorkItemWidgetStartAndDueDate {
+        startAndDueDate {
           dueDate
           isFixed
           startDate
-          __typename
         }
-        ... on WorkItemWidgetNotes {
+        notes {
           discussions {
             nodes {
               notes {
@@ -490,7 +486,6 @@ query DetailedEpicWorkItem {
             }
           }
         }
-        __typename
       }
     }
   }
@@ -512,17 +507,13 @@ Example response:
           "name": "Sidney Jones"
         },
         "state": "OPEN",
-        "widgets": [
-          {
+        "features": {
+          "assignees": {
             "assignees": {
               "nodes": []
-            },
-            "__typename": "WorkItemWidgetAssignees"
+            }
           },
-          {
-            "__typename": "WorkItemWidgetDescription"
-          },
-          {
+          "hierarchy": {
             "children": {
               "nodes": [
                 {
@@ -545,13 +536,9 @@ Example response:
             },
             "parent": {
               "title": "Pajamas component: Pagination"
-            },
-            "__typename": "WorkItemWidgetHierarchy"
+            }
           },
-          {
-            "__typename": "WorkItemWidgetLabels"
-          },
-          {
+          "notes": {
             "discussions": {
               "nodes": [
                 {
@@ -675,58 +662,28 @@ Example response:
                   }
                 }
               ]
-            },
-            "__typename": "WorkItemWidgetNotes"
+            }
           },
-          {
+          "startAndDueDate": {
             "dueDate": null,
             "isFixed": false,
-            "startDate": null,
-            "__typename": "WorkItemWidgetStartAndDueDate"
+            "startDate": null
           },
-          {
-            "type": "HEALTH_STATUS",
-            "healthStatus": null,
-            "__typename": "WorkItemWidgetHealthStatus"
+          "healthStatus": {
+            "healthStatus": null
           },
-          {
-            "__typename": "WorkItemWidgetVerificationStatus"
-          },
-          {
-            "__typename": "WorkItemWidgetNotifications"
-          },
-          {
+          "awardEmoji": {
             "downvotes": 0,
             "upvotes": 0,
             "awardEmoji": {
               "nodes": []
-            },
-            "__typename": "WorkItemWidgetAwardEmoji"
+            }
           },
-          {
-            "__typename": "WorkItemWidgetLinkedItems"
-          },
-          {
-            "__typename": "WorkItemWidgetCurrentUserTodos"
-          },
-          {
-            "__typename": "WorkItemWidgetRolledupDates"
-          },
-          {
-            "__typename": "WorkItemWidgetParticipants"
-          },
-          {
-            "__typename": "WorkItemWidgetWeight"
-          },
-          {
-            "__typename": "WorkItemWidgetTimeTracking"
-          },
-          {
+          "color": {
             "color": "#1068bf",
-            "textColor": "#FFFFFF",
-            "__typename": "WorkItemWidgetColor"
+            "textColor": "#FFFFFF"
           }
-        ]
+        }
       }
     }
   }
@@ -765,30 +722,26 @@ mutation createEpicWithWidgets {
       id
       title
       description
-      widgets {
-        ... on WorkItemWidgetColor {
+      features {
+        color {
           color
           textColor
-          __typename
         }
-        ... on WorkItemWidgetAssignees {
+        assignees {
           assignees {
             nodes {
               id
               name
             }
           }
-          __typename
         }
-        ... on WorkItemWidgetHealthStatus {
+        healthStatus {
           healthStatus
-          __typename
         }
-        ... on WorkItemWidgetStartAndDueDate {
+        startAndDueDate {
           startDate
           dueDate
           isFixed
-          __typename
         }
       }
     }
@@ -806,8 +759,8 @@ Example response:
         "id": "gid://gitlab/WorkItem/2252",
         "title": "New epic",
         "description": "My new plans ...",
-        "widgets": [
-          {
+        "features": {
+          "assignees": {
             "assignees": {
               "nodes": [
                 {
@@ -815,25 +768,21 @@ Example response:
                   "name": "Jane Smith"
                 }
               ]
-            },
-            "__typename": "WorkItemWidgetAssignees"
+            }
           },
-          {
+          "color": {
             "color": "#e24329",
-            "textColor": "#FFFFFF",
-            "__typename": "WorkItemWidgetColor"
+            "textColor": "#FFFFFF"
           },
-          {
-            "healthStatus": "onTrack",
-            "__typename": "WorkItemWidgetHealthStatus"
+          "healthStatus": {
+            "healthStatus": "onTrack"
           },
-          {
+          "startAndDueDate": {
             "startDate": "2024-10-12",
             "dueDate": "2024-12-12",
-            "isFixed": true,
-            "__typename": "WorkItemWidgetStartAndDueDate"
+            "isFixed": true
           }
-        ]
+        }
       }
     }
   }
@@ -866,30 +815,26 @@ mutation updateEpicWorkItemWithWidgets {
       id
       title
       description
-      widgets {
-        ... on WorkItemWidgetColor {
+      features {
+        color {
           color
           textColor
-          __typename
         }
-        ... on WorkItemWidgetAssignees {
+        assignees {
           assignees {
             nodes {
               id
               name
             }
           }
-          __typename
         }
-        ... on WorkItemWidgetHealthStatus {
+        healthStatus {
           healthStatus
-          __typename
         }
-        ... on WorkItemWidgetStartAndDueDate {
+        startAndDueDate {
           startDate
           dueDate
           isFixed
-          __typename
         }
       }
     }
@@ -907,8 +852,8 @@ Example response:
         "id": "gid://gitlab/WorkItem/2252",
         "title": "Updated work item epic title",
         "description": "My other new plans ...",
-        "widgets": [
-          {
+        "features": {
+          "assignees": {
             "assignees": {
               "nodes": [
                 {
@@ -916,25 +861,21 @@ Example response:
                   "name": "Ardella Williamson"
                 }
               ]
-            },
-            "__typename": "WorkItemWidgetAssignees"
+            }
           },
-          {
+          "color": {
             "color": "#fc6d26",
-            "textColor": "#FFFFFF",
-            "__typename": "WorkItemWidgetColor"
+            "textColor": "#FFFFFF"
           },
-          {
-            "healthStatus": "onTrack",
-            "__typename": "WorkItemWidgetHealthStatus"
+          "healthStatus": {
+            "healthStatus": "onTrack"
           },
-          {
+          "startAndDueDate": {
             "startDate": "2025-10-12",
             "dueDate": "2025-12-12",
-            "isFixed": true,
-            "__typename": "WorkItemWidgetStartAndDueDate"
+            "isFixed": true
           }
-        ]
+        }
       }
     }
   }

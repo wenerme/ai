@@ -25,9 +25,9 @@ Beyond automatic deployments, the Cloudflare GitHub integration lets you monitor
 
 ### Custom branches
 
-Pages will default to setting your [production environment](https://developers.cloudflare.com/pages/configuration/branch-build-controls/#production-branch-control) to the branch you first push. If a branch other than the default branch (e.g. `main`) represents your project's production branch, then go to **Settings** > **Builds** > **Branch control**, change the production branch by clicking the **Production branch** dropdown menu and choose any other branch.
+Pages defaults to setting your [production environment](https://developers.cloudflare.com/pages/configuration/branch-build-controls/#production-branch-control) to the branch you first push. If a branch other than the default branch (for example, `main`) represents your project's production branch, go to **Settings** > **Build** > **Branch control**, select the **Production branch** dropdown menu, and choose the desired branch.
 
-You can also use [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) to preview versions of your project before merging your production branch, and deploying to production. Pages allows you to configure which of your preview branches are automatically deployed using [branch build controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/). To configure, go to **Settings** > **Builds** > **Branch control** and select an option under **Preview branch**. Use [**Custom branches**](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to specify branches you wish to include or exclude from automatic preview deployments.
+You can also use [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) to preview versions of your project before merging your production branch and deploying to production. Pages allows you to configure which of your preview branches are automatically deployed using [branch build controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/). To configure this, go to **Settings** > **Build** > **Branch control** and select an option under **Preview branch**. Use [**Custom branches**](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to specify branches to include or exclude from automatic preview deployments.
 
 ### Preview URLs
 
@@ -41,9 +41,9 @@ Without any configuration required, you can choose to skip a deployment on an ad
 
 ### Check runs
 
-If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/pages/configuration/monorepos/)), you can check on the status of each build within GitHub via [GitHub check runs ↗︎](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks).
+If you have one or multiple projects connected to a repository (for example, a [monorepo](https://developers.cloudflare.com/pages/configuration/monorepos/)), you can check on the status of each build within GitHub via [GitHub check runs ↗︎](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks).
 
-You can see the checks by selecting the status icon next to a commit within your GitHub repository. In the example below, you can select the green check mark to see the results of the check run.
+You can view the checks by selecting the status icon next to a commit within your GitHub repository. In the following example, select the green check mark to view the results of the check run.
 
 ![GitHub status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1804,height=122,format=webp/_astro/gh-status-check-runs.DkY_pO9C.png)
 
@@ -51,7 +51,7 @@ Check runs will appear like the following in your repository.
 
 ![GitHub check runs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=316,format=webp/_astro/ghcheckrun.Cv3SMhfT.png)
 
-If a build skips for any reason (i.e. CI Skip, build watch paths, or branch deployment controls), the check run/commit status will not appear.
+If a build skips for any reason (for example, CI Skip, build watch paths, or branch deployment controls), the check run or commit status will not appear.
 
 ## Manage access
 
@@ -101,37 +101,33 @@ A GitHub account should only point to one Cloudflare account. If you are setting
 
 ### Remove access
 
-You can remove Cloudflare Pages' access to your GitHub repository or account by going to the [Applications page ↗︎](https://github.com/settings/installations) on GitHub (if you are in an organization, select Switch settings context to access your GitHub organization settings). The GitHub App is named Cloudflare Workers and Pages, and it is shared between Workers and Pages projects.
+You can remove Cloudflare Pages' access to your GitHub repository or account by going to the [Applications page ↗︎](https://github.com/settings/installations) on GitHub (if you are in an organization, select **Switch settings context** to access your GitHub organization settings). The GitHub App is named **Cloudflare Workers and Pages**, and it is shared between Workers and Pages projects.
 
 #### Remove Cloudflare access to a GitHub repository
 
-To remove access to an individual GitHub repository, you can navigate to **Repository access**. Select the **Only select repositories** option, and configure which repositories you would like Cloudflare to have access to.
+To remove access to an individual GitHub repository, go to **Repository access**. Select the **Only select repositories** option, and configure which repositories Cloudflare can access.
 
 ![GitHub Repository Access](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1900,height=810,format=webp/_astro/github-repository-access.DGHekBft.png)
 
 #### Remove Cloudflare access to the entire GitHub account
 
-To remove Cloudflare Workers and Pages access to your entire Git account, you can navigate to **Uninstall "Cloudflare Workers and Pages"**, then select **Uninstall**. Removing access to the Cloudflare Workers and Pages app will revoke Cloudflare's access to *all repositories* from that GitHub account. If you want to only disable automatic builds and deployments, follow the [Disable Build](https://developers.cloudflare.com/workers/ci-cd/builds/#disconnecting-builds) instructions.
+To remove **Cloudflare Workers and Pages** access to your entire GitHub account, go to **Uninstall "Cloudflare Workers and Pages"**, then select **Uninstall**. Removing access to the **Cloudflare Workers and Pages** app revokes Cloudflare's access to *all repositories* from that GitHub account. If you only want to disable automatic builds and deployments, follow the [Disable automatic deployments](https://developers.cloudflare.com/pages/configuration/git-integration/#disable-automatic-deployments) instructions.
 
-Note that removing access to GitHub will disable new builds for Workers and Pages project that were connected to those repositories, though your previous deployments will continue to be hosted by Cloudflare Workers.
+Removing access to GitHub disables new builds for Workers and Pages projects connected to those repositories, though your previous deployments continue to be hosted by Cloudflare.
 
 ### Reinstall the Cloudflare GitHub app
 
-If you see errors where Cloudflare Pages cannot access your git repository, you should attempt to uninstall and reinstall the GitHub application associated with the Cloudflare Pages installation.
+If you see errors where Cloudflare Pages cannot access your Git repository, uninstall and reinstall the **Cloudflare Workers and Pages** GitHub App.
 
 1. Go to the installation settings page on GitHub:
-   - Navigate to **Settings > Builds** for the Pages project and select **Manage** under Git Repository.
-   - Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
-
-| **Individual** | `https://github.com/settings/installations` |
-| --- | --- |
-| **Organization** | `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` |
-
-2. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
-3. Go back to the [**Workers & Pages** overview ↗︎](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
-4. Select the **+ Add account** button, select the GitHub account you want to add, and then select **Install & Authorize**.
-5. You should be redirected to the create project page with your GitHub account or organization in the account list.
-6. Attempt to make a new deployment with your project which was previously broken.
+   - Go to **Settings** > **Build** for the Pages project and select **Manage** under **Git Repository**.
+   - Alternatively, open the GitHub installations page for an individual account ( `https://github.com/settings/installations`) or an organization ( `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations`), find **Cloudflare Workers and Pages**, and select **Configure**.
+2. In the **Cloudflare Workers and Pages** GitHub App settings page, go to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
+3. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+4. Select **Create application** (if prompted), select the link at the bottom of the page to continue to Cloudflare Pages (**Get started** or **Continue to Pages**), and select **Import an existing Git repository**.
+5. Select **+ Add account**, choose the GitHub account you want to add, and select **Install & Authorize**.
+6. You will be redirected to the create project page with your GitHub account or organization in the account list.
+7. Trigger a new deployment with your previously affected project.
 
 Was this helpful?
 
@@ -142,5 +138,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#page","headline":"GitHub integration","description":"Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/og.png?v=d48f02f6b55ca500","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#page","headline":"GitHub integration","description":"Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/og.png?v=d48f02f6b55ca500","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

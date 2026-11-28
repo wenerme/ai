@@ -129,7 +129,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-25",
+	"compatibility_date": "2026-11-28",
 
 	"r2_buckets": [
 		{
@@ -144,7 +144,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-25"
+compatibility_date = "2026-11-28"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -164,7 +164,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-25",
+	"compatibility_date": "2026-11-28",
 
 	"env": {
 		"production": {
@@ -191,7 +191,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-25"
+compatibility_date = "2026-11-28"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -421,152 +421,9 @@ To set up service token authentication:
 
    In CI, store the values as secrets and expose them as environment variables to the step that runs Wrangler.
 
-### API
+### Programmatic API
 
-Wrangler provides programmatic utilities to help tooling authors support remote binding connections when running Workers code with [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/).
-
-**Key APIs include:**
-
-- [`startRemoteProxySession`](#startRemoteProxySession): Starts a proxy session that allows interaction with remote bindings.
-- [`unstable_convertConfigBindingsToStartWorkerBindings`](#unstable_convertconfigbindingstostartworkerbindings): Utility for converting binding definitions.
-- [`experimental_maybeStartOrUpdateProxySession`](#experimental_maybestartorupdatemixedmodesession): Convenience function to easily start or update a proxy session.
-
-#### `startRemoteProxySession`
-
-This function starts a proxy session for a given set of bindings. It accepts options to control session behavior, including an `auth` option with your Cloudflare account ID and API token for remote binding access.
-
-It returns an object with:
-
-- `ready` `Promise<void>`: Resolves when the session is ready.
-- `dispose` `() => Promise<void>`: Stops the session.
-- `updateBindings` `(bindings: StartDevWorkerInput['bindings']) => Promise<void>`: Updates session bindings.
-- `remoteProxyConnectionString` `remoteProxyConnectionString`: String to pass to Miniflare for remote binding access.
-
-#### `unstable_convertConfigBindingsToStartWorkerBindings`
-
-The `unstable_readConfig` utility returns an `Unstable_Config` object which includes the definition of the bindings included in the configuration file. These bindings definitions are however not directly compatible with `startRemoteProxySession`. It can be quite convenient to however read the binding declarations with `unstable_readConfig` and then pass them to `startRemoteProxySession`, so for this wrangler exposes `unstable_convertConfigBindingsToStartWorkerBindings` which is a simple utility to convert the bindings in an `Unstable_Config` object into a structure that can be passed to `startRemoteProxySession`.
-
-Note
-
-This type conversion is temporary. In the future, the types will be unified so you can pass the config object directly to `startRemoteProxySession`.
-
-#### `maybeStartOrUpdateRemoteProxySession`
-
-This wrapper simplifies proxy session management. It takes:
-
-- An object that contains either:
-  - the path to a Wrangler configuration and a potential target environment
-  - the name of the Worker and the bindings it is using
-- The current proxy session details (this parameter can be set to `null` or not being provided if none).
-- Potentially the auth data to use for the remote proxy session.
-
-It returns an object with the proxy session details if started or updated, or `null` if no proxy session is needed.
-
-The function:
-
-- Based on the first argument prepares the input arguments for the proxy session.
-- If there are no remote bindings to be used (nor a pre-existing proxy session) it returns null, signaling that no proxy session is needed.
-- If the details of an existing proxy session have been provided it updates the proxy session accordingly.
-- Otherwise if starts a new proxy session.
-- Returns the proxy session details (that can later be passed as the second argument to `maybeStartOrUpdateRemoteProxySession`).
-
-#### Example
-
-Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
-
-```js
-import { Miniflare, MiniflareOptions } from "miniflare";
-import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
-
-let mf;
-
-let remoteProxySessionDetails = null;
-
-async function startOrUpdateDevSession() {
-	remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(
-		{
-			bindings: {
-				MY_KV: {
-					type: "kv_namespace",
-					id: "kv-id",
-					remote: true,
-				},
-			},
-		},
-		remoteProxySessionDetails,
-	);
-
-	const miniflareOptions = {
-		scriptPath: "./worker.js",
-		kvNamespaces: {
-			MY_KV: {
-				id: "kv-id",
-				remoteProxyConnectionString:
-					remoteProxySessionDetails?.session.remoteProxyConnectionString,
-			},
-		},
-	};
-
-	if (!mf) {
-		mf = new Miniflare(miniflareOptions);
-	} else {
-		mf.setOptions(miniflareOptions);
-	}
-}
-
-// ... tool logic that invokes `startOrUpdateDevSession()` ...
-
-// ... once the dev session is no longer needed run
-// `remoteProxySessionDetails?.session.dispose()`
-```
-
-```ts
-import { Miniflare, MiniflareOptions } from "miniflare";
-import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
-
-let mf: Miniflare | null;
-
-let remoteProxySessionDetails: Awaited<
-	ReturnType<typeof maybeStartOrUpdateRemoteProxySession>
-> | null = null;
-
-async function startOrUpdateDevSession() {
-	remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(
-		{
-			bindings: {
-				MY_KV: {
-					type: "kv_namespace",
-					id: "kv-id",
-					remote: true,
-				},
-			},
-		},
-		remoteProxySessionDetails,
-	);
-
-	const miniflareOptions: MiniflareOptions = {
-		scriptPath: "./worker.js",
-		kvNamespaces: {
-			MY_KV: {
-				id: "kv-id",
-				remoteProxyConnectionString:
-					remoteProxySessionDetails?.session.remoteProxyConnectionString,
-			},
-		},
-	};
-
-	if (!mf) {
-		mf = new Miniflare(miniflareOptions);
-	} else {
-		mf.setOptions(miniflareOptions);
-	}
-}
-
-// ... tool logic that invokes `startOrUpdateDevSession()` ...
-
-// ... once the dev session is no longer needed run
-// `remoteProxySessionDetails?.session.dispose()`
-```
+For tooling authors integrating remote bindings with [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), refer to the [Remote bindings proxy API](https://developers.cloudflare.com/workers/wrangler/api/#remote-bindings-proxy-api) in the Wrangler API reference (`startRemoteProxySession`, `unstable_convertConfigBindingsToStartWorkerBindings`, and `maybeStartOrUpdateRemoteProxySession`).
 
 ## `wrangler dev --remote` (Legacy)
 
@@ -613,5 +470,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development","description":"Develop and test HTTP, TCP, and gRPC Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/og.png?v=f54ca19c6e1d7c99","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development","description":"Develop and test HTTP, TCP, and gRPC Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/og.png?v=f54ca19c6e1d7c99","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

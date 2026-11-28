@@ -17,7 +17,7 @@ image: https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf3130
 
 # Limits
 
-Below are limits observed by the Cloudflare Free plan. For more details on removing these limits, refer to the [Cloudflare plans ↗︎](https://www.cloudflare.com/plans) page.
+The following limits apply to Cloudflare Pages by plan type. For more details on plans, refer to the [Cloudflare plans ↗︎](https://www.cloudflare.com/plans/) page.
 
 Need a higher limit?
 
@@ -25,14 +25,14 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 ## Builds
 
-Each time you push new code to your Git repository, Pages will build and deploy your site. Build limits depend on your plan:
+Each time you push new code to your Git repository, Pages builds and deploys your site. Build limits depend on your plan:
 
 |  | Free | Pro | Business |
 | --- | --- | --- | --- |
 | Builds | 1 build at a time | 5 concurrent builds | 20 concurrent builds |
 | Builds per month | 500 | 5,000 | 20,000 |
 
-Builds will timeout after 20 minutes. Concurrent builds are counted per account.
+Builds time out after 20 minutes. Concurrent builds are counted per account. For Enterprise build limits, contact your account team.
 
 ## Custom domains
 
@@ -78,15 +78,15 @@ To serve larger files, consider uploading them to [R2](https://developers.cloudf
 
 ## Functions
 
-Requests to [Pages functions](https://developers.cloudflare.com/pages/functions/) count towards your quota for Workers plans, including requests from your Function to KV or Durable Object bindings.
+Requests to [Pages Functions](https://developers.cloudflare.com/pages/functions/) count toward your Workers plan request quota and CPU limits. Subrequests from a Function to bindings such as KV or Durable Objects do not count as additional Workers requests, though each bound service has its own usage quotas and pricing.
 
-Pages supports the [Standard usage model](https://developers.cloudflare.com/workers/platform/pricing/#example-pricing-standard-usage-model).
+Pages supports the [Workers Standard usage model](https://developers.cloudflare.com/workers/platform/pricing/#workers).
 
 ## Headers
 
 A `_headers` file can have a maximum of 100 header rules.
 
-An individual header in a `_headers` file can have a maximum of 2,000 characters. For managing larger headers, it is recommended to implement [Pages Functions](https://developers.cloudflare.com/pages/functions/).
+Each header line in a `_headers` file can have a maximum of 2,000 characters. For managing larger headers, use [Pages Functions](https://developers.cloudflare.com/pages/functions/).
 
 ## Preview deployments
 
@@ -94,11 +94,11 @@ Preview deployments count toward the deployments that Cloudflare keeps for each 
 
 ## Redirects
 
-A `_redirects` file can have a maximum of 2,000 static redirects and 100 dynamic redirects, for a combined total of 2,100 redirects. It is recommended to use [Bulk Redirects](https://developers.cloudflare.com/pages/configuration/redirects/#surpass-_redirects-limits) when you have a need for more than the `_redirects` file supports.
+A `_redirects` file can have a maximum of 2,000 static redirects and 100 dynamic redirects, for a combined total of 2,100 redirects, with a 1,000-character limit per rule. Use [Bulk Redirects](https://developers.cloudflare.com/pages/configuration/redirects/#surpass-_redirects-limits) when you need more rules than `_redirects` supports.
 
 ## Users
 
-Your Pages site can be managed by an unlimited number of users via the Cloudflare dashboard. Note that this does not correlate with your Git project – you can manage both public and private repositories, open issues, and accept pull requests via without impacting your Pages site.
+Your Pages site can be managed by an unlimited number of users via the Cloudflare dashboard. This does not correlate with your Git project — you can manage both public and private repositories, open issues, and accept pull requests without impacting your Pages site.
 
 ## Projects
 
@@ -129,5 +129,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/limits/#page","headline":"Limits","description":"Build, deployment, and custom domain limits for Cloudflare Pages by plan type.","url":"https://developers.cloudflare.com/pages/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf313015aa08a9","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/limits/#page","headline":"Limits","description":"Build, deployment, and custom domain limits for Cloudflare Pages by plan type.","url":"https://developers.cloudflare.com/pages/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf313015aa08a9","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

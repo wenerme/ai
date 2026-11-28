@@ -20355,6 +20355,7 @@ Represents the time report stats for timeboxes.
 | `description` | [`String`](scalars.md#string) | Description of the category. |
 | `id` | [`ID!`](scalars.md#id) | Internal ID of the timelog category. |
 | `name` | [`String!`](scalars.md#string) | Name of the category. |
+| `namespace` | [`Namespace`](#namespace) | Namespace of the timelog category. |
 | `updatedAt` | [`Time!`](scalars.md#time) | When the category was last updated. |
 
 ## `TimeTrackingTimelogCategoryConnection`

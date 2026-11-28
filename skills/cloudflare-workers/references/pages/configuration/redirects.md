@@ -17,7 +17,7 @@ image: https://developers.cloudflare.com/pages/configuration/redirects/og.png?v=
 
 # Redirects
 
-To apply custom redirects on Cloudflare Pages, declare your redirects in a plain text file called `_redirects` without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Cloudflare Pages and its rules will be applied to static asset responses.
+To apply custom redirects on Cloudflare Pages, declare your redirects in a plain text file called `_redirects` without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Cloudflare Pages and its rules will be applied to static asset responses. For `_redirects` on Cloudflare Workers, refer to [Workers Static Assets redirects](https://developers.cloudflare.com/workers/static-assets/redirects/).
 
 If you are using a framework, you will often have a directory named `public/` or `static/`, and this usually contains deploy-ready assets, such as favicons, `robots.txt` files, and site manifests. These files get copied over to a final output directory during the build, so this is the perfect place to author your `_redirects` file. If you are not using a framework, the `_redirects` file can go directly into your [build output directory](https://developers.cloudflare.com/pages/configuration/build-configuration/).
 
@@ -53,7 +53,7 @@ A `_redirects` file is limited to 2,000 static redirects and 100 dynamic redirec
 
 In your `_redirects` file:
 
-- The order of your redirects matter. If there are multiple redirects for the same `source` path, the top-most redirect is applied.
+- The order of your redirects matters. If there are multiple redirects for the same `source` path, the top-most redirect is applied.
 - Static redirects should appear before dynamic redirects.
 - Redirects are always followed, regardless of whether or not an asset matches the incoming request.
 
@@ -65,7 +65,7 @@ A complete example with multiple redirects may look like the following:
 /querystrings /?query=string 301
 /twitch https://twitch.tv
 /trailing /trailing/ 301
-/notrailing/ /nottrailing 301
+/notrailing/ /notrailing 301
 /page/ /page2/#fragment 301
 /blog/* https://blog.my.domain/:splat
 /products/:code/:name /products?code=:code&name=:name
@@ -73,7 +73,7 @@ A complete example with multiple redirects may look like the following:
 
 ## Advanced redirects
 
-Cloudflare currently offers limited support for advanced redirects.
+Cloudflare offers limited support for advanced redirects.
 
 | Feature | Support | Example | Notes |
 | --- | --- | --- | --- |
@@ -85,7 +85,7 @@ Cloudflare currently offers limited support for advanced redirects.
 | Proxying | ✅ | `/blog/* /news/:splat 200` | Refer to [Proxying](#proxying). |
 | Domain-level redirects | ❌ | `workers.example.com/* workers.example.com/blog/:splat 301` | |
 | Redirect by country or language | ❌ | `/ /us 302 Country=us` | |
-| Redirect by cookie | ❌ | `/\* /preview/:splat 302 Cookie=preview` | |
+| Redirect by cookie | ❌ | `/* /preview/:splat 302 Cookie=preview` | |
 
 ## Redirects and header matching
 
@@ -113,7 +113,7 @@ Proxying will only support relative URLs on your site. You cannot proxy external
 
 Only the first redirect in your file will apply. For example, in the following example, a request to `/a` will render `/b`, and a request to `/b` will render `/c`, but `/a` will not render `/c`.
 
-```plaintext
+```txt
 /a /b 200
 /b /c 200
 ```
@@ -131,13 +131,13 @@ For example, if you have added `/about/faq/* /about/faqs 200` to your `_redirect
 
 ## Surpass `_redirects` limits
 
-A [`_redirects`](https://developers.cloudflare.com/pages/platform/limits/#redirects) file has a maximum of 2,000 static redirects and 100 dynamic redirects, for a combined total of 2,100 redirects. Use [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) to handle redirects that surpasses the 2,100 redirect rules limit of `_redirects`.
+A [`_redirects`](https://developers.cloudflare.com/pages/platform/limits/#redirects) file has a maximum of 2,000 static redirects and 100 dynamic redirects, for a combined total of 2,100 redirects. Use [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) to handle redirects that surpass the 2,100 redirect rules limit of `_redirects`.
 
 Note
 
-The redirects defined in the `_redirects` file of your build folder can work together with your Bulk Redirects. In case of duplicates, Bulk Redirects will run in front of your Pages project, where your other redirects live.
+The redirects defined in the `_redirects` file of your build folder can work together with your Bulk Redirects. In case of duplicates, Bulk Redirects run in front of your Pages project.
 
-For example, if you have Bulk Redirects set up to direct `abc.com` to `xyz.com` but also have `_redirects` set up to direct `xyz.com` to `foo.com`, a request for `abc.com` will eventually redirect to `foo.com`.
+For example, if you have Bulk Redirects set up to redirect `abc.example.com` to `xyz.example.com` (your Pages site), and `_redirects` on that Pages site contains `/* https://foo.example.com/:splat 301`, a request for `abc.example.com` redirects through `xyz.example.com` to `foo.example.com`.
 
 To use Bulk Redirects, refer to the [Bulk Redirects dashboard documentation](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/) or the [Bulk Redirects API documentation](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/).
 
@@ -154,5 +154,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/redirects/#page","headline":"Redirects","description":"Define URL redirects for your Cloudflare Pages site using a _redirects file.","url":"https://developers.cloudflare.com/pages/configuration/redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/redirects/og.png?v=7f94b8de365a57d0","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/redirects/#page","headline":"Redirects","description":"Define URL redirects for your Cloudflare Pages site using a _redirects file.","url":"https://developers.cloudflare.com/pages/configuration/redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/redirects/og.png?v=7f94b8de365a57d0","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

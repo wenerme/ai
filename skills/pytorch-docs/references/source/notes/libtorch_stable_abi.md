@@ -67,21 +67,42 @@ which will handle all the rough edges of the C API for the user.
 - `tensor_from_pyobject` / `tensor_to_pyobject`: `torch.Tensor` <-> `torch::stable::Tensor`
 - `dtype_from_pyobject` / `dtype_to_pyobject`: `torch.dtype` <-> `torch::headeronly::ScalarType`
 - `device_from_pyobject` / `device_to_pyobject`: `torch.device` <-> `torch::stable::Device`
+- `layout_from_pyobject` / `layout_to_pyobject`: `torch.layout` <-> `torch::headeronly::Layout`
+- `memory_format_from_pyobject` / `memory_format_to_pyobject`: `torch.memory_format` <-> `torch::headeronly::MemoryFormat`
+- `bool_from_pyobject` / `bool_to_pyobject`: `bool` (only `True` or `False`) <-> `bool`
+- `int64_from_pyobject` / `int64_to_pyobject`: `int` (not `bool`; values outside the `int64_t` range raise) <-> `int64_t`
+- `double_from_pyobject` / `double_to_pyobject`: `float` or `int` <-> `double`
+- `string_from_pyobject`: `str` (encoded as UTF-8) or `bytes` (as is) -> `std::string`
+- `string_to_pyobject`: `std::string_view` (decoded as UTF-8) -> `str`;
+  embedded NUL bytes are preserved in both directions
 - `is_tensor_pyobject`: whether a Python object's actual type is `torch.Tensor`
   or a subclass; overridden `__class__` attributes are ignored, as in
   `tensor_from_pyobject`
 
-The dtype and device helpers translate through the stable enum mappings, which
-cover a subset of all dtypes and device types; converting a valid `torch.dtype`
-or `torch.device` outside that subset raises.
+`int64_from_pyobject` uses `THPUtils_checkLong` / `THPUtils_unpackLong`, and
+`double_from_pyobject` uses `THPUtils_checkDouble` / `THPUtils_unpackDouble`.
+NumPy scalar acceptance additionally depends on the runtime build's NumPy
+support and on the corresponding unpack operation succeeding.
+
+The helpers above that translate through the stable enum mappings
+can only cover the subset of types that have stable encodings. E.g.,
+converting a valid `torch.dtype` or `torch.device` outside that subset
+would raise an error, while all `torch.layout` types are supported.
 
 Like the rest of the stable ABI, an extension using them can just link
 `libtorch`.
+
+The helpers report failures as C++ exceptions. When the failure comes from
+CPython itself (for example an `int` too large for a `double`), its Python
+exception is also left set, so a Python-facing function can propagate it by
+returning `NULL`; call `PyErr_Clear()` if you handle the C++ exception instead.
 
 Unlike the rest of the stable ABI, they require `libtorch_python` to be loaded at
 runtime and must be called with the GIL held. If you call them from a context that
 may run without the GIL (for example a boxed `STABLE_TORCH_LIBRARY` kernel),
 acquire it first.
+
+See the [C++ Python object interop reference](https://docs.pytorch.org/cppdocs/api/stable/python-interop.html) for detailed conversion contracts.
 
 ### Performance overhead
 

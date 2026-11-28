@@ -17,13 +17,17 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-
 
 # Preact
 
+Note
+
+Starting a new Preact project? You can deploy Vite-based Preact apps directly to [Cloudflare Workers](https://developers.cloudflare.com/workers/vite-plugin/) with Static Assets and server-side API routes.
+
 [Preact ↗︎](https://preactjs.com) is a popular, open-source framework for building modern web applications. Preact can also be used as a lightweight alternative to React because the two share the same API and component model.
 
 In this guide, you will create a new Preact application and deploy it using Cloudflare Pages. You will use [`create-preact` ↗︎](https://github.com/preactjs/create-preact), a lightweight project scaffolding tool to set up a new Preact app in seconds.
 
 ## Setting up a new project
 
-Create a new project by running the [`npm init` ↗︎](https://docs.npmjs.com/cli/v6/commands/npm-init) command in your terminal, giving it a title:
+Create a new project by running the [`npm init` ↗︎](https://docs.npmjs.com/cli/commands/npm-init) command in your terminal, giving it a title:
 
 ```sh
 npm init preact
@@ -101,5 +105,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/#page","headline":"Preact","description":"Deploy a Preact application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/og.png?v=87705563b9f9224b","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/#page","headline":"Preact","description":"Deploy a Preact application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/og.png?v=87705563b9f9224b","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

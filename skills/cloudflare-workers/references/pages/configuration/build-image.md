@@ -17,9 +17,9 @@ image: https://developers.cloudflare.com/pages/configuration/build-image/og.png?
 
 # Build image
 
-Cloudflare Pages' build environment has broad support for a variety of languages, such as Ruby, Node.js, Python, PHP, and Go.
+The Cloudflare Pages build environment supports a variety of languages, including Go, Node.js, Bun, Python, and Ruby. For the build image used by Cloudflare Workers, refer to [Workers Builds build image](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/).
 
-If you need to use a [specific version](#override-default-versions) of a language, (for example, Node.js or Ruby) you can specify it by providing an associated environment variable in your build configuration, or setting the relevant file in your source code.
+If you need to use a [specific version](#override-default-versions) of a language (for example, Node.js or Ruby), specify it by setting the associated environment variable in your build configuration or adding the corresponding version file to your source code.
 
 ## Supported languages and tools
 
@@ -119,33 +119,35 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Frameworks
 
-To use a specific version of a framework, specify it in the project's package manager configuration file. For example, if you use Gatsby, your `package.json` should include the following:
+To use a specific version of a framework, specify it in the project's package manager configuration file. For example, your `package.json` might include:
 
-```plaintext
-"dependencies": {
-	"gatsby": "^5.13.7",
+```json
+{
+	"dependencies": {
+		"vite": "^6.0.0"
+	}
 }
 ```
 
-When your build starts, if not already [cached](https://developers.cloudflare.com/pages/configuration/build-caching/), version 5.13.7 of Gatsby will be installed using `npm install`.
+When your build starts, if not already [cached](https://developers.cloudflare.com/pages/configuration/build-caching/), the declared version is installed using your package manager.
 
-## Advanced Settings
+## Advanced settings
 
 ### Override default versions
 
-To override default versions of languages and tools in the build system, you can either set the desired version through environment variables or by adding files to your project.
+To override default versions of languages and tools in the build system, set the desired version through environment variables in the Cloudflare dashboard or by adding version files to your project.
 
-To set the version using environment variables, you can:
+To set the version using environment variables:
 
-1. Find the environment variable name for the language or tool in [this table](https://developers.cloudflare.com/pages/configuration/build-image/#supported-languages-and-tools).
-2. Add the environment variable on the dashboard by going to **Settings** > **Environment variables** in your Pages project, or [add the environment variable via Wrangler](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler).
+1. Find the environment variable name for the language or tool in the [Supported languages and tools](#supported-languages-and-tools) tables.
+2. In your Pages project in the Cloudflare dashboard, go to **Settings** > **Variables and Secrets** and add the build environment variable (for example, `NODE_VERSION`).
 
-Or, to set the version by adding a file to your project, you can:
+Or, to set the version by adding a file to your project:
 
-1. Find the file name for the language or tool in [this table](https://developers.cloudflare.com/pages/configuration/build-image/#supported-languages-and-tools).
+1. Find the file name for the language or tool in the [Supported languages and tools](#supported-languages-and-tools) tables.
 2. Add the specified file name to the root directory of your project, and add the desired version number as the contents of the file.
 
-For example, if you were previously relying on the default version of Node.js in the v1 build system, to migrate to v2, you must specify that you need Node.js `12.18.0` by setting a `NODE_VERSION = 12.18.0` environment variable or by adding a `.node-version` or `.nvmrc` file to your project with `12.18.0` added as the contents to the file.
+For example, to pin Node.js `20.19.0`, set a `NODE_VERSION` environment variable to `20.19.0` or add a `.node-version` or `.nvmrc` file to your project containing `20.19.0`.
 
 ### Skip dependency install
 
@@ -157,21 +159,21 @@ You can add the following environment variable to disable automatic dependency i
 
 ## v3 build system
 
-The v3 build system updates the default tools, libraries and languages to their LTS versions, as of May 2025.
+The v3 build system updates the default tools, libraries, and languages to current LTS versions and receives rolling updates.
 
-### v2 to v3 Migration
+### v2 to v3 migration
 
-To migrate to this new version, configure your Pages project settings in the dashboard:
+To migrate from the v2 build system to v3, configure your Pages project settings in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Deployments** > **All deployments** > and select the latest version.
+3. Go to **Settings** > **Build** > **Build system version** and select **Version 3 (latest)**.
 
-If you were previously relying on the default versions of any languages or tools in the build system, your build may fail when migrating to v3. To fix this, you must specify the version you wish to use by [overriding](https://developers.cloudflare.com/pages/configuration/build-image/#overriding-default-versions) the default versions.
+If you were previously relying on the default versions of any languages or tools in the build system, your build may fail when migrating to v3. To fix this, specify the version you want to use by [overriding the default versions](#override-default-versions).
 
 ### Limitations
 
-The following features are not currently supported when using the v3 build system:
+The following features are not supported when using the v3 build system:
 
 - Specifying Node.js versions as codenames (for example, `hydrogen` or `lts/hydrogen`).
 - Detecting Yarn version from `yarn.lock` file version.
@@ -208,41 +210,41 @@ Build commands use the CA certificates installed in the build image at `/etc/ssl
 
 If you set any of these variables as an [environment variable](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables) in your project, your value replaces the default. `--use-openssl-ca` is added to your own `NODE_OPTIONS`, unless it already contains `--use-openssl-ca` or `--use-bundled-ca`.
 
-## Build Image Policy
+## Build image policy
 
-### Build Image Version Deprecation
+### Build image version deprecation
 
-If you are currently using the v1 or v2 build image, your project will be automatically moved to v3:
+Projects using older build image versions migrate to v3 on the following schedule:
 
-- **v1 build image**: If you are using the Pages v1 build image, your project will be automatically moved to v3 on September 15, 2026.
-- **v2 build image**: If you are using the Pages v2 build image, your project will be automatically moved to v3 on February 23, 2027.
+- **v1 build image**: Projects on the Pages v1 build image were automatically moved to v3 on 2026-09-15.
+- **v2 build image**: Projects on the Pages v2 build image will be automatically moved to v3 on 2027-02-23.
 
-You will receive 6 months’ notice before the deprecation date via the [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/), dashboard notifications, and email.
+Cloudflare provides six months' notice before a deprecation date via the [Cloudflare Changelog](https://developers.cloudflare.com/changelog/product/pages/), dashboard notifications, and email.
 
-Going forward, the v3 build image will receive rolling updates to preinstalled software per the policy below. There will be no further build image version changes.
+The v3 build image receives rolling updates to preinstalled software under the following policy, with no further major build image version changes.
 
-### Preinstalled Software Updates
+### Preinstalled software updates
 
-Preinstalled software (languages and tools) will be updated before reaching end-of-life (EOL). These updates apply only if you have not [overridden the default version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
+Preinstalled software (languages and tools) is updated before reaching end-of-life (EOL). These updates apply only if you have not [overridden the default version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
-- **Minor version updates**: May be updated to the latest available minor version without notice. For tools that do not follow semantic versioning (e.g., Bun or Hugo), updates that may contain breaking changes will receive 3 months’ notice.
-- **Major version updates**: Updated to the next stable long-term support (LTS) version with 3 months’ notice.
+- **Minor version updates**: May be updated to the latest available minor version without notice. For tools that do not follow semantic versioning (for example, Bun or Hugo), updates that may contain breaking changes receive three months' notice.
+- **Major version updates**: Updated to the next stable long-term support (LTS) version with three months' notice.
 
-**How you'll be notified (for changes requiring notice):**
+**How you will be notified (for changes requiring notice):**
 
-- [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/)
+- [Cloudflare Changelog](https://developers.cloudflare.com/changelog/product/pages/)
 - Dashboard notifications for projects that will receive the update
 - Email notifications to project owners
 
 To maintain a specific version and avoid automatic updates, [override the default version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
-### Best Practices
+### Best practices
 
 To avoid unexpected build failures:
 
-- **Monitor announcements** via the [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
-- **Plan for migration** when you receive update notices
-- **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions)
+- **Monitor announcements** via the [Cloudflare Changelog](https://developers.cloudflare.com/changelog/product/pages/), dashboard notifications, and email.
+- **Plan for migration** when you receive update notices.
+- **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
 Was this helpful?
 
@@ -253,5 +255,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-image/#page","headline":"Build image","description":"Review supported languages, tools, and environment variables in the Cloudflare Pages build image.","url":"https://developers.cloudflare.com/pages/configuration/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/build-image/og.png?v=db3d0aa29a32719e","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-image/#page","headline":"Build image","description":"Review supported languages, tools, and environment variables in the Cloudflare Pages build image.","url":"https://developers.cloudflare.com/pages/configuration/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/build-image/og.png?v=db3d0aa29a32719e","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -17,6 +17,10 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-si
 
 # Zola
 
+Note
+
+Starting a new static site? You can also deploy Zola sites to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
 [Zola ↗︎](https://www.getzola.org/) is a fast static site generator in a single binary with everything built-in. In this guide, you will create a new Zola application and deploy it using Cloudflare Pages. You will use the `zola` CLI to create a new Zola site.
 
 ## Installing Zola
@@ -71,12 +75,12 @@ With Zola installed, create a new project by running the `zola init` command in 
 zola init my-zola-project
 ```
 
-Upon running `zola init`, you will prompted with three questions:
+Upon running `zola init`, you will be prompted with four questions:
 
-1. What is the URL of your site? ([https://example.com ↗︎](https://example.com)): You can leave this one blank for now.
-2. Do you want to enable Sass compilation? \[Y/n]: Y
-3. Do you want to enable syntax highlighting? \[y/N]: y
-4. Do you want to build a search index of the content? \[y/N]: y
+1. What is the URL of your site? ( `https://example.com`): You can leave this one blank for now.
+2. Do you want to enable Sass compilation? `[Y/n]`: `Y`
+3. Do you want to enable syntax highlighting? `[y/N]`: `y`
+4. Do you want to build a search index of the content? `[y/N]`: `y`
 
 ## Before you continue
 
@@ -98,17 +102,26 @@ git push -u origin main
 
 ## Deploy with Cloudflare Pages
 
+To deploy your site to Pages:
+
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select **Create application**.
+3. Select the **Pages** tab.
+4. Select **Import an existing Git repository**.
+5. Select the new GitHub repository that you created and then select **Begin setup**.
+6. In the **Build settings** section, select *Zola* as your **Framework preset**. Your selection will provide the following information:
+
 Configuration option | Value
 | Production branch | `main` |
 | --- | --- |
 | Build command | `zola build` |
 | Build directory | `public` |
 
-Zola is preinstalled in the Cloudflare Pages build environment, so no additional configuration is required. You can optionally set the `ZOLA_VERSION` environment variable under **Environment Variables (advanced)** to pin a specific version.
+Zola is preinstalled in the Cloudflare Pages build environment, so no additional configuration is required. You can optionally set the `ZOLA_VERSION` environment variable under **Environment variables** (or **Settings** > **Variables and Secrets**) to pin a specific version.
 
-For example, `ZOLA_VERSION`: `0.19.2`.
+For example, `ZOLA_VERSION`: `0.22.1`.
 
-After configuring your site, you can begin your first deploy. You should see Cloudflare Pages building your site with Zola, before deploying it.
+After configuring your site, you can begin your first deploy. You should see Cloudflare Pages building your site with Zola before deploying it.
 
 Note
 
@@ -120,14 +133,14 @@ You can now add that subdomain as the `base_url` in your `config.toml` file.
 
 For example:
 
-```yaml
+```toml
 # The URL the site will be built for
 base_url = "https://my-zola-project.pages.dev"
 ```
 
 Every time you commit new code to your Zola site, Cloudflare Pages will automatically rebuild your project and deploy it. You will also get access to [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) on new pull requests, so you can preview how changes look to your site before deploying them to production.
 
-### Handling Preview Deployments
+### Handling preview deployments
 
 When working with Cloudflare Pages, you might use preview deployments for testing changes before merging to your main branch. However, these preview deployments use different URLs (like `https://your-branch-name.my-zola-project.pages.dev`), which can cause issues with asset loading if your `base_url` is hardcoded.
 
@@ -155,5 +168,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/#page","headline":"Zola","description":"Deploy a Zola static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/og.png?v=5e2f631d97e76c5e","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/#page","headline":"Zola","description":"Deploy a Zola static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/og.png?v=5e2f631d97e76c5e","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

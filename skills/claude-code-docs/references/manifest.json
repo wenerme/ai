@@ -361,9 +361,9 @@
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
-    "lastModified": "Wed, 25 Nov 2026 06:29:34 GMT",
-    "size": 231325,
-    "updatedAt": "2026-11-25T08:07:12.414Z"
+    "lastModified": "Sat, 28 Nov 2026 05:07:04 GMT",
+    "size": 238489,
+    "updatedAt": "2026-11-28T07:29:18.282Z"
   },
   "desktop-ios-simulator.md": {
     "url": "https://code.claude.com/docs/en/desktop-ios-simulator",
@@ -613,9 +613,9 @@
   },
   "model-config.md": {
     "url": "https://code.claude.com/docs/en/model-config",
-    "lastModified": "Wed, 25 Nov 2026 06:30:24 GMT",
-    "size": 134659,
-    "updatedAt": "2026-11-25T08:07:27.110Z"
+    "lastModified": "Sat, 28 Nov 2026 05:06:54 GMT",
+    "size": 134696,
+    "updatedAt": "2026-11-28T07:29:33.044Z"
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
@@ -823,9 +823,9 @@
   },
   "settings-reference.md": {
     "url": "https://code.claude.com/docs/en/settings-reference",
-    "lastModified": "Wed, 25 Nov 2026 06:29:41 GMT",
-    "size": 462469,
-    "updatedAt": "2026-11-25T08:07:49.807Z"
+    "lastModified": "Sat, 28 Nov 2026 05:09:24 GMT",
+    "size": 463503,
+    "updatedAt": "2026-11-28T07:29:55.971Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

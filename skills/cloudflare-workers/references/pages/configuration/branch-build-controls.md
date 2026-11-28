@@ -17,7 +17,9 @@ image: https://developers.cloudflare.com/pages/configuration/branch-build-contro
 
 # Branch deployment controls
 
-When connected to your git repository, Pages allows you to control which environments and branches you would like to automatically deploy to. By default, Pages will trigger a deployment any time you commit to either your production or preview environment. However, with branch deployment controls, you can configure automatic deployments to suit your preference on a per project basis.
+When connected to your Git repository, Pages allows you to control which environments and branches automatically deploy. By default, Pages triggers a deployment whenever you commit to either your production or preview environment. With branch deployment controls, you can configure automatic deployments on a per-project basis.
+
+For branch build controls on Cloudflare Workers, refer to [Workers Builds branch controls](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/).
 
 ## Production branch control
 
@@ -33,9 +35,15 @@ curl --request PATCH \
 --data "{\"production_branch\": \"main\"}"
 ```
 
-To configure deployment options, go to your Pages project > **Settings** > **Builds & deployments** > **Configure Production deployments**. Pages will default to setting your production environment to the branch you first push, but you can set your production to another branch if you choose.
+To configure deployment options:
 
-You can also enable or disable automatic deployment behavior on the production branch by checking the **Enable automatic production branch deployments** box. You must save your settings in order for the new production branch controls to take effect.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select your Pages project.
+3. Go to **Settings** > **Build** > **Branch control**.
+
+Pages defaults to setting your production environment to the branch you first push, but you can set your production branch to another branch.
+
+You can also turn automatic deployment behavior on or off for the production branch using **Enable automatic production branch deployments**, then save your settings for the changes to take effect.
 
 ## Preview branch control
 
@@ -54,34 +62,34 @@ By selecting **Custom branches**, you can specify branches you wish to include a
 
 Wildcard syntax
 
-A wildcard (`*`) is a character that is used within rules. It can be placed alone to match anything or placed at the start or end of a rule to allow for better control over branch configuration. A wildcard will match zero or more characters.For example, if you wanted to match all branches that started with `fix/` then you would create the rule `fix/*` to match strings like `fix/1`, `fix/bugs`or `fix/`.
+A wildcard (`*`) is a character that is used within rules. It can be placed alone to match anything or placed at the start or end of a rule to allow for better control over branch configuration. A wildcard matches zero or more characters. For example, if you want to match all branches that start with `fix/`, create the rule `fix/*` to match strings like `fix/1`, `fix/bugs`, or `fix/`.
 
 **Example 1:**
 
 If you want to enforce branch prefixes such as `fix/`, `feat/`, or `chore/` with wildcard syntax, you can include and exclude certain branches with the following rules:
 
 - Include Preview branches: `fix/*`, `feat/*`, `chore/*`
-- Exclude Preview branches: \`\`
+- Exclude Preview branches: *(leave empty)*
 
-Here Pages will include any branches with the indicated prefixes and exclude everything else. In this example, the excluding option is left empty.
+Here Pages includes any branches with the indicated prefixes and skips everything else.
 
 **Example 2:**
 
-If you wanted to prevent [dependabot ↗︎](https://github.com/dependabot) from creating a deployment for each PR it creates, you can exclude those branches with the following:
+If you want to prevent [Dependabot ↗︎](https://github.com/dependabot) from creating a deployment for each PR it creates, you can exclude those branches with the following rules:
 
 - Include Preview branches: `*`
 - Exclude Preview branches: `dependabot/*`
 
-Here Pages will include all branches except any branch starting with `dependabot`. In this example, the excluding option means any `dependabot/` branches will not be built.
+Here Pages includes all branches except any branch starting with `dependabot/`.
 
 **Example 3:**
 
-If you only want to deploy release-prefixed branches, then you could use the following rules:
+If you only want to deploy release-prefixed branches, leave **Exclude Preview branches** empty (excludes evaluate before includes, so setting `*` in excludes would skip every branch):
 
 - Include Preview branches: `release/*`
-- Exclude Preview branches: `*`
+- Exclude Preview branches: *(leave empty)*
 
-This will deploy only branches starting with `release/`.
+This deploys only branches starting with `release/` and skips all other branches.
 
 Was this helpful?
 
@@ -92,5 +100,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/branch-build-controls/#page","headline":"Branch deployment controls","description":"Control which branches trigger automatic deployments in your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/branch-build-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/branch-build-controls/og.png?v=9173ca4038d102fd","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/branch-build-controls/#page","headline":"Branch deployment controls","description":"Control which branches trigger automatic deployments in your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/branch-build-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/branch-build-controls/og.png?v=9173ca4038d102fd","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

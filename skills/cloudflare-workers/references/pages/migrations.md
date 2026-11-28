@@ -17,12 +17,8 @@ image: https://developers.cloudflare.com/pages/migrations/og.png?v=aeb3bcffa650a
 
 # Migration guides
 
-Are you sure you want to use Pages?
+For new static sites and full-stack applications, start with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/get-started/). Workers supports [static assets](https://developers.cloudflare.com/workers/static-assets/), [framework guides](https://developers.cloudflare.com/workers/framework-guides/), [automatic configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) for existing projects, and [Git-connected builds](https://developers.cloudflare.com/workers/ci-cd/builds/). If you already run a Pages project and want to move to Workers, refer to the [Pages to Workers migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/).
 
-[Workers supports most Pages use cases and offers a broader feature set](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/). It is Cloudflare's primary platform for building applications. Start new projects with Workers.
-
-- [Migrating a Jekyll-based site from GitHub Pages](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/)
-- [Migrating from Firebase](https://developers.cloudflare.com/pages/migrations/migrating-from-firebase/)
 - [Migrating from Netlify to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/)
 - [Migrating from Vercel to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-vercel/)
 - [Migrating from Workers Sites to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-workers/)

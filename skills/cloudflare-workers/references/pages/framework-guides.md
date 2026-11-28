@@ -17,21 +17,16 @@ image: https://developers.cloudflare.com/pages/framework-guides/og.png?v=8237e29
 
 # Framework guides
 
-Are you sure you want to use Pages?
-
-[Workers supports most Pages use cases and offers a broader feature set](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/). It is Cloudflare's primary platform for building applications. Start new projects with Workers.
+For new static sites and full-stack applications, start with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/get-started/). Workers supports [static assets](https://developers.cloudflare.com/workers/static-assets/), [framework guides](https://developers.cloudflare.com/workers/framework-guides/), [automatic configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) for existing projects, and [Git-connected builds](https://developers.cloudflare.com/workers/ci-cd/builds/). If you already run a Pages project and want to move to Workers, refer to the [Pages to Workers migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/).
 
 - [Analog](https://developers.cloudflare.com/pages/framework-guides/deploy-an-analog-site/)
 - [Angular](https://developers.cloudflare.com/pages/framework-guides/deploy-an-angular-site/)
 - [Astro](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 - [Blazor](https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/)
-- [Brunch](https://developers.cloudflare.com/pages/framework-guides/deploy-a-brunch-site/)
 - [Docusaurus](https://developers.cloudflare.com/pages/framework-guides/deploy-a-docusaurus-site/)
-- [Elder.js](https://developers.cloudflare.com/pages/framework-guides/deploy-an-elderjs-site/)
 - [Eleventy](https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/)
 - [Ember](https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberjs-site/)
 - [Gatsby](https://developers.cloudflare.com/pages/framework-guides/deploy-a-gatsby-site/)
-- [Gridsome](https://developers.cloudflare.com/pages/framework-guides/deploy-a-gridsome-site/)
 - [Hexo](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/)
 - [Hono](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hono-site/)
 - [Hugo](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/)

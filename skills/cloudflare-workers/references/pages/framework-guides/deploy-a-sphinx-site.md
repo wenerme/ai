@@ -17,183 +17,61 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-
 
 # Sphinx
 
-[Sphinx ↗︎](https://www.sphinx-doc.org/) is a tool that makes it easy to create documentation and was originally made for the publication of Python documentation. It is well known for its simplicity and ease of use.
+Note
 
-In this guide, you will create a new Sphinx project and deploy it using Cloudflare Pages.
+Starting a new static documentation site? You can also deploy static sites to [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) with Git-connected [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
+[Sphinx ↗︎](https://www.sphinx-doc.org/) is a documentation generator written in Python. In this guide, you will create a new Sphinx project and deploy it using Cloudflare Pages.
 
 ## Prerequisites
 
-- Python 3 - Sphinx is based on Python, therefore you must have Python installed
-- [pip ↗︎](https://pypi.org/project/pip/) - The PyPA recommended tool for installing Python packages
-- [pipenv ↗︎](https://pipenv.pypa.io/en/latest/) - automatically creates and manages a virtualenv for your projects
+- [Python 3 ↗︎](https://www.python.org/downloads/) (Cloudflare Pages Build Image v3 includes Python 3.13 by default; refer to [Build image](https://developers.cloudflare.com/pages/configuration/build-image/) for supported versions).
+- [`pip` ↗︎](https://pypi.org/project/pip/) for installing Python packages.
 
-Note
+## Create a Sphinx project
 
-If you are already running a version of Python 3.7, ensure that Python version 3.7 is also installed on your computer before you begin this guide. Python 3.7 is the latest version supported by Cloudflare Pages.
-
-The latest version of Python 3.7 is 3.7.11:
-
-[Python 3.7.11 ↗︎](https://www.python.org/downloads/release/python-3711/)
-
-### Installing Python
-
-Refer to the official Python documentation for installation guidance:
-
-- [Windows ↗︎](https://www.python.org/downloads/windows/)
-- [Linux/UNIX ↗︎](https://www.python.org/downloads/source/)
-- [macOS ↗︎](https://www.python.org/downloads/macos/)
-- [Other ↗︎](https://www.python.org/download/other/)
-
-### Installing Pipenv
-
-If you already had an earlier version of Python installed before installing version 3.7, other global packages you may have installed could interfere with the following steps to install Pipenv, or your other Python projects which depend on global packages.
-
-[Pipenv ↗︎](https://pipenv.pypa.io/en/latest/) is a Python-based package manager that makes managing virtual environments simple. This guide will not require you to have prior experience with or knowledge of Pipenv to complete your Sphinx site deployment. Cloudflare Pages natively supports the use of Pipenv and, by default, has the latest version installed.
-
-The quickest way to install Pipenv is by running the command:
+1. Create a new project directory, set up a Python virtual environment, and install Sphinx:
 
 ```sh
-pip install --user pipenv
+mkdir my-sphinx-project
+cd my-sphinx-project
+python3 -m venv .venv
+source .venv/bin/activate
+pip install sphinx
 ```
 
-This command will install Pipenv to your user level directory and will make it accessible via your terminal. You can confirm this by running the following command and reviewing the expected output:
+2. Record your dependencies in a `requirements.txt` file so Cloudflare Pages automatically installs Sphinx during builds:
 
 ```sh
-pipenv --version
+echo "sphinx" > requirements.txt
 ```
 
-```sh
-pipenv, version 2021.5.29
-```
-
-### Creating a Sphinx project directory
-
-From your terminal, run the following commands to create a new directory and navigate to it:
-
-```sh
-mkdir my-wonderful-new-sphinx-project
-cd my-wonderful-new-sphinx-project
-```
-
-### Pipenv with Python 3.7
-
-Pipenv allows you to specify which version of Python to associate with a virtual environment. For the purpose of this guide, the virtual environment for your Sphinx project must use Python 3.7.
-
-Use the following command:
-
-```sh
-pipenv --python 3.7
-```
-
-You should see the following output:
-
-```bash
-Creating a virtualenv for this project...
-Pipfile: /home/ubuntu/my-wonderful-new-sphinx-project/Pipfile
-Using /usr/bin/python3.7m (3.7.11) to create virtualenv...
-⠸ Creating virtual environment...created virtual environment CPython3.7.11.final.0-64 in 1598ms
-  creator CPython3Posix(dest=/home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr, clear=False, no_vcs_ignore=False, global=False)
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/ubuntu/.local/share/virtualenv)
-    added seed packages: pip==21.1.3, setuptools==57.1.0, wheel==0.36.2
-  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
-
-✔ Successfully created virtual environment!
-Virtualenv location: /home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr
-Creating a Pipfile for this project...
-```
-
-List the contents of the directory:
-
-```sh
-ls
-```
-
-```sh
-Pipfile
-```
-
-### Installing Sphinx
-
-Before installing Sphinx, create the directory you want your project to live in.
-
-From your terminal, run the following command to install Sphinx:
-
-```sh
-pipenv install sphinx
-```
-
-You should see output similar to the following:
-
-```bash
-Installing sphinx...
-Adding sphinx to Pipfile's [packages]...
-✔ Installation Succeeded
-Pipfile.lock not found, creating...
-Locking [dev-packages] dependencies...
-Locking [packages] dependencies...
-Building requirements...
-Resolving dependencies...
-✔ Success!
-Updated Pipfile.lock (763aa3)!
-Installing dependencies from Pipfile.lock (763aa3)...
-  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 0/0 — 00:00:00
-To activate this project's virtualenv, run pipenv shell.
-Alternatively, run a command inside the virtualenv with pipenv run.
-```
-
-This will install Sphinx into a new virtual environment managed by Pipenv. You should see a directory structure like this:
-
-```bash
-my-wonderful-new-sphinx-project
-|--Pipfile
-|--Pipfile.lock
-```
-
-## Creating a new project
-
-With Sphinx installed, you can now run the quickstart command to create a template project for you. This command will only work within the Pipenv environment you created in the previous step. To enter that environment, run the following command from your terminal:
-
-```sh
-pipenv shell
-```
-
-```sh
-Launching subshell in virtual environment...
-ubuntu@sphinx-demo:~/my-wonderful-new-sphinx-project$  . /home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr/bin/activate
-```
-
-Now run the following command:
+3. Run `sphinx-quickstart` to scaffold your documentation site:
 
 ```sh
 sphinx-quickstart
 ```
 
-You will be presented with a number of questions, please answer them in the following:
+When prompted, answer the setup questions:
 
-```sh
-Separate source and build directories (y/n) [n]: Y
+```txt
+Separate source and build directories (y/n) [n]: y
 Project name: <Your project name>
-Author name(s): <You Author Name>
-Project release []: <You can accept default here or provide a version>
-Project language [en]: <You can accept en here or provide a regional language code>
+Author name(s): <Your author name>
+Project release []: <Leave blank or provide a version>
+Project language [en]: <Leave blank for en or provide a language code>
 ```
 
-This will create four new files in your active directory, `source/conf.py`, `index.rst`, `Makefile` and `make.bat`:
+4. Add a `.gitignore` file so your local virtual environment and build output are not committed to Git:
 
-```bash
-my-wonderful-new-sphinx-project
-|--Pipfile
-|--Pipfile.lock
-|--source
-|----_static
-|----_templates
-|----conf.py
-|----index.rst
-|--Makefile
-|--make.bat
+*.gitignoretxt*
+
+```txt
+.venv/
+build/
 ```
 
-You now have everything you need to start deploying your site to Cloudflare Pages. For learning how to create documentation with Sphinx, refer to the official [Sphinx documentation ↗︎](https://www.sphinx-doc.org/en/master/usage/quickstart.html).
+This creates a project structure with `requirements.txt`, `Makefile`, and a `source/` directory containing `conf.py` and `index.rst`. For more details on authoring documentation with Sphinx, refer to the [Sphinx documentation ↗︎](https://www.sphinx-doc.org/en/master/usage/quickstart.html).
 
 ## Before you continue
 
@@ -203,31 +81,13 @@ If you clone with SSH, you must [generate SSH keys ↗︎](https://docs.github.c
 
 Refer to the [GitHub documentation ↗︎](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗︎](https://git-scm.com/book/en/v2) for more information.
 
-## Creating a GitHub repository
+## Create a GitHub repository
 
-In a separate terminal window that is not within the pipenv shell session, verify that SSH key-based authentication is working:
-
-```sh
-eval "$(ssh-agent)"
-ssh-add -T ~/.ssh/id_rsa.pub
-ssh -T git@github.com
-```
-
-```sh
-The authenticity of host 'github.com (140.82.113.4)' can't be established.
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.
-Hi yourgithubusername! You've successfully authenticated, but GitHub does not provide shell access.
-```
-
-Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After your repository is set up, push your application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
 ```sh
 git init
-git config user.name "Your Name"
-git config user.email "username@domain.com"
-git remote add origin git@github.com:yourgithubusername/githubrepo.git
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
 git add .
 git commit -m "Initial commit"
 git branch -M main
@@ -251,21 +111,13 @@ To deploy your site to Pages:
 | Build command | `make html` |
 | Build directory | `build/html` |
 
-Below the configuration, make sure to set the environment variable for specifying the `PYTHON_VERSION`.
-
-For example:
-
-| Variable name | Value |
-| --- | --- |
-| PYTHON\_VERSION | 3.7 |
-
-After configuring your site, you can begin your first deploy. You should see Cloudflare Pages installing `Pipenv`, your project dependencies, and building your site, before deployment.
+Cloudflare Pages detects `requirements.txt` and installs your Python dependencies before running `make html`. If you need a specific Python version rather than the build image default, set the `PYTHON_VERSION` environment variable as described in [Override default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
 Note
 
 For the complete guide to deploying your first site to Cloudflare Pages, refer to the [Get started guide](https://developers.cloudflare.com/pages/get-started/).
 
-After deploying your site, you will receive a unique subdomain for your project on `*.pages.dev`. Every time you commit new code to your Sphinx site, Cloudflare Pages will automatically rebuild your project and deploy it.
+After deploying your site, you will receive a unique subdomain for your project on `*.pages.dev`. Every time you commit new code to your Sphinx site, Cloudflare Pages automatically rebuilds your project and deploys it.
 
 You will also get access to [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) on new pull requests, so you can preview how changes look to your site before deploying them to production.
 
@@ -282,5 +134,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/#page","headline":"Sphinx","description":"Deploy a Sphinx documentation site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/og.png?v=feae017b0572b20b","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/#page","headline":"Sphinx","description":"Deploy a Sphinx documentation site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/og.png?v=feae017b0572b20b","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

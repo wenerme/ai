@@ -17,13 +17,13 @@ image: https://developers.cloudflare.com/pages/configuration/build-configuration
 
 # Build configuration
 
-You may tell Cloudflare Pages how your site needs to be built as well as where its output files will be located.
+You can configure how Cloudflare Pages builds your site and where its output files are located. For build configuration on Cloudflare Workers, refer to [Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/).
 
 ## Build commands and directories
 
-You should provide a build command to tell Cloudflare Pages how to build your application. For projects not listed here, consider reading the tool's documentation or framework, and submit a pull request to add it here.
+Provide a build command to tell Cloudflare Pages how to build your application. For projects not listed in the presets table, refer to your framework's documentation.
 
-Build directories indicates where your project's build command outputs the built version of your Cloudflare Pages site. Often, this defaults to the industry-standard `public`, but you may find that you need to customize it.
+The build output directory indicates where your project's build command outputs the built version of your Cloudflare Pages site. Often, this defaults to `dist` or `public`, but you can customize it.
 
 <details>
 
@@ -33,19 +33,19 @@ Understanding your build configuration
 
 </summary>
 
-The build command is provided by your framework. For example, the Gatsby framework uses <code>gatsby build</code> as its build command. When you are working without a framework, leave the **Build command** field blank. Pages determines whether a build has succeeded or failed by reading the exit code returned from the user supplied build command. Any non-zero return code will cause a build to be marked as failed. An exit code of 0 will cause the Pages build to be marked as successful and assets will be uploaded regardless of if error logs are written to standard error.
+The build command is provided by your framework. For example, a Vite project uses <code>npm run build</code> as its build command. When you are working without a framework and do not need a build step, leave the **Build command** field blank. Pages determines whether a build has succeeded or failed by reading the exit code returned from the user-supplied build command. Any non-zero return code causes a build to fail. An exit code of <code>0</code> marks the Pages build as successful and uploads assets regardless of whether logs are written to standard error.
 
-The build directory is generated from the build command. Each framework has its own naming convention, for example, the build output directory is named <code>/public</code> for many frameworks.
+The build output directory is generated from the build command. Each framework has its own naming convention. For example, the build output directory is <code>dist</code> or <code>public</code> for many frameworks.
 
-The root directory is where your site’s content lives. If not specified, Cloudflare assumes that your linked git repository is the root directory. The root directory needs to be specified in cases like monorepos, where there may be multiple projects in one repository.
+The root directory is where your site's content lives. If not specified, Cloudflare assumes that your linked Git repository is the root directory. Specify the root directory for cases like monorepos, where multiple projects live in one repository.
 
 </details>
 
 ## Framework presets
 
-Cloudflare maintains a list of build configurations for popular frameworks and tools. These are accessible during project creation. Below are some standard build commands and directories for popular frameworks and tools.
+Cloudflare maintains a list of build configurations for popular frameworks and tools. These are accessible during project creation. The following table lists the standard build commands and output directories for each preset.
 
-If you are not using a preset, use `exit 0` as your **Build command**.
+If you are not using a preset and do not need a build step, leave the **Build command** field blank (or use `exit 0` if your workflow requires a non-empty command).
 
 | Framework/tool | Build command | Build directory |
 | --- | --- | --- |
@@ -80,11 +80,15 @@ If you are not using a preset, use `exit 0` as your **Build command**.
 
 ## Environment variables
 
-If your project makes use of environment variables to build your site, you can provide custom environment variables:
+If your project uses environment variables during builds, you can configure them in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Select **Settings** > **Environment variables**.
+3. Select **Settings** > **Variables and Secrets**.
+
+Note
+
+Environment variables configured under **Settings** > **Variables and Secrets** are available at build time and at runtime for Pages Functions. Changes take effect on the next deployment.
 
 The following system environment variables are injected by default (but can be overridden):
 
@@ -105,5 +109,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-configuration/#page","headline":"Build configuration","description":"Set build commands, output directories, and framework presets for Cloudflare Pages projects.","url":"https://developers.cloudflare.com/pages/configuration/build-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/build-configuration/og.png?v=3b81c7eb16f14ab8","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-configuration/#page","headline":"Build configuration","description":"Set build commands, output directories, and framework presets for Cloudflare Pages projects.","url":"https://developers.cloudflare.com/pages/configuration/build-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/build-configuration/og.png?v=3b81c7eb16f14ab8","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

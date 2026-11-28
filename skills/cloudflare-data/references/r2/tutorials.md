@@ -26,7 +26,6 @@ View tutorials to help you get started with R2.
 | [Point to R2 bucket with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/) | 2 years ago | Beginner |
 | [Use event notification to summarize PDF files on upload](https://developers.cloudflare.com/r2/tutorials/summarize-pdf/) | 2 years ago | Intermediate |
 | [Use SSE-C](https://developers.cloudflare.com/r2/examples/ssec/) | 2 years ago | Intermediate |
-| [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/) | 2 years ago | Intermediate |
 | [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/) | 2 years ago | Intermediate |
 | [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/) | 3 years ago | Intermediate |
 | [Log and store upload events in R2 with event notifications](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/) | 3 years ago | Beginner |

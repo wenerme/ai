@@ -28,8 +28,9 @@ When a Worker running in production has an error that prevents it from returning
 | Error code | Meaning |
 | --- | --- |
 | `1101` | Worker threw a JavaScript exception. |
-| `1102` | Worker exceeded [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time). |
+| `1102` | Worker exceeded its [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) or [memory limit](https://developers.cloudflare.com/workers/platform/limits/#memory). |
 | `1103` | Worker execution is blocked. Check whether a [Workers spending limit](https://developers.cloudflare.com/workers/platform/spend-management/#what-stops-at-the-limit) was reached. If no spending limit explains the block, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). |
+| `1105` | Cloudflare could not get a usable response from the Workers runtime. Refer to [Error 1105: Temporarily unavailable](#error-1105-temporarily-unavailable). |
 | `1019` | Worker hit [loop limit](#loop-limit). |
 | `1021` | Worker has requested a host it cannot access. |
 | `1022` | Cloudflare has failed to route the request to the Worker. |
@@ -39,6 +40,20 @@ When a Worker running in production has an error that prevents it from returning
 | `10162` | Module has an unsupported Content-Type. |
 
 Other `11xx` errors generally indicate a problem with the Workers runtime itself. Refer to the [status page ↗︎](https://www.cloudflarestatus.com) if you are experiencing an error.
+
+### Error 1105: Temporarily unavailable
+
+Cloudflare can return error `1105` with HTTP `503` when the Workers runtime reports that it could not serve the request or Cloudflare does not receive a usable response from the runtime.
+
+A request to a deployed Worker can fail before the handler starts if:
+
+- The runtime gives up waiting for a Worker instance to finish loading.
+- The runtime encounters an uncaught exception while evaluating the Worker's top-level code. For example, an imported dependency throws, or top-level code calls `JSON.parse()` on invalid configuration. If Cloudflare catches the exception during upload validation instead, the upload fails with [error `10021`](#validation-errors-10021).
+
+If the handler never starts, there may be no invocation log. Error `1105` alone does not tell you whether the Worker hit a CPU or memory limit.
+
+1. Confirm that the response includes Cloudflare error code `1105`. If you see only HTTP `503`, refer to [HTTP 503 troubleshooting](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-503/).
+2. If there is no matching [invocation log](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs), verify that invocation logs were turned on for the deployed version and that the request falls within the selected time range. [Sampling](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#head-based-sampling) and [log retention](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#limits) can also explain a missing log. A missing log alone does not tell you whether the handler ran.
 
 ### Loop limit
 
@@ -254,13 +269,13 @@ To inherit a binding from a specific version, use the [Versions](https://develop
 
 ## Runtime errors
 
-Runtime errors will occur within the runtime, do not throw up an error page, and are not visible to the end user. Runtime errors are detected by the user with logs.
+The following runtime messages and outcomes can help you investigate a Worker failure. They are distinct from the [codes on Cloudflare error pages](#error-pages-generated-by-workers).
 
 | Error message | Meaning |
 | --- | --- |
 | `Network connection lost` | Connection failure. Catch a `fetch` or binding invocation and retry it. |
 | `Memory limit`<br>`would be exceeded`<br> `before EOF` | Trying to read a stream or buffer that would take you over the [memory limit](https://developers.cloudflare.com/workers/platform/limits/#memory). |
-| `daemonDown` | A temporary problem invoking the Worker. |
+| `daemonDown` | The runtime could not serve the request. Refer to [error 1105](#error-1105-temporarily-unavailable). |
 
 ## Identify errors: Workers Metrics
 
@@ -394,6 +409,38 @@ async function handleRequest(request) {
 }
 ```
 
+## 504 responses from Cache API lookups
+
+When a cache entry is missing or expired, [`cache.match()`](https://developers.cloudflare.com/workers/runtime-apis/cache/#match) resolves to `undefined` without contacting your origin. In HTTP request logs, the lookup can appear as a separate entry with `ClientRequestSource: edgeWorkerCacheAPI` and `EdgeResponseStatus: 504`. The `504` is the status of the lookup, not the response sent to the visitor. For example, your Worker can fetch the content after a miss and return `200 OK`.
+
+To check what the visitor received, [follow the lookup's `ParentRayID`](https://developers.cloudflare.com/logs/faq/worker-subrequests/#how-the-two-entries-are-linked) back to the original request (`ClientRequestSource: eyeball`) and check that entry's `EdgeResponseStatus`. If the visitor received a `504`, [troubleshoot the gateway timeout](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502-504/). `OriginResponseStatus: 0` alone does not identify a cache miss.
+
+To count `504` responses sent to visitors, filter `httpRequestsAdaptiveGroups` in the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#filter-end-users) by `requestSource: "eyeball"` and `edgeResponseStatus: 504`. The filter excludes subrequest responses, such as a `504` from a cache lookup or a Worker `fetch()` to your origin. If the Worker returns a `504` to the visitor after a failed subrequest, the visitor response still counts.
+
+Set `zoneTag` to your zone ID and `start` and `end` to the bounds of the time range in UTC. The count can be an estimate when [sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) applies.
+
+```graphql
+query Visitor504s($zoneTag: string, $start: Time, $end: Time) {
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			httpRequestsAdaptiveGroups(
+				limit: 1
+				filter: {
+					datetime_geq: $start
+					datetime_lt: $end
+					requestSource: "eyeball"
+					edgeResponseStatus: 504
+				}
+			) {
+				count
+			}
+		}
+	}
+}
+```
+
+For a [monitor](https://developers.cloudflare.com/notifications/monitors/#custom-sql) that queries `events.httpRequests` for `504` responses, add `AND requestSource = 'eyeball'` to its SQL filter to count only responses sent to visitors.
+
 ## Related resources
 
 - [Workers Issues](https://developers.cloudflare.com/workers/observability/issues/) - Detect and group recurring production failures.
@@ -410,5 +457,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/errors/og.png?v=d4d7666e14bbf04d","dateModified":"2026-11-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/errors/og.png?v=d4d7666e14bbf04d","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

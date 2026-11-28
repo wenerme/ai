@@ -4,7 +4,7 @@ agent:
   endpoint: "https://developers.cloudflare.com/.well-known/search?q={query}"
   method: "GET"
   documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
-description: Deploy full-stack applications instantly to the Cloudflare global network with Pages.
+description: Configure and manage Cloudflare Pages projects. For new static and full-stack applications, use Cloudflare Workers.
 title: Cloudflare Pages
 image: https://developers.cloudflare.com/pages/og.png?v=931eaf4bc968e2b1
 ---
@@ -17,15 +17,13 @@ image: https://developers.cloudflare.com/pages/og.png?v=931eaf4bc968e2b1
 
 # Cloudflare Pages
 
-Are you sure you want to use Pages?
-
-[Workers supports most Pages use cases and offers a broader feature set](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/). It is Cloudflare's primary platform for building applications. Start new projects with Workers.
-
-Create full-stack applications that are instantly deployed to the Cloudflare global network.
+Deploy static and full-stack applications to the Cloudflare global network with Cloudflare Pages.
 
 Available on all plans
 
-Deploy your Pages project by connecting to [your Git provider](https://developers.cloudflare.com/pages/get-started/git-integration/), uploading prebuilt assets directly to Pages with [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/) or using [C3](https://developers.cloudflare.com/pages/get-started/c3/) from the command line.
+For new static sites and full-stack applications, start with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/get-started/). Workers supports [static assets](https://developers.cloudflare.com/workers/static-assets/), [framework guides](https://developers.cloudflare.com/workers/framework-guides/), [automatic configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) for existing projects, and [Git-connected builds](https://developers.cloudflare.com/workers/ci-cd/builds/). If you already run a Pages project and want to move to Workers, refer to the [Pages to Workers migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/).
+
+Deploy Pages projects by connecting to [your Git provider](https://developers.cloudflare.com/pages/get-started/git-integration/), uploading prebuilt assets with [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/), or using [C3](https://developers.cloudflare.com/pages/get-started/c3/) from the command line.
 
 ---
 
@@ -53,9 +51,9 @@ Use Redirects
 
 ## Related products
 
-[Workers](https://developers.cloudflare.com/workers/)
+[Workers](https://developers.cloudflare.com/workers/static-assets/)
 
-Cloudflare Workers provides a serverless execution environment that allows you to create new applications or augment existing ones without configuring or maintaining infrastructure.
+Deploy static sites, front-end frameworks, and full-stack serverless applications with Workers Static Assets and Workers Builds.
 
 [R2](https://developers.cloudflare.com/r2/)
 
@@ -77,9 +75,9 @@ Offload third-party tools and services to the cloud and improve the speed and se
 
 Learn about limits that apply to your Pages project (500 deploys per month on the Free plan).
 
-### [Framework guides](https://developers.cloudflare.com/pages/framework-guides/)
+### [Migrate to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/)
 
-Deploy popular frameworks such as React, Hugo, and static Next.js exports on Pages.
+Move an existing Pages project to Cloudflare Workers with Static Assets and Workers Builds.
 
 ### [Developer Discord](https://discord.cloudflare.com)
 
@@ -98,5 +96,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/#page","headline":"Cloudflare Pages","description":"Deploy full-stack applications instantly to the Cloudflare global network with Pages.","url":"https://developers.cloudflare.com/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/og.png?v=931eaf4bc968e2b1","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/#page","headline":"Cloudflare Pages","description":"Configure and manage Cloudflare Pages projects. For new static and full-stack applications, use Cloudflare Workers.","url":"https://developers.cloudflare.com/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/og.png?v=931eaf4bc968e2b1","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

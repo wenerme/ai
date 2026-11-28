@@ -39,43 +39,43 @@ To fix this in GitHub:
 
 1. Log in to your GitHub account.
 2. Go to **Settings** from your user icon > find **Applications** under Integrations.
-3. Find **Cloudflare Pages** > **Configure** > scroll down and select **Uninstall**.
+3. Find **Cloudflare Workers and Pages** > **Configure** > scroll down and select **Uninstall**.
 4. Re-authorize your GitHub user/organization on the Cloudflare dashboard.
 
 To fix this in GitLab:
 
 1. Log in to your GitLab account.
 2. Go to **Preferences** from your user icon > **Applications**.
-3. Find **Cloudflare Pages** > scroll down and select **Revoke**.
+3. Find **Cloudflare Workers** (or **Cloudflare Pages**) > scroll down and select **Revoke**.
 
 Be aware that you need a role of **Maintainer** or above to successfully link your repository, otherwise the build will fail.
 
 ### Cloning git repository
 
-Possible errors in this step could be caused by lack of Git Large File Storage (LFS). Check your LFS usage by referring to the [GitHub ↗︎](https://docs.github.com/en/billing/managing-billing-for-git-large-file-storage/viewing-your-git-large-file-storage-usage) and [GitLab ↗︎](https://docs.gitlab.com/ee/topics/git/lfs/) documentation.
+Possible errors in this step could be caused by lack of Git Large File Storage (LFS). Check your LFS usage by referring to the [GitHub ↗︎](https://docs.github.com/en/billing/managing-billing-for-git-large-file-storage/viewing-your-git-large-file-storage-usage) and [GitLab ↗︎](https://docs.gitlab.com/topics/git/lfs/) documentation.
 
 Make sure to also review your submodule configuration by going to the `.gitmodules` file in your root directory. This file needs to contain both a `path` and a `url` property.
 
 Example of a valid configuration:
 
-```js
+```ini
 [submodule "example"]
 	path = example/path
-	url = git://github.com/example/repo.git
+	url = https://github.com/example/repo.git
 ```
 
 Example of an invalid configuration:
 
-```js
+```ini
 [submodule "example"]
 	path = example/path
 ```
 
 or
 
-```js
+```ini
 [submodule "example"]
-        url = git://github.com/example/repo.git
+	url = https://github.com/example/repo.git
 ```
 
 ### Building application
@@ -100,7 +100,7 @@ If new content does not appear after a deployment, check for Cache Rules or lega
 
 A DNS-only comparison bypasses your zone's HTTP settings, including security rules, but still uses Pages-managed settings. It does not isolate every custom domain issue. [Custom domains for branch aliases](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/) require proxied DNS records. Unproxied records route to the production branch instead.
 
-If a request returns [Error 1010](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/), check [Browser Integrity Check on Pages](https://developers.cloudflare.com/pages/platform/known-issues/#browser-integrity-check). Turning off or skipping this check in your zone does not turn it off in Pages.
+If a request returns [Error 1010](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/), check [Browser Integrity Check on Pages](https://developers.cloudflare.com/pages/platform/known-issues/#browser-integrity-check-on-pages). Turning off or skipping this check in your zone does not turn it off in Pages.
 
 ## Domain stuck in verification
 
@@ -116,7 +116,7 @@ To check this, run a `curl` command against your domain hitting `/.well-known/ac
 curl -s -o /dev/null -D - https://example.com/.well-known/acme-challenge/randomstring
 ```
 
-```sh
+```txt
 HTTP/2 302
 date: Mon, 03 Apr 2023 08:37:39 GMT
 location: https://example.cloudflareaccess.com/cdn-cgi/access/login/example.com?kid=...&redirect_url=%2F.well-known%2Facme-challenge%2F...
@@ -126,7 +126,7 @@ server: cloudflare
 cf-ray: 7b1ffdaa8ad60693-MAN
 ```
 
-In the example above, you are redirecting to Cloudflare Access (as shown by the `Location` header). In this case, you need to disable Access over the domain until the domain is verified. After the domain is verified, Access can be re-enabled.
+In this example, you are redirecting to Cloudflare Access (as shown by the `Location` header). In this case, you need to disable Access over the domain until the domain is verified. After the domain is verified, Access can be re-enabled.
 
 You will need to do the same kind of thing for Redirect Rules or a Worker example too.
 
@@ -142,7 +142,7 @@ To check this, run a `dig` on the custom domain's apex (or zone, if this is a [s
 dig CAA example.com
 ```
 
-```sh
+```txt
 ; <<>> DiG 9.10.6 <<>> CAA example.com
 ;; global options: +cmd
 ;; Got answer:
@@ -163,11 +163,11 @@ example.com.	300	IN	CAA	0 issue "amazon.com"
 ;; MSG SIZE  rcvd: 76
 ```
 
-In the above example, there is only a single CAA record which is allowing Amazon to issue certificates.
+In this example, there is only a single CAA record allowing Amazon to issue certificates.
 
-To resolve this, you will need to add the following CAA records which allows all of the Certificate Authorities (CAs) Cloudflare uses to issue certificates:
+To resolve this, add the following CAA records to allow all of the Certificate Authorities (CAs) Cloudflare uses to issue certificates:
 
-```plaintext
+```txt
 example.com.            300     IN      CAA     0 issue "letsencrypt.org"
 example.com.            300     IN      CAA     0 issue "pki.goog; cansignhttpexchanges=yes"
 example.com.            300     IN      CAA     0 issue "ssl.com"
@@ -186,9 +186,9 @@ Once the custom domain has been successfully completed, you may [reinstate the z
 
 Still having issues
 
-If you have done the steps above and your domain is still verifying after 15 minutes, join our [Discord ↗︎](https://discord.cloudflare.com) for support or contact our support team through the [Support Portal ↗︎](https://dash.cloudflare.com/?to=/:account/support).
+If you have completed these steps and your domain is still verifying after 15 minutes, join the [Cloudflare Developers Discord ↗︎](https://discord.cloudflare.com) for support or contact our support team through the [Support Portal ↗︎](https://dash.cloudflare.com/?to=/:account/support).
 
-### Missing `index.html` on the root `pages.dev` URL
+## Missing `index.html` on the root `pages.dev` URL
 
 If you see a `404` error on the root `pages.dev` URL (`example.pages.dev`), you are likely missing an `index.html` file in your project.
 
@@ -198,7 +198,7 @@ Upload an `index.html` file to resolve this issue.
 
 If you need additional guidance on build errors, contact your Cloudflare account team (Enterprise) or refer to the [Support Center](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for guidance on contacting Cloudflare Support.
 
-You can also ask questions in the Pages section of the [Cloudflare Developers Discord ↗︎](https://discord.com/invite/cloudflaredev).
+You can also ask questions in the Pages section of the [Cloudflare Developers Discord ↗︎](https://discord.cloudflare.com).
 
 Was this helpful?
 
@@ -209,5 +209,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/debugging-pages/og.png?v=3dcf3ceebc859ecb","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/debugging-pages/og.png?v=3dcf3ceebc859ecb","dateModified":"2026-11-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
