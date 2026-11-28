@@ -5,7 +5,7 @@ description: "Browse Volcengine Ark model IDs, capabilities, context windows, an
 
 # [Volcengine Ark logo]Volcengine Ark
 
-Access 17 Volcengine Ark models through Mastra's model router. Authentication is handled automatically using the `ARK_API_KEY` environment variable.
+Access 18 Volcengine Ark models through Mastra's model router. Authentication is handled automatically using the `ARK_API_KEY` environment variable.
 
 Learn more in the [Volcengine Ark documentation](https://www.volcengine.com/docs/82379/1330310).
 
@@ -194,6 +194,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.8906,
     "outputCost": 4.45301
+  },
+  {
+    "model": "volcengine/doubao-seed-translation-250915",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 4000,
+    "maxOutput": 3000,
+    "inputCost": 0.17989,
+    "outputCost": 0.53966
   },
   {
     "model": "volcengine/glm-5-2-260617",
